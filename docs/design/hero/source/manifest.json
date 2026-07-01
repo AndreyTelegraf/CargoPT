@@ -1,0 +1,67 @@
+{
+  "source_image": "870BF936-9891-4DCB-B0CF-13C7C4F43AF2.png",
+  "source_size": [
+    1280,
+    853
+  ],
+  "coordinate_system": "top-left origin, pixels in uploaded screenshot",
+  "purpose": "Pixel-accurate visual source of truth crops. SVG files embed the exact reference crop as locked reference layer.",
+  "crops": {
+    "card_01_pedido_unico": {
+      "source_box": [
+        36,
+        410,
+        204,
+        714
+      ],
+      "size": [
+        168,
+        304
+      ],
+      "png": "cards/card_01_pedido_unico.png",
+      "svg_reference_wrapper": "cards/card_01_pedido_unico.svg"
+    },
+    "card_02_processo_simples": {
+      "source_box": [
+        212,
+        410,
+        388,
+        714
+      ],
+      "size": [
+        176,
+        304
+      ],
+      "png": "cards/card_02_processo_simples.png",
+      "svg_reference_wrapper": "cards/card_02_processo_simples.svg"
+    },
+    "card_03_varias_propostas": {
+      "source_box": [
+        396,
+        410,
+        590,
+        714
+      ],
+      "size": [
+        194,
+        304
+      ],
+      "png": "cards/card_03_varias_propostas.png",
+      "svg_reference_wrapper": "cards/card_03_varias_propostas.svg"
+    },
+    "card_04_voce_escolhe": {
+      "source_box": [
+        596,
+        410,
+        762,
+        714
+      ],
+      "size": [
+        166,
+        304
+      ],
+      "png": "cards/card_04_voce_escolhe.png",
+      "svg_reference_wrapper": "cards/card_04_voce_escolhe.svg"
+    }
+  }
+}
