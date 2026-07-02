@@ -7,6 +7,33 @@ const progressFill = document.querySelector("#progressFill");
 const formMessage = document.querySelector("#formMessage");
 let currentStep = 1;
 
+const MESSAGES = {
+  pt: {
+    required: "Preencha os campos obrigatórios deste passo.",
+    contact: "Indique pelo menos um contacto: telefone, WhatsApp ou email.",
+    submitting: "A enviar o pedido...",
+    success: "Pedido enviado. Vamos encaminhá-lo para transportadores.",
+    failure: "Não foi possível enviar o pedido. Verifique os campos ou tente mais tarde."
+  },
+  en: {
+    required: "Fill in the required fields for this step.",
+    contact: "Add at least one contact: phone, WhatsApp or email.",
+    submitting: "Sending request...",
+    success: "Request sent. We will forward it to carriers.",
+    failure: "Could not send the request. Check the fields or try again later."
+  },
+  ru: {
+    required: "Заполните обязательные поля этого шага.",
+    contact: "Укажите хотя бы один контакт: телефон, WhatsApp или email.",
+    submitting: "Отправляем заявку...",
+    success: "Заявка отправлена. Мы передадим её перевозчикам.",
+    failure: "Не удалось отправить заявку. Проверьте поля или попробуйте позже."
+  }
+};
+
+const localeKey = pageLocale === "pt-PT" ? "pt" : pageLocale.slice(0, 2);
+const messages = MESSAGES[localeKey] || MESSAGES.pt;
+
 function setMessage(text, type) {
   formMessage.textContent = text || "";
   formMessage.classList.toggle("is-error", type === "error");
@@ -18,7 +45,10 @@ function setStep(step) {
   steps.forEach((item) => {
     item.classList.toggle("is-active", Number(item.dataset.step) === currentStep);
   });
-  stepLabel.textContent = `Шаг ${currentStep} из ${steps.length}`;
+  const template = form.dataset.stepTemplate || "Passo {current} de {total}";
+  stepLabel.textContent = template
+    .replace("{current}", currentStep)
+    .replace("{total}", steps.length);
   progressFill.style.width = `${(currentStep / steps.length) * 100}%`;
   setMessage("", "");
 }
@@ -69,7 +99,7 @@ function validateStep(step) {
   for (const field of requiredFields) {
     if (!field.value.trim()) {
       field.focus();
-      setMessage("Заполните обязательные поля этого шага.", "error");
+      setMessage(messages.required, "error");
       return false;
     }
   }
@@ -77,7 +107,7 @@ function validateStep(step) {
   if (step === 2) {
     const data = getFormData();
     if (!data.client_phone.trim() && !data.client_whatsapp.trim() && !data.customer_email.trim()) {
-      setMessage("Укажите хотя бы один контакт: телефон, WhatsApp или email.", "error");
+      setMessage(messages.contact, "error");
       return false;
     }
   }
@@ -90,7 +120,7 @@ function buildPayload() {
   const requestedDate = data.requested_date ? `${data.requested_date}T12:00:00+00:00` : null;
 
   return {
-    source_locale: pageLocale === "pt-PT" ? "pt" : pageLocale.slice(0, 2),
+    source_locale: localeKey,
     customer_name: data.customer_name || null,
     customer_email: data.customer_email || null,
     preferred_contact: data.client_whatsapp ? "whatsapp" : data.client_phone ? "phone" : data.customer_email ? "email" : null,
@@ -129,7 +159,7 @@ function buildPayload() {
 async function submitRequest() {
   if (!validateStep(2)) return;
 
-  setMessage("Отправляем заявку...", "");
+  setMessage(messages.submitting, "");
   const submitButton = form.querySelector("button[type=\"submit\"]");
   submitButton.disabled = true;
 
@@ -148,9 +178,9 @@ async function submitRequest() {
     localStorage.removeItem(STORAGE_KEY);
     form.reset();
     setStep(1);
-    setMessage("Заявка отправлена. Мы передадим её перевозчикам.", "success");
+    setMessage(messages.success, "success");
   } catch (error) {
-    setMessage("Не удалось отправить заявку. Проверьте поля или попробуйте позже.", "error");
+    setMessage(messages.failure, "error");
     console.error(error);
   } finally {
     submitButton.disabled = false;
