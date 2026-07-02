@@ -9,16 +9,38 @@ def build_offer_escalation_text(*, job, offers) -> str:
     accepted = sum(1 for offer in offers if offer.status == "accepted")
     client = job.client_telegram_username or str(job.client_telegram_user_id)
 
+    if accepted:
+        reason = "Есть принятое предложение, но заявка требует ручного контроля."
+        accepted_line = f"Принятых предложений — {accepted}."
+        recommendations = (
+            "Рекомендуем:\n\n"
+            "• проверить назначение перевозчика\n"
+            "• проверить подтверждение клиента\n"
+            "• связаться с перевозчиком"
+        )
+    else:
+        reason = "Не удалось найти перевозчика."
+        accepted_line = "Принятых предложений нет."
+        recommendations = (
+            "Рекомендуем:\n\n"
+            "• добавить новых перевозчиков\n"
+            "• отправить вручную\n"
+            "• связаться с клиентом"
+        )
+
     return (
-        f"Заявка #{job.id} требует ручного контроля.\n\n"
+        f"Заявка #{job.id}\n\n"
         f"Клиент: @{client}\n"
         f"Статус: {job.status}\n\n"
-        f"Офферы:\n"
-        f"отправлено — {len(offers)}\n"
-        f"pending — {pending}\n"
-        f"accepted — {accepted}\n"
-        f"declined — {declined}\n"
-        f"expired — {expired}"
+        f"Причина:\n\n"
+        f"{reason}\n\n"
+        f"Рассылка завершена.\n\n"
+        f"{len(offers)} перевозчиков получили заявку.\n\n"
+        f"{declined} отказались.\n"
+        f"{expired} не ответили.\n"
+        f"{pending} ожидают ответа.\n\n"
+        f"{accepted_line}\n\n"
+        f"{recommendations}"
     )
 
 
