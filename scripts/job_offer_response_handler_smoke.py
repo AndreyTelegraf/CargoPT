@@ -25,7 +25,7 @@ source = Path("app/bot/handlers/job_offer_response.py").read_text(encoding="utf-
 assert "edit_text(text, parse_mode=\"HTML\", reply_markup=reply_markup)" in source
 assert "edit_caption(caption=text, parse_mode=\"HTML\", reply_markup=reply_markup)" in source
 assert "edit_reply_markup(reply_markup=reply_markup)" in source
-assert "build_assignment_confirmation_keyboard(job.id)" not in source
+assert "build_assignment_confirmation_keyboard(job.id)" in source
 assert "_delete_message_by_id_safely" in source
 assert "sibling_offer_message_refs" in source
 assert "bot.delete_message" in source
@@ -35,7 +35,7 @@ print("JOB_OFFER_RESPONSE_HANDLER_SMOKE_OK")
 handler_source = Path("app/bot/handlers/job_offer_response.py").read_text(encoding="utf-8")
 assert "accept_offer_without_assignment" in handler_source
 assert "accept_offer_and_assign_job" not in handler_source
-assert "build_assignment_confirmation_keyboard" not in handler_source
+assert "build_assignment_confirmation_keyboard" in handler_source
 assert "build_client_notification_text" not in handler_source
 assert "build_carrier_notification_text" not in handler_source
 assert "Ваш отклик отправлен" in handler_source
@@ -43,3 +43,8 @@ assert "Ваш отклик отправлен" in handler_source
 assert "accept_offer_without_assignment" in source
 assert "accept_offer_and_assign_job" not in source
 assert "Ваш отклик отправлен" in source
+
+assert "await callback.message.edit_reply_markup(reply_markup=None)" in handler_source
+assert "build_offer_decline_reason_keyboard" in handler_source
+assert "offer_decline_reason:" in handler_source
+assert "decline_reason=decline_reason" in handler_source

@@ -117,12 +117,14 @@ class JobOfferService:
     async def decline_offer(
         self,
         offer_id: int,
+        decline_reason: str | None = None,
     ) -> JobOffer:
         now = datetime.now(UTC)
         return await self.repository.update_offer_status(
             offer_id=offer_id,
             status=JobOfferStatus.DECLINED,
             responded_at=now,
+            decline_reason=decline_reason,
         )
 
     async def select_accepted_offer_for_client(

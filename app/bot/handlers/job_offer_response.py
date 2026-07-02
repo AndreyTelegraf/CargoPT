@@ -7,6 +7,7 @@ from aiogram.types import CallbackQuery
 from aiogram.types import Message
 
 from app.domain.job_status import JobStatus
+from app.domain.job_decline_reason import is_valid_decline_reason
 from app.db.session import async_session_maker
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
@@ -22,6 +23,7 @@ from app.services.job_escalation import escalate_job_to_manual_review
 from app.services.offer_notification import send_job_offers_to_carriers
 from app.services.client_offer_presentation import ClientOfferPresentationService
 from app.bot.offer_keyboard import build_client_offer_selection_keyboard
+from app.bot.offer_keyboard import build_offer_decline_reason_keyboard
 from app.bot.offer_keyboard import parse_client_offer_selection_callback
 from app.bot.assignment_confirmation_keyboard import build_assignment_confirmation_keyboard
 
@@ -121,31 +123,73 @@ async def send_client_offer_selection_message(
     return True
 
 
-def build_client_assignment_confirmation_text(job_id: int) -> str:
+def build_client_assignment_confirmation_text(job_id: int, carrier=None) -> str:
+    if carrier is None:
+        return (
+            f"Предложение по заявке №{job_id} выбрано.\n\n"
+            "Подтвердите сделку после того, как договоритесь с перевозчиком."
+        )
+
+    carrier_label = carrier.contact_name or carrier.company_name or "перевозчик"
+    carrier_link = (
+        f'<a href="tg://user?id={int(carrier.telegram_user_id)}">{html.escape(carrier_label, quote=False)}</a>'
+        if carrier.telegram_user_id is not None
+        else "не указан"
+    )
+    username = (
+        "@" + html.escape(carrier.telegram_username.lstrip("@"), quote=False)
+        if carrier.telegram_username
+        else "не указан"
+    )
+
     return (
         f"Предложение по заявке №{job_id} выбрано.\n\n"
-        "Подтвердите сделку после того, как договоритесь с перевозчиком."
+        f"Перевозчик: {carrier_link}\n"
+        f"Компания: {html.escape(carrier.company_name or 'не указана', quote=False)}\n"
+        f"Контакт: {html.escape(carrier.contact_name or 'не указан', quote=False)}\n"
+        f"Username: {username}\n"
+        f"Телефон: {html.escape(carrier.phone or 'не указан', quote=False)}\n\n"
+        "Свяжитесь с перевозчиком и подтвердите сделку после согласования деталей."
+    )
+
+
+def build_carrier_assignment_confirmation_text(job) -> str:
+    client_label = job.client_telegram_username or "клиент"
+    client_link = (
+        f'<a href="tg://user?id={int(job.client_telegram_user_id)}">{html.escape(client_label, quote=False)}</a>'
+        if job.client_telegram_user_id is not None
+        else "не указан"
+    )
+    username = (
+        "@" + html.escape(job.client_telegram_username.lstrip("@"), quote=False)
+        if job.client_telegram_username
+        else "не указан"
+    )
+
+    return (
+        f"Клиент выбрал ваше предложение по заявке №{job.id}.\n\n"
+        f"Клиент: {client_link}\n"
+        f"Username: {username}\n"
+        f"Телефон: {html.escape(job.client_phone or 'не указан', quote=False)}\n"
+        f"WhatsApp: {html.escape(job.client_whatsapp or 'не указан', quote=False)}\n\n"
+        "Свяжитесь с клиентом и подтвердите сделку после согласования деталей."
     )
 
 
 async def send_assignment_confirmation_requests(
     *,
     bot,
-    job_id: int,
+    job,
     carrier_telegram_user_id: int | None,
 ) -> None:
-    keyboard = build_assignment_confirmation_keyboard(job_id)
-
-    carrier_text = (
-        f"Клиент выбрал ваше предложение по заявке №{job_id}.\n\n"
-        "Свяжитесь с клиентом и подтвердите сделку после согласования деталей."
-    )
+    keyboard = build_assignment_confirmation_keyboard(job.id)
 
     if carrier_telegram_user_id is not None:
         await bot.send_message(
             chat_id=carrier_telegram_user_id,
-            text=carrier_text,
+            text=build_carrier_assignment_confirmation_text(job),
             reply_markup=keyboard,
+            parse_mode="HTML",
         )
 
 
@@ -206,8 +250,12 @@ async def handle_offer_response(callback: CallbackQuery) -> None:
                 "Клиент получит предложения от перевозчиков и выберет подходящее."
             )
         else:
-            declined_offer = await offer_service.decline_offer(offer_id)
-            message_text = "Вы отказались от заказа."
+            if callback.message:
+                await callback.message.edit_reply_markup(
+                    reply_markup=build_offer_decline_reason_keyboard(offer_id),
+                )
+            await callback.answer("Укажите причину отказа.")
+            return
 
             job = await job_repository.get_job_by_id(declined_offer.job_id)
             if job is not None and job.status == "offered":
@@ -249,11 +297,7 @@ async def handle_offer_response(callback: CallbackQuery) -> None:
 
     if callback.message:
         if action == "accept":
-            await _finalize_offer_message(
-                callback.message,
-                message_text,
-                reply_markup=None,
-            )
+            await callback.message.edit_reply_markup(reply_markup=None)
         else:
             await _delete_message_safely(callback.message)
 
@@ -265,6 +309,110 @@ async def handle_offer_response(callback: CallbackQuery) -> None:
         )
 
     await callback.answer()
+
+@router.callback_query(F.data.startswith("offer_decline_reason:"))
+async def handle_offer_decline_reason(callback: CallbackQuery) -> None:
+    parts = (callback.data or "").split(":")
+    if len(parts) != 3:
+        await callback.answer("Некорректная кнопка", show_alert=True)
+        return
+
+    try:
+        offer_id = int(parts[1])
+    except ValueError:
+        await callback.answer("Некорректная кнопка", show_alert=True)
+        return
+
+    decline_reason = parts[2]
+    if not is_valid_decline_reason(decline_reason):
+        await callback.answer("Некорректная причина", show_alert=True)
+        return
+
+    telegram_user_id = callback.from_user.id
+    job = None
+    new_offer_message_refs: list[tuple[int | None, int | None]] = []
+
+    async with async_session_maker() as session:
+        carrier_repository = CarrierRepository(session)
+        job_repository = JobRepository(session)
+        offer_service = JobOfferService(job_repository)
+
+        carrier = await carrier_repository.get_carrier_by_telegram_user_id(
+            telegram_user_id
+        )
+        offer = await job_repository.get_offer_by_id(offer_id)
+
+        if carrier is None or offer is None or offer.carrier_id != carrier.id:
+            await callback.answer("Оффер не найден", show_alert=True)
+            return
+
+        try:
+            declined_offer = await offer_service.decline_offer(
+                offer_id,
+                decline_reason=decline_reason,
+            )
+        except OfferAlreadyResolvedError:
+            await callback.answer("Этот оффер уже обработан.", show_alert=True)
+            await session.rollback()
+            return
+
+        job = await job_repository.get_job_by_id(declined_offer.job_id)
+        if job is not None and job.status == "offered":
+            sibling_offers = await job_repository.list_offers_by_job(job.id)
+            has_open_offer = any(
+                sibling.status in {"pending", "accepted"}
+                for sibling in sibling_offers
+            )
+
+            if not has_open_offer:
+                distribution = OfferDistributionService(
+                    matching_service=JobMatchingService(
+                        CarrierSearchService(carrier_repository)
+                    ),
+                    offer_service=offer_service,
+                    job_repository=job_repository,
+                )
+                new_offers = await distribution.create_offers_for_job(
+                    job,
+                    limit=5,
+                    expires_in_minutes=60,
+                )
+                if new_offers:
+                    await send_job_offers_to_carriers(
+                        bot=callback.bot,
+                        job=job,
+                        offers=new_offers,
+                        job_repository=job_repository,
+                        carrier_repository=carrier_repository,
+                    )
+                    new_offer_message_refs = [
+                        (
+                            new_offer.carrier_message_chat_id,
+                            new_offer.carrier_message_id,
+                        )
+                        for new_offer in new_offers
+                    ]
+                else:
+                    await escalate_job_to_manual_review(
+                        bot=callback.bot,
+                        job=job,
+                        job_repository=job_repository,
+                    )
+
+        await session.commit()
+
+    if callback.message:
+        await _delete_message_safely(callback.message)
+
+    for chat_id, message_id in new_offer_message_refs:
+        await _delete_message_by_id_safely(
+            callback.bot,
+            chat_id=chat_id,
+            message_id=message_id,
+        )
+
+    await callback.answer("Вы отказались от заказа.")
+
 
 @router.callback_query(F.data.startswith("client_offer:"))
 async def handle_client_offer_selection(callback: CallbackQuery) -> None:
@@ -314,13 +462,14 @@ async def handle_client_offer_selection(callback: CallbackQuery) -> None:
 
     if callback.message:
         await callback.message.edit_text(
-            build_client_assignment_confirmation_text(job_id),
+            build_client_assignment_confirmation_text(job_id, selected_carrier),
             reply_markup=build_assignment_confirmation_keyboard(job_id),
+            parse_mode="HTML",
         )
 
     await send_assignment_confirmation_requests(
         bot=callback.bot,
-        job_id=job_id,
+        job=job,
         carrier_telegram_user_id=carrier_telegram_user_id,
     )
 

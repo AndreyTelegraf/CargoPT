@@ -441,6 +441,7 @@ class JobRepository:
         offer_id: int,
         status: str,
         responded_at,
+        decline_reason: str | None = None,
     ) -> JobOffer:
         offer = await self.get_offer_by_id(offer_id)
 
@@ -450,6 +451,8 @@ class JobRepository:
         offer.status = status
         offer.responded_at = responded_at
         offer.updated_at = responded_at
+        if decline_reason is not None:
+            offer.decline_reason = decline_reason
 
         await self.session.flush()
 

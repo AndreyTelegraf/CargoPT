@@ -1,6 +1,8 @@
 from aiogram.types import InlineKeyboardButton
 from aiogram.types import InlineKeyboardMarkup
 
+from app.domain.job_decline_reason import DECLINE_REASONS
+
 
 def build_offer_keyboard(offer_id: int) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
@@ -44,3 +46,20 @@ def parse_client_offer_selection_callback(data: str) -> tuple[int, int]:
         raise ValueError("invalid client offer callback data")
 
     return int(parts[2]), int(parts[3])
+
+
+def build_offer_decline_reason_keyboard(offer_id: int) -> InlineKeyboardMarkup:
+    rows = []
+
+    for index in range(0, len(DECLINE_REASONS), 2):
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    text=reason.label,
+                    callback_data=f"offer_decline_reason:{offer_id}:{reason.code}",
+                )
+                for reason in DECLINE_REASONS[index:index + 2]
+            ]
+        )
+
+    return InlineKeyboardMarkup(inline_keyboard=rows)
