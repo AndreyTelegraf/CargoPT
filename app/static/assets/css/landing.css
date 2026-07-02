@@ -591,3 +591,17 @@ details p {
   color: var(--text);
   border-color: var(--text);
 }
+
+
+/* Header carrier CTA */
+.header-actions .button-carrier {
+  background: #f5f9ff;
+  color: #06164a;
+  box-shadow: none;
+  border: 1px solid #dfe9fb;
+}
+
+.header-actions .button-carrier:hover {
+  background: #eef5ff;
+  box-shadow: 0 10px 24px rgba(6, 22, 74, 0.08);
+}
