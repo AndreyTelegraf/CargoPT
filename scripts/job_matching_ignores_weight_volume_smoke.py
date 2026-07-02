@@ -14,3 +14,6 @@ assert "min_volume_m3=job.estimated_volume_m3" not in source
 assert "min_loaders=job.required_loaders" not in source
 
 print("JOB_MATCHING_IGNORES_WEIGHT_VOLUME_SMOKE_OK")
+
+assert "if loaded_addresses and not regions:" in source
+assert "return []" in source

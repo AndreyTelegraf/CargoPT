@@ -3,6 +3,7 @@ from app.models.job import Job
 from app.models.job import JobOffer
 from app.repositories.job import JobRepository
 from app.services.job_matching import JobMatchingService
+from app.services.job_matching import _regions_from_text
 from app.services.job_offer import JobOfferService
 
 
@@ -33,12 +34,17 @@ class OfferDistributionService:
 
         existing_carrier_ids = await self.job_repository.list_offer_carrier_ids_by_job(job.id)
         addresses = await self.job_repository.list_addresses_by_job(job.id)
+        matched_regions = set()
+        for address in addresses:
+            matched_regions.update(_regions_from_text(address.raw_text))
+            matched_regions.update(_regions_from_text(address.normalized_address))
+
         vehicles = await self.matching_service.find_matching_vehicles_for_job(
             job,
             addresses=addresses,
         )
-        if not vehicles:
-            vehicles = await self.matching_service.carrier_search.find_matching_vehicles()
+        if not vehicles and not matched_regions:
+            vehicles = []
 
         selected = []
         selected_carrier_ids = set(existing_carrier_ids)

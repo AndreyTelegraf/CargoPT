@@ -104,6 +104,9 @@ class JobMatchingService:
             regions.update(_regions_from_text(address.raw_text))
             regions.update(_regions_from_text(address.normalized_address))
 
+        if loaded_addresses and not regions:
+            return []
+
         return await self.carrier_search.find_matching_vehicles(
             min_payload_kg=None,
             min_volume_m3=None,

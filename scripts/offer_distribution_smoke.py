@@ -216,14 +216,46 @@ async def exercise_offer_distribution() -> None:
 
         loaded_unmatched_job = await job_repo.get_job_by_id(unmatched_job.id)
 
-        if len(unmatched_offers) != 2:
-            raise SystemExit(f"expected 2 fallback offers, got {len(unmatched_offers)}")
+        if len(unmatched_offers) != 0:
+            raise SystemExit(f"expected 0 region-locked fallback offers, got {len(unmatched_offers)}")
 
-        if len({offer.carrier_id for offer in unmatched_offers}) != len(unmatched_offers):
-            raise SystemExit("expected one offer per carrier for fallback matches")
+        if loaded_unmatched_job.status != JobStatus.NO_CARRIERS_FOUND:
+            raise SystemExit(f"expected no carriers found for region-locked fallback, got {loaded_unmatched_job.status}")
 
-        if loaded_unmatched_job.status != JobStatus.OFFERED:
-            raise SystemExit(f"expected offered fallback status, got {loaded_unmatched_job.status}")
+        unknown_region_job = await job_repo.create_job(
+            build_job(now, payload=1000, volume=10.0)
+        )
+        await job_repo.add_address(
+            JobAddress(
+                job_id=unknown_region_job.id,
+                kind="pickup",
+                raw_text="https://maps.app.goo.gl/example",
+                original_google_maps_url=None,
+                normalized_address=None,
+                city=None,
+                postal_code=None,
+                floor=None,
+                has_elevator=None,
+                latitude=None,
+                longitude=None,
+                map_url=None,
+                created_at=now,
+            )
+        )
+
+        unknown_region_offers = await distribution.create_offers_for_job(
+            unknown_region_job,
+            limit=2,
+            expires_in_minutes=30,
+        )
+
+        loaded_unknown_region_job = await job_repo.get_job_by_id(unknown_region_job.id)
+
+        if len(unknown_region_offers) != 0:
+            raise SystemExit(f"expected 0 unknown-region fallback offers, got {len(unknown_region_offers)}")
+
+        if loaded_unknown_region_job.status != JobStatus.NO_CARRIERS_FOUND:
+            raise SystemExit(f"expected no carriers found for unknown region, got {loaded_unknown_region_job.status}")
 
         await session.commit()
 
