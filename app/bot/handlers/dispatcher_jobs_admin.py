@@ -126,6 +126,132 @@ def _format_report_job_rows(rows) -> str:
     return "\n\n".join(lines)
 
 
+def _format_optional(value) -> str:
+    if value is None or value == "":
+        return "—"
+    return _safe(value)
+
+
+def _format_bool_admin(value) -> str:
+    if value is True:
+        return "да"
+    if value is False:
+        return "нет"
+    return "—"
+
+
+def _format_address_line(address) -> str:
+    parts = [
+        f"<b>{_safe(address.kind)}</b>: {_safe(address.raw_text)}",
+    ]
+
+    details = []
+    if address.normalized_address:
+        details.append(f"нормализовано: {_safe(address.normalized_address)}")
+    if address.city:
+        details.append(f"город: {_safe(address.city)}")
+    if address.postal_code:
+        details.append(f"индекс: {_safe(address.postal_code)}")
+    if address.floor is not None:
+        details.append(f"этаж: {_safe(address.floor)}")
+    if address.has_elevator is not None:
+        details.append(f"лифт: {_format_bool_admin(address.has_elevator)}")
+    if address.map_url:
+        details.append(f"карта: {_safe(address.map_url)}")
+
+    if details:
+        parts.append(" · ".join(details))
+
+    return "\n".join(parts)
+
+
+def _format_item_line(item) -> str:
+    details = []
+    if item.quantity is not None:
+        details.append(f"кол-во: {_safe(item.quantity)}")
+    if item.estimated_weight_kg is not None:
+        details.append(f"вес: {_safe(item.estimated_weight_kg)} кг")
+    if item.estimated_volume_m3 is not None:
+        details.append(f"объём: {_safe(item.estimated_volume_m3)} м³")
+
+    suffix = f" ({', '.join(details)})" if details else ""
+    return f"• {_safe(item.description)}{suffix}"
+
+
+def _format_offer_summary(offers) -> str:
+    statuses = {
+        "sent": len(offers),
+        "pending": sum(1 for offer in offers if offer.status == "pending"),
+        "accepted": sum(1 for offer in offers if offer.status == "accepted"),
+        "declined": sum(1 for offer in offers if offer.status == "declined"),
+        "expired": sum(1 for offer in offers if offer.status == "expired"),
+        "cancelled": sum(1 for offer in offers if offer.status == "cancelled"),
+    }
+
+    return (
+        f"отправлено — {_safe(statuses['sent'])}\n"
+        f"pending — {_safe(statuses['pending'])}\n"
+        f"accepted — {_safe(statuses['accepted'])}\n"
+        f"declined — {_safe(statuses['declined'])}\n"
+        f"expired — {_safe(statuses['expired'])}\n"
+        f"cancelled — {_safe(statuses['cancelled'])}"
+    )
+
+
+def _format_latest_decline_reason(offers) -> str:
+    reasons = [
+        offer.decline_reason
+        for offer in reversed(offers)
+        if getattr(offer, "decline_reason", None)
+    ]
+    if not reasons:
+        return "—"
+    return _safe(get_decline_reason_label(reasons[0]))
+
+
+def _build_job_card_text(*, job, addresses, items, offers) -> str:
+    client = job.client_telegram_username or str(job.client_telegram_user_id or "—")
+    client_line = f"@{_safe(client)}" if client != "—" else "—"
+
+    address_text = "\n\n".join(_format_address_line(address) for address in addresses) or "—"
+    item_text = "\n".join(_format_item_line(item) for item in items) or "—"
+
+    return (
+        f"<b>Заявка #{_safe(job.id)}</b>\n\n"
+        f"<b>Статус</b>\n{_safe(_format_status(job.status))} ({_safe(job.status)})\n\n"
+        f"<b>Клиент</b>\n"
+        f"Telegram: {client_line}\n"
+        f"ID: {_format_optional(job.client_telegram_user_id)}\n"
+        f"Имя: {_format_optional(job.customer_name)}\n"
+        f"Телефон: {_format_optional(job.client_phone)}\n"
+        f"WhatsApp: {_format_optional(job.client_whatsapp)}\n"
+        f"Email: {_format_optional(job.customer_email)}\n"
+        f"Предпочтительный контакт: {_format_optional(job.preferred_contact)}\n\n"
+        f"<b>Дата</b>\n"
+        f"Желаемая: {_format_dt(job.requested_date)}\n"
+        f"Создана: {_format_dt(job.created_at)}\n"
+        f"Обновлена: {_format_dt(job.updated_at)}\n\n"
+        f"<b>Адреса</b>\n{address_text}\n\n"
+        f"<b>Груз</b>\n{item_text}\n\n"
+        f"<b>Параметры</b>\n"
+        f"Грузчики: {_format_optional(job.required_loaders)}\n"
+        f"Вес: {_format_optional(job.estimated_payload_kg)} кг\n"
+        f"Объём: {_format_optional(job.estimated_volume_m3)} м³\n"
+        f"Сборка: {_format_bool_admin(job.needs_assembly)}\n"
+        f"Упаковка: {_format_bool_admin(job.needs_packing)}\n"
+        f"Гидроборт: {_format_bool_admin(job.needs_tail_lift)}\n"
+        f"Кран: {_format_bool_admin(job.needs_crane)}\n"
+        f"Мобильный лифт: {_format_bool_admin(job.needs_mobile_lift)}\n\n"
+        f"<b>Офферы</b>\n{_format_offer_summary(offers)}\n"
+        f"Последняя причина отказа: {_format_latest_decline_reason(offers)}\n\n"
+        f"<b>Комментарий</b>\n{_format_optional(job.comment)}\n\n"
+        f"<b>Источник</b>\n"
+        f"{_format_optional(job.source)} / {_format_optional(job.source_locale)}\n"
+        f"UTM: {_format_optional(job.utm_source)} / {_format_optional(job.utm_campaign)}\n"
+        f"Landing: {_format_optional(job.landing_version)}"
+    )
+
+
 def _normalize_report_datetime(value: str, *, is_end: bool = False) -> str:
     raw = value.strip()
     if len(raw) == 10:
@@ -194,6 +320,61 @@ async def dispatcher_jobs_attention(message: Message) -> None:
         jobs=jobs,
     )
 
+
+
+def _parse_job_command_id(text: str | None) -> int | None:
+    raw = (text or "").strip()
+    if not raw:
+        return None
+
+    if raw.startswith("/job_"):
+        value = raw.split()[0].removeprefix("/job_")
+    else:
+        parts = raw.split()
+        if len(parts) < 2 or parts[0] != "/job":
+            return None
+        value = parts[1]
+
+    if not value.isdigit():
+        return None
+
+    return int(value)
+
+
+@router.message(Command("job"))
+@router.message(lambda message: bool((message.text or "").strip().startswith("/job_")))
+async def dispatcher_job_detail(message: Message) -> None:
+    if message.from_user.id not in ADMIN_TELEGRAM_USER_IDS:
+        await message.answer("Команда доступна только диспетчеру CargoPT.")
+        return
+
+    job_id = _parse_job_command_id(message.text)
+    if job_id is None:
+        await message.answer("Формат: /job 26 или /job_26")
+        return
+
+    async with async_session_maker() as session:
+        repository = JobRepository(session)
+        job = await repository.get_job_by_id(job_id)
+
+        if job is None:
+            await message.answer(f"Заявка #{_safe(job_id)} не найдена.", parse_mode="HTML")
+            return
+
+        addresses = await repository.list_addresses_by_job(job.id)
+        items = await repository.list_items_by_job(job.id)
+        offers = await repository.list_offers_by_job(job.id)
+
+    await message.answer(
+        _build_job_card_text(
+            job=job,
+            addresses=addresses,
+            items=items,
+            offers=offers,
+        ),
+        parse_mode="HTML",
+        disable_web_page_preview=True,
+    )
 
 
 @router.message(Command("jobs_report"))

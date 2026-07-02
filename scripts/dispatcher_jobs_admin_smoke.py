@@ -15,6 +15,9 @@ from app.bot.handlers.dispatcher_jobs_admin import _parse_jobs_report_period
 from app.bot.handlers.dispatcher_jobs_admin import dispatcher_jobs
 from app.bot.handlers.dispatcher_jobs_admin import dispatcher_jobs_attention
 from app.bot.handlers.dispatcher_jobs_admin import dispatcher_jobs_report
+from app.bot.handlers.dispatcher_jobs_admin import dispatcher_job_detail
+from app.bot.handlers.dispatcher_jobs_admin import _build_job_card_text
+from app.bot.handlers.dispatcher_jobs_admin import _parse_job_command_id
 from app.bot.handlers.dispatcher_jobs_admin import router
 from app.repositories.job import JobRepository
 
@@ -22,6 +25,11 @@ assert router is not None
 assert dispatcher_jobs is not None
 assert dispatcher_jobs_attention is not None
 assert dispatcher_jobs_report is not None
+assert dispatcher_job_detail is not None
+assert _parse_job_command_id('/job 26') == 26
+assert _parse_job_command_id('/job_26') == 26
+assert _parse_job_command_id('/job abc') is None
+assert _parse_job_command_id('/jobs') is None
 assert _parse_jobs_report_period("/jobs_report") == ("2026-06-25 00:00:00", None)
 assert _parse_jobs_report_period("/jobs_report 2026-06-27") == ("2026-06-27 00:00:00", None)
 assert _parse_jobs_report_period("/jobs_report 2026-06-25 2026-06-28") == ("2026-06-25 00:00:00", "2026-06-28 23:59:59")
@@ -34,11 +42,32 @@ job = SimpleNamespace(
     status="assigned",
     client_telegram_username="client_user",
     client_telegram_user_id=987654321,
+    customer_name="Client Name",
+    client_phone="+351900000000",
+    client_whatsapp="+351900000001",
+    customer_email="client@example.test",
+    preferred_contact="whatsapp",
     requested_date=None,
     assigned_at=None,
     started_at=None,
     completed_at=None,
     cancelled_at=None,
+    created_at=None,
+    updated_at=None,
+    required_loaders=2,
+    estimated_payload_kg=100,
+    estimated_volume_m3=3.5,
+    needs_assembly=False,
+    needs_packing=True,
+    needs_tail_lift=False,
+    needs_crane=False,
+    needs_mobile_lift=False,
+    comment="Test comment",
+    source="telegram",
+    source_locale="ru",
+    utm_source=None,
+    utm_campaign=None,
+    landing_version=None,
     attention_reason="price_not_agreed",
     offers_count=17,
 )
@@ -59,6 +88,44 @@ assert "Назначена: —" in line
 assert "Офферов: 17" in line
 assert "Причина: Не договорились по цене" in line
 
+
+address = SimpleNamespace(
+    kind="pickup",
+    raw_text="Lisboa",
+    normalized_address="Lisboa, Portugal",
+    city="Lisboa",
+    postal_code=None,
+    floor=3,
+    has_elevator=True,
+    map_url=None,
+)
+item = SimpleNamespace(
+    description="Sofa and boxes",
+    quantity=2,
+    estimated_weight_kg=50,
+    estimated_volume_m3=3.5,
+)
+offer = SimpleNamespace(
+    status="declined",
+    decline_reason="price_not_agreed",
+)
+card = _build_job_card_text(
+    job=job,
+    addresses=[address],
+    items=[item],
+    offers=[offer],
+)
+assert "<b>Заявка #42</b>" in card
+assert "перевозчик назначен (assigned)" in card
+assert "Telegram: @client_user" in card
+assert "<b>Адреса</b>" in card
+assert "pickup" in card
+assert "Lisboa" in card
+assert "<b>Груз</b>" in card
+assert "Sofa and boxes" in card
+assert "declined — 1" in card
+assert "Последняя причина отказа: Не договорились по цене" in card
+
 router_source = Path("app/bot/routers.py").read_text(encoding="utf-8")
 assert "dispatcher_jobs_admin_router" in router_source
 
@@ -69,6 +136,9 @@ assert "ADMIN_TELEGRAM_USER_IDS" in handler_source
 assert "list_recent_jobs(limit=20)" in handler_source
 assert "list_attention_jobs(limit=20)" in handler_source
 assert 'Command("jobs_report")' in handler_source
+assert 'Command("job")' in handler_source
+assert 'dispatcher_job_detail' in handler_source
+assert '_build_job_card_text' in handler_source
 assert "CargoPT jobs report" in handler_source
 assert "2026-06-25 00:00:00" in handler_source
 assert "_parse_jobs_report_period" in handler_source
