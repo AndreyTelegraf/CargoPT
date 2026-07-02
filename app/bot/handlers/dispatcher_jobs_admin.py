@@ -2,8 +2,12 @@ import html
 from datetime import UTC
 from datetime import datetime
 
+from aiogram import F
 from aiogram import Router
 from aiogram.filters import Command
+from aiogram.types import CallbackQuery
+from aiogram.types import InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup
 from aiogram.types import Message
 from sqlalchemy import text
 
@@ -341,6 +345,31 @@ def _parse_job_command_id(text: str | None) -> int | None:
     return int(value)
 
 
+def _job_admin_keyboard(job_id: int) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="🔁 Повторить рассылку",
+                    callback_data=f"job:{job_id}:retry",
+                ),
+            ],
+            [
+                InlineKeyboardButton(
+                    text="🚚 Отправить вручную",
+                    callback_data=f"job:{job_id}:manual",
+                ),
+            ],
+            [
+                InlineKeyboardButton(
+                    text="✅ Закрыть вручную",
+                    callback_data=f"job:{job_id}:close",
+                ),
+            ],
+        ],
+    )
+
+
 @router.message(Command("job"))
 @router.message(lambda message: bool((message.text or "").strip().startswith("/job_")))
 async def dispatcher_job_detail(message: Message) -> None:
@@ -374,6 +403,34 @@ async def dispatcher_job_detail(message: Message) -> None:
         ),
         parse_mode="HTML",
         disable_web_page_preview=True,
+        reply_markup=_job_admin_keyboard(job.id),
+    )
+
+
+@router.callback_query(F.data.startswith("job:"))
+async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
+    if callback.from_user.id not in ADMIN_TELEGRAM_USER_IDS:
+        await callback.answer("Недостаточно прав.", show_alert=True)
+        return
+
+    parts = (callback.data or "").split(":")
+    if len(parts) != 3:
+        await callback.answer("Некорректное действие.", show_alert=True)
+        return
+
+    _, raw_job_id, action = parts
+    if not raw_job_id.isdigit() or action not in {"retry", "manual", "close"}:
+        await callback.answer("Некорректное действие.", show_alert=True)
+        return
+
+    labels = {
+        "retry": "Повторная рассылка",
+        "manual": "Ручная отправка перевозчику",
+        "close": "Ручное закрытие заявки",
+    }
+    await callback.answer(
+        f"{labels[action]} для заявки #{raw_job_id}: функция в разработке.",
+        show_alert=True,
     )
 
 

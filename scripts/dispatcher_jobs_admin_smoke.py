@@ -18,6 +18,8 @@ from app.bot.handlers.dispatcher_jobs_admin import dispatcher_jobs_report
 from app.bot.handlers.dispatcher_jobs_admin import dispatcher_job_detail
 from app.bot.handlers.dispatcher_jobs_admin import _build_job_card_text
 from app.bot.handlers.dispatcher_jobs_admin import _parse_job_command_id
+from app.bot.handlers.dispatcher_jobs_admin import _job_admin_keyboard
+from app.bot.handlers.dispatcher_jobs_admin import dispatcher_job_admin_action
 from app.bot.handlers.dispatcher_jobs_admin import router
 from app.repositories.job import JobRepository
 
@@ -26,10 +28,14 @@ assert dispatcher_jobs is not None
 assert dispatcher_jobs_attention is not None
 assert dispatcher_jobs_report is not None
 assert dispatcher_job_detail is not None
+assert dispatcher_job_admin_action is not None
 assert _parse_job_command_id('/job 26') == 26
 assert _parse_job_command_id('/job_26') == 26
 assert _parse_job_command_id('/job abc') is None
 assert _parse_job_command_id('/jobs') is None
+keyboard = _job_admin_keyboard(26)
+callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
+assert callbacks == ['job:26:retry', 'job:26:manual', 'job:26:close']
 assert _parse_jobs_report_period("/jobs_report") == ("2026-06-25 00:00:00", None)
 assert _parse_jobs_report_period("/jobs_report 2026-06-27") == ("2026-06-27 00:00:00", None)
 assert _parse_jobs_report_period("/jobs_report 2026-06-25 2026-06-28") == ("2026-06-25 00:00:00", "2026-06-28 23:59:59")
@@ -139,6 +145,12 @@ assert 'Command("jobs_report")' in handler_source
 assert 'Command("job")' in handler_source
 assert 'dispatcher_job_detail' in handler_source
 assert '_build_job_card_text' in handler_source
+assert '_job_admin_keyboard' in handler_source
+assert 'dispatcher_job_admin_action' in handler_source
+assert 'callback_data=f"job:{job_id}:retry"' in handler_source
+assert 'callback_data=f"job:{job_id}:manual"' in handler_source
+assert 'callback_data=f"job:{job_id}:close"' in handler_source
+assert 'reply_markup=_job_admin_keyboard(job.id)' in handler_source
 assert "CargoPT jobs report" in handler_source
 assert "2026-06-25 00:00:00" in handler_source
 assert "_parse_jobs_report_period" in handler_source
