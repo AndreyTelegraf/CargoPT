@@ -19,6 +19,7 @@ from app.bot.handlers.dispatcher_jobs_admin import dispatcher_job_detail
 from app.bot.handlers.dispatcher_jobs_admin import _build_job_card_text
 from app.bot.handlers.dispatcher_jobs_admin import _parse_job_command_id
 from app.bot.handlers.dispatcher_jobs_admin import _job_admin_keyboard
+from app.bot.handlers.dispatcher_jobs_admin import _build_manual_dispatch_keyboard
 from app.bot.handlers.dispatcher_jobs_admin import dispatcher_job_admin_action
 from app.bot.handlers.dispatcher_jobs_admin import router
 from app.repositories.job import JobRepository
@@ -29,6 +30,7 @@ assert dispatcher_jobs_attention is not None
 assert dispatcher_jobs_report is not None
 assert dispatcher_job_detail is not None
 assert dispatcher_job_admin_action is not None
+assert _build_manual_dispatch_keyboard is not None
 assert _parse_job_command_id('/job 26') == 26
 assert _parse_job_command_id('/job_26') == 26
 assert _parse_job_command_id('/job abc') is None
@@ -165,7 +167,13 @@ assert "send_job_offers_to_carriers" in handler_source
 assert "offers = await distribution.create_offers_for_job" in handler_source
 assert "sent_count = await send_job_offers_to_carriers" in handler_source
 assert "новых перевозчиков для рассылки не найдено" in handler_source
-assert "Ручная отправка перевозчику" in handler_source
+assert "_build_manual_dispatch_keyboard" in handler_source
+assert "find_matching_vehicles_for_job" in handler_source
+assert "list_offer_carrier_ids_by_job" in handler_source
+assert 'callback_data=f"job:{job.id}:send:{vehicle.id}"' in handler_source
+assert 'callback_data=f"job:{job.id}:back"' in handler_source
+assert "Выберите перевозчика для ручной отправки заявки" in handler_source
+assert "подходящих новых перевозчиков не найдено" in handler_source
 assert 'status="cancelled"' in handler_source
 assert "Заявка #{raw_job_id} закрыта." in handler_source
 assert "вручную переведена в статус cancelled" in handler_source

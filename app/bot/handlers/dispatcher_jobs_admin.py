@@ -376,6 +376,61 @@ def _job_admin_keyboard(job_id: int) -> InlineKeyboardMarkup:
     )
 
 
+async def _build_manual_dispatch_keyboard(
+    *,
+    job,
+    job_repository: JobRepository,
+    carrier_repository: CarrierRepository,
+) -> InlineKeyboardMarkup:
+    existing_carrier_ids = await job_repository.list_offer_carrier_ids_by_job(job.id)
+    addresses = await job_repository.list_addresses_by_job(job.id)
+
+    vehicles = await JobMatchingService(
+        CarrierSearchService(carrier_repository)
+    ).find_matching_vehicles_for_job(
+        job,
+        addresses=addresses,
+    )
+
+    rows = []
+    seen_carrier_ids = set()
+
+    for vehicle in vehicles:
+        if vehicle.carrier_id in existing_carrier_ids:
+            continue
+        if vehicle.carrier_id in seen_carrier_ids:
+            continue
+
+        carrier = await carrier_repository.get_carrier_by_id(vehicle.carrier_id)
+        if carrier is None:
+            continue
+
+        seen_carrier_ids.add(vehicle.carrier_id)
+        label = f"{carrier.company_name} · {vehicle.vehicle_type}"
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    text=label[:64],
+                    callback_data=f"job:{job.id}:send:{vehicle.id}",
+                )
+            ]
+        )
+
+        if len(rows) >= 20:
+            break
+
+    rows.append(
+        [
+            InlineKeyboardButton(
+                text="↩️ Назад к заявке",
+                callback_data=f"job:{job.id}:back",
+            )
+        ]
+    )
+
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
 @router.message(Command("job"))
 @router.message(lambda message: bool((message.text or "").strip().startswith("/job_")))
 async def dispatcher_job_detail(message: Message) -> None:
@@ -425,7 +480,7 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
         return
 
     _, raw_job_id, action = parts
-    if not raw_job_id.isdigit() or action not in {"retry", "manual", "close"}:
+    if not raw_job_id.isdigit() or action not in {"retry", "manual", "close", "back"}:
         await callback.answer("Некорректное действие.", show_alert=True)
         return
 
@@ -521,13 +576,46 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
             )
         return
 
-    labels = {
-        "manual": "Ручная отправка перевозчику",
-    }
-    await callback.answer(
-        f"{labels[action]} для заявки #{raw_job_id}: функция в разработке.",
-        show_alert=True,
-    )
+    if action == "manual":
+        async with async_session_maker() as session:
+            job_repository = JobRepository(session)
+            carrier_repository = CarrierRepository(session)
+            job = await job_repository.get_job_by_id(int(raw_job_id))
+
+            if job is None:
+                await callback.answer(
+                    f"Заявка #{raw_job_id} не найдена.",
+                    show_alert=True,
+                )
+                return
+
+            keyboard = await _build_manual_dispatch_keyboard(
+                job=job,
+                job_repository=job_repository,
+                carrier_repository=carrier_repository,
+            )
+
+        if len(keyboard.inline_keyboard) <= 1:
+            await callback.answer(
+                f"Заявка #{raw_job_id}: подходящих новых перевозчиков не найдено.",
+                show_alert=True,
+            )
+            return
+
+        if callback.message:
+            await callback.message.answer(
+                f"Выберите перевозчика для ручной отправки заявки #{raw_job_id}:",
+                reply_markup=keyboard,
+            )
+
+        await callback.answer("Список перевозчиков сформирован.")
+        return
+
+    if action == "back":
+        await callback.answer("Откройте карточку заявки командой /job " + raw_job_id)
+        return
+
+    await callback.answer("Некорректное действие.", show_alert=True)
 
 
 @router.message(Command("jobs_report"))
