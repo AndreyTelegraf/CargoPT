@@ -892,6 +892,68 @@ body {
   }
 }
 
+
+/* Carrier landing page */
+
+.carrier-page-hero {
+  display: grid;
+  min-height: 560px;
+  align-items: center;
+  padding-top: 72px;
+}
+
+.carrier-page-copy {
+  max-width: 820px;
+}
+
+.carrier-page-copy h1 {
+  max-width: 760px;
+  margin-bottom: 24px;
+  color: var(--brand);
+  font-size: clamp(52px, 5vw, 78px);
+  line-height: 0.98;
+  letter-spacing: -0.07em;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.carrier-page-section .cards.three {
+  align-items: stretch;
+}
+
+.carrier-steps .card {
+  min-height: 230px;
+}
+
+.carrier-final-cta {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .carrier-page-hero {
+    min-height: auto;
+    padding-top: 42px;
+  }
+
+  .carrier-page-copy h1 {
+    font-size: clamp(40px, 12vw, 58px);
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+}
+
 /* Header carrier CTA */
 
 .carrier-label-mobile {
