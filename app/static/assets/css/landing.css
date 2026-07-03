@@ -893,6 +893,21 @@ body {
 }
 
 /* Header carrier CTA */
+
+.carrier-label-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .carrier-label-desktop {
+        display: none;
+    }
+
+    .carrier-label-mobile {
+        display: inline;
+    }
+}
+
 .header-actions .button-carrier {
   background: #f5f9ff;
   color: #06164a;
