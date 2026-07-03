@@ -30,7 +30,7 @@ def main() -> None:
             "/mudancas-oeiras/": "Mudanças em Oeiras",
             "/transporte-piano-lisboa/": "Transporte de piano em Lisboa",
             "/": "popular-services",
-            "/transportadores/": "Receba pedidos de transporte em Portugal",
+            "/transportadores/": "href=\"/en/carriers/\"",
             "/en/carriers/": "Receive transport requests in Portugal",
             "/ru/carriers/": "Получайте заявки на перевозки по Португалии",
             "/.well-known/security.txt": "Contact:",
