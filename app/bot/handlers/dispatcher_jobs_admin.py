@@ -14,7 +14,13 @@ from sqlalchemy import text
 from app.bot.handlers.carrier_invite_admin import ADMIN_TELEGRAM_USER_IDS
 from app.db.session import async_session_maker
 from app.domain.job_decline_reason import get_decline_reason_label
+from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
+from app.services.carrier_search import CarrierSearchService
+from app.services.job_matching import JobMatchingService
+from app.services.job_offer import JobOfferService
+from app.services.offer_distribution import OfferDistributionService
+from app.services.offer_notification import send_job_offers_to_carriers
 
 router = Router()
 
@@ -423,8 +429,69 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
         await callback.answer("Некорректное действие.", show_alert=True)
         return
 
+    if action == "retry":
+        async with async_session_maker() as session:
+            job_repository = JobRepository(session)
+            carrier_repository = CarrierRepository(session)
+            job = await job_repository.get_job_by_id(int(raw_job_id))
+
+            if job is None:
+                await callback.answer(
+                    f"Заявка #{raw_job_id} не найдена.",
+                    show_alert=True,
+                )
+                return
+
+            previous_status = job.status
+            distribution = OfferDistributionService(
+                matching_service=JobMatchingService(
+                    CarrierSearchService(carrier_repository)
+                ),
+                offer_service=JobOfferService(job_repository),
+                job_repository=job_repository,
+            )
+
+            offers = await distribution.create_offers_for_job(
+                job,
+                limit=None,
+                expires_in_minutes=60,
+            )
+
+            if not offers:
+                await job_repository.update_job_status(
+                    job_id=job.id,
+                    status=previous_status,
+                    updated_at=job.updated_at,
+                )
+                await session.commit()
+                await callback.answer(
+                    f"Заявка #{job.id}: новых перевозчиков для рассылки не найдено.",
+                    show_alert=True,
+                )
+                return
+
+            sent_count = await send_job_offers_to_carriers(
+                bot=callback.bot,
+                job=job,
+                offers=offers,
+                job_repository=job_repository,
+                carrier_repository=carrier_repository,
+            )
+            await session.commit()
+
+        await callback.answer(
+            f"Заявка #{raw_job_id}: создано офферов — {len(offers)}, отправлено — {sent_count}.",
+            show_alert=True,
+        )
+        if callback.message:
+            await callback.message.answer(
+                f"Повторная рассылка заявки #{raw_job_id} выполнена.\n"
+                f"Создано офферов: {len(offers)}\n"
+                f"Отправлено перевозчикам: {sent_count}"
+            )
+        return
+
     labels = {
-        "retry": "Повторная рассылка",
         "manual": "Ручная отправка перевозчику",
         "close": "Ручное закрытие заявки",
     }

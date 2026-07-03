@@ -160,6 +160,13 @@ assert handler_source.count('text(f"""') >= 3
 assert 'period_filter.replace("created_at", "j.created_at")' in handler_source
 assert "_format_report_job_rows" in handler_source
 assert "get_decline_reason_label" in handler_source
+assert "OfferDistributionService" in handler_source
+assert "send_job_offers_to_carriers" in handler_source
+assert "offers = await distribution.create_offers_for_job" in handler_source
+assert "sent_count = await send_job_offers_to_carriers" in handler_source
+assert "новых перевозчиков для рассылки не найдено" in handler_source
+assert "Ручная отправка перевозчику" in handler_source
+assert "Ручное закрытие заявки" in handler_source
 assert "attention_reason" in handler_source
 assert "offers_count" in handler_source
 
