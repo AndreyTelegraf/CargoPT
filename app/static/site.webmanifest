@@ -1,0 +1,21 @@
+{
+  "name": "CargoPT",
+  "short_name": "CargoPT",
+  "description": "Mudanças e transporte em Portugal",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#075BFF",
+  "icons": [
+    {
+      "src": "/assets/brand/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/brand/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
