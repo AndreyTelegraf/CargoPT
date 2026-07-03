@@ -475,12 +475,12 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
         return
 
     parts = (callback.data or "").split(":")
-    if len(parts) != 3:
+    if len(parts) not in {3, 4}:
         await callback.answer("Некорректное действие.", show_alert=True)
         return
 
-    _, raw_job_id, action = parts
-    if not raw_job_id.isdigit() or action not in {"retry", "manual", "close", "back"}:
+    _, raw_job_id, action, *extra = parts
+    if not raw_job_id.isdigit() or action not in {"retry", "manual", "close", "back", "send"}:
         await callback.answer("Некорректное действие.", show_alert=True)
         return
 
@@ -609,6 +609,90 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
             )
 
         await callback.answer("Список перевозчиков сформирован.")
+        return
+
+    if action == "send":
+        if len(extra) != 1 or not extra[0].isdigit():
+            await callback.answer("Некорректное действие.", show_alert=True)
+            return
+
+        vehicle_id = int(extra[0])
+
+        async with async_session_maker() as session:
+            job_repository = JobRepository(session)
+            carrier_repository = CarrierRepository(session)
+
+            job = await job_repository.get_job_by_id(int(raw_job_id))
+            if job is None:
+                await callback.answer(
+                    f"Заявка #{raw_job_id} не найдена.",
+                    show_alert=True,
+                )
+                return
+
+            vehicle = await carrier_repository.get_vehicle_by_id(vehicle_id)
+            if vehicle is None:
+                await callback.answer(
+                    "Автомобиль перевозчика не найден.",
+                    show_alert=True,
+                )
+                return
+
+            carrier = await carrier_repository.get_carrier_by_vehicle_id(vehicle.id)
+            if carrier is None or carrier.telegram_user_id is None:
+                await callback.answer(
+                    "У перевозчика нет Telegram ID для отправки.",
+                    show_alert=True,
+                )
+                return
+
+            existing_carrier_ids = await job_repository.list_offer_carrier_ids_by_job(job.id)
+            if vehicle.carrier_id in existing_carrier_ids:
+                await callback.answer(
+                    f"Заявка #{job.id} уже отправлялась этому перевозчику.",
+                    show_alert=True,
+                )
+                return
+
+            offer = await JobOfferService(job_repository).create_offer(
+                job_id=job.id,
+                vehicle=vehicle,
+                expires_in_minutes=60,
+            )
+
+            await job_repository.update_job_status(
+                job_id=job.id,
+                status="offered",
+                updated_at=job.updated_at,
+            )
+
+            sent_count = await send_job_offers_to_carriers(
+                bot=callback.bot,
+                job=job,
+                offers=[offer],
+                job_repository=job_repository,
+                carrier_repository=carrier_repository,
+            )
+            await session.commit()
+
+        if sent_count == 0:
+            await callback.answer(
+                f"Оффер создан, но отправка перевозчику #{vehicle.carrier_id} не подтвердилась.",
+                show_alert=True,
+            )
+            return
+
+        await callback.answer(
+            f"Заявка #{raw_job_id} отправлена перевозчику {carrier.company_name}.",
+            show_alert=True,
+        )
+
+        if callback.message:
+            await callback.message.answer(
+                f"Заявка #{raw_job_id} вручную отправлена перевозчику:\n"
+                f"{carrier.company_name}\n"
+                f"Оффер #{offer.id}"
+            )
         return
 
     if action == "back":

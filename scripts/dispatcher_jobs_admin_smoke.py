@@ -174,6 +174,13 @@ assert 'callback_data=f"job:{job.id}:send:{vehicle.id}"' in handler_source
 assert 'callback_data=f"job:{job.id}:back"' in handler_source
 assert "Выберите перевозчика для ручной отправки заявки" in handler_source
 assert "подходящих новых перевозчиков не найдено" in handler_source
+assert 'action not in {"retry", "manual", "close", "back", "send"}' in handler_source
+assert "vehicle = await carrier_repository.get_vehicle_by_id(vehicle_id)" in handler_source
+assert "JobOfferService(job_repository).create_offer" in handler_source
+assert "offers=[offer]" in handler_source
+assert 'status="offered"' in handler_source
+assert "уже отправлялась этому перевозчику" in handler_source
+assert "вручную отправлена перевозчику" in handler_source
 assert 'status="cancelled"' in handler_source
 assert "Заявка #{raw_job_id} закрыта." in handler_source
 assert "вручную переведена в статус cancelled" in handler_source
