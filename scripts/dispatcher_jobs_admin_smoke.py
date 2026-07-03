@@ -166,7 +166,9 @@ assert "offers = await distribution.create_offers_for_job" in handler_source
 assert "sent_count = await send_job_offers_to_carriers" in handler_source
 assert "новых перевозчиков для рассылки не найдено" in handler_source
 assert "Ручная отправка перевозчику" in handler_source
-assert "Ручное закрытие заявки" in handler_source
+assert 'status="cancelled"' in handler_source
+assert "Заявка #{raw_job_id} закрыта." in handler_source
+assert "вручную переведена в статус cancelled" in handler_source
 assert "attention_reason" in handler_source
 assert "offers_count" in handler_source
 

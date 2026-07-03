@@ -491,9 +491,38 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
             )
         return
 
+    if action == "close":
+        async with async_session_maker() as session:
+            job_repository = JobRepository(session)
+            job = await job_repository.get_job_by_id(int(raw_job_id))
+
+            if job is None:
+                await callback.answer(
+                    f"Заявка #{raw_job_id} не найдена.",
+                    show_alert=True,
+                )
+                return
+
+            await job_repository.update_job_status(
+                job_id=job.id,
+                status="cancelled",
+                updated_at=job.updated_at,
+            )
+            await session.commit()
+
+        await callback.answer(
+            f"Заявка #{raw_job_id} закрыта.",
+            show_alert=True,
+        )
+
+        if callback.message:
+            await callback.message.answer(
+                f"Заявка #{raw_job_id} вручную переведена в статус cancelled."
+            )
+        return
+
     labels = {
         "manual": "Ручная отправка перевозчику",
-        "close": "Ручное закрытие заявки",
     }
     await callback.answer(
         f"{labels[action]} для заявки #{raw_job_id}: функция в разработке.",
