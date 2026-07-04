@@ -22,9 +22,12 @@ class Job(Base):
         Index("ix_job_status", "status"),
         Index("ix_job_client_telegram_user_id", "client_telegram_user_id"),
         Index("ix_job_requested_date", "requested_date"),
+        Index("ix_job_tracking_token", "tracking_token", unique=True),
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+
+    tracking_token: Mapped[str | None] = mapped_column(String)
 
     client_telegram_user_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
     client_telegram_username: Mapped[str | None] = mapped_column(String)

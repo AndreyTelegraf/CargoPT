@@ -38,7 +38,19 @@ def main() -> None:
     os.environ["LOG_LEVEL"] = "INFO"
 
     reset_db()
-    run([".venv/bin/alembic", "upgrade", "head"])
+
+    import asyncio
+    import app.models  # noqa: F401
+    from sqlalchemy.ext.asyncio import create_async_engine
+    from app.db.base import Base
+
+    async def create_test_schema() -> None:
+        engine = create_async_engine(DATABASE_URL)
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+        await engine.dispose()
+
+    asyncio.run(create_test_schema())
 
     from fastapi.testclient import TestClient
 
@@ -94,6 +106,10 @@ def main() -> None:
         raise SystemExit("job_id missing")
     if body.get("status") != "manual_review_required":
         raise SystemExit(f"unexpected status: {body.get('status')}")
+    if not body.get("tracking_token"):
+        raise SystemExit("tracking_token missing")
+    if body.get("tracking_url") != f"/track/{body['tracking_token']}":
+        raise SystemExit(f"unexpected tracking_url: {body.get('tracking_url')}")
     if body.get("offers_count") != 0:
         raise SystemExit(f"unexpected offers_count: {body.get('offers_count')}")
     if body.get("sent_count") != 0:

@@ -3,14 +3,26 @@ from collections.abc import AsyncIterator
 from aiogram import Bot
 from fastapi import APIRouter
 from fastapi import Depends
+from fastapi import HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.web_request_schemas import WebRequestPayload
 from app.api.web_request_schemas import WebRequestResponse
+from app.api.web_request_schemas import TrackingOfferSelectResponse
+from app.api.web_request_schemas import TrackingOfferResponse
+from app.api.web_request_schemas import TrackingJobResponse
+from app.api.web_request_schemas import TrackingAssignmentActionResponse
 from app.config import settings
 from app.db.session import async_session_maker
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
+from app.services.assignment_confirmation import build_assignment_status_from_action
+from app.services.assignment_confirmation import process_assignment_failure_redispatch
+from app.services.assignment_confirmation import record_assignment_confirmation
+from app.services.client_offer_presentation import ClientOfferPresentationService
+from app.services.job_lifecycle import InvalidJobStatusTransitionError
+from app.services.job_offer import ClientOfferSelectionError
+from app.services.job_offer import JobOfferService
 from app.services.request_intake import RequestIntakeAddress
 from app.services.request_intake import RequestIntakeInput
 from app.services.request_intake import RequestIntakeItem
@@ -93,9 +105,145 @@ async def submit_web_request(
     if result.job.id is None:
         raise RuntimeError("web request job id missing")
 
+    if result.job.tracking_token is None:
+        raise RuntimeError("web request tracking token missing")
+
     return WebRequestResponse(
         job_id=result.job.id,
         status=str(result.job.status),
+        tracking_token=result.job.tracking_token,
+        tracking_url=f"/track/{result.job.tracking_token}",
         offers_count=result.offers_count,
         sent_count=result.sent_count,
+    )
+
+
+@router.get("/track/{tracking_token}", response_model=TrackingJobResponse)
+async def get_tracking_job(
+    tracking_token: str,
+    session: AsyncSession = Depends(get_session),
+) -> TrackingJobResponse:
+    job_repository = JobRepository(session)
+    carrier_repository = CarrierRepository(session)
+
+    job = await job_repository.get_job_by_tracking_token(tracking_token)
+    if job is None:
+        raise HTTPException(status_code=404, detail="tracking job not found")
+
+    presentation = ClientOfferPresentationService(
+        job_repository=job_repository,
+        carrier_repository=carrier_repository,
+    )
+    accepted_offer_views = await presentation.list_accepted_offer_views(job.id)
+
+    return TrackingJobResponse(
+        job_id=job.id,
+        status=str(job.status),
+        tracking_token=job.tracking_token,
+        client_confirmation_status=job.client_confirmation_status,
+        carrier_confirmation_status=job.carrier_confirmation_status,
+        accepted_offers=[
+            TrackingOfferResponse(
+                offer_id=view.offer_id,
+                company_name=view.company_name,
+                contact_name=view.contact_name,
+                phone=view.phone,
+                telegram_username=view.telegram_username,
+                vehicle_type=view.vehicle_type,
+                payload_kg=view.payload_kg,
+                volume_m3=view.volume_m3,
+                max_loaders=view.max_loaders,
+                has_tail_lift=view.has_tail_lift,
+                has_crane=view.has_crane,
+                has_mobile_lift=view.has_mobile_lift,
+                carrier_note=view.carrier_note,
+                price_cents=view.price_cents,
+            )
+            for view in accepted_offer_views
+        ],
+    )
+
+
+@router.post(
+    "/track/{tracking_token}/offers/{offer_id}/select",
+    response_model=TrackingOfferSelectResponse,
+)
+async def select_tracking_offer(
+    tracking_token: str,
+    offer_id: int,
+    session: AsyncSession = Depends(get_session),
+) -> TrackingOfferSelectResponse:
+    job_repository = JobRepository(session)
+    job = await job_repository.get_job_by_tracking_token(tracking_token)
+    if job is None:
+        raise HTTPException(status_code=404, detail="tracking job not found")
+
+    service = JobOfferService(job_repository)
+
+    try:
+        selected_offer = await service.select_accepted_offer_for_client(
+            job_id=job.id,
+            offer_id=offer_id,
+        )
+    except ClientOfferSelectionError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+
+    updated_job = await job_repository.get_job_by_id(job.id)
+    if updated_job is None:
+        raise HTTPException(status_code=404, detail="tracking job not found")
+
+    return TrackingOfferSelectResponse(
+        job_id=updated_job.id,
+        status=str(updated_job.status),
+        selected_offer_id=selected_offer.id,
+    )
+
+
+@router.post(
+    "/track/{tracking_token}/assignment/{action}",
+    response_model=TrackingAssignmentActionResponse,
+)
+async def confirm_tracking_assignment(
+    tracking_token: str,
+    action: str,
+    session: AsyncSession = Depends(get_session),
+    bot: Bot = Depends(get_api_bot),
+) -> TrackingAssignmentActionResponse:
+    if action not in {"confirm", "fail"}:
+        raise HTTPException(status_code=400, detail="invalid assignment action")
+
+    job_repository = JobRepository(session)
+    carrier_repository = CarrierRepository(session)
+
+    job = await job_repository.get_job_by_tracking_token(tracking_token)
+    if job is None:
+        raise HTTPException(status_code=404, detail="tracking job not found")
+
+    accepted_offer = await job_repository.get_accepted_offer_by_job_id(job.id)
+    confirmation_status = build_assignment_status_from_action(action)
+
+    try:
+        updated_job = await record_assignment_confirmation(
+            job_repository,
+            job_id=job.id,
+            actor="client",
+            status=confirmation_status,
+        )
+    except InvalidJobStatusTransitionError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+
+    if action == "fail":
+        await process_assignment_failure_redispatch(
+            bot=bot,
+            job=updated_job,
+            accepted_offer=accepted_offer,
+            job_repository=job_repository,
+            carrier_repository=carrier_repository,
+        )
+
+    return TrackingAssignmentActionResponse(
+        job_id=updated_job.id,
+        status=str(updated_job.status),
+        client_confirmation_status=updated_job.client_confirmation_status,
+        carrier_confirmation_status=updated_job.carrier_confirmation_status,
     )

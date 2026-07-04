@@ -99,5 +99,46 @@ class WebRequestPayload(BaseModel):
 class WebRequestResponse(BaseModel):
     job_id: int
     status: str
+    tracking_token: str
+    tracking_url: str
     offers_count: int
     sent_count: int
+
+
+class TrackingOfferResponse(BaseModel):
+    offer_id: int
+    company_name: str
+    contact_name: str | None
+    phone: str | None
+    telegram_username: str | None
+    vehicle_type: str
+    payload_kg: int | None
+    volume_m3: float | None
+    max_loaders: int | None
+    has_tail_lift: bool
+    has_crane: bool
+    has_mobile_lift: bool
+    carrier_note: str | None
+    price_cents: int | None
+
+
+class TrackingJobResponse(BaseModel):
+    job_id: int
+    status: str
+    tracking_token: str
+    client_confirmation_status: str | None
+    carrier_confirmation_status: str | None
+    accepted_offers: list[TrackingOfferResponse]
+
+
+class TrackingOfferSelectResponse(BaseModel):
+    job_id: int
+    status: str
+    selected_offer_id: int
+
+
+class TrackingAssignmentActionResponse(BaseModel):
+    job_id: int
+    status: str
+    client_confirmation_status: str | None
+    carrier_confirmation_status: str | None

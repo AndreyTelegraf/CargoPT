@@ -1,5 +1,6 @@
 from datetime import UTC
 from datetime import datetime
+import secrets
 
 from sqlalchemy import func
 from sqlalchemy import select
@@ -87,13 +88,31 @@ class JobRepository:
         result = await self.session.execute(stmt)
         return result.scalars().first()
 
+    async def _generate_tracking_token(self) -> str:
+        for _ in range(10):
+            token = secrets.token_urlsafe(32)
+            stmt = select(Job.id).where(Job.tracking_token == token).limit(1)
+            result = await self.session.execute(stmt)
+            if result.scalar_one_or_none() is None:
+                return token
+
+        raise RuntimeError("failed to generate unique tracking token")
+
     async def create_job(self, job: Job) -> Job:
+        if job.tracking_token is None:
+            job.tracking_token = await self._generate_tracking_token()
+
         self.session.add(job)
         await self.session.flush()
         return job
 
     async def get_job_by_id(self, job_id: int) -> Job | None:
         stmt = select(Job).where(Job.id == job_id)
+        result = await self.session.execute(stmt)
+        return result.scalar_one_or_none()
+
+    async def get_job_by_tracking_token(self, tracking_token: str) -> Job | None:
+        stmt = select(Job).where(Job.tracking_token == tracking_token)
         result = await self.session.execute(stmt)
         return result.scalar_one_or_none()
 
