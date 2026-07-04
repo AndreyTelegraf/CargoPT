@@ -8,6 +8,8 @@ const progressFill = document.querySelector("#progressFill");
 const formMessage = document.querySelector("#formMessage");
 const progress = document.querySelector(".progress");
 let currentStep = 1;
+let activeTrackingEntry = null;
+let trackingPollTimer = null;
 
 const MESSAGES = {
   pt: {
@@ -16,14 +18,28 @@ const MESSAGES = {
     submitting: "A enviar o pedido...",
     success: "Pedido enviado. Vamos encaminhá-lo para transportadores.",
     failure: "Não foi possível enviar o pedido. Verifique os campos ou tente mais tarde.",
-    trackingTitle: "Guarde este link para acompanhar propostas deste pedido",
-    trackingText: "Não enviamos spam. Este link serve apenas para acompanhar propostas deste pedido.",
+    trackingTitle: "Acompanhe o seu pedido",
+    trackingText: "Quando houver propostas, nesta mesma página poderá escolher o transportador, sem login e sem instalar nada.",
     viewStatus: "Ver estado",
     copyLink: "Copiar link",
     linkCopied: "Link copiado",
     shareWhatsApp: "Enviar por WhatsApp",
+    newRequest: "← Novo pedido",
+    viewOffers: "Ver propostas",
+    statusSearching: "À procura de transportadores",
+    statusAssigned: "Transportador escolhido",
+    statusCompleted: "Pedido concluído",
+    statusCancelled: "Pedido cancelado",
+    statusNoOffers: "Sem propostas disponíveis",
+    statusAwaitingConfirmation: "A aguardar confirmação do transportador",
+    statusCarrierConfirmed: "Transportador confirmado",
+    offersAvailable: "{count} proposta(s) disponível(eis)",
     defaultRoute: "Pedido CargoPT",
-    waitingOffers: "A aguardar propostas"
+    waitingOffers: "A aguardar propostas",
+    trackingEyebrow: "Estado do pedido",
+    detailsTitle: "Detalhes do pedido",
+    itemsLabel: "Itens",
+    commentLabel: "Comentário"
   },
   en: {
     required: "Fill in the required fields for this step.",
@@ -31,14 +47,28 @@ const MESSAGES = {
     submitting: "Sending request...",
     success: "Request sent. We will forward it to carriers.",
     failure: "Could not send the request. Check the fields or try again later.",
-    trackingTitle: "Save this link to track offers for this request",
-    trackingText: "We do not send spam. This link is only for tracking offers for this request.",
+    trackingTitle: "Track your request",
+    trackingText: "When offers arrive, you will be able to choose the carrier on this same page, without login or installing anything.",
     viewStatus: "View status",
     copyLink: "Copy link",
     linkCopied: "Link copied",
     shareWhatsApp: "Send by WhatsApp",
+    newRequest: "← New request",
+    viewOffers: "View offers",
+    statusSearching: "Looking for carriers",
+    statusAssigned: "Carrier selected",
+    statusCompleted: "Request completed",
+    statusCancelled: "Request cancelled",
+    statusNoOffers: "No offers available",
+    statusAwaitingConfirmation: "Waiting for carrier confirmation",
+    statusCarrierConfirmed: "Carrier confirmed",
+    offersAvailable: "{count} offer(s) available",
     defaultRoute: "CargoPT request",
-    waitingOffers: "Waiting for offers"
+    waitingOffers: "Waiting for offers",
+    trackingEyebrow: "Request status",
+    detailsTitle: "Request details",
+    itemsLabel: "Items",
+    commentLabel: "Comment"
   },
   ru: {
     required: "Заполните обязательные поля этого шага.",
@@ -46,14 +76,28 @@ const MESSAGES = {
     submitting: "Отправляем заявку...",
     success: "Заявка отправлена. Мы передадим её перевозчикам.",
     failure: "Не удалось отправить заявку. Проверьте поля или попробуйте позже.",
-    trackingTitle: "Сохраните эту ссылку, чтобы отслеживать предложения по заявке",
-    trackingText: "Мы не отправляем спам. Эта ссылка нужна только для отслеживания предложений по этой заявке.",
+    trackingTitle: "Следите за статусом заявки",
+    trackingText: "Когда появятся предложения, на этой же странице можно будет выбрать перевозчика без логина и установки приложения.",
     viewStatus: "Статус заявки",
     copyLink: "Скопировать ссылку",
     linkCopied: "Ссылка скопирована",
     shareWhatsApp: "Отправить в WhatsApp",
+    newRequest: "← Новая заявка",
+    viewOffers: "Смотреть предложения",
+    statusSearching: "Ищем перевозчиков",
+    statusAssigned: "Перевозчик выбран",
+    statusCompleted: "Заявка завершена",
+    statusCancelled: "Заявка отменена",
+    statusNoOffers: "Нет доступных предложений",
+    statusAwaitingConfirmation: "Ожидаем подтверждение перевозчика",
+    statusCarrierConfirmed: "Перевозчик подтверждён",
+    offersAvailable: "Доступно предложений: {count}",
     defaultRoute: "Заявка CargoPT",
-    waitingOffers: "Ожидаем предложения"
+    waitingOffers: "Ожидаем предложения",
+    trackingEyebrow: "Статус заявки",
+    detailsTitle: "Детали заявки",
+    itemsLabel: "Груз",
+    commentLabel: "Комментарий"
   }
 };
 
@@ -73,6 +117,12 @@ function buildRouteSummary(data) {
   return pickup || dropoff || messages.defaultRoute;
 }
 
+function buildShortSummary(value) {
+  const normalized = value ? value.trim().replace(/\s+/g, " ") : "";
+  if (normalized.length <= 80) return normalized;
+  return `${normalized.slice(0, 77)}...`;
+}
+
 function getTrackingLinks() {
   try {
     const raw = localStorage.getItem(TRACKING_LINKS_KEY);
@@ -87,6 +137,133 @@ function saveTrackingLink(entry) {
   const links = getTrackingLinks().filter((item) => item.token !== entry.token);
   links.unshift(entry);
   localStorage.setItem(TRACKING_LINKS_KEY, JSON.stringify(links.slice(0, 20)));
+}
+
+function formatTrackingStatus(snapshot) {
+  const acceptedOffers = Array.isArray(snapshot.accepted_offers) ? snapshot.accepted_offers : [];
+
+  if (snapshot.status === "completed") {
+    return messages.statusCompleted;
+  }
+
+  if (snapshot.status === "cancelled") {
+    return messages.statusCancelled;
+  }
+
+  if (
+    snapshot.client_confirmation_status === "confirmed" &&
+    snapshot.carrier_confirmation_status === "confirmed"
+  ) {
+    return messages.statusCarrierConfirmed;
+  }
+
+  if (
+    snapshot.client_confirmation_status === "pending" ||
+    snapshot.carrier_confirmation_status === "pending" ||
+    snapshot.status === "assigned_pending_confirmation"
+  ) {
+    return messages.statusAwaitingConfirmation;
+  }
+
+  if (["assigned", "in_progress"].includes(snapshot.status)) {
+    return messages.statusAssigned;
+  }
+
+  if (acceptedOffers.length > 0) {
+    return messages.offersAvailable.replace("{count}", String(acceptedOffers.length));
+  }
+
+  if (["ready_for_matching", "matching", "offered"].includes(snapshot.status)) {
+    return messages.statusSearching;
+  }
+
+  if (["offers_exhausted", "expired_without_response"].includes(snapshot.status)) {
+    return messages.statusNoOffers;
+  }
+
+  return messages.waitingOffers;
+}
+
+function getTrackingVisualState(entry) {
+  const snapshot = entry.tracking_snapshot || {};
+
+  if (snapshot.status === "completed") return "completed";
+  if (snapshot.status === "cancelled") return "cancelled";
+
+  if (
+    snapshot.client_confirmation_status === "confirmed" &&
+    snapshot.carrier_confirmation_status === "confirmed"
+  ) {
+    return "success";
+  }
+
+  if (
+    snapshot.client_confirmation_status === "pending" ||
+    snapshot.carrier_confirmation_status === "pending" ||
+    snapshot.status === "assigned_pending_confirmation"
+  ) {
+    return "pending";
+  }
+
+  if ((entry.accepted_offers_count || 0) > 0) return "success";
+
+  return "pending";
+}
+
+function mergeTrackingSnapshot(entry, snapshot) {
+  const acceptedOffers = Array.isArray(snapshot.accepted_offers) ? snapshot.accepted_offers : [];
+  return {
+    ...entry,
+    job_id: snapshot.job_id || entry.job_id,
+    token: snapshot.tracking_token || entry.token,
+    status_label: formatTrackingStatus(snapshot),
+    accepted_offers_count: acceptedOffers.length,
+    tracking_snapshot: snapshot,
+    tracking_visual_state: getTrackingVisualState({...entry, tracking_snapshot: snapshot, accepted_offers_count: acceptedOffers.length})
+  };
+}
+
+function stopTrackingPolling() {
+  if (trackingPollTimer) {
+    window.clearInterval(trackingPollTimer);
+    trackingPollTimer = null;
+  }
+}
+
+async function refreshTrackingEntry(entry, options = {}) {
+  const token = entry && (entry.token || entry.tracking_token);
+  if (!token) return entry;
+
+  try {
+    const response = await fetch(`/api/v1/track/${encodeURIComponent(token)}`);
+    if (!response.ok) return entry;
+
+    const snapshot = await response.json();
+    const updatedEntry = mergeTrackingSnapshot(entry, snapshot);
+    activeTrackingEntry = updatedEntry;
+    saveTrackingLink(updatedEntry);
+
+    if (options.rerender) {
+      renderTrackingSuccess(updatedEntry);
+    }
+
+    renderOpenPedidos();
+    return updatedEntry;
+  } catch (error) {
+    console.error(error);
+    return entry;
+  }
+}
+
+function startTrackingPolling(entry) {
+  stopTrackingPolling();
+  activeTrackingEntry = entry;
+  refreshTrackingEntry(entry, {rerender: true});
+  trackingPollTimer = window.setInterval(() => {
+    if (activeTrackingEntry) {
+      refreshTrackingEntry(activeTrackingEntry, {rerender: true});
+    }
+  }, 15000);
 }
 
 function absoluteUrl(path) {
@@ -111,6 +288,30 @@ function switchFormToTrackingMode() {
   form.classList.add("is-tracking-mode");
 }
 
+function switchTrackingToNewRequest() {
+  stopTrackingPolling();
+
+  const explainer = document.querySelector(".product-explainer");
+  if (explainer) {
+    explainer.hidden = false;
+  }
+
+  if (progress) {
+    progress.hidden = false;
+  }
+
+  form.classList.remove("is-tracking-mode");
+  form.reset();
+  localStorage.removeItem(STORAGE_KEY);
+
+  steps.forEach((item) => {
+    item.hidden = false;
+  });
+
+  setStep(1);
+  renderOpenPedidos();
+}
+
 function renderTrackingSuccess(entry) {
   switchFormToTrackingMode();
   formMessage.textContent = "";
@@ -118,21 +319,78 @@ function renderTrackingSuccess(entry) {
   formMessage.classList.remove("is-error");
 
   const card = document.createElement("span");
-  card.className = "tracking-success";
+  const visualState = entry.tracking_visual_state || getTrackingVisualState(entry);
+  card.className = `tracking-success tracking-status-card tracking-status-${visualState}`;
+
+  const eyebrow = document.createElement("span");
+  eyebrow.className = "tracking-status-eyebrow";
+  eyebrow.textContent = messages.trackingEyebrow;
 
   const title = document.createElement("strong");
+  title.className = "tracking-status-title";
   title.textContent = messages.trackingTitle;
 
   const text = document.createElement("span");
+  text.className = "tracking-status-text";
   text.textContent = messages.trackingText;
+
+  const summary = document.createElement("span");
+  summary.className = "tracking-status-summary";
+
+  const route = document.createElement("strong");
+  route.textContent = entry.route_summary || messages.defaultRoute;
+
+  const status = document.createElement("span");
+  status.textContent = entry.status_label || messages.waitingOffers;
+
+  summary.append(route, status);
+
+  if ((entry.accepted_offers_count || 0) > 0) {
+    const badge = document.createElement("span");
+    badge.className = "tracking-status-badge";
+    badge.textContent = messages.offersAvailable.replace("{count}", String(entry.accepted_offers_count));
+    summary.appendChild(badge);
+  }
+
+  const details = document.createElement("span");
+  details.className = "tracking-status-details";
+
+  const detailsTitle = document.createElement("strong");
+  detailsTitle.className = "tracking-status-details-title";
+  detailsTitle.textContent = messages.detailsTitle;
+  details.appendChild(detailsTitle);
+
+  if (entry.item_summary) {
+    const itemLabel = document.createElement("span");
+    itemLabel.className = "tracking-status-detail-label";
+    itemLabel.textContent = messages.itemsLabel;
+
+    const itemText = document.createElement("span");
+    itemText.className = "tracking-status-detail-text";
+    itemText.textContent = entry.item_summary;
+
+    details.append(itemLabel, itemText);
+  }
+
+  if (entry.comment_summary) {
+    const commentLabel = document.createElement("span");
+    commentLabel.className = "tracking-status-detail-label";
+    commentLabel.textContent = messages.commentLabel;
+
+    const commentText = document.createElement("span");
+    commentText.className = "tracking-status-detail-text";
+    commentText.textContent = entry.comment_summary;
+
+    details.append(commentLabel, commentText);
+  }
 
   const actions = document.createElement("span");
   actions.className = "tracking-success-actions";
 
   const openLink = document.createElement("a");
-  openLink.className = "button button-small";
+  openLink.className = entry.accepted_offers_count > 0 ? "button button-small tracking-status-primary-action" : "button button-small";
   openLink.href = entry.tracking_url;
-  openLink.textContent = messages.viewStatus;
+  openLink.textContent = entry.accepted_offers_count > 0 ? messages.viewOffers : messages.viewStatus;
 
   const copyButton = document.createElement("button");
   copyButton.className = "button button-small button-secondary";
@@ -150,8 +408,18 @@ function renderTrackingSuccess(entry) {
   whatsappLink.rel = "noopener noreferrer";
   whatsappLink.textContent = messages.shareWhatsApp;
 
-  actions.append(openLink, copyButton, whatsappLink);
-  card.append(title, text, actions);
+  const newRequestButton = document.createElement("button");
+  newRequestButton.className = "button button-small button-secondary";
+  newRequestButton.type = "button";
+  newRequestButton.dataset.newRequest = "true";
+  newRequestButton.textContent = messages.newRequest;
+
+  actions.append(openLink, copyButton, whatsappLink, newRequestButton);
+  card.append(eyebrow, title, text, summary);
+  if (entry.item_summary || entry.comment_summary) {
+    card.appendChild(details);
+  }
+  card.appendChild(actions);
   formMessage.appendChild(card);
 }
 
@@ -181,12 +449,20 @@ function renderOpenPedidos() {
     const status = document.createElement("span");
     status.textContent = entry.status_label || messages.waitingOffers;
 
+    if (entry.item_summary) {
+      const items = document.createElement("span");
+      items.className = "open-pedido-items";
+      items.textContent = entry.item_summary;
+      copy.append(title, items, status);
+    } else {
+      copy.append(title, status);
+    }
+
     const action = document.createElement("a");
     action.className = "button button-small";
     action.href = entry.tracking_url;
     action.textContent = messages.viewStatus;
 
-    copy.append(title, status);
     card.append(copy, action);
     list.appendChild(card);
   });
@@ -339,11 +615,14 @@ async function submitRequest() {
         token: body.tracking_token,
         created_at: new Date().toISOString(),
         status_label: messages.waitingOffers,
-        route_summary: buildRouteSummary(submittedData)
+        route_summary: buildRouteSummary(submittedData),
+        item_summary: buildShortSummary(submittedData.items),
+        comment_summary: buildShortSummary(submittedData.comment)
       };
       saveTrackingLink(trackingEntry);
       renderTrackingSuccess(trackingEntry);
       renderOpenPedidos();
+      startTrackingPolling(trackingEntry);
     } else {
       setMessage(messages.success, "success");
     }
@@ -367,6 +646,12 @@ form.addEventListener("change", saveDraft);
 form.addEventListener("click", (event) => {
   const next = event.target.closest("[data-next]");
   const prev = event.target.closest("[data-prev]");
+  const newRequest = event.target.closest("[data-new-request]");
+
+  if (newRequest) {
+    switchTrackingToNewRequest();
+    return;
+  }
 
   if (next && validateStep(currentStep)) {
     saveDraft();

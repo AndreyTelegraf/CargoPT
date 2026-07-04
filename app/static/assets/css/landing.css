@@ -430,11 +430,123 @@ textarea:focus {
 
 .tracking-success {
   display: grid;
-  gap: 10px;
+  gap: 14px;
 }
 
 .tracking-success strong {
   color: var(--text);
+}
+
+.tracking-status-card {
+  color: var(--muted);
+}
+
+.tracking-status-eyebrow {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.095em;
+  text-transform: uppercase;
+}
+
+.tracking-status-title {
+  display: block;
+  color: var(--text);
+  font-size: clamp(28px, 4vw, 38px);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.tracking-status-text {
+  display: block;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.tracking-status-summary {
+  display: grid;
+  gap: 4px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.tracking-status-summary span {
+  color: var(--muted);
+  font-weight: 750;
+}
+
+.tracking-status-success .tracking-status-summary {
+  border-color: rgba(22, 101, 52, 0.28);
+  background: rgba(240, 253, 244, 0.86);
+}
+
+.tracking-status-pending .tracking-status-summary {
+  border-color: rgba(202, 138, 4, 0.24);
+  background: rgba(254, 252, 232, 0.72);
+}
+
+.tracking-status-completed .tracking-status-summary {
+  border-color: rgba(22, 101, 52, 0.28);
+  background: rgba(240, 253, 244, 0.86);
+}
+
+.tracking-status-cancelled .tracking-status-summary {
+  border-color: rgba(159, 18, 57, 0.22);
+  background: rgba(255, 241, 242, 0.72);
+}
+
+.tracking-status-badge {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #166534;
+  color: #fff !important;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.tracking-status-primary-action {
+  background: #166534;
+}
+
+.tracking-status-details {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.tracking-status-details-title {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.tracking-status-detail-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tracking-status-detail-text {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.open-pedido-items {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .open-pedidos {
