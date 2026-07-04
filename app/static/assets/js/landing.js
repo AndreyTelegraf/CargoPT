@@ -11,6 +11,7 @@ let currentStep = 1;
 let activeTrackingEntry = null;
 let trackingPollTimer = null;
 let isSelectingLandingOffer = false;
+let isSendingLandingAssignmentAction = false;
 
 const MESSAGES = {
   pt: {
@@ -30,6 +31,10 @@ const MESSAGES = {
     selectOffer: "Escolher este transportador",
     selectingOffer: "A escolher...",
     retryOffer: "Tentar novamente",
+    confirmDeal: "Negócio confirmado",
+    failDeal: "Não chegámos a acordo",
+    sendingAction: "A enviar...",
+    confirmationRecorded: "A sua confirmação foi registada. Aguardamos a confirmação do transportador.",
     statusSearching: "À procura de transportadores",
     statusAssigned: "Transportador escolhido",
     statusCompleted: "Pedido concluído",
@@ -62,6 +67,10 @@ const MESSAGES = {
     selectOffer: "Choose this carrier",
     selectingOffer: "Selecting...",
     retryOffer: "Try again",
+    confirmDeal: "Deal confirmed",
+    failDeal: "We did not reach an agreement",
+    sendingAction: "Sending...",
+    confirmationRecorded: "Your confirmation was recorded. Waiting for carrier confirmation.",
     statusSearching: "Looking for carriers",
     statusAssigned: "Carrier selected",
     statusCompleted: "Request completed",
@@ -94,6 +103,10 @@ const MESSAGES = {
     selectOffer: "Выбрать перевозчика",
     selectingOffer: "Выбираем...",
     retryOffer: "Попробовать снова",
+    confirmDeal: "Сделка подтверждена",
+    failDeal: "Не договорились",
+    sendingAction: "Отправляем...",
+    confirmationRecorded: "Ваше подтверждение сохранено. Ожидаем подтверждение перевозчика.",
     statusSearching: "Ищем перевозчиков",
     statusAssigned: "Перевозчик выбран",
     statusCompleted: "Заявка завершена",
@@ -368,6 +381,72 @@ async function selectLandingOffer(offerId, button) {
   }
 }
 
+async function sendLandingAssignmentAction(action, button) {
+  if (isSendingLandingAssignmentAction || !activeTrackingEntry) return;
+
+  isSendingLandingAssignmentAction = true;
+
+  const originalText = button.textContent;
+  button.disabled = true;
+  button.textContent = messages.sendingAction;
+
+  try {
+    const response = await fetch(`/api/v1/track/${encodeURIComponent(activeTrackingEntry.token)}/assignment/${encodeURIComponent(action)}`, {
+      method: "POST",
+      headers: {"Accept": "application/json"}
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    await refreshTrackingEntry(activeTrackingEntry, {rerender: true});
+  } catch (error) {
+    console.error(error);
+    button.disabled = false;
+    button.textContent = messages.retryOffer;
+    window.setTimeout(() => {
+      if (!button.disabled) button.textContent = originalText;
+    }, 2200);
+  } finally {
+    isSendingLandingAssignmentAction = false;
+  }
+}
+
+function renderLandingAssignmentActions(entry) {
+  const snapshot = entry.tracking_snapshot || {};
+
+  if (snapshot.status !== "assigned_pending_confirmation") {
+    return null;
+  }
+
+  const actions = document.createElement("div");
+  actions.className = "tracking-assignment-actions";
+
+  if (snapshot.client_confirmation_status === "confirmed") {
+    const note = document.createElement("p");
+    note.className = "tracking-assignment-note";
+    note.textContent = messages.confirmationRecorded;
+    actions.appendChild(note);
+    return actions;
+  }
+
+  const confirmButton = document.createElement("button");
+  confirmButton.className = "button button-small tracking-assignment-confirm";
+  confirmButton.type = "button";
+  confirmButton.textContent = messages.confirmDeal;
+  confirmButton.addEventListener("click", () => sendLandingAssignmentAction("confirm", confirmButton));
+
+  const failButton = document.createElement("button");
+  failButton.className = "button button-small button-secondary tracking-assignment-fail";
+  failButton.type = "button";
+  failButton.textContent = messages.failDeal;
+  failButton.addEventListener("click", () => sendLandingAssignmentAction("fail", failButton));
+
+  actions.append(confirmButton, failButton);
+  return actions;
+}
+
 function absoluteUrl(path) {
   return new URL(path, window.location.origin).toString();
 }
@@ -532,6 +611,11 @@ function renderTrackingSuccess(entry) {
     });
 
     card.appendChild(wrap);
+  }
+
+  const assignmentActions = renderLandingAssignmentActions(entry);
+  if (assignmentActions) {
+    card.appendChild(assignmentActions);
   }
 
   card.appendChild(actions);
