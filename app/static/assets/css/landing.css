@@ -1159,3 +1159,40 @@ body {
   background: #eef5ff;
   box-shadow: 0 10px 24px rgba(6, 22, 74, 0.08);
 }
+
+
+.tracking-offers{
+display:grid;
+gap:12px;
+margin-top:6px;
+}
+
+.tracking-offer-card{
+padding:16px;
+border:1px solid var(--line);
+border-radius:18px;
+background:var(--panel);
+}
+
+.tracking-offer-top{
+display:flex;
+justify-content:space-between;
+gap:16px;
+align-items:center;
+}
+
+.tracking-offer-price{
+font-size:20px;
+color:#166534;
+}
+
+.tracking-offer-meta{
+margin-top:8px;
+color:var(--muted);
+font-size:14px;
+}
+
+.tracking-offer-note{
+margin-top:10px;
+font-size:14px;
+}

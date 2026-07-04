@@ -266,6 +266,50 @@ function startTrackingPolling(entry) {
   }, 15000);
 }
 
+
+
+function formatPrice(priceCents) {
+  if (priceCents == null) return "—";
+  return new Intl.NumberFormat(localeKey).format(priceCents / 100) + " €";
+}
+
+function renderOfferPreview(offer) {
+  const card = document.createElement("article");
+  card.className = "tracking-offer-card";
+
+  const top = document.createElement("div");
+  top.className = "tracking-offer-top";
+
+  const company = document.createElement("strong");
+  company.textContent = offer.company_name;
+
+  const price = document.createElement("strong");
+  price.className = "tracking-offer-price";
+  price.textContent = formatPrice(offer.price_cents);
+
+  top.append(company, price);
+
+  const meta = document.createElement("div");
+  meta.className = "tracking-offer-meta";
+
+  meta.textContent = [
+    offer.vehicle_type,
+    offer.payload_kg ? offer.payload_kg + " kg" : null,
+    offer.volume_m3 ? offer.volume_m3 + " m³" : null
+  ].filter(Boolean).join(" • ");
+
+  card.append(top, meta);
+
+  if (offer.carrier_note) {
+    const note = document.createElement("div");
+    note.className = "tracking-offer-note";
+    note.textContent = offer.carrier_note;
+    card.appendChild(note);
+  }
+
+  return card;
+}
+
 function absoluteUrl(path) {
   return new URL(path, window.location.origin).toString();
 }
@@ -419,6 +463,19 @@ function renderTrackingSuccess(entry) {
   if (entry.item_summary || entry.comment_summary) {
     card.appendChild(details);
   }
+
+  const offers = entry.tracking_snapshot?.accepted_offers || [];
+  if (offers.length) {
+    const wrap = document.createElement("div");
+    wrap.className = "tracking-offers";
+
+    offers.forEach((offer) => {
+      wrap.appendChild(renderOfferPreview(offer));
+    });
+
+    card.appendChild(wrap);
+  }
+
   card.appendChild(actions);
   formMessage.appendChild(card);
 }
