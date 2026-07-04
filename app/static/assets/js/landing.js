@@ -277,6 +277,18 @@ function startTrackingPolling(entry) {
 }
 
 
+function restoreLatestTrackingEntry() {
+  const links = getTrackingLinks();
+  const latest = links.find((entry) => entry && entry.token && entry.tracking_url);
+  if (!latest) return false;
+
+  renderTrackingSuccess(latest);
+  renderOpenPedidos();
+  startTrackingPolling(latest);
+  return true;
+}
+
+
 
 function formatPrice(priceCents) {
   if (priceCents == null) return "—";
@@ -771,6 +783,8 @@ form.addEventListener("submit", (event) => {
   submitRequest();
 });
 
-restoreDraft();
-setStep(1);
-renderOpenPedidos();
+if (!restoreLatestTrackingEntry()) {
+  restoreDraft();
+  setStep(1);
+  renderOpenPedidos();
+}
