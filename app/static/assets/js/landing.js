@@ -6,6 +6,7 @@ const steps = Array.from(document.querySelectorAll(".form-step"));
 const stepLabel = document.querySelector("#stepLabel");
 const progressFill = document.querySelector("#progressFill");
 const formMessage = document.querySelector("#formMessage");
+const progress = document.querySelector(".progress");
 let currentStep = 1;
 
 const MESSAGES = {
@@ -92,15 +93,26 @@ function absoluteUrl(path) {
   return new URL(path, window.location.origin).toString();
 }
 
-function hideHeroExplainerAfterSuccess() {
+function switchFormToTrackingMode() {
   const explainer = document.querySelector(".product-explainer");
   if (explainer) {
     explainer.hidden = true;
   }
+
+  if (progress) {
+    progress.hidden = true;
+  }
+
+  steps.forEach((item) => {
+    item.classList.remove("is-active");
+    item.hidden = true;
+  });
+
+  form.classList.add("is-tracking-mode");
 }
 
 function renderTrackingSuccess(entry) {
-  hideHeroExplainerAfterSuccess();
+  switchFormToTrackingMode();
   formMessage.textContent = "";
   formMessage.classList.add("is-success");
   formMessage.classList.remove("is-error");
@@ -337,8 +349,10 @@ async function submitRequest() {
     }
 
     localStorage.removeItem(STORAGE_KEY);
-    form.reset();
-    setStep(1);
+    if (!body.tracking_token || !body.tracking_url) {
+      form.reset();
+      setStep(1);
+    }
   } catch (error) {
     setMessage(messages.failure, "error");
     console.error(error);

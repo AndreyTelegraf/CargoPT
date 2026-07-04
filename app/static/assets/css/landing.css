@@ -412,6 +412,14 @@ textarea:focus {
   font-weight: 750;
 }
 
+.request-form.is-tracking-mode .form-message {
+  margin-top: 0;
+}
+
+.request-form.is-tracking-mode .tracking-success {
+  padding: 8px 0 2px;
+}
+
 .form-message.is-error {
   color: #9f1239;
 }
