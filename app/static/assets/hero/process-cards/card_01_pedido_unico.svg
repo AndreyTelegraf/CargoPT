@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 180" role="img" aria-labelledby="title desc">
+  <title id="title">Pedido único e gratuito</title>
+  <desc id="desc">Checklist preenchido com uma caixa de transporte.</desc>
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#06164A" flood-opacity="0.10"/>
+    </filter>
+    <linearGradient id="paperGrad" x1="70" y1="28" x2="70" y2="138" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F8FBFF"/>
+    </linearGradient>
+    <linearGradient id="boxTop" x1="141" y1="103" x2="178" y2="122" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6C979"/>
+      <stop offset="1" stop-color="#D99B46"/>
+    </linearGradient>
+    <linearGradient id="boxLeft" x1="131" y1="117" x2="154" y2="154" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DFA85A"/>
+      <stop offset="1" stop-color="#C58435"/>
+    </linearGradient>
+    <linearGradient id="boxRight" x1="154" y1="117" x2="183" y2="151" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C98A3F"/>
+      <stop offset="1" stop-color="#B3732C"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="104" cy="83" r="58" fill="#EDF4FF"/>
+  <ellipse cx="110" cy="156" rx="72" ry="10" fill="#D9DEE8"/>
+
+  <g filter="url(#softShadow)">
+    <rect x="36" y="31" width="88" height="119" rx="10" fill="url(#paperGrad)" stroke="#08215C" stroke-width="5"/>
+    <rect x="62" y="22" width="36" height="18" rx="7" fill="#075BFF"/>
+    <circle cx="80" cy="22" r="5" fill="#D9EAFF"/>
+    <path d="M62 40h36" stroke="#075BFF" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <g>
+    <rect x="53" y="57" width="18" height="18" rx="4" fill="#075BFF"/>
+    <path d="M58 66l4 4 8-10" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M82 61h33" stroke="#CBD4E3" stroke-width="6" stroke-linecap="round"/>
+    <path d="M82 72h25" stroke="#DDE4EF" stroke-width="5" stroke-linecap="round"/>
+
+    <rect x="53" y="88" width="18" height="18" rx="4" fill="#075BFF"/>
+    <path d="M58 97l4 4 8-10" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M82 92h34" stroke="#CBD4E3" stroke-width="6" stroke-linecap="round"/>
+    <path d="M82 103h24" stroke="#DDE4EF" stroke-width="5" stroke-linecap="round"/>
+
+    <rect x="53" y="119" width="18" height="18" rx="4" fill="#075BFF"/>
+    <path d="M58 128l4 4 8-10" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M82 123h31" stroke="#CBD4E3" stroke-width="6" stroke-linecap="round"/>
+    <path d="M82 134h21" stroke="#DDE4EF" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <path d="M131 113l28-14 29 14-29 15z" fill="url(#boxTop)"/>
+    <path d="M131 113l28 15v38l-28-16z" fill="url(#boxLeft)"/>
+    <path d="M159 128l29-15v37l-29 16z" fill="url(#boxRight)"/>
+    <path d="M145 106l29 15" stroke="#E8B66A" stroke-width="4" stroke-linecap="round"/>
+    <path d="M159 128v38" stroke="#B8752E" stroke-width="3" opacity="0.45"/>
+    <path d="M131 113l28 15 29-15" fill="none" stroke="#F1C77A" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M159 99l-14 7 29 15 14-8z" fill="#F7D28D" opacity="0.72"/>
+  </g>
+</svg>
