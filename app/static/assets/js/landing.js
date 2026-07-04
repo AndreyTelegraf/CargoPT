@@ -1,4 +1,5 @@
 const STORAGE_KEY = "cargopt_landing_request_v2";
+const TRACKING_LINKS_KEY = "cargopt_tracking_links";
 const pageLocale = document.body.dataset.locale || document.documentElement.lang || "ru";
 const form = document.querySelector("#requestForm");
 const steps = Array.from(document.querySelectorAll(".form-step"));
@@ -13,21 +14,45 @@ const MESSAGES = {
     contact: "Indique pelo menos um contacto: telefone, WhatsApp ou email.",
     submitting: "A enviar o pedido...",
     success: "Pedido enviado. Vamos encaminhá-lo para transportadores.",
-    failure: "Não foi possível enviar o pedido. Verifique os campos ou tente mais tarde."
+    failure: "Não foi possível enviar o pedido. Verifique os campos ou tente mais tarde.",
+    trackingTitle: "Guarde este link para acompanhar propostas deste pedido",
+    trackingText: "Não enviamos spam. Este link serve apenas para acompanhar propostas deste pedido.",
+    viewStatus: "Ver estado",
+    copyLink: "Copiar link",
+    linkCopied: "Link copiado",
+    shareWhatsApp: "Enviar por WhatsApp",
+    defaultRoute: "Pedido CargoPT",
+    waitingOffers: "A aguardar propostas"
   },
   en: {
     required: "Fill in the required fields for this step.",
     contact: "Add at least one contact: phone, WhatsApp or email.",
     submitting: "Sending request...",
     success: "Request sent. We will forward it to carriers.",
-    failure: "Could not send the request. Check the fields or try again later."
+    failure: "Could not send the request. Check the fields or try again later.",
+    trackingTitle: "Save this link to track offers for this request",
+    trackingText: "We do not send spam. This link is only for tracking offers for this request.",
+    viewStatus: "View status",
+    copyLink: "Copy link",
+    linkCopied: "Link copied",
+    shareWhatsApp: "Send by WhatsApp",
+    defaultRoute: "CargoPT request",
+    waitingOffers: "Waiting for offers"
   },
   ru: {
     required: "Заполните обязательные поля этого шага.",
     contact: "Укажите хотя бы один контакт: телефон, WhatsApp или email.",
     submitting: "Отправляем заявку...",
     success: "Заявка отправлена. Мы передадим её перевозчикам.",
-    failure: "Не удалось отправить заявку. Проверьте поля или попробуйте позже."
+    failure: "Не удалось отправить заявку. Проверьте поля или попробуйте позже.",
+    trackingTitle: "Сохраните эту ссылку, чтобы отслеживать предложения по заявке",
+    trackingText: "Мы не отправляем спам. Эта ссылка нужна только для отслеживания предложений по этой заявке.",
+    viewStatus: "Статус заявки",
+    copyLink: "Скопировать ссылку",
+    linkCopied: "Ссылка скопирована",
+    shareWhatsApp: "Отправить в WhatsApp",
+    defaultRoute: "Заявка CargoPT",
+    waitingOffers: "Ожидаем предложения"
   }
 };
 
@@ -38,6 +63,123 @@ function setMessage(text, type) {
   formMessage.textContent = text || "";
   formMessage.classList.toggle("is-error", type === "error");
   formMessage.classList.toggle("is-success", type === "success");
+}
+
+function buildRouteSummary(data) {
+  const pickup = data.pickup ? data.pickup.trim() : "";
+  const dropoff = data.dropoff ? data.dropoff.trim() : "";
+  if (pickup && dropoff) return `${pickup} → ${dropoff}`;
+  return pickup || dropoff || messages.defaultRoute;
+}
+
+function getTrackingLinks() {
+  try {
+    const raw = localStorage.getItem(TRACKING_LINKS_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveTrackingLink(entry) {
+  const links = getTrackingLinks().filter((item) => item.token !== entry.token);
+  links.unshift(entry);
+  localStorage.setItem(TRACKING_LINKS_KEY, JSON.stringify(links.slice(0, 20)));
+}
+
+function absoluteUrl(path) {
+  return new URL(path, window.location.origin).toString();
+}
+
+function hideHeroExplainerAfterSuccess() {
+  const explainer = document.querySelector(".product-explainer");
+  if (explainer) {
+    explainer.hidden = true;
+  }
+}
+
+function renderTrackingSuccess(entry) {
+  hideHeroExplainerAfterSuccess();
+  formMessage.textContent = "";
+  formMessage.classList.add("is-success");
+  formMessage.classList.remove("is-error");
+
+  const card = document.createElement("span");
+  card.className = "tracking-success";
+
+  const title = document.createElement("strong");
+  title.textContent = messages.trackingTitle;
+
+  const text = document.createElement("span");
+  text.textContent = messages.trackingText;
+
+  const actions = document.createElement("span");
+  actions.className = "tracking-success-actions";
+
+  const openLink = document.createElement("a");
+  openLink.className = "button button-small";
+  openLink.href = entry.tracking_url;
+  openLink.textContent = messages.viewStatus;
+
+  const copyButton = document.createElement("button");
+  copyButton.className = "button button-small button-secondary";
+  copyButton.type = "button";
+  copyButton.textContent = messages.copyLink;
+  copyButton.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(absoluteUrl(entry.tracking_url));
+    copyButton.textContent = messages.linkCopied;
+  });
+
+  const whatsappLink = document.createElement("a");
+  whatsappLink.className = "button button-small button-secondary";
+  whatsappLink.href = `https://wa.me/?text=${encodeURIComponent(absoluteUrl(entry.tracking_url))}`;
+  whatsappLink.target = "_blank";
+  whatsappLink.rel = "noopener noreferrer";
+  whatsappLink.textContent = messages.shareWhatsApp;
+
+  actions.append(openLink, copyButton, whatsappLink);
+  card.append(title, text, actions);
+  formMessage.appendChild(card);
+}
+
+function renderOpenPedidos() {
+  const section = document.querySelector("#openPedidos");
+  const list = document.querySelector("#openPedidosList");
+  if (!section || !list) return;
+
+  const links = getTrackingLinks();
+  list.textContent = "";
+
+  if (links.length === 0) {
+    section.hidden = true;
+    return;
+  }
+
+  links.slice(0, 5).forEach((entry) => {
+    const card = document.createElement("article");
+    card.className = "open-pedido-card";
+
+    const copy = document.createElement("div");
+    copy.className = "open-pedido-copy";
+
+    const title = document.createElement("strong");
+    title.textContent = entry.route_summary || messages.defaultRoute;
+
+    const status = document.createElement("span");
+    status.textContent = entry.status_label || messages.waitingOffers;
+
+    const action = document.createElement("a");
+    action.className = "button button-small";
+    action.href = entry.tracking_url;
+    action.textContent = messages.viewStatus;
+
+    copy.append(title, status);
+    card.append(copy, action);
+    list.appendChild(card);
+  });
+
+  section.hidden = false;
 }
 
 function setStep(step) {
@@ -175,10 +317,28 @@ async function submitRequest() {
       throw new Error(text || `HTTP ${response.status}`);
     }
 
+    const body = await response.json();
+    const submittedData = getFormData();
+
+    if (body.tracking_token && body.tracking_url) {
+      const trackingEntry = {
+        job_id: body.job_id,
+        tracking_url: body.tracking_url,
+        token: body.tracking_token,
+        created_at: new Date().toISOString(),
+        status_label: messages.waitingOffers,
+        route_summary: buildRouteSummary(submittedData)
+      };
+      saveTrackingLink(trackingEntry);
+      renderTrackingSuccess(trackingEntry);
+      renderOpenPedidos();
+    } else {
+      setMessage(messages.success, "success");
+    }
+
     localStorage.removeItem(STORAGE_KEY);
     form.reset();
     setStep(1);
-    setMessage(messages.success, "success");
   } catch (error) {
     setMessage(messages.failure, "error");
     console.error(error);
@@ -211,3 +371,4 @@ form.addEventListener("submit", (event) => {
 
 restoreDraft();
 setStep(1);
+renderOpenPedidos();

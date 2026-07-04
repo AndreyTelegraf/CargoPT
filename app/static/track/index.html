@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CargoPT — estado do seu pedido</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Página privada para acompanhar o estado do seu pedido CargoPT.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/cargopt-icon.svg">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <meta name="theme-color" content="#111827">
+  <link rel="stylesheet" href="/assets/css/landing.css?v=process-cards-svg-v2">
+  <link rel="stylesheet" href="/assets/css/track.css?v=request-card-surface-v2">
+</head>
+<body data-locale="pt" class="tracking-page">
+  <header class="site-header">
+    <a class="logo" href="/" aria-label="CargoPT">CargoPT</a>
+    <nav class="header-actions" aria-label="Navigation">
+      <span class="private-label">Link privado do pedido</span>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section hero-v2 tracking-hero">
+      <div class="hero-copy tracking-copy">
+        <p class="eyebrow">Estado do pedido</p>
+        <h1>Acompanhe o seu pedido <span>através do link de rastreio</span></h1>
+        <p class="hero-text">Quando houver propostas, nesta mesma página poderá escolher o transportador, sem login e sem instalar nada.</p>
+
+      </div>
+
+      <section class="request-form hero-form request-card tracking-request-card" aria-label="Cartão de estado do pedido">
+        <section class="timeline-card" aria-label="Progresso do pedido">
+          <ol id="timelineList" class="timeline-list"></ol>
+        </section>
+
+        <section id="stateCard" class="track-card state-card state-card-loading" aria-live="polite">
+          <div class="state-icon" id="stateIcon" aria-hidden="true">⌁</div>
+          <div class="state-copy">
+            <p class="eyebrow" id="stateEyebrow">Estado do pedido</p>
+            <h1 id="statusTitle">A carregar...</h1>
+            <p id="statusText" class="status-text">Estamos a consultar o estado do seu pedido.</p>
+            <p id="lastUpdated" class="last-updated"></p>
+          </div>
+        </section>
+
+        <section id="offersSection" class="offers-section" hidden>
+          <div class="section-heading">
+            <p class="eyebrow">Propostas recebidas</p>
+            <h2>Propostas disponíveis</h2>
+          </div>
+          <div id="offersList" class="offers-list"></div>
+        </section>
+
+        <section id="errorCard" class="track-card error-card" hidden>
+          <p class="eyebrow">Erro</p>
+          <h2>Não foi possível carregar este pedido</h2>
+          <p>Verifique se abriu o link completo. Se o problema continuar, contacte a CargoPT.</p>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <script src="/assets/js/track.js?v=request-card-surface-v2" defer></script>
+</body>
+</html>
