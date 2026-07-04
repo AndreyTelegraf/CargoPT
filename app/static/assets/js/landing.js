@@ -10,6 +10,7 @@ const progress = document.querySelector(".progress");
 let currentStep = 1;
 let activeTrackingEntry = null;
 let trackingPollTimer = null;
+let isSelectingLandingOffer = false;
 
 const MESSAGES = {
   pt: {
@@ -26,6 +27,9 @@ const MESSAGES = {
     shareWhatsApp: "Enviar por WhatsApp",
     newRequest: "← Novo pedido",
     viewOffers: "Ver propostas",
+    selectOffer: "Escolher este transportador",
+    selectingOffer: "A escolher...",
+    retryOffer: "Tentar novamente",
     statusSearching: "À procura de transportadores",
     statusAssigned: "Transportador escolhido",
     statusCompleted: "Pedido concluído",
@@ -55,6 +59,9 @@ const MESSAGES = {
     shareWhatsApp: "Send by WhatsApp",
     newRequest: "← New request",
     viewOffers: "View offers",
+    selectOffer: "Choose this carrier",
+    selectingOffer: "Selecting...",
+    retryOffer: "Try again",
     statusSearching: "Looking for carriers",
     statusAssigned: "Carrier selected",
     statusCompleted: "Request completed",
@@ -84,6 +91,9 @@ const MESSAGES = {
     shareWhatsApp: "Отправить в WhatsApp",
     newRequest: "← Новая заявка",
     viewOffers: "Смотреть предложения",
+    selectOffer: "Выбрать перевозчика",
+    selectingOffer: "Выбираем...",
+    retryOffer: "Попробовать снова",
     statusSearching: "Ищем перевозчиков",
     statusAssigned: "Перевозчик выбран",
     statusCompleted: "Заявка завершена",
@@ -273,7 +283,7 @@ function formatPrice(priceCents) {
   return new Intl.NumberFormat(localeKey).format(priceCents / 100) + " €";
 }
 
-function renderOfferPreview(offer) {
+function renderOfferPreview(offer, entry) {
   const card = document.createElement("article");
   card.className = "tracking-offer-card";
 
@@ -307,7 +317,43 @@ function renderOfferPreview(offer) {
     card.appendChild(note);
   }
 
+  if (entry.tracking_snapshot?.status === "offered") {
+    const button = document.createElement("button");
+    button.className = "button button-small tracking-select-button";
+    button.type = "button";
+    button.textContent = messages.selectOffer;
+    button.addEventListener("click", () => selectLandingOffer(offer.offer_id, button));
+    card.appendChild(button);
+  }
+
   return card;
+}
+
+async function selectLandingOffer(offerId, button) {
+  if (isSelectingLandingOffer || !activeTrackingEntry) return;
+
+  isSelectingLandingOffer = true;
+  button.disabled = true;
+  button.textContent = messages.selectingOffer;
+
+  try {
+    const response = await fetch(`/api/v1/track/${encodeURIComponent(activeTrackingEntry.token)}/offers/${encodeURIComponent(offerId)}/select`, {
+      method: "POST",
+      headers: {"Accept": "application/json"}
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    await refreshTrackingEntry(activeTrackingEntry, {rerender: true});
+  } catch (error) {
+    console.error(error);
+    button.disabled = false;
+    button.textContent = messages.retryOffer;
+  } finally {
+    isSelectingLandingOffer = false;
+  }
 }
 
 function absoluteUrl(path) {
@@ -470,7 +516,7 @@ function renderTrackingSuccess(entry) {
     wrap.className = "tracking-offers";
 
     offers.forEach((offer) => {
-      wrap.appendChild(renderOfferPreview(offer));
+      wrap.appendChild(renderOfferPreview(offer, entry));
     });
 
     card.appendChild(wrap);
