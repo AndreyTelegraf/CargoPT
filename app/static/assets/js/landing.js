@@ -2,10 +2,13 @@ const STORAGE_KEY = "cargopt_landing_request_v2";
 const TRACKING_LINKS_KEY = "cargopt_tracking_links";
 const pageLocale = document.body.dataset.locale || document.documentElement.lang || "ru";
 const form = document.querySelector("#requestForm");
+const hero = document.querySelector(".hero");
 const steps = Array.from(document.querySelectorAll(".form-step"));
 const stepLabel = document.querySelector("#stepLabel");
 const progressFill = document.querySelector("#progressFill");
 const formMessage = document.querySelector("#formMessage");
+const trackingPanel = document.querySelector("#trackingPanel");
+const trackingPanelBody = document.querySelector("#trackingPanelBody");
 const progress = document.querySelector(".progress");
 let currentStep = 1;
 let activeTrackingEntry = null;
@@ -452,35 +455,17 @@ function absoluteUrl(path) {
 }
 
 function switchFormToTrackingMode() {
-  const explainer = document.querySelector(".product-explainer");
-  if (explainer) {
-    explainer.hidden = true;
-  }
-
-  if (progress) {
-    progress.hidden = true;
-  }
-
-  steps.forEach((item) => {
-    item.classList.remove("is-active");
-    item.hidden = true;
-  });
-
+  form.hidden = true;
+  trackingPanel.hidden = false;
   form.classList.add("is-tracking-mode");
 }
 
 function switchTrackingToNewRequest() {
   stopTrackingPolling();
 
-  const explainer = document.querySelector(".product-explainer");
-  if (explainer) {
-    explainer.hidden = false;
-  }
-
-  if (progress) {
-    progress.hidden = false;
-  }
-
+  trackingPanel.hidden = true;
+  trackingPanelBody.textContent = "";
+  form.hidden = false;
   form.classList.remove("is-tracking-mode");
   form.reset();
   localStorage.removeItem(STORAGE_KEY);
@@ -489,6 +474,10 @@ function switchTrackingToNewRequest() {
     item.hidden = false;
   });
 
+  if (progress) {
+    progress.hidden = false;
+  }
+
   setStep(1);
   renderOpenPedidos();
 }
@@ -496,8 +485,8 @@ function switchTrackingToNewRequest() {
 function renderTrackingSuccess(entry) {
   switchFormToTrackingMode();
   formMessage.textContent = "";
-  formMessage.classList.add("is-success");
-  formMessage.classList.remove("is-error");
+  formMessage.classList.remove("is-success", "is-error");
+  trackingPanelBody.textContent = "";
 
   const card = document.createElement("span");
   const visualState = entry.tracking_visual_state || getTrackingVisualState(entry);
@@ -619,7 +608,7 @@ function renderTrackingSuccess(entry) {
   }
 
   card.appendChild(actions);
-  formMessage.appendChild(card);
+  trackingPanelBody.appendChild(card);
 }
 
 function renderOpenPedidos() {
@@ -632,12 +621,16 @@ function renderOpenPedidos() {
 
   if (links.length === 0) {
     section.hidden = true;
+    hero?.classList.remove("is-user-workspace");
     return;
   }
 
   links.slice(0, 5).forEach((entry) => {
     const card = document.createElement("article");
     card.className = "open-pedido-card";
+    if (activeTrackingEntry && entry.token === activeTrackingEntry.token) {
+      card.classList.add("is-active");
+    }
 
     const copy = document.createElement("div");
     copy.className = "open-pedido-copy";
@@ -657,16 +650,30 @@ function renderOpenPedidos() {
       copy.append(title, status);
     }
 
-    const action = document.createElement("a");
+    const action = document.createElement("button");
     action.className = "button button-small";
-    action.href = entry.tracking_url;
+    action.type = "button";
     action.textContent = messages.viewStatus;
+    action.addEventListener("click", () => {
+      activeTrackingEntry = entry;
+      renderTrackingSuccess(entry);
+      startTrackingPolling(entry);
+      renderOpenPedidos();
+    });
 
     card.append(copy, action);
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("button, a")) return;
+      activeTrackingEntry = entry;
+      renderTrackingSuccess(entry);
+      startTrackingPolling(entry);
+      renderOpenPedidos();
+    });
     list.appendChild(card);
   });
 
   section.hidden = false;
+  hero?.classList.add("is-user-workspace");
 }
 
 function setStep(step) {
@@ -842,6 +849,13 @@ async function submitRequest() {
 form.addEventListener("input", saveDraft);
 form.addEventListener("change", saveDraft);
 
+document.addEventListener("click", (event) => {
+  const newRequest = event.target.closest("[data-new-request]");
+  if (!newRequest || form.contains(newRequest)) return;
+  switchTrackingToNewRequest();
+  hero?.classList.add("is-user-workspace");
+});
+
 form.addEventListener("click", (event) => {
   const next = event.target.closest("[data-next]");
   const prev = event.target.closest("[data-prev]");
@@ -849,6 +863,7 @@ form.addEventListener("click", (event) => {
 
   if (newRequest) {
     switchTrackingToNewRequest();
+    hero?.classList.add("is-user-workspace");
     return;
   }
 

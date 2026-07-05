@@ -1240,3 +1240,124 @@ grid-template-columns:1fr 1fr;
 grid-column:1/-1;
 }
 }
+
+/* CargoPT request workspace after first submitted request */
+.hero.is-user-workspace {
+  align-items: start;
+}
+
+.hero.is-user-workspace .hero-copy {
+  align-self: stretch;
+}
+
+.hero.is-user-workspace .hero-copy > .eyebrow,
+.hero.is-user-workspace .hero-copy > h1,
+.hero.is-user-workspace .hero-copy > .hero-text,
+.hero.is-user-workspace .product-explainer {
+  display: none;
+}
+
+.hero-workspace {
+  margin-top: 0;
+  padding: clamp(24px, 4vw, 34px);
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.open-pedidos-intro {
+  margin: -4px 0 2px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.hero-workspace-new-request {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.open-pedido-card.is-active {
+  border-color: rgba(7, 91, 255, 0.34);
+  background: rgba(245, 249, 255, 0.92);
+}
+
+.open-pedido-card .button {
+  white-space: nowrap;
+}
+
+@media (max-width: 920px) {
+  .hero.is-user-workspace .hero-copy {
+    order: 2;
+  }
+
+  .hero.is-user-workspace .hero-form {
+    order: 1;
+  }
+}
+
+/* CargoPT split request form and tracking status panels */
+.hero.is-user-workspace {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.hero-panel {
+  min-height: 560px;
+}
+
+.hero-workspace,
+.tracking-panel,
+.request-form.hero-panel {
+  width: 100%;
+  align-self: stretch;
+}
+
+.tracking-panel {
+  position: relative;
+  padding: clamp(26px, 4vw, 40px);
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  background: var(--panel);
+  box-shadow: var(--shadow-strong);
+}
+
+.tracking-panel::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: 34px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(17,24,39,0.12));
+}
+
+.tracking-panel[hidden],
+.request-form[hidden] {
+  display: none;
+}
+
+.tracking-panel .tracking-success {
+  padding: 0;
+}
+
+.hero.is-user-workspace .hero-workspace {
+  min-height: 560px;
+  display: grid;
+  align-content: start;
+}
+
+.hero.is-user-workspace .open-pedido-card {
+  min-height: 86px;
+}
+
+@media (max-width: 920px) {
+  .hero.is-user-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-panel,
+  .hero.is-user-workspace .hero-workspace {
+    min-height: auto;
+  }
+}

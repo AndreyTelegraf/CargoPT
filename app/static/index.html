@@ -40,7 +40,7 @@
     {"@type":"Question","name":"Posso transportar apenas um objeto?","acceptedAnswer":{"@type":"Answer","text":"Sim. Pode pedir transporte de móveis, eletrodomésticos, piano, caixas ou outros objetos individuais."}},
     {"@type":"Question","name":"É possível fazer transporte entre cidades?","acceptedAnswer":{"@type":"Answer","text":"Sim. A CargoPT serve transportes locais e entre cidades em Portugal."}}
   ]}</script>
-  <link rel="stylesheet" href="/assets/css/landing.css?v=process-cards-svg-v10">
+  <link rel="stylesheet" href="/assets/css/landing.css?v=workspace-v2">
 </head>
 <body data-locale="pt">
   <header class="site-header">
@@ -80,9 +80,17 @@
             <p>A decisão final<br>é sua</p>
           </article>
         </div>
+
+        <section id="openPedidos" class="open-pedidos hero-workspace" hidden aria-label="Pedidos em aberto">
+          <p class="open-pedidos-eyebrow">Pedidos em aberto</p>
+          <h2 class="open-pedidos-title">Os seus pedidos</h2>
+          <p class="open-pedidos-intro">Acompanhe o estado dos pedidos criados neste dispositivo.</p>
+          <div id="openPedidosList" class="open-pedidos-list"></div>
+          <button class="button button-secondary hero-workspace-new-request" type="button" data-new-request>← Novo pedido</button>
+        </section>
       </div>
 
-      <form id="requestForm" class="request-form hero-form request-card" novalidate data-step-template="Passo {current} de {total}">
+      <form id="requestForm" class="request-form hero-form request-card hero-panel" novalidate data-step-template="Passo {current} de {total}">
         <div class="progress">
           <span id="stepLabel">Passo 1 de 2</span>
           <div class="progress-bar"><span id="progressFill"></span></div>
@@ -135,12 +143,11 @@
           </div>
         </fieldset>
         <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
-        <section id="openPedidos" class="open-pedidos" hidden aria-label="Pedidos em aberto">
-          <p class="open-pedidos-eyebrow">Pedidos em aberto</p>
-          <h2 class="open-pedidos-title">Tem pedidos em aberto</h2>
-          <div id="openPedidosList" class="open-pedidos-list"></div>
-        </section>
       </form>
+
+      <section id="trackingPanel" class="tracking-panel hero-panel" hidden aria-live="polite">
+        <div id="trackingPanelBody"></div>
+      </section>
     </section>
 
     <section id="how" class="section"><div class="section-heading"><p class="eyebrow">Como funciona</p><h2>Três passos em vez de chamadas manuais</h2></div><div class="cards three">        <article class="card">
