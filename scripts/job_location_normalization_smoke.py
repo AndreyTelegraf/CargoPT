@@ -11,13 +11,15 @@ os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///data/cargopt_dev.db"
 from app.services.location_normalization import build_google_maps_coordinate_url
 from app.services.location_normalization import normalize_text_location
 
-address, url = normalize_text_location("Rua Augusta 1, Lisboa 1100-048")
-assert address == "Rua Augusta 1, Lisboa 1100-048"
-assert url.startswith("https://www.google.com/maps/search/?api=1&query=")
-assert "Rua+Augusta" in url
+location = normalize_text_location("Rua Augusta 1, Lisboa 1100-048")
+assert location["normalized_address"] == "Rua Augusta 1, Lisboa 1100-048"
+assert location["postal_code"] == "1100-048"
+assert location["map_url"].startswith("https://www.google.com/maps/search/?api=1&query=")
+assert "Rua+Augusta" in location["map_url"]
 
-address, url = normalize_text_location("https://maps.app.goo.gl/test123")
-assert url == "https://maps.app.goo.gl/test123"
+location = normalize_text_location("https://maps.app.goo.gl/test123")
+assert location["original_google_maps_url"] == "https://maps.app.goo.gl/test123"
+assert location["map_url"] == "https://maps.app.goo.gl/test123"
 
 assert build_google_maps_coordinate_url(38.7223, -9.1393).endswith("38.7223,-9.1393")
 

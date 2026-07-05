@@ -7,7 +7,7 @@ from app.models.job import JobItem
 from app.models.job import JobMedia
 from app.repositories.job import JobRepository
 from app.services.location_normalization import build_google_maps_coordinate_url
-from app.services.location_normalization import normalize_text_location
+from app.services.location_normalization import normalize_text_location_resolved
 
 
 class RequestUpdateService:
@@ -34,7 +34,7 @@ class RequestUpdateService:
                 "map_url": build_google_maps_coordinate_url(latitude, longitude),
             }
         else:
-            normalized_location = normalize_text_location(raw_text)
+            normalized_location = await normalize_text_location_resolved(raw_text)
 
         address = JobAddress(
             job_id=job_id,

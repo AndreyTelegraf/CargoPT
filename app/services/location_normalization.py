@@ -1,7 +1,12 @@
 from __future__ import annotations
 
 import re
+from urllib.parse import parse_qs
 from urllib.parse import quote_plus
+from urllib.parse import unquote
+from urllib.parse import urlparse
+
+import httpx
 
 
 GOOGLE_MAPS_RE = re.compile(
@@ -13,6 +18,10 @@ POSTAL_CODE_RE = re.compile(r"\b\d{4}-\d{3}\b")
 
 COORDINATE_RE = re.compile(
     r"(?P<lat>-?\d{1,2}\.\d+)\s*,\s*(?P<lon>-?\d{1,3}\.\d+)"
+)
+
+GOOGLE_PLACE_COORDINATE_RE = re.compile(
+    r"!3d(?P<lat>-?\d{1,2}\.\d+)!4d(?P<lon>-?\d{1,3}\.\d+)"
 )
 
 
@@ -30,14 +39,10 @@ def extract_postal_code(raw_text: str) -> str | None:
     return match.group(0)
 
 
-def extract_coordinates(raw_text: str) -> tuple[float | None, float | None]:
-    match = COORDINATE_RE.search(raw_text)
-    if not match:
-        return None, None
-
-    latitude = float(match.group("lat"))
-    longitude = float(match.group("lon"))
-
+def _valid_coordinates(
+    latitude: float,
+    longitude: float,
+) -> tuple[float | None, float | None]:
     if not (-90 <= latitude <= 90):
         return None, None
 
@@ -45,6 +50,37 @@ def extract_coordinates(raw_text: str) -> tuple[float | None, float | None]:
         return None, None
 
     return latitude, longitude
+
+
+def extract_coordinates(raw_text: str) -> tuple[float | None, float | None]:
+    decoded = unquote(raw_text)
+
+    place_match = GOOGLE_PLACE_COORDINATE_RE.search(decoded)
+    if place_match:
+        return _valid_coordinates(
+            float(place_match.group("lat")),
+            float(place_match.group("lon")),
+        )
+
+    parsed = urlparse(decoded)
+    query = parse_qs(parsed.query)
+    for key in ("q", "query", "ll"):
+        for value in query.get(key, []):
+            query_match = COORDINATE_RE.search(value)
+            if query_match:
+                return _valid_coordinates(
+                    float(query_match.group("lat")),
+                    float(query_match.group("lon")),
+                )
+
+    match = COORDINATE_RE.search(decoded)
+    if not match:
+        return None, None
+
+    return _valid_coordinates(
+        float(match.group("lat")),
+        float(match.group("lon")),
+    )
 
 
 def build_google_maps_search_url(raw_text: str) -> str:
@@ -61,6 +97,35 @@ def strip_google_maps_url(raw_text: str) -> str:
         return raw_text.strip()
 
     return raw_text.replace(maps_url, "").strip(" \n\t,.;-")
+
+
+def extract_google_continue_url(raw_text: str) -> str | None:
+    parsed = urlparse(raw_text)
+    if "consent.google." not in parsed.netloc:
+        return None
+
+    values = parse_qs(parsed.query).get("continue", [])
+    if not values:
+        return None
+
+    return values[0]
+
+
+def extract_google_maps_query_address(raw_text: str) -> str | None:
+    parsed = urlparse(raw_text)
+    query_values = parse_qs(parsed.query).get("q", [])
+    if not query_values:
+        return None
+
+    value = query_values[0].strip()
+    if not value:
+        return None
+
+    latitude, longitude = extract_coordinates(value)
+    if latitude is not None and longitude is not None:
+        return None
+
+    return value
 
 
 def normalize_text_location(raw_text: str) -> dict[str, str | float | None]:
@@ -87,3 +152,50 @@ def normalize_text_location(raw_text: str) -> dict[str, str | float | None]:
         "longitude": longitude,
         "map_url": map_url,
     }
+
+
+async def resolve_google_maps_url(url: str) -> str:
+    try:
+        async with httpx.AsyncClient(
+            follow_redirects=True,
+            timeout=httpx.Timeout(5.0),
+            headers={"User-Agent": "Mozilla/5.0 CargoPT location resolver"},
+        ) as client:
+            response = await client.get(url)
+            return str(response.url)
+    except httpx.HTTPError:
+        return url
+
+
+async def normalize_text_location_resolved(raw_text: str) -> dict[str, str | float | None]:
+    normalized = normalize_text_location(raw_text)
+    original_google_maps_url = normalized["original_google_maps_url"]
+
+    if (
+        original_google_maps_url is None
+        or normalized["latitude"] is not None
+        or normalized["longitude"] is not None
+    ):
+        return normalized
+
+    resolved_url = await resolve_google_maps_url(str(original_google_maps_url))
+    latitude, longitude = extract_coordinates(resolved_url)
+    if latitude is not None and longitude is not None:
+        normalized["latitude"] = latitude
+        normalized["longitude"] = longitude
+        normalized["map_url"] = build_google_maps_coordinate_url(latitude, longitude)
+
+        if normalized["normalized_address"] == original_google_maps_url:
+            normalized["normalized_address"] = resolved_url
+
+        return normalized
+
+    continue_url = extract_google_continue_url(resolved_url)
+    if continue_url is not None:
+        query_address = extract_google_maps_query_address(continue_url)
+        if query_address:
+            normalized["normalized_address"] = query_address
+            normalized["postal_code"] = extract_postal_code(query_address)
+            normalized["map_url"] = build_google_maps_search_url(query_address)
+
+    return normalized
