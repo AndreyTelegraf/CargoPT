@@ -558,10 +558,16 @@ function renderTrackingSuccess(entry) {
   const actions = document.createElement("span");
   actions.className = "tracking-success-actions";
 
-  const openLink = document.createElement("a");
+  const openLink = document.createElement("button");
   openLink.className = entry.accepted_offers_count > 0 ? "button button-small tracking-status-primary-action" : "button button-small";
-  openLink.href = entry.tracking_url;
+  openLink.type = "button";
   openLink.textContent = entry.accepted_offers_count > 0 ? messages.viewOffers : messages.viewStatus;
+  openLink.addEventListener("click", () => {
+    const target = entry.accepted_offers_count > 0
+      ? trackingPanelBody.querySelector(".tracking-offers")
+      : trackingPanelBody.querySelector(".tracking-status-summary");
+    target?.scrollIntoView({behavior: "smooth", block: "nearest"});
+  });
 
   const copyButton = document.createElement("button");
   copyButton.className = "button button-small button-secondary";
