@@ -9,8 +9,8 @@ from urllib.parse import urlparse
 import httpx
 
 
-GOOGLE_MAPS_RE = re.compile(
-    r"https?://(?:www\.)?(?:google\.[^\s]+/maps|maps\.app\.goo\.gl|goo\.gl/maps)[^\s]*",
+MAPS_URL_RE = re.compile(
+    r"https?://(?:www\.)?(?:(?:google\.[^\s]+/maps|maps\.app\.goo\.gl|goo\.gl/maps)|(?:maps?\.apple\.com)|(?:waze\.com/ul|ul\.waze\.com/ul))[^\s]*",
     re.IGNORECASE,
 )
 
@@ -25,8 +25,8 @@ GOOGLE_PLACE_COORDINATE_RE = re.compile(
 )
 
 
-def extract_google_maps_url(raw_text: str) -> str | None:
-    match = GOOGLE_MAPS_RE.search(raw_text)
+def extract_maps_url(raw_text: str) -> str | None:
+    match = MAPS_URL_RE.search(raw_text)
     if not match:
         return None
     return match.group(0).rstrip(".,;)")
@@ -91,8 +91,8 @@ def build_google_maps_coordinate_url(latitude: float, longitude: float) -> str:
     return f"https://www.google.com/maps/search/?api=1&query={latitude},{longitude}"
 
 
-def strip_google_maps_url(raw_text: str) -> str:
-    maps_url = extract_google_maps_url(raw_text)
+def strip_maps_url(raw_text: str) -> str:
+    maps_url = extract_maps_url(raw_text)
     if maps_url is None:
         return raw_text.strip()
 
@@ -128,10 +128,27 @@ def extract_google_maps_query_address(raw_text: str) -> str | None:
     return value
 
 
+def extract_link_query_address(raw_text: str) -> str | None:
+    parsed = urlparse(raw_text)
+    query = parse_qs(parsed.query)
+
+    for key in ("q", "address", "daddr"):
+        for value in query.get(key, []):
+            value = value.strip()
+            if not value:
+                continue
+
+            latitude, longitude = extract_coordinates(value)
+            if latitude is None and longitude is None:
+                return value
+
+    return None
+
+
 def normalize_text_location(raw_text: str) -> dict[str, str | float | None]:
     clean = raw_text.strip()
-    original_google_maps_url = extract_google_maps_url(clean)
-    normalized_address = strip_google_maps_url(clean)
+    original_google_maps_url = extract_maps_url(clean)
+    normalized_address = strip_maps_url(clean)
     postal_code = extract_postal_code(clean)
 
     latitude, longitude = extract_coordinates(clean)
@@ -140,6 +157,10 @@ def normalize_text_location(raw_text: str) -> dict[str, str | float | None]:
         map_url = build_google_maps_coordinate_url(latitude, longitude)
     elif original_google_maps_url is not None:
         map_url = original_google_maps_url
+        query_address = extract_link_query_address(clean)
+        if query_address:
+            normalized_address = query_address
+            postal_code = extract_postal_code(query_address)
     else:
         map_url = build_google_maps_search_url(normalized_address or clean)
 
@@ -191,11 +212,16 @@ async def normalize_text_location_resolved(raw_text: str) -> dict[str, str | flo
         return normalized
 
     continue_url = extract_google_continue_url(resolved_url)
+    query_address = None
     if continue_url is not None:
         query_address = extract_google_maps_query_address(continue_url)
-        if query_address:
-            normalized["normalized_address"] = query_address
-            normalized["postal_code"] = extract_postal_code(query_address)
-            normalized["map_url"] = build_google_maps_search_url(query_address)
+
+    if query_address is None:
+        query_address = extract_link_query_address(resolved_url)
+
+    if query_address:
+        normalized["normalized_address"] = query_address
+        normalized["postal_code"] = extract_postal_code(query_address)
+        normalized["map_url"] = build_google_maps_search_url(query_address)
 
     return normalized
