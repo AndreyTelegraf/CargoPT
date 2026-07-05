@@ -185,6 +185,23 @@ class JobRepository:
         result = await self.session.execute(stmt)
         return list(result.scalars().all())
 
+    async def list_stale_assigned_pending_confirmation_jobs(
+        self,
+        *,
+        cutoff,
+        limit: int = 50,
+    ) -> list[Job]:
+        stmt = (
+            select(Job)
+            .where(Job.status == "assigned_pending_confirmation")
+            .where(Job.assigned_at.is_not(None))
+            .where(Job.assigned_at < cutoff)
+            .order_by(Job.assigned_at, Job.id)
+            .limit(limit)
+        )
+        result = await self.session.execute(stmt)
+        return list(result.scalars().all())
+
     async def list_attention_jobs(self, limit: int = 20) -> list[Job]:
         offer_count_subquery = (
             select(func.count(JobOffer.id))
