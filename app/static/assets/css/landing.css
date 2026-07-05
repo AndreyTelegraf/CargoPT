@@ -1361,3 +1361,266 @@ grid-column:1/-1;
     min-height: auto;
   }
 }
+
+/* CargoPT workspace dominance: secondary list, primary status/offers panel */
+.hero.is-user-workspace {
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 3.2fr);
+  gap: clamp(18px, 3vw, 36px);
+}
+
+.hero.is-user-workspace .hero-copy {
+  max-width: none;
+}
+
+.hero.is-user-workspace .hero-workspace {
+  min-height: 560px;
+  padding: 22px;
+  border-radius: 26px;
+  box-shadow: 0 14px 34px rgba(6, 22, 74, 0.07);
+}
+
+.hero.is-user-workspace .open-pedidos-eyebrow {
+  font-size: 11px;
+}
+
+.hero.is-user-workspace .open-pedidos-title {
+  font-size: 18px;
+}
+
+.hero.is-user-workspace .open-pedidos-intro {
+  font-size: 13px;
+}
+
+.hero.is-user-workspace .open-pedidos-list {
+  gap: 10px;
+}
+
+.hero.is-user-workspace .open-pedido-card {
+  display: grid;
+  min-height: 0;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.hero.is-user-workspace .open-pedido-card .button {
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.hero.is-user-workspace .open-pedido-copy {
+  min-width: 0;
+}
+
+.hero.is-user-workspace .open-pedido-copy strong,
+.hero.is-user-workspace .open-pedido-copy span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hero.is-user-workspace .open-pedido-copy strong {
+  font-size: 14px;
+}
+
+.hero.is-user-workspace .open-pedido-copy span {
+  font-size: 13px;
+}
+
+.hero.is-user-workspace .hero-workspace-new-request {
+  min-height: 42px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.tracking-panel {
+  min-height: 560px;
+}
+
+.tracking-panel .tracking-status-card {
+  min-height: 100%;
+}
+
+.tracking-panel .tracking-success {
+  gap: 22px;
+}
+
+.tracking-panel .tracking-status-eyebrow {
+  font-size: 12px;
+}
+
+.tracking-panel .tracking-status-title {
+  max-width: 780px;
+  font-size: clamp(38px, 5vw, 68px);
+}
+
+.tracking-panel .tracking-status-text {
+  max-width: 720px;
+  font-size: clamp(17px, 1.5vw, 21px);
+}
+
+.tracking-panel .tracking-status-summary {
+  gap: 8px;
+  padding: 22px;
+  border-radius: 24px;
+}
+
+.tracking-panel .tracking-status-summary strong {
+  font-size: clamp(22px, 2.4vw, 34px);
+  line-height: 1.05;
+}
+
+.tracking-panel .tracking-status-summary span {
+  font-size: 16px;
+}
+
+.tracking-panel .tracking-status-details {
+  grid-template-columns: minmax(160px, 0.32fr) minmax(0, 1fr);
+  gap: 8px 18px;
+  padding: 20px;
+  border-radius: 24px;
+}
+
+.tracking-panel .tracking-status-details-title {
+  grid-column: 1 / -1;
+  font-size: 18px;
+}
+
+.tracking-panel .tracking-status-detail-text {
+  min-width: 0;
+}
+
+.tracking-panel .tracking-offers {
+  display: grid;
+  gap: 14px;
+  margin-top: 0;
+  padding: 20px;
+  border: 1px solid rgba(22, 101, 52, 0.2);
+  border-radius: 24px;
+  background: rgba(240, 253, 244, 0.58);
+}
+
+.tracking-panel .tracking-offers-title {
+  font-size: 22px;
+  letter-spacing: -0.035em;
+}
+
+.tracking-panel .tracking-offers-list {
+  display: grid;
+  gap: 12px;
+}
+
+.tracking-panel .tracking-offer-card {
+  padding: 18px;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.tracking-panel .tracking-success-actions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tracking-panel .tracking-success-actions .button {
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .hero.is-user-workspace {
+    grid-template-columns: minmax(210px, 0.95fr) minmax(0, 2.4fr);
+  }
+
+  .tracking-panel .tracking-success-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 920px) {
+  .hero.is-user-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .tracking-panel .tracking-status-title {
+    font-size: clamp(34px, 10vw, 52px);
+  }
+
+  .tracking-panel .tracking-status-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CargoPT compact right workspace panel */
+.tracking-panel {
+  padding: clamp(22px, 3vw, 34px);
+  min-height: 500px;
+}
+
+.hero.is-user-workspace .hero-workspace {
+  min-height: 500px;
+}
+
+.tracking-panel .tracking-success {
+  gap: 16px;
+}
+
+.tracking-panel .tracking-status-title {
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 0.98;
+  max-width: 680px;
+}
+
+.tracking-panel .tracking-status-text {
+  font-size: clamp(15px, 1.25vw, 18px);
+  line-height: 1.35;
+  max-width: 640px;
+}
+
+.tracking-panel .tracking-status-summary {
+  padding: 18px;
+  border-radius: 22px;
+}
+
+.tracking-panel .tracking-status-summary strong {
+  font-size: clamp(24px, 2.4vw, 36px);
+}
+
+.tracking-panel .tracking-status-summary span {
+  font-size: 15px;
+}
+
+.tracking-panel .tracking-status-badge {
+  margin-top: 4px;
+}
+
+.tracking-panel .tracking-offers {
+  gap: 12px;
+  padding: 16px;
+  border-radius: 22px;
+}
+
+.tracking-panel .tracking-offers-title {
+  font-size: 19px;
+}
+
+.tracking-panel .tracking-offer-card {
+  padding: 14px;
+}
+
+.tracking-panel .tracking-offer-price {
+  font-size: 18px;
+}
+
+.tracking-panel .tracking-select-button {
+  margin-top: 12px;
+}
+
+@media (max-width: 920px) {
+  .tracking-panel .tracking-status-title {
+    font-size: clamp(32px, 9vw, 46px);
+  }
+}

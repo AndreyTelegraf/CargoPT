@@ -491,6 +491,7 @@ function renderTrackingSuccess(entry) {
   const card = document.createElement("span");
   const visualState = entry.tracking_visual_state || getTrackingVisualState(entry);
   card.className = `tracking-success tracking-status-card tracking-status-${visualState}`;
+  card.classList.toggle("has-offers", (entry.accepted_offers_count || 0) > 0);
 
   const eyebrow = document.createElement("span");
   eyebrow.className = "tracking-status-eyebrow";
@@ -592,13 +593,21 @@ function renderTrackingSuccess(entry) {
 
   const offers = entry.tracking_snapshot?.accepted_offers || [];
   if (offers.length) {
-    const wrap = document.createElement("div");
+    const wrap = document.createElement("section");
     wrap.className = "tracking-offers";
 
+    const offersTitle = document.createElement("strong");
+    offersTitle.className = "tracking-offers-title";
+    offersTitle.textContent = messages.viewOffers;
+
+    const offersList = document.createElement("div");
+    offersList.className = "tracking-offers-list";
+
     offers.forEach((offer) => {
-      wrap.appendChild(renderOfferPreview(offer, entry));
+      offersList.appendChild(renderOfferPreview(offer, entry));
     });
 
+    wrap.append(offersTitle, offersList);
     card.appendChild(wrap);
   }
 
