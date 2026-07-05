@@ -306,55 +306,32 @@ function restoreLatestTrackingEntry() {
 
 
 
-function formatPrice(priceCents) {
-  if (priceCents == null) return "—";
-  return new Intl.NumberFormat(localeKey).format(priceCents / 100) + " €";
+function switchFormToTrackingMode() {
+  form.hidden = true;
+  trackingPanel.hidden = false;
+  form.classList.add("is-tracking-mode");
 }
 
-function renderOfferPreview(offer, entry) {
-  const card = document.createElement("article");
-  card.className = "tracking-offer-card";
+function switchTrackingToNewRequest() {
+  stopTrackingPolling();
 
-  const top = document.createElement("div");
-  top.className = "tracking-offer-top";
+  trackingPanel.hidden = true;
+  trackingPanelBody.textContent = "";
+  form.hidden = false;
+  form.classList.remove("is-tracking-mode");
+  form.reset();
+  localStorage.removeItem(STORAGE_KEY);
 
-  const company = document.createElement("strong");
-  company.textContent = offer.company_name;
+  steps.forEach((item) => {
+    item.hidden = false;
+  });
 
-  const price = document.createElement("strong");
-  price.className = "tracking-offer-price";
-  price.textContent = formatPrice(offer.price_cents);
-
-  top.append(company, price);
-
-  const meta = document.createElement("div");
-  meta.className = "tracking-offer-meta";
-
-  meta.textContent = [
-    offer.vehicle_type,
-    offer.payload_kg ? offer.payload_kg + " kg" : null,
-    offer.volume_m3 ? offer.volume_m3 + " m³" : null
-  ].filter(Boolean).join(" • ");
-
-  card.append(top, meta);
-
-  if (offer.carrier_note) {
-    const note = document.createElement("div");
-    note.className = "tracking-offer-note";
-    note.textContent = offer.carrier_note;
-    card.appendChild(note);
+  if (progress) {
+    progress.hidden = false;
   }
 
-  if (entry.tracking_snapshot?.status === "offered") {
-    const button = document.createElement("button");
-    button.className = "button button-small tracking-select-button";
-    button.type = "button";
-    button.textContent = messages.selectOffer;
-    button.addEventListener("click", () => selectLandingOffer(offer.offer_id, button));
-    card.appendChild(button);
-  }
-
-  return card;
+  setStep(1);
+  renderOpenPedidos();
 }
 
 async function selectLandingOffer(offerId, button) {
@@ -416,214 +393,18 @@ async function sendLandingAssignmentAction(action, button) {
   }
 }
 
-function renderLandingAssignmentActions(entry) {
-  const snapshot = entry.tracking_snapshot || {};
-
-  if (snapshot.status !== "assigned_pending_confirmation") {
-    return null;
-  }
-
-  const actions = document.createElement("div");
-  actions.className = "tracking-assignment-actions";
-
-  if (snapshot.client_confirmation_status === "confirmed") {
-    const note = document.createElement("p");
-    note.className = "tracking-assignment-note";
-    note.textContent = messages.confirmationRecorded;
-    actions.appendChild(note);
-    return actions;
-  }
-
-  const confirmButton = document.createElement("button");
-  confirmButton.className = "button button-small tracking-assignment-confirm";
-  confirmButton.type = "button";
-  confirmButton.textContent = messages.confirmDeal;
-  confirmButton.addEventListener("click", () => sendLandingAssignmentAction("confirm", confirmButton));
-
-  const failButton = document.createElement("button");
-  failButton.className = "button button-small button-secondary tracking-assignment-fail";
-  failButton.type = "button";
-  failButton.textContent = messages.failDeal;
-  failButton.addEventListener("click", () => sendLandingAssignmentAction("fail", failButton));
-
-  actions.append(confirmButton, failButton);
-  return actions;
-}
-
-function absoluteUrl(path) {
-  return new URL(path, window.location.origin).toString();
-}
-
-function switchFormToTrackingMode() {
-  form.hidden = true;
-  trackingPanel.hidden = false;
-  form.classList.add("is-tracking-mode");
-}
-
-function switchTrackingToNewRequest() {
-  stopTrackingPolling();
-
-  trackingPanel.hidden = true;
-  trackingPanelBody.textContent = "";
-  form.hidden = false;
-  form.classList.remove("is-tracking-mode");
-  form.reset();
-  localStorage.removeItem(STORAGE_KEY);
-
-  steps.forEach((item) => {
-    item.hidden = false;
-  });
-
-  if (progress) {
-    progress.hidden = false;
-  }
-
-  setStep(1);
-  renderOpenPedidos();
-}
-
 function renderTrackingSuccess(entry) {
   switchFormToTrackingMode();
   formMessage.textContent = "";
   formMessage.classList.remove("is-success", "is-error");
-  trackingPanelBody.textContent = "";
 
-  const card = document.createElement("span");
-  const visualState = entry.tracking_visual_state || getTrackingVisualState(entry);
-  card.className = `tracking-success tracking-status-card tracking-status-${visualState}`;
-  card.classList.toggle("has-offers", (entry.accepted_offers_count || 0) > 0);
-
-  const eyebrow = document.createElement("span");
-  eyebrow.className = "tracking-status-eyebrow";
-  eyebrow.textContent = messages.trackingEyebrow;
-
-  const title = document.createElement("strong");
-  title.className = "tracking-status-title";
-  title.textContent = messages.trackingTitle;
-
-  const text = document.createElement("span");
-  text.className = "tracking-status-text";
-  text.textContent = messages.trackingText;
-
-  const summary = document.createElement("span");
-  summary.className = "tracking-status-summary";
-
-  const route = document.createElement("strong");
-  route.textContent = entry.route_summary || messages.defaultRoute;
-
-  const status = document.createElement("span");
-  status.textContent = entry.status_label || messages.waitingOffers;
-
-  summary.append(route, status);
-
-  if ((entry.accepted_offers_count || 0) > 0) {
-    const badge = document.createElement("span");
-    badge.className = "tracking-status-badge";
-    badge.textContent = messages.offersAvailable.replace("{count}", String(entry.accepted_offers_count));
-    summary.appendChild(badge);
-  }
-
-  const details = document.createElement("span");
-  details.className = "tracking-status-details";
-
-  const detailsTitle = document.createElement("strong");
-  detailsTitle.className = "tracking-status-details-title";
-  detailsTitle.textContent = messages.detailsTitle;
-  details.appendChild(detailsTitle);
-
-  if (entry.item_summary) {
-    const itemLabel = document.createElement("span");
-    itemLabel.className = "tracking-status-detail-label";
-    itemLabel.textContent = messages.itemsLabel;
-
-    const itemText = document.createElement("span");
-    itemText.className = "tracking-status-detail-text";
-    itemText.textContent = entry.item_summary;
-
-    details.append(itemLabel, itemText);
-  }
-
-  if (entry.comment_summary) {
-    const commentLabel = document.createElement("span");
-    commentLabel.className = "tracking-status-detail-label";
-    commentLabel.textContent = messages.commentLabel;
-
-    const commentText = document.createElement("span");
-    commentText.className = "tracking-status-detail-text";
-    commentText.textContent = entry.comment_summary;
-
-    details.append(commentLabel, commentText);
-  }
-
-  const actions = document.createElement("span");
-  actions.className = "tracking-success-actions";
-
-  const openLink = document.createElement("button");
-  openLink.className = entry.accepted_offers_count > 0 ? "button button-small tracking-status-primary-action" : "button button-small";
-  openLink.type = "button";
-  openLink.textContent = entry.accepted_offers_count > 0 ? messages.viewOffers : messages.viewStatus;
-  openLink.addEventListener("click", () => {
-    const target = entry.accepted_offers_count > 0
-      ? trackingPanelBody.querySelector(".tracking-offers")
-      : trackingPanelBody.querySelector(".tracking-status-summary");
-    target?.scrollIntoView({behavior: "smooth", block: "nearest"});
+  window.CargoPTTrackingWorkspace.render(entry, {
+    container: trackingPanelBody,
+    locale: localeKey,
+    messages,
+    onSelectOffer: selectLandingOffer,
+    onAssignmentAction: sendLandingAssignmentAction
   });
-
-  const copyButton = document.createElement("button");
-  copyButton.className = "button button-small button-secondary";
-  copyButton.type = "button";
-  copyButton.textContent = messages.copyLink;
-  copyButton.addEventListener("click", async () => {
-    await navigator.clipboard.writeText(absoluteUrl(entry.tracking_url));
-    copyButton.textContent = messages.linkCopied;
-  });
-
-  const whatsappLink = document.createElement("a");
-  whatsappLink.className = "button button-small button-secondary";
-  whatsappLink.href = `https://wa.me/?text=${encodeURIComponent(absoluteUrl(entry.tracking_url))}`;
-  whatsappLink.target = "_blank";
-  whatsappLink.rel = "noopener noreferrer";
-  whatsappLink.textContent = messages.shareWhatsApp;
-
-  const newRequestButton = document.createElement("button");
-  newRequestButton.className = "button button-small button-secondary";
-  newRequestButton.type = "button";
-  newRequestButton.dataset.newRequest = "true";
-  newRequestButton.textContent = messages.newRequest;
-
-  actions.append(openLink, copyButton, whatsappLink, newRequestButton);
-  card.append(eyebrow, title, text, summary);
-  if (entry.item_summary || entry.comment_summary) {
-    card.appendChild(details);
-  }
-
-  const offers = entry.tracking_snapshot?.accepted_offers || [];
-  if (offers.length) {
-    const wrap = document.createElement("section");
-    wrap.className = "tracking-offers";
-
-    const offersTitle = document.createElement("strong");
-    offersTitle.className = "tracking-offers-title";
-    offersTitle.textContent = messages.viewOffers;
-
-    const offersList = document.createElement("div");
-    offersList.className = "tracking-offers-list";
-
-    offers.forEach((offer) => {
-      offersList.appendChild(renderOfferPreview(offer, entry));
-    });
-
-    wrap.append(offersTitle, offersList);
-    card.appendChild(wrap);
-  }
-
-  const assignmentActions = renderLandingAssignmentActions(entry);
-  if (assignmentActions) {
-    card.appendChild(assignmentActions);
-  }
-
-  card.appendChild(actions);
-  trackingPanelBody.appendChild(card);
 }
 
 function renderOpenPedidos() {
