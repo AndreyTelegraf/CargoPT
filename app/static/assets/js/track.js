@@ -44,8 +44,47 @@ const messages = {
 };
 
 function formatSidebarPrice(priceCents) {
-  if (priceCents == null) return "—";
+  if (priceCents == null) return "– €";
   return new Intl.NumberFormat("pt-PT").format(priceCents / 100) + " €";
+}
+
+function buildSidebarOfferSummary(offer, index) {
+  if (!offer) return null;
+
+  return {
+    company_name: offer.company_name || `Transportador ${index + 1}`,
+    price_label: formatSidebarPrice(offer.price_cents),
+    vehicle_label: [
+      offer.vehicle_type,
+      offer.payload_kg ? offer.payload_kg + " kg" : null,
+      offer.volume_m3 ? offer.volume_m3 + " m³" : null
+    ].filter(Boolean).join(" • ")
+  };
+}
+
+function withSelectedOfferSummary(entry) {
+  const offers = entry.tracking_snapshot?.accepted_offers || [];
+  const activeOffer = offers.find((offer) => offer.offer_id === activeSidebarOfferId);
+  const activeIndex = offers.findIndex((offer) => offer.offer_id === activeSidebarOfferId);
+
+  return {
+    ...entry,
+    selected_offer_summary: buildSidebarOfferSummary(activeOffer, activeIndex),
+  };
+}
+
+function renderTrackingWorkspace(entry) {
+  activeTrackingEntry = withSelectedOfferSummary(entry);
+
+  window.CargoPTTrackingWorkspace.render(activeTrackingEntry, {
+    container: trackingPanelBody,
+    locale: "pt-PT",
+    hideOffers: true,
+    hideStatusAction: true,
+    hideShareActions: true,
+    onSelectOffer: selectOffer,
+    onAssignmentAction: sendAssignmentAction
+  });
 }
 
 function renderOfferNavigation(entry) {
@@ -86,6 +125,9 @@ function renderOfferNavigation(entry) {
 
     const price = document.createElement("span");
     price.className = "track-offer-nav-price";
+    if (offer.price_cents == null) {
+      price.classList.add("is-placeholder");
+    }
     price.textContent = formatSidebarPrice(offer.price_cents);
 
     top.append(company, price);
@@ -102,11 +144,7 @@ function renderOfferNavigation(entry) {
     status.className = "track-offer-nav-status";
     status.textContent = isChosen ? "Oferta escolhida" : "Oferta disponível";
 
-    const toggleHint = document.createElement("div");
-    toggleHint.className = "track-offer-nav-toggle";
-    toggleHint.textContent = isActive ? "Ocultar detalhes" : "Ver detalhes";
-
-    card.append(top, meta, status, toggleHint);
+    card.append(top, meta, status);
 
     if (isActive) {
       const details = document.createElement("div");
@@ -153,6 +191,8 @@ function renderOfferNavigation(entry) {
       if (event.target.closest("button, a")) return;
       activeSidebarOfferId = isActive ? null : offer.offer_id;
       renderOfferNavigation(entry);
+      renderTrackingWorkspace(entry);
+      trackingPanelBody.querySelector(".tracking-status-selected-offer")?.scrollIntoView({behavior: "smooth", block: "nearest"});
     });
 
     card.addEventListener("keydown", (event) => {
@@ -160,6 +200,8 @@ function renderOfferNavigation(entry) {
       event.preventDefault();
       activeSidebarOfferId = isActive ? null : offer.offer_id;
       renderOfferNavigation(entry);
+      renderTrackingWorkspace(entry);
+      trackingPanelBody.querySelector(".tracking-status-selected-offer")?.scrollIntoView({behavior: "smooth", block: "nearest"});
     });
 
     trackOffersList.appendChild(card);
@@ -228,16 +270,7 @@ async function refresh() {
     errorCard.hidden = true;
 
     renderOfferNavigation(activeTrackingEntry);
-
-    window.CargoPTTrackingWorkspace.render(activeTrackingEntry, {
-      container: trackingPanelBody,
-      locale: "pt-PT",
-      hideOffers: true,
-      hideStatusAction: true,
-      hideShareActions: true,
-      onSelectOffer: selectOffer,
-      onAssignmentAction: sendAssignmentAction
-    });
+    renderTrackingWorkspace(activeTrackingEntry);
   } catch (error) {
     console.error(error);
     errorCard.hidden = false;

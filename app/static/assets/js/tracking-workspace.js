@@ -246,6 +246,27 @@
     }
     card.append(eyebrow, title, text, summary);
 
+    if (entry.selected_offer_summary) {
+      const selectedOffer = document.createElement("span");
+      selectedOffer.className = "tracking-status-selected-offer";
+
+      const selectedLabel = document.createElement("span");
+      selectedLabel.className = "tracking-status-selected-label";
+      selectedLabel.textContent = "Oferta selecionada";
+
+      const selectedCompany = document.createElement("strong");
+      selectedCompany.textContent = entry.selected_offer_summary.company_name || "Transportador";
+
+      const selectedMeta = document.createElement("span");
+      selectedMeta.textContent = [
+        entry.selected_offer_summary.price_label,
+        entry.selected_offer_summary.vehicle_label
+      ].filter(Boolean).join(" · ");
+
+      selectedOffer.append(selectedLabel, selectedCompany, selectedMeta);
+      card.appendChild(selectedOffer);
+    }
+
     if (entry.item_summary || entry.comment_summary) card.appendChild(details);
 
     const offers = entry.tracking_snapshot?.accepted_offers || [];

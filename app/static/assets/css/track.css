@@ -837,14 +837,22 @@ body {
 }
 
 .track-offer-nav-price {
+  display: inline-flex;
+  justify-content: flex-end;
+  min-width: 42px;
   color: #166534;
   font-size: 13px;
   font-weight: 900;
+  line-height: 1.2;
+}
+
+.track-offer-nav-price.is-placeholder {
+  justify-content: center;
+  transform: translateY(-1px);
 }
 
 .track-offer-nav-meta,
 .track-offer-nav-status,
-.track-offer-nav-toggle,
 .track-offer-nav-note,
 .track-offer-nav-details {
   margin: 0;
@@ -869,15 +877,6 @@ body {
   color: #92400e;
 }
 
-.track-offer-nav-toggle {
-  color: #166534;
-  font-size: 12px;
-  font-weight: 900;
-}
-
-.track-offer-nav-card.is-active .track-offer-nav-toggle {
-  color: #92400e;
-}
 
 .track-offer-nav-details {
   display: grid;
@@ -1006,4 +1005,35 @@ body {
     transform: scale(1);
     opacity: 0.9;
   }
+}
+
+/* Track active offer link */
+.tracking-status-selected-offer {
+  display: grid;
+  gap: 4px;
+  margin-top: 4px;
+  padding: 12px 14px;
+  border: 1px solid rgba(22, 101, 52, 0.24);
+  border-radius: 16px;
+  background: rgba(22, 101, 52, 0.06);
+}
+
+.tracking-status-selected-label {
+  color: #166534;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.tracking-status-selected-offer strong {
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.tracking-status-selected-offer span:last-child {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 750;
 }
