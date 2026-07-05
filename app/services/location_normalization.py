@@ -188,9 +188,32 @@ async def resolve_google_maps_url(url: str) -> str:
         return url
 
 
-async def geocode_text_address(address: str) -> tuple[float | None, float | None]:
+def build_geocoding_queries(address: str) -> list[str]:
     clean = address.strip()
     if not clean:
+        return []
+
+    queries = [clean]
+    postal_code = extract_postal_code(clean)
+
+    if postal_code is not None:
+        queries.append(postal_code + " Portugal")
+
+        after_postal_code = clean.split(postal_code, 1)[-1].strip(" ,")
+        if after_postal_code:
+            queries.append(postal_code + " " + after_postal_code + ", Portugal")
+
+    deduped = []
+    for query in queries:
+        if query not in deduped:
+            deduped.append(query)
+
+    return deduped
+
+
+async def geocode_text_address(address: str) -> tuple[float | None, float | None]:
+    queries = build_geocoding_queries(address)
+    if not queries:
         return None, None
 
     try:
@@ -198,30 +221,34 @@ async def geocode_text_address(address: str) -> tuple[float | None, float | None
             timeout=httpx.Timeout(5.0),
             headers={"User-Agent": "CargoPT/1.0 location resolver"},
         ) as client:
-            response = await client.get(
-                "https://nominatim.openstreetmap.org/search",
-                params={
-                    "q": clean,
-                    "format": "jsonv2",
-                    "limit": "1",
-                    "countrycodes": "pt",
-                },
-            )
-            response.raise_for_status()
-            data = response.json()
+            for query in queries:
+                response = await client.get(
+                    "https://nominatim.openstreetmap.org/search",
+                    params={
+                        "q": query,
+                        "format": "jsonv2",
+                        "limit": "1",
+                        "countrycodes": "pt",
+                    },
+                )
+                response.raise_for_status()
+                data = response.json()
+
+                if not data:
+                    continue
+
+                try:
+                    return _valid_coordinates(
+                        float(data[0]["lat"]),
+                        float(data[0]["lon"]),
+                    )
+                except (KeyError, TypeError, ValueError):
+                    continue
+
     except (httpx.HTTPError, ValueError):
         return None, None
 
-    if not data:
-        return None, None
-
-    try:
-        return _valid_coordinates(
-            float(data[0]["lat"]),
-            float(data[0]["lon"]),
-        )
-    except (KeyError, TypeError, ValueError):
-        return None, None
+    return None, None
 
 
 async def geocode_normalized_location(
