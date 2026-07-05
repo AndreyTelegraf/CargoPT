@@ -1,7 +1,25 @@
 
 const trackingPanelBody = document.querySelector("#trackingPanelBody");
 const errorCard = document.querySelector("#errorCard");
+const trackOffersList = document.querySelector("#trackOffersList");
+const copyTrackingLink = document.querySelector("#copyTrackingLink");
+const shareTrackingWhatsApp = document.querySelector("#shareTrackingWhatsApp");
 const token = decodeURIComponent(window.location.pathname.split("/").filter(Boolean).slice(1).join("/"));
+
+function absoluteTrackingUrl() {
+  return new URL(`/track/${token}`, window.location.origin).toString();
+}
+
+if (shareTrackingWhatsApp) {
+  shareTrackingWhatsApp.href = `https://wa.me/?text=${encodeURIComponent(absoluteTrackingUrl())}`;
+}
+
+if (copyTrackingLink) {
+  copyTrackingLink.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(absoluteTrackingUrl());
+    copyTrackingLink.textContent = "Link copiado";
+  });
+}
 
 const POLL_INTERVAL_MS = 5000;
 let activeTrackingEntry = null;
@@ -13,16 +31,90 @@ const messages = {
   statusAssigned: "Transportador escolhido",
   statusCompleted: "Pedido concluído",
   statusCancelled: "Pedido cancelado",
-  statusNoOffers: "Sem propostas disponíveis",
+  statusNoOffers: "Sem ofertas disponíveis",
   statusAwaitingConfirmation: "A aguardar confirmação do transportador",
   statusCarrierConfirmed: "Transportador confirmado",
-  offersAvailable: "{count} proposta(s) disponível(eis)",
+  offersAvailable: "{count} oferta(s) disponível(eis)",
   defaultRoute: "Pedido CargoPT",
-  waitingOffers: "A aguardar propostas",
+  waitingOffers: "A aguardar ofertas",
   retryOffer: "Tentar novamente",
   selectingOffer: "A escolher...",
   sendingAction: "A enviar..."
 };
+
+function formatSidebarPrice(priceCents) {
+  if (priceCents == null) return "—";
+  return new Intl.NumberFormat("pt-PT").format(priceCents / 100) + " €";
+}
+
+function renderOfferNavigation(entry) {
+  if (!trackOffersList) return;
+
+  const offers = entry.tracking_snapshot?.accepted_offers || [];
+  trackOffersList.textContent = "";
+
+  if (!offers.length) {
+    const empty = document.createElement("p");
+    empty.className = "track-offer-nav-empty";
+    empty.textContent = "Ainda não há ofertas disponíveis.";
+    trackOffersList.appendChild(empty);
+    return;
+  }
+
+  offers.forEach((offer) => {
+    const card = document.createElement("article");
+    card.className = "track-offer-nav-card";
+
+    const top = document.createElement("div");
+    top.className = "track-offer-nav-top";
+
+    const company = document.createElement("strong");
+    company.textContent = offer.company_name || "Transportador";
+
+    const price = document.createElement("span");
+    price.textContent = formatSidebarPrice(offer.price_cents);
+
+    top.append(company, price);
+
+    const meta = document.createElement("div");
+    meta.className = "track-offer-nav-meta";
+    meta.textContent = [
+      offer.vehicle_type,
+      offer.payload_kg ? offer.payload_kg + " kg" : null,
+      offer.volume_m3 ? offer.volume_m3 + " m³" : null
+    ].filter(Boolean).join(" • ");
+
+    card.append(top, meta);
+
+    if (offer.carrier_note) {
+      const note = document.createElement("p");
+      note.className = "track-offer-nav-note";
+      note.textContent = offer.carrier_note;
+      card.appendChild(note);
+    }
+
+    if (entry.tracking_snapshot?.status === "offered") {
+      const button = document.createElement("button");
+      button.className = "button button-small track-offer-nav-select";
+      button.type = "button";
+      button.textContent = "Escolher esta oferta";
+      button.addEventListener("click", () => selectOffer(offer.offer_id, button));
+      card.appendChild(button);
+    }
+
+    trackOffersList.appendChild(card);
+  });
+}
+
+
+function getTrackingStatusDotState(snapshot, acceptedOffers) {
+  if (snapshot.status === "completed") return "completed";
+  if (snapshot.status === "cancelled") return "cancelled";
+  if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending" || snapshot.status === "assigned_pending_confirmation") return "pending";
+  if (acceptedOffers.length > 0) return "success";
+  if (["ready_for_matching", "matching", "offered"].includes(snapshot.status)) return "searching";
+  return "searching";
+}
 
 function formatTrackingStatus(snapshot) {
   const acceptedOffers = Array.isArray(snapshot.accepted_offers) ? snapshot.accepted_offers : [];
@@ -48,8 +140,9 @@ function mergeTrackingSnapshot(snapshot) {
     token: snapshot.tracking_token || token,
     tracking_url: `/track/${snapshot.tracking_token || token}`,
     status_label: formatTrackingStatus(snapshot),
+    status_dot_state: getTrackingStatusDotState(snapshot, acceptedOffers),
     accepted_offers_count: acceptedOffers.length,
-    route_summary: messages.defaultRoute,
+    route_summary: snapshot.route_summary || messages.defaultRoute,
     tracking_snapshot: snapshot
   };
 
@@ -74,10 +167,14 @@ async function refresh() {
     activeTrackingEntry = mergeTrackingSnapshot(snapshot);
     errorCard.hidden = true;
 
+    renderOfferNavigation(activeTrackingEntry);
+
     window.CargoPTTrackingWorkspace.render(activeTrackingEntry, {
       container: trackingPanelBody,
       locale: "pt-PT",
-      newRequestHref: "/#request",
+      hideOffers: true,
+      hideStatusAction: true,
+      hideShareActions: true,
       onSelectOffer: selectOffer,
       onAssignmentAction: sendAssignmentAction
     });

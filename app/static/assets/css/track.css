@@ -634,3 +634,315 @@ body {
     width: min(100% - 28px, 760px);
   }
 }
+
+/* Track page as workspace shell */
+.track-workspace-shell {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 3.2fr);
+  align-items: stretch;
+  gap: clamp(18px, 3vw, 36px);
+  padding-top: 54px;
+  padding-bottom: 54px;
+}
+
+.track-workspace-sidebar {
+  min-height: 500px;
+  margin-top: 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background: var(--panel);
+  box-shadow: 0 14px 34px rgba(6, 22, 74, 0.07);
+}
+
+.track-workspace-sidebar .open-pedidos-list {
+  gap: 10px;
+}
+
+.track-workspace-sidebar .open-pedido-card {
+  display: grid;
+  min-height: 0;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+.track-workspace-sidebar .open-pedido-copy strong,
+.track-workspace-sidebar .open-pedido-copy span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track-workspace-shell .tracking-request-card {
+  width: 100%;
+  max-width: none;
+  min-height: 500px;
+  justify-self: stretch;
+}
+
+.track-workspace-shell .tracking-panel .tracking-success-actions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.track-workspace-shell .tracking-panel .tracking-success-actions .button {
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .track-workspace-shell {
+    grid-template-columns: minmax(210px, 0.95fr) minmax(0, 2.4fr);
+  }
+
+  .track-workspace-shell .tracking-panel .tracking-success-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .track-workspace-shell {
+    grid-template-columns: 1fr;
+    padding-top: 28px;
+  }
+
+  .track-workspace-sidebar,
+  .track-workspace-shell .tracking-request-card {
+    min-height: auto;
+  }
+}
+
+/* Track workspace scroll panel and secondary sidebar */
+.track-workspace-shell {
+  align-items: start;
+}
+
+.track-workspace-sidebar {
+  align-self: start;
+  min-height: 0;
+}
+
+.track-workspace-shell .tracking-request-card {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  max-height: calc(100vh - 170px);
+  min-height: min(640px, calc(100vh - 170px));
+  overflow: hidden;
+}
+
+.track-workspace-shell #trackingPanelBody {
+  min-height: 0;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.track-workspace-shell .tracking-success {
+  min-height: 100%;
+}
+
+.track-workspace-shell .tracking-success-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  margin-top: 8px;
+  padding-top: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0), var(--panel) 24%);
+}
+
+.track-workspace-shell .tracking-offers {
+  max-height: none;
+}
+
+@media (max-width: 720px) {
+  .track-workspace-shell .tracking-request-card {
+    max-height: none;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .track-workspace-shell #trackingPanelBody {
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .track-workspace-shell .tracking-success-actions {
+    position: static;
+    background: transparent;
+  }
+}
+
+/* Track offer navigation sidebar */
+.track-offer-nav-list {
+  display: grid;
+  gap: 10px;
+}
+
+.track-offer-nav-empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.track-offer-nav-card {
+  display: grid;
+  gap: 9px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.track-offer-nav-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: start;
+}
+
+.track-offer-nav-top strong,
+.track-offer-nav-top span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track-offer-nav-top strong {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.track-offer-nav-top span {
+  color: #166534;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.track-offer-nav-meta,
+.track-offer-nav-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.track-offer-nav-select {
+  width: 100%;
+  min-height: 38px;
+  margin-top: 2px;
+  padding: 8px 10px;
+  font-size: 13px;
+  background: #166534;
+}
+
+/* Track mobile priority: status first, offers second */
+@media (max-width: 720px) {
+  .track-workspace-shell .tracking-request-card {
+    order: 1;
+  }
+
+  .track-workspace-sidebar {
+    order: 2;
+  }
+}
+
+/* Track header share actions */
+.track-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.track-header-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(245, 249, 255, 0.86);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.track-header-action:hover {
+  background: #eef5ff;
+}
+
+@media (max-width: 640px) {
+  .track-header-actions {
+    gap: 6px;
+  }
+
+  .track-header-actions .private-label {
+    display: none;
+  }
+
+  .track-header-action {
+    min-height: 32px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+}
+
+/* Track status dot */
+.tracking-status-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.tracking-status-dot {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.tracking-status-dot-searching {
+  background: #2563eb;
+  animation: tracking-status-pulse 2.4s ease-in-out infinite;
+}
+
+.tracking-status-dot-success {
+  background: #16a34a;
+  animation: tracking-status-pulse 2s ease-in-out infinite;
+}
+
+.tracking-status-dot-pending {
+  background: #d97706;
+  animation: tracking-status-pulse 1.25s ease-in-out infinite;
+}
+
+.tracking-status-dot-completed {
+  background: #9ca3af;
+}
+
+.tracking-status-dot-cancelled {
+  background: #dc2626;
+}
+
+@keyframes tracking-status-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}

@@ -9,14 +9,14 @@
     linkCopied: "Link copiado",
     shareWhatsApp: "Enviar por WhatsApp",
     newRequest: "← Novo pedido",
-    viewOffers: "Ver propostas",
-    selectOffer: "Escolher este transportador",
+    viewOffers: "Ver ofertas",
+    selectOffer: "Escolher esta oferta",
     confirmDeal: "Negócio confirmado",
     failDeal: "Não chegámos a acordo",
     confirmationRecorded: "A sua confirmação foi registada. Aguardamos a confirmação do transportador.",
-    offersAvailable: "{count} proposta(s) disponível(eis)",
+    offersAvailable: "{count} oferta(s) disponível(eis)",
     defaultRoute: "Pedido CargoPT",
-    waitingOffers: "A aguardar propostas",
+    waitingOffers: "A aguardar ofertas",
     detailsTitle: "Detalhes do pedido",
     itemsLabel: "Itens",
     commentLabel: "Comentário"
@@ -150,7 +150,16 @@
     route.textContent = entry.route_summary || messages.defaultRoute;
 
     const status = document.createElement("span");
-    status.textContent = entry.status_label || messages.waitingOffers;
+    status.className = "tracking-status-line";
+
+    const statusDot = document.createElement("span");
+    statusDot.className = `tracking-status-dot tracking-status-dot-${entry.status_dot_state || visualState || "searching"}`;
+    statusDot.setAttribute("aria-hidden", "true");
+
+    const statusLabel = document.createElement("span");
+    statusLabel.textContent = entry.status_label || messages.waitingOffers;
+
+    status.append(statusDot, statusLabel);
 
     summary.append(route, status);
 
@@ -217,23 +226,30 @@
     whatsappLink.rel = "noopener noreferrer";
     whatsappLink.textContent = messages.shareWhatsApp;
 
-    const newRequest = document.createElement(options.newRequestHref ? "a" : "button");
-    newRequest.className = "button button-small button-secondary";
-    if (options.newRequestHref) {
-      newRequest.href = options.newRequestHref;
-    } else {
-      newRequest.type = "button";
-      newRequest.dataset.newRequest = "true";
+    if (!options.hideStatusAction) {
+      actions.appendChild(statusButton);
     }
-    newRequest.textContent = messages.newRequest;
 
-    actions.append(statusButton, copyButton, whatsappLink, newRequest);
+    if (!options.hideShareActions) {
+      actions.append(copyButton, whatsappLink);
+
+      const newRequest = document.createElement(options.newRequestHref ? "a" : "button");
+      newRequest.className = "button button-small button-secondary";
+      if (options.newRequestHref) {
+        newRequest.href = options.newRequestHref;
+      } else {
+        newRequest.type = "button";
+        newRequest.dataset.newRequest = "true";
+      }
+      newRequest.textContent = messages.newRequest;
+      actions.appendChild(newRequest);
+    }
     card.append(eyebrow, title, text, summary);
 
     if (entry.item_summary || entry.comment_summary) card.appendChild(details);
 
     const offers = entry.tracking_snapshot?.accepted_offers || [];
-    if (offers.length) {
+    if (offers.length && !options.hideOffers) {
       const wrap = document.createElement("section");
       wrap.className = "tracking-offers";
 

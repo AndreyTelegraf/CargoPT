@@ -126,6 +126,7 @@ class TrackingJobResponse(BaseModel):
     job_id: int
     status: str
     tracking_token: str
+    route_summary: str | None
     client_confirmation_status: str | None
     carrier_confirmation_status: str | None
     accepted_offers: list[TrackingOfferResponse]

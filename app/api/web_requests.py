@@ -42,6 +42,29 @@ async def get_session() -> AsyncIterator[AsyncSession]:
             raise
 
 
+
+def _format_tracking_route_summary(job) -> str | None:
+    addresses = list(getattr(job, "addresses", []) or [])
+    pickup = next((a for a in addresses if a.kind == "pickup"), None)
+    delivery = next((a for a in addresses if a.kind == "delivery"), None)
+
+    def label(address) -> str | None:
+        if address is None:
+            return None
+        return address.city or address.normalized_address or address.raw_text
+
+    pickup_label = label(pickup)
+    delivery_label = label(delivery)
+
+    if pickup_label and delivery_label:
+        return f"{pickup_label} → {delivery_label}"
+    if pickup_label:
+        return pickup_label
+    if delivery_label:
+        return delivery_label
+    return None
+
+
 async def get_api_bot() -> AsyncIterator[Bot]:
     bot = Bot(token=settings.bot_token)
     try:
@@ -140,6 +163,7 @@ async def get_tracking_job(
         job_id=job.id,
         status=str(job.status),
         tracking_token=job.tracking_token,
+        route_summary=_format_tracking_route_summary(job),
         client_confirmation_status=job.client_confirmation_status,
         carrier_confirmation_status=job.carrier_confirmation_status,
         accepted_offers=[

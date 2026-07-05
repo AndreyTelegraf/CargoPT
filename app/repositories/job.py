@@ -5,6 +5,7 @@ import secrets
 from sqlalchemy import func
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
 
 from app.models.job import ClientBan
 from app.models.job import Job
@@ -112,7 +113,11 @@ class JobRepository:
         return result.scalar_one_or_none()
 
     async def get_job_by_tracking_token(self, tracking_token: str) -> Job | None:
-        stmt = select(Job).where(Job.tracking_token == tracking_token)
+        stmt = (
+            select(Job)
+            .options(selectinload(Job.addresses))
+            .where(Job.tracking_token == tracking_token)
+        )
         result = await self.session.execute(stmt)
         return result.scalar_one_or_none()
 

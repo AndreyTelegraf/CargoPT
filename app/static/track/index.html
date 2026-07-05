@@ -16,19 +16,20 @@
 <body data-locale="pt" class="tracking-page">
   <header class="site-header">
     <a class="logo" href="/" aria-label="CargoPT">CargoPT</a>
-    <nav class="header-actions" aria-label="Navigation">
-      <span class="private-label">Link privado do pedido</span>
+    <nav class="header-actions track-header-actions" aria-label="Navigation">
+      <button id="copyTrackingLink" class="track-header-action" type="button">Copiar link</button>
+      <a id="shareTrackingWhatsApp" class="track-header-action" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
     </nav>
   </header>
 
   <main id="top">
-    <section class="hero section hero-v2 tracking-hero">
-      <div class="hero-copy tracking-copy">
-        <p class="eyebrow">Estado do pedido</p>
-        <h1>Acompanhe o seu pedido <span>através do link de rastreio</span></h1>
-        <p class="hero-text">Quando houver propostas, nesta mesma página poderá escolher o transportador, sem login e sem instalar nada.</p>
-
-      </div>
+    <section class="section track-workspace-shell">
+      <aside class="open-pedidos hero-workspace track-workspace-sidebar" aria-label="Ofertas recebidas">
+        <p class="open-pedidos-eyebrow">Ofertas</p>
+        <h2 class="open-pedidos-title">Ofertas recebidas</h2>
+        <p class="open-pedidos-intro">Escolha uma oferta para este pedido.</p>
+        <div id="trackOffersList" class="track-offer-nav-list"></div>
+      </aside>
 
       <section id="trackingPanel" class="tracking-panel hero-panel tracking-request-card" aria-label="Cartão de estado do pedido">
         <div id="trackingPanelBody"></div>
