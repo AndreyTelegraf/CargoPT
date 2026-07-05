@@ -10,7 +10,7 @@
   <link rel="icon" type="image/svg+xml" href="/assets/brand/cargopt-icon.svg">
   <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
   <meta name="theme-color" content="#111827">
-  <link rel="stylesheet" href="/assets/css/landing.css?v=process-cards-svg-v2">
+  <link rel="stylesheet" href="/assets/css/landing.css?v=workspace-v4">
   <link rel="stylesheet" href="/assets/css/track.css?v=request-card-surface-v2">
 </head>
 <body data-locale="pt" class="tracking-page">
@@ -30,28 +30,8 @@
 
       </div>
 
-      <section class="request-form hero-form request-card tracking-request-card" aria-label="Cartão de estado do pedido">
-        <section class="timeline-card" aria-label="Progresso do pedido">
-          <ol id="timelineList" class="timeline-list"></ol>
-        </section>
-
-        <section id="stateCard" class="track-card state-card state-card-loading" aria-live="polite">
-          <div class="state-icon" id="stateIcon" aria-hidden="true">⌁</div>
-          <div class="state-copy">
-            <p class="eyebrow" id="stateEyebrow">Estado do pedido</p>
-            <h1 id="statusTitle">A carregar...</h1>
-            <p id="statusText" class="status-text">Estamos a consultar o estado do seu pedido.</p>
-            <p id="lastUpdated" class="last-updated"></p>
-          </div>
-        </section>
-
-        <section id="offersSection" class="offers-section" hidden>
-          <div class="section-heading">
-            <p class="eyebrow">Propostas recebidas</p>
-            <h2>Propostas disponíveis</h2>
-          </div>
-          <div id="offersList" class="offers-list"></div>
-        </section>
+      <section id="trackingPanel" class="tracking-panel hero-panel tracking-request-card" aria-label="Cartão de estado do pedido">
+        <div id="trackingPanelBody"></div>
 
         <section id="errorCard" class="track-card error-card" hidden>
           <p class="eyebrow">Erro</p>
@@ -62,6 +42,7 @@
     </section>
   </main>
 
-  <script src="/assets/js/track.js?v=request-card-surface-v2" defer></script>
+  <script src="/assets/js/tracking-workspace.js?v=shared-v1" defer></script>
+  <script src="/assets/js/track.js?v=thin-v1" defer></script>
 </body>
 </html>
