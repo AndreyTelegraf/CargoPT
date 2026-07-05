@@ -188,6 +188,65 @@ async def resolve_google_maps_url(url: str) -> str:
         return url
 
 
+async def geocode_text_address(address: str) -> tuple[float | None, float | None]:
+    clean = address.strip()
+    if not clean:
+        return None, None
+
+    try:
+        async with httpx.AsyncClient(
+            timeout=httpx.Timeout(5.0),
+            headers={"User-Agent": "CargoPT/1.0 location resolver"},
+        ) as client:
+            response = await client.get(
+                "https://nominatim.openstreetmap.org/search",
+                params={
+                    "q": clean,
+                    "format": "jsonv2",
+                    "limit": "1",
+                    "countrycodes": "pt",
+                },
+            )
+            response.raise_for_status()
+            data = response.json()
+    except (httpx.HTTPError, ValueError):
+        return None, None
+
+    if not data:
+        return None, None
+
+    try:
+        return _valid_coordinates(
+            float(data[0]["lat"]),
+            float(data[0]["lon"]),
+        )
+    except (KeyError, TypeError, ValueError):
+        return None, None
+
+
+async def geocode_normalized_location(
+    normalized: dict[str, str | float | None],
+) -> dict[str, str | float | None]:
+    if normalized["latitude"] is not None and normalized["longitude"] is not None:
+        return normalized
+
+    address = normalized["normalized_address"]
+    if not isinstance(address, str) or not address.strip():
+        return normalized
+
+    if address == normalized["original_google_maps_url"]:
+        return normalized
+
+    latitude, longitude = await geocode_text_address(address)
+    if latitude is None or longitude is None:
+        return normalized
+
+    normalized["latitude"] = latitude
+    normalized["longitude"] = longitude
+    normalized["map_url"] = build_google_maps_coordinate_url(latitude, longitude)
+    return normalized
+
+
 async def normalize_text_location_resolved(raw_text: str) -> dict[str, str | float | None]:
     normalized = normalize_text_location(raw_text)
     original_google_maps_url = normalized["original_google_maps_url"]
@@ -197,7 +256,7 @@ async def normalize_text_location_resolved(raw_text: str) -> dict[str, str | flo
         or normalized["latitude"] is not None
         or normalized["longitude"] is not None
     ):
-        return normalized
+        return await geocode_normalized_location(normalized)
 
     resolved_url = await resolve_google_maps_url(str(original_google_maps_url))
     latitude, longitude = extract_coordinates(resolved_url)
@@ -224,4 +283,4 @@ async def normalize_text_location_resolved(raw_text: str) -> dict[str, str | flo
         normalized["postal_code"] = extract_postal_code(query_address)
         normalized["map_url"] = build_google_maps_search_url(query_address)
 
-    return normalized
+    return await geocode_normalized_location(normalized)
