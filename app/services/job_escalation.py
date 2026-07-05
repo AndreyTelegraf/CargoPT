@@ -58,6 +58,16 @@ async def escalate_job_to_manual_review(
     job_repository,
 ) -> None:
     offers = await job_repository.list_offers_by_job(job.id)
+    has_accepted_offer = any(offer.status == "accepted" for offer in offers)
+
+    if has_accepted_offer:
+        await job_repository.update_job_status(
+            job_id=job.id,
+            status=JobStatus.OFFERED,
+            updated_at=job.updated_at,
+        )
+        return
+
     await job_repository.update_job_status(
         job_id=job.id,
         status=JobStatus.MANUAL_REVIEW_REQUIRED,

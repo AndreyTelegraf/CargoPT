@@ -99,6 +99,7 @@ class JobOfferService:
         if job.status not in {
             JobStatus.MATCHING,
             JobStatus.OFFERED,
+            JobStatus.MANUAL_REVIEW_REQUIRED,
         }:
             raise JobAlreadyAssignedError("job is not accepting offers")
 
