@@ -273,11 +273,12 @@ async def handle_offer_response(callback: CallbackQuery) -> None:
                         offer_service=offer_service,
                         job_repository=job_repository,
                     )
-                    new_offers = await distribution.create_offers_for_job(
+                    distribution_result = await distribution.create_offer_distribution_for_job(
                         job,
                         limit=5,
                         expires_in_minutes=60,
                     )
+                    new_offers = distribution_result.offers
                     if new_offers:
                         await send_job_offers_to_carriers(
                             bot=callback.bot,
@@ -291,6 +292,8 @@ async def handle_offer_response(callback: CallbackQuery) -> None:
                             bot=callback.bot,
                             job=job,
                             job_repository=job_repository,
+                            matching_reason=distribution_result.matching_reason,
+                            matching_regions=distribution_result.matching_regions,
                         )
 
         await session.commit()
@@ -372,11 +375,12 @@ async def handle_offer_decline_reason(callback: CallbackQuery) -> None:
                     offer_service=offer_service,
                     job_repository=job_repository,
                 )
-                new_offers = await distribution.create_offers_for_job(
+                distribution_result = await distribution.create_offer_distribution_for_job(
                     job,
                     limit=5,
                     expires_in_minutes=60,
                 )
+                new_offers = distribution_result.offers
                 if new_offers:
                     await send_job_offers_to_carriers(
                         bot=callback.bot,
@@ -397,6 +401,8 @@ async def handle_offer_decline_reason(callback: CallbackQuery) -> None:
                         bot=callback.bot,
                         job=job,
                         job_repository=job_repository,
+                        matching_reason=distribution_result.matching_reason,
+                        matching_regions=distribution_result.matching_regions,
                     )
 
         await session.commit()
