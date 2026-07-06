@@ -1564,12 +1564,6 @@ grid-column:1/-1;
 }
 
 
-.tracking-panel .tracking-status-details {
-  grid-template-columns: minmax(160px, 0.32fr) minmax(0, 1fr);
-  gap: 8px 18px;
-  padding: 20px;
-  border-radius: var(--radius-lg);
-}
 
 .tracking-panel .tracking-status-details-title {
   grid-column: 1 / -1;
