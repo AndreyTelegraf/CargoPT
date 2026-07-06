@@ -1,4 +1,15 @@
 :root {
+  --shadow-0: none;
+
+  --shadow-1: 0 10px 24px rgba(6, 22, 74, 0.07);
+  --shadow-2: 0 14px 34px rgba(6, 22, 74, 0.10);
+  --shadow-3: 0 16px 34px rgba(17, 24, 39, 0.16);
+
+  --shadow-hover: 0 10px 28px rgba(7, 91, 255, 0.18);
+  --shadow-hover-strong: 0 16px 34px rgba(7, 91, 255, 0.24);
+
+  --shadow-primary: 0 12px 28px var(--primary-shadow);
+
   --bg: #f6f5f1;
   --panel: #ffffff;
   --text: #111318;
@@ -128,7 +139,7 @@ a {
 
 .button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 28px rgba(17, 24, 39, 0.16);
+  box-shadow: var(--shadow-2);
 }
 
 .button:disabled {
@@ -268,11 +279,11 @@ details,
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--panel);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-2);
 }
 
 .card {
-  padding: 28px;
+  padding: var(--space-5);
 }
 
 .card p,
@@ -327,14 +338,14 @@ details p {
 
 .request-form {
   scroll-margin-top: 92px;
-  padding: clamp(26px, 4vw, 40px);
+  padding: var(--space-5);
 }
 
 .hero-form {
   position: relative;
   align-self: center;
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-strong);
+  box-shadow: var(--shadow-3);
 }
 
 .hero-form::before {
@@ -720,7 +731,7 @@ textarea:focus {
   border: 1px solid var(--line);
   border-radius: 18px;
   background: var(--panel);
-  box-shadow: 0 10px 28px rgba(6, 22, 74, 0.06);
+  box-shadow: var(--shadow-2);
 }
 
 .open-pedido-copy {
@@ -820,7 +831,7 @@ details p {
   }
 
   .request-form {
-    padding: 28px;
+    padding: var(--space-5);
   }
 
   legend {
@@ -949,17 +960,17 @@ body {
 .button {
   border-radius: var(--radius-sm);
   background: var(--brand-blue);
-  box-shadow: 0 10px 28px rgba(7, 91, 255, 0.18);
+  box-shadow: var(--shadow-2);
 }
 
 .button:hover {
-  box-shadow: 0 16px 34px rgba(7, 91, 255, 0.24);
+  box-shadow: var(--shadow-2);
 }
 
 .button-secondary {
   background: var(--brand-soft);
   color: var(--brand);
-  box-shadow: none;
+  box-shadow: var(--shadow-0);
 }
 
 .hero-v2 {
@@ -1032,7 +1043,7 @@ body {
   border: 1px solid var(--line);
   border-radius: 20px;
   background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
-  box-shadow: 0 10px 28px rgba(6, 22, 74, 0.06);
+  box-shadow: var(--shadow-2);
   text-align: center;
 }
 
@@ -1080,7 +1091,7 @@ body {
   border: 1px solid var(--line);
   border-radius: 28px;
   background: #fff;
-  box-shadow: var(--shadow-strong);
+  box-shadow: var(--shadow-3);
 }
 
 .request-card::before {
@@ -1268,13 +1279,13 @@ body {
 .header-actions .button-carrier {
   background: #f5f9ff;
   color: #06164a;
-  box-shadow: none;
+  box-shadow: var(--shadow-0);
   border: 1px solid #dfe9fb;
 }
 
 .header-actions .button-carrier:hover {
   background: #eef5ff;
-  box-shadow: 0 10px 24px rgba(6, 22, 74, 0.08);
+  box-shadow: var(--shadow-2);
 }
 
 
@@ -1376,11 +1387,11 @@ grid-column:1/-1;
 
 .hero-workspace {
   margin-top: 0;
-  padding: clamp(24px, 4vw, 34px);
+  padding: var(--space-5);
   border: 1px solid var(--line);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   background: var(--panel);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-2);
 }
 
 .open-pedidos-intro {
@@ -1433,11 +1444,11 @@ grid-column:1/-1;
 
 .tracking-panel {
   position: relative;
-  padding: clamp(26px, 4vw, 40px);
+  padding: var(--space-5);
   border: 1px solid var(--line);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   background: var(--panel);
-  box-shadow: var(--shadow-strong);
+  box-shadow: var(--shadow-2);
 }
 
 .tracking-panel::before {
@@ -1491,9 +1502,9 @@ grid-column:1/-1;
 
 .hero.is-user-workspace .hero-workspace {
   min-height: 560px;
-  padding: 22px;
-  border-radius: 26px;
-  box-shadow: 0 14px 34px rgba(6, 22, 74, 0.07);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
 }
 
 .hero.is-user-workspace .open-pedidos-eyebrow {
@@ -1518,7 +1529,7 @@ grid-column:1/-1;
   gap: 10px;
   padding: 12px;
   border-radius: var(--radius-md);
-  box-shadow: none;
+  box-shadow: var(--shadow-0);
   cursor: pointer;
 }
 
@@ -1556,7 +1567,7 @@ grid-column:1/-1;
 
 /* CargoPT compact right workspace panel */
 .tracking-panel {
-  padding: clamp(22px, 3vw, 34px);
+  padding: var(--space-5);
   min-height: 500px;
 }
 
