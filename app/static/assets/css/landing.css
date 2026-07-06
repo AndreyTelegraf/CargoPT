@@ -6,18 +6,18 @@
   --line: #e3dfd6;
   --brand: #0f172a;
   --brand-soft: #eaf7fb;
-  --accent: #06b6d4;
-  --accent-strong: #0891b2;
-  --accent-soft: #ecfeff;
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --accent-soft: #eff6ff;
 
   --primary: var(--accent);
   --primary-strong: var(--accent-strong);
   --primary-soft: var(--accent-soft);
 
-  --primary-border: rgba(6, 182, 212, 0.30);
-  --primary-border-strong: rgba(6, 182, 212, 0.55);
-  --primary-fill: rgba(236, 254, 255, 0.78);
-  --primary-shadow: rgba(6, 182, 212, 0.18);
+  --primary-border: rgba(37, 99, 235, 0.30);
+  --primary-border-strong: rgba(37, 99, 235, 0.55);
+  --primary-fill: rgba(239, 246, 255, 0.82);
+  --primary-shadow: rgba(37, 99, 235, 0.18);
   --success: #166534;
   --success-soft: rgba(240, 253, 244, 0.86);
   --warning: #d97706;
@@ -933,7 +933,7 @@ details p {
 /* Sprint 1: Hero v2 Card 1 SVG layer */
 :root {
   --brand: #0f172a;
-  --brand-blue: #06b6d4;
+  --brand-blue: #2563eb;
   --brand-soft: #eaf7fb;
   --text: #06164a;
   --muted: #536282;
