@@ -1615,19 +1615,6 @@ grid-column:1/-1;
   max-width: 640px;
 }
 
-.tracking-panel .tracking-status-summary {
-  padding: 18px;
-  border-radius: 22px;
-}
-
-.tracking-panel .tracking-status-summary strong {
-  font-size: clamp(24px, 2.4vw, 36px);
-}
-
-.tracking-panel .tracking-status-summary span {
-  font-size: 15px;
-}
-
 .tracking-panel .tracking-status-badge {
   margin-top: 4px;
 }
