@@ -972,6 +972,7 @@ body {
   font-size: 13px;
   font-weight: 850;
   cursor: pointer;
+  transition: background var(--motion-fast), border-color var(--motion-fast), color var(--motion-fast);
 }
 
 .track-header-action:hover {
