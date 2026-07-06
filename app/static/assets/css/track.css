@@ -870,7 +870,7 @@ body {
   width: fit-content;
   padding: 3px 8px;
   border-radius: var(--radius-pill);
-  background: rgba(22, 101, 52, 0.08);
+  background: var(--primary-fill);
   color: var(--primary);
   font-size: 11px;
   font-weight: 900;
