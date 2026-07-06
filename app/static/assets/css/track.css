@@ -73,28 +73,28 @@ a {
 }
 
 .track-shell {
-  width: min(920px, calc(100% - 36px));
+  width: min(1200px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 28px 0 72px;
+  padding: var(--space-6) 0 calc(var(--space-6) * 2);
 }
 
 .track-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 44px;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 23px;
   font-weight: 900;
   letter-spacing: -0.055em;
 }
 
 .private-label {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 750;
 }
 
