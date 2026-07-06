@@ -1549,10 +1549,6 @@ grid-column:1/-1;
   font-size: 12px;
 }
 
-.tracking-panel .tracking-status-title {
-  max-width: 780px;
-  font-size: clamp(38px, 5vw, 68px);
-}
 
 .tracking-panel .tracking-status-text {
   max-width: 720px;
