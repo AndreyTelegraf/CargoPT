@@ -1548,7 +1548,7 @@ grid-column:1/-1;
 }
 
 .tracking-panel .tracking-success {
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .tracking-panel .tracking-status-title {
@@ -1568,8 +1568,8 @@ grid-column:1/-1;
 }
 
 .tracking-panel .tracking-offers {
-  gap: 12px;
-  padding: 16px;
+  gap: var(--space-3);
+  padding: var(--space-4);
   border-radius: calc(var(--radius-lg) - 2px);
 }
 
@@ -1578,7 +1578,7 @@ grid-column:1/-1;
 }
 
 .tracking-panel .tracking-offer-card {
-  padding: 14px;
+  padding: calc(var(--space-3) + 2px);
 }
 
 .tracking-panel .tracking-offer-price {
@@ -1586,7 +1586,7 @@ grid-column:1/-1;
 }
 
 .tracking-panel .tracking-select-button {
-  margin-top: 12px;
+  margin-top: var(--space-3);
 }
 
 @media (max-width: 920px) {
