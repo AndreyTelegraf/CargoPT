@@ -1563,20 +1563,6 @@ grid-column:1/-1;
   font-size: clamp(17px, 1.5vw, 21px);
 }
 
-.tracking-panel .tracking-status-summary {
-  gap: 8px;
-  padding: 22px;
-  border-radius: var(--radius-lg);
-}
-
-.tracking-panel .tracking-status-summary strong {
-  font-size: clamp(22px, 2.4vw, 34px);
-  line-height: 1.05;
-}
-
-.tracking-panel .tracking-status-summary span {
-  font-size: 16px;
-}
 
 .tracking-panel .tracking-status-details {
   grid-template-columns: minmax(160px, 0.32fr) minmax(0, 1fr);
