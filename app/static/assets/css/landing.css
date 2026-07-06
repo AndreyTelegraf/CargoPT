@@ -479,6 +479,61 @@ textarea:focus {
   font-weight: 650;
 }
 
+/* Track status dot */
+.tracking-status-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.tracking-status-dot {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.tracking-status-dot-searching {
+  background: #2563eb;
+  animation: tracking-status-pulse 2.4s ease-in-out infinite;
+}
+
+.tracking-status-dot-success {
+  background: #16a34a;
+  animation: tracking-status-pulse 2s ease-in-out infinite;
+}
+
+.tracking-status-dot-pending {
+  background: #d97706;
+  animation: tracking-status-pulse 1.25s ease-in-out infinite;
+}
+
+.tracking-status-dot-completed {
+  background: #9ca3af;
+}
+
+.tracking-status-dot-cancelled {
+  background: #dc2626;
+}
+
+@keyframes tracking-status-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}
+
 .tracking-status-summary {
   display: grid;
   gap: 4px;
