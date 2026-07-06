@@ -514,7 +514,7 @@ textarea:focus {
 }
 
 .tracking-status-dot-pending {
-  background: #d97706;
+  background: var(--warning);
   animation: tracking-status-pulse 1.25s ease-in-out infinite;
 }
 
