@@ -9,6 +9,15 @@
   --accent: #06b6d4;
   --accent-strong: #0891b2;
   --accent-soft: #ecfeff;
+
+  --primary: var(--accent);
+  --primary-strong: var(--accent-strong);
+  --primary-soft: var(--accent-soft);
+
+  --primary-border: rgba(6, 182, 212, 0.30);
+  --primary-border-strong: rgba(6, 182, 212, 0.55);
+  --primary-fill: rgba(236, 254, 255, 0.78);
+  --primary-shadow: rgba(6, 182, 212, 0.18);
   --success: #166534;
   --success-soft: rgba(240, 253, 244, 0.86);
   --warning: #d97706;
@@ -600,7 +609,7 @@ textarea:focus {
 }
 
 .tracking-status-primary-action {
-  background: var(--success);
+  background: var(--primary);
 }
 
 .tracking-status-details {
@@ -630,7 +639,7 @@ textarea:focus {
 }
 
 .tracking-status-selected-label {
-  color: var(--success);
+  color: var(--primary);
   font-size: 11px;
   font-weight: 950;
   letter-spacing: 0.075em;
@@ -1302,7 +1311,7 @@ align-items:center;
 
 .tracking-offer-price{
 font-size:20px;
-color:var(--success);
+color:var(--primary);
 }
 
 .tracking-offer-meta{
@@ -1320,7 +1329,7 @@ font-size:14px;
 .tracking-select-button{
 margin-top:14px;
 width:100%;
-background:var(--success);
+background:var(--primary);
 }
 
 .tracking-select-button:disabled{
@@ -1344,7 +1353,7 @@ font-weight:750;
 }
 
 .tracking-assignment-confirm{
-background:var(--success);
+background:var(--primary);
 }
 
 .tracking-assignment-fail{

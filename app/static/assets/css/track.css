@@ -9,6 +9,15 @@
   --accent: #06b6d4;
   --accent-strong: #0891b2;
   --accent-soft: #ecfeff;
+
+  --primary: var(--accent);
+  --primary-strong: var(--accent-strong);
+  --primary-soft: var(--accent-soft);
+
+  --primary-border: rgba(6, 182, 212, 0.30);
+  --primary-border-strong: rgba(6, 182, 212, 0.55);
+  --primary-fill: rgba(236, 254, 255, 0.78);
+  --primary-shadow: rgba(6, 182, 212, 0.18);
   --success: #166534;
   --success-soft: rgba(240, 253, 244, 0.86);
   --warning: #d97706;
@@ -801,9 +810,9 @@ body {
 }
 
 .track-offer-nav-card.is-active {
-  border-color: var(--success-border-strong);
+  border-color: var(--primary-border-strong);
   background: #ffffff;
-  box-shadow: 0 12px 28px var(--success-shadow);
+  box-shadow: 0 12px 28px var(--primary-shadow);
 }
 
 .track-offer-nav-card.is-chosen {
@@ -835,7 +844,7 @@ body {
   display: inline-flex;
   justify-content: flex-end;
   min-width: 42px;
-  color: var(--success);
+  color: var(--primary);
   font-size: 13px;
   font-weight: 900;
   line-height: 1.2;
@@ -862,7 +871,7 @@ body {
   padding: 3px 8px;
   border-radius: var(--radius-pill);
   background: rgba(22, 101, 52, 0.08);
-  color: var(--success);
+  color: var(--primary);
   font-size: 11px;
   font-weight: 900;
 }
