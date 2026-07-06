@@ -448,7 +448,7 @@ textarea:focus {
 }
 
 .form-message.is-success {
-  color: #166534;
+  color: var(--success);
 }
 
 .tracking-success {
@@ -559,7 +559,7 @@ textarea:focus {
 
 .tracking-status-success .tracking-status-summary {
   border-color: rgba(22, 101, 52, 0.28);
-  background: rgba(240, 253, 244, 0.86);
+  background: var(--success-soft);
 }
 
 .tracking-status-pending .tracking-status-summary {
@@ -569,7 +569,7 @@ textarea:focus {
 
 .tracking-status-completed .tracking-status-summary {
   border-color: rgba(22, 101, 52, 0.28);
-  background: rgba(240, 253, 244, 0.86);
+  background: var(--success-soft);
 }
 
 .tracking-status-cancelled .tracking-status-summary {
@@ -583,14 +583,14 @@ textarea:focus {
   margin-top: 8px;
   padding: 6px 10px;
   border-radius: var(--radius-pill);
-  background: #166534;
+  background: var(--success);
   color: #fff !important;
   font-size: 13px;
   font-weight: 900;
 }
 
 .tracking-status-primary-action {
-  background: #166534;
+  background: var(--success);
 }
 
 .tracking-status-details {
@@ -620,7 +620,7 @@ textarea:focus {
 }
 
 .tracking-status-selected-label {
-  color: #166534;
+  color: var(--success);
   font-size: 11px;
   font-weight: 950;
   letter-spacing: 0.075em;
@@ -1292,7 +1292,7 @@ align-items:center;
 
 .tracking-offer-price{
 font-size:20px;
-color:#166534;
+color:var(--success);
 }
 
 .tracking-offer-meta{
@@ -1310,7 +1310,7 @@ font-size:14px;
 .tracking-select-button{
 margin-top:14px;
 width:100%;
-background:#166534;
+background:var(--success);
 }
 
 .tracking-select-button:disabled{
@@ -1334,7 +1334,7 @@ font-weight:750;
 }
 
 .tracking-assignment-confirm{
-background:#166534;
+background:var(--success);
 }
 
 .tracking-assignment-fail{

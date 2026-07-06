@@ -825,7 +825,7 @@ body {
   display: inline-flex;
   justify-content: flex-end;
   min-width: 42px;
-  color: #166534;
+  color: var(--success);
   font-size: 13px;
   font-weight: 900;
   line-height: 1.2;
@@ -852,7 +852,7 @@ body {
   padding: 3px 8px;
   border-radius: var(--radius-pill);
   background: rgba(22, 101, 52, 0.08);
-  color: #166534;
+  color: var(--success);
   font-size: 11px;
   font-weight: 900;
 }
@@ -880,7 +880,7 @@ body {
   margin-top: 2px;
   padding: 8px 10px;
   font-size: 13px;
-  background: #166534;
+  background: var(--success);
 }
 
 /* Track mobile priority: status first, offers second */
