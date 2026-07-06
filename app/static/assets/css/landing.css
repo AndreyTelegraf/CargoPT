@@ -6,6 +6,15 @@
   --line: #e3dfd6;
   --brand: #111827;
   --brand-soft: #f0f1f4;
+  --accent: #0891b2;
+  --accent-strong: #0e7490;
+  --accent-soft: #ecfeff;
+  --success: #166534;
+  --success-soft: rgba(240, 253, 244, 0.86);
+  --warning: #d97706;
+  --warning-soft: rgba(254, 252, 232, 0.72);
+  --danger: #dc2626;
+  --danger-soft: rgba(255, 241, 242, 0.72);
   --surface: #fbfaf7;
   --radius: 24px;
   --shadow: 0 24px 70px rgba(17, 24, 39, 0.08);
