@@ -1574,31 +1574,6 @@ grid-column:1/-1;
   min-width: 0;
 }
 
-.tracking-panel .tracking-offers {
-  display: grid;
-  gap: 14px;
-  margin-top: 0;
-  padding: 20px;
-  border: 1px solid rgba(22, 101, 52, 0.2);
-  border-radius: var(--radius-lg);
-  background: rgba(240, 253, 244, 0.58);
-}
-
-.tracking-panel .tracking-offers-title {
-  font-size: 22px;
-  letter-spacing: -0.035em;
-}
-
-.tracking-panel .tracking-offers-list {
-  display: grid;
-  gap: 12px;
-}
-
-.tracking-panel .tracking-offer-card {
-  padding: 18px;
-  border-radius: 20px;
-  background: #fff;
-}
 
 .tracking-panel .tracking-success-actions {
   display: grid;
