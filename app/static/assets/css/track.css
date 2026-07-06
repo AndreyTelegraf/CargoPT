@@ -691,30 +691,30 @@ body {
 }
 
 .track-workspace-shell .tracking-panel .tracking-success {
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .track-workspace-shell .tracking-panel .tracking-status-summary {
   gap: 6px;
-  padding: 14px;
+  padding: calc(var(--space-3) + 2px);
   border-radius: calc(var(--radius-md) + 2px);
 }
 
 .track-workspace-shell .tracking-panel .tracking-status-badge {
-  margin-top: 2px;
+  margin-top: calc(var(--space-1) / 2);
   padding: 5px 9px;
 }
 
 .track-workspace-shell .tracking-status-selected-offer {
   gap: 3px;
   margin-top: 0;
-  padding: 10px 12px;
+  padding: 10px var(--space-3);
   border-radius: var(--radius-sm);
 }
 
 .track-workspace-shell .tracking-panel .tracking-status-details {
   gap: 5px;
-  padding: 12px;
+  padding: var(--space-3);
   border-radius: var(--radius-md);
 }
 
