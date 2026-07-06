@@ -78,11 +78,12 @@ class RequestSubmissionService:
             job_repository=self.job_repository,
         )
 
-        offers = await distribution.create_offers_for_job(
+        distribution_result = await distribution.create_offer_distribution_for_job(
             job,
             limit=5,
             expires_in_minutes=60,
         )
+        offers = distribution_result.offers
 
         sent_count = await send_job_offers_to_carriers(
             bot=self.bot,
@@ -97,6 +98,8 @@ class RequestSubmissionService:
                 bot=self.bot,
                 job=job,
                 job_repository=self.job_repository,
+                matching_reason=distribution_result.matching_reason,
+                matching_regions=distribution_result.matching_regions,
             )
 
         return RequestSubmissionResult(
