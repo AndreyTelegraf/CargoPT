@@ -523,7 +523,7 @@ textarea:focus {
 }
 
 .tracking-status-dot-cancelled {
-  background: #dc2626;
+  background: var(--danger);
 }
 
 @keyframes tracking-status-pulse {
@@ -574,7 +574,7 @@ textarea:focus {
 
 .tracking-status-cancelled .tracking-status-summary {
   border-color: rgba(159, 18, 57, 0.22);
-  background: rgba(255, 241, 242, 0.72);
+  background: var(--danger-soft);
 }
 
 .tracking-status-badge {
