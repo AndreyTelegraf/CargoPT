@@ -197,63 +197,6 @@ h3 {
 }
 
 
-.select-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  margin-top: 20px;
-  padding: 0 20px;
-  border: 0;
-  border-radius: var(--radius-pill);
-  background: var(--brand);
-  color: #fff;
-  font: inherit;
-  font-weight: 850;
-  cursor: pointer;
-}
-
-.select-button:disabled {
-  opacity: 0.62;
-  cursor: wait;
-}
-
-
-.assignment-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 26px;
-}
-
-.assignment-actions[hidden] {
-  display: none;
-}
-
-.assignment-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 0 20px;
-  border: 0;
-  border-radius: var(--radius-pill);
-  background: var(--brand);
-  color: #fff;
-  font: inherit;
-  font-weight: 850;
-  cursor: pointer;
-}
-
-.assignment-button-secondary {
-  background: var(--brand-soft);
-  color: var(--text);
-}
-
-.assignment-button:disabled {
-  opacity: 0.62;
-  cursor: wait;
-}
 
 .assignment-note {
   margin: 0;
@@ -278,15 +221,6 @@ h3 {
   color: var(--text);
 }
 
-.new-pedido-cta .assignment-button {
-  width: fit-content;
-}
-
-@media (max-width: 680px) {
-  .new-pedido-cta .assignment-button {
-    width: 100%;
-  }
-}
 
 
 .state-card {
