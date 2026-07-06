@@ -1553,10 +1553,6 @@ grid-column:1/-1;
 
 
 
-.tracking-panel .tracking-status-details-title {
-  grid-column: 1 / -1;
-  font-size: 18px;
-}
 
 .tracking-panel .tracking-status-detail-text {
   min-width: 0;
