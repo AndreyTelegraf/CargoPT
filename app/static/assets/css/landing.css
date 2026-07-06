@@ -568,22 +568,22 @@ textarea:focus {
 }
 
 .tracking-status-success .tracking-status-summary {
-  border-color: rgba(22, 101, 52, 0.28);
+  border-color: var(--success-border);
   background: var(--success-soft);
 }
 
 .tracking-status-pending .tracking-status-summary {
-  border-color: rgba(202, 138, 4, 0.24);
-  background: rgba(254, 252, 232, 0.72);
+  border-color: var(--warning-border);
+  background: var(--warning-fill);
 }
 
 .tracking-status-completed .tracking-status-summary {
-  border-color: rgba(22, 101, 52, 0.28);
+  border-color: var(--success-border);
   background: var(--success-soft);
 }
 
 .tracking-status-cancelled .tracking-status-summary {
-  border-color: rgba(159, 18, 57, 0.22);
+  border-color: var(--danger-border);
   background: var(--danger-soft);
 }
 
@@ -626,7 +626,7 @@ textarea:focus {
   padding: 12px 14px;
   border: 1px solid rgba(22, 101, 52, 0.24);
   border-radius: var(--radius-md);
-  background: rgba(22, 101, 52, 0.06);
+  background: var(--success-fill);
 }
 
 .tracking-status-selected-label {

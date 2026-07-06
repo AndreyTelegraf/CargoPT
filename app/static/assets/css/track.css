@@ -801,9 +801,9 @@ body {
 }
 
 .track-offer-nav-card.is-active {
-  border-color: rgba(22, 101, 52, 0.62);
+  border-color: var(--success-border-strong);
   background: #ffffff;
-  box-shadow: 0 12px 28px rgba(22, 101, 52, 0.10);
+  box-shadow: 0 12px 28px var(--success-shadow);
 }
 
 .track-offer-nav-card.is-chosen {
