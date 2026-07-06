@@ -1545,10 +1545,6 @@ grid-column:1/-1;
   min-height: 100%;
 }
 
-.tracking-panel .tracking-success {
-  gap: 22px;
-}
-
 .tracking-panel .tracking-status-eyebrow {
   font-size: 12px;
 }
