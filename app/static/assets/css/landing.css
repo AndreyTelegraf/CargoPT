@@ -10,6 +10,20 @@
   --radius: 24px;
   --shadow: 0 24px 70px rgba(17, 24, 39, 0.08);
   --shadow-strong: 0 34px 90px rgba(17, 24, 39, 0.16);
+  --radius-sm: 14px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --motion-fast: 0.16s ease;
+  --motion-base: 0.18s ease;
+  --motion-slow: 0.22s ease;
 }
 
 * {
