@@ -46,6 +46,9 @@
 
   --danger-border: rgba(159, 18, 57, 0.22);
   --surface: #fbfaf7;
+  --surface-base: var(--panel);
+  --surface-elevated: var(--panel);
+  --surface-floating: var(--panel);
   --radius: 24px;
   --shadow: 0 24px 70px rgba(17, 24, 39, 0.08);
   --shadow-strong: 0 34px 90px rgba(17, 24, 39, 0.16);
@@ -67,6 +70,23 @@
 
 * {
   box-sizing: border-box;
+}
+
+.ui-surface {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface-base);
+  box-shadow: var(--shadow-1);
+}
+
+.ui-surface--elevated {
+  background: var(--surface-elevated);
+  box-shadow: var(--shadow-2);
+}
+
+.ui-surface--floating {
+  background: var(--surface-floating);
+  box-shadow: var(--shadow-3);
 }
 
 html {
