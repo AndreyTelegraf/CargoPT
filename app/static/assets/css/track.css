@@ -15,6 +15,16 @@
   --warning-soft: rgba(254, 252, 232, 0.72);
   --danger: #dc2626;
   --danger-soft: rgba(255, 241, 242, 0.72);
+
+  --success-border: rgba(22, 101, 52, 0.28);
+  --success-border-strong: rgba(22, 101, 52, 0.62);
+  --success-fill: rgba(22, 101, 52, 0.06);
+  --success-shadow: rgba(22, 101, 52, 0.10);
+
+  --warning-border: rgba(202, 138, 4, 0.24);
+  --warning-fill: rgba(254, 252, 232, 0.72);
+
+  --danger-border: rgba(159, 18, 57, 0.22);
   --surface: #fbfaf7;
   --radius: 24px;
   --shadow: 0 24px 70px rgba(17, 24, 39, 0.08);
