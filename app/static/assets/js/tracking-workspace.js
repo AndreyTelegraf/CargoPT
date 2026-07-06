@@ -76,7 +76,7 @@
 
     if (entry.tracking_snapshot?.status === "offered" && options.onSelectOffer) {
       const button = document.createElement("button");
-      button.className = "button button-small tracking-select-button";
+      button.className = "button is-small is-primary tracking-select-button";
       button.type = "button";
       button.textContent = messages.selectOffer;
       button.addEventListener("click", () => options.onSelectOffer(offer.offer_id, button));
@@ -104,13 +104,13 @@
     if (!options.onAssignmentAction) return null;
 
     const confirmButton = document.createElement("button");
-    confirmButton.className = "button button-small tracking-assignment-confirm";
+    confirmButton.className = "button is-small is-primary tracking-assignment-confirm";
     confirmButton.type = "button";
     confirmButton.textContent = messages.confirmDeal;
     confirmButton.addEventListener("click", () => options.onAssignmentAction("confirm", confirmButton));
 
     const failButton = document.createElement("button");
-    failButton.className = "button button-small button-secondary tracking-assignment-fail";
+    failButton.className = "button is-small is-light tracking-assignment-fail";
     failButton.type = "button";
     failButton.textContent = messages.failDeal;
     failButton.addEventListener("click", () => options.onAssignmentAction("fail", failButton));
@@ -202,7 +202,7 @@
     actions.className = "tracking-success-actions";
 
     const statusButton = document.createElement("button");
-    statusButton.className = entry.accepted_offers_count > 0 ? "button button-small tracking-status-primary-action" : "button button-small";
+    statusButton.className = entry.accepted_offers_count > 0 ? "button is-small is-primary tracking-status-primary-action" : "button is-small is-light";
     statusButton.type = "button";
     statusButton.textContent = entry.accepted_offers_count > 0 ? messages.viewOffers : messages.viewStatus;
     statusButton.addEventListener("click", () => {
@@ -211,7 +211,7 @@
     });
 
     const copyButton = document.createElement("button");
-    copyButton.className = "button button-small button-secondary";
+    copyButton.className = "button is-small is-light";
     copyButton.type = "button";
     copyButton.textContent = messages.copyLink;
     copyButton.addEventListener("click", async () => {
@@ -220,7 +220,7 @@
     });
 
     const whatsappLink = document.createElement("a");
-    whatsappLink.className = "button button-small button-secondary";
+    whatsappLink.className = "button is-small is-light";
     whatsappLink.href = `https://wa.me/?text=${encodeURIComponent(absoluteUrl(entry.tracking_url))}`;
     whatsappLink.target = "_blank";
     whatsappLink.rel = "noopener noreferrer";
@@ -234,7 +234,7 @@
       actions.append(copyButton, whatsappLink);
 
       const newRequest = document.createElement(options.newRequestHref ? "a" : "button");
-      newRequest.className = "button button-small button-secondary";
+      newRequest.className = "button is-small is-light";
       if (options.newRequestHref) {
         newRequest.href = options.newRequestHref;
       } else {
