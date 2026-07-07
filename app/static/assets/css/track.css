@@ -543,7 +543,7 @@ h3 {
 .track-workspace-shell .tracking-panel .tracking-status-summary {
   gap: 6px;
   padding: calc(var(--space-3) + 2px);
-  border-radius: calc(var(--radius-md) + 2px);
+  border-radius: var(--status-card-radius);
 }
 
 .track-workspace-shell .tracking-panel .tracking-status-badge {
