@@ -1041,7 +1041,7 @@ details p {
 .request-card .button {
   width: 100%;
   min-height: 64px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--button-radius);
   font-size: 20px;
 }
 
