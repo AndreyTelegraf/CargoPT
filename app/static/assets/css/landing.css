@@ -1345,7 +1345,7 @@ grid-column:1/-1;
 
 .tracking-panel {
   position: relative;
-  padding: clamp(26px, 4vw, 40px);
+  padding: var(--workspace-panel-padding);
   border-radius: var(--surface-radius-panel);
   box-shadow: var(--surface-shadow-panel);
 }
