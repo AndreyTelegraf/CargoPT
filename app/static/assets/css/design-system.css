@@ -70,7 +70,7 @@
   --badge-primary-text: var(--primary);
   --badge-header-bg: rgba(245, 249, 255, 0.86);
   --status-card-padding: 14px;
-  --status-card-radius: 18px;
+  --status-card-radius: var(--radius-md);
   --status-card-bg: var(--surface-muted-bg);
   --status-selected-padding: 12px 14px;
   --status-selected-radius: var(--radius-md);
