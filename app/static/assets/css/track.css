@@ -45,10 +45,10 @@ a {
 
 .track-card,
 .offer-card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--panel);
-  box-shadow: var(--shadow);
+  border: var(--surface-border);
+  border-radius: var(--surface-radius-card);
+  background: var(--surface-panel-bg);
+  box-shadow: var(--surface-shadow-card);
 }
 
 .track-card {
@@ -291,10 +291,10 @@ h3 {
 .timeline-card {
   margin-bottom: 22px;
   padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: var(--shadow);
+  border: var(--surface-border);
+  border-radius: var(--surface-radius-card);
+  background: var(--surface-glass-bg);
+  box-shadow: var(--surface-shadow-card);
 }
 
 .timeline-list {
@@ -354,7 +354,7 @@ h3 {
   height: 34px;
   border: 2px solid var(--line);
   border-radius: 50%;
-  background: var(--panel);
+  background: var(--surface-panel-bg);
   color: var(--muted);
   font-size: 13px;
   font-weight: 900;
@@ -379,7 +379,7 @@ h3 {
 
 .timeline-item.is-current .timeline-marker {
   border-color: var(--brand);
-  background: var(--panel);
+  background: var(--surface-panel-bg);
   color: var(--brand);
 }
 
@@ -424,10 +424,10 @@ body {
 }
 
 .request-card-surface {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--panel);
-  box-shadow: var(--shadow);
+  border: var(--surface-border);
+  border-radius: var(--surface-radius-card);
+  background: var(--surface-panel-bg);
+  box-shadow: var(--surface-shadow-card);
   padding: clamp(22px, 4vw, 42px);
 }
 
@@ -443,12 +443,12 @@ body {
 
 .request-card-surface .timeline-card {
   margin-bottom: 20px;
-  background: var(--surface);
+  background: var(--surface-muted-bg);
 }
 
 .request-card-surface .state-card {
-  border-radius: 26px;
-  background: var(--panel);
+  border-radius: var(--surface-radius-workspace);
+  background: var(--surface-panel-bg);
 }
 
 .request-card-surface .offers-section {
@@ -458,7 +458,7 @@ body {
 }
 
 .request-card-surface .offer-card {
-  background: var(--surface);
+  background: var(--surface-muted-bg);
 }
 
 @media (max-width: 680px) {
@@ -468,7 +468,7 @@ body {
   }
 
   .request-card-surface {
-    border-radius: var(--radius-lg);
+    border-radius: var(--surface-radius-card);
     padding: 18px;
   }
 }
@@ -508,11 +508,11 @@ body {
 
 .tracking-request-card .timeline-card {
   margin-bottom: 18px;
-  background: var(--surface);
+  background: var(--surface-muted-bg);
 }
 
 .tracking-request-card .state-card {
-  border-radius: var(--radius-lg);
+  border-radius: var(--surface-radius-card);
 }
 
 .tracking-request-card .state-card h1 {
@@ -527,7 +527,7 @@ body {
 }
 
 .tracking-request-card .offer-card {
-  background: var(--surface);
+  background: var(--surface-muted-bg);
 }
 
 @media (max-width: 1180px) {
@@ -570,10 +570,10 @@ body {
   min-height: 500px;
   margin-top: 0;
   padding: 22px;
-  border: 1px solid var(--line);
-  border-radius: 26px;
-  background: var(--panel);
-  box-shadow: 0 14px 34px rgba(6, 22, 74, 0.07);
+  border: var(--surface-border);
+  border-radius: var(--surface-radius-workspace);
+  background: var(--surface-panel-bg);
+  box-shadow: var(--surface-shadow-workspace);
 }
 
 .track-workspace-sidebar .open-pedidos-list {
@@ -739,9 +739,9 @@ body {
   display: grid;
   gap: 7px;
   padding: 11px;
-  border: 1px solid var(--line);
+  border: var(--surface-border);
   border-radius: var(--radius-md);
-  background: var(--surface);
+  background: var(--surface-muted-bg);
   cursor: pointer;
   transition: border-color var(--motion-fast), box-shadow var(--motion-fast), background var(--motion-fast), transform var(--motion-fast);
 }
@@ -871,7 +871,7 @@ body {
   justify-content: center;
   min-height: 34px;
   padding: 0 12px;
-  border: 1px solid var(--line);
+  border: var(--surface-border);
   border-radius: var(--radius-pill);
   background: rgba(245, 249, 255, 0.86);
   color: var(--text);
