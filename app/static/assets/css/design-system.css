@@ -42,7 +42,7 @@
   --surface-border: 1px solid var(--line);
   --surface-radius-card: var(--radius-lg);
   --surface-radius-panel: var(--radius-lg);
-  --surface-radius-workspace: 26px;
+  --surface-radius-workspace: var(--radius-lg);
   --surface-shadow-card: var(--shadow);
   --surface-shadow-panel: var(--shadow-strong);
   --surface-shadow-workspace: 0 14px 34px rgba(6, 22, 74, 0.07);
