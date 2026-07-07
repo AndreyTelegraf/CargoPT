@@ -1290,7 +1290,7 @@ grid-column:1/-1;
 
 .hero-workspace {
   margin-top: 0;
-  padding: clamp(24px, 4vw, 34px);
+  padding: var(--workspace-sidebar-padding);
   border-radius: var(--surface-radius-panel);
   box-shadow: var(--surface-shadow-card);
 }
