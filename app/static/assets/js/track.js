@@ -112,7 +112,7 @@ function renderOfferNavigation(entry) {
     const isActive = activeSidebarOfferId === offer.offer_id;
     const isChosen = snapshot.status !== "offered" && offers.length === 1;
     const card = document.createElement("article");
-    card.className = "track-offer-nav-card box";
+    card.className = "track-offer-nav-card";
     card.classList.toggle("is-active", isActive);
     card.classList.toggle("is-chosen", isChosen);
     card.tabIndex = 0;

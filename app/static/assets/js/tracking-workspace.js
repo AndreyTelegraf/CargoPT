@@ -43,7 +43,7 @@
 
   function renderOffer(offer, entry, options, messages) {
     const card = document.createElement("article");
-    card.className = "tracking-offer-card box";
+    card.className = "tracking-offer-card";
 
     const top = document.createElement("div");
     top.className = "tracking-offer-top";
