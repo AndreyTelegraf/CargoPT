@@ -394,7 +394,7 @@ h3 {
   width: 100%;
   max-width: 560px;
   justify-self: stretch;
-  padding: clamp(22px, 3vw, 34px);
+  padding: var(--workspace-panel-padding);
 }
 
 .tracking-request-card .timeline-card,
