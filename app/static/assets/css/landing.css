@@ -1023,7 +1023,7 @@ details p {
 .request-card textarea {
   min-height: 58px;
   border-color: var(--line);
-  border-radius: var(--radius-sm);
+  border-radius: var(--input-radius);
   color: var(--brand);
 }
 
