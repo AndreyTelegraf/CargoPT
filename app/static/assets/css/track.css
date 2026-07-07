@@ -38,7 +38,7 @@ a {
 }
 
 .track-card {
-  padding: clamp(26px, 4vw, 42px);
+  padding: var(--track-card-padding);
 }
 
 .eyebrow {
@@ -110,7 +110,7 @@ h3 {
 }
 
 .offer-card {
-  padding: 24px;
+  padding: var(--offer-card-padding);
 }
 
 .offer-meta {
@@ -130,7 +130,7 @@ h3 {
 .price {
   display: inline-flex;
   align-items: center;
-  min-height: 34px;
+  min-height: var(--price-pill-min-height);
   margin-top: 12px;
   padding: 0 12px;
   border-radius: var(--radius-pill);
@@ -202,8 +202,8 @@ h3 {
 .state-icon {
   display: grid;
   place-items: center;
-  width: clamp(54px, 9vw, 74px);
-  height: clamp(54px, 9vw, 74px);
+  width: var(--state-icon-size);
+  height: var(--state-icon-size);
   border-radius: var(--surface-radius-card);
   background: var(--brand-soft);
   color: var(--brand);
@@ -267,8 +267,8 @@ h3 {
   }
 
   .state-icon {
-    width: 56px;
-    height: 56px;
+    width: var(--state-icon-size-mobile);
+    height: var(--state-icon-size-mobile);
     border-radius: calc(var(--radius-md) + 2px);
   }
 }
@@ -276,7 +276,7 @@ h3 {
 
 .timeline-card {
   margin-bottom: 22px;
-  padding: 18px;
+  padding: var(--card-padding-compact);
   background: var(--surface-glass-bg);
 }
 
@@ -713,9 +713,9 @@ h3 {
 
 .track-offer-nav-select {
   width: 100%;
-  min-height: 36px;
+  min-height: var(--compact-action-height);
   margin-top: calc(var(--space-1) / 2);
-  padding: 8px 10px;
+  padding: var(--compact-action-padding);
   font-size: 13px;
   background: var(--success);
 }

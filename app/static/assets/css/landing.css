@@ -357,7 +357,7 @@ input,
 select,
 textarea {
   width: 100%;
-  min-height: 50px;
+  min-height: var(--input-min-height);
   padding: var(--input-padding);
   border: var(--surface-border);
   border-radius: var(--input-radius);
@@ -367,7 +367,7 @@ textarea {
 }
 
 textarea {
-  min-height: 96px;
+  min-height: var(--textarea-min-height);
   resize: vertical;
 }
 
@@ -768,11 +768,11 @@ details p {
   input,
   select,
   textarea {
-    min-height: 47px;
+    min-height: var(--input-min-height-mobile);
   }
 
   textarea {
-    min-height: 84px;
+    min-height: var(--textarea-min-height-mobile);
   }
 }
 
@@ -1021,7 +1021,7 @@ details p {
 .request-card input,
 .request-card select,
 .request-card textarea {
-  min-height: 58px;
+  min-height: var(--request-input-min-height);
   border-color: var(--line);
   border-radius: var(--input-radius);
   color: var(--brand);
@@ -1035,12 +1035,12 @@ details p {
 }
 
 .request-card textarea {
-  min-height: 116px;
+  min-height: var(--request-textarea-min-height);
 }
 
 .request-card .button {
   width: 100%;
-  min-height: 64px;
+  min-height: calc(var(--button-height) + var(--space-3));
   border-radius: var(--button-radius);
   font-size: 20px;
 }
@@ -1434,8 +1434,8 @@ grid-column:1/-1;
 
 .hero.is-user-workspace .open-pedido-card .button {
   width: 100%;
-  min-height: 36px;
-  padding: 8px 10px;
+  min-height: var(--compact-action-height);
+  padding: var(--compact-action-padding);
   font-size: 13px;
 }
 
@@ -1459,8 +1459,8 @@ grid-column:1/-1;
 }
 
 .hero.is-user-workspace .hero-workspace-new-request {
-  min-height: 42px;
-  padding: 10px 12px;
+  min-height: var(--workspace-action-height);
+  padding: var(--workspace-action-padding);
   font-size: 14px;
 }
 
@@ -1505,7 +1505,7 @@ grid-column:1/-1;
 }
 
 .tracking-panel .tracking-offer-card {
-  padding: calc(var(--space-3) + 2px);
+  padding: var(--status-card-padding);
 }
 
 .tracking-panel .tracking-offer-price {
