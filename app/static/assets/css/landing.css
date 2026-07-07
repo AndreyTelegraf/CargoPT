@@ -1336,8 +1336,8 @@ grid-column:1/-1;
 }
 
 .open-pedido-card.is-active {
-  border-color: rgba(7, 91, 255, 0.34);
-  background: rgba(245, 249, 255, 0.92);
+  border-color: var(--primary-border);
+  background: var(--primary-fill);
 }
 
 .open-pedido-card .button {
