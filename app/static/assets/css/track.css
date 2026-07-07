@@ -218,7 +218,7 @@ h3 {
   place-items: center;
   width: clamp(54px, 9vw, 74px);
   height: clamp(54px, 9vw, 74px);
-  border-radius: 22px;
+  border-radius: var(--surface-radius-card);
   background: var(--brand-soft);
   color: var(--brand);
   font-size: clamp(26px, 5vw, 38px);
@@ -353,7 +353,7 @@ h3 {
   width: 34px;
   height: 34px;
   border: 2px solid var(--line);
-  border-radius: 50%;
+  border-radius: var(--radius-pill);
   background: var(--surface-panel-bg);
   color: var(--muted);
   font-size: 13px;
