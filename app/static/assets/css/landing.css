@@ -221,9 +221,9 @@ details p {
   width: 38px;
   height: 38px;
   margin-bottom: 24px;
-  border-radius: 50%;
+  border-radius: var(--radius-pill);
   background: var(--brand);
-  color: #fff;
+  color: var(--button-primary-text);
   font-weight: 850;
 }
 
