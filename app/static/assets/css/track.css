@@ -103,11 +103,11 @@ a {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--panel);
-  box-shadow: var(--shadow-2);
+  box-shadow: var(--shadow);
 }
 
 .track-card {
-  padding: var(--space-5);
+  padding: clamp(26px, 4vw, 42px);
 }
 
 .eyebrow {
@@ -179,7 +179,7 @@ h3 {
 }
 
 .offer-card {
-  padding: var(--space-5);
+  padding: 24px;
 }
 
 .offer-meta {
@@ -349,7 +349,7 @@ h3 {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.72);
-  box-shadow: var(--shadow-2);
+  box-shadow: var(--shadow);
 }
 
 .timeline-list {
@@ -482,8 +482,8 @@ body {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--panel);
-  box-shadow: var(--shadow-2);
-  padding: var(--space-5);
+  box-shadow: var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
 }
 
 .request-card-surface .track-header {
@@ -493,7 +493,7 @@ body {
 .request-card-surface .timeline-card,
 .request-card-surface .track-card,
 .request-card-surface .offer-card {
-  box-shadow: var(--shadow-2);
+  box-shadow: none;
 }
 
 .request-card-surface .timeline-card {
@@ -513,7 +513,7 @@ body {
 }
 
 .request-card-surface .offer-card {
-  background: var(--panel);
+  background: var(--surface);
 }
 
 @media (max-width: 680px) {
@@ -524,7 +524,7 @@ body {
 
   .request-card-surface {
     border-radius: var(--radius-lg);
-    padding: var(--space-5);
+    padding: 18px;
   }
 }
 
@@ -552,13 +552,13 @@ body {
   width: 100%;
   max-width: 560px;
   justify-self: stretch;
-  padding: var(--space-5);
+  padding: clamp(22px, 3vw, 34px);
 }
 
 .tracking-request-card .timeline-card,
 .tracking-request-card .track-card,
 .tracking-request-card .offer-card {
-  box-shadow: var(--shadow-2);
+  box-shadow: none;
 }
 
 .tracking-request-card .timeline-card {
@@ -582,7 +582,7 @@ body {
 }
 
 .tracking-request-card .offer-card {
-  background: var(--panel);
+  background: var(--surface);
 }
 
 @media (max-width: 1180px) {
@@ -628,7 +628,7 @@ body {
   border: 1px solid var(--line);
   border-radius: 26px;
   background: var(--panel);
-  box-shadow: var(--shadow-2);
+  box-shadow: 0 14px 34px rgba(6, 22, 74, 0.07);
 }
 
 .track-workspace-sidebar .open-pedidos-list {
@@ -641,7 +641,7 @@ body {
   gap: 10px;
   padding: 12px;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-0);
+  box-shadow: none;
 }
 
 .track-workspace-sidebar .open-pedido-copy strong,
@@ -773,7 +773,7 @@ body {
 
   .track-workspace-shell .tracking-success-actions {
     position: static;
-    background: var(--panel);
+    background: transparent;
   }
 }
 
@@ -805,7 +805,7 @@ body {
 .track-offer-nav-card:focus-visible {
   border-color: rgba(22, 101, 52, 0.38);
   background: #ffffff;
-  box-shadow: var(--shadow-2);
+  box-shadow: 0 10px 24px rgba(6, 22, 74, 0.07);
   outline: none;
 }
 
