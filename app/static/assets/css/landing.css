@@ -754,7 +754,7 @@ details p {
   }
 
   .request-form {
-    padding: 28px;
+    padding: var(--workspace-panel-padding);
   }
 
   legend {
