@@ -58,21 +58,21 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 52px;
-  padding: 0 24px;
+  min-height: var(--button-height);
+  padding: 0 var(--button-padding-x);
   border: 0;
-  border-radius: var(--radius-pill);
-  background: var(--brand);
-  color: #fff;
+  border-radius: var(--button-radius);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
   font: inherit;
-  font-weight: 800;
+  font-weight: var(--button-font-weight);
   cursor: pointer;
-  transition: all var(--motion-base);
+  transition: var(--button-transition);
 }
 
 .button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 28px rgba(17, 24, 39, 0.16);
+  box-shadow: var(--button-hover-shadow);
 }
 
 .button:disabled {
@@ -81,14 +81,14 @@ a {
 }
 
 .button-small {
-  min-height: 40px;
-  padding: 0 16px;
+  min-height: var(--button-height-small);
+  padding: 0 var(--button-padding-x-small);
   font-size: 14px;
 }
 
 .button-secondary {
-  background: var(--brand-soft);
-  color: var(--text);
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
 }
 
 .section {
