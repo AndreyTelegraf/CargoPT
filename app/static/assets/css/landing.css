@@ -1208,15 +1208,15 @@ body {
 }
 
 .header-actions .button-carrier {
-  background: #f5f9ff;
-  color: #06164a;
+  background: var(--primary-fill);
+  color: var(--brand);
   box-shadow: none;
-  border: 1px solid #dfe9fb;
+  border: var(--surface-border);
 }
 
 .header-actions .button-carrier:hover {
-  background: #eef5ff;
-  box-shadow: 0 10px 24px rgba(6, 22, 74, 0.08);
+  background: var(--primary-soft);
+  box-shadow: var(--nav-card-hover-shadow);
 }
 
 
