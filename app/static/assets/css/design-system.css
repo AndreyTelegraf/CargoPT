@@ -12,7 +12,6 @@
   --accent-soft: #eff6ff;
 
   --primary: var(--accent);
-  --primary-strong: var(--accent-strong);
   --primary-soft: var(--accent-soft);
 
   --primary-border: rgba(37, 99, 235, 0.30);
@@ -27,9 +26,7 @@
   --danger-soft: rgba(255, 241, 242, 0.72);
 
   --success-border: rgba(22, 101, 52, 0.28);
-  --success-border-strong: rgba(22, 101, 52, 0.62);
   --success-fill: rgba(22, 101, 52, 0.06);
-  --success-shadow: rgba(22, 101, 52, 0.10);
 
   --warning-border: rgba(202, 138, 4, 0.24);
   --warning-fill: rgba(254, 252, 232, 0.72);
@@ -46,7 +43,6 @@
   --surface-radius-card: var(--radius-lg);
   --surface-radius-panel: var(--radius-xl);
   --surface-radius-workspace: 26px;
-  --surface-radius-inner: var(--radius-md);
   --surface-shadow-card: var(--shadow);
   --surface-shadow-panel: var(--shadow-strong);
   --surface-shadow-workspace: 0 14px 34px rgba(6, 22, 74, 0.07);
@@ -104,10 +100,8 @@
   --radius-xl: 32px;
   --radius-pill: 999px;
   --space-1: 4px;
-  --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
-  --space-5: 24px;
   --space-6: 32px;
   --motion-fast: 0.16s ease;
   --motion-base: 0.18s ease;
