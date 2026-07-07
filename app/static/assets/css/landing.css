@@ -1202,7 +1202,7 @@ margin-top:6px;
 padding:16px;
 border:1px solid var(--line);
 border-radius: var(--surface-radius-card);
-background:var(--panel);
+background: var(--surface-panel-bg);
 }
 
 .tracking-offer-top{
