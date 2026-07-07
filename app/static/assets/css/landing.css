@@ -261,7 +261,7 @@ details p {
 
 .request-form {
   scroll-margin-top: 92px;
-  padding: clamp(26px, 4vw, 40px);
+  padding: var(--workspace-panel-padding);
 }
 
 .hero-form {
