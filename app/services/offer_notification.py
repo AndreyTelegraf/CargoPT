@@ -65,6 +65,7 @@ def build_offer_text(job, items, pickup, dropoff) -> str:
         "<b>Груз</b>\n"
         f"{_format_items(items)}\n\n"
         "<b>Параметры</b>\n"
+        f"Объём: {_format_value(job.estimated_volume_m3, ' м³')}\n"
         f"Грузчики: {_format_value(job.required_loaders, '')}\n\n"
         "<b>Комментарий</b>\n"
         f"{_safe(job.comment or 'нет')}\n\n"

@@ -37,9 +37,9 @@ payload = build_offer_text(job, [item], pickup, dropoff)
 assert "\\n" not in payload
 assert "<b>Новая заявка #9</b>" in payload
 assert "<b>Груз</b>\nдиван, коробки, стиральная машина" in payload
+assert "Объём: 3.0 м³" in payload
 assert "Грузчики: 2" in payload
 assert "Вес:" not in payload
-assert "Объём:" not in payload
 assert "Гидроборт:" not in payload
 assert "Кран:" not in payload
 assert "Подъём через окно:" not in payload

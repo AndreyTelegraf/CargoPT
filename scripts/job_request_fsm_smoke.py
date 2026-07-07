@@ -15,6 +15,7 @@ assert JobRequestStates.pickup_details
 assert JobRequestStates.dropoff_address
 assert JobRequestStates.dropoff_details
 assert JobRequestStates.item_description
+assert JobRequestStates.estimated_volume_m3
 assert JobRequestStates.required_loaders
 assert JobRequestStates.contact_phone
 assert JobRequestStates.contact_whatsapp
