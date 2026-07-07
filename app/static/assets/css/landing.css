@@ -1177,14 +1177,16 @@ details p {
     }
 }
 
-.header-actions .button-carrier {
+.header-actions .button-carrier,
+.header-actions .button-header-action {
   background: var(--primary-fill);
   color: var(--brand);
   box-shadow: none;
   border: var(--surface-border);
 }
 
-.header-actions .button-carrier:hover {
+.header-actions .button-carrier:hover,
+.header-actions .button-header-action:hover {
   background: var(--primary-soft);
   box-shadow: var(--nav-card-hover-shadow);
 }
