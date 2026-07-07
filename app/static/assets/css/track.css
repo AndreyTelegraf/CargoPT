@@ -277,10 +277,7 @@ h3 {
 .timeline-card {
   margin-bottom: 22px;
   padding: 18px;
-  border: var(--surface-border);
-  border-radius: var(--surface-radius-card);
   background: var(--surface-glass-bg);
-  box-shadow: var(--surface-shadow-card);
 }
 
 .timeline-list {

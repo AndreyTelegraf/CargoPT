@@ -117,7 +117,8 @@
 details,
 .final-cta,
 .track-card,
-.offer-card {
+.offer-card,
+.timeline-card {
   border: var(--surface-border);
   border-radius: var(--surface-radius-card);
   background: var(--surface-panel-bg);
