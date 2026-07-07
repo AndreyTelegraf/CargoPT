@@ -1,5 +1,4 @@
 import json
-import logging
 from asyncio import Lock
 from pathlib import Path
 from typing import Any
@@ -19,8 +18,12 @@ SELF_AD_TARGETS = {
     ("proflistpt", 8490),
 }
 
+SELF_AD_TARGET_EVERY_N = {
+    "baraholka_pt:429": 20,
+    "proflistpt:8490": 9,
+}
+
 _lock = Lock()
-logger = logging.getLogger(__name__)
 
 
 def _state_path() -> Path:
@@ -102,14 +105,8 @@ async def process_self_ad_message(message: Any) -> bool:
         counts = _load_counts()
         count = counts.get(target_key, 0) + 1
         counts[target_key] = count
-        should_post = count % settings.self_ad_every_n == 0
-        logger.info(
-            "SELF_AD_COUNT target=%s count=%s every_n=%s should_post=%s",
-            target_key,
-            count,
-            settings.self_ad_every_n,
-            should_post,
-        )
+        every_n = SELF_AD_TARGET_EVERY_N.get(target_key, settings.self_ad_every_n)
+        should_post = count % every_n == 0
         _save_counts(counts)
 
     if should_post:
