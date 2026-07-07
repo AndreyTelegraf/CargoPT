@@ -277,7 +277,7 @@ details p {
   inset: -1px;
   z-index: -1;
   border-radius: calc(var(--radius-xl) + 2px);
-  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(17,24,39,0.12));
+  background: var(--surface-panel-glow);
 }
 
 .progress {
@@ -1384,7 +1384,7 @@ grid-column:1/-1;
   inset: -1px;
   z-index: -1;
   border-radius: calc(var(--radius-xl) + 2px);
-  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(17,24,39,0.12));
+  background: var(--surface-panel-glow);
 }
 
 .tracking-panel[hidden],
