@@ -41,7 +41,7 @@
   --surface-glass-bg: rgba(255, 255, 255, 0.72);
   --surface-border: 1px solid var(--line);
   --surface-radius-card: var(--radius-lg);
-  --surface-radius-panel: var(--radius-xl);
+  --surface-radius-panel: var(--radius-lg);
   --surface-radius-workspace: 26px;
   --surface-shadow-card: var(--shadow);
   --surface-shadow-panel: var(--shadow-strong);
