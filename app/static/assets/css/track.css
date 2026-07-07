@@ -457,7 +457,7 @@ h3 {
   display: grid;
   min-height: 0;
   gap: 10px;
-  padding: 12px;
+  padding: var(--space-3);
   border-radius: var(--radius-md);
   box-shadow: none;
 }
