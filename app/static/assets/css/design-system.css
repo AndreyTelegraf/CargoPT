@@ -90,6 +90,12 @@
   --input-bg: #fff;
   --input-text: var(--text);
   --input-focus-outline: 3px solid rgba(17, 24, 39, 0.12);
+  --workspace-grid-gap: clamp(18px, 3vw, 36px);
+  --workspace-panel-min-height: 500px;
+  --workspace-panel-padding: clamp(22px, 3vw, 34px);
+  --workspace-sidebar-padding: 22px;
+  --request-card-radius: 28px;
+  --request-card-bg: #fff;
   --radius-sm: 14px;
   --radius-md: 16px;
   --radius-lg: 24px;

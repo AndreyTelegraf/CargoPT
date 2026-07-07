@@ -1022,8 +1022,8 @@ body {
 .request-card {
   align-self: stretch;
   border: var(--surface-border);
-  border-radius: 28px;
-  background: #fff;
+  border-radius: var(--request-card-radius);
+  background: var(--request-card-bg);
   box-shadow: var(--surface-shadow-panel);
 }
 
@@ -1426,7 +1426,7 @@ grid-column:1/-1;
 /* CargoPT workspace dominance: secondary list, primary status/offers panel */
 .hero.is-user-workspace {
   grid-template-columns: minmax(220px, 0.8fr) minmax(0, 3.2fr);
-  gap: clamp(18px, 3vw, 36px);
+  gap: var(--workspace-grid-gap);
 }
 
 .hero.is-user-workspace .hero-copy {
@@ -1500,12 +1500,12 @@ grid-column:1/-1;
 
 /* CargoPT compact right workspace panel */
 .tracking-panel {
-  padding: clamp(22px, 3vw, 34px);
-  min-height: 500px;
+  padding: var(--workspace-panel-padding);
+  min-height: var(--workspace-panel-min-height);
 }
 
 .hero.is-user-workspace .hero-workspace {
-  min-height: 500px;
+  min-height: var(--workspace-panel-min-height);
 }
 
 .tracking-panel .tracking-success {

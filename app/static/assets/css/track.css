@@ -561,15 +561,15 @@ body {
   display: grid;
   grid-template-columns: minmax(220px, 0.8fr) minmax(0, 3.2fr);
   align-items: stretch;
-  gap: clamp(18px, 3vw, 36px);
+  gap: var(--workspace-grid-gap);
   padding-top: 54px;
   padding-bottom: 54px;
 }
 
 .track-workspace-sidebar {
-  min-height: 500px;
+  min-height: var(--workspace-panel-min-height);
   margin-top: 0;
-  padding: 22px;
+  padding: var(--workspace-sidebar-padding);
   border: var(--surface-border);
   border-radius: var(--surface-radius-workspace);
   background: var(--surface-panel-bg);
@@ -599,7 +599,7 @@ body {
 .track-workspace-shell .tracking-request-card {
   width: 100%;
   max-width: none;
-  min-height: 500px;
+  min-height: var(--workspace-panel-min-height);
   justify-self: stretch;
 }
 
