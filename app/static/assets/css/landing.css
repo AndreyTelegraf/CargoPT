@@ -406,7 +406,7 @@ textarea:focus {
 
 .tracking-success {
   display: grid;
-  gap: 14px;
+  gap: var(--space-4);
 }
 
 .tracking-success strong {
@@ -498,7 +498,7 @@ textarea:focus {
 
 .tracking-status-summary {
   display: grid;
-  gap: 4px;
+  gap: var(--space-1);
   padding: var(--status-card-padding);
   border: var(--surface-border);
   border-radius: var(--status-card-radius);
@@ -533,8 +533,8 @@ textarea:focus {
 .tracking-status-badge {
   display: inline-flex;
   width: fit-content;
-  margin-top: 8px;
-  padding: 6px 10px;
+  margin-top: var(--space-1);
+  padding: 5px 9px;
   border-radius: var(--badge-radius);
   background: var(--badge-success-bg);
   color: var(--badge-success-text) !important;
@@ -548,8 +548,8 @@ textarea:focus {
 
 .tracking-status-details {
   display: grid;
-  gap: 6px;
-  padding: 14px;
+  gap: var(--space-1);
+  padding: var(--status-card-padding);
   border: var(--surface-border);
   border-radius: var(--status-card-radius);
   background: var(--surface-muted-bg);
@@ -564,8 +564,8 @@ textarea:focus {
 /* Track active offer link */
 .tracking-status-selected-offer {
   display: grid;
-  gap: 4px;
-  margin-top: 4px;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
   padding: var(--status-selected-padding);
   border: var(--status-selected-border);
   border-radius: var(--status-selected-radius);
@@ -649,7 +649,7 @@ textarea:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: var(--space-3);
   padding: var(--info-card-padding);
   border: var(--surface-border);
   border-radius: var(--info-card-radius);
@@ -659,7 +659,7 @@ textarea:focus {
 
 .open-pedido-copy {
   display: grid;
-  gap: 4px;
+  gap: var(--space-1);
 }
 
 .open-pedido-copy strong {
@@ -940,7 +940,7 @@ details p {
   display: grid;
   grid-template-rows: 132px auto auto;
   min-height: 236px;
-  padding: 12px 12px 16px;
+  padding: var(--space-3) var(--space-3) var(--space-4);
   border: var(--surface-border);
   border-radius: var(--surface-radius-card);
   background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
@@ -966,7 +966,7 @@ details p {
 }
 
 .process-card-svg h3 {
-  margin: 6px 0 7px;
+  margin: var(--space-1) 0 var(--space-1);
   color: var(--brand);
   font-size: 17px;
   font-weight: 900;
@@ -1194,12 +1194,12 @@ details p {
 
 .tracking-offers{
 display:grid;
-gap:12px;
-margin-top:6px;
+gap: var(--space-3);
+margin-top: var(--space-1);
 }
 
 .tracking-offer-card{
-padding:16px;
+padding: var(--space-4);
 border:1px solid var(--line);
 border-radius: var(--surface-radius-card);
 background: var(--surface-panel-bg);
@@ -1208,7 +1208,7 @@ background: var(--surface-panel-bg);
 .tracking-offer-top{
 display:flex;
 justify-content:space-between;
-gap:16px;
+gap: var(--space-4);
 align-items:center;
 }
 
@@ -1218,19 +1218,19 @@ color:var(--primary);
 }
 
 .tracking-offer-meta{
-margin-top:8px;
+margin-top: var(--space-1);
 color:var(--muted);
 font-size:14px;
 }
 
 .tracking-offer-note{
-margin-top:10px;
+margin-top: var(--space-3);
 font-size:14px;
 }
 
 
 .tracking-select-button{
-margin-top:14px;
+margin-top: var(--space-3);
 width:100%;
 background:var(--primary);
 }
@@ -1242,8 +1242,8 @@ opacity:.72;
 
 .tracking-assignment-actions{
 display:grid;
-gap:10px;
-padding:14px;
+gap: var(--space-3);
+padding: var(--status-card-padding);
 border: 1px solid var(--warning-border);
 border-radius: var(--status-card-radius);
 background: var(--warning-fill);
@@ -1419,14 +1419,14 @@ grid-column:1/-1;
 }
 
 .hero.is-user-workspace .open-pedidos-list {
-  gap: 10px;
+  gap: var(--space-3);
 }
 
 .hero.is-user-workspace .open-pedido-card {
   display: grid;
   min-height: 0;
-  gap: 10px;
-  padding: 12px;
+  gap: var(--space-3);
+  padding: var(--space-3);
   border-radius: var(--radius-md);
   box-shadow: none;
   cursor: pointer;

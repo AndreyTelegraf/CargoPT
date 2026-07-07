@@ -450,13 +450,13 @@ h3 {
 }
 
 .track-workspace-sidebar .open-pedidos-list {
-  gap: 10px;
+  gap: var(--space-3);
 }
 
 .track-workspace-sidebar .open-pedido-card {
   display: grid;
   min-height: 0;
-  gap: 10px;
+  gap: var(--space-3);
   padding: var(--space-3);
   border-radius: var(--radius-md);
   box-shadow: none;
@@ -541,8 +541,8 @@ h3 {
 }
 
 .track-workspace-shell .tracking-panel .tracking-status-summary {
-  gap: 6px;
-  padding: calc(var(--space-3) + 2px);
+  gap: var(--space-1);
+  padding: var(--status-card-padding);
   border-radius: var(--status-card-radius);
 }
 
@@ -552,15 +552,15 @@ h3 {
 }
 
 .track-workspace-shell .tracking-status-selected-offer {
-  gap: 3px;
+  gap: var(--space-1);
   margin-top: 0;
-  padding: 10px var(--space-3);
+  padding: var(--status-selected-padding);
   border-radius: var(--status-selected-radius);
 }
 
 .track-workspace-shell .tracking-panel .tracking-status-details {
-  gap: 5px;
-  padding: var(--space-3);
+  gap: var(--space-1);
+  padding: var(--status-card-padding);
   border-radius: var(--status-card-radius);
 }
 
@@ -598,7 +598,7 @@ h3 {
 /* Track offer navigation sidebar */
 .track-offer-nav-list {
   display: grid;
-  gap: 8px;
+  gap: var(--space-3);
 }
 
 .track-offer-nav-empty {
@@ -610,8 +610,8 @@ h3 {
 
 .track-offer-nav-card {
   display: grid;
-  gap: 7px;
-  padding: 11px;
+  gap: var(--space-1);
+  padding: var(--space-3);
   border: var(--surface-border);
   border-radius: var(--nav-card-radius);
   background: var(--surface-muted-bg);
@@ -702,8 +702,8 @@ h3 {
 
 .track-offer-nav-details {
   display: grid;
-  gap: 4px;
-  padding-top: 4px;
+  gap: var(--space-1);
+  padding-top: var(--space-1);
   border-top: 1px solid var(--line);
 }
 
@@ -714,7 +714,7 @@ h3 {
 .track-offer-nav-select {
   width: 100%;
   min-height: 36px;
-  margin-top: 2px;
+  margin-top: calc(var(--space-1) / 2);
   padding: 8px 10px;
   font-size: 13px;
   background: var(--success);
