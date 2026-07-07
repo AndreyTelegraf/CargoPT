@@ -77,7 +77,7 @@
   --status-selected-border: 1px solid rgba(22, 101, 52, 0.24);
   --status-selected-bg: var(--success-fill);
   --info-card-padding: 14px;
-  --info-card-radius: 18px;
+  --info-card-radius: var(--radius-md);
   --info-card-bg: var(--surface-panel-bg);
   --info-card-shadow: var(--surface-shadow-subtle);
   --nav-card-radius: var(--radius-md);
