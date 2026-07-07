@@ -962,6 +962,14 @@ body {
   margin-top: auto;
 }
 
+.home-hero .hero-copy,
+.home-hero h1,
+.home-hero .hero-text,
+.home-hero .product-explainer {
+  max-width: none;
+}
+
+
 .process-card {
   display: block;
   width: 100%;
