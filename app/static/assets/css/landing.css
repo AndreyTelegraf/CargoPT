@@ -172,7 +172,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 11px;
-  color: #303741;
+  color: var(--text);
   font-size: 17px;
   font-weight: 750;
 }
@@ -183,9 +183,9 @@ h3 {
   place-items: center;
   width: 24px;
   height: 24px;
-  border-radius: 50%;
+  border-radius: var(--radius-pill);
   background: var(--brand);
-  color: #fff;
+  color: var(--button-primary-text);
   font-size: 14px;
   font-weight: 900;
   flex: 0 0 auto;
@@ -453,16 +453,16 @@ textarea:focus {
   flex: 0 0 auto;
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: var(--radius-pill);
 }
 
 .tracking-status-dot-searching {
-  background: #2563eb;
+  background: var(--accent);
   animation: tracking-status-pulse 2.4s ease-in-out infinite;
 }
 
 .tracking-status-dot-success {
-  background: #16a34a;
+  background: var(--success);
   animation: tracking-status-pulse 2s ease-in-out infinite;
 }
 
@@ -472,7 +472,7 @@ textarea:focus {
 }
 
 .tracking-status-dot-completed {
-  background: #9ca3af;
+  background: var(--muted);
 }
 
 .tracking-status-dot-cancelled {
@@ -551,7 +551,7 @@ textarea:focus {
   gap: 6px;
   padding: 14px;
   border: var(--surface-border);
-  border-radius: 18px;
+  border-radius: var(--status-card-radius);
   background: var(--surface-muted-bg);
 }
 
