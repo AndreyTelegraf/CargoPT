@@ -35,7 +35,7 @@ async def main():
         old_path = settings.self_ad_state_path
         settings.self_ad_state_path = str(Path(tmp) / "self_ad_counter.json")
         try:
-            for _ in range(19):
+            for _ in range(8):
                 msg = FakeMessage()
                 posted = await self_ad_counter.process_self_ad_message(msg)
                 assert posted is False
@@ -51,19 +51,6 @@ async def main():
             assert link_preview.url == "https://t.me/CargoPT_bot"
             assert link_preview.is_disabled is False
 
-            settings.self_ad_state_path = str(Path(tmp) / "self_ad_counter_caption.json")
-            for _ in range(19):
-                msg = FakeMessage(text=None, caption="captioned media")
-                posted = await self_ad_counter.process_self_ad_message(msg)
-                assert posted is False
-                assert msg.sent == []
-
-            msg = FakeMessage(text=None, caption="captioned media")
-            posted = await self_ad_counter.process_self_ad_message(msg)
-            assert posted is True
-            assert len(msg.sent) == 1
-
-            settings.self_ad_state_path = str(Path(tmp) / "self_ad_counter_proflist.json")
             for _ in range(8):
                 msg = FakeMessage(username="proflistpt", topic_id=8490)
                 posted = await self_ad_counter.process_self_ad_message(msg)
@@ -74,6 +61,18 @@ async def main():
             posted = await self_ad_counter.process_self_ad_message(msg)
             assert posted is True
             assert len(msg.sent) == 1
+
+            for _ in range(8):
+                msg = FakeMessage(text=None, caption="captioned media")
+                posted = await self_ad_counter.process_self_ad_message(msg)
+                assert posted is False
+                assert msg.sent == []
+
+            msg = FakeMessage(text=None, caption="captioned media")
+            posted = await self_ad_counter.process_self_ad_message(msg)
+            assert posted is True
+            assert len(msg.sent) == 1
+
 
             wrong_topic = FakeMessage(topic_id=430)
             posted = await self_ad_counter.process_self_ad_message(wrong_topic)
