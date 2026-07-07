@@ -1,8 +1,34 @@
 from app.bot.handlers.carrier_invite_admin import ADMIN_TELEGRAM_USER_IDS
 from app.domain.job_status import JobStatus
+from app.services.job_matching import MatchingReason
 
 
-def build_offer_escalation_text(*, job, offers) -> str:
+def _format_matching_reason(
+    reason: MatchingReason | None,
+    regions: list[str] | None,
+) -> str:
+    if reason == MatchingReason.REGION_NOT_DETERMINED:
+        return "Не удалось определить регион по координатам, геокодингу или тексту адреса."
+    if reason == MatchingReason.NO_ELIGIBLE_CARRIERS:
+        if regions:
+            return "Регион определён, но подходящих активных перевозчиков не найдено: " + ", ".join(regions)
+        return "Подходящих активных перевозчиков не найдено."
+    if reason == MatchingReason.NO_ADDRESSES:
+        return "У заявки нет адресов для матчинга."
+    if reason == MatchingReason.REGION_FROM_GEOCODING:
+        return "Регион определён через геокодинг, но подходящих перевозчиков не найдено."
+    if reason == MatchingReason.REGION_FROM_TEXT_FALLBACK:
+        return "Регион определён только через текстовый fallback, но подходящих перевозчиков не найдено."
+    return "Не удалось найти перевозчика."
+
+
+def build_offer_escalation_text(
+    *,
+    job,
+    offers,
+    matching_reason: MatchingReason | None = None,
+    matching_regions: list[str] | None = None,
+) -> str:
     pending = sum(1 for offer in offers if offer.status == "pending")
     declined = sum(1 for offer in offers if offer.status == "declined")
     expired = sum(1 for offer in offers if offer.status == "expired")
@@ -19,7 +45,7 @@ def build_offer_escalation_text(*, job, offers) -> str:
             "• связаться с перевозчиком"
         )
     else:
-        reason = "Не удалось найти перевозчика."
+        reason = _format_matching_reason(matching_reason, matching_regions)
         accepted_line = "Принятых предложений нет."
         recommendations = (
             "Рекомендуем:\n\n"
@@ -44,8 +70,20 @@ def build_offer_escalation_text(*, job, offers) -> str:
     )
 
 
-async def notify_admins_about_unassigned_job(*, bot, job, offers) -> None:
-    text = build_offer_escalation_text(job=job, offers=offers)
+async def notify_admins_about_unassigned_job(
+    *,
+    bot,
+    job,
+    offers,
+    matching_reason: MatchingReason | None = None,
+    matching_regions: list[str] | None = None,
+) -> None:
+    text = build_offer_escalation_text(
+        job=job,
+        offers=offers,
+        matching_reason=matching_reason,
+        matching_regions=matching_regions,
+    )
 
     for admin_id in ADMIN_TELEGRAM_USER_IDS:
         await bot.send_message(chat_id=admin_id, text=text)
@@ -56,6 +94,8 @@ async def escalate_job_to_manual_review(
     bot,
     job,
     job_repository,
+    matching_reason: MatchingReason | None = None,
+    matching_regions: list[str] | None = None,
 ) -> None:
     offers = await job_repository.list_offers_by_job(job.id)
     has_accepted_offer = any(offer.status == "accepted" for offer in offers)
@@ -77,4 +117,6 @@ async def escalate_job_to_manual_review(
         bot=bot,
         job=job,
         offers=offers,
+        matching_reason=matching_reason,
+        matching_regions=matching_regions,
     )
