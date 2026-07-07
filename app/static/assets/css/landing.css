@@ -942,7 +942,7 @@ details p {
   min-height: 236px;
   padding: 12px 12px 16px;
   border: var(--surface-border);
-  border-radius: 20px;
+  border-radius: var(--surface-radius-card);
   background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
   box-shadow: var(--surface-shadow-subtle);
   text-align: center;
