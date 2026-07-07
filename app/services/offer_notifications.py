@@ -30,12 +30,23 @@ def build_client_notification_text(job, carrier) -> str:
     )
 
 
+def _format_client_identity(job) -> str:
+    if job.client_telegram_user_id is not None and job.client_telegram_username:
+        return _telegram_user_link(job.client_telegram_user_id, job.client_telegram_username)
+    return _safe(job.customer_name or "S/N")
+
+
+def _format_client_username(job) -> str:
+    if job.client_telegram_username:
+        return _format_telegram_username(job.client_telegram_username)
+    return "S/N"
+
+
 def build_carrier_notification_text(job, carrier) -> str:
-    client_label = job.client_telegram_username or "клиент"
     return (
         f"Заказ №{job.id} закреплён за вами.\n\n"
-        f"Клиент: {_telegram_user_link(job.client_telegram_user_id, client_label)}\n"
-        f"Username: {_format_telegram_username(job.client_telegram_username)}\n"
+        f"Клиент: {_format_client_identity(job)}\n"
+        f"Username: {_format_client_username(job)}\n"
         f"Телефон: {_safe(job.client_phone or 'не указан')}\n"
         f"WhatsApp: {_safe(job.client_whatsapp or 'не указан')}\n\n"
         "Свяжитесь с клиентом и согласуйте детали перевозки.\n\n"

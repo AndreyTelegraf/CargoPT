@@ -38,7 +38,11 @@ assert "<b>Новая заявка #7</b>" in text
 assert "<b>Откуда</b>\nRua Augusta 1, Lisboa" in text
 assert "Карта: https://maps.app.goo.gl/pickup" in text
 assert "<b>Груз</b>\nДиван и 10 коробок" in text
-assert "Telegram: @AndreyTelegraf" in text
+assert "Telegram: @AndreyTelegraf" not in text
+assert "Грузчики: 1" in text
+assert "Вес:" not in text
+assert "Объём:" not in text
+assert "Гидроборт:" not in text
 
 keyboard = build_offer_keyboard(123)
 buttons = keyboard.inline_keyboard[0]

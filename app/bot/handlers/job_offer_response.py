@@ -171,16 +171,15 @@ def build_client_assignment_confirmation_text(job_id: int, carrier=None) -> str:
 
 
 def build_carrier_assignment_confirmation_text(job) -> str:
-    client_label = job.client_telegram_username or "клиент"
     client_link = (
-        f'<a href="tg://user?id={int(job.client_telegram_user_id)}">{html.escape(client_label, quote=False)}</a>'
-        if job.client_telegram_user_id is not None
-        else "не указан"
+        f'<a href="tg://user?id={int(job.client_telegram_user_id)}">{html.escape(job.client_telegram_username or "клиент", quote=False)}</a>'
+        if job.client_telegram_user_id is not None and job.client_telegram_username
+        else html.escape(job.customer_name or "S/N", quote=False)
     )
     username = (
         "@" + html.escape(job.client_telegram_username.lstrip("@"), quote=False)
         if job.client_telegram_username
-        else "не указан"
+        else "S/N"
     )
 
     return (
