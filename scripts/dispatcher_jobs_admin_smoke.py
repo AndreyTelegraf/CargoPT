@@ -188,3 +188,25 @@ assert "attention_reason" in handler_source
 assert "offers_count" in handler_source
 
 print("DISPATCHER_JOBS_ADMIN_SMOKE_OK")
+
+from app.bot.handlers.dispatcher_jobs_admin import _format_report_job_rows
+
+accepted_report_rows = [
+    {
+        "id": 999,
+        "status": "offered",
+        "client_telegram_username": "client_test",
+        "client_telegram_user_id": 123,
+        "offers": 3,
+        "accepted": 1,
+        "declined": 1,
+        "expired": 1,
+        "pending": 0,
+        "latest_reason": None,
+    }
+]
+
+accepted_report_text = _format_report_job_rows(accepted_report_rows)
+assert "ожидает выбора клиента" in accepted_report_text
+assert "отправлена перевозчикам" not in accepted_report_text
+assert "#999" in accepted_report_text

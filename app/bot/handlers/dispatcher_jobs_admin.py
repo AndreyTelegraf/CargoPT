@@ -114,6 +114,12 @@ def _format_offer_counts(rows) -> str:
     )
 
 
+def _format_report_status(row) -> str:
+    if row["status"] == "offered" and row["accepted"] > 0:
+        return "ожидает выбора клиента"
+    return _format_status(row["status"])
+
+
 def _format_report_job_rows(rows) -> str:
     if not rows:
         return "—"
@@ -122,7 +128,7 @@ def _format_report_job_rows(rows) -> str:
     for row in rows:
         client = row["client_telegram_username"] or str(row["client_telegram_user_id"])
         line = (
-            f"<b>#{_safe(row['id'])}</b> — {_safe(_format_status(row['status']))} — @{_safe(client)}\n"
+            f"<b>#{_safe(row['id'])}</b> — {_safe(_format_report_status(row))} — @{_safe(client)}\n"
             f"Офферов: {_safe(row['offers'])} | "
             f"accepted: {_safe(row['accepted'])} | "
             f"declined: {_safe(row['declined'])} | "
