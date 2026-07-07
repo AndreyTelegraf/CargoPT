@@ -28,8 +28,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 12px clamp(18px, 4vw, 52px);
+  gap: var(--layout-gap-lg);
+  padding: var(--space-3) clamp(18px, 4vw, 52px);
   background: var(--badge-header-bg);
   border-bottom: var(--surface-border);
   backdrop-filter: blur(18px);
@@ -137,7 +137,7 @@ h1 {
 
 h2 {
   max-width: 780px;
-  margin-bottom: 18px;
+  margin-bottom: var(--layout-block-margin);
   font-size: clamp(32px, 5vw, 56px);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-heading);
@@ -192,13 +192,13 @@ h3 {
 }
 
 .section-heading {
-  margin-bottom: 34px;
+  margin-bottom: var(--layout-section-margin);
 }
 
 .cards,
 .benefits {
   display: grid;
-  gap: 18px;
+  gap: var(--layout-gap-md);
 }
 
 .cards.three {
@@ -220,7 +220,7 @@ details p {
   place-items: center;
   width: 38px;
   height: 38px;
-  margin-bottom: 24px;
+  margin-bottom: var(--layout-gap-lg);
   border-radius: var(--radius-pill);
   background: var(--brand);
   color: var(--button-primary-text);
@@ -328,7 +328,7 @@ legend {
 }
 
 .form-intro {
-  margin-bottom: 18px;
+  margin-bottom: var(--layout-block-margin);
 }
 
 .form-step {
@@ -614,8 +614,8 @@ textarea:focus {
 .open-pedidos {
   display: grid;
   gap: 12px;
-  margin-top: 18px;
-  padding-top: 18px;
+  margin-top: var(--layout-block-margin);
+  padding-top: var(--layout-block-margin);
   border-top: 1px solid var(--line);
 }
 
@@ -697,7 +697,7 @@ textarea:focus {
 }
 
 details {
-  padding: 20px 24px;
+  padding: 20px var(--layout-gap-lg);
 }
 
 summary {
@@ -725,7 +725,7 @@ details p {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 14px;
-  padding: 32px clamp(20px, 4vw, 56px);
+  padding: var(--space-6) clamp(20px, 4vw, 56px);
   border-top: 1px solid var(--line);
   color: var(--muted);
 }
@@ -799,7 +799,7 @@ details p {
 
   .section {
     width: min(100% - 28px, 1160px);
-    padding: 48px 0;
+    padding: var(--layout-mobile-section-padding) 0;
   }
 
   .hero {
@@ -1082,7 +1082,7 @@ details p {
   .hero-v2 {
     width: min(100% - 28px, 760px);
     padding-top: 30px;
-    gap: 24px;
+    gap: var(--layout-gap-lg);
   }
 
   .hero-v2 h1 {
@@ -1115,7 +1115,7 @@ details p {
 
 .carrier-page-copy h1 {
   max-width: 760px;
-  margin-bottom: 24px;
+  margin-bottom: var(--layout-gap-lg);
   color: var(--brand);
   font-size: clamp(52px, 5vw, 78px);
   line-height: 0.98;

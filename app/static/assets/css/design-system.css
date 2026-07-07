@@ -117,9 +117,22 @@
   --radius-xl: 32px;
   --radius-pill: 999px;
   --space-1: 4px;
+  --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
+  --space-5: 24px;
   --space-6: 32px;
+  --space-7: 48px;
+
+  --layout-gap-sm: var(--space-3);
+  --layout-gap-md: 18px;
+  --layout-gap-lg: var(--space-5);
+  --layout-section-margin: 34px;
+  --layout-block-margin: 18px;
+  --layout-panel-offset: 22px;
+  --layout-mobile-section-padding: var(--space-7);
+  --layout-workspace-y: 54px;
+  --layout-workspace-y-mobile: 28px;
 
   --font-size-logo: 23px;
   --font-size-eyebrow: 13px;

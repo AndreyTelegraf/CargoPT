@@ -59,7 +59,7 @@ p {
 
 h1 {
   max-width: 760px;
-  margin-bottom: 18px;
+  margin-bottom: var(--layout-block-margin);
   font-size: var(--font-size-track-h1);
   line-height: var(--line-height-heading);
   letter-spacing: -0.06em;
@@ -86,18 +86,18 @@ h3 {
 }
 
 .last-updated {
-  margin: 22px 0 0;
+  margin: var(--layout-panel-offset) 0 0;
   color: var(--muted);
   font-size: var(--font-size-meta);
   font-weight: 700;
 }
 
 .offers-section {
-  margin-top: 34px;
+  margin-top: var(--layout-section-margin);
 }
 
 .section-heading {
-  margin-bottom: 18px;
+  margin-bottom: var(--layout-block-margin);
 }
 
 .section-heading h2 {
@@ -116,7 +116,7 @@ h3 {
 .offer-meta {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px 18px;
+  gap: 10px var(--layout-gap-md);
   margin-top: 16px;
   color: var(--muted);
   font-weight: var(--font-weight-meta);
@@ -139,7 +139,7 @@ h3 {
 }
 
 .error-card {
-  margin-top: 24px;
+  margin-top: var(--layout-gap-lg);
   border-color: var(--danger-border);
 }
 
@@ -164,7 +164,7 @@ h3 {
 }
 
 .new-pedido-cta {
-  margin-top: 22px;
+  margin-top: var(--layout-panel-offset);
   padding-top: 20px;
   border-top: 1px solid var(--line);
 }
@@ -275,7 +275,7 @@ h3 {
 
 
 .timeline-card {
-  margin-bottom: 22px;
+  margin-bottom: var(--layout-panel-offset);
   padding: var(--card-padding-compact);
   background: var(--surface-glass-bg);
 }
@@ -369,7 +369,7 @@ h3 {
 @media (max-width: 760px) {
   .timeline-list {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: var(--layout-gap-sm);
   }
 
   .timeline-item {
@@ -404,7 +404,7 @@ h3 {
 }
 
 .tracking-request-card .timeline-card {
-  margin-bottom: 18px;
+  margin-bottom: var(--layout-block-margin);
   background: var(--surface-muted-bg);
 }
 
@@ -418,8 +418,8 @@ h3 {
 }
 
 .tracking-request-card .offers-section {
-  margin-top: 22px;
-  padding-top: 22px;
+  margin-top: var(--layout-panel-offset);
+  padding-top: var(--layout-panel-offset);
   border-top: 1px solid var(--line);
 }
 
@@ -439,8 +439,8 @@ h3 {
   grid-template-columns: minmax(220px, 0.8fr) minmax(0, 3.2fr);
   align-items: stretch;
   gap: var(--workspace-grid-gap);
-  padding-top: 54px;
-  padding-bottom: 54px;
+  padding-top: var(--layout-workspace-y);
+  padding-bottom: var(--layout-workspace-y);
 }
 
 .track-workspace-sidebar {
@@ -499,7 +499,7 @@ h3 {
 @media (max-width: 720px) {
   .track-workspace-shell {
     grid-template-columns: 1fr;
-    padding-top: 28px;
+    padding-top: var(--layout-workspace-y-mobile);
   }
 
   .track-workspace-sidebar,
