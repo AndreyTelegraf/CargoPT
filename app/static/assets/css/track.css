@@ -232,47 +232,47 @@ h3 {
 
 .state-card-loading .state-icon,
 .state-card-waiting .state-icon {
-  background: #f0f1f4;
+  background: var(--surface-muted-bg);
 }
 
 .state-card-searching .state-icon {
-  background: #edf4ff;
+  background: var(--accent-soft);
 }
 
 .state-card-action .state-icon {
-  background: #fff3d7;
+  background: var(--warning-soft);
 }
 
 .state-card-success .state-icon {
-  background: #e9f8ef;
+  background: var(--success-soft);
 }
 
 .state-card-warning .state-icon {
-  background: #fff1df;
+  background: var(--warning-soft);
 }
 
 .state-card-closed .state-icon {
-  background: #f0f1f4;
+  background: var(--surface-muted-bg);
 }
 
 .state-card-searching::before {
-  background: #4b79c7;
+  background: var(--accent);
 }
 
 .state-card-action::before {
-  background: #c98b12;
+  background: var(--warning);
 }
 
 .state-card-success::before {
-  background: #2f9d5b;
+  background: var(--success);
 }
 
 .state-card-warning::before {
-  background: #c97921;
+  background: var(--warning);
 }
 
 .state-card-closed::before {
-  background: #616975;
+  background: var(--muted);
 }
 
 @media (max-width: 680px) {
