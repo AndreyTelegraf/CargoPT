@@ -1497,7 +1497,7 @@ grid-column:1/-1;
 .tracking-panel .tracking-offers {
   gap: var(--space-3);
   padding: var(--space-4);
-  border-radius: calc(var(--radius-lg) - 2px);
+  border-radius: var(--surface-radius-card);
 }
 
 .tracking-panel .tracking-offers-title {
