@@ -177,7 +177,7 @@ function renderOfferNavigation(entry) {
 
     if (snapshot.status === "offered") {
       const button = document.createElement("button");
-      button.className = "button is-small is-primary track-offer-nav-select";
+      button.className = "button button-small track-offer-nav-select";
       button.type = "button";
       button.textContent = "Escolher esta oferta";
       button.addEventListener("click", (event) => {
