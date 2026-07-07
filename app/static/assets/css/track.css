@@ -37,14 +37,6 @@ a {
   font-weight: 750;
 }
 
-.track-card,
-.offer-card {
-  border: var(--surface-border);
-  border-radius: var(--surface-radius-card);
-  background: var(--surface-panel-bg);
-  box-shadow: var(--surface-shadow-card);
-}
-
 .track-card {
   padding: clamp(26px, 4vw, 42px);
 }

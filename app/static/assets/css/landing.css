@@ -205,16 +205,6 @@ h3 {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.card,
-.request-form,
-details,
-.final-cta {
-  border: var(--surface-border);
-  border-radius: var(--surface-radius-card);
-  background: var(--surface-panel-bg);
-  box-shadow: var(--surface-shadow-card);
-}
-
 .card {
   padding: 28px;
 }
