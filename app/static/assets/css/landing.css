@@ -509,10 +509,10 @@ textarea:focus {
 .tracking-status-summary {
   display: grid;
   gap: 4px;
-  padding: 14px;
+  padding: var(--status-card-padding);
   border: var(--surface-border);
-  border-radius: 18px;
-  background: var(--surface-muted-bg);
+  border-radius: var(--status-card-radius);
+  background: var(--status-card-bg);
 }
 
 .tracking-status-summary span {
@@ -576,10 +576,10 @@ textarea:focus {
   display: grid;
   gap: 4px;
   margin-top: 4px;
-  padding: 12px 14px;
-  border: 1px solid rgba(22, 101, 52, 0.24);
-  border-radius: var(--radius-md);
-  background: var(--success-fill);
+  padding: var(--status-selected-padding);
+  border: var(--status-selected-border);
+  border-radius: var(--status-selected-radius);
+  background: var(--status-selected-bg);
 }
 
 .tracking-status-selected-label {
@@ -660,11 +660,11 @@ textarea:focus {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 14px;
+  padding: var(--info-card-padding);
   border: var(--surface-border);
-  border-radius: 18px;
-  background: var(--surface-panel-bg);
-  box-shadow: var(--surface-shadow-subtle);
+  border-radius: var(--info-card-radius);
+  background: var(--info-card-bg);
+  box-shadow: var(--info-card-shadow);
 }
 
 .open-pedido-copy {
