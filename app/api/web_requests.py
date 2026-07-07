@@ -1,4 +1,6 @@
 from collections.abc import AsyncIterator
+from datetime import UTC
+from datetime import datetime
 
 from aiogram import Bot
 from fastapi import APIRouter
@@ -16,6 +18,7 @@ from app.bot.handlers.job_offer_response import send_assignment_confirmation_req
 from app.bot.handlers.job_assignment_confirmation import _send_assignment_final_notifications
 from app.config import settings
 from app.db.session import async_session_maker
+from app.domain.job_status import JobStatus
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
 from app.services.assignment_confirmation import build_assignment_status_from_action
@@ -264,17 +267,34 @@ async def confirm_tracking_assignment(
         raise HTTPException(status_code=404, detail="tracking job not found")
 
     accepted_offer = await job_repository.get_accepted_offer_by_job_id(job.id)
-    confirmation_status = build_assignment_status_from_action(action)
 
-    try:
-        updated_job = await record_assignment_confirmation(
-            job_repository,
+    if action == "fail" and job.status == JobStatus.ASSIGNED:
+        now = datetime.now(UTC)
+        accepted_offer = await job_repository.cancel_accepted_offer_by_job(
             job_id=job.id,
-            actor="client",
-            status=confirmation_status,
+            cancelled_at=now,
         )
-    except InvalidJobStatusTransitionError as exc:
-        raise HTTPException(status_code=409, detail=str(exc)) from exc
+        await job_repository.clear_assignment_confirmation_statuses(
+            job_id=job.id,
+            updated_at=now,
+        )
+        updated_job = await job_repository.update_job_status(
+            job_id=job.id,
+            status=JobStatus.READY_FOR_MATCHING,
+            updated_at=now,
+        )
+    else:
+        confirmation_status = build_assignment_status_from_action(action)
+
+        try:
+            updated_job = await record_assignment_confirmation(
+                job_repository,
+                job_id=job.id,
+                actor="client",
+                status=confirmation_status,
+            )
+        except InvalidJobStatusTransitionError as exc:
+            raise HTTPException(status_code=409, detail=str(exc)) from exc
 
     if action == "fail":
         await process_assignment_failure_redispatch(

@@ -212,7 +212,7 @@ function renderOfferNavigation(entry) {
 function getTrackingStatusDotState(snapshot, acceptedOffers) {
   if (snapshot.status === "completed") return "completed";
   if (snapshot.status === "cancelled") return "cancelled";
-  if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending" || snapshot.status === "assigned_pending_confirmation") return "pending";
+  if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending") return "pending";
   if (acceptedOffers.length > 0) return "success";
   if (["ready_for_matching", "matching", "offered"].includes(snapshot.status)) return "searching";
   return "searching";
@@ -225,7 +225,7 @@ function formatTrackingStatus(snapshot) {
   if (snapshot.status === "cancelled") return messages.statusCancelled;
 
   if (snapshot.client_confirmation_status === "confirmed" && snapshot.carrier_confirmation_status === "confirmed") return messages.statusCarrierConfirmed;
-  if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending" || snapshot.status === "assigned_pending_confirmation") return messages.statusAwaitingConfirmation;
+  if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending") return messages.statusAwaitingConfirmation;
   if (["assigned", "in_progress"].includes(snapshot.status)) return messages.statusAssigned;
 
   if (acceptedOffers.length > 0) return messages.offersAvailable.replace("{count}", String(acceptedOffers.length));

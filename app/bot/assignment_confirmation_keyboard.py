@@ -36,3 +36,15 @@ def build_assignment_failure_reason_keyboard(job_id: int) -> InlineKeyboardMarku
         )
 
     return InlineKeyboardMarkup(inline_keyboard=rows)
+
+def build_client_reopen_assignment_keyboard(job_id: int) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="Не договорились с перевозчиком",
+                    callback_data=f"assignment:fail_reason:{job_id}:unspecified",
+                ),
+            ],
+        ]
+    )

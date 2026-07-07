@@ -18,15 +18,16 @@ def main() -> None:
     assert "carrier_confirmation_status" in schemas
 
     js = open("app/static/assets/js/track.js", encoding="utf-8").read()
-    assert "Negócio confirmado" in js
-    assert "Não chegámos a acordo" in js
+    workspace_js = open("app/static/assets/js/tracking-workspace.js", encoding="utf-8").read()
+    assert "confirmButton" not in workspace_js
+    assert "Não chegámos a acordo com o transportador" in workspace_js
     assert "sendAssignmentAction" in js
     assert "/assignment/" in js
-    assert "renderAssignmentActions(job)" in js
+    assert "renderAssignmentActions(entry" in workspace_js
 
-    css = open("app/static/assets/css/track.css", encoding="utf-8").read()
-    assert ".assignment-actions" in css
-    assert ".assignment-button" in css
+    css = open("app/static/assets/css/landing.css", encoding="utf-8").read()
+    assert ".tracking-assignment-actions" in css
+    assert ".tracking-assignment-fail" in css
 
     print("job_tracking_assignment_actions_ok")
 

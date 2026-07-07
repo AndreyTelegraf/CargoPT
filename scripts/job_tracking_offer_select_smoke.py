@@ -18,11 +18,11 @@ def main() -> None:
     assert "selectOffer" in js
     assert "/offers/" in js
     assert "/select" in js
-    assert 'currentJobStatus === "offered"' in js
+    assert 'snapshot.status === "offered"' in js
 
     with open("app/static/assets/css/track.css", encoding="utf-8") as f:
         css = f.read()
-    assert ".select-button" in css
+    assert ".track-offer-nav-select" in css
 
     print("job_tracking_offer_select_ok")
 

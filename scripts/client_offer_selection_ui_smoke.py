@@ -46,6 +46,7 @@ assert send_client_offer_selection_message is not None
 
 source = Path("app/bot/handlers/job_offer_response.py").read_text(encoding="utf-8")
 assert "select_accepted_offer_for_client" in source
+assert "build_client_reopen_assignment_keyboard" in source
 assert "ClientOfferPresentationService" in source
 assert "client_offer:select" in Path("app/bot/offer_keyboard.py").read_text(encoding="utf-8")
 

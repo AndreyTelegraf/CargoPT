@@ -26,7 +26,7 @@ from app.services.client_offer_presentation import ClientOfferPresentationServic
 from app.bot.offer_keyboard import build_client_offer_selection_keyboard
 from app.bot.offer_keyboard import build_offer_decline_reason_keyboard
 from app.bot.offer_keyboard import parse_client_offer_selection_callback
-from app.bot.assignment_confirmation_keyboard import build_assignment_confirmation_keyboard
+from app.bot.assignment_confirmation_keyboard import build_client_reopen_assignment_keyboard
 
 router = Router()
 
@@ -144,7 +144,7 @@ def build_client_assignment_confirmation_text(job_id: int, carrier=None) -> str:
     if carrier is None:
         return (
             f"Предложение по заявке №{job_id} выбрано.\n\n"
-            "Подтвердите сделку после того, как договоритесь с перевозчиком."
+            "Свяжитесь с перевозчиком и согласуйте детали перевозки."
         )
 
     carrier_label = carrier.contact_name or carrier.company_name or "перевозчик"
@@ -166,7 +166,7 @@ def build_client_assignment_confirmation_text(job_id: int, carrier=None) -> str:
         f"Контакт: {html.escape(carrier.contact_name or 'не указан', quote=False)}\n"
         f"Username: {username}\n"
         f"Телефон: {html.escape(carrier.phone or 'не указан', quote=False)}\n\n"
-        "Свяжитесь с перевозчиком и подтвердите сделку после согласования деталей."
+        "Свяжитесь с перевозчиком и согласуйте детали перевозки.\n\nЕсли договориться не получится, нажмите «Не договорились с перевозчиком» — мы вернём заявку в подбор."
     )
 
 
@@ -189,7 +189,7 @@ def build_carrier_assignment_confirmation_text(job) -> str:
         f"Username: {username}\n"
         f"Телефон: {html.escape(job.client_phone or 'не указан', quote=False)}\n"
         f"WhatsApp: {html.escape(job.client_whatsapp or 'не указан', quote=False)}\n\n"
-        "Свяжитесь с клиентом и подтвердите сделку после согласования деталей."
+        "Свяжитесь с клиентом и согласуйте детали перевозки."
     )
 
 
@@ -199,13 +199,10 @@ async def send_assignment_confirmation_requests(
     job,
     carrier_telegram_user_id: int | None,
 ) -> None:
-    keyboard = build_assignment_confirmation_keyboard(job.id)
-
     if carrier_telegram_user_id is not None:
         await bot.send_message(
             chat_id=carrier_telegram_user_id,
             text=build_carrier_assignment_confirmation_text(job),
-            reply_markup=keyboard,
             parse_mode="HTML",
         )
 
@@ -489,7 +486,7 @@ async def handle_client_offer_selection(callback: CallbackQuery) -> None:
     if callback.message:
         await callback.message.edit_text(
             build_client_assignment_confirmation_text(job_id, selected_carrier),
-            reply_markup=build_assignment_confirmation_keyboard(job_id),
+            reply_markup=build_client_reopen_assignment_keyboard(job_id),
             parse_mode="HTML",
         )
 

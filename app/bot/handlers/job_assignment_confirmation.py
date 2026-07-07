@@ -1,4 +1,6 @@
 import re
+from datetime import UTC
+from datetime import datetime
 
 from aiogram import F
 from aiogram import Router
@@ -170,31 +172,51 @@ async def handle_assignment_confirmation(callback: CallbackQuery) -> None:
             await callback.answer("Эта кнопка не для вас.", show_alert=True)
             return
 
-        if job.status != JobStatus.ASSIGNED_PENDING_CONFIRMATION:
-            await callback.answer("Статус заявки уже изменён.", show_alert=True)
-            return
-
-        confirmation_status = build_assignment_status_from_action(action)
-
-        if failure_reason is not None:
-            accepted_offer.decline_reason = failure_reason
-
-        try:
-            updated_job = await record_assignment_confirmation(
-                job_repository,
+        if action == "fail" and actor == "client" and job.status == JobStatus.ASSIGNED:
+            now = datetime.now(UTC)
+            accepted_offer = await job_repository.cancel_accepted_offer_by_job(
                 job_id=job_id,
-                actor=actor,
-                status=confirmation_status,
+                cancelled_at=now,
             )
-            result_text = build_assignment_result_text(
+            await job_repository.clear_assignment_confirmation_statuses(
                 job_id=job_id,
-                action=action,
-                job_status=updated_job.status,
+                updated_at=now,
             )
-        except InvalidJobStatusTransitionError:
-            await session.rollback()
-            await callback.answer("Статус заявки уже изменён.", show_alert=True)
-            return
+            updated_job = await job_repository.update_job_status(
+                job_id=job_id,
+                status=JobStatus.READY_FOR_MATCHING,
+                updated_at=now,
+            )
+            result_text = format_telegram_status_block(
+                f"Заявка №{job_id} возвращена в подбор перевозчика.",
+                state="searching",
+            )
+        else:
+            if job.status != JobStatus.ASSIGNED_PENDING_CONFIRMATION:
+                await callback.answer("Статус заявки уже изменён.", show_alert=True)
+                return
+
+            confirmation_status = build_assignment_status_from_action(action)
+
+            if failure_reason is not None:
+                accepted_offer.decline_reason = failure_reason
+
+            try:
+                updated_job = await record_assignment_confirmation(
+                    job_repository,
+                    job_id=job_id,
+                    actor=actor,
+                    status=confirmation_status,
+                )
+                result_text = build_assignment_result_text(
+                    job_id=job_id,
+                    action=action,
+                    job_status=updated_job.status,
+                )
+            except InvalidJobStatusTransitionError:
+                await session.rollback()
+                await callback.answer("Статус заявки уже изменён.", show_alert=True)
+                return
 
         (
             should_delete_carrier_offer,

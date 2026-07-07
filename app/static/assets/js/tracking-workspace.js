@@ -12,7 +12,7 @@
     viewOffers: "Ver ofertas",
     selectOffer: "Escolher esta oferta",
     confirmDeal: "Negócio confirmado",
-    failDeal: "Não chegámos a acordo",
+    failDeal: "Não chegámos a acordo com o transportador",
     confirmationRecorded: "A sua confirmação foi registada. Aguardamos a confirmação do transportador.",
     offersAvailable: "{count} oferta(s) disponível(eis)",
     defaultRoute: "Pedido CargoPT",
@@ -36,7 +36,7 @@
     if (snapshot.status === "completed") return "completed";
     if (snapshot.status === "cancelled") return "cancelled";
     if (snapshot.client_confirmation_status === "confirmed" && snapshot.carrier_confirmation_status === "confirmed") return "success";
-    if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending" || snapshot.status === "assigned_pending_confirmation") return "pending";
+    if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending") return "pending";
     if ((entry.accepted_offers_count || 0) > 0) return "success";
     return "pending";
   }
@@ -88,7 +88,7 @@
 
   function renderAssignmentActions(entry, options, messages) {
     const snapshot = entry.tracking_snapshot || {};
-    if (snapshot.status !== "assigned_pending_confirmation") return null;
+    if (snapshot.status !== "assigned") return null;
 
     const actions = document.createElement("div");
     actions.className = "tracking-assignment-actions";
@@ -103,19 +103,13 @@
 
     if (!options.onAssignmentAction) return null;
 
-    const confirmButton = document.createElement("button");
-    confirmButton.className = "button button-small tracking-assignment-confirm";
-    confirmButton.type = "button";
-    confirmButton.textContent = messages.confirmDeal;
-    confirmButton.addEventListener("click", () => options.onAssignmentAction("confirm", confirmButton));
-
     const failButton = document.createElement("button");
     failButton.className = "button button-small button-secondary tracking-assignment-fail";
     failButton.type = "button";
     failButton.textContent = messages.failDeal;
     failButton.addEventListener("click", () => options.onAssignmentAction("fail", failButton));
 
-    actions.append(confirmButton, failButton);
+    actions.append(failButton);
     return actions;
   }
 

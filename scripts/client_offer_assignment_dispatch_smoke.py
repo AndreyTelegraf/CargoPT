@@ -16,11 +16,11 @@ assert handle_client_offer_selection is not None
 
 source = Path("app/bot/handlers/job_offer_response.py").read_text(encoding="utf-8")
 
-assert "build_assignment_confirmation_keyboard" in source
+assert "build_client_reopen_assignment_keyboard" in source
 assert "send_assignment_confirmation_requests" in source
 assert "selected_offer = await offer_service.select_accepted_offer_for_client" in source
 assert "selected_carrier = await carrier_repository.get_carrier_by_id" in source
 assert "Клиент выбрал ваше предложение" in source
-assert "Подтвердите сделку" in source
+assert "подтвердите сделку" not in source.lower()
 
 print("CLIENT_OFFER_ASSIGNMENT_DISPATCH_SMOKE_OK")
