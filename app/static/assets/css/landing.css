@@ -1272,9 +1272,9 @@ opacity:.72;
 display:grid;
 gap:10px;
 padding:14px;
-border:1px solid rgba(202,138,4,.24);
-border-radius:18px;
-background:rgba(254,252,232,.72);
+border: 1px solid var(--warning-border);
+border-radius: var(--status-card-radius);
+background: var(--warning-fill);
 }
 
 .tracking-assignment-note{
