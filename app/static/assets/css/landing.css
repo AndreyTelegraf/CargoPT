@@ -1401,7 +1401,7 @@ grid-column:1/-1;
 
 .hero.is-user-workspace .hero-workspace {
   min-height: 560px;
-  padding: 22px;
+  padding: var(--workspace-sidebar-padding);
   border-radius: var(--surface-radius-workspace);
   box-shadow: var(--surface-shadow-workspace);
 }
