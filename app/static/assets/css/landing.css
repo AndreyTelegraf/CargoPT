@@ -397,7 +397,7 @@ textarea:focus {
 }
 
 .form-message.is-error {
-  color: #9f1239;
+  color: var(--danger);
 }
 
 .form-message.is-success {
