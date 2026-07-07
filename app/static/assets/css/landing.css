@@ -249,8 +249,8 @@ details p {
   min-height: 38px;
   padding: 0 14px;
   border: var(--surface-border);
-  border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.62);
+  border-radius: var(--chip-radius);
+  background: var(--chip-bg);
   color: var(--muted);
   font-weight: 650;
 }
@@ -545,9 +545,9 @@ textarea:focus {
   width: fit-content;
   margin-top: 8px;
   padding: 6px 10px;
-  border-radius: var(--radius-pill);
-  background: var(--success);
-  color: #fff !important;
+  border-radius: var(--badge-radius);
+  background: var(--badge-success-bg);
+  color: var(--badge-success-text) !important;
   font-size: 13px;
   font-weight: 900;
 }
@@ -862,8 +862,8 @@ details p {
   min-height: 38px;
   padding: 0 14px;
   border: var(--surface-border);
-  border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.62);
+  border-radius: var(--chip-radius);
+  background: var(--chip-bg);
   color: var(--muted);
   font-weight: 650;
 }

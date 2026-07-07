@@ -63,6 +63,14 @@
   --button-font-weight: 800;
   --button-hover-shadow: 0 12px 28px rgba(17, 24, 39, 0.16);
   --button-transition: all var(--motion-base);
+  --chip-radius: var(--radius-pill);
+  --chip-bg: rgba(255, 255, 255, 0.62);
+  --badge-radius: var(--radius-pill);
+  --badge-success-bg: var(--success);
+  --badge-success-text: #fff;
+  --badge-primary-bg: var(--primary-fill);
+  --badge-primary-text: var(--primary);
+  --badge-header-bg: rgba(245, 249, 255, 0.86);
   --radius-sm: 14px;
   --radius-md: 16px;
   --radius-lg: 24px;
