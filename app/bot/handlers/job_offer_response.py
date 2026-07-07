@@ -21,6 +21,7 @@ from app.services.job_matching import JobMatchingService
 from app.services.offer_distribution import OfferDistributionService
 from app.services.job_escalation import escalate_job_to_manual_review
 from app.services.offer_notification import send_job_offers_to_carriers
+from app.services.assignment_confirmation import format_telegram_status_block
 from app.services.client_offer_presentation import ClientOfferPresentationService
 from app.bot.offer_keyboard import build_client_offer_selection_keyboard
 from app.bot.offer_keyboard import build_offer_decline_reason_keyboard
@@ -58,6 +59,22 @@ async def _finalize_offer_message(message: Message, text: str, reply_markup=None
         return
 
     await message.edit_reply_markup(reply_markup=reply_markup)
+
+def _build_accepted_offer_final_text(message: Message, status_text: str) -> str:
+    original_text = message.text or message.caption or ""
+    original_text = original_text.strip()
+
+    stale_prompt = "Примите или отклоните заявку."
+    if original_text.endswith(stale_prompt):
+        original_text = original_text[: -len(stale_prompt)].rstrip()
+
+    status_block = format_telegram_status_block(status_text, state="searching")
+
+    if original_text:
+        return f"{original_text}\n\n{status_block}"
+
+    return status_block
+
 
 def _format_client_offer_value(value, suffix: str = "") -> str:
     if value is None:
@@ -297,7 +314,10 @@ async def handle_offer_response(callback: CallbackQuery) -> None:
 
     if callback.message:
         if action == "accept":
-            await callback.message.edit_reply_markup(reply_markup=None)
+            await _finalize_offer_message(
+                callback.message,
+                _build_accepted_offer_final_text(callback.message, message_text),
+            )
         else:
             await _delete_message_safely(callback.message)
 

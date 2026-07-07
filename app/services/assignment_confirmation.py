@@ -10,6 +10,23 @@ from app.services.job_lifecycle import InvalidJobStatusTransitionError
 ASSIGNMENT_CONFIRMATION_CONFIRMED = "confirmed"
 ASSIGNMENT_CONFIRMATION_FAILED = "failed"
 
+TELEGRAM_STATUS_DOT_SEARCHING = "🟡"
+TELEGRAM_STATUS_DOT_PENDING = "🟠"
+TELEGRAM_STATUS_DOT_SUCCESS = "🟢"
+TELEGRAM_STATUS_DOT_FAILED = "🔴"
+
+
+def format_telegram_status_block(text: str, *, state: str) -> str:
+    dots = {
+        "searching": TELEGRAM_STATUS_DOT_SEARCHING,
+        "pending": TELEGRAM_STATUS_DOT_PENDING,
+        "success": TELEGRAM_STATUS_DOT_SUCCESS,
+        "failed": TELEGRAM_STATUS_DOT_FAILED,
+        "cancelled": TELEGRAM_STATUS_DOT_FAILED,
+    }
+    dot = dots.get(state, TELEGRAM_STATUS_DOT_SEARCHING)
+    return f"{dot} Статус\n{text}"
+
 
 def build_assignment_status_from_action(action: str) -> str:
     if action == "confirm":
@@ -219,21 +236,33 @@ async def record_assignment_confirmation(
 
 def build_assignment_result_text(*, job_id: int, action: str, job_status: str) -> str:
     if job_status == JobStatus.ASSIGNED:
-        return f"Сделка по заявке №{job_id} подтверждена обеими сторонами."
+        return format_telegram_status_block(
+            f"Сделка по заявке №{job_id} подтверждена обеими сторонами.",
+            state="success",
+        )
 
     if job_status == JobStatus.READY_FOR_MATCHING:
-        return (
-            f"По заявке №{job_id} сделка не состоялась. "
-            "Заявка возвращена в активный поиск."
+        return format_telegram_status_block(
+            (
+                f"По заявке №{job_id} сделка не состоялась. "
+                "Заявка возвращена в активный поиск."
+            ),
+            state="failed",
         )
 
     if action == "confirm":
-        return (
-            f"Ваше подтверждение по заявке №{job_id} принято. "
-            "Ждём ответ второй стороны."
+        return format_telegram_status_block(
+            (
+                f"Ваше подтверждение по заявке №{job_id} принято. "
+                "Ждём ответ второй стороны."
+            ),
+            state="pending",
         )
 
-    return (
-        f"Ваш ответ по заявке №{job_id} принят. "
-        "Заявка будет возвращена в активный поиск."
+    return format_telegram_status_block(
+        (
+            f"Ваш ответ по заявке №{job_id} принят. "
+            "Заявка будет возвращена в активный поиск."
+        ),
+        state="failed",
     )
