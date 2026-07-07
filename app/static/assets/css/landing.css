@@ -276,7 +276,7 @@ details p {
   position: absolute;
   inset: -1px;
   z-index: -1;
-  border-radius: calc(var(--radius-xl) + 2px);
+  border-radius: var(--surface-radius-panel);
   background: var(--surface-panel-glow);
 }
 
