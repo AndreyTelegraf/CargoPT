@@ -447,10 +447,6 @@ h3 {
   min-height: var(--workspace-panel-min-height);
   margin-top: 0;
   padding: var(--workspace-sidebar-padding);
-  border: var(--surface-border);
-  border-radius: var(--surface-radius-workspace);
-  background: var(--surface-panel-bg);
-  box-shadow: var(--surface-shadow-workspace);
 }
 
 .track-workspace-sidebar .open-pedidos-list {

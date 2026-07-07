@@ -124,3 +124,12 @@ details,
   background: var(--surface-panel-bg);
   box-shadow: var(--surface-shadow-card);
 }
+
+.hero-workspace,
+.tracking-panel,
+.track-workspace-sidebar {
+  border: var(--surface-border);
+  border-radius: var(--surface-radius-workspace);
+  background: var(--surface-panel-bg);
+  box-shadow: var(--surface-shadow-workspace);
+}
