@@ -58,12 +58,11 @@ async def process_expired_pending_offers(
         if job.status != JobStatus.OFFERED:
             continue
 
-        distribution_result = await distribution.create_offer_distribution_for_job(
+        new_offers = await distribution.create_offers_for_job(
             job,
             limit=5,
             expires_in_minutes=60,
         )
-        new_offers = distribution_result.offers
 
         if new_offers:
             await send_job_offers_to_carriers(
@@ -78,8 +77,6 @@ async def process_expired_pending_offers(
                 bot=bot,
                 job=job,
                 job_repository=job_repository,
-                matching_reason=distribution_result.matching_reason,
-                matching_regions=distribution_result.matching_regions,
             )
 
     return len(expired_offers)
