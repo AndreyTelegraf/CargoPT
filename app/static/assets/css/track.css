@@ -154,7 +154,7 @@ h3 {
 
 .error-card {
   margin-top: 24px;
-  border-color: #f0b8b8;
+  border-color: var(--danger-border);
 }
 
 @media (max-width: 680px) {
@@ -374,7 +374,7 @@ h3 {
 .timeline-item.is-complete .timeline-marker {
   border-color: var(--brand);
   background: var(--brand);
-  color: #fff;
+  color: var(--button-primary-text);
 }
 
 .timeline-item.is-current .timeline-marker {
@@ -748,20 +748,20 @@ body {
 
 .track-offer-nav-card:hover,
 .track-offer-nav-card:focus-visible {
-  border-color: rgba(22, 101, 52, 0.38);
-  background: #ffffff;
+  border-color: var(--success-border);
+  background: var(--surface-panel-bg);
   box-shadow: var(--nav-card-hover-shadow);
   outline: none;
 }
 
 .track-offer-nav-card.is-active {
   border-color: var(--primary-border-strong);
-  background: #ffffff;
+  background: var(--surface-panel-bg);
   box-shadow: var(--nav-card-active-shadow);
 }
 
 .track-offer-nav-card.is-chosen {
-  border-color: rgba(217, 119, 6, 0.48);
+  border-color: var(--warning-border);
 }
 
 .track-offer-nav-top {
@@ -822,8 +822,8 @@ body {
 }
 
 .track-offer-nav-card.is-chosen .track-offer-nav-status {
-  background: rgba(217, 119, 6, 0.10);
-  color: #92400e;
+  background: var(--warning-fill);
+  color: var(--warning);
 }
 
 
@@ -884,7 +884,7 @@ body {
 
 .track-header-action:hover {
   transform: translateY(-1px);
-  background: #eef5ff;
+  background: var(--primary-fill);
 }
 
 @media (max-width: 640px) {
