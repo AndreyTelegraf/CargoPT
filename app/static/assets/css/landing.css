@@ -1036,7 +1036,7 @@ body {
 
 .request-card .progress-bar {
   height: 8px;
-  background: #e9edf5;
+  background: var(--line);
 }
 
 .request-card .progress-bar span {
@@ -1052,7 +1052,7 @@ body {
 .request-card select,
 .request-card textarea {
   min-height: 58px;
-  border-color: #dfe6f0;
+  border-color: var(--line);
   border-radius: var(--radius-sm);
   color: var(--brand);
 }
@@ -1060,7 +1060,7 @@ body {
 .request-card input:focus,
 .request-card select:focus,
 .request-card textarea:focus {
-  outline-color: rgba(7, 91, 255, 0.16);
+  outline-color: var(--primary-shadow);
   border-color: var(--brand-blue);
 }
 
@@ -1071,7 +1071,7 @@ body {
 .request-card .button {
   width: 100%;
   min-height: 64px;
-  border-radius: 13px;
+  border-radius: var(--radius-sm);
   font-size: 20px;
 }
 
