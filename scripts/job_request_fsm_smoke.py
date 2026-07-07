@@ -15,12 +15,9 @@ assert JobRequestStates.pickup_details
 assert JobRequestStates.dropoff_address
 assert JobRequestStates.dropoff_details
 assert JobRequestStates.item_description
-assert JobRequestStates.estimated_payload_kg
-assert JobRequestStates.estimated_volume_m3
 assert JobRequestStates.required_loaders
-assert JobRequestStates.needs_tail_lift
-assert JobRequestStates.needs_crane
-assert JobRequestStates.needs_mobile_lift
+assert JobRequestStates.contact_phone
+assert JobRequestStates.contact_whatsapp
 assert JobRequestStates.comment
 
 print("JOB_REQUEST_FSM_SMOKE_OK")

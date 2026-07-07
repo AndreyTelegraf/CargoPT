@@ -6,7 +6,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
 from app.bot.job_request_keyboards import media_skip_keyboard
-from app.bot.job_request_keyboards import payload_keyboard
+from app.bot.job_request_keyboards import loaders_keyboard
 
 from app.bot.states.job_request import JobRequestStates
 from app.db.session import async_session_maker
@@ -52,16 +52,13 @@ async def job_media(
             media_type = "video"
             telegram_file_id = message.video.file_id
         elif (message.text or "").strip() in {"-", "Следующий шаг"}:
-            await state.set_state(JobRequestStates.estimated_payload_kg)
+            await state.set_state(JobRequestStates.required_loaders)
             await message.answer(
-                "Оцените примерный вес груза.\n\n"
-                "Ориентир:\n"
-                "- до 500 кг — несколько коробок или небольшой переезд;\n"
-                "- до 1000 кг — обычный квартирный переезд;\n"
-                "- до 1600 кг — крупная мебель и техника;\n"
-                "- до 3500 кг — большой объём или тяжёлый груз.\n\n"
-                "Можно нажать кнопку или ввести число в кг.",
-                reply_markup=payload_keyboard(),
+                "Сколько грузчиков нужно?\n\n"
+                "0 — если перевозка только машиной.\n"
+                "1–2 — обычная погрузка мебели и коробок.\n"
+                "3+ — тяжёлые предметы, этажи без лифта или большой объём.",
+                reply_markup=loaders_keyboard(),
             )
             return
         else:

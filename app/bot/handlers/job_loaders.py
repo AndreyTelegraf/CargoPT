@@ -2,7 +2,7 @@ from aiogram import Router
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
-from app.bot.job_request_keyboards import yes_no_keyboard
+from app.bot.job_request_keyboards import phone_skip_keyboard
 
 from app.bot.states.job_request import JobRequestStates
 from app.db.session import async_session_maker
@@ -54,10 +54,11 @@ async def job_required_loaders(
 
         await session.commit()
 
-    await state.set_state(JobRequestStates.needs_assembly)
+    await state.set_state(JobRequestStates.contact_phone)
 
     await message.answer(
-        "Нужна ли сборка или разборка мебели?\n\n"
-        "Например: разобрать шкаф, кровать или стол перед перевозкой и собрать после доставки.",
-        reply_markup=yes_no_keyboard(),
+        "Контактный телефон для перевозчика.\n\n"
+        "Telegram username подтягивается автоматически. Телефон нужен как запасной канал связи, если водитель не сможет быстро найти вас в Telegram.\n"
+        "Отправьте номер или нажмите «Не указывать телефон».",
+        reply_markup=phone_skip_keyboard(),
     )
