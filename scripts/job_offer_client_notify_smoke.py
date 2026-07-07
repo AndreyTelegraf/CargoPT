@@ -56,16 +56,30 @@ web_job = SimpleNamespace(
     id=43,
     client_telegram_user_id=None,
     client_telegram_username=None,
-    customer_name=None,
+    customer_name="Web Client",
     client_phone=None,
     client_whatsapp=None,
 )
 
 web_carrier_text = build_carrier_notification_text(web_job, carrier)
 
-assert "Клиент: S/N" in web_carrier_text
+assert "Клиент: Web Client" in web_carrier_text
 assert "Username: S/N" in web_carrier_text
 assert "@None" not in web_carrier_text
 assert "tg://user?id=None" not in web_carrier_text
+
+anonymous_web_job = SimpleNamespace(
+    id=44,
+    client_telegram_user_id=None,
+    client_telegram_username=None,
+    customer_name=None,
+    client_phone=None,
+    client_whatsapp=None,
+)
+
+anonymous_web_carrier_text = build_carrier_notification_text(anonymous_web_job, carrier)
+
+assert "Клиент: S/N" in anonymous_web_carrier_text
+assert "Username: S/N" in anonymous_web_carrier_text
 
 print("JOB_OFFER_CLIENT_NOTIFY_SMOKE_OK")
