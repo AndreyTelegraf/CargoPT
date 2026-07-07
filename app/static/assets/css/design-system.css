@@ -44,7 +44,7 @@
   --surface-radius-panel: var(--radius-lg);
   --surface-radius-workspace: var(--radius-lg);
   --surface-shadow-card: var(--shadow);
-  --surface-shadow-panel: var(--shadow-strong);
+  --surface-shadow-panel: var(--surface-shadow-card);
   --surface-shadow-workspace: var(--surface-shadow-card);
   --surface-shadow-subtle: 0 10px 28px rgba(6, 22, 74, 0.06);
   --surface-panel-glow: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(17,24,39,0.12));
