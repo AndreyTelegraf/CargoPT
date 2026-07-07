@@ -1201,7 +1201,7 @@ margin-top:6px;
 .tracking-offer-card{
 padding:16px;
 border:1px solid var(--line);
-border-radius:18px;
+border-radius: var(--surface-radius-card);
 background:var(--panel);
 }
 
