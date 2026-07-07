@@ -12,8 +12,6 @@ from app.api.web_request_schemas import TrackingOfferSelectResponse
 from app.api.web_request_schemas import TrackingOfferResponse
 from app.api.web_request_schemas import TrackingJobResponse
 from app.api.web_request_schemas import TrackingAssignmentActionResponse
-from app.bot.handlers.job_offer_response import send_assignment_confirmation_requests
-from app.bot.handlers.job_assignment_confirmation import _send_assignment_final_notifications
 from app.config import settings
 from app.db.session import async_session_maker
 from app.repositories.carrier import CarrierRepository
@@ -198,11 +196,8 @@ async def select_tracking_offer(
     tracking_token: str,
     offer_id: int,
     session: AsyncSession = Depends(get_session),
-    bot: Bot = Depends(get_api_bot),
 ) -> TrackingOfferSelectResponse:
     job_repository = JobRepository(session)
-    carrier_repository = CarrierRepository(session)
-
     job = await job_repository.get_job_by_tracking_token(tracking_token)
     if job is None:
         raise HTTPException(status_code=404, detail="tracking job not found")
@@ -220,21 +215,6 @@ async def select_tracking_offer(
     updated_job = await job_repository.get_job_by_id(job.id)
     if updated_job is None:
         raise HTTPException(status_code=404, detail="tracking job not found")
-
-    selected_carrier = await carrier_repository.get_carrier_by_id(
-        selected_offer.carrier_id
-    )
-    carrier_telegram_user_id = (
-        selected_carrier.telegram_user_id
-        if selected_carrier is not None
-        else None
-    )
-
-    await send_assignment_confirmation_requests(
-        bot=bot,
-        job=updated_job,
-        carrier_telegram_user_id=carrier_telegram_user_id,
-    )
 
     return TrackingOfferSelectResponse(
         job_id=updated_job.id,
@@ -284,13 +264,6 @@ async def confirm_tracking_assignment(
             job_repository=job_repository,
             carrier_repository=carrier_repository,
         )
-
-    await _send_assignment_final_notifications(
-        bot=bot,
-        job=updated_job,
-        accepted_offer=accepted_offer,
-        carrier_repository=carrier_repository,
-    )
 
     return TrackingAssignmentActionResponse(
         job_id=updated_job.id,

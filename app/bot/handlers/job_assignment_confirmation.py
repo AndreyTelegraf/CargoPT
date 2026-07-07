@@ -1,5 +1,3 @@
-import re
-
 from aiogram import F
 from aiogram import Router
 from aiogram.exceptions import TelegramBadRequest
@@ -14,7 +12,6 @@ from app.repositories.job import JobRepository
 from app.services.assignment_confirmation import build_assignment_cleanup_target
 from app.services.assignment_confirmation import build_assignment_result_text
 from app.services.assignment_confirmation import build_assignment_status_from_action
-from app.services.assignment_confirmation import format_telegram_status_block
 from app.services.assignment_confirmation import parse_assignment_callback
 from app.services.assignment_confirmation import process_assignment_failure_redispatch
 from app.services.assignment_confirmation import record_assignment_confirmation
@@ -34,16 +31,6 @@ async def _delete_message_by_id_safely(bot, *, chat_id: int | None, message_id: 
         return
 
 
-def _build_assignment_confirmation_final_text(message, status_text: str) -> str:
-    original_text = message.text or message.caption or ""
-    original_text = original_text.strip()
-
-    if original_text:
-        return f"{original_text}\n\n{status_text}"
-
-    return status_text
-
-
 async def _send_assignment_final_notifications(
     *,
     bot,
@@ -59,49 +46,28 @@ async def _send_assignment_final_notifications(
         carrier = await carrier_repository.get_carrier_by_id(accepted_offer.carrier_id)
 
     if job.status == JobStatus.ASSIGNED:
-        client_text = format_telegram_status_block(
-            (
-                f"Сделка по заявке №{job.id} подтверждена обеими сторонами.\n\n"
-                "Свяжитесь с перевозчиком напрямую и согласуйте последние детали перевозки."
-            ),
-            state="success",
+        client_text = (
+            f"Сделка по заявке №{job.id} подтверждена обеими сторонами.\n\n"
+            "Свяжитесь с перевозчиком напрямую и согласуйте последние детали перевозки."
         )
-        carrier_text = format_telegram_status_block(
-            (
-                f"Сделка по заявке №{job.id} подтверждена обеими сторонами.\n\n"
-                "Свяжитесь с клиентом напрямую и согласуйте последние детали перевозки."
-            ),
-            state="success",
+        carrier_text = (
+            f"Сделка по заявке №{job.id} подтверждена обеими сторонами.\n\n"
+            "Свяжитесь с клиентом напрямую и согласуйте последние детали перевозки."
         )
     else:
-        client_text = format_telegram_status_block(
-            (
-                f"По заявке №{job.id} сделка не состоялась.\n\n"
-                "Заявка возвращена в поиск. Мы уже ищем нового перевозчика."
-            ),
-            state="failed",
+        client_text = (
+            f"По заявке №{job.id} сделка не состоялась.\n\n"
+            "Заявка возвращена в поиск. Мы уже ищем нового перевозчика."
         )
-        carrier_text = format_telegram_status_block(
-            (
-                "Спасибо.\n\n"
-                "Заявка возвращена в поиск."
-            ),
-            state="failed",
+        carrier_text = (
+            "Спасибо.\n\n"
+            "Заявка возвращена в поиск."
         )
 
-    if job.client_telegram_user_id is not None:
-        await bot.send_message(
-            chat_id=job.client_telegram_user_id,
-            text=client_text,
-            parse_mode="HTML",
-        )
+    await bot.send_message(chat_id=job.client_telegram_user_id, text=client_text)
 
     if carrier is not None and carrier.telegram_user_id is not None:
-        await bot.send_message(
-            chat_id=carrier.telegram_user_id,
-            text=carrier_text,
-            parse_mode="HTML",
-        )
+        await bot.send_message(chat_id=carrier.telegram_user_id, text=carrier_text)
 
 
 @router.callback_query(F.data.startswith("assignment:"))
@@ -224,22 +190,13 @@ async def handle_assignment_confirmation(callback: CallbackQuery) -> None:
             message_id=carrier_message_id,
         )
 
-    alert_text = re.sub(r"<[^>]+>", "", result_text)
-
     if callback.message:
         try:
-            await callback.message.edit_text(
-                _build_assignment_confirmation_final_text(
-                    callback.message,
-                    result_text,
-                ),
-                parse_mode="HTML",
-                reply_markup=None,
-            )
+            await callback.message.edit_text(result_text, reply_markup=None)
         except TelegramBadRequest:
             try:
                 await callback.message.edit_reply_markup(reply_markup=None)
             except TelegramBadRequest:
                 pass
 
-    await callback.answer(alert_text, show_alert=True)
+    await callback.answer(result_text, show_alert=True)
