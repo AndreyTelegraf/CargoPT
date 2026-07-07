@@ -103,6 +103,39 @@
   --space-3: 12px;
   --space-4: 16px;
   --space-6: 32px;
+
+  --font-size-logo: 23px;
+  --font-size-eyebrow: 13px;
+  --font-size-badge: 13px;
+  --font-size-badge-small: 11px;
+  --font-size-meta: 14px;
+  --font-size-body-large: 19px;
+  --font-size-card-title: 22px;
+  --font-size-status-title: clamp(28px, 4vw, 38px);
+  --font-size-status-text: 16px;
+  --font-size-offer-price: 20px;
+  --font-size-track-h1: clamp(34px, 6vw, 58px);
+  --font-size-track-h2: clamp(26px, 4vw, 38px);
+
+  --font-weight-regular: 500;
+  --font-weight-meta: 650;
+  --font-weight-strong: 750;
+  --font-weight-bold: 800;
+  --font-weight-heavy: 900;
+  --font-weight-black: 950;
+
+  --line-height-tight: 1;
+  --line-height-heading: 0.98;
+  --line-height-card-title: 1.2;
+  --line-height-copy: 1.35;
+  --line-height-hero-copy: 1.45;
+
+  --letter-spacing-logo: -0.055em;
+  --letter-spacing-heading: -0.055em;
+  --letter-spacing-heading-tight: -0.07em;
+  --letter-spacing-card-title: -0.035em;
+  --letter-spacing-eyebrow: 0.095em;
+  --letter-spacing-label: 0.08em;
   --motion-fast: 0.16s ease;
   --motion-base: 0.18s ease;
   --motion-slow: 0.22s ease;

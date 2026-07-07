@@ -36,9 +36,9 @@ a {
 }
 
 .logo {
-  font-size: 23px;
-  font-weight: 900;
-  letter-spacing: -0.055em;
+  font-size: var(--font-size-logo);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-logo);
 }
 
 .header-actions,
@@ -114,9 +114,9 @@ a {
 .eyebrow {
   margin: 0 0 14px;
   color: var(--muted);
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.095em;
+  font-size: var(--font-size-eyebrow);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-eyebrow);
   text-transform: uppercase;
 }
 
@@ -132,21 +132,21 @@ h1 {
   margin-bottom: 20px;
   font-size: clamp(42px, 5.8vw, 64px);
   line-height: 0.95;
-  letter-spacing: -0.07em;
+  letter-spacing: var(--letter-spacing-heading-tight);
 }
 
 h2 {
   max-width: 780px;
   margin-bottom: 18px;
   font-size: clamp(32px, 5vw, 56px);
-  line-height: 1;
-  letter-spacing: -0.055em;
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-heading);
 }
 
 h3 {
   margin-bottom: 10px;
-  font-size: 22px;
-  letter-spacing: -0.035em;
+  font-size: var(--font-size-card-title);
+  letter-spacing: var(--letter-spacing-card-title);
 }
 
 .hero-text,
@@ -155,7 +155,7 @@ h3 {
 .final-cta p {
   max-width: 700px;
   color: var(--muted);
-  font-size: 19px;
+  font-size: var(--font-size-body-large);
 }
 
 .hero-text {
@@ -317,8 +317,8 @@ fieldset {
 legend {
   margin-bottom: 7px;
   font-size: 30px;
-  font-weight: 900;
-  letter-spacing: -0.055em;
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-heading);
 }
 
 .form-intro,
@@ -421,24 +421,24 @@ textarea:focus {
   margin: 0;
   color: var(--muted);
   font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.095em;
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-eyebrow);
   text-transform: uppercase;
 }
 
 .tracking-status-title {
   display: block;
   color: var(--text);
-  font-size: clamp(28px, 4vw, 38px);
-  line-height: 1;
-  letter-spacing: -0.055em;
+  font-size: var(--font-size-status-title);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-heading);
 }
 
 .tracking-status-text {
   display: block;
   color: var(--muted);
-  font-size: 16px;
-  font-weight: 650;
+  font-size: var(--font-size-status-text);
+  font-weight: var(--font-weight-meta);
 }
 
 /* Track status dot */
@@ -538,8 +538,8 @@ textarea:focus {
   border-radius: var(--badge-radius);
   background: var(--badge-success-bg);
   color: var(--badge-success-text) !important;
-  font-size: 13px;
-  font-weight: 900;
+  font-size: var(--font-size-badge);
+  font-weight: var(--font-weight-heavy);
 }
 
 .tracking-status-primary-action {
@@ -574,29 +574,29 @@ textarea:focus {
 
 .tracking-status-selected-label {
   color: var(--primary);
-  font-size: 11px;
-  font-weight: 950;
-  letter-spacing: 0.075em;
+  font-size: var(--font-size-badge-small);
+  font-weight: var(--font-weight-black);
+  letter-spacing: var(--letter-spacing-label);
   text-transform: uppercase;
 }
 
 .tracking-status-selected-offer strong {
   color: var(--text);
   font-size: 15px;
-  line-height: 1.2;
+  line-height: var(--line-height-card-title);
 }
 
 .tracking-status-selected-offer span:last-child {
   color: var(--muted);
-  font-size: 13px;
-  font-weight: 750;
+  font-size: var(--font-size-badge);
+  font-weight: var(--font-weight-strong);
 }
 
 .tracking-status-detail-label {
   color: var(--muted);
   font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-label);
   text-transform: uppercase;
 }
 
@@ -1213,19 +1213,19 @@ align-items:center;
 }
 
 .tracking-offer-price{
-font-size:20px;
+font-size: var(--font-size-offer-price);
 color:var(--primary);
 }
 
 .tracking-offer-meta{
 margin-top: var(--space-1);
 color:var(--muted);
-font-size:14px;
+font-size: var(--font-size-meta);
 }
 
 .tracking-offer-note{
 margin-top: var(--space-3);
-font-size:14px;
+font-size: var(--font-size-meta);
 }
 
 
@@ -1480,13 +1480,13 @@ grid-column:1/-1;
 
 .tracking-panel .tracking-status-title {
   font-size: clamp(34px, 4vw, 52px);
-  line-height: 0.98;
+  line-height: var(--line-height-heading);
   max-width: 680px;
 }
 
 .tracking-panel .tracking-status-text {
   font-size: clamp(15px, 1.25vw, 18px);
-  line-height: 1.35;
+  line-height: var(--line-height-copy);
   max-width: 640px;
 }
 

@@ -26,9 +26,9 @@ a {
 }
 
 .logo {
-  font-size: 23px;
-  font-weight: 900;
-  letter-spacing: -0.055em;
+  font-size: var(--font-size-logo);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-logo);
 }
 
 .private-label {
@@ -44,9 +44,9 @@ a {
 .eyebrow {
   margin: 0 0 14px;
   color: var(--muted);
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.095em;
+  font-size: var(--font-size-eyebrow);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-eyebrow);
   text-transform: uppercase;
 }
 
@@ -60,35 +60,35 @@ p {
 h1 {
   max-width: 760px;
   margin-bottom: 18px;
-  font-size: clamp(34px, 6vw, 58px);
-  line-height: 0.98;
+  font-size: var(--font-size-track-h1);
+  line-height: var(--line-height-heading);
   letter-spacing: -0.06em;
 }
 
 h2 {
   margin-bottom: 12px;
-  font-size: clamp(26px, 4vw, 38px);
+  font-size: var(--font-size-track-h2);
   line-height: 1.05;
   letter-spacing: -0.045em;
 }
 
 h3 {
   margin-bottom: 8px;
-  font-size: 22px;
-  letter-spacing: -0.035em;
+  font-size: var(--font-size-card-title);
+  letter-spacing: var(--letter-spacing-card-title);
 }
 
 .status-text {
   max-width: 700px;
   margin-bottom: 0;
   color: var(--muted);
-  font-size: 19px;
+  font-size: var(--font-size-body-large);
 }
 
 .last-updated {
   margin: 22px 0 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--font-size-meta);
   font-weight: 700;
 }
 
@@ -119,7 +119,7 @@ h3 {
   gap: 10px 18px;
   margin-top: 16px;
   color: var(--muted);
-  font-weight: 650;
+  font-weight: var(--font-weight-meta);
 }
 
 .offer-note {
@@ -172,7 +172,7 @@ h3 {
 .new-pedido-cta p {
   margin: 0 0 12px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--font-size-meta);
   font-weight: 700;
 }
 
@@ -654,8 +654,8 @@ h3 {
 
 .track-offer-nav-top strong {
   color: var(--text);
-  font-size: 14px;
-  line-height: 1.2;
+  font-size: var(--font-size-meta);
+  line-height: var(--line-height-card-title);
 }
 
 .track-offer-nav-price {
@@ -663,9 +663,9 @@ h3 {
   justify-content: flex-end;
   min-width: 42px;
   color: var(--primary);
-  font-size: 13px;
-  font-weight: 900;
-  line-height: 1.2;
+  font-size: var(--font-size-badge);
+  font-weight: var(--font-weight-heavy);
+  line-height: var(--line-height-card-title);
 }
 
 .track-offer-nav-price.is-placeholder {
@@ -690,8 +690,8 @@ h3 {
   border-radius: var(--badge-radius);
   background: var(--badge-primary-bg);
   color: var(--badge-primary-text);
-  font-size: 11px;
-  font-weight: 900;
+  font-size: var(--font-size-badge-small);
+  font-weight: var(--font-weight-heavy);
 }
 
 .track-offer-nav-card.is-chosen .track-offer-nav-status {
@@ -708,7 +708,7 @@ h3 {
 }
 
 .track-offer-nav-note {
-  line-height: 1.35;
+  line-height: var(--line-height-copy);
 }
 
 .track-offer-nav-select {
