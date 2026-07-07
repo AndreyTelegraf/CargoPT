@@ -30,8 +30,8 @@ a {
   justify-content: space-between;
   gap: 24px;
   padding: 12px clamp(18px, 4vw, 52px);
-  background: rgba(251, 250, 247, 0.88);
-  border-bottom: 1px solid rgba(227, 223, 214, 0.78);
+  background: var(--badge-header-bg);
+  border-bottom: var(--surface-border);
   backdrop-filter: blur(18px);
 }
 
