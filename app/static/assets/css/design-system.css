@@ -1,0 +1,56 @@
+/* Shared CargoPT design tokens. Page CSS owns layout/components. */
+:root {
+  --bg: #f6f5f1;
+  --panel: #ffffff;
+  --text: #111318;
+  --muted: #616975;
+  --line: #e3dfd6;
+  --brand: #0f172a;
+  --brand-soft: #eaf7fb;
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --accent-soft: #eff6ff;
+
+  --primary: var(--accent);
+  --primary-strong: var(--accent-strong);
+  --primary-soft: var(--accent-soft);
+
+  --primary-border: rgba(37, 99, 235, 0.30);
+  --primary-border-strong: rgba(37, 99, 235, 0.55);
+  --primary-fill: rgba(239, 246, 255, 0.82);
+  --primary-shadow: rgba(37, 99, 235, 0.18);
+  --success: #166534;
+  --success-soft: rgba(240, 253, 244, 0.86);
+  --warning: #d97706;
+  --warning-soft: rgba(254, 252, 232, 0.72);
+  --danger: #dc2626;
+  --danger-soft: rgba(255, 241, 242, 0.72);
+
+  --success-border: rgba(22, 101, 52, 0.28);
+  --success-border-strong: rgba(22, 101, 52, 0.62);
+  --success-fill: rgba(22, 101, 52, 0.06);
+  --success-shadow: rgba(22, 101, 52, 0.10);
+
+  --warning-border: rgba(202, 138, 4, 0.24);
+  --warning-fill: rgba(254, 252, 232, 0.72);
+
+  --danger-border: rgba(159, 18, 57, 0.22);
+  --surface: #fbfaf7;
+  --radius: 24px;
+  --shadow: 0 24px 70px rgba(17, 24, 39, 0.08);
+  --shadow-strong: 0 34px 90px rgba(17, 24, 39, 0.16);
+  --radius-sm: 14px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --motion-fast: 0.16s ease;
+  --motion-base: 0.18s ease;
+  --motion-slow: 0.22s ease;
+}
