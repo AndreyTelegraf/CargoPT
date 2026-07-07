@@ -17,12 +17,6 @@ a {
   text-decoration: none;
 }
 
-.track-shell {
-  width: min(1200px, calc(100% - 48px));
-  margin: 0 auto;
-  padding: var(--space-6) 0 calc(var(--space-6) * 2);
-}
-
 .track-header {
   display: flex;
   align-items: center;
@@ -406,22 +400,6 @@ h3 {
 }
 
 /* Tracking page embedded into landing request-card block */
-.tracking-page .track-shell {
-  all: unset;
-}
-
-.tracking-hero {
-  grid-template-columns: minmax(0, 1.04fr) minmax(420px, 0.96fr);
-  align-items: start;
-}
-
-.tracking-copy {
-  max-width: 780px;
-}
-
-.tracking-copy .hero-text {
-  max-width: 620px;
-}
 .tracking-request-card {
   display: block;
   width: 100%;
@@ -461,28 +439,8 @@ h3 {
 }
 
 @media (max-width: 1180px) {
-  .tracking-hero {
-    grid-template-columns: 1fr;
-  }
-
-  .tracking-copy {
-    display: contents;
-  }
-
-  .tracking-copy > .eyebrow,
-  .tracking-copy > h1,
-  .tracking-copy > .hero-text {
-    order: 1;
-  }
-
   .tracking-request-card {
     order: 2;
-  }
-}
-
-@media (max-width: 640px) {
-  .tracking-hero {
-    width: min(100% - 28px, 760px);
   }
 }
 
