@@ -907,7 +907,7 @@ body {
 }
 
 .hero-v2 {
-  grid-template-columns: minmax(0, 1.04fr) minmax(420px, 0.96fr);
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
   align-items: start;
   gap: clamp(38px, 5vw, 72px);
   width: min(1380px, calc(100% - 56px));
