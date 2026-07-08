@@ -666,9 +666,7 @@ async function submitRequest() {
         comment_summary: buildShortSummary(submittedData.comment)
       };
       saveTrackingLink(trackingEntry);
-      renderTrackingSuccess(trackingEntry);
-      renderOpenPedidos();
-      startTrackingPolling(trackingEntry);
+      window.location.href = body.tracking_url;
     } else {
       setMessage(messages.success, "success");
     }
