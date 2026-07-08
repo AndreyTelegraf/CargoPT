@@ -11,13 +11,14 @@
 
 .track-workspace-sidebar {
   display: grid;
-  align-content: start;
+  grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+  align-content: stretch;
   gap: var(--space-3);
   align-self: stretch;
   width: 100%;
   min-height: var(--workspace-panel-min-height);
   margin-top: 0;
-  padding: var(--workspace-sidebar-padding);
+  padding: var(--workspace-panel-padding);
   border: var(--surface-border);
   border-radius: var(--surface-radius-workspace);
   background: var(--request-card-bg);
@@ -26,6 +27,7 @@
 
 .track-workspace-sidebar .open-pedidos-list {
   gap: var(--space-3);
+  min-height: 0;
 }
 
 .track-workspace-sidebar .open-pedido-card {
@@ -179,7 +181,7 @@
 
 .track-new-request {
   width: 100%;
-  margin-top: var(--space-4);
+  margin-top: auto;
   justify-content: center;
 }
 
