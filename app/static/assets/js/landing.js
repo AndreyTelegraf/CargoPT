@@ -7,14 +7,8 @@ const steps = Array.from(document.querySelectorAll(".form-step"));
 const stepLabel = document.querySelector("#stepLabel");
 const progressFill = document.querySelector("#progressFill");
 const formMessage = document.querySelector("#formMessage");
-const trackingPanel = document.querySelector("#trackingPanel");
-const trackingPanelBody = document.querySelector("#trackingPanelBody");
 const progress = document.querySelector(".progress");
 let currentStep = 1;
-let activeTrackingEntry = null;
-let trackingPollTimer = null;
-let isSelectingLandingOffer = false;
-let isSendingLandingAssignmentAction = false;
 
 const MESSAGES = {
   pt: {
@@ -249,152 +243,8 @@ function mergeTrackingSnapshot(entry, snapshot) {
   };
 }
 
-function stopTrackingPolling() {
-  if (trackingPollTimer) {
-    window.clearInterval(trackingPollTimer);
-    trackingPollTimer = null;
-  }
-}
-
-async function refreshTrackingEntry(entry, options = {}) {
-  const token = entry && (entry.token || entry.tracking_token);
-  if (!token) return entry;
-
-  try {
-    const response = await fetch(`/api/v1/track/${encodeURIComponent(token)}`);
-    if (!response.ok) return entry;
-
-    const snapshot = await response.json();
-    const updatedEntry = mergeTrackingSnapshot(entry, snapshot);
-    activeTrackingEntry = updatedEntry;
-    saveTrackingLink(updatedEntry);
-
-    if (options.rerender) {
-      renderTrackingSuccess(updatedEntry);
-    }
-
-    renderOpenPedidos();
-    return updatedEntry;
-  } catch (error) {
-    console.error(error);
-    return entry;
-  }
-}
-
-function startTrackingPolling(entry) {
-  stopTrackingPolling();
-  activeTrackingEntry = entry;
-  refreshTrackingEntry(entry, {rerender: true});
-  trackingPollTimer = window.setInterval(() => {
-    if (activeTrackingEntry) {
-      refreshTrackingEntry(activeTrackingEntry, {rerender: true});
-    }
-  }, 15000);
-}
 
 
-
-
-function switchFormToTrackingMode() {
-  form.hidden = true;
-  trackingPanel.hidden = false;
-  form.classList.add("is-tracking-mode");
-}
-
-function switchTrackingToNewRequest() {
-  stopTrackingPolling();
-
-  trackingPanel.hidden = true;
-  trackingPanelBody.textContent = "";
-  form.hidden = false;
-  form.classList.remove("is-tracking-mode");
-  form.reset();
-  localStorage.removeItem(STORAGE_KEY);
-
-  steps.forEach((item) => {
-    item.hidden = false;
-  });
-
-  if (progress) {
-    progress.hidden = false;
-  }
-
-  setStep(1);
-  renderOpenPedidos();
-}
-
-async function selectLandingOffer(offerId, button) {
-  if (isSelectingLandingOffer || !activeTrackingEntry) return;
-
-  isSelectingLandingOffer = true;
-  button.disabled = true;
-  button.textContent = messages.selectingOffer;
-
-  try {
-    const response = await fetch(`/api/v1/track/${encodeURIComponent(activeTrackingEntry.token)}/offers/${encodeURIComponent(offerId)}/select`, {
-      method: "POST",
-      headers: {"Accept": "application/json"}
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    await refreshTrackingEntry(activeTrackingEntry, {rerender: true});
-  } catch (error) {
-    console.error(error);
-    button.disabled = false;
-    button.textContent = messages.retryOffer;
-  } finally {
-    isSelectingLandingOffer = false;
-  }
-}
-
-async function sendLandingAssignmentAction(action, button) {
-  if (isSendingLandingAssignmentAction || !activeTrackingEntry) return;
-
-  isSendingLandingAssignmentAction = true;
-
-  const originalText = button.textContent;
-  button.disabled = true;
-  button.textContent = messages.sendingAction;
-
-  try {
-    const response = await fetch(`/api/v1/track/${encodeURIComponent(activeTrackingEntry.token)}/assignment/${encodeURIComponent(action)}`, {
-      method: "POST",
-      headers: {"Accept": "application/json"}
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    await refreshTrackingEntry(activeTrackingEntry, {rerender: true});
-  } catch (error) {
-    console.error(error);
-    button.disabled = false;
-    button.textContent = messages.retryOffer;
-    window.setTimeout(() => {
-      if (!button.disabled) button.textContent = originalText;
-    }, 2200);
-  } finally {
-    isSendingLandingAssignmentAction = false;
-  }
-}
-
-function renderTrackingSuccess(entry) {
-  switchFormToTrackingMode();
-  formMessage.textContent = "";
-  formMessage.classList.remove("is-success", "is-error");
-
-  window.CargoPTTrackingWorkspace.render(entry, {
-    container: trackingPanelBody,
-    locale: localeKey,
-    messages,
-    onSelectOffer: selectLandingOffer,
-    onAssignmentAction: sendLandingAssignmentAction
-  });
-}
 
 function renderOpenPedidos() {
   const section = document.querySelector("#openPedidos");
