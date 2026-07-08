@@ -536,8 +536,16 @@ h3 {
   min-height: 100%;
 }
 
-.track-workspace-shell .tracking-panel .tracking-success {
-  gap: var(--space-3);
+.track-workspace-shell .tracking-panel .hero-workspace{
+  display:grid;
+  gap:var(--space-3);
+  width:100%;
+  min-height:100%;
+  padding:0;
+  border:none;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
 }
 
 .track-workspace-shell .tracking-panel .tracking-status-summary {
