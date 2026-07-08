@@ -469,11 +469,8 @@ details p {
 }
 
 /* Shared request card */
-.request-card {
-  align-self: stretch;
-}
-
 .request-form.request-card {
+  align-self: stretch;
   border: var(--surface-border);
   border-radius: var(--surface-radius-card);
   background: var(--surface-panel-bg);
