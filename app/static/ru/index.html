@@ -92,13 +92,13 @@
         <fieldset class="form-step is-active" data-step="1">
           <legend>Получить предложения</legend>
           <p class="form-intro">Начните с трёх простых вопросов.</p>
-          <label><span class="field-label">Откуда<span class="field-required" aria-hidden="true">*</span></span>
+          <label><span class="field-label"><span class="field-required" aria-hidden="true">*</span>Откуда</span>
             <input name="pickup" autocomplete="street-address" required placeholder="Например: Lisboa">
           </label>
-          <label><span class="field-label">Куда<span class="field-required" aria-hidden="true">*</span></span>
+          <label><span class="field-label"><span class="field-required" aria-hidden="true">*</span>Куда</span>
             <input name="dropoff" autocomplete="street-address" required placeholder="Например: Cascais">
           </label>
-          <label><span class="field-label">Что перевозим<span class="field-required" aria-hidden="true">*</span></span>
+          <label><span class="field-label"><span class="field-required" aria-hidden="true">*</span>Что перевозим</span>
             <textarea name="items" required placeholder="Например: диван, 20 коробок, стиральная машина"></textarea>
           </label>
           <div class="form-actions">
@@ -110,19 +110,19 @@
           <legend>Детали и контакты</legend>
           <p class="form-intro">Осталось добавить детали, чтобы перевозчики могли оценить заявку.</p>
           <div class="form-grid">
-            <label><span class="field-label">Имя<span class="field-required" aria-hidden="true">*</span></span><input name="customer_name" autocomplete="name" required></label>
-            <label><span class="field-label">Дата перевозки<span class="field-required" aria-hidden="true">*</span></span><input name="requested_date" type="text" required list="requestedDateOptions" placeholder="ДД/ММ/ГГГГ, сегодня, завтра"><datalist id="requestedDateOptions"><option value="сегодня"></option><option value="завтра"></option><option value="в ближайшие дни"></option><option value="любой день"></option></datalist></label>
+            <label><span class="field-label"><span class="field-required" aria-hidden="true">*</span>Имя</span><input name="customer_name" autocomplete="name" required></label>
+            <label><span class="field-label"><span class="field-required" aria-hidden="true">*</span>Дата перевозки</span><input name="requested_date" type="text" required list="requestedDateOptions" placeholder="ДД/ММ/ГГГГ, сегодня, завтра"><datalist id="requestedDateOptions"><option value="сегодня"></option><option value="завтра"></option><option value="в ближайшие дни"></option><option value="любой день"></option></datalist></label>
           </div>
           <div class="form-grid">
-            <label><span class="field-label">Телефон<span class="field-required" aria-hidden="true">*</span></span><input name="client_phone" autocomplete="tel" placeholder="+351..." required></label>
+            <label><span class="field-label"><span class="field-required" aria-hidden="true">*</span>Телефон</span><input name="client_phone" autocomplete="tel" placeholder="+351..." required></label>
             <label><span class="field-label">WhatsApp<span class="field-optional">необязательно</span></span><input name="client_whatsapp" autocomplete="tel" placeholder="+351..."></label>
           </div>
           <label><span class="field-label">Email<span class="field-optional">необязательно</span></span><input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"></label>
           <div class="form-grid">
-            <label><span class="field-label">Этаж отправления<span class="field-required" aria-hidden="true">*</span></span><input name="pickup_floor" type="number" min="-1" max="24" required></label>
-            <label><span class="field-label">Лифт на отправлении<span class="field-required" aria-hidden="true">*</span></span><select name="pickup_elevator" required><option value="">Выберите</option><option value="true">Да</option><option value="false">Нет</option></select></label>
-            <label><span class="field-label">Этаж доставки<span class="field-required" aria-hidden="true">*</span></span><input name="dropoff_floor" type="number" min="-1" max="24" required></label>
-            <label><span class="field-label">Лифт на доставке<span class="field-required" aria-hidden="true">*</span></span><select name="dropoff_elevator" required><option value="">Выберите</option><option value="true">Да</option><option value="false">Нет</option></select></label>
+            <label><span class="field-label"><span class="field-required" aria-hidden="true">*</span>Этаж отправления</span><input name="pickup_floor" type="number" min="-1" max="24" required></label>
+            <label><span class="field-label"><span class="field-required" aria-hidden="true">*</span>Лифт на отправлении</span><select name="pickup_elevator" required><option value="">Выберите</option><option value="true">Да</option><option value="false">Нет</option></select></label>
+            <label><span class="field-label"><span class="field-required" aria-hidden="true">*</span>Этаж доставки</span><input name="dropoff_floor" type="number" min="-1" max="24" required></label>
+            <label><span class="field-label"><span class="field-required" aria-hidden="true">*</span>Лифт на доставке</span><select name="dropoff_elevator" required><option value="">Выберите</option><option value="true">Да</option><option value="false">Нет</option></select></label>
           </div>
           <div class="form-grid">
             <label><span class="field-label">Нужны грузчики<span class="field-optional">необязательно</span></span><select name="required_loaders"><option value="">Не знаю / не важно</option><option value="0">Нет</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>

@@ -362,6 +362,7 @@ label {
 .request-form .field-required {
   color: var(--danger);
   font-weight: 900;
+  margin-right: 4px;
 }
 
 .field-optional {
