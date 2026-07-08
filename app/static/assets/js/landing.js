@@ -119,10 +119,15 @@ function renderOpenPedidos() {
   const links = getTrackingLinks();
   list.textContent = "";
 
+  const explainer = document.querySelector(".product-explainer");
+
   if (links.length === 0) {
     section.hidden = true;
+    if (explainer) explainer.hidden = false;
     return;
   }
+
+  if (explainer) explainer.hidden = true;
 
   links.slice(0, 5).forEach((entry) => {
     const card = document.createElement("article");

@@ -632,9 +632,7 @@ textarea:focus {
 .open-pedidos {
   display: grid;
   gap: 12px;
-  margin-top: var(--layout-block-margin);
-  padding-top: var(--layout-block-margin);
-  border-top: 1px solid var(--line);
+  margin-top: 24px;
 }
 
 .open-pedidos[hidden] {
