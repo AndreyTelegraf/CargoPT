@@ -215,3 +215,15 @@
     position: static;
   }
 }
+
+/* Track status color belongs only to the status dot, not to panels or badges. */
+.track-workspace-shell .tracking-status-summary,
+.track-workspace-shell .tracking-status-selected-offer {
+  background: transparent;
+}
+
+.track-workspace-shell .tracking-status-badge {
+  background: transparent;
+  color: inherit !important;
+  padding: 0;
+}
