@@ -455,6 +455,12 @@ details p {
   }
 }
 
+.tracking-success-actions {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
 /* Shared request card */
 .request-form.request-card {
   position: relative;

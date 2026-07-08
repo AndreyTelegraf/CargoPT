@@ -77,10 +77,7 @@
 
 .track-workspace-shell .tracking-success-actions {
   position: static;
-  display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: var(--space-3);
   padding-top: 0;
 }
 
