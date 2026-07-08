@@ -471,6 +471,9 @@ details p {
 /* Shared request card */
 .request-card {
   align-self: stretch;
+}
+
+.request-form.request-card {
   border: var(--surface-border);
   border-radius: var(--request-card-radius);
   background: var(--request-card-bg);
