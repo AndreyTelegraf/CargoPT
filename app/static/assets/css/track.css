@@ -33,8 +33,8 @@ a {
 
 .private-label {
   color: var(--muted);
-  font-size: 15px;
-  font-weight: 750;
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-strong);
 }
 
 .track-card {
@@ -208,8 +208,8 @@ h3 {
   background: var(--brand-soft);
   color: var(--brand);
   font-size: clamp(26px, 5vw, 38px);
-  font-weight: 900;
-  line-height: 1;
+  font-weight: var(--font-weight-heavy);
+  line-height: var(--line-height-tight);
 }
 
 .state-copy {
@@ -295,8 +295,8 @@ h3 {
   justify-items: center;
   gap: 9px;
   color: var(--muted);
-  font-size: 13px;
-  font-weight: 800;
+  font-size: var(--font-size-action-small);
+  font-weight: var(--font-weight-bold);
   text-align: center;
 }
 
@@ -339,8 +339,8 @@ h3 {
   border-radius: var(--radius-pill);
   background: var(--surface-panel-bg);
   color: var(--muted);
-  font-size: 13px;
-  font-weight: 900;
+  font-size: var(--font-size-action-small);
+  font-weight: var(--font-weight-heavy);
 }
 
 .timeline-item.is-complete,
@@ -604,7 +604,7 @@ h3 {
 .track-offer-nav-empty {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--font-size-form-note);
   font-weight: 700;
 }
 
@@ -716,7 +716,7 @@ h3 {
   min-height: var(--compact-action-height);
   margin-top: calc(var(--space-1) / 2);
   padding: var(--compact-action-padding);
-  font-size: 13px;
+  font-size: var(--font-size-action-small);
   background: var(--success);
 }
 

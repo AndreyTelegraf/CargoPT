@@ -50,8 +50,8 @@ a {
 
 .nav-link {
   color: var(--muted);
-  font-size: 15px;
-  font-weight: 650;
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-meta);
 }
 
 .button {
@@ -83,7 +83,7 @@ a {
 .button-small {
   min-height: var(--button-height-small);
   padding: 0 var(--button-padding-x-small);
-  font-size: 14px;
+  font-size: var(--font-size-form-note);
 }
 
 .button-secondary {
@@ -174,7 +174,7 @@ h3 {
   gap: 11px;
   color: var(--text);
   font-size: 17px;
-  font-weight: 750;
+  font-weight: var(--font-weight-strong);
 }
 
 .trust-list span::before {
@@ -186,8 +186,8 @@ h3 {
   border-radius: var(--radius-pill);
   background: var(--brand);
   color: var(--button-primary-text);
-  font-size: 14px;
-  font-weight: 900;
+  font-size: var(--font-size-form-note);
+  font-weight: var(--font-weight-heavy);
   flex: 0 0 auto;
 }
 
@@ -403,7 +403,7 @@ textarea:focus {
 
 .form-note,
 .form-message {
-  font-size: 14px;
+  font-size: var(--font-size-form-note);
 }
 
 .form-message {
@@ -580,8 +580,8 @@ textarea:focus {
 
 .tracking-status-details-title {
   color: var(--text);
-  font-size: 15px;
-  font-weight: 900;
+  font-size: var(--font-size-detail-title);
+  font-weight: var(--font-weight-heavy);
 }
 
 /* Track active offer link */
@@ -605,7 +605,7 @@ textarea:focus {
 
 .tracking-status-selected-offer strong {
   color: var(--text);
-  font-size: 15px;
+  font-size: var(--font-size-detail-title);
   line-height: var(--line-height-card-title);
 }
 
@@ -630,7 +630,7 @@ textarea:focus {
 
 .open-pedido-items {
   color: var(--text);
-  font-size: 14px;
+  font-size: var(--font-size-form-note);
   font-weight: 700;
 }
 
@@ -650,15 +650,15 @@ textarea:focus {
   margin: 0;
   color: var(--muted);
   font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.095em;
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-eyebrow);
   text-transform: uppercase;
 }
 
 .open-pedidos-title {
   margin: 0;
   color: var(--text);
-  font-size: 20px;
+  font-size: var(--font-size-offer-price);
   line-height: 1.15;
   letter-spacing: -0.04em;
 }
@@ -991,18 +991,18 @@ details p {
 .process-card-svg h3 {
   margin: var(--space-1) 0 var(--space-1);
   color: var(--brand);
-  font-size: 17px;
-  font-weight: 900;
+  font-size: var(--font-size-process-title);
+  font-weight: var(--font-weight-heavy);
   line-height: 1.12;
-  letter-spacing: -0.035em;
+  letter-spacing: var(--letter-spacing-card-title);
 }
 
 .process-card-svg p {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.35;
+  font-size: var(--font-size-form-note);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-copy);
 }
 
 .process-divider,
@@ -1024,7 +1024,7 @@ details p {
 
 .request-card .progress span {
   color: var(--brand);
-  font-size: 17px;
+  font-size: var(--font-size-process-title);
 }
 
 .request-card .progress-bar {
@@ -1038,7 +1038,7 @@ details p {
 
 .request-card legend {
   color: var(--brand);
-  font-size: 32px;
+  font-size: var(--font-size-form-title);
 }
 
 .request-card input,
@@ -1065,7 +1065,7 @@ details p {
   width: 100%;
   min-height: calc(var(--button-height) + var(--space-3));
   border-radius: var(--button-radius);
-  font-size: 20px;
+  font-size: var(--font-size-offer-price);
 }
 
 @media (max-width: 1180px) {
@@ -1430,15 +1430,15 @@ grid-column:1/-1;
 }
 
 .hero.is-user-workspace .open-pedidos-eyebrow {
-  font-size: 11px;
+  font-size: var(--font-size-badge-small);
 }
 
 .hero.is-user-workspace .open-pedidos-title {
-  font-size: 18px;
+  font-size: var(--font-size-compact-title);
 }
 
 .hero.is-user-workspace .open-pedidos-intro {
-  font-size: 13px;
+  font-size: var(--font-size-action-small);
 }
 
 .hero.is-user-workspace .open-pedidos-list {
@@ -1459,7 +1459,7 @@ grid-column:1/-1;
   width: 100%;
   min-height: var(--compact-action-height);
   padding: var(--compact-action-padding);
-  font-size: 13px;
+  font-size: var(--font-size-action-small);
 }
 
 .hero.is-user-workspace .open-pedido-copy {
@@ -1474,17 +1474,17 @@ grid-column:1/-1;
 }
 
 .hero.is-user-workspace .open-pedido-copy strong {
-  font-size: 14px;
+  font-size: var(--font-size-form-note);
 }
 
 .hero.is-user-workspace .open-pedido-copy span {
-  font-size: 13px;
+  font-size: var(--font-size-action-small);
 }
 
 .hero.is-user-workspace .hero-workspace-new-request {
   min-height: var(--workspace-action-height);
   padding: var(--workspace-action-padding);
-  font-size: 14px;
+  font-size: var(--font-size-form-note);
 }
 
 /* CargoPT compact right workspace panel */
