@@ -1,7 +1,7 @@
 
 const trackingPanelBody = document.querySelector("#trackingPanelBody");
 const errorCard = document.querySelector("#errorCard");
-const trackOffersList = document.querySelector("#trackOffersList");
+const trackPedidosList = document.querySelector("#trackPedidosList");
 const copyTrackingLink = document.querySelector("#copyTrackingLink");
 const token = decodeURIComponent(window.location.pathname.split("/").filter(Boolean).slice(1).join("/"));
 
@@ -15,6 +15,81 @@ if (copyTrackingLink) {
     copyTrackingLink.textContent = "Track link copiado";
   });
 }
+
+const TRACKING_LINKS_KEY = "cargopt_tracking_links";
+
+function getTrackingLinks() {
+  try {
+    const raw = localStorage.getItem(TRACKING_LINKS_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function renderOpenPedidosNavigation(activeEntry) {
+  if (!trackPedidosList) return;
+
+  const links = getTrackingLinks();
+  trackPedidosList.textContent = "";
+
+  if (!links.length) {
+    const empty = document.createElement("p");
+    empty.className = "track-offer-nav-empty";
+    empty.textContent = "Ainda não há pedidos guardados neste dispositivo.";
+    trackPedidosList.appendChild(empty);
+    return;
+  }
+
+  links.slice(0, 5).forEach((entry) => {
+    const isActive = entry.token === activeEntry.token;
+    const card = document.createElement("article");
+    card.className = "track-offer-nav-card";
+    card.classList.toggle("is-chosen", isActive);
+    card.tabIndex = 0;
+
+    const top = document.createElement("div");
+    top.className = "track-offer-nav-top";
+
+    const route = document.createElement("strong");
+    route.textContent = entry.route_summary || messages.defaultRoute;
+
+    const status = document.createElement("span");
+    status.className = "track-offer-nav-price";
+    status.textContent = isActive ? "Atual" : "Abrir";
+
+    top.append(route, status);
+
+    const meta = document.createElement("div");
+    meta.className = "track-offer-nav-meta";
+    meta.textContent = entry.item_summary || entry.status_label || messages.waitingOffers;
+
+    const line = document.createElement("div");
+    line.className = "track-offer-nav-status";
+    line.textContent = entry.status_label || messages.waitingOffers;
+
+    card.append(top, meta, line);
+
+    const open = () => {
+      if (entry.tracking_url) window.location.href = entry.tracking_url;
+    };
+
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("button, a")) return;
+      open();
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      open();
+    });
+
+    trackPedidosList.appendChild(card);
+  });
+}
+
 
 const POLL_INTERVAL_MS = 5000;
 let activeTrackingEntry = null;
@@ -82,127 +157,6 @@ function renderTrackingWorkspace(entry) {
   });
 }
 
-function renderOfferNavigation(entry) {
-  if (!trackOffersList) return;
-
-  const snapshot = entry.tracking_snapshot || {};
-  const offers = snapshot.accepted_offers || [];
-  trackOffersList.textContent = "";
-
-  if (!offers.length) {
-    activeSidebarOfferId = null;
-
-    const empty = document.createElement("p");
-    empty.className = "track-offer-nav-empty";
-    empty.textContent = "Ainda não há ofertas disponíveis.";
-    trackOffersList.appendChild(empty);
-    return;
-  }
-
-  if (activeSidebarOfferId && !offers.some((offer) => offer.offer_id === activeSidebarOfferId)) {
-    activeSidebarOfferId = null;
-  }
-
-  offers.forEach((offer, index) => {
-    const isActive = activeSidebarOfferId === offer.offer_id;
-    const isChosen = snapshot.status !== "offered" && offers.length === 1;
-    const card = document.createElement("article");
-    card.className = "track-offer-nav-card";
-    card.classList.toggle("is-chosen", isChosen);
-    card.tabIndex = 0;
-
-    const top = document.createElement("div");
-    top.className = "track-offer-nav-top";
-
-    const company = document.createElement("strong");
-    company.textContent = offer.company_name || `Transportador ${index + 1}`;
-
-    const price = document.createElement("span");
-    price.className = "track-offer-nav-price";
-    if (offer.price_cents == null) {
-      price.classList.add("is-placeholder");
-    }
-    price.textContent = formatSidebarPrice(offer.price_cents);
-
-    top.append(company, price);
-
-    const meta = document.createElement("div");
-    meta.className = "track-offer-nav-meta";
-    meta.textContent = [
-      offer.vehicle_type,
-      offer.payload_kg ? offer.payload_kg + " kg" : null,
-      offer.volume_m3 ? offer.volume_m3 + " m³" : null
-    ].filter(Boolean).join(" • ");
-
-    const status = document.createElement("div");
-    status.className = "track-offer-nav-status";
-    status.textContent = isChosen ? "Oferta escolhida" : "Oferta disponível";
-
-    card.append(top, meta, status);
-
-    if (isActive) {
-      const details = document.createElement("div");
-      details.className = "track-offer-nav-details";
-
-      const loaders = offer.max_loaders != null ? `${offer.max_loaders} ajudante(s)` : null;
-      const equipment = [
-        offer.has_tail_lift ? "plataforma elevatória" : null,
-        offer.has_crane ? "grua" : null,
-        offer.has_mobile_lift ? "elevador exterior" : null
-      ].filter(Boolean).join(" · ");
-
-      [loaders, equipment || null].filter(Boolean).forEach((line) => {
-        const item = document.createElement("span");
-        item.textContent = line;
-        details.appendChild(item);
-      });
-
-      if (offer.carrier_note) {
-        const note = document.createElement("p");
-        note.className = "track-offer-nav-note";
-        note.textContent = offer.carrier_note;
-        details.appendChild(note);
-      }
-
-      if (details.childNodes.length) {
-        card.appendChild(details);
-      }
-    }
-
-    if (snapshot.status === "offered") {
-      const button = document.createElement("button");
-      button.className = "button button-small track-offer-nav-select";
-      button.type = "button";
-      button.textContent = "Escolher esta oferta";
-      button.addEventListener("click", (event) => {
-        event.stopPropagation();
-        selectOffer(offer.offer_id, button);
-      });
-      card.appendChild(button);
-    }
-
-    card.addEventListener("click", (event) => {
-      if (event.target.closest("button, a")) return;
-      activeSidebarOfferId = isActive ? null : offer.offer_id;
-      renderOfferNavigation(entry);
-      renderTrackingWorkspace(entry);
-      trackingPanelBody.querySelector(".tracking-status-selected-offer")?.scrollIntoView({behavior: "smooth", block: "nearest"});
-    });
-
-    card.addEventListener("keydown", (event) => {
-      if (event.key !== "Enter" && event.key !== " ") return;
-      event.preventDefault();
-      activeSidebarOfferId = isActive ? null : offer.offer_id;
-      renderOfferNavigation(entry);
-      renderTrackingWorkspace(entry);
-      trackingPanelBody.querySelector(".tracking-status-selected-offer")?.scrollIntoView({behavior: "smooth", block: "nearest"});
-    });
-
-    trackOffersList.appendChild(card);
-  });
-}
-
-
 function getTrackingStatusDotState(snapshot, acceptedOffers) {
   if (snapshot.status === "completed") return "completed";
   if (snapshot.status === "cancelled") return "cancelled";
@@ -263,7 +217,7 @@ async function refresh() {
     activeTrackingEntry = mergeTrackingSnapshot(snapshot);
     errorCard.hidden = true;
 
-    renderOfferNavigation(activeTrackingEntry);
+    renderOpenPedidosNavigation(activeTrackingEntry);
     renderTrackingWorkspace(activeTrackingEntry);
   } catch (error) {
     console.error(error);
