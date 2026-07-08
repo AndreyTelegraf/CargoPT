@@ -411,13 +411,6 @@ textarea:focus {
   font-weight: 750;
 }
 
-.request-form.is-tracking-mode .form-message {
-  margin-top: 0;
-}
-
-.request-form.is-tracking-mode .tracking-success {
-  padding: 8px 0 2px;
-}
 
 .form-message.is-error {
   color: var(--danger);
@@ -1365,30 +1358,6 @@ grid-column:1/-1;
   align-self: stretch;
 }
 
-.tracking-panel {
-  position: relative;
-  padding: var(--workspace-panel-padding);
-  border-radius: var(--surface-radius-panel);
-  box-shadow: var(--surface-shadow-panel);
-}
-
-.tracking-panel::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  z-index: -1;
-  border-radius: var(--surface-radius-panel);
-  background: var(--surface-panel-glow);
-}
-
-.tracking-panel[hidden],
-.request-form[hidden] {
-  display: none;
-}
-
-.tracking-panel .tracking-success {
-  padding: 0;
-}
 
 .hero.is-user-workspace .hero-workspace {
   min-height: 560px;
@@ -1487,59 +1456,3 @@ grid-column:1/-1;
 }
 
 /* CargoPT compact right workspace panel */
-.tracking-panel {
-  padding: var(--workspace-panel-padding);
-  min-height: var(--workspace-panel-min-height);
-}
-
-.hero.is-user-workspace .hero-workspace {
-  min-height: var(--workspace-panel-min-height);
-}
-
-.tracking-panel .tracking-success {
-  gap: var(--space-4);
-}
-
-.tracking-panel .tracking-status-title {
-  font-size: clamp(34px, 4vw, 52px);
-  line-height: var(--line-height-heading);
-  max-width: 680px;
-}
-
-.tracking-panel .tracking-status-text {
-  font-size: clamp(15px, 1.25vw, 18px);
-  line-height: var(--line-height-copy);
-  max-width: 640px;
-}
-
-.tracking-panel .tracking-status-badge {
-  margin-top: 4px;
-}
-
-.tracking-panel .tracking-offers {
-  gap: var(--space-3);
-  padding: var(--space-4);
-  border-radius: var(--surface-radius-card);
-}
-
-.tracking-panel .tracking-offers-title {
-  font-size: clamp(18px, 1.2vw, 19px);
-}
-
-.tracking-panel .tracking-offer-card {
-  padding: var(--status-card-padding);
-}
-
-.tracking-panel .tracking-offer-price {
-  font-size: clamp(17px, 1.15vw, 18px);
-}
-
-.tracking-panel .tracking-select-button {
-  margin-top: var(--space-3);
-}
-
-@media (max-width: 920px) {
-  .tracking-panel .tracking-status-title {
-    font-size: clamp(32px, 9vw, 46px);
-  }
-}
