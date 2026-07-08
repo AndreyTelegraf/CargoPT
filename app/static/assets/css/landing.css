@@ -359,7 +359,7 @@ label {
   gap: 6px;
 }
 
-.field-required {
+.request-form .field-required {
   color: var(--danger);
   font-weight: 900;
 }
@@ -368,6 +368,10 @@ label {
   color: var(--muted-2);
   font-size: 12px;
   font-weight: 700;
+}
+
+.field-optional::before {
+  content: "– ";
 }
 
 input,
