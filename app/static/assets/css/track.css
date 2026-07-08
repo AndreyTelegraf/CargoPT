@@ -134,9 +134,6 @@ h3 {
   display: grid;
   min-height: 0;
   gap: var(--space-3);
-  padding: var(--space-3);
-  border-radius: var(--radius-md);
-  box-shadow: none;
 }
 
 .track-workspace-sidebar .open-pedido-copy strong,
@@ -268,9 +265,6 @@ h3 {
 
 .track-offer-nav-empty {
   margin: 0;
-  color: var(--muted);
-  font-size: var(--font-size-form-note);
-  font-weight: 700;
 }
 
 .track-offer-nav-card {
@@ -284,10 +278,6 @@ h3 {
   outline-offset: 2px;
 }
 
-.track-offer-nav-card.is-active {
-  border-color: var(--primary-border);
-  background: var(--primary-fill);
-}
 
 .track-offer-nav-top {
   display: flex;
