@@ -191,19 +191,6 @@ function getTrackingVisualState(entry) {
   return "pending";
 }
 
-function mergeTrackingSnapshot(entry, snapshot) {
-  const acceptedOffers = Array.isArray(snapshot.accepted_offers) ? snapshot.accepted_offers : [];
-  return {
-    ...entry,
-    job_id: snapshot.job_id || entry.job_id,
-    token: snapshot.tracking_token || entry.token,
-    status_label: formatTrackingStatus(snapshot),
-    accepted_offers_count: acceptedOffers.length,
-    tracking_snapshot: snapshot,
-    tracking_visual_state: getTrackingVisualState({...entry, tracking_snapshot: snapshot, accepted_offers_count: acceptedOffers.length})
-  };
-}
-
 
 
 
