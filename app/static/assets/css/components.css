@@ -565,3 +565,9 @@ font-size: var(--font-size-meta);
 .tracking-select-button{
 margin-top: var(--space-3);
 width:100%;
+background:var(--primary);
+}
+
+.tracking-select-button:disabled{
+opacity:.72;
+}
