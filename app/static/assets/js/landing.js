@@ -451,19 +451,13 @@ function renderOpenPedidos() {
     action.type = "button";
     action.textContent = messages.viewStatus;
     action.addEventListener("click", () => {
-      activeTrackingEntry = entry;
-      renderTrackingSuccess(entry);
-      startTrackingPolling(entry);
-      renderOpenPedidos();
+      window.location.href = entry.tracking_url;
     });
 
     card.append(copy, action);
     card.addEventListener("click", (event) => {
       if (event.target.closest("button, a")) return;
-      activeTrackingEntry = entry;
-      renderTrackingSuccess(entry);
-      startTrackingPolling(entry);
-      renderOpenPedidos();
+      window.location.href = entry.tracking_url;
     });
     list.appendChild(card);
   });
