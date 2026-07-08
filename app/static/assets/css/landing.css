@@ -65,6 +65,8 @@ a {
   background: var(--button-primary-bg);
   color: var(--button-primary-text);
   font: inherit;
+  font-size: 16px;
+  line-height: 1.5;
   font-weight: var(--button-font-weight);
   cursor: pointer;
   transition: var(--button-transition);
