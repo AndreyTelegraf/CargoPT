@@ -21,7 +21,7 @@
   padding: var(--workspace-panel-padding);
   border: var(--surface-border);
   border-radius: var(--surface-radius-workspace);
-  background: var(--request-card-bg);
+  background: var(--surface-panel-bg);
   box-shadow: var(--surface-shadow-workspace);
 }
 
