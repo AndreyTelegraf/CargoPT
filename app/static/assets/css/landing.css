@@ -576,63 +576,6 @@ details p {
   display: none;
 }
 
-.request-card {
-  align-self: stretch;
-  border: var(--surface-border);
-  border-radius: var(--request-card-radius);
-  background: var(--request-card-bg);
-  box-shadow: var(--surface-shadow-panel);
-}
-
-.request-card::before {
-  display: none;
-}
-
-.request-card .progress span {
-  color: var(--brand);
-  font-size: var(--font-size-process-title);
-}
-
-.request-card .progress-bar {
-  height: 8px;
-  background: var(--line);
-}
-
-.request-card .progress-bar span {
-  background: var(--brand-blue);
-}
-
-.request-card legend {
-  color: var(--brand);
-  font-size: var(--font-size-form-title);
-}
-
-.request-card input,
-.request-card select,
-.request-card textarea {
-  min-height: var(--request-input-min-height);
-  border-color: var(--line);
-  border-radius: var(--input-radius);
-}
-
-.request-card input:focus,
-.request-card select:focus,
-.request-card textarea:focus {
-  outline-color: var(--primary-shadow);
-  border-color: var(--brand-blue);
-}
-
-.request-card textarea {
-  min-height: var(--request-textarea-min-height);
-}
-
-.request-card .button {
-  width: 100%;
-  min-height: calc(var(--button-height) + var(--space-3));
-  border-radius: var(--button-radius);
-  font-size: var(--font-size-offer-price);
-}
-
 @media (max-width: 1180px) {
   .hero-v2 {
     grid-template-columns: 1fr;
