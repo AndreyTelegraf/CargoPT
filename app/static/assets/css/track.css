@@ -276,30 +276,17 @@ h3 {
 .track-offer-nav-card {
   display: grid;
   gap: var(--space-1);
-  padding: var(--space-3);
-  border: var(--surface-border);
-  border-radius: var(--nav-card-radius);
-  background: var(--surface-muted-bg);
   cursor: pointer;
-  transition: border-color var(--motion-fast), box-shadow var(--motion-fast), background var(--motion-fast), transform var(--motion-fast);
 }
 
-.track-offer-nav-card:hover,
 .track-offer-nav-card:focus-visible {
-  border-color: var(--line);
-  background: var(--surface-panel-bg);
-  box-shadow: var(--nav-card-hover-shadow);
-  outline: none;
+  outline: 2px solid var(--primary-border);
+  outline-offset: 2px;
 }
 
 .track-offer-nav-card.is-active {
-  border-color: var(--line);
-  background: var(--surface-panel-bg);
-  box-shadow: var(--nav-card-hover-shadow);
-}
-
-.track-offer-nav-card.is-chosen {
-  border-color: var(--line);
+  border-color: var(--primary-border);
+  background: var(--primary-fill);
 }
 
 .track-offer-nav-top {
