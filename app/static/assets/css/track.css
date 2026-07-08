@@ -215,53 +215,27 @@ h3 {
 
 .track-workspace-shell .tracking-panel .hero-workspace {
   display: grid;
+  align-content: start;
   gap: var(--space-3);
   width: 100%;
   min-height: 100%;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
 }
 
-.track-workspace-shell .tracking-panel .tracking-status-summary {
+.track-workspace-shell .tracking-status-summary,
+.track-workspace-shell .tracking-status-selected-offer,
+.track-workspace-shell .tracking-status-details {
+  display: grid;
   gap: var(--space-1);
-  padding: var(--status-card-padding);
-  border-radius: var(--status-card-radius);
 }
 
-.track-workspace-shell .tracking-panel .tracking-status-badge {
+.track-workspace-shell .tracking-status-badge {
   margin-top: calc(var(--space-1) / 2);
-  padding: 5px 9px;
-  background: var(--surface-muted-bg);
-  color: var(--text) !important;
-}
-
-.track-workspace-shell .tracking-panel .tracking-status-dot-success {
-  background: var(--muted);
-}
-
-.track-workspace-shell .tracking-status-selected-offer {
-  gap: var(--space-1);
-  margin-top: 0;
-  padding: var(--status-selected-padding);
-  border: var(--surface-border);
-  border-radius: var(--status-selected-radius);
-  background: var(--surface-muted-bg);
-}
-
-.track-workspace-shell .tracking-panel .tracking-status-details {
-  gap: var(--space-1);
-  padding: var(--status-card-padding);
-  border-radius: var(--status-card-radius);
 }
 
 .track-workspace-shell .tracking-success-actions {
   position: static;
   margin-top: var(--space-3);
   padding-top: 0;
-  background: transparent;
 }
 
 .track-workspace-shell .tracking-offers {
