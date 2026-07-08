@@ -58,6 +58,15 @@ async def process_expired_pending_offers(
         if job.status != JobStatus.OFFERED:
             continue
 
+        offers = await job_repository.list_offers_by_job(job.id)
+        has_accepted_offer = any(
+            offer.status == "accepted"
+            for offer in offers
+        )
+
+        if has_accepted_offer:
+            continue
+
         distribution_result = await distribution.create_offer_distribution_for_job(
             job,
             limit=5,

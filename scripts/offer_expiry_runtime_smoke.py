@@ -242,6 +242,107 @@ async def exercise_offer_expiry() -> None:
         if bot.messages:
             raise SystemExit("did not expect admin escalation while redispatch succeeded")
 
+        accepted_job = await job_repo.create_job(
+            Job(
+                client_telegram_user_id=9002,
+                client_telegram_username="client_accepted",
+                client_phone=None,
+                client_whatsapp=None,
+                status=JobStatus.OFFERED,
+                requested_date=None,
+                assigned_at=None,
+                started_at=None,
+                completed_at=None,
+                cancelled_at=None,
+                client_confirmation_status=None,
+                carrier_confirmation_status=None,
+                needs_assembly=False,
+                needs_packing=False,
+                needs_tail_lift=False,
+                needs_crane=False,
+                needs_mobile_lift=False,
+                required_loaders=1,
+                estimated_payload_kg=500,
+                estimated_volume_m3=5.0,
+                comment=None,
+                created_at=now,
+                updated_at=now,
+            )
+        )
+
+        await job_repo.add_address(
+            JobAddress(
+                job_id=accepted_job.id,
+                kind="pickup",
+                raw_text="Lisboa",
+                original_google_maps_url=None,
+                normalized_address="Lisboa",
+                city=None,
+                postal_code=None,
+                floor=None,
+                has_elevator=None,
+                latitude=None,
+                longitude=None,
+                map_url=None,
+                created_at=now,
+            )
+        )
+
+        await job_repo.create_offer(
+            JobOffer(
+                job_id=accepted_job.id,
+                carrier_id=expired_carrier.id,
+                vehicle_id=expired_vehicle.id,
+                status=JobOfferStatus.ACCEPTED,
+                offered_at=now - timedelta(hours=2),
+                responded_at=now - timedelta(hours=1, minutes=30),
+                expires_at=now - timedelta(hours=1),
+                carrier_note=None,
+                price_cents=None,
+                carrier_message_chat_id=None,
+                carrier_message_id=None,
+                created_at=now - timedelta(hours=2),
+                updated_at=now - timedelta(hours=1, minutes=30),
+            )
+        )
+
+        await job_repo.create_offer(
+            JobOffer(
+                job_id=accepted_job.id,
+                carrier_id=next_carrier.id,
+                vehicle_id=expired_vehicle.id,
+                status=JobOfferStatus.PENDING,
+                offered_at=now - timedelta(hours=2),
+                responded_at=None,
+                expires_at=now - timedelta(hours=1),
+                carrier_note=None,
+                price_cents=None,
+                carrier_message_chat_id=None,
+                carrier_message_id=None,
+                created_at=now - timedelta(hours=2),
+                updated_at=now - timedelta(hours=2),
+            )
+        )
+
+        await session.commit()
+
+        processed = await process_expired_pending_offers(
+            bot=bot,
+            session=session,
+        )
+        await session.commit()
+
+        if processed != 1:
+            raise SystemExit(f"expected 1 processed accepted-job offer, got {processed}")
+
+        accepted_job_offers = await job_repo.list_offers_by_job(accepted_job.id)
+        accepted_job_statuses = sorted(offer.status for offer in accepted_job_offers)
+
+        if accepted_job_statuses != [JobOfferStatus.ACCEPTED, JobOfferStatus.EXPIRED]:
+            raise SystemExit(
+                f"unexpected accepted-job offer statuses: {accepted_job_statuses}"
+            )
+
     await engine.dispose()
 
 
