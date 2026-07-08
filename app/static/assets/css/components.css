@@ -705,7 +705,7 @@ margin-top: var(--space-1);
 
 .tracking-offer-card{
 padding: var(--space-4);
-border:1px solid var(--line);
+border: var(--surface-border);
 border-radius: var(--surface-radius-card);
 background: var(--surface-panel-bg);
 }
