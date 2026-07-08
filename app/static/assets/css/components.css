@@ -1,0 +1,567 @@
+/* CargoPT shared components. Duplicated from landing.css before extraction cleanup. */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    var(--page-background-glow),
+    linear-gradient(180deg, var(--surface) 0%, var(--bg) 38%, var(--bg) 100%);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--layout-gap-lg);
+  padding: var(--space-3) clamp(18px, 4vw, 52px);
+  background: var(--badge-header-bg);
+  border-bottom: var(--surface-border);
+  backdrop-filter: blur(18px);
+}
+
+.logo {
+  font-size: var(--font-size-logo);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-logo);
+}
+
+.header-actions,
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-link {
+  color: var(--muted);
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-meta);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--button-height);
+  padding: 0 var(--button-padding-x);
+  border: 0;
+  border-radius: var(--button-radius);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: var(--button-font-weight);
+  cursor: pointer;
+  transition: var(--button-transition);
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--button-hover-shadow);
+}
+
+.button:disabled {
+  opacity: 0.62;
+  cursor: wait;
+}
+
+.button-small {
+  min-height: var(--button-height-small);
+  padding: 0 var(--button-padding-x-small);
+  font-size: var(--font-size-form-note);
+}
+
+.button-secondary {
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+}
+
+.section {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: calc(var(--space-6) * 2) 0;
+}
+
+
+/* Shared cards and chips */
+.section-heading {
+  margin-bottom: var(--layout-section-margin);
+}
+
+.cards,
+.benefits {
+  display: grid;
+  gap: var(--layout-gap-md);
+}
+
+.cards.three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  padding: 28px;
+}
+
+.card p,
+.benefits p,
+details p {
+  color: var(--muted);
+}
+
+.step {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: var(--layout-gap-lg);
+  border-radius: var(--radius-pill);
+  background: var(--brand);
+  color: var(--button-primary-text);
+  font-weight: 850;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.chips span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border: var(--surface-border);
+  border-radius: var(--chip-radius);
+  background: var(--chip-bg);
+  color: var(--muted);
+  font-weight: 650;
+}
+
+
+/* Shared tracking status */
+.tracking-success {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.tracking-success strong {
+  color: var(--text);
+}
+
+.tracking-status-card {
+  color: var(--muted);
+}
+
+.tracking-status-eyebrow {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-eyebrow);
+  text-transform: uppercase;
+}
+
+.tracking-status-title {
+  display: block;
+  color: var(--text);
+  font-size: var(--font-size-status-title);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-heading);
+}
+
+.tracking-status-text {
+  display: block;
+  color: var(--muted);
+  font-size: var(--font-size-status-text);
+  font-weight: var(--font-weight-meta);
+}
+
+/* Track status dot */
+.tracking-status-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.tracking-status-dot {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+}
+
+.tracking-status-dot-searching {
+  background: var(--accent);
+  animation: tracking-status-pulse 2.4s ease-in-out infinite;
+}
+
+.tracking-status-dot-success {
+  background: var(--success);
+  animation: tracking-status-pulse 2s ease-in-out infinite;
+}
+
+.tracking-status-dot-pending {
+  background: var(--warning);
+  animation: tracking-status-pulse 1.25s ease-in-out infinite;
+}
+
+.tracking-status-dot-completed {
+  background: var(--muted);
+}
+
+.tracking-status-dot-cancelled {
+  background: var(--danger);
+}
+
+@keyframes tracking-status-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}
+
+.tracking-status-summary {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--status-card-padding);
+  border: var(--surface-border);
+  border-radius: var(--status-card-radius);
+  background: var(--status-card-bg);
+}
+
+.tracking-status-summary span {
+  color: var(--muted);
+  font-weight: 750;
+}
+
+.tracking-status-success .tracking-status-summary {
+  border-color: var(--success-border);
+  background: var(--success-soft);
+}
+
+.tracking-status-pending .tracking-status-summary {
+  border-color: var(--warning-border);
+  background: var(--warning-fill);
+}
+
+.tracking-status-completed .tracking-status-summary {
+  border-color: var(--success-border);
+  background: var(--success-soft);
+}
+
+.tracking-status-cancelled .tracking-status-summary {
+  border-color: var(--danger-border);
+  background: var(--danger-soft);
+}
+
+.tracking-status-badge {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: var(--space-1);
+  padding: 5px 9px;
+  border-radius: var(--badge-radius);
+  background: var(--badge-success-bg);
+  color: var(--badge-success-text) !important;
+  font-size: var(--font-size-badge);
+  font-weight: var(--font-weight-heavy);
+}
+
+.tracking-status-primary-action {
+  background: var(--primary);
+}
+
+.tracking-status-details {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--status-card-padding);
+  border: var(--surface-border);
+  border-radius: var(--status-card-radius);
+  background: var(--surface-muted-bg);
+}
+
+.tracking-status-details-title {
+  color: var(--text);
+  font-size: var(--font-size-detail-title);
+  font-weight: var(--font-weight-heavy);
+}
+
+/* Track active offer link */
+.tracking-status-selected-offer {
+  display: grid;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+  padding: var(--status-selected-padding);
+  border: var(--status-selected-border);
+  border-radius: var(--status-selected-radius);
+  background: var(--status-selected-bg);
+}
+
+.tracking-status-selected-label {
+  color: var(--primary);
+  font-size: var(--font-size-badge-small);
+  font-weight: var(--font-weight-black);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+}
+
+.tracking-status-selected-offer strong {
+  color: var(--text);
+  font-size: var(--font-size-detail-title);
+  line-height: var(--line-height-card-title);
+}
+
+.tracking-status-selected-offer span:last-child {
+  color: var(--muted);
+  font-size: var(--font-size-badge);
+  font-weight: var(--font-weight-strong);
+}
+
+.tracking-status-detail-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+}
+
+.tracking-status-detail-text {
+  color: var(--text);
+  font-weight: 700;
+}
+
+
+
+/* Shared open requests */
+.open-pedido-items {
+  color: var(--text);
+  font-size: var(--font-size-form-note);
+  font-weight: 700;
+}
+
+.open-pedidos {
+  display: grid;
+  gap: 14px;
+  margin-top: auto;
+  padding: var(--space-4);
+  border: var(--surface-border);
+  border-radius: var(--surface-radius-card);
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  box-shadow: var(--surface-shadow-subtle);
+  min-height: 236px;
+  align-content: start;
+}
+
+.open-pedidos[hidden] {
+  display: none;
+}
+
+.open-pedidos-eyebrow {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-eyebrow);
+  text-transform: uppercase;
+}
+
+.open-pedidos-title {
+  margin: 0;
+  color: var(--text);
+  font-size: var(--font-size-offer-price);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+.open-pedidos-list {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.open-pedido-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: var(--surface-border);
+  border-radius: var(--info-card-radius);
+  background: var(--info-card-bg);
+  box-shadow: var(--info-card-shadow);
+  min-width: 0;
+  cursor: pointer;
+}
+
+.open-pedido-copy {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.open-pedido-copy strong {
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.open-pedido-copy span {
+  color: var(--muted);
+  font-weight: 750;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .open-pedido-card {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .open-pedido-card .button {
+    width: 100%;
+  }
+}
+
+.tracking-success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+
+
+/* Shared request card */
+.request-card {
+  align-self: stretch;
+  border: var(--surface-border);
+  border-radius: var(--request-card-radius);
+  background: var(--request-card-bg);
+  box-shadow: var(--surface-shadow-panel);
+}
+
+.request-card::before {
+  display: none;
+}
+
+.request-card .progress span {
+  color: var(--brand);
+  font-size: var(--font-size-process-title);
+}
+
+.request-card .progress-bar {
+  height: 8px;
+  background: var(--line);
+}
+
+.request-card .progress-bar span {
+  background: var(--brand-blue);
+}
+
+.request-card legend {
+  color: var(--brand);
+  font-size: var(--font-size-form-title);
+}
+
+.request-card input,
+.request-card select,
+.request-card textarea {
+  min-height: var(--request-input-min-height);
+  border-color: var(--line);
+  border-radius: var(--input-radius);
+}
+
+.request-card input:focus,
+.request-card select:focus,
+.request-card textarea:focus {
+  outline-color: var(--primary-shadow);
+  border-color: var(--brand-blue);
+}
+
+.request-card textarea {
+  min-height: var(--request-textarea-min-height);
+}
+
+.request-card .button {
+  width: 100%;
+  min-height: calc(var(--button-height) + var(--space-3));
+  border-radius: var(--button-radius);
+  font-size: var(--font-size-offer-price);
+}
+
+
+/* Shared tracking offers */
+.tracking-offers{
+display:grid;
+gap: var(--space-3);
+margin-top: var(--space-1);
+}
+
+.tracking-offer-card{
+padding: var(--space-4);
+border:1px solid var(--line);
+border-radius: var(--surface-radius-card);
+background: var(--surface-panel-bg);
+}
+
+.tracking-offer-top{
+display:flex;
+justify-content:space-between;
+gap: var(--space-4);
+align-items:center;
+}
+
+.tracking-offer-price{
+font-size: var(--font-size-offer-price);
+color:var(--primary);
+}
+
+.tracking-offer-meta{
+margin-top: var(--space-1);
+color:var(--muted);
+font-size: var(--font-size-meta);
+}
+
+.tracking-offer-note{
+margin-top: var(--space-3);
+font-size: var(--font-size-meta);
+}
+
+
+.tracking-select-button{
+margin-top: var(--space-3);
+width:100%;
