@@ -470,15 +470,21 @@ details p {
 
 /* Shared request card */
 .request-form.request-card {
-  align-self: stretch;
+  position: relative;
+  align-self: center;
   border: var(--surface-border);
   border-radius: var(--surface-radius-card);
   background: var(--surface-panel-bg);
   box-shadow: var(--surface-shadow-panel);
 }
 
-.request-card::before {
-  display: none;
+.request-form.request-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: var(--surface-radius-panel);
+  background: var(--surface-panel-glow);
 }
 
 .request-card .progress span {
@@ -531,20 +537,6 @@ details p {
 .request-form {
   scroll-margin-top: 92px;
   padding: var(--workspace-panel-padding);
-}
-
-.hero-form {
-  position: relative;
-  align-self: center;
-}
-
-.hero-form::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  z-index: -1;
-  border-radius: var(--surface-radius-panel);
-  background: var(--surface-panel-glow);
 }
 
 .progress {
