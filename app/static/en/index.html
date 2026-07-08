@@ -110,8 +110,8 @@
           <legend>Details and contacts</legend>
           <p class="form-intro">Add the details carriers need to estimate the request.</p>
           <div class="form-grid">
-            <label>Name<input name="customer_name" autocomplete="name"></label>
-            <label>Moving date<input name="requested_date" type="date"></label>
+            <label>Name<input name="customer_name" autocomplete="name" required></label>
+            <label>Moving date<input name="requested_date" type="text" required list="requestedDateOptions" placeholder="YYYY-MM-DD, today, tomorrow"><datalist id="requestedDateOptions"><option value="today"></option><option value="tomorrow"></option><option value="next few days"></option><option value="any day"></option></datalist></label>
           </div>
           <div class="form-grid">
             <label>Phone<input name="client_phone" autocomplete="tel" placeholder="+351..."></label>
@@ -119,10 +119,10 @@
           </div>
           <label>Email<input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"></label>
           <div class="form-grid">
-            <label>Pickup floor<input name="pickup_floor" type="number" min="-1" max="24"></label>
-            <label>Elevator at pickup<select name="pickup_elevator"><option value="">Not sure / not important</option><option value="true">Yes</option><option value="false">No</option></select></label>
-            <label>Drop-off floor<input name="dropoff_floor" type="number" min="-1" max="24"></label>
-            <label>Elevator at drop-off<select name="dropoff_elevator"><option value="">Not sure / not important</option><option value="true">Yes</option><option value="false">No</option></select></label>
+            <label>Pickup floor<input name="pickup_floor" type="number" min="-1" max="24" required></label>
+            <label>Elevator at pickup<select name="pickup_elevator" required><option value="">Select</option><option value="true">Yes</option><option value="false">No</option></select></label>
+            <label>Drop-off floor<input name="dropoff_floor" type="number" min="-1" max="24" required></label>
+            <label>Elevator at drop-off<select name="dropoff_elevator" required><option value="">Select</option><option value="true">Yes</option><option value="false">No</option></select></label>
           </div>
           <div class="form-grid">
             <label>Need movers<select name="required_loaders"><option value="">Not sure / not important</option><option value="0">No</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>

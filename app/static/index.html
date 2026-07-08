@@ -118,8 +118,8 @@
           <legend>Detalhes e contactos</legend>
           <p class="form-intro">Adicione os detalhes necessários para os transportadores avaliarem o pedido.</p>
           <div class="form-grid">
-            <label>Nome<input name="customer_name" autocomplete="name"></label>
-            <label>Data da mudança<input name="requested_date" type="date"></label>
+            <label>Nome<input name="customer_name" autocomplete="name" required></label>
+            <label>Data da mudança<input name="requested_date" type="text" required list="requestedDateOptions" placeholder="AAAA-MM-DD, hoje, amanhã"><datalist id="requestedDateOptions"><option value="hoje"></option><option value="amanhã"></option><option value="próximos dias"></option><option value="qualquer dia"></option></datalist></label>
           </div>
           <div class="form-grid">
             <label>Telefone<input name="client_phone" autocomplete="tel" placeholder="+351..."></label>
@@ -127,10 +127,10 @@
           </div>
           <label>Email<input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"></label>
           <div class="form-grid">
-            <label>Andar de recolha<input name="pickup_floor" type="number" min="-1" max="24"></label>
-            <label>Elevador na recolha<select name="pickup_elevator"><option value="">Não sei / não é importante</option><option value="true">Sim</option><option value="false">Não</option></select></label>
-            <label>Andar de entrega<input name="dropoff_floor" type="number" min="-1" max="24"></label>
-            <label>Elevador na entrega<select name="dropoff_elevator"><option value="">Não sei / não é importante</option><option value="true">Sim</option><option value="false">Não</option></select></label>
+            <label>Andar de recolha<input name="pickup_floor" type="number" min="-1" max="24" required></label>
+            <label>Elevador na recolha<select name="pickup_elevator" required><option value="">Selecione</option><option value="true">Sim</option><option value="false">Não</option></select></label>
+            <label>Andar de entrega<input name="dropoff_floor" type="number" min="-1" max="24" required></label>
+            <label>Elevador na entrega<select name="dropoff_elevator" required><option value="">Selecione</option><option value="true">Sim</option><option value="false">Não</option></select></label>
           </div>
           <div class="form-grid">
             <label>Precisa de ajudantes<select name="required_loaders"><option value="">Não sei / não é importante</option><option value="0">Não</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>

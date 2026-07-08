@@ -110,8 +110,8 @@
           <legend>Детали и контакты</legend>
           <p class="form-intro">Осталось добавить детали, чтобы перевозчики могли оценить заявку.</p>
           <div class="form-grid">
-            <label>Имя<input name="customer_name" autocomplete="name"></label>
-            <label>Дата перевозки<input name="requested_date" type="date"></label>
+            <label>Имя<input name="customer_name" autocomplete="name" required></label>
+            <label>Дата перевозки<input name="requested_date" type="text" required list="requestedDateOptions" placeholder="ГГГГ-ММ-ДД, сегодня, завтра"><datalist id="requestedDateOptions"><option value="сегодня"></option><option value="завтра"></option><option value="в ближайшие дни"></option><option value="любой день"></option></datalist></label>
           </div>
           <div class="form-grid">
             <label>Телефон<input name="client_phone" autocomplete="tel" placeholder="+351..."></label>
@@ -119,10 +119,10 @@
           </div>
           <label>Email<input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"></label>
           <div class="form-grid">
-            <label>Этаж отправления<input name="pickup_floor" type="number" min="-1" max="24"></label>
-            <label>Лифт на отправлении<select name="pickup_elevator"><option value="">Не знаю / не важно</option><option value="true">Да</option><option value="false">Нет</option></select></label>
-            <label>Этаж доставки<input name="dropoff_floor" type="number" min="-1" max="24"></label>
-            <label>Лифт на доставке<select name="dropoff_elevator"><option value="">Не знаю / не важно</option><option value="true">Да</option><option value="false">Нет</option></select></label>
+            <label>Этаж отправления<input name="pickup_floor" type="number" min="-1" max="24" required></label>
+            <label>Лифт на отправлении<select name="pickup_elevator" required><option value="">Выберите</option><option value="true">Да</option><option value="false">Нет</option></select></label>
+            <label>Этаж доставки<input name="dropoff_floor" type="number" min="-1" max="24" required></label>
+            <label>Лифт на доставке<select name="dropoff_elevator" required><option value="">Выберите</option><option value="true">Да</option><option value="false">Нет</option></select></label>
           </div>
           <div class="form-grid">
             <label>Нужны грузчики<select name="required_loaders"><option value="">Не знаю / не важно</option><option value="0">Нет</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>

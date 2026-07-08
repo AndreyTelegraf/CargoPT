@@ -547,9 +547,45 @@ function validateStep(step) {
   return true;
 }
 
+function formatDateForPayload(date) {
+  return date.toISOString().slice(0, 10);
+}
+
+function normalizeRequestedDate(value) {
+  const rawValue = (value || "").trim().toLowerCase();
+  if (!rawValue) return null;
+
+  const today = new Date();
+  const targetDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+  if (["hoje", "today", "сегодня"].includes(rawValue)) {
+    return `${formatDateForPayload(targetDate)}T12:00:00+00:00`;
+  }
+
+  if (["amanhã", "amanha", "tomorrow", "завтра"].includes(rawValue)) {
+    targetDate.setDate(targetDate.getDate() + 1);
+    return `${formatDateForPayload(targetDate)}T12:00:00+00:00`;
+  }
+
+  if (["próximos dias", "proximos dias", "next few days", "в ближайшие дни"].includes(rawValue)) {
+    targetDate.setDate(targetDate.getDate() + 3);
+    return `${formatDateForPayload(targetDate)}T12:00:00+00:00`;
+  }
+
+  if (["qualquer dia", "any day", "любой день"].includes(rawValue)) {
+    return null;
+  }
+
+  if (/^\d{4}-\d{2}-\d{2}$/.test(rawValue)) {
+    return `${rawValue}T12:00:00+00:00`;
+  }
+
+  return null;
+}
+
 function buildPayload() {
   const data = getFormData();
-  const requestedDate = data.requested_date ? `${data.requested_date}T12:00:00+00:00` : null;
+  const requestedDate = normalizeRequestedDate(data.requested_date);
 
   return {
     source_locale: localeKey,
