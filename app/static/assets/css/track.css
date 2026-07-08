@@ -200,6 +200,7 @@ h3 {
   grid-template-rows: minmax(0, 1fr);
   max-height: calc(100vh - 170px);
   min-height: min(640px, calc(100vh - 170px));
+  padding: var(--workspace-panel-padding);
   overflow: hidden;
 }
 
