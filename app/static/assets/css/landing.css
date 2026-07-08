@@ -723,53 +723,6 @@ details p {
 }
 
 
-.tracking-offers{
-display:grid;
-gap: var(--space-3);
-margin-top: var(--space-1);
-}
-
-.tracking-offer-card{
-padding: var(--space-4);
-border:1px solid var(--line);
-border-radius: var(--surface-radius-card);
-background: var(--surface-panel-bg);
-}
-
-.tracking-offer-top{
-display:flex;
-justify-content:space-between;
-gap: var(--space-4);
-align-items:center;
-}
-
-.tracking-offer-price{
-font-size: var(--font-size-offer-price);
-color:var(--primary);
-}
-
-.tracking-offer-meta{
-margin-top: var(--space-1);
-color:var(--muted);
-font-size: var(--font-size-meta);
-}
-
-.tracking-offer-note{
-margin-top: var(--space-3);
-font-size: var(--font-size-meta);
-}
-
-
-.tracking-select-button{
-margin-top: var(--space-3);
-width:100%;
-background:var(--primary);
-}
-
-.tracking-select-button:disabled{
-opacity:.72;
-}
-
 
 .tracking-assignment-actions{
 display:grid;
