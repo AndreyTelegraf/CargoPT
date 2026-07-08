@@ -121,7 +121,6 @@ function renderOpenPedidos() {
 
   if (links.length === 0) {
     section.hidden = true;
-    hero?.classList.remove("is-user-workspace");
     return;
   }
 
@@ -163,7 +162,6 @@ function renderOpenPedidos() {
   });
 
   section.hidden = false;
-  hero?.classList.add("is-user-workspace");
 }
 
 function setStep(step) {
