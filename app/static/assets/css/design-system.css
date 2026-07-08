@@ -8,17 +8,17 @@
   --brand: #0b1232;
   --brand-soft: #eef5ff;
   --brand-blue: var(--primary);
-  --accent: #0350f6;
-  --accent-strong: #0347d1;
-  --accent-soft: #eef5ff;
+  --accent: #1A5274;
+  --accent-strong: #153F5A;
+  --accent-soft: #EAF3F8;
 
   --primary: var(--accent);
   --primary-soft: var(--accent-soft);
 
-  --primary-border: rgba(3, 80, 246, 0.30);
-  --primary-border-strong: rgba(3, 80, 246, 0.55);
-  --primary-fill: rgba(238, 245, 255, 0.88);
-  --primary-shadow: rgba(3, 80, 246, 0.22);
+  --primary-border: rgba(26, 82, 116, 0.30);
+  --primary-border-strong: rgba(26, 82, 116, 0.55);
+  --primary-fill: rgba(234, 243, 248, 0.88);
+  --primary-shadow: rgba(26, 82, 116, 0.22);
   --success: #166534;
   --success-soft: rgba(240, 253, 244, 0.86);
   --warning: #d97706;
@@ -60,7 +60,7 @@
   --button-secondary-bg: var(--brand-soft);
   --button-secondary-text: var(--text);
   --button-font-weight: 800;
-  --button-hover-shadow: 0 12px 28px rgba(3, 80, 246, 0.22);
+  --button-hover-shadow: 0 12px 28px rgba(26, 82, 116, 0.22);
   --button-transition: all var(--motion-base);
   --chip-radius: var(--radius-pill);
   --chip-bg: rgba(255, 255, 255, 0.62);
