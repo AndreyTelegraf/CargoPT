@@ -353,6 +353,23 @@ label {
   font-weight: 760;
 }
 
+.field-label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.field-required {
+  color: var(--danger);
+  font-weight: 900;
+}
+
+.field-optional {
+  color: var(--muted-2);
+  font-size: 12px;
+  font-weight: 700;
+}
+
 input,
 select,
 textarea {

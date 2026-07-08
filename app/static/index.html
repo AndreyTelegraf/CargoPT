@@ -100,13 +100,13 @@
         <fieldset class="form-step is-active" data-step="1">
           <legend>Receber propostas</legend>
           <p class="form-intro">Comece com três perguntas simples.</p>
-          <label>De onde
+          <label><span class="field-label">De onde<span class="field-required" aria-hidden="true">*</span></span>
             <input name="pickup" autocomplete="street-address" required placeholder="Exemplo: Lisboa">
           </label>
-          <label>Para onde
+          <label><span class="field-label">Para onde<span class="field-required" aria-hidden="true">*</span></span>
             <input name="dropoff" autocomplete="street-address" required placeholder="Exemplo: Cascais">
           </label>
-          <label>O que vai transportar?
+          <label><span class="field-label">O que vai transportar?<span class="field-required" aria-hidden="true">*</span></span>
             <textarea name="items" required placeholder="Exemplo: sofá, 20 caixas, máquina de lavar"></textarea>
           </label>
           <div class="form-actions">
@@ -118,25 +118,25 @@
           <legend>Detalhes e contactos</legend>
           <p class="form-intro">Adicione os detalhes necessários para os transportadores avaliarem o pedido.</p>
           <div class="form-grid">
-            <label>Nome<input name="customer_name" autocomplete="name" required></label>
-            <label>Data da mudança<input name="requested_date" type="text" required list="requestedDateOptions" placeholder="DD/MM/AAAA, hoje, amanhã"><datalist id="requestedDateOptions"><option value="hoje"></option><option value="amanhã"></option><option value="próximos dias"></option><option value="qualquer dia"></option></datalist></label>
+            <label><span class="field-label">Nome<span class="field-required" aria-hidden="true">*</span></span><input name="customer_name" autocomplete="name" required></label>
+            <label><span class="field-label">Data da mudança<span class="field-required" aria-hidden="true">*</span></span><input name="requested_date" type="text" required list="requestedDateOptions" placeholder="DD/MM/AAAA, hoje, amanhã"><datalist id="requestedDateOptions"><option value="hoje"></option><option value="amanhã"></option><option value="próximos dias"></option><option value="qualquer dia"></option></datalist></label>
           </div>
           <div class="form-grid">
-            <label>Telefone<input name="client_phone" autocomplete="tel" placeholder="+351..." required></label>
-            <label>WhatsApp<input name="client_whatsapp" autocomplete="tel" placeholder="+351..."></label>
+            <label><span class="field-label">Telefone<span class="field-required" aria-hidden="true">*</span></span><input name="client_phone" autocomplete="tel" placeholder="+351..." required></label>
+            <label><span class="field-label">WhatsApp<span class="field-optional">opcional</span></span><input name="client_whatsapp" autocomplete="tel" placeholder="+351..."></label>
           </div>
-          <label>Email<input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"></label>
+          <label><span class="field-label">Email<span class="field-optional">opcional</span></span><input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"></label>
           <div class="form-grid">
-            <label>Andar de recolha<input name="pickup_floor" type="number" min="-1" max="24" required></label>
-            <label>Elevador na recolha<select name="pickup_elevator" required><option value="">Selecione</option><option value="true">Sim</option><option value="false">Não</option></select></label>
-            <label>Andar de entrega<input name="dropoff_floor" type="number" min="-1" max="24" required></label>
-            <label>Elevador na entrega<select name="dropoff_elevator" required><option value="">Selecione</option><option value="true">Sim</option><option value="false">Não</option></select></label>
+            <label><span class="field-label">Andar de recolha<span class="field-required" aria-hidden="true">*</span></span><input name="pickup_floor" type="number" min="-1" max="24" required></label>
+            <label><span class="field-label">Elevador na recolha<span class="field-required" aria-hidden="true">*</span></span><select name="pickup_elevator" required><option value="">Selecione</option><option value="true">Sim</option><option value="false">Não</option></select></label>
+            <label><span class="field-label">Andar de entrega<span class="field-required" aria-hidden="true">*</span></span><input name="dropoff_floor" type="number" min="-1" max="24" required></label>
+            <label><span class="field-label">Elevador na entrega<span class="field-required" aria-hidden="true">*</span></span><select name="dropoff_elevator" required><option value="">Selecione</option><option value="true">Sim</option><option value="false">Não</option></select></label>
           </div>
           <div class="form-grid">
-            <label>Precisa de ajudantes<select name="required_loaders"><option value="">Não sei / não é importante</option><option value="0">Não</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
-            <label>Volume aproximado, m³<input name="estimated_volume_m3" type="number" min="0" step="0.5"></label>
+            <label><span class="field-label">Precisa de ajudantes<span class="field-optional">opcional</span></span><select name="required_loaders"><option value="">Não sei / não é importante</option><option value="0">Não</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
+            <label><span class="field-label">Volume aproximado, m³<span class="field-optional">opcional</span></span><input name="estimated_volume_m3" type="number" min="0" step="0.5"></label>
           </div>
-          <label>Comentário<textarea name="comment" placeholder="Detalhes adicionais"></textarea></label>
+          <label><span class="field-label">Comentário<span class="field-optional">opcional</span></span><textarea name="comment" placeholder="Detalhes adicionais"></textarea></label>
           <p class="form-note">É necessário indicar pelo menos um contacto: telefone, WhatsApp ou email.</p>
           <div class="form-actions">
             <button class="button button-secondary" type="button" data-prev>Voltar</button>
