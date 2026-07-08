@@ -475,8 +475,8 @@ details p {
 
 .request-form.request-card {
   border: var(--surface-border);
-  border-radius: var(--request-card-radius);
-  background: var(--request-card-bg);
+  border-radius: var(--surface-radius-card);
+  background: var(--surface-panel-bg);
   box-shadow: var(--surface-shadow-panel);
 }
 
