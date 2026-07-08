@@ -117,6 +117,10 @@
 .track-offer-nav-card {
   display: grid;
   gap: var(--space-1);
+  padding: var(--space-4);
+  border: var(--surface-border);
+  border-radius: var(--surface-radius-card);
+  background: var(--surface-panel-bg);
   cursor: pointer;
 }
 
