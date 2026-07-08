@@ -53,6 +53,7 @@
   --surface-shadow-workspace: var(--surface-shadow-card);
   --surface-shadow-subtle: 0 10px 28px rgba(43, 111, 214, 0.08);
   --surface-panel-glow: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(237,244,255,0.86));
+  --surface-panel-vertical: linear-gradient(180deg, var(--surface-panel-bg) 0%, var(--surface-muted-bg) 100%);
   --page-background-glow: radial-gradient(circle at 12% 0%, rgba(255,255,255,0.96), transparent 32%);
   --button-radius: var(--radius-md);
   --button-height: 52px;

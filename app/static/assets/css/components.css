@@ -376,7 +376,7 @@ details p {
   padding: var(--space-4);
   border: var(--surface-border);
   border-radius: var(--surface-radius-card);
-  background: linear-gradient(180deg, var(--surface-panel-bg) 0%, var(--surface-muted-bg) 100%);
+  background: var(--surface-panel-vertical);
   box-shadow: var(--surface-shadow-subtle);
   min-height: 236px;
   align-content: start;
