@@ -70,6 +70,11 @@
   gap: var(--space-3);
   width: 100%;
   min-height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .track-workspace-shell .tracking-status-summary,
