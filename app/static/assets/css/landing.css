@@ -1352,7 +1352,6 @@ grid-column:1/-1;
 }
 
 .hero-workspace,
-.tracking-panel,
 .request-form.hero-panel {
   width: 100%;
   align-self: stretch;

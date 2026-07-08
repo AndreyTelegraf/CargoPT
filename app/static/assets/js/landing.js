@@ -211,10 +211,6 @@ function renderOpenPedidos() {
   links.slice(0, 5).forEach((entry) => {
     const card = document.createElement("article");
     card.className = "open-pedido-card";
-    if (activeTrackingEntry && entry.token === activeTrackingEntry.token) {
-      card.classList.add("is-active");
-    }
-
     const copy = document.createElement("div");
     copy.className = "open-pedido-copy";
 
