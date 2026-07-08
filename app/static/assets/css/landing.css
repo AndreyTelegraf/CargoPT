@@ -356,7 +356,7 @@ label {
 .field-label {
   display: inline-flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 0;
 }
 
 .request-form .field-required {
@@ -365,6 +365,7 @@ label {
 }
 
 .field-optional {
+  margin-left: 8px;
   color: var(--muted-2);
   font-size: 12px;
   font-weight: 700;
