@@ -44,11 +44,11 @@ a {
 }
 
 .logo-cargo {
-  color: var(--text);
+  color: var(--primary);
 }
 
 .logo-pt {
-  color: var(--primary);
+  color: var(--text);
 }
 
 .header-actions,
@@ -70,7 +70,7 @@ a {
   align-items: center;
   color: var(--muted);
   font-size: 14px;
-  font-weight: 750;
+  font-weight: var(--font-weight-strong);
 }
 
 .locale-current {
@@ -86,7 +86,7 @@ a {
   color: var(--text);
   font: inherit;
   font-size: 14px;
-  font-weight: 750;
+  font-weight: var(--font-weight-strong);
   cursor: pointer;
 }
 
@@ -253,7 +253,7 @@ details p {
   border-radius: var(--radius-pill);
   background: var(--brand);
   color: var(--button-primary-text);
-  font-weight: 850;
+  font-weight: var(--font-weight-heavy);
 }
 
 .chips {
@@ -271,7 +271,7 @@ details p {
   border-radius: var(--chip-radius);
   background: var(--chip-bg);
   color: var(--muted);
-  font-weight: 650;
+  font-weight: var(--font-weight-meta-text);
 }
 
 
@@ -379,7 +379,7 @@ details p {
 
 .tracking-status-summary span {
   color: var(--muted);
-  font-weight: 750;
+  font-weight: var(--font-weight-strong);
 }
 
 .tracking-status-success .tracking-status-summary {
@@ -474,7 +474,7 @@ details p {
 
 .tracking-status-detail-text {
   color: var(--text);
-  font-weight: 700;
+  font-weight: var(--font-weight-title);
 }
 
 
@@ -483,7 +483,7 @@ details p {
 .open-pedido-items {
   color: var(--text);
   font-size: var(--font-size-form-note);
-  font-weight: 700;
+  font-weight: var(--font-weight-title);
 }
 
 .open-pedidos {
@@ -555,7 +555,7 @@ details p {
 
 .open-pedido-copy span {
   color: var(--muted);
-  font-weight: 750;
+  font-weight: var(--font-weight-strong);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -581,7 +581,7 @@ details p {
 /* Shared request card */
 .request-form.request-card {
   position: relative;
-  align-self: center;
+  align-self: start;
   border: var(--surface-border);
   border-radius: var(--surface-radius-card);
   background: var(--surface-panel-bg);
@@ -600,6 +600,7 @@ details p {
 .request-card .progress span {
   color: var(--brand);
   font-size: var(--font-size-process-title);
+  font-weight: var(--font-weight-title);
 }
 
 .request-card .progress-bar {
@@ -614,6 +615,7 @@ details p {
 .request-card legend {
   color: var(--brand);
   font-size: var(--font-size-form-title);
+  font-weight: var(--font-weight-title);
 }
 
 .request-card input,
@@ -640,6 +642,7 @@ details p {
   min-height: calc(var(--button-height) + var(--space-3));
   border-radius: var(--button-radius);
   font-size: var(--font-size-offer-price);
+  font-weight: var(--font-weight-title);
 }
 
 
@@ -657,7 +660,7 @@ details p {
   display: block;
   margin-bottom: 10px;
   color: var(--muted);
-  font-weight: 850;
+  font-weight: var(--font-weight-heavy);
 }
 
 .progress-bar {
@@ -725,7 +728,7 @@ label {
   display: grid;
   gap: 7px;
   color: var(--muted);
-  font-weight: 760;
+  font-weight: var(--font-weight-label);
 }
 
 .field-label {
@@ -736,14 +739,14 @@ label {
 
 .request-form .field-required {
   color: var(--danger);
-  font-weight: 900;
+  font-weight: var(--font-weight-required);
   line-height: 1;
 }
 
 .field-optional {
   color: var(--muted-2);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: var(--font-weight-title);
   letter-spacing: 0.01em;
 }
 
@@ -762,6 +765,7 @@ textarea {
   background: var(--input-bg);
   color: var(--input-text);
   font: inherit;
+  font-weight: var(--font-weight-control);
 }
 
 textarea {
@@ -783,7 +787,7 @@ textarea:focus {
 
 .form-message {
   margin: 16px 0 0;
-  font-weight: 750;
+  font-weight: var(--font-weight-strong);
 }
 
 

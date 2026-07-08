@@ -224,5 +224,5 @@
   margin: -4px 0 2px;
   color: var(--muted);
   font-size: 15px;
-  font-weight: 650;
+  font-weight: var(--font-weight-meta-text);
 }

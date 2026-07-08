@@ -67,7 +67,7 @@
   --button-primary-text: #fff;
   --button-secondary-bg: var(--brand-soft);
   --button-secondary-text: var(--text);
-  --button-font-weight: 800;
+  --button-font-weight: var(--font-weight-title);
   --button-hover-shadow: 0 12px 28px rgba(43, 111, 214, 0.22);
   --button-transition: all var(--motion-base);
   --chip-radius: var(--radius-pill);
@@ -161,12 +161,20 @@
   --font-size-track-h1: clamp(34px, 6vw, 58px);
   --font-size-track-h2: clamp(26px, 4vw, 38px);
 
-  --font-weight-regular: 500;
-  --font-weight-meta: 650;
-  --font-weight-strong: 750;
-  --font-weight-bold: 800;
-  --font-weight-heavy: 900;
-  --font-weight-black: 950;
+  --font-weight-regular: 400;
+  --font-weight-meta: 500;
+  --font-weight-strong: 600;
+  --font-weight-bold: 650;
+  --font-weight-heavy: 700;
+  --font-weight-black: 750;
+
+  --font-weight-heading: var(--font-weight-strong);
+  --font-weight-title: var(--font-weight-strong);
+  --font-weight-label: var(--font-weight-meta);
+  --font-weight-control: var(--font-weight-meta);
+  --font-weight-meta-text: var(--font-weight-meta);
+  --font-weight-body: var(--font-weight-regular);
+  --font-weight-required: var(--font-weight-strong);
 
   --line-height-tight: 1;
   --line-height-heading: 0.98;
