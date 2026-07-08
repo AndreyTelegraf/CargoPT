@@ -87,7 +87,7 @@ a {
   font: inherit;
   font-size: 14px;
   font-weight: 750;
-  cursor: default;
+  cursor: pointer;
 }
 
 .locale-current::after {
@@ -96,6 +96,17 @@ a {
   color: var(--muted);
   font-size: 13px;
   transform: translateY(-1px);
+}
+
+.locale-current:focus-visible {
+  outline: 2px solid var(--primary-border);
+  outline-offset: 2px;
+}
+
+.locale-switcher:hover .locale-current,
+.locale-switcher:focus-within .locale-current {
+  border-color: var(--primary-border);
+  box-shadow: var(--nav-card-hover-shadow);
 }
 
 .locale-menu {
@@ -109,7 +120,7 @@ a {
   border: var(--surface-border);
   border-radius: var(--radius-md);
   background: var(--surface-panel-bg);
-  box-shadow: var(--surface-shadow-subtle);
+  box-shadow: var(--surface-shadow-card);
 }
 
 .locale-switcher:hover .locale-menu,
@@ -127,6 +138,7 @@ a {
 }
 
 .locale-menu a:hover,
+.locale-menu a:focus-visible,
 .locale-menu a[aria-current="page"] {
   background: var(--surface-hover-bg);
   color: var(--text);
