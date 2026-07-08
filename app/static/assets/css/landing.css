@@ -528,16 +528,16 @@ details p {
 
 .header-actions .button-carrier,
 .header-actions .button-header-action {
-  background: var(--primary-fill);
-  color: var(--brand);
-  box-shadow: none;
-  border: var(--surface-border);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  box-shadow: 0 10px 24px var(--primary-shadow);
+  border: 1px solid var(--primary-border-strong);
 }
 
 .header-actions .button-carrier:hover,
 .header-actions .button-header-action:hover {
-  background: var(--primary-soft);
-  box-shadow: var(--nav-card-hover-shadow);
+  background: var(--accent-strong);
+  box-shadow: var(--button-hover-shadow);
 }
 
 
