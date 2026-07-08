@@ -684,8 +684,7 @@ form.addEventListener("change", saveDraft);
 document.addEventListener("click", (event) => {
   const newRequest = event.target.closest("[data-new-request]");
   if (!newRequest || form.contains(newRequest)) return;
-  switchTrackingToNewRequest();
-  hero?.classList.add("is-user-workspace");
+  window.location.href = "/";
 });
 
 form.addEventListener("click", (event) => {
@@ -694,8 +693,7 @@ form.addEventListener("click", (event) => {
   const newRequest = event.target.closest("[data-new-request]");
 
   if (newRequest) {
-    switchTrackingToNewRequest();
-    hero?.classList.add("is-user-workspace");
+    window.location.href = "/";
     return;
   }
 
