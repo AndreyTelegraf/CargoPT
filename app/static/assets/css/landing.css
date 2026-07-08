@@ -267,19 +267,6 @@ textarea:focus {
   color: var(--success);
 }
 
-.tracking-success-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 4px;
-}
-
-@media (max-width: 640px) {
-  .tracking-success-actions {
-    flex-direction: column;
-  }
-}
-
 .faq {
   display: grid;
   gap: 14px;
