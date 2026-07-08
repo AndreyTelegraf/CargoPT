@@ -51,7 +51,7 @@ def main() -> None:
             ("/ru/", 'value="завтра"'),
             ("/ru/", 'value="в ближайшие дни"'),
             ("/ru/", 'value="любой день"'),
-            ("/assets/css/landing.css", "locale-switcher"),
+            ("/assets/css/components.css", "locale-switcher"),
             ("/assets/js/landing.js", "markFieldInvalid"),
             ("/assets/js/landing.js", "normalizeRequestedDate"),
             ("/favicon.ico", ""),
