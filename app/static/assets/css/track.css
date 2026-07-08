@@ -2,7 +2,7 @@
 
 .track-workspace-shell {
   display: grid;
-  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 3fr);
+  grid-template-columns: minmax(260px, 1fr) minmax(0, 3fr);
   align-items: stretch;
   gap: var(--workspace-grid-gap);
   padding-top: var(--layout-workspace-y);
@@ -177,7 +177,7 @@
 
 @media (max-width: 1100px) {
   .track-workspace-shell {
-    grid-template-columns: minmax(210px, 0.95fr) minmax(0, 2.4fr);
+    grid-template-columns: minmax(210px, 1fr) minmax(0, 3fr);
   }
 
   .track-workspace-shell .tracking-success-actions {
