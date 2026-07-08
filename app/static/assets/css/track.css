@@ -113,7 +113,7 @@ h3 {
 /* Track page as workspace shell */
 .track-workspace-shell {
   display: grid;
-  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 3.2fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: stretch;
   gap: var(--workspace-grid-gap);
   padding-top: var(--layout-workspace-y);
@@ -187,43 +187,42 @@ h3 {
 
 /* Track workspace scroll panel and secondary sidebar */
 .track-workspace-shell {
-  align-items: start;
+  align-items: stretch;
 }
 
 .track-workspace-sidebar {
-  align-self: start;
-  min-height: 0;
+  align-self: stretch;
+  min-height: var(--workspace-panel-min-height);
 }
 
 .track-workspace-shell .tracking-request-card {
   display: grid;
   grid-template-rows: minmax(0, 1fr);
-  max-height: calc(100vh - 170px);
-  min-height: min(640px, calc(100vh - 170px));
+  min-height: var(--workspace-panel-min-height);
   padding: var(--workspace-panel-padding);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .track-workspace-shell #trackingPanelBody {
   min-height: 0;
-  overflow: auto;
-  padding-right: 4px;
+  overflow: visible;
+  padding-right: 0;
 }
 
 .track-workspace-shell .tracking-success {
   min-height: 100%;
 }
 
-.track-workspace-shell .tracking-panel .hero-workspace{
-  display:grid;
-  gap:var(--space-3);
-  width:100%;
-  min-height:100%;
-  padding:0;
-  border:none;
-  border-radius:0;
-  background:transparent;
-  box-shadow:none;
+.track-workspace-shell .tracking-panel .hero-workspace {
+  display: grid;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: 100%;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .track-workspace-shell .tracking-panel .tracking-status-summary {
@@ -259,12 +258,10 @@ h3 {
 }
 
 .track-workspace-shell .tracking-success-actions {
-  position: sticky;
-  bottom: 0;
-  z-index: 2;
-  margin-top: 4px;
-  padding-top: 10px;
-  background: linear-gradient(180deg, rgba(255,255,255,0), var(--panel) 24%);
+  position: static;
+  margin-top: var(--space-3);
+  padding-top: 0;
+  background: transparent;
 }
 
 .track-workspace-shell .tracking-offers {
