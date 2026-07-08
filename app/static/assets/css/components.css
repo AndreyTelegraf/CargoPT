@@ -140,16 +140,17 @@ a {
 
 .header-actions .button-carrier,
 .header-actions .button-header-action {
-  background: var(--button-primary-bg);
-  color: var(--button-primary-text);
-  box-shadow: 0 10px 24px var(--primary-shadow);
-  border: 1px solid var(--primary-border-strong);
+  background: var(--primary-fill);
+  color: var(--primary);
+  box-shadow: none;
+  border: 1px solid var(--primary-border);
 }
 
 .header-actions .button-carrier:hover,
 .header-actions .button-header-action:hover {
-  background: var(--accent-strong);
-  box-shadow: var(--button-hover-shadow);
+  background: var(--accent-soft);
+  color: var(--primary);
+  box-shadow: 0 4px 12px var(--primary-shadow);
 }
 
 .button {
