@@ -553,6 +553,8 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
         return
 
     if action == "close":
+        carrier_message_refs: list[tuple[int | None, int | None]] = []
+
         async with async_session_maker() as session:
             job_repository = JobRepository(session)
             job = await job_repository.get_job_by_id(int(raw_job_id))
@@ -564,12 +566,42 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
                 )
                 return
 
+            offers = await job_repository.list_offers_by_job(job.id)
+            carrier_message_refs = [
+                (offer.carrier_message_chat_id, offer.carrier_message_id)
+                for offer in offers
+                if offer.status in {"pending", "accepted"}
+                and offer.carrier_message_chat_id is not None
+                and offer.carrier_message_id is not None
+            ]
+
+            for offer in offers:
+                if offer.status == "pending":
+                    await job_repository.update_offer_status(
+                        offer.id,
+                        status="declined",
+                        responded_at=job.updated_at,
+                        decline_reason="admin_closed",
+                    )
+                elif offer.status == "accepted":
+                    await job_repository.update_offer_status(
+                        offer.id,
+                        status="cancelled",
+                        responded_at=job.updated_at,
+                    )
+
             await job_repository.update_job_status(
                 job_id=job.id,
                 status="cancelled",
                 updated_at=job.updated_at,
             )
             await session.commit()
+
+        for chat_id, message_id in carrier_message_refs:
+            try:
+                await callback.bot.delete_message(chat_id=chat_id, message_id=message_id)
+            except Exception:
+                pass
 
         await callback.answer(
             f"Заявка #{raw_job_id} закрыта.",
@@ -578,7 +610,7 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
 
         if callback.message:
             await callback.message.answer(
-                f"Заявка #{raw_job_id} вручную переведена в статус cancelled."
+                f"Заявка #{raw_job_id} вручную переведена в статус cancelled, активные офферы закрыты, карточки у перевозчиков удалены."
             )
         return
 

@@ -184,6 +184,11 @@ assert "вручную отправлена перевозчику" in handler_s
 assert 'status="cancelled"' in handler_source
 assert "Заявка #{raw_job_id} закрыта." in handler_source
 assert "вручную переведена в статус cancelled" in handler_source
+assert "list_offers_by_job(job.id)" in handler_source
+assert "update_offer_status(" in handler_source
+assert 'decline_reason="admin_closed"' in handler_source
+assert "carrier_message_refs" in handler_source
+assert "callback.bot.delete_message" in handler_source
 assert "attention_reason" in handler_source
 assert "offers_count" in handler_source
 
