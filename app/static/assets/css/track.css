@@ -218,14 +218,6 @@
     order: 2;
   }
 
-  .track-workspace-shell #trackingPanelBody {
-    overflow: visible;
-    padding-right: 0;
-  }
-
-  .track-workspace-shell .tracking-success-actions {
-    position: static;
-  }
 }
 
 .track-sidebar-eyebrow {
