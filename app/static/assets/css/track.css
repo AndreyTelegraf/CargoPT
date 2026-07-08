@@ -113,7 +113,7 @@ h3 {
 /* Track page as workspace shell */
 .track-workspace-shell {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 3fr);
   align-items: stretch;
   gap: var(--workspace-grid-gap);
   padding-top: var(--layout-workspace-y);
