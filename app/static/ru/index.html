@@ -111,10 +111,10 @@
           <p class="form-intro">Осталось добавить детали, чтобы перевозчики могли оценить заявку.</p>
           <div class="form-grid">
             <label>Имя<input name="customer_name" autocomplete="name" required></label>
-            <label>Дата перевозки<input name="requested_date" type="text" required list="requestedDateOptions" placeholder="ГГГГ-ММ-ДД, сегодня, завтра"><datalist id="requestedDateOptions"><option value="сегодня"></option><option value="завтра"></option><option value="в ближайшие дни"></option><option value="любой день"></option></datalist></label>
+            <label>Дата перевозки<input name="requested_date" type="text" required list="requestedDateOptions" placeholder="ДД/ММ/ГГГГ, сегодня, завтра"><datalist id="requestedDateOptions"><option value="сегодня"></option><option value="завтра"></option><option value="в ближайшие дни"></option><option value="любой день"></option></datalist></label>
           </div>
           <div class="form-grid">
-            <label>Телефон<input name="client_phone" autocomplete="tel" placeholder="+351..."></label>
+            <label>Телефон<input name="client_phone" autocomplete="tel" placeholder="+351..." required></label>
             <label>WhatsApp<input name="client_whatsapp" autocomplete="tel" placeholder="+351..."></label>
           </div>
           <label>Email<input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"></label>

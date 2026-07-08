@@ -111,10 +111,10 @@
           <p class="form-intro">Add the details carriers need to estimate the request.</p>
           <div class="form-grid">
             <label>Name<input name="customer_name" autocomplete="name" required></label>
-            <label>Moving date<input name="requested_date" type="text" required list="requestedDateOptions" placeholder="YYYY-MM-DD, today, tomorrow"><datalist id="requestedDateOptions"><option value="today"></option><option value="tomorrow"></option><option value="next few days"></option><option value="any day"></option></datalist></label>
+            <label>Moving date<input name="requested_date" type="text" required list="requestedDateOptions" placeholder="DD/MM/YYYY, today, tomorrow"><datalist id="requestedDateOptions"><option value="today"></option><option value="tomorrow"></option><option value="next few days"></option><option value="any day"></option></datalist></label>
           </div>
           <div class="form-grid">
-            <label>Phone<input name="client_phone" autocomplete="tel" placeholder="+351..."></label>
+            <label>Phone<input name="client_phone" autocomplete="tel" placeholder="+351..." required></label>
             <label>WhatsApp<input name="client_whatsapp" autocomplete="tel" placeholder="+351..."></label>
           </div>
           <label>Email<input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"></label>

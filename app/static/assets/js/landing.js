@@ -525,21 +525,23 @@ function restoreDraft() {
   }
 }
 
+function markFieldInvalid(field, message) {
+  field.setCustomValidity(message);
+  field.reportValidity();
+  field.focus();
+}
+
+function clearFieldValidity(field) {
+  field.setCustomValidity("");
+}
+
 function validateStep(step) {
   const activeStep = steps[step - 1];
   const requiredFields = Array.from(activeStep.querySelectorAll("[required]"));
   for (const field of requiredFields) {
+    clearFieldValidity(field);
     if (!field.value.trim()) {
-      field.focus();
-      setMessage(messages.required, "error");
-      return false;
-    }
-  }
-
-  if (step === 2) {
-    const data = getFormData();
-    if (!data.client_phone.trim() && !data.client_whatsapp.trim() && !data.customer_email.trim()) {
-      setMessage(messages.contact, "error");
+      markFieldInvalid(field, messages.required);
       return false;
     }
   }
@@ -574,6 +576,12 @@ function normalizeRequestedDate(value) {
 
   if (["qualquer dia", "any day", "любой день"].includes(rawValue)) {
     return null;
+  }
+
+  const europeanDateMatch = rawValue.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+  if (europeanDateMatch) {
+    const [, day, month, year] = europeanDateMatch;
+    return `${year}-${month}-${day}T12:00:00+00:00`;
   }
 
   if (/^\d{4}-\d{2}-\d{2}$/.test(rawValue)) {

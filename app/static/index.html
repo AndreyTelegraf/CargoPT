@@ -119,10 +119,10 @@
           <p class="form-intro">Adicione os detalhes necessários para os transportadores avaliarem o pedido.</p>
           <div class="form-grid">
             <label>Nome<input name="customer_name" autocomplete="name" required></label>
-            <label>Data da mudança<input name="requested_date" type="text" required list="requestedDateOptions" placeholder="AAAA-MM-DD, hoje, amanhã"><datalist id="requestedDateOptions"><option value="hoje"></option><option value="amanhã"></option><option value="próximos dias"></option><option value="qualquer dia"></option></datalist></label>
+            <label>Data da mudança<input name="requested_date" type="text" required list="requestedDateOptions" placeholder="DD/MM/AAAA, hoje, amanhã"><datalist id="requestedDateOptions"><option value="hoje"></option><option value="amanhã"></option><option value="próximos dias"></option><option value="qualquer dia"></option></datalist></label>
           </div>
           <div class="form-grid">
-            <label>Telefone<input name="client_phone" autocomplete="tel" placeholder="+351..."></label>
+            <label>Telefone<input name="client_phone" autocomplete="tel" placeholder="+351..." required></label>
             <label>WhatsApp<input name="client_whatsapp" autocomplete="tel" placeholder="+351..."></label>
           </div>
           <label>Email<input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"></label>
