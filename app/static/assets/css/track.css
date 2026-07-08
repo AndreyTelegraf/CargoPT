@@ -14,7 +14,7 @@
   display: grid;
   grid-template-rows: auto auto auto minmax(0, 1fr) auto;
   align-content: stretch;
-  gap: var(--space-3);
+  gap: var(--workspace-panel-gap);
   align-self: stretch;
   width: 100%;
   min-height: var(--workspace-panel-min-height);
@@ -55,7 +55,7 @@
 .track-workspace-shell .tracking-panel .hero-workspace {
   display: grid;
   align-content: start;
-  gap: var(--space-3);
+  gap: var(--workspace-panel-gap);
   width: 100%;
   min-height: 100%;
   padding: 0;

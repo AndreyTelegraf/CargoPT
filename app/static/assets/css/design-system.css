@@ -107,6 +107,7 @@
   --workspace-width: min(1380px, calc(100% - 56px));
   --workspace-panel-min-height: 500px;
   --workspace-panel-padding: clamp(22px, 3vw, 34px);
+  --workspace-panel-gap: var(--space-3);
   --workspace-sidebar-padding: 22px;
   --card-padding: 24px;
   --card-padding-compact: 18px;
