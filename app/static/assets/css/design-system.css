@@ -1,23 +1,24 @@
 /* Shared CargoPT design tokens. Page CSS owns layout/components. */
 :root {
-  --bg: #f6f5f1;
+  --bg: #fcfcfd;
   --panel: #ffffff;
-  --text: #111318;
+  --text: #0b1232;
   --muted: #616975;
-  --line: #e3dfd6;
-  --brand: #0f172a;
-  --brand-soft: #eaf7fb;
-  --accent: #2563eb;
-  --accent-strong: #1d4ed8;
-  --accent-soft: #eff6ff;
+  --line: #e8e9ed;
+  --brand: #0b1232;
+  --brand-soft: #eef5ff;
+  --brand-blue: var(--primary);
+  --accent: #0350f6;
+  --accent-strong: #0347d1;
+  --accent-soft: #eef5ff;
 
   --primary: var(--accent);
   --primary-soft: var(--accent-soft);
 
-  --primary-border: rgba(37, 99, 235, 0.30);
-  --primary-border-strong: rgba(37, 99, 235, 0.55);
-  --primary-fill: rgba(239, 246, 255, 0.82);
-  --primary-shadow: rgba(37, 99, 235, 0.18);
+  --primary-border: rgba(3, 80, 246, 0.30);
+  --primary-border-strong: rgba(3, 80, 246, 0.55);
+  --primary-fill: rgba(238, 245, 255, 0.88);
+  --primary-shadow: rgba(3, 80, 246, 0.22);
   --success: #166534;
   --success-soft: rgba(240, 253, 244, 0.86);
   --warning: #d97706;
@@ -32,7 +33,7 @@
   --warning-fill: rgba(254, 252, 232, 0.72);
 
   --danger-border: rgba(159, 18, 57, 0.22);
-  --surface: #fbfaf7;
+  --surface: #f8f9fb;
   --radius: 24px;
   --shadow: 0 24px 70px rgba(17, 24, 39, 0.08);
   --shadow-strong: 0 34px 90px rgba(17, 24, 39, 0.16);
@@ -48,18 +49,18 @@
   --surface-shadow-workspace: var(--surface-shadow-card);
   --surface-shadow-subtle: 0 10px 28px rgba(6, 22, 74, 0.06);
   --surface-panel-glow: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(17,24,39,0.12));
-  --page-background-glow: radial-gradient(circle at 12% 0%, rgba(255,255,255,0.92), transparent 32%);
+  --page-background-glow: radial-gradient(circle at 12% 0%, rgba(255,255,255,0.96), transparent 32%);
   --button-radius: var(--radius-md);
   --button-height: 52px;
   --button-height-small: 40px;
   --button-padding-x: 24px;
   --button-padding-x-small: 16px;
-  --button-primary-bg: var(--brand);
+  --button-primary-bg: var(--primary);
   --button-primary-text: #fff;
   --button-secondary-bg: var(--brand-soft);
   --button-secondary-text: var(--text);
   --button-font-weight: 800;
-  --button-hover-shadow: 0 12px 28px rgba(17, 24, 39, 0.16);
+  --button-hover-shadow: 0 12px 28px rgba(3, 80, 246, 0.22);
   --button-transition: all var(--motion-base);
   --chip-radius: var(--radius-pill);
   --chip-bg: rgba(255, 255, 255, 0.62);
@@ -68,7 +69,7 @@
   --badge-success-text: #fff;
   --badge-primary-bg: var(--primary-fill);
   --badge-primary-text: var(--primary);
-  --badge-header-bg: rgba(245, 249, 255, 0.86);
+  --badge-header-bg: rgba(255, 255, 255, 0.92);
   --status-card-padding: 14px;
   --status-card-radius: var(--radius-md);
   --status-card-bg: var(--surface-muted-bg);
