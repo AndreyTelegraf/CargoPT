@@ -463,6 +463,9 @@ details p {
 }
 
 @media (max-width: 640px) {
+  .tracking-success-actions {
+    flex-direction: column;
+  }
 }
 
 /* Shared request card */
