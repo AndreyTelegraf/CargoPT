@@ -220,24 +220,6 @@
     whatsappLink.rel = "noopener noreferrer";
     whatsappLink.textContent = messages.shareWhatsApp;
 
-    if (!options.hideStatusAction) {
-      actions.appendChild(statusButton);
-    }
-
-    if (!options.hideShareActions) {
-      actions.append(copyButton, whatsappLink);
-
-      const newRequest = document.createElement(options.newRequestHref ? "a" : "button");
-      newRequest.className = "button button-small button-secondary";
-      if (options.newRequestHref) {
-        newRequest.href = options.newRequestHref;
-      } else {
-        newRequest.type = "button";
-        newRequest.dataset.newRequest = "true";
-      }
-      newRequest.textContent = messages.newRequest;
-      actions.appendChild(newRequest);
-    }
     card.append(eyebrow, title, text, summary);
 
     if (entry.selected_offer_summary) {
