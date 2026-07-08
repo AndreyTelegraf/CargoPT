@@ -168,10 +168,6 @@ details p {
     gap: 9px;
   }
 
-  .request-form {
-    padding: var(--workspace-panel-padding);
-  }
-
   legend {
     font-size: 27px;
   }
