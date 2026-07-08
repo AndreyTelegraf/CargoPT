@@ -354,7 +354,7 @@ details p {
   padding: var(--space-3) var(--space-3) var(--space-4);
   border: var(--surface-border);
   border-radius: var(--surface-radius-card);
-  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  background: linear-gradient(180deg, var(--surface-panel-bg) 0%, var(--surface-muted-bg) 100%);
   box-shadow: var(--surface-shadow-subtle);
   text-align: center;
 }
