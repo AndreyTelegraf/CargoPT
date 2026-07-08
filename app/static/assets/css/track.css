@@ -10,10 +10,18 @@
 }
 
 .track-workspace-sidebar {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
   align-self: stretch;
+  width: 100%;
   min-height: var(--workspace-panel-min-height);
   margin-top: 0;
   padding: var(--workspace-sidebar-padding);
+  border: var(--surface-border);
+  border-radius: var(--surface-radius-workspace);
+  background: var(--request-card-bg);
+  box-shadow: var(--surface-shadow-workspace);
 }
 
 .track-workspace-sidebar .open-pedidos-list {
