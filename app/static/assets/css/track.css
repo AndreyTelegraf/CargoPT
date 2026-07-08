@@ -47,12 +47,6 @@
   padding: var(--workspace-panel-padding);
 }
 
-.track-workspace-shell #trackingPanelBody {
-  min-height: 0;
-  overflow: visible;
-  padding-right: 0;
-}
-
 .track-workspace-shell .tracking-success {
   min-height: 100%;
 }
