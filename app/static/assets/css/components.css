@@ -615,6 +615,12 @@ legend {
   gap: 15px;
 }
 
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 label {
   display: grid;
   gap: 7px;
