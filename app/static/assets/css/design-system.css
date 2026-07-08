@@ -117,7 +117,7 @@
   --workspace-action-height: 42px;
   --workspace-action-padding: 10px 12px;
   --request-card-radius: var(--surface-radius-card);
-  --request-card-bg: #FFFFFF;
+  --request-card-bg: var(--surface-panel-bg);
   --radius-sm: 14px;
   --radius-md: 16px;
   --radius-lg: 24px;
