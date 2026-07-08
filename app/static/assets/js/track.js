@@ -3,21 +3,16 @@ const trackingPanelBody = document.querySelector("#trackingPanelBody");
 const errorCard = document.querySelector("#errorCard");
 const trackOffersList = document.querySelector("#trackOffersList");
 const copyTrackingLink = document.querySelector("#copyTrackingLink");
-const shareTrackingWhatsApp = document.querySelector("#shareTrackingWhatsApp");
 const token = decodeURIComponent(window.location.pathname.split("/").filter(Boolean).slice(1).join("/"));
 
 function absoluteTrackingUrl() {
   return new URL(`/track/${token}`, window.location.origin).toString();
 }
 
-if (shareTrackingWhatsApp) {
-  shareTrackingWhatsApp.href = `https://wa.me/?text=${encodeURIComponent(absoluteTrackingUrl())}`;
-}
-
 if (copyTrackingLink) {
   copyTrackingLink.addEventListener("click", async () => {
     await navigator.clipboard.writeText(absoluteTrackingUrl());
-    copyTrackingLink.textContent = "Link copiado";
+    copyTrackingLink.textContent = "Track link copiado";
   });
 }
 
