@@ -229,10 +229,6 @@ details p {
     font-size: 18px;
   }
 
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
   .form-actions {
     align-items: stretch;
     flex-direction: column;
