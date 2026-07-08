@@ -314,20 +314,20 @@ h3 {
 
 .track-offer-nav-card:hover,
 .track-offer-nav-card:focus-visible {
-  border-color: var(--success-border);
+  border-color: var(--line);
   background: var(--surface-panel-bg);
   box-shadow: var(--nav-card-hover-shadow);
   outline: none;
 }
 
 .track-offer-nav-card.is-active {
-  border-color: var(--primary-border-strong);
+  border-color: var(--line);
   background: var(--surface-panel-bg);
-  box-shadow: var(--nav-card-active-shadow);
+  box-shadow: var(--nav-card-hover-shadow);
 }
 
 .track-offer-nav-card.is-chosen {
-  border-color: var(--warning-border);
+  border-color: var(--line);
 }
 
 .track-offer-nav-top {
@@ -355,7 +355,7 @@ h3 {
   display: inline-flex;
   justify-content: flex-end;
   min-width: 42px;
-  color: var(--primary);
+  color: var(--text);
   font-size: var(--font-size-badge);
   font-weight: var(--font-weight-heavy);
   line-height: var(--line-height-card-title);
@@ -381,15 +381,15 @@ h3 {
   width: fit-content;
   padding: 3px 8px;
   border-radius: var(--badge-radius);
-  background: var(--badge-primary-bg);
-  color: var(--badge-primary-text);
+  background: var(--surface-muted-bg);
+  color: var(--text);
   font-size: var(--font-size-badge-small);
   font-weight: var(--font-weight-heavy);
 }
 
 .track-offer-nav-card.is-chosen .track-offer-nav-status {
-  background: var(--warning-fill);
-  color: var(--warning);
+  background: var(--surface-muted-bg);
+  color: var(--text);
 }
 
 
@@ -410,7 +410,8 @@ h3 {
   margin-top: calc(var(--space-1) / 2);
   padding: var(--compact-action-padding);
   font-size: var(--font-size-action-small);
-  background: var(--success);
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
 }
 
 /* Track mobile priority: status first, offers second */
