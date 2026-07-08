@@ -1047,7 +1047,6 @@ details p {
   min-height: var(--request-input-min-height);
   border-color: var(--line);
   border-radius: var(--input-radius);
-  color: var(--brand);
 }
 
 .request-card input:focus,
