@@ -263,7 +263,7 @@ details p {
   grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
   align-items: start;
   gap: var(--workspace-grid-gap);
-  width: min(1380px, calc(100% - 56px));
+  width: var(--workspace-width);
   min-height: calc(100vh - 68px);
   padding-top: 46px;
 }

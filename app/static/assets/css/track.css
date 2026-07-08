@@ -1,6 +1,7 @@
 /* Track page layout only. Visual primitives are inherited from design-system.css and landing.css. */
 
 .track-workspace-shell {
+  width: var(--workspace-width);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: stretch;
