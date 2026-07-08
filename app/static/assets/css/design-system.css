@@ -42,6 +42,8 @@
   --surface-soft-bg: #EDF4FF;
   --surface-hover-bg: #F4F8FE;
   --surface-glass-bg: rgba(237, 244, 255, 0.72);
+  --surface-nested-bg: #F8FAFD;
+  --surface-nested-border: 1px solid var(--line-strong);
   --surface-border: 1px solid var(--line);
   --line-soft: #EEF3F8;
   --line-strong: #D4DFEC;

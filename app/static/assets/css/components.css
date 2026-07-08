@@ -415,9 +415,9 @@ details p {
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-3);
-  border: var(--surface-border);
+  border: var(--surface-nested-border);
   border-radius: var(--info-card-radius);
-  background: var(--info-card-bg);
+  background: var(--surface-nested-bg);
   box-shadow: var(--info-card-shadow);
   min-width: 0;
   cursor: pointer;
@@ -688,9 +688,9 @@ textarea:focus {
 
 .tracking-offer-card {
   padding: var(--space-4);
-  border: var(--surface-border);
+  border: var(--surface-nested-border);
   border-radius: var(--surface-radius-card);
-  background: var(--surface-panel-bg);
+  background: var(--surface-nested-bg);
 }
 
 .tracking-offer-top {
