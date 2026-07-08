@@ -42,12 +42,9 @@
 .track-workspace-shell .tracking-request-card {
   display: grid;
   grid-template-rows: minmax(0, 1fr);
-  width: 100%;
-  max-width: none;
   min-height: var(--workspace-panel-min-height);
   justify-self: stretch;
   padding: var(--workspace-panel-padding);
-  overflow: visible;
 }
 
 .track-workspace-shell #trackingPanelBody {
