@@ -293,17 +293,6 @@ function startTrackingPolling(entry) {
 }
 
 
-function restoreLatestTrackingEntry() {
-  const links = getTrackingLinks();
-  const latest = links.find((entry) => entry && entry.token && entry.tracking_url);
-  if (!latest) return false;
-
-  renderTrackingSuccess(latest);
-  renderOpenPedidos();
-  startTrackingPolling(latest);
-  return true;
-}
-
 
 
 function switchFormToTrackingMode() {
@@ -712,8 +701,6 @@ form.addEventListener("submit", (event) => {
   submitRequest();
 });
 
-if (!restoreLatestTrackingEntry()) {
-  restoreDraft();
-  setStep(1);
-  renderOpenPedidos();
-}
+restoreDraft();
+setStep(1);
+renderOpenPedidos();
