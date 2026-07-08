@@ -539,8 +539,6 @@ details p {
 .hero-form {
   position: relative;
   align-self: center;
-  border-radius: var(--surface-radius-panel);
-  box-shadow: var(--surface-shadow-panel);
 }
 
 .hero-form::before {
