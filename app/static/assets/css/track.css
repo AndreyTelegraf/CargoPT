@@ -238,6 +238,10 @@ h3 {
   color: var(--text) !important;
 }
 
+.track-workspace-shell .tracking-panel .tracking-status-dot-success {
+  background: var(--muted);
+}
+
 .track-workspace-shell .tracking-status-selected-offer {
   gap: var(--space-1);
   margin-top: 0;
