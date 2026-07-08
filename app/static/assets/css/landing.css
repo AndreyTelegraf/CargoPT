@@ -416,7 +416,7 @@ details p {
 
 @media (max-width: 640px) {
   .hero-v2 {
-    width: min(100% - 28px, 760px);
+    width: var(--workspace-width);
     padding-top: var(--layout-workspace-y-mobile);
     padding-bottom: var(--layout-workspace-y-mobile);
     gap: var(--layout-gap-lg);

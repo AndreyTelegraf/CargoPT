@@ -215,3 +215,9 @@ details,
   background: var(--surface-panel-bg);
   box-shadow: var(--surface-shadow-workspace);
 }
+
+@media (max-width: 640px) {
+  :root {
+    --workspace-width: min(100% - 28px, 760px);
+  }
+}
