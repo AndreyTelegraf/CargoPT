@@ -120,9 +120,10 @@
     const messages = {...DEFAULT_MESSAGES, ...(options.messages || {})};
     container.textContent = "";
 
-    const card = document.createElement("span");
+    const card = document.createElement("section");
     const visualState = entry.tracking_visual_state || getVisualState(entry);
-    card.className = `tracking-success tracking-status-card tracking-status-${visualState}`;
+    card.className = "hero-workspace";
+    card.dataset.state = visualState;
     card.classList.toggle("has-offers", (entry.accepted_offers_count || 0) > 0);
 
     const eyebrow = document.createElement("span");
