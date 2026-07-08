@@ -338,25 +338,14 @@ h3 {
 .track-offer-nav-status {
   display: inline-flex;
   width: fit-content;
-  padding: 3px 8px;
-  border-radius: var(--badge-radius);
-  background: var(--surface-muted-bg);
-  color: var(--text);
   font-size: var(--font-size-badge-small);
   font-weight: var(--font-weight-heavy);
 }
-
-.track-offer-nav-card.is-chosen .track-offer-nav-status {
-  background: var(--surface-muted-bg);
-  color: var(--text);
-}
-
 
 .track-offer-nav-details {
   display: grid;
   gap: var(--space-1);
   padding-top: var(--space-1);
-  border-top: 1px solid var(--line);
 }
 
 .track-offer-nav-note {
