@@ -1,4 +1,5 @@
-/* Track page as workspace shell */
+/* Track page layout only. Visual primitives are inherited from design-system.css and landing.css. */
+
 .track-workspace-shell {
   display: grid;
   grid-template-columns: minmax(260px, 0.9fr) minmax(0, 3fr);
@@ -9,6 +10,7 @@
 }
 
 .track-workspace-sidebar {
+  align-self: stretch;
   min-height: var(--workspace-panel-min-height);
   margin-top: 0;
   padding: var(--workspace-sidebar-padding);
@@ -32,58 +34,12 @@
 }
 
 .track-workspace-shell .tracking-request-card {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
   width: 100%;
   max-width: none;
   min-height: var(--workspace-panel-min-height);
   justify-self: stretch;
-}
-
-.track-workspace-shell .tracking-panel .tracking-success-actions {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.track-workspace-shell .tracking-panel .tracking-success-actions .button {
-  width: 100%;
-}
-
-@media (max-width: 1100px) {
-  .track-workspace-shell {
-    grid-template-columns: minmax(210px, 0.95fr) minmax(0, 2.4fr);
-  }
-
-  .track-workspace-shell .tracking-panel .tracking-success-actions {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 720px) {
-  .track-workspace-shell {
-    grid-template-columns: 1fr;
-    padding-top: var(--layout-workspace-y-mobile);
-  }
-
-  .track-workspace-sidebar,
-  .track-workspace-shell .tracking-request-card {
-    min-height: auto;
-  }
-}
-
-/* Track workspace scroll panel and secondary sidebar */
-.track-workspace-shell {
-  align-items: stretch;
-}
-
-.track-workspace-sidebar {
-  align-self: stretch;
-  min-height: var(--workspace-panel-min-height);
-}
-
-.track-workspace-shell .tracking-request-card {
-  display: grid;
-  grid-template-rows: minmax(0, 1fr);
-  min-height: var(--workspace-panel-min-height);
   padding: var(--workspace-panel-padding);
   overflow: visible;
 }
@@ -119,32 +75,21 @@
 
 .track-workspace-shell .tracking-success-actions {
   position: static;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
   margin-top: var(--space-3);
   padding-top: 0;
+}
+
+.track-workspace-shell .tracking-panel .tracking-success-actions .button {
+  width: 100%;
 }
 
 .track-workspace-shell .tracking-offers {
   max-height: none;
 }
 
-@media (max-width: 720px) {
-  .track-workspace-shell .tracking-request-card {
-    max-height: none;
-    min-height: auto;
-    overflow: visible;
-  }
-
-  .track-workspace-shell #trackingPanelBody {
-    overflow: visible;
-    padding-right: 0;
-  }
-
-  .track-workspace-shell .tracking-success-actions {
-    position: static;
-  }
-}
-
-/* Track offer navigation sidebar */
 .track-offer-nav-list {
   display: grid;
   gap: var(--space-3);
@@ -164,7 +109,6 @@
   outline: 2px solid var(--primary-border);
   outline-offset: 2px;
 }
-
 
 .track-offer-nav-top {
   display: flex;
@@ -225,19 +169,49 @@
   margin-top: calc(var(--space-1) / 2);
 }
 
-/* Track mobile priority: status first, offers second */
+.track-new-request {
+  width: 100%;
+  margin-top: var(--space-4);
+  justify-content: center;
+}
+
+@media (max-width: 1100px) {
+  .track-workspace-shell {
+    grid-template-columns: minmax(210px, 0.95fr) minmax(0, 2.4fr);
+  }
+
+  .track-workspace-shell .tracking-success-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 720px) {
+  .track-workspace-shell {
+    grid-template-columns: 1fr;
+    padding-top: var(--layout-workspace-y-mobile);
+  }
+
+  .track-workspace-sidebar,
+  .track-workspace-shell .tracking-request-card {
+    min-height: auto;
+  }
+
   .track-workspace-shell .tracking-request-card {
     order: 1;
+    max-height: none;
+    overflow: visible;
   }
 
   .track-workspace-sidebar {
     order: 2;
   }
-}
 
-.track-new-request{
-  width:100%;
-  margin-top:var(--space-4);
-  justify-content:center;
+  .track-workspace-shell #trackingPanelBody {
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .track-workspace-shell .tracking-success-actions {
+    position: static;
+  }
 }
