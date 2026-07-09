@@ -499,6 +499,27 @@ class JobRepository:
 
         return offer
 
+    async def update_offer_price_and_note(
+        self,
+        *,
+        offer_id: int,
+        price_cents: int,
+        carrier_note: str | None,
+        updated_at,
+    ) -> JobOffer:
+        offer = await self.get_offer_by_id(offer_id)
+
+        if offer is None:
+            raise ValueError("offer not found")
+
+        offer.price_cents = price_cents
+        offer.carrier_note = carrier_note
+        offer.updated_at = updated_at
+
+        await self.session.flush()
+
+        return offer
+
     async def cancel_accepted_offer_by_job(
         self,
         *,

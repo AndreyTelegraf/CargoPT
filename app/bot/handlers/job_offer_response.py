@@ -1,4 +1,7 @@
 import html
+import re
+from datetime import UTC
+from datetime import datetime
 
 from aiogram import F
 from aiogram import Router
@@ -30,6 +33,47 @@ from app.bot.assignment_confirmation_keyboard import build_client_reopen_assignm
 
 router = Router()
 
+OFFER_PRICE_INPUT_PREFIX = "offer_price_input:"
+_offer_price_input_re = re.compile(
+    r"^\s*(?P<price>\d+(?:[.,]\d{1,2})?)\s*(?P<note>.*)$",
+    re.DOTALL,
+)
+
+
+def _parse_offer_price_input(text: str) -> tuple[int, str | None]:
+    match = _offer_price_input_re.match(text)
+
+    if match is None:
+        raise ValueError("invalid offer price")
+
+    price_text = match.group("price").replace(",", ".")
+    price = float(price_text)
+
+    if price <= 0:
+        raise ValueError("invalid offer price")
+
+    price_cents = int(round(price * 100))
+    note = match.group("note").strip() or None
+
+    return price_cents, note
+
+
+async def _prompt_offer_price(callback: CallbackQuery, offer_id: int) -> None:
+    if callback.message is None:
+        await callback.answer("Не удалось открыть ввод цены.", show_alert=True)
+        return
+
+    await callback.message.answer(
+        (
+            f"{OFFER_PRICE_INPUT_PREFIX}{offer_id}\n"
+            "Ответьте на это сообщение ценой предложения в евро.\n\n"
+            "Например:\n"
+            "120\n"
+            "или:\n"
+            "120 Подъём и разгрузка включены"
+        )
+    )
+    await callback.answer("Введите цену ответным сообщением.")
 
 
 async def _delete_message_safely(message: Message) -> None:
@@ -234,34 +278,12 @@ async def handle_offer_response(callback: CallbackQuery) -> None:
             return
 
         if action == "accept":
-            try:
-                accepted_offer = await offer_service.accept_offer_without_assignment(offer_id)
-            except OfferAlreadyResolvedError:
+            if offer.status != "pending":
                 await callback.answer("Этот оффер уже обработан.", show_alert=True)
-                await session.rollback()
-                return
-            except JobAlreadyAssignedError:
-                await callback.answer("Заявка уже не принимает предложения.", show_alert=True)
-                await session.rollback()
                 return
 
-            job = await job_repository.get_job_by_id(accepted_offer.job_id)
-            accepted_offers = await job_repository.list_offers_by_job(accepted_offer.job_id)
-            accepted_offer_count = sum(
-                1 for sibling in accepted_offers
-                if sibling.status == "accepted"
-            )
-            if job is not None and accepted_offer_count == 1:
-                await send_client_offer_selection_message(
-                    bot=callback.bot,
-                    job=job,
-                    job_repository=job_repository,
-                    carrier_repository=carrier_repository,
-                )
-            message_text = (
-                "Спасибо. Ваш отклик отправлен. "
-                "Клиент получит предложения от перевозчиков и выберет подходящее."
-            )
+            await _prompt_offer_price(callback, offer_id)
+            return
         else:
             if callback.message:
                 await callback.message.edit_reply_markup(
@@ -328,6 +350,103 @@ async def handle_offer_response(callback: CallbackQuery) -> None:
         )
 
     await callback.answer()
+
+@router.message(F.reply_to_message.text.startswith(OFFER_PRICE_INPUT_PREFIX))
+async def handle_offer_price_input(message: Message) -> None:
+    replied_text = message.reply_to_message.text if message.reply_to_message else ""
+    lines = replied_text.splitlines()
+    if not lines:
+        return
+
+    try:
+        offer_id = int(lines[0].removeprefix(OFFER_PRICE_INPUT_PREFIX))
+    except ValueError:
+        await message.answer("Некорректный номер оффера.")
+        return
+
+    payload = (message.text or "").strip()
+    try:
+        price_cents, carrier_note = _parse_offer_price_input(payload)
+    except ValueError:
+        await message.answer(
+            "Не удалось распознать цену. Введите число в евро, например: 120"
+        )
+        return
+
+    telegram_user_id = message.from_user.id if message.from_user else None
+    if telegram_user_id is None:
+        await message.answer("Не удалось определить перевозчика.")
+        return
+
+    job = None
+    accepted_offer = None
+    message_text = (
+        "Спасибо. Ваш отклик отправлен. "
+        "Клиент получит предложения от перевозчиков и выберет подходящее."
+    )
+
+    async with async_session_maker() as session:
+        carrier_repository = CarrierRepository(session)
+        job_repository = JobRepository(session)
+        offer_service = JobOfferService(job_repository)
+
+        carrier = await carrier_repository.get_carrier_by_telegram_user_id(
+            telegram_user_id
+        )
+        offer = await job_repository.get_offer_by_id(offer_id)
+
+        if carrier is None or offer is None or offer.carrier_id != carrier.id:
+            await message.answer("Оффер не найден.")
+            return
+
+        try:
+            await job_repository.update_offer_price_and_note(
+                offer_id=offer_id,
+                price_cents=price_cents,
+                carrier_note=carrier_note,
+                updated_at=datetime.now(UTC),
+            )
+            accepted_offer = await offer_service.accept_offer_without_assignment(offer_id)
+        except OfferAlreadyResolvedError:
+            await session.rollback()
+            await message.answer("Этот оффер уже обработан.")
+            return
+        except JobAlreadyAssignedError:
+            await session.rollback()
+            await message.answer("Заявка уже не принимает предложения.")
+            return
+
+        job = await job_repository.get_job_by_id(accepted_offer.job_id)
+        accepted_offers = await job_repository.list_offers_by_job(accepted_offer.job_id)
+        accepted_offer_count = sum(
+            1 for sibling in accepted_offers
+            if sibling.status == "accepted"
+        )
+
+        if job is not None and accepted_offer_count == 1:
+            await send_client_offer_selection_message(
+                bot=message.bot,
+                job=job,
+                job_repository=job_repository,
+                carrier_repository=carrier_repository,
+            )
+
+        await session.commit()
+
+    if accepted_offer is not None:
+        await message.answer(
+            (
+                f"{message_text}\n\n"
+                f"Цена: {price_cents / 100:.2f} €"
+                + (
+                    f"\nКомментарий: {html.escape(carrier_note, quote=False)}"
+                    if carrier_note
+                    else ""
+                )
+            ),
+            parse_mode="HTML",
+        )
+
 
 @router.callback_query(F.data.startswith("offer_decline_reason:"))
 async def handle_offer_decline_reason(callback: CallbackQuery) -> None:
