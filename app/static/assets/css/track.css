@@ -17,6 +17,7 @@
   gap: var(--workspace-panel-gap);
   align-self: start;
   width: 100%;
+  min-width: 0;
   min-height: var(--workspace-panel-min-height);
   margin-top: 0;
   padding: var(--workspace-panel-padding);
@@ -43,6 +44,7 @@
 .track-workspace-shell .tracking-request-card {
   display: grid;
   grid-template-rows: minmax(0, 1fr);
+  min-width: 0;
   min-height: var(--workspace-panel-min-height);
   justify-self: stretch;
   padding: var(--workspace-panel-padding);
@@ -99,6 +101,7 @@
 .track-offer-nav-card {
   display: grid;
   align-self: start;
+  min-width: 0;
   gap: var(--space-1);
   padding: var(--space-4);
   border: var(--surface-nested-border);
@@ -115,7 +118,8 @@
 .track-offer-nav-top {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  min-width: 0;
+  gap: var(--space-2);
   align-items: start;
 }
 
@@ -148,6 +152,7 @@
 .track-offer-nav-status,
 .track-offer-nav-note,
 .track-offer-nav-details {
+  min-width: 0;
   margin: 0;
 }
 
