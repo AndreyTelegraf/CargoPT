@@ -520,6 +520,16 @@ class JobRepository:
 
         return offer
 
+    async def list_pending_offers_by_carrier(self, carrier_id: int) -> list[JobOffer]:
+        stmt = (
+            select(JobOffer)
+            .where(JobOffer.carrier_id == carrier_id)
+            .where(JobOffer.status == "pending")
+            .order_by(JobOffer.offered_at.desc(), JobOffer.id.desc())
+        )
+        result = await self.session.execute(stmt)
+        return list(result.scalars().all())
+
     async def cancel_accepted_offer_by_job(
         self,
         *,

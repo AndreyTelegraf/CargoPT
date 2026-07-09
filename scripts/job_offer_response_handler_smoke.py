@@ -44,10 +44,10 @@ assert "accept_offer_without_assignment" in source
 assert "accept_offer_and_assign_job" not in source
 assert "Ваш отклик отправлен" in source
 
-assert "OFFER_PRICE_INPUT_PREFIX" in source
 assert "_parse_offer_price_input" in source
 assert "update_offer_price_and_note" in source
-assert "@router.message(F.reply_to_message.text.startswith(OFFER_PRICE_INPUT_PREFIX))" in source
+assert "list_pending_offers_by_carrier" in source
+assert '@router.message(F.text.regexp(r"^\\s*\\d+' in source
 
 assert "await message.edit_reply_markup(reply_markup=None)" in handler_source
 assert "build_offer_decline_reason_keyboard" in handler_source

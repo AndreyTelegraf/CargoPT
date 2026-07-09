@@ -33,7 +33,6 @@ from app.bot.assignment_confirmation_keyboard import build_client_reopen_assignm
 
 router = Router()
 
-OFFER_PRICE_INPUT_PREFIX = "offer_price_input:"
 _offer_price_input_re = re.compile(
     r"^\s*(?P<price>\d+(?:[.,]\d{1,2})?)\s*(?P<note>.*)$",
     re.DOTALL,
@@ -65,8 +64,7 @@ async def _prompt_offer_price(callback: CallbackQuery, offer_id: int) -> None:
 
     await callback.message.answer(
         (
-            f"{OFFER_PRICE_INPUT_PREFIX}{offer_id}\n"
-            "Ответьте на это сообщение ценой предложения в евро.\n\n"
+            "Ответьте ценой предложения в евро.\n\n"
             "Например:\n"
             "120\n"
             "или:\n"
@@ -351,19 +349,8 @@ async def handle_offer_response(callback: CallbackQuery) -> None:
 
     await callback.answer()
 
-@router.message(F.reply_to_message.text.startswith(OFFER_PRICE_INPUT_PREFIX))
+@router.message(F.text.regexp(r"^\s*\d+(?:[.,]\d{1,2})?(?:\s+.*)?$"))
 async def handle_offer_price_input(message: Message) -> None:
-    replied_text = message.reply_to_message.text if message.reply_to_message else ""
-    lines = replied_text.splitlines()
-    if not lines:
-        return
-
-    try:
-        offer_id = int(lines[0].removeprefix(OFFER_PRICE_INPUT_PREFIX))
-    except ValueError:
-        await message.answer("Некорректный номер оффера.")
-        return
-
     payload = (message.text or "").strip()
     try:
         price_cents, carrier_note = _parse_offer_price_input(payload)
@@ -393,20 +380,29 @@ async def handle_offer_price_input(message: Message) -> None:
         carrier = await carrier_repository.get_carrier_by_telegram_user_id(
             telegram_user_id
         )
-        offer = await job_repository.get_offer_by_id(offer_id)
-
-        if carrier is None or offer is None or offer.carrier_id != carrier.id:
-            await message.answer("Оффер не найден.")
+        if carrier is None:
             return
+
+        pending_offers = await job_repository.list_pending_offers_by_carrier(carrier.id)
+        if not pending_offers:
+            return
+
+        if len(pending_offers) > 1:
+            await message.answer(
+                "У вас несколько активных заявок. Нажмите «Принять» на нужной заявке и затем отправьте цену."
+            )
+            return
+
+        offer = pending_offers[0]
 
         try:
             await job_repository.update_offer_price_and_note(
-                offer_id=offer_id,
+                offer_id=offer.id,
                 price_cents=price_cents,
                 carrier_note=carrier_note,
                 updated_at=datetime.now(UTC),
             )
-            accepted_offer = await offer_service.accept_offer_without_assignment(offer_id)
+            accepted_offer = await offer_service.accept_offer_without_assignment(offer.id)
         except OfferAlreadyResolvedError:
             await session.rollback()
             await message.answer("Этот оффер уже обработан.")
