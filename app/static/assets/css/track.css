@@ -203,27 +203,3 @@
   }
 
 }
-
-.track-sidebar-eyebrow {
-  margin: 0;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: var(--font-weight-heavy);
-  letter-spacing: var(--letter-spacing-eyebrow);
-  text-transform: uppercase;
-}
-
-.track-sidebar-title {
-  margin: 0;
-  color: var(--text);
-  font-size: var(--font-size-offer-price);
-  line-height: 1.15;
-  letter-spacing: -0.04em;
-}
-
-.track-sidebar-intro {
-  margin: -4px 0 2px;
-  color: var(--muted);
-  font-size: 15px;
-  font-weight: var(--font-weight-meta-text);
-}

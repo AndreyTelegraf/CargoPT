@@ -545,6 +545,7 @@ details p {
   display: none;
 }
 
+.track-sidebar-eyebrow,
 .open-pedidos-eyebrow {
   margin: 0;
   color: var(--muted);
@@ -554,12 +555,20 @@ details p {
   text-transform: uppercase;
 }
 
+.track-sidebar-title,
 .open-pedidos-title {
   margin: 0;
   color: var(--text);
   font-size: var(--font-size-offer-price);
   line-height: 1.15;
   letter-spacing: -0.04em;
+}
+
+.track-sidebar-intro {
+  margin: -4px 0 2px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: var(--font-weight-meta-text);
 }
 
 .open-pedidos-list {
