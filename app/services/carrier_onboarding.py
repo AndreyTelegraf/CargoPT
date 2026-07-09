@@ -119,6 +119,7 @@ class CarrierOnboardingService:
         self,
         token: str,
         telegram_user_id: int,
+        telegram_username: str | None = None,
     ) -> AdminInviteToken:
         invite = await self.validate_invite_token(token)
 
@@ -128,6 +129,7 @@ class CarrierOnboardingService:
             token=invite.token,
             telegram_user_id=telegram_user_id,
             used_at=now,
+            telegram_username=telegram_username,
         )
 
     async def complete_profile(

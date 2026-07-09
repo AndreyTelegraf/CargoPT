@@ -200,6 +200,7 @@ class CarrierRepository:
         token: str,
         telegram_user_id: int,
         used_at,
+        telegram_username: str | None = None,
     ) -> AdminInviteToken:
         invite = await self.get_invite_token(token)
 
@@ -216,6 +217,7 @@ class CarrierRepository:
         invite.status = "used"
 
         carrier.telegram_user_id = telegram_user_id
+        carrier.telegram_username = telegram_username
         carrier.status = CarrierStatus.INVITED
 
         await self.session.flush()

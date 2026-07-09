@@ -63,6 +63,7 @@ async def invite_start(message: Message, state: FSMContext) -> None:
             invite = await service.claim_invite_token(
                 token=token,
                 telegram_user_id=message.from_user.id,
+                telegram_username=message.from_user.username,
             )
 
             carrier = await repository.get_carrier_by_id(invite.carrier_id)
