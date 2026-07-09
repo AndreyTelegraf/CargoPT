@@ -175,13 +175,6 @@
 
     summary.append(route, status);
 
-    if ((entry.accepted_offers_count || 0) > 0) {
-      const badge = document.createElement("span");
-      badge.className = "tracking-status-badge";
-      badge.textContent = messages.offersAvailable.replace("{count}", String(entry.accepted_offers_count));
-      summary.appendChild(badge);
-    }
-
     const details = document.createElement("span");
     details.className = "tracking-status-details";
 
