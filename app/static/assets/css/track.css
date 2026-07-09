@@ -195,7 +195,7 @@
   .track-workspace-shell .tracking-request-card {
     min-height: auto;
     padding: var(--space-4);
-    border-radius: var(--radius-lg);
+    border-radius: var(--surface-radius-card);
   }
 
   .track-workspace-shell .tracking-request-card {
@@ -209,19 +209,8 @@
     min-height: auto;
   }
 
-  .track-workspace-shell .tracking-status-title {
-    font-size: 24px;
-    line-height: 1.05;
-    letter-spacing: -0.05em;
-  }
-
-  .track-workspace-shell .tracking-status-text {
-    font-size: 15px;
-    line-height: 1.38;
-  }
-
   .track-workspace-shell .tracking-status-summary {
-    padding: 12px;
+    padding: var(--space-3);
   }
 
   .track-workspace-shell .tracking-offers {
@@ -230,22 +219,17 @@
   }
 
   .track-workspace-shell .tracking-offer-card {
-    padding: 12px;
-    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    border-radius: var(--surface-radius-card);
   }
 
   .track-workspace-shell .tracking-offer-top {
     gap: var(--space-2);
   }
 
-  .track-workspace-shell .tracking-offer-details {
-    font-size: 14px;
-    line-height: 1.35;
-  }
-
   .track-workspace-shell .tracking-select-button {
     width: 100%;
-    min-height: 44px;
+    min-height: var(--button-height);
     margin-top: var(--space-2);
   }
 
@@ -255,12 +239,12 @@
   }
 
   .track-offer-nav-card {
-    padding: 12px;
-    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    border-radius: var(--surface-radius-card);
   }
 
   .track-new-request {
-    min-height: 44px;
+    min-height: var(--button-height);
   }
 
 }
