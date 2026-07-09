@@ -88,6 +88,7 @@
 
 .track-offer-nav-list {
   display: grid;
+  align-content: start;
   gap: var(--space-3);
 }
 
@@ -97,6 +98,7 @@
 
 .track-offer-nav-card {
   display: grid;
+  align-self: start;
   gap: var(--space-1);
   padding: var(--space-4);
   border: var(--surface-nested-border);
