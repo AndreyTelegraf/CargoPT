@@ -33,11 +33,10 @@
 
   function getVisualState(entry) {
     const snapshot = entry.tracking_snapshot || {};
-    if (snapshot.status === "completed") return "completed";
     if (snapshot.status === "cancelled") return "cancelled";
+    if (["offers_exhausted", "expired_without_response"].includes(snapshot.status)) return "cancelled";
+    if (snapshot.status === "completed") return "success";
     if (snapshot.client_confirmation_status === "confirmed" && snapshot.carrier_confirmation_status === "confirmed") return "success";
-    if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending") return "pending";
-    if ((entry.accepted_offers_count || 0) > 0) return "success";
     return "pending";
   }
 
@@ -157,7 +156,8 @@
     summary.className = "tracking-status-summary";
 
     const route = document.createElement("strong");
-    route.textContent = entry.route_summary || messages.defaultRoute;
+    const routeLabel = entry.route_summary || messages.defaultRoute;
+    route.textContent = entry.job_id ? `#${entry.job_id} · ${routeLabel}` : routeLabel;
 
     const status = document.createElement("span");
     status.className = "tracking-status-line";
@@ -220,6 +220,13 @@
     copyButton.addEventListener("click", async () => {
       await navigator.clipboard.writeText(absoluteUrl(entry.tracking_url));
       copyButton.textContent = messages.linkCopied;
+
+      clearTimeout(copyButton._copyResetTimer);
+      copyButton._copyResetTimer = setTimeout(() => {
+        if (copyButton.isConnected) {
+          copyButton.textContent = messages.copyLink;
+        }
+      }, 3000);
     });
 
     const whatsappLink = document.createElement("a");

@@ -13,6 +13,13 @@ if (copyTrackingLink) {
   copyTrackingLink.addEventListener("click", async () => {
     await navigator.clipboard.writeText(absoluteTrackingUrl());
     copyTrackingLink.textContent = "Track link copiado";
+
+    clearTimeout(copyTrackingLink._copyResetTimer);
+    copyTrackingLink._copyResetTimer = setTimeout(() => {
+      if (copyTrackingLink.isConnected) {
+        copyTrackingLink.textContent = "Copiar track link";
+      }
+    }, 3000);
   });
 }
 
@@ -66,8 +73,9 @@ function renderOpenPedidosNavigation(activeEntry) {
     return;
   }
 
-  links.slice(0, 5).forEach((entry) => {
-    const isActive = entry.token === activeEntry.token;
+  links.slice(0, 5).forEach((storedEntry) => {
+    const isActive = storedEntry.token === activeEntry.token;
+    const entry = isActive ? {...storedEntry, ...activeEntry} : storedEntry;
     const card = document.createElement("article");
     card.className = "track-offer-nav-card";
     card.classList.toggle("is-chosen", isActive);
@@ -88,13 +96,26 @@ function renderOpenPedidosNavigation(activeEntry) {
 
     const line = document.createElement("div");
     line.className = "track-offer-nav-status";
-    line.textContent = entry.status_label || messages.waitingOffers;
 
-    const meta = document.createElement("div");
-    meta.className = "track-offer-nav-meta";
-    meta.textContent = entry.item_summary || "\u00a0";
+    const dot = document.createElement("span");
+    dot.className = `tracking-status-dot tracking-status-dot-${entry.status_dot_state || "searching"}`;
+    dot.setAttribute("aria-hidden", "true");
 
-    card.append(top, meta, line);
+    const statusText = document.createElement("span");
+    statusText.textContent = entry.status_label || messages.waitingOffers;
+
+    line.append(dot, statusText);
+
+    card.appendChild(top);
+
+    if (entry.item_summary) {
+      const meta = document.createElement("div");
+      meta.className = "track-offer-nav-meta";
+      meta.textContent = entry.item_summary;
+      card.appendChild(meta);
+    }
+
+    card.appendChild(line);
 
     const open = () => {
       if (entry.tracking_url) window.location.href = entry.tracking_url;
@@ -182,12 +203,15 @@ function renderTrackingWorkspace(entry) {
 }
 
 function getTrackingStatusDotState(snapshot, acceptedOffers) {
-  if (snapshot.status === "completed") return "completed";
   if (snapshot.status === "cancelled") return "cancelled";
+  if (["offers_exhausted", "expired_without_response"].includes(snapshot.status)) return "cancelled";
+  if (snapshot.status === "completed") return "success";
+  if (snapshot.client_confirmation_status === "confirmed" && snapshot.carrier_confirmation_status === "confirmed") return "success";
   if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending") return "pending";
-  if (acceptedOffers.length > 0) return "success";
-  if (["ready_for_matching", "matching", "offered"].includes(snapshot.status)) return "searching";
-  return "searching";
+  if (["assigned", "in_progress"].includes(snapshot.status)) return "pending";
+  if (acceptedOffers.length > 0) return "pending";
+  if (["ready_for_matching", "matching", "offered"].includes(snapshot.status)) return "pending";
+  return "completed";
 }
 
 function formatTrackingStatus(snapshot) {
