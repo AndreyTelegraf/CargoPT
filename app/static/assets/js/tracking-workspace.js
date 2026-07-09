@@ -67,6 +67,23 @@
 
     card.append(top, meta);
 
+    const details = [
+      offer.contact_name ? `Contacto: ${offer.contact_name}` : null,
+      offer.phone ? `Telefone: ${offer.phone}` : null,
+      offer.telegram_username ? `Telegram: @${offer.telegram_username}` : null,
+      offer.max_loaders ? `Ajudantes: ${offer.max_loaders}` : null,
+      offer.has_tail_lift ? "Plataforma elevatória" : null,
+      offer.has_crane ? "Grua" : null,
+      offer.has_mobile_lift ? "Elevador exterior" : null
+    ].filter(Boolean);
+
+    if (details.length) {
+      const detailsNode = document.createElement("div");
+      detailsNode.className = "tracking-offer-details";
+      detailsNode.textContent = details.join(" • ");
+      card.appendChild(detailsNode);
+    }
+
     if (offer.carrier_note) {
       const note = document.createElement("div");
       note.className = "tracking-offer-note";

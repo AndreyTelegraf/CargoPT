@@ -164,7 +164,6 @@ function renderTrackingWorkspace(entry) {
   window.CargoPTTrackingWorkspace.render(activeTrackingEntry, {
     container: trackingPanelBody,
     locale: "pt-PT",
-    hideOffers: true,
     hideStatusAction: true,
     hideShareActions: true,
     onSelectOffer: selectOffer,
