@@ -32,6 +32,7 @@ function saveTrackingLink(entry) {
   if (!entry.token) return;
 
   const current = {
+    job_id: entry.job_id,
     tracking_url: entry.tracking_url,
     token: entry.token,
     route_summary: entry.route_summary,
@@ -76,7 +77,8 @@ function renderOpenPedidosNavigation(activeEntry) {
     top.className = "track-offer-nav-top";
 
     const route = document.createElement("strong");
-    route.textContent = entry.route_summary || messages.defaultRoute;
+    const routeLabel = entry.route_summary || messages.defaultRoute;
+    route.textContent = entry.job_id ? `#${entry.job_id} · ${routeLabel}` : routeLabel;
 
     const status = document.createElement("span");
     status.className = "track-offer-nav-price";

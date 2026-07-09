@@ -865,6 +865,22 @@ textarea:focus {
   background: var(--surface-nested-bg);
 }
 
+.tracking-assignment-actions {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: var(--surface-nested-border);
+  border-radius: var(--surface-radius-card);
+  background: var(--surface-nested-bg);
+}
+
+.tracking-assignment-note {
+  margin: 0;
+  color: var(--muted);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-copy);
+}
+
 .tracking-offer-top {
   display: flex;
   justify-content: space-between;
@@ -893,6 +909,12 @@ textarea:focus {
   width: 100%;
   background: var(--primary);
 }
+
+.tracking-select-button.tracking-assignment-fail {
+  color: #fff;
+  border-color: var(--primary);
+}
+
 
 .tracking-select-button:disabled {
   opacity: .72;

@@ -101,33 +101,30 @@
       card.appendChild(button);
     }
 
+    if (entry.tracking_snapshot?.status === "assigned" && options.onAssignmentAction) {
+      const failButton = document.createElement("button");
+      failButton.className = "button button-small button-secondary tracking-select-button tracking-assignment-fail";
+      failButton.type = "button";
+      failButton.textContent = messages.failDealShort || "Não chegámos a acordo";
+      failButton.addEventListener("click", () => options.onAssignmentAction("fail", failButton));
+      card.appendChild(failButton);
+    }
+
     return card;
   }
 
   function renderAssignmentActions(entry, options, messages) {
     const snapshot = entry.tracking_snapshot || {};
     if (snapshot.status !== "assigned") return null;
+    if (snapshot.client_confirmation_status !== "confirmed") return null;
 
     const actions = document.createElement("div");
     actions.className = "tracking-assignment-actions";
 
-    if (snapshot.client_confirmation_status === "confirmed") {
-      const note = document.createElement("p");
-      note.className = "tracking-assignment-note";
-      note.textContent = messages.confirmationRecorded;
-      actions.appendChild(note);
-      return actions;
-    }
-
-    if (!options.onAssignmentAction) return null;
-
-    const failButton = document.createElement("button");
-    failButton.className = "button button-small button-secondary tracking-assignment-fail";
-    failButton.type = "button";
-    failButton.textContent = messages.failDeal;
-    failButton.addEventListener("click", () => options.onAssignmentAction("fail", failButton));
-
-    actions.append(failButton);
+    const note = document.createElement("p");
+    note.className = "tracking-assignment-note";
+    note.textContent = messages.confirmationRecorded;
+    actions.appendChild(note);
     return actions;
   }
 

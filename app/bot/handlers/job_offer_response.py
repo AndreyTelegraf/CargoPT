@@ -5,6 +5,7 @@ from datetime import datetime
 
 from aiogram import F
 from aiogram import Router
+from aiogram.fsm.context import FSMContext
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.types import CallbackQuery
 from aiogram.types import Message
@@ -30,6 +31,7 @@ from app.bot.offer_keyboard import build_client_offer_selection_keyboard
 from app.bot.offer_keyboard import build_offer_decline_reason_keyboard
 from app.bot.offer_keyboard import parse_client_offer_selection_callback
 from app.bot.assignment_confirmation_keyboard import build_client_reopen_assignment_keyboard
+from app.bot.states.offer_response import OfferResponseStates
 
 router = Router()
 
@@ -57,10 +59,18 @@ def _parse_offer_price_input(text: str) -> tuple[int, str | None]:
     return price_cents, note
 
 
-async def _prompt_offer_price(callback: CallbackQuery, offer_id: int) -> None:
+async def _prompt_offer_price(
+    callback: CallbackQuery,
+    state: FSMContext,
+    offer_id: int,
+) -> None:
     if callback.message is None:
         await callback.answer("Не удалось открыть ввод цены.", show_alert=True)
         return
+
+    await state.clear()
+    await state.update_data(offer_price_offer_id=offer_id)
+    await state.set_state(OfferResponseStates.price)
 
     await callback.message.answer(
         (
@@ -249,7 +259,7 @@ async def send_assignment_confirmation_requests(
 
 
 @router.callback_query(F.data.startswith("offer:"))
-async def handle_offer_response(callback: CallbackQuery) -> None:
+async def handle_offer_response(callback: CallbackQuery, state: FSMContext) -> None:
     try:
         action, offer_id = parse_offer_callback(callback.data or "")
     except ValueError:
@@ -280,7 +290,7 @@ async def handle_offer_response(callback: CallbackQuery) -> None:
                 await callback.answer("Этот оффер уже обработан.", show_alert=True)
                 return
 
-            await _prompt_offer_price(callback, offer_id)
+            await _prompt_offer_price(callback, state, offer_id)
             return
         else:
             if callback.message:
@@ -349,8 +359,16 @@ async def handle_offer_response(callback: CallbackQuery) -> None:
 
     await callback.answer()
 
-@router.message(F.text.regexp(r"^\s*\d+(?:[.,]\d{1,2})?(?:\s+.*)?$"))
-async def handle_offer_price_input(message: Message) -> None:
+@router.message(OfferResponseStates.price)
+async def handle_offer_price_input(message: Message, state: FSMContext) -> None:
+    data = await state.get_data()
+    offer_id = data.get("offer_price_offer_id")
+
+    if offer_id is None:
+        await state.clear()
+        await message.answer("Не удалось определить заявку. Нажмите «Принять» ещё раз.")
+        return
+
     payload = (message.text or "").strip()
     try:
         price_cents, carrier_note = _parse_offer_price_input(payload)
@@ -362,6 +380,7 @@ async def handle_offer_price_input(message: Message) -> None:
 
     telegram_user_id = message.from_user.id if message.from_user else None
     if telegram_user_id is None:
+        await state.clear()
         await message.answer("Не удалось определить перевозчика.")
         return
 
@@ -380,20 +399,19 @@ async def handle_offer_price_input(message: Message) -> None:
         carrier = await carrier_repository.get_carrier_by_telegram_user_id(
             telegram_user_id
         )
-        if carrier is None:
+        offer = await job_repository.get_offer_by_id(int(offer_id))
+
+        if carrier is None or offer is None or offer.carrier_id != carrier.id:
+            await session.rollback()
+            await state.clear()
+            await message.answer("Оффер не найден.")
             return
 
-        pending_offers = await job_repository.list_pending_offers_by_carrier(carrier.id)
-        if not pending_offers:
+        if offer.status != "pending":
+            await session.rollback()
+            await state.clear()
+            await message.answer("Этот оффер уже обработан.")
             return
-
-        if len(pending_offers) > 1:
-            await message.answer(
-                "У вас несколько активных заявок. Нажмите «Принять» на нужной заявке и затем отправьте цену."
-            )
-            return
-
-        offer = pending_offers[0]
 
         try:
             await job_repository.update_offer_price_and_note(
@@ -405,10 +423,12 @@ async def handle_offer_price_input(message: Message) -> None:
             accepted_offer = await offer_service.accept_offer_without_assignment(offer.id)
         except OfferAlreadyResolvedError:
             await session.rollback()
+            await state.clear()
             await message.answer("Этот оффер уже обработан.")
             return
         except JobAlreadyAssignedError:
             await session.rollback()
+            await state.clear()
             await message.answer("Заявка уже не принимает предложения.")
             return
 
@@ -428,6 +448,8 @@ async def handle_offer_price_input(message: Message) -> None:
             )
 
         await session.commit()
+
+    await state.clear()
 
     if accepted_offer is not None:
         await message.answer(

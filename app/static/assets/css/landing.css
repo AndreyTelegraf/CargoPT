@@ -500,39 +500,6 @@ details p {
 }
 
 
-.tracking-assignment-actions {
-  display: grid;
-  gap: var(--space-3);
-  padding: var(--status-card-padding);
-  border: 1px solid var(--warning-border);
-  border-radius: var(--status-card-radius);
-  background: var(--warning-fill);
-}
-
-.tracking-assignment-note {
-  margin: 0;
-  color: var(--muted);
-  font-weight: var(--font-weight-strong);
-}
-
-.tracking-assignment-confirm {
-  background: var(--primary);
-}
-
-.tracking-assignment-fail {
-  width: 100%;
-}
-
-@media (min-width: 641px) {
-  .tracking-assignment-actions {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .tracking-assignment-note {
-    grid-column: 1 / -1;
-  }
-}
-
 /* CargoPT request workspace extracted into standalone widget. */
 /* Legacy .hero.is-user-workspace rules removed. */
 

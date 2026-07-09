@@ -46,8 +46,12 @@ assert "Ваш отклик отправлен" in source
 
 assert "_parse_offer_price_input" in source
 assert "update_offer_price_and_note" in source
-assert "list_pending_offers_by_carrier" in source
-assert '@router.message(F.text.regexp(r"^\\s*\\d+' in source
+assert "OfferResponseStates.price" in source
+assert "offer_price_offer_id" in source
+assert "await state.update_data(offer_price_offer_id=offer_id)" in source
+assert "await state.set_state(OfferResponseStates.price)" in source
+assert "await state.clear()" in source
+assert "list_pending_offers_by_carrier" not in source
 
 assert "await message.edit_reply_markup(reply_markup=None)" in handler_source
 assert "build_offer_decline_reason_keyboard" in handler_source
