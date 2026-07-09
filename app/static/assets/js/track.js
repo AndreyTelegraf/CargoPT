@@ -31,14 +31,22 @@ function getTrackingLinks() {
 function saveTrackingLink(entry) {
   if (!entry.token) return;
 
-  const links = getTrackingLinks().filter((item) => item.token !== entry.token);
-  links.unshift({
+  const current = {
     tracking_url: entry.tracking_url,
     token: entry.token,
     route_summary: entry.route_summary,
     item_summary: entry.item_summary,
     status_label: entry.status_label
-  });
+  };
+
+  const links = getTrackingLinks();
+  const existingIndex = links.findIndex((item) => item.token === entry.token);
+
+  if (existingIndex >= 0) {
+    links[existingIndex] = {...links[existingIndex], ...current};
+  } else {
+    links.unshift(current);
+  }
 
   localStorage.setItem(TRACKING_LINKS_KEY, JSON.stringify(links.slice(0, 20)));
 }
