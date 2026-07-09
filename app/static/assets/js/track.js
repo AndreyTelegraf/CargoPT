@@ -88,16 +88,11 @@ function renderOpenPedidosNavigation(activeEntry) {
     line.className = "track-offer-nav-status";
     line.textContent = entry.status_label || messages.waitingOffers;
 
-    card.append(top);
+    const meta = document.createElement("div");
+    meta.className = "track-offer-nav-meta";
+    meta.textContent = entry.item_summary || "\u00a0";
 
-    if (entry.item_summary) {
-      const meta = document.createElement("div");
-      meta.className = "track-offer-nav-meta";
-      meta.textContent = entry.item_summary;
-      card.appendChild(meta);
-    }
-
-    card.appendChild(line);
+    card.append(top, meta, line);
 
     const open = () => {
       if (entry.tracking_url) window.location.href = entry.tracking_url;
