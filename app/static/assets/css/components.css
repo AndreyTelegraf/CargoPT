@@ -632,7 +632,7 @@ details p {
 /* Shared request card */
 .request-form.request-card {
   position: relative;
-  align-self: start;
+  align-self: stretch;
   border: var(--surface-border);
   border-radius: var(--surface-radius-card);
   background: var(--surface-panel-bg);
