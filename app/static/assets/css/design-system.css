@@ -2,7 +2,7 @@
 :root {
   --bg: #F8FAFD;
   --panel: #ffffff;
-  --text: #0b1232;
+  --text: #17213f;
   --muted: #58657A;
   --line: #E3EBF5;
   --brand: #0b1232;
@@ -166,7 +166,7 @@
   --font-weight-meta: 500;
   --font-weight-strong: 600;
   --font-weight-bold: 650;
-  --font-weight-heavy: 700;
+  --font-weight-heavy: 600;
   --font-weight-black: 750;
 
   --font-weight-heading: var(--font-weight-strong);
