@@ -111,62 +111,28 @@ function saveTrackingLink(entry) {
 
 
 
+function formatOpenPedidosLabel(count) {
+  const isMobile = window.matchMedia("(max-width: 640px)").matches;
+  return `${isMobile ? "Pedidos" : "Meus pedidos"} (${count})`;
+}
+
 function renderOpenPedidos() {
-  const section = document.querySelector("#openPedidos");
-  const list = document.querySelector("#openPedidosList");
-  if (!section || !list) return;
+  const cta = document.querySelector("#openPedidosCta");
+  if (!cta) return;
 
-  const links = getTrackingLinks();
-  list.textContent = "";
+  const links = getTrackingLinks().filter((entry) => entry && entry.tracking_url);
+  const count = links.length;
 
-  const explainer = document.querySelector(".product-explainer");
+  cta.textContent = formatOpenPedidosLabel(count);
 
-  if (links.length === 0) {
-    section.hidden = true;
-    if (explainer) explainer.hidden = false;
+  if (count === 0) {
+    cta.hidden = true;
+    cta.removeAttribute("href");
     return;
   }
 
-  if (explainer) explainer.hidden = true;
-
-  links.slice(0, 5).forEach((entry) => {
-    const card = document.createElement("article");
-    card.className = "open-pedido-card";
-    const copy = document.createElement("div");
-    copy.className = "open-pedido-copy";
-
-    const title = document.createElement("strong");
-    title.textContent = entry.route_summary || messages.defaultRoute;
-
-    const status = document.createElement("span");
-    status.textContent = entry.status_label || messages.waitingOffers;
-
-    if (entry.item_summary) {
-      const items = document.createElement("span");
-      items.className = "open-pedido-items";
-      items.textContent = entry.item_summary;
-      copy.append(title, items, status);
-    } else {
-      copy.append(title, status);
-    }
-
-    const action = document.createElement("button");
-    action.className = "button button-small";
-    action.type = "button";
-    action.textContent = messages.viewStatus;
-    action.addEventListener("click", () => {
-      window.location.href = entry.tracking_url;
-    });
-
-    card.append(copy, action);
-    card.addEventListener("click", (event) => {
-      if (event.target.closest("button, a")) return;
-      window.location.href = entry.tracking_url;
-    });
-    list.appendChild(card);
-  });
-
-  section.hidden = false;
+  cta.hidden = false;
+  cta.href = links[0].tracking_url;
 }
 
 function setStep(step) {
@@ -418,3 +384,4 @@ form.addEventListener("submit", (event) => {
 restoreDraft();
 setStep(1);
 renderOpenPedidos();
+window.addEventListener("resize", renderOpenPedidos);

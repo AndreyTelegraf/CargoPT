@@ -48,6 +48,7 @@
   <header class="site-header">
     <a class="logo" href="#top" aria-label="CargoPT"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></a>
     <nav class="header-actions" aria-label="Navigation">
+      <a id="openPedidosCta" class="button button-small button-header-action open-pedidos-cta" href="/track/" hidden>Meus pedidos (0)</a>
       <span class="locale-switcher"><button class="locale-current" type="button" aria-label="Choose language">RU</button><span class="locale-menu"><a href="/">PT</a><a href="/en/">EN</a><a href="/ru/" aria-current="page">RU</a></span></span>
       <a class="button button-small button-carrier" href="/ru/carriers/">Перевозчикам</a>
     </nav>
@@ -137,11 +138,6 @@
           </div>
         </fieldset>
         <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
-        <section id="openPedidos" class="open-pedidos" hidden aria-label="Активные заявки">
-          <p class="open-pedidos-eyebrow">Активные заявки</p>
-          <h2 class="open-pedidos-title">У вас есть активные заявки</h2>
-          <div id="openPedidosList" class="open-pedidos-list"></div>
-        </section>
       </form>
     </section>
 

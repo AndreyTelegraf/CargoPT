@@ -48,6 +48,7 @@
   <header class="site-header">
     <a class="logo" href="/" aria-label="CargoPT"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></a>
     <nav class="header-actions" aria-label="Navigation">
+      <a id="openPedidosCta" class="button button-small button-header-action open-pedidos-cta" href="/track/" hidden>Meus pedidos (0)</a>
       <span class="locale-switcher"><button class="locale-current" type="button" aria-label="Choose language">PT</button><span class="locale-menu"><a href="/" aria-current="page">PT</a><a href="/en/">EN</a><a href="/ru/">RU</a></span></span>
       <a class="button button-small button-carrier" href="/transportadores/"><span class="carrier-label-desktop">Para transportadores</span><span class="carrier-label-mobile">P/ transp.</span></a>
     </nav>
@@ -83,12 +84,6 @@
           </article>
         </div>
 
-        <section id="openPedidos" class="open-pedidos hero-workspace" hidden aria-label="Pedidos em aberto">
-          <p class="open-pedidos-eyebrow">Pedidos em aberto</p>
-          <h2 class="open-pedidos-title">Os seus pedidos</h2>
-          <p class="open-pedidos-intro">Acompanhe o estado dos pedidos criados neste dispositivo.</p>
-          <div id="openPedidosList" class="open-pedidos-list"></div>
-        </section>
       </div>
 
       <form id="requestForm" class="request-form request-card" novalidate data-step-template="Passo {current} de {total}">
