@@ -84,15 +84,20 @@ function renderOpenPedidosNavigation(activeEntry) {
 
     top.append(route, status);
 
-    const meta = document.createElement("div");
-    meta.className = "track-offer-nav-meta";
-    meta.textContent = entry.item_summary || entry.status_label || messages.waitingOffers;
-
     const line = document.createElement("div");
     line.className = "track-offer-nav-status";
     line.textContent = entry.status_label || messages.waitingOffers;
 
-    card.append(top, meta, line);
+    card.append(top);
+
+    if (entry.item_summary) {
+      const meta = document.createElement("div");
+      meta.className = "track-offer-nav-meta";
+      meta.textContent = entry.item_summary;
+      card.appendChild(meta);
+    }
+
+    card.appendChild(line);
 
     const open = () => {
       if (entry.tracking_url) window.location.href = entry.tracking_url;
