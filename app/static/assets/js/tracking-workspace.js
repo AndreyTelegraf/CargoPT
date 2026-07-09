@@ -67,10 +67,11 @@
 
     card.append(top, meta);
 
+    const shouldShowCarrierContacts = entry.tracking_snapshot?.status !== "offered";
     const details = [
-      offer.contact_name ? `Contacto: ${offer.contact_name}` : null,
-      offer.phone ? `Telefone: ${offer.phone}` : null,
-      offer.telegram_username ? `Telegram: @${offer.telegram_username}` : null,
+      shouldShowCarrierContacts && offer.contact_name ? `Contacto: ${offer.contact_name}` : null,
+      shouldShowCarrierContacts && offer.phone ? `Telefone: ${offer.phone}` : null,
+      shouldShowCarrierContacts && offer.telegram_username ? `Telegram: @${offer.telegram_username}` : null,
       offer.max_loaders ? `Ajudantes: ${offer.max_loaders}` : null,
       offer.has_tail_lift ? "Plataforma elevatória" : null,
       offer.has_crane ? "Grua" : null,
