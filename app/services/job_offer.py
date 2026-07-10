@@ -157,7 +157,7 @@ class JobOfferService:
 
         await self.repository.update_job_status(
             job_id=job_id,
-            status=JobStatus.ASSIGNED,
+            status=JobStatus.ASSIGNED_PENDING_CONFIRMATION,
             updated_at=now,
         )
 

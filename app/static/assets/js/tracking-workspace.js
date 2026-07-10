@@ -49,7 +49,7 @@
     if (snapshot.status === "completed") return "success";
     if (snapshot.client_confirmation_status === "confirmed" && snapshot.carrier_confirmation_status === "confirmed") return "success";
     if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending") return "pending";
-    if (["assigned", "in_progress"].includes(snapshot.status)) return "pending";
+    if (["assigned_pending_confirmation", "assigned", "in_progress"].includes(snapshot.status)) return "pending";
     if (acceptedOffers.length > 0) return "success";
     if (["ready_for_matching", "matching", "offered"].includes(snapshot.status)) return "searching";
     return "completed";
@@ -115,7 +115,12 @@
       card.appendChild(button);
     }
 
-    if (entry.tracking_snapshot?.status === "assigned" && options.onAssignmentAction) {
+    if (
+      ["assigned_pending_confirmation", "assigned"].includes(
+        entry.tracking_snapshot?.status
+      )
+      && options.onAssignmentAction
+    ) {
       const failButton = document.createElement("button");
       failButton.className = "button button-small button-secondary tracking-select-button tracking-assignment-fail";
       failButton.type = "button";
@@ -129,7 +134,9 @@
 
   function renderAssignmentActions(entry, options, messages) {
     const snapshot = entry.tracking_snapshot || {};
-    if (snapshot.status !== "assigned") return null;
+    if (
+      !["assigned_pending_confirmation", "assigned"].includes(snapshot.status)
+    ) return null;
     if (snapshot.client_confirmation_status !== "confirmed") return null;
 
     const actions = document.createElement("div");

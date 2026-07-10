@@ -177,7 +177,7 @@ async def exercise_client_offer_selection() -> None:
         if loaded_pending.status != JobOfferStatus.DECLINED:
             raise SystemExit(f"unselected pending offer was not declined: {loaded_pending.status}")
 
-        if loaded_job.status != JobStatus.ASSIGNED:
+        if loaded_job.status != JobStatus.ASSIGNED_PENDING_CONFIRMATION:
             raise SystemExit(f"unexpected job status: {loaded_job.status}")
 
         if loaded_job.assigned_at is None:
