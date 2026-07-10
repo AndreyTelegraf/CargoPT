@@ -83,8 +83,8 @@ def main() -> None:
             ("/transporte-piano-lisboa/", "Transporte de piano em Lisboa"),
             ("/", "og:image"),
             ("/transportadores/", "href=\"/en/carriers/\""),
-            ("/en/carriers/", "Receive transport requests in Portugal"),
-            ("/ru/carriers/", "Получайте заявки на перевозки по Португалии"),
+            ("/en/carriers/", 'class="carrier-join-steps"'),
+            ("/ru/carriers/", 'class="carrier-join-steps"'),
             ("/.well-known/security.txt", "Contact:"),
             ("/health", "ok"),
         ]
