@@ -16,6 +16,25 @@ const numberLocale = {
   ru: "ru-RU"
 }[pageLocale];
 
+const localizedTrackPaths = {
+  PT: "/track",
+  EN: "/en/track",
+  RU: "/ru/track"
+};
+
+function updateLocaleLinks() {
+  document.querySelectorAll(".locale-menu a").forEach((link) => {
+    const basePath = localizedTrackPaths[link.textContent.trim()];
+    if (!basePath) return;
+
+    link.href = token
+      ? `${basePath}/${encodeURIComponent(token)}`
+      : `${basePath}/`;
+  });
+}
+
+updateLocaleLinks();
+
 function absoluteTrackingUrl() {
   return new URL(`${trackBasePath}/${token}`, window.location.origin).toString();
 }
