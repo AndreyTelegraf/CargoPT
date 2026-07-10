@@ -19,7 +19,17 @@
     waitingOffers: "A aguardar ofertas",
     detailsTitle: "Detalhes do pedido",
     itemsLabel: "Itens",
-    commentLabel: "Comentário"
+    commentLabel: "Comentário",
+    defaultCarrier: "Transportador",
+    contactLabel: "Contacto",
+    phoneLabel: "Telefone",
+    telegramLabel: "Telegram",
+    loadersLabel: "Ajudantes",
+    tailLiftLabel: "Plataforma elevatória",
+    craneLabel: "Grua",
+    mobileLiftLabel: "Elevador exterior",
+    failDealShort: "Não chegámos a acordo",
+    selectedOfferLabel: "Oferta selecionada"
   };
 
   function absoluteUrl(path) {
@@ -53,7 +63,7 @@
     top.className = "tracking-offer-top";
 
     const company = document.createElement("strong");
-    company.textContent = offer.company_name || "Transportador";
+    company.textContent = offer.company_name || messages.defaultCarrier;
 
     const price = document.createElement("strong");
     price.className = "tracking-offer-price";
@@ -73,13 +83,13 @@
 
     const shouldShowCarrierContacts = entry.tracking_snapshot?.status !== "offered";
     const details = [
-      shouldShowCarrierContacts && offer.contact_name ? `Contacto: ${offer.contact_name}` : null,
-      shouldShowCarrierContacts && offer.phone ? `Telefone: ${offer.phone}` : null,
-      shouldShowCarrierContacts && offer.telegram_username ? `Telegram: @${offer.telegram_username}` : null,
-      offer.max_loaders ? `Ajudantes: ${offer.max_loaders}` : null,
-      offer.has_tail_lift ? "Plataforma elevatória" : null,
-      offer.has_crane ? "Grua" : null,
-      offer.has_mobile_lift ? "Elevador exterior" : null
+      shouldShowCarrierContacts && offer.contact_name ? `${messages.contactLabel}: ${offer.contact_name}` : null,
+      shouldShowCarrierContacts && offer.phone ? `${messages.phoneLabel}: ${offer.phone}` : null,
+      shouldShowCarrierContacts && offer.telegram_username ? `${messages.telegramLabel}: @${offer.telegram_username}` : null,
+      offer.max_loaders ? `${messages.loadersLabel}: ${offer.max_loaders}` : null,
+      offer.has_tail_lift ? messages.tailLiftLabel : null,
+      offer.has_crane ? messages.craneLabel : null,
+      offer.has_mobile_lift ? messages.mobileLiftLabel : null
     ].filter(Boolean);
 
     if (details.length) {
@@ -109,7 +119,7 @@
       const failButton = document.createElement("button");
       failButton.className = "button button-small button-secondary tracking-select-button tracking-assignment-fail";
       failButton.type = "button";
-      failButton.textContent = messages.failDealShort || "Não chegámos a acordo";
+      failButton.textContent = messages.failDealShort;
       failButton.addEventListener("click", () => options.onAssignmentAction("fail", failButton));
       card.appendChild(failButton);
     }
@@ -249,10 +259,10 @@
 
       const selectedLabel = document.createElement("span");
       selectedLabel.className = "tracking-status-selected-label";
-      selectedLabel.textContent = "Oferta selecionada";
+      selectedLabel.textContent = messages.selectedOfferLabel;
 
       const selectedCompany = document.createElement("strong");
-      selectedCompany.textContent = entry.selected_offer_summary.company_name || "Transportador";
+      selectedCompany.textContent = entry.selected_offer_summary.company_name || messages.defaultCarrier;
 
       const selectedMeta = document.createElement("span");
       selectedMeta.textContent = [
