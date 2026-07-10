@@ -11,9 +11,10 @@ os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///data/cargopt_dev.db"
 
 from app.bot.handlers import job_offer_response
 
-source = inspect.getsource(job_offer_response.handle_offer_response)
+source = inspect.getsource(job_offer_response.handle_offer_decline_reason)
 
-assert "declined_offer = await offer_service.decline_offer(offer_id)" in source
+assert "declined_offer = await offer_service.decline_offer(" in source
+assert "decline_reason=decline_reason" in source
 assert "has_open_offer = any(" in source
 assert "OfferDistributionService(" in source
 assert "send_job_offers_to_carriers(" in source

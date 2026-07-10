@@ -447,7 +447,6 @@ async def handle_offer_decline_reason(callback: CallbackQuery) -> None:
 
     telegram_user_id = callback.from_user.id
     job = None
-    new_offer_message_refs: list[tuple[int | None, int | None]] = []
 
     async with async_session_maker() as session:
         carrier_repository = CarrierRepository(session)
@@ -503,13 +502,6 @@ async def handle_offer_decline_reason(callback: CallbackQuery) -> None:
                         job_repository=job_repository,
                         carrier_repository=carrier_repository,
                     )
-                    new_offer_message_refs = [
-                        (
-                            new_offer.carrier_message_chat_id,
-                            new_offer.carrier_message_id,
-                        )
-                        for new_offer in new_offers
-                    ]
                 else:
                     await escalate_job_to_manual_review(
                         bot=callback.bot,
@@ -523,13 +515,6 @@ async def handle_offer_decline_reason(callback: CallbackQuery) -> None:
 
     if callback.message:
         await _delete_message_safely(callback.message)
-
-    for chat_id, message_id in new_offer_message_refs:
-        await _delete_message_by_id_safely(
-            callback.bot,
-            chat_id=chat_id,
-            message_id=message_id,
-        )
 
     await callback.answer("Вы отказались от заказа.")
 
