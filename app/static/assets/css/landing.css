@@ -437,6 +437,11 @@ details p {
 
   .hero-v2 .hero-text {
     font-size: 17px;
+    margin-bottom: 20px;
+  }
+
+  .home-hero .product-explainer {
+    margin-top: 0;
   }
 
   .product-explainer {
