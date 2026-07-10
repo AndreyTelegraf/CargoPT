@@ -40,7 +40,7 @@
     if (snapshot.client_confirmation_status === "confirmed" && snapshot.carrier_confirmation_status === "confirmed") return "success";
     if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending") return "pending";
     if (["assigned", "in_progress"].includes(snapshot.status)) return "pending";
-    if (acceptedOffers.length > 0) return "searching";
+    if (acceptedOffers.length > 0) return "success";
     if (["ready_for_matching", "matching", "offered"].includes(snapshot.status)) return "searching";
     return "completed";
   }

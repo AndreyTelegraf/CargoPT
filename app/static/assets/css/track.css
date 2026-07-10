@@ -11,6 +11,8 @@
 }
 
 .track-workspace-sidebar {
+  position: sticky;
+  top: calc(var(--header-height, 72px) + var(--space-4));
   display: grid;
   grid-template-rows: auto auto auto auto auto;
   align-content: start;
@@ -238,6 +240,7 @@
   }
 
   .track-workspace-sidebar {
+    position: static;
     order: 2;
     gap: var(--space-2);
   }
