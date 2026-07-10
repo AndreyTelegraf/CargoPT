@@ -46,16 +46,16 @@
 </head>
 <body data-locale="en">
   <header class="site-header">
-    <a class="logo" href="#top" aria-label="CargoPT"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></a>
+    <a class="logo" href="/en/" aria-label="CargoPT"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></a>
     <nav class="header-actions" aria-label="Navigation">
       <a id="openPedidosCta" class="button button-small button-header-action open-pedidos-cta" href="/track/" hidden>My requests (0)</a>
       <span class="locale-switcher"><button class="locale-current" type="button" aria-label="Choose language">EN</button><span class="locale-menu"><a href="/">PT</a><a href="/en/" aria-current="page">EN</a><a href="/ru/">RU</a></span></span>
-      <a class="button button-small button-carrier" href="/en/carriers/">For carriers</a>
+      <a class="button button-small button-carrier" href="/en/carriers/"><span class="carrier-label-desktop">For carriers</span><span class="carrier-label-mobile">Carriers</span></a>
     </nav>
   </header>
 
   <main id="top">
-    <section class="hero section hero-v2">
+    <section class="hero section hero-v2 home-hero">
       <div class="hero-copy">
         <p class="eyebrow">Moving and transport in Portugal</p>
         <h1>Receive several offers from <span>one request</span></h1>
@@ -142,22 +142,19 @@
     </section>
 
     <section id="how" class="section"><div class="section-heading"><p class="eyebrow">How it works</p><h2>Three steps instead of manual calls</h2></div><div class="cards three">        <article class="card">
-          <span class="step">1</span>
           <h3>Describe the move</h3>
           <p>Add the route, items, floors, elevator and preferred date.</p>
         </article>
         <article class="card">
-          <span class="step">2</span>
           <h3>We send the request</h3>
           <p>Suitable carriers receive the same request details.</p>
         </article>
         <article class="card">
-          <span class="step">3</span>
           <h3>You choose</h3>
           <p>Compare replies and choose the offer that fits.</p>
         </article></div></section>
     <section class="section problem"><div class="section-heading"><p class="eyebrow">Problem</p><h2>Finding a carrier usually takes too much time</h2></div><p class="wide-text">You need to search companies, message or call each one, repeat the route, floors, elevator, volume and date. CargoPT replaces this with one request.</p></section>
-    <section class="section"><div class="section-heading"><p class="eyebrow">Cargo</p><h2>For apartments, offices, furniture and single items</h2></div><div class="chips">        <span>Apartments</span>
+    <section class="section"><div class="section-heading"><p class="eyebrow">Cargo</p><h2>For apartments, offices, furniture and single items</h2></div><p class="wide-text">Apartments, offices, furniture or just one item. If something needs moving, you can request quotes.</p><div class="chips">        <span>Apartments</span>
         <span>Houses</span>
         <span>Offices</span>
         <span>Furniture</span>
@@ -188,10 +185,34 @@
         <summary>Can I move between cities?</summary>
         <p>Yes. CargoPT works for local and intercity transport across Portugal.</p>
       </details></section>
+
+    <section class="section popular-services">
+      <div class="section-heading">
+        <p class="eyebrow">Popular services</p>
+        <h2>Most common searches</h2>
+      </div>
+      <div class="chips">
+        <a href="/mudancas-lisboa/">Moving services Lisbon</a>
+        <a href="/mudancas-cascais/">Moving services Cascais</a>
+        <a href="/mudancas-sintra/">Moving services Sintra</a>
+        <a href="/mudancas-porto/">Moving services Porto</a>
+        <a href="/mudancas-oeiras/">Moving services Oeiras</a>
+        <a href="/mudancas-almada/">Moving services Almada</a>
+        <a href="/mudancas-apartamento-lisboa/">Apartment moves Lisbon</a>
+        <a href="/mudancas-escritorio-lisboa/">Office moves Lisbon</a>
+        <a href="/transporte-moveis-lisboa/">Furniture transport Lisbon</a>
+        <a href="/transporte-sofa-lisboa/">Sofa transport Lisbon</a>
+        <a href="/transporte-piano-lisboa/">Piano transport Lisbon</a>
+        <a href="/transporte-frigorifico-lisboa/">Fridge transport Lisbon</a>
+        <a href="/mudancas-lisboa-porto/">Lisbon to Porto moves</a>
+        <a href="/mudancas-lisboa-cascais/">Lisbon to Cascais moves</a>
+      </div>
+    </section>
     <section class="section final-cta"><h2>Get offers for your move</h2><p>Describe the task once — we send it to suitable carriers.</p><a class="button" href="#request">Get offers</a></section>
   </main>
 
-  <footer class="site-footer"><strong>CargoPT</strong><span>Request service for moving and transport in Portugal.</span><a href="mailto:hello@cargopt.pt">hello@cargopt.pt</a></footer>
-  <script src="/assets/js/landing.js" defer></script>
+  <footer class="site-footer"><strong class="footer-logo"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></strong><span>Request service for moving and transport in Portugal.</span><a href="mailto:hello@cargopt.pt">hello@cargopt.pt</a></footer>
+  <script src="/assets/js/tracking-workspace.js?v=shared-v1" defer></script>
+  <script src="/assets/js/landing.js?v=shared-workspace-v1" defer></script>
 </body>
 </html>

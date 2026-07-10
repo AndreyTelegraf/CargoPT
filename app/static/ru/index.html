@@ -46,16 +46,16 @@
 </head>
 <body data-locale="ru">
   <header class="site-header">
-    <a class="logo" href="#top" aria-label="CargoPT"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></a>
+    <a class="logo" href="/ru/" aria-label="CargoPT"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></a>
     <nav class="header-actions" aria-label="Navigation">
       <a id="openPedidosCta" class="button button-small button-header-action open-pedidos-cta" href="/track/" hidden>Мои заявки (0)</a>
       <span class="locale-switcher"><button class="locale-current" type="button" aria-label="Choose language">RU</button><span class="locale-menu"><a href="/">PT</a><a href="/en/">EN</a><a href="/ru/" aria-current="page">RU</a></span></span>
-      <a class="button button-small button-carrier" href="/ru/carriers/">Перевозчикам</a>
+      <a class="button button-small button-carrier" href="/ru/carriers/"><span class="carrier-label-desktop">Перевозчикам</span><span class="carrier-label-mobile">Перевозч.</span></a>
     </nav>
   </header>
 
   <main id="top">
-    <section class="hero section hero-v2">
+    <section class="hero section hero-v2 home-hero">
       <div class="hero-copy">
         <p class="eyebrow">Перевозки и переезды по Португалии</p>
         <h1>Получите несколько предложений <span>по одной заявке</span></h1>
@@ -142,22 +142,19 @@
     </section>
 
     <section id="how" class="section"><div class="section-heading"><p class="eyebrow">Как это работает</p><h2>Три шага вместо ручного обзвона</h2></div><div class="cards three">        <article class="card">
-          <span class="step">1</span>
           <h3>Опишите перевозку</h3>
           <p>Укажите маршрут, вещи, этажи, лифт и желаемую дату.</p>
         </article>
         <article class="card">
-          <span class="step">2</span>
           <h3>Мы отправим заявку</h3>
           <p>Подходящие перевозчики получают одинаковое описание заказа.</p>
         </article>
         <article class="card">
-          <span class="step">3</span>
           <h3>Вы выбираете</h3>
           <p>Сравните ответы и выберите подходящее предложение.</p>
         </article></div></section>
     <section class="section problem"><div class="section-heading"><p class="eyebrow">Problem</p><h2>Обычно поиск перевозчика занимает слишком много времени</h2></div><p class="wide-text">Нужно искать компании, писать или звонить каждой отдельно, заново объяснять маршрут, этажи, лифт, объём вещей и дату. CargoPT заменяет это одной заявкой.</p></section>
-    <section class="section"><div class="section-heading"><p class="eyebrow">Cargo</p><h2>Для квартир, офисов, мебели и отдельных вещей</h2></div><div class="chips">        <span>Квартиры</span>
+    <section class="section"><div class="section-heading"><p class="eyebrow">Cargo</p><h2>Для квартир, офисов, мебели и отдельных вещей</h2></div><p class="wide-text">Квартиры, офисы, мебель или всего один предмет. Если нужно что-то перевезти, можно запросить предложения.</p><div class="chips">        <span>Квартиры</span>
         <span>Дома</span>
         <span>Офисы</span>
         <span>Мебель</span>
@@ -188,10 +185,34 @@
         <summary>Можно ли перевозить между городами?</summary>
         <p>Да, CargoPT подходит для перевозок внутри города и между городами по Португалии.</p>
       </details></section>
+
+    <section class="section popular-services">
+      <div class="section-heading">
+        <p class="eyebrow">Популярные услуги</p>
+        <h2>Частые поисковые запросы</h2>
+      </div>
+      <div class="chips">
+        <a href="/mudancas-lisboa/">Переезды в Лиссабоне</a>
+        <a href="/mudancas-cascais/">Переезды в Кашкайше</a>
+        <a href="/mudancas-sintra/">Переезды в Синтре</a>
+        <a href="/mudancas-porto/">Переезды в Порту</a>
+        <a href="/mudancas-oeiras/">Переезды в Оэйраше</a>
+        <a href="/mudancas-almada/">Переезды в Алмаде</a>
+        <a href="/mudancas-apartamento-lisboa/">Квартирные переезды в Лиссабоне</a>
+        <a href="/mudancas-escritorio-lisboa/">Офисные переезды в Лиссабоне</a>
+        <a href="/transporte-moveis-lisboa/">Перевозка мебели в Лиссабоне</a>
+        <a href="/transporte-sofa-lisboa/">Перевозка дивана в Лиссабоне</a>
+        <a href="/transporte-piano-lisboa/">Перевозка пианино в Лиссабоне</a>
+        <a href="/transporte-frigorifico-lisboa/">Перевозка холодильника в Лиссабоне</a>
+        <a href="/mudancas-lisboa-porto/">Переезд из Лиссабона в Порту</a>
+        <a href="/mudancas-lisboa-cascais/">Переезд из Лиссабона в Кашкайш</a>
+      </div>
+    </section>
     <section class="section final-cta"><h2>Получите предложения для вашей перевозки</h2><p>Опишите задачу один раз — мы передадим её подходящим перевозчикам.</p><a class="button" href="#request">Получить предложения</a></section>
   </main>
 
-  <footer class="site-footer"><strong>CargoPT</strong><span>Сервис заявок на перевозки и переезды в Португалии.</span><a href="mailto:hello@cargopt.pt">hello@cargopt.pt</a></footer>
-  <script src="/assets/js/landing.js" defer></script>
+  <footer class="site-footer"><strong class="footer-logo"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></strong><span>Сервис заявок на перевозки и переезды в Португалии.</span><a href="mailto:hello@cargopt.pt">hello@cargopt.pt</a></footer>
+  <script src="/assets/js/tracking-workspace.js?v=shared-v1" defer></script>
+  <script src="/assets/js/landing.js?v=shared-workspace-v1" defer></script>
 </body>
 </html>
