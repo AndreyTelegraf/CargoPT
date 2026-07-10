@@ -12,12 +12,12 @@ function absoluteTrackingUrl() {
 if (copyTrackingLink) {
   copyTrackingLink.addEventListener("click", async () => {
     await navigator.clipboard.writeText(absoluteTrackingUrl());
-    copyTrackingLink.textContent = "Track link copiado";
+    copyTrackingLink.textContent = messages.trackLinkCopied;
 
     clearTimeout(copyTrackingLink._copyResetTimer);
     copyTrackingLink._copyResetTimer = setTimeout(() => {
       if (copyTrackingLink.isConnected) {
-        copyTrackingLink.textContent = "Copiar track link";
+        copyTrackingLink.textContent = messages.copyTrackLink;
       }
     }, 3000);
   });
@@ -68,7 +68,7 @@ function renderOpenPedidosNavigation(activeEntry) {
   if (!links.length) {
     const empty = document.createElement("p");
     empty.className = "track-offer-nav-empty";
-    empty.textContent = "Ainda não há pedidos guardados neste dispositivo.";
+    empty.textContent = messages.noSavedRequests;
     trackPedidosList.appendChild(empty);
     return;
   }
@@ -90,7 +90,7 @@ function renderOpenPedidosNavigation(activeEntry) {
 
     const status = document.createElement("span");
     status.className = "track-offer-nav-price";
-    status.textContent = isActive ? "Atual" : "Abrir";
+    status.textContent = isActive ? messages.currentRequest : messages.openRequest;
 
     top.append(route, status);
 
@@ -144,6 +144,11 @@ let isSelectingOffer = false;
 let isSendingAssignmentAction = false;
 
 const messages = {
+  copyTrackLink: "Copiar track link",
+  trackLinkCopied: "Track link copiado",
+  noSavedRequests: "Ainda não há pedidos guardados neste dispositivo.",
+  currentRequest: "Atual",
+  openRequest: "Abrir",
   statusSearching: "À procura de transportadores",
   statusAssigned: "Transportador escolhido",
   statusCompleted: "Pedido concluído",
@@ -156,7 +161,8 @@ const messages = {
   waitingOffers: "A aguardar ofertas",
   retryOffer: "Tentar novamente",
   selectingOffer: "A escolher...",
-  sendingAction: "A enviar..."
+  sendingAction: "A enviar...",
+  defaultCarrier: "Transportador"
 };
 
 function formatSidebarPrice(priceCents) {
@@ -168,7 +174,7 @@ function buildSidebarOfferSummary(offer, index) {
   if (!offer) return null;
 
   return {
-    company_name: offer.company_name || `Transportador ${index + 1}`,
+    company_name: offer.company_name || `${messages.defaultCarrier} ${index + 1}`,
     price_label: formatSidebarPrice(offer.price_cents),
     vehicle_label: [
       offer.vehicle_type,
