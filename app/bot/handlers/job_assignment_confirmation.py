@@ -21,6 +21,7 @@ from app.services.assignment_confirmation import parse_assignment_callback
 from app.services.assignment_confirmation import process_assignment_failure_redispatch
 from app.services.assignment_confirmation import record_assignment_confirmation
 from app.services.assignment_confirmation import resolve_assignment_actor
+from app.services.assignment_notifications import send_assignment_final_notifications
 from app.services.job_lifecycle import InvalidJobStatusTransitionError
 
 router = Router()
@@ -44,66 +45,6 @@ def _build_assignment_confirmation_final_text(message, status_text: str) -> str:
         return f"{original_text}\n\n{status_text}"
 
     return status_text
-
-
-async def _send_assignment_final_notifications(
-    *,
-    bot,
-    job,
-    accepted_offer,
-    carrier_repository: CarrierRepository,
-) -> None:
-    if job.status not in {JobStatus.ASSIGNED, JobStatus.READY_FOR_MATCHING}:
-        return
-
-    carrier = None
-    if accepted_offer is not None:
-        carrier = await carrier_repository.get_carrier_by_id(accepted_offer.carrier_id)
-
-    if job.status == JobStatus.ASSIGNED:
-        client_text = format_telegram_status_block(
-            (
-                f"Сделка по заявке №{job.id} подтверждена обеими сторонами.\n\n"
-                "Свяжитесь с перевозчиком напрямую и согласуйте последние детали перевозки."
-            ),
-            state="success",
-        )
-        carrier_text = format_telegram_status_block(
-            (
-                f"Сделка по заявке №{job.id} подтверждена обеими сторонами.\n\n"
-                "Свяжитесь с клиентом напрямую и согласуйте последние детали перевозки."
-            ),
-            state="success",
-        )
-    else:
-        client_text = format_telegram_status_block(
-            (
-                f"По заявке №{job.id} сделка не состоялась.\n\n"
-                "Заявка возвращена в поиск. Мы уже ищем нового перевозчика."
-            ),
-            state="failed",
-        )
-        carrier_text = format_telegram_status_block(
-            (
-                "Спасибо.\n\n"
-                "Заявка возвращена в поиск."
-            ),
-            state="failed",
-        )
-
-    if job.client_telegram_user_id is not None:
-        await bot.send_message(
-            chat_id=job.client_telegram_user_id,
-            text=client_text,
-            parse_mode="HTML",
-        )
-
-    if carrier is not None and carrier.telegram_user_id is not None:
-        await bot.send_message(
-            chat_id=carrier.telegram_user_id,
-            text=carrier_text,
-            parse_mode="HTML",
-        )
 
 
 @router.callback_query(F.data.startswith("assignment:"))
@@ -230,7 +171,7 @@ async def handle_assignment_confirmation(callback: CallbackQuery) -> None:
             carrier_repository=carrier_repository,
         )
 
-        await _send_assignment_final_notifications(
+        await send_assignment_final_notifications(
             bot=callback.bot,
             job=updated_job,
             accepted_offer=accepted_offer,

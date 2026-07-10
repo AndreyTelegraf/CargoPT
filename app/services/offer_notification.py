@@ -2,10 +2,6 @@ import html
 from datetime import UTC
 from datetime import datetime
 
-from aiogram.types import InputMediaPhoto
-from aiogram.types import InputMediaVideo
-
-from app.bot.offer_keyboard import build_offer_keyboard
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
 
@@ -81,6 +77,11 @@ async def send_job_offers_to_carriers(
     job_repository: JobRepository,
     carrier_repository: CarrierRepository,
 ) -> int:
+    from aiogram.types import InputMediaPhoto
+    from aiogram.types import InputMediaVideo
+
+    from app.bot.offer_keyboard import build_offer_keyboard
+
     media_items = await job_repository.list_media_by_job(job.id)
     items = await job_repository.list_items_by_job(job.id)
     addresses = await job_repository.list_addresses_by_job(job.id)

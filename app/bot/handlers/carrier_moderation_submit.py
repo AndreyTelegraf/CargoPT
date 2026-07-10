@@ -10,7 +10,7 @@ from aiogram.types import Message
 from aiogram.types import ReplyKeyboardRemove
 from sqlalchemy import select
 
-from app.bot.handlers.carrier_invite_admin import ADMIN_TELEGRAM_USER_IDS
+from app.domain.admin_access import ADMIN_TELEGRAM_USER_IDS
 from app.bot.states.carrier_onboarding import CarrierOnboardingStates
 from app.db.session import async_session_maker
 from app.domain.carrier_status import CarrierStatus

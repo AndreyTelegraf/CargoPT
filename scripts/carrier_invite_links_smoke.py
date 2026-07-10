@@ -17,8 +17,14 @@ assert carrier_invite is not None
 assert invite_start is not None
 
 invite_source = Path("app/bot/handlers/invite.py").read_text(encoding="utf-8")
-assert "await service.advance_profile_step(" in invite_source
-assert invite_source.index("await service.advance_profile_step(") < invite_source.index("await session.commit()")
+welcome_handler_source = invite_source[
+    invite_source.index("async def carrier_welcome_start"):
+]
+assert "await service.advance_profile_step(" in welcome_handler_source
+assert (
+    welcome_handler_source.index("await service.advance_profile_step(")
+    < welcome_handler_source.index("await session.commit()")
+)
 
 router_source = Path("app/bot/routers.py").read_text(encoding="utf-8")
 assert "carrier_invite_admin_router" in router_source

@@ -6,7 +6,7 @@ from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message
 
-from app.bot.handlers.carrier_invite_admin import ADMIN_TELEGRAM_USER_IDS
+from app.domain.admin_access import ADMIN_TELEGRAM_USER_IDS
 from app.db.session import async_session_maker
 from app.repositories.job import JobRepository
 

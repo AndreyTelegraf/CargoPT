@@ -26,6 +26,7 @@ from app.services.offer_distribution import OfferDistributionService
 from app.services.job_escalation import escalate_job_to_manual_review
 from app.services.offer_notification import send_job_offers_to_carriers
 from app.services.assignment_confirmation import format_telegram_status_block
+from app.services.assignment_notifications import send_assignment_confirmation_requests
 from app.services.client_offer_presentation import ClientOfferPresentationService
 from app.bot.offer_keyboard import build_client_offer_selection_keyboard
 from app.bot.offer_keyboard import build_offer_decline_reason_keyboard
@@ -242,20 +243,6 @@ def build_carrier_assignment_confirmation_text(job) -> str:
         f"WhatsApp: {html.escape(job.client_whatsapp or 'не указан', quote=False)}\n\n"
         "Свяжитесь с клиентом и согласуйте детали перевозки."
     )
-
-
-async def send_assignment_confirmation_requests(
-    *,
-    bot,
-    job,
-    carrier_telegram_user_id: int | None,
-) -> None:
-    if carrier_telegram_user_id is not None:
-        await bot.send_message(
-            chat_id=carrier_telegram_user_id,
-            text=build_carrier_assignment_confirmation_text(job),
-            parse_mode="HTML",
-        )
 
 
 @router.callback_query(F.data.startswith("offer:"))

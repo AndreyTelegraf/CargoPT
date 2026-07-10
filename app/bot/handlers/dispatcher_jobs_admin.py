@@ -11,7 +11,7 @@ from aiogram.types import InlineKeyboardMarkup
 from aiogram.types import Message
 from sqlalchemy import text
 
-from app.bot.handlers.carrier_invite_admin import ADMIN_TELEGRAM_USER_IDS
+from app.domain.admin_access import ADMIN_TELEGRAM_USER_IDS
 from app.db.session import async_session_maker
 from app.domain.job_decline_reason import get_decline_reason_label
 from app.repositories.carrier import CarrierRepository

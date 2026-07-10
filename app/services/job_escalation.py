@@ -1,4 +1,4 @@
-from app.bot.handlers.carrier_invite_admin import ADMIN_TELEGRAM_USER_IDS
+from app.domain.admin_access import ADMIN_TELEGRAM_USER_IDS
 from app.domain.job_status import JobStatus
 from app.services.job_matching import MatchingReason
 

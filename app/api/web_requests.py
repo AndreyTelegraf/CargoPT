@@ -2,7 +2,6 @@ from collections.abc import AsyncIterator
 from datetime import UTC
 from datetime import datetime
 
-from aiogram import Bot
 from fastapi import APIRouter
 from fastapi import Depends
 from fastapi import HTTPException
@@ -14,8 +13,8 @@ from app.api.web_request_schemas import TrackingOfferSelectResponse
 from app.api.web_request_schemas import TrackingOfferResponse
 from app.api.web_request_schemas import TrackingJobResponse
 from app.api.web_request_schemas import TrackingAssignmentActionResponse
-from app.bot.handlers.job_offer_response import send_assignment_confirmation_requests
-from app.bot.handlers.job_assignment_confirmation import _send_assignment_final_notifications
+from app.services.assignment_notifications import send_assignment_confirmation_requests
+from app.services.assignment_notifications import send_assignment_final_notifications
 from app.config import settings
 from app.db.session import async_session_maker
 from app.domain.job_status import JobStatus
@@ -70,7 +69,9 @@ def _format_tracking_route_summary(job) -> str | None:
     return None
 
 
-async def get_api_bot() -> AsyncIterator[Bot]:
+async def get_api_bot() -> AsyncIterator[object]:
+    from aiogram import Bot
+
     bot = Bot(token=settings.bot_token)
     try:
         yield bot
@@ -82,7 +83,7 @@ async def get_api_bot() -> AsyncIterator[Bot]:
 async def submit_web_request(
     payload: WebRequestPayload,
     session: AsyncSession = Depends(get_session),
-    bot: Bot = Depends(get_api_bot),
+    bot=Depends(get_api_bot),
 ) -> WebRequestResponse:
     service_request = payload.to_service_request()
     service = RequestIntakeService(
@@ -201,7 +202,7 @@ async def select_tracking_offer(
     tracking_token: str,
     offer_id: int,
     session: AsyncSession = Depends(get_session),
-    bot: Bot = Depends(get_api_bot),
+    bot=Depends(get_api_bot),
 ) -> TrackingOfferSelectResponse:
     job_repository = JobRepository(session)
     carrier_repository = CarrierRepository(session)
@@ -254,7 +255,7 @@ async def confirm_tracking_assignment(
     tracking_token: str,
     action: str,
     session: AsyncSession = Depends(get_session),
-    bot: Bot = Depends(get_api_bot),
+    bot=Depends(get_api_bot),
 ) -> TrackingAssignmentActionResponse:
     if action not in {"confirm", "fail"}:
         raise HTTPException(status_code=400, detail="invalid assignment action")
@@ -305,7 +306,7 @@ async def confirm_tracking_assignment(
             carrier_repository=carrier_repository,
         )
 
-    await _send_assignment_final_notifications(
+    await send_assignment_final_notifications(
         bot=bot,
         job=updated_job,
         accepted_offer=accepted_offer,
