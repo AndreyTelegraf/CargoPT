@@ -324,6 +324,10 @@ details p {
   max-width: none;
 }
 
+.home-hero .product-explainer {
+  margin-top: clamp(40px, 4vw, 56px);
+}
+
 
 .process-card {
   display: block;
