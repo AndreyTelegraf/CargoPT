@@ -300,45 +300,6 @@ async def handle_offer_response(callback: CallbackQuery, state: FSMContext) -> N
             await callback.answer("Укажите причину отказа.")
             return
 
-            job = await job_repository.get_job_by_id(declined_offer.job_id)
-            if job is not None and job.status == "offered":
-                sibling_offers = await job_repository.list_offers_by_job(job.id)
-                has_open_offer = any(
-                    sibling.status in {"pending", "accepted"}
-                    for sibling in sibling_offers
-                )
-
-                if not has_open_offer:
-                    distribution = OfferDistributionService(
-                        matching_service=JobMatchingService(
-                            CarrierSearchService(carrier_repository)
-                        ),
-                        offer_service=offer_service,
-                        job_repository=job_repository,
-                    )
-                    distribution_result = await distribution.create_offer_distribution_for_job(
-                        job,
-                        limit=5,
-                        expires_in_minutes=60,
-                    )
-                    new_offers = distribution_result.offers
-                    if new_offers:
-                        await send_job_offers_to_carriers(
-                            bot=callback.bot,
-                            job=job,
-                            offers=new_offers,
-                            job_repository=job_repository,
-                            carrier_repository=carrier_repository,
-                        )
-                    else:
-                        await escalate_job_to_manual_review(
-                            bot=callback.bot,
-                            job=job,
-                            job_repository=job_repository,
-                            matching_reason=distribution_result.matching_reason,
-                            matching_regions=distribution_result.matching_regions,
-                        )
-
         await session.commit()
 
     if callback.message:
