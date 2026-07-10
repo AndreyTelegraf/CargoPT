@@ -33,11 +33,16 @@
 
   function getVisualState(entry) {
     const snapshot = entry.tracking_snapshot || {};
+    const acceptedOffers = Array.isArray(snapshot.accepted_offers) ? snapshot.accepted_offers : [];
     if (snapshot.status === "cancelled") return "cancelled";
     if (["offers_exhausted", "expired_without_response"].includes(snapshot.status)) return "cancelled";
     if (snapshot.status === "completed") return "success";
     if (snapshot.client_confirmation_status === "confirmed" && snapshot.carrier_confirmation_status === "confirmed") return "success";
-    return "pending";
+    if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending") return "pending";
+    if (["assigned", "in_progress"].includes(snapshot.status)) return "pending";
+    if (acceptedOffers.length > 0) return "searching";
+    if (["ready_for_matching", "matching", "offered"].includes(snapshot.status)) return "searching";
+    return "completed";
   }
 
   function renderOffer(offer, entry, options, messages) {
