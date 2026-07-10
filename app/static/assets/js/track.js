@@ -3,10 +3,21 @@ const trackingPanelBody = document.querySelector("#trackingPanelBody");
 const errorCard = document.querySelector("#errorCard");
 const trackPedidosList = document.querySelector("#trackPedidosList");
 const copyTrackingLink = document.querySelector("#copyTrackingLink");
-const token = decodeURIComponent(window.location.pathname.split("/").filter(Boolean).slice(1).join("/"));
+
+const pathParts = window.location.pathname.split("/").filter(Boolean);
+const supportedLocales = new Set(["en", "ru"]);
+const pageLocale = supportedLocales.has(pathParts[0]) ? pathParts[0] : "pt";
+const trackSegmentIndex = pageLocale === "pt" ? 0 : 1;
+const token = decodeURIComponent(pathParts.slice(trackSegmentIndex + 1).join("/"));
+const trackBasePath = pageLocale === "pt" ? "/track" : `/${pageLocale}/track`;
+const numberLocale = {
+  pt: "pt-PT",
+  en: "en-GB",
+  ru: "ru-RU"
+}[pageLocale];
 
 function absoluteTrackingUrl() {
-  return new URL(`/track/${token}`, window.location.origin).toString();
+  return new URL(`${trackBasePath}/${token}`, window.location.origin).toString();
 }
 
 if (copyTrackingLink) {
@@ -167,7 +178,7 @@ const messages = {
 
 function formatSidebarPrice(priceCents) {
   if (priceCents == null) return "– €";
-  return new Intl.NumberFormat("pt-PT").format(priceCents / 100) + " €";
+  return new Intl.NumberFormat(numberLocale).format(priceCents / 100) + " €";
 }
 
 function buildSidebarOfferSummary(offer, index) {
@@ -200,7 +211,7 @@ function renderTrackingWorkspace(entry) {
 
   window.CargoPTTrackingWorkspace.render(activeTrackingEntry, {
     container: trackingPanelBody,
-    locale: "pt-PT",
+    locale: numberLocale,
     hideStatusAction: true,
     hideShareActions: true,
     onSelectOffer: selectOffer,
@@ -242,7 +253,7 @@ function mergeTrackingSnapshot(snapshot) {
   const entry = {
     job_id: snapshot.job_id,
     token: snapshot.tracking_token || token,
-    tracking_url: `/track/${snapshot.tracking_token || token}`,
+    tracking_url: `${trackBasePath}/${snapshot.tracking_token || token}`,
     status_label: formatTrackingStatus(snapshot),
     status_dot_state: getTrackingStatusDotState(snapshot, acceptedOffers),
     accepted_offers_count: acceptedOffers.length,
