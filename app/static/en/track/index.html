@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CargoPT — track your request</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Private page for tracking the status of your CargoPT request.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/cargopt-icon.svg">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <meta name="theme-color" content="#111827">
+  <link rel="stylesheet" href="/assets/css/design-system.css?v=tokens-v1">
+  <link rel="stylesheet" href="/assets/css/components.css?v=components-v1">
+  <link rel="stylesheet" href="/assets/css/landing.css?v=design-unified-v1">
+  <link rel="stylesheet" href="/assets/css/track.css?v=workspace-design-v1">
+</head>
+<body data-locale="en" class="tracking-page">
+  <header class="site-header">
+    <a class="logo" href="/en/" aria-label="CargoPT"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></a>
+    <nav class="header-actions" aria-label="Navigation">
+      <span class="locale-switcher"><button class="locale-current" type="button" aria-label="Choose language">EN</button><span class="locale-menu"><a href="/track/">PT</a><a href="/en/track/" aria-current="page">EN</a><a href="/ru/track/">RU</a></span></span>
+      <button id="copyTrackingLink" class="button button-small button-header-action" type="button">Copy tracking link</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="section track-workspace-shell">
+      <aside class="track-workspace-sidebar" aria-label="Open requests">
+        <p class="track-sidebar-eyebrow">Open requests</p>
+        <h2 class="track-sidebar-title">Your requests</h2>
+        <p class="track-sidebar-intro">Track requests created on this device.</p>
+        <div id="trackPedidosList" class="track-offer-nav-list"></div>
+
+        <a class="button button-secondary track-new-request" href="/en/">
+          ← New request
+        </a>
+      </aside>
+
+      <section id="trackingPanel" class="tracking-panel tracking-request-card" aria-label="Request status card">
+        <div id="trackingPanelBody"></div>
+
+        <section id="errorCard" class="track-card error-card" hidden>
+          <p class="eyebrow">Error</p>
+          <h2>Unable to load this request</h2>
+          <p>Check that you opened the complete link. If the problem continues, contact CargoPT.</p>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer"><strong class="footer-logo"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></strong><span>Request service for moving and transport in Portugal.</span><a href="mailto:hello@cargopt.pt">hello@cargopt.pt</a></footer>
+  <script src="/assets/js/tracking-workspace.js?v=shared-v1" defer></script>
+  <script src="/assets/js/track.js?v=thin-v1" defer></script>
+</body>
+</html>
