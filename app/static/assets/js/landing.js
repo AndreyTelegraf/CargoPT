@@ -28,7 +28,9 @@ const MESSAGES = {
     trackingEyebrow: "Estado do pedido",
     detailsTitle: "Detalhes do pedido",
     itemsLabel: "Itens",
-    commentLabel: "Comentário"
+    commentLabel: "Comentário",
+    openRequestsShort: "Pedidos",
+    openRequestsLong: "Meus pedidos"
   },
   en: {
     required: "Fill in the required fields for this step.",
@@ -47,7 +49,9 @@ const MESSAGES = {
     trackingEyebrow: "Request status",
     detailsTitle: "Request details",
     itemsLabel: "Items",
-    commentLabel: "Comment"
+    commentLabel: "Comment",
+    openRequestsShort: "Requests",
+    openRequestsLong: "My requests"
   },
   ru: {
     required: "Заполните обязательные поля этого шага.",
@@ -66,7 +70,9 @@ const MESSAGES = {
     trackingEyebrow: "Статус заявки",
     detailsTitle: "Детали заявки",
     itemsLabel: "Груз",
-    commentLabel: "Комментарий"
+    commentLabel: "Комментарий",
+    openRequestsShort: "Заявки",
+    openRequestsLong: "Мои заявки"
   }
 };
 
@@ -113,7 +119,10 @@ function saveTrackingLink(entry) {
 
 function formatOpenPedidosLabel(count) {
   const isMobile = window.matchMedia("(max-width: 640px)").matches;
-  return `${isMobile ? "Pedidos" : "Meus pedidos"} (${count})`;
+  const label = isMobile
+    ? messages.openRequestsShort
+    : messages.openRequestsLong;
+  return `${label} (${count})`;
 }
 
 function renderOpenPedidos() {
