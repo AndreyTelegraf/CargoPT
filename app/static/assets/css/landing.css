@@ -49,7 +49,7 @@ h2 {
 h3 {
   margin-bottom: 10px;
   font-size: var(--font-size-card-title);
-  font-weight: var(--font-weight-title);
+  font-weight: var(--font-weight-strong);
   letter-spacing: var(--letter-spacing-card-title);
 }
 
@@ -477,10 +477,20 @@ details p {
   width: 100%;
 }
 
+.carrier-card-subtitle {
+  margin: 0 0 var(--space-1);
+  color: var(--text);
+  font-size: calc(var(--font-size-form-title) * 0.7);
+  font-weight: var(--font-weight-strong);
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
 .carrier-card-step-title {
   margin-bottom: 10px;
   color: var(--brand);
-  font-size: var(--font-size-form-title);
+  font-size: calc(var(--font-size-form-title) * 0.7);
   font-weight: var(--font-weight-title);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-heading);
@@ -534,7 +544,14 @@ details p {
   }
 
   .carrier-page-copy {
+    display: flex;
+    flex-direction: column;
+    order: 1;
     padding-block: 0;
+  }
+
+  .carrier-page-hero .hero-workspace {
+    order: 2;
   }
 }
 
