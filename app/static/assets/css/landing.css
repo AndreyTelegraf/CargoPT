@@ -489,11 +489,11 @@ details p {
 
 .carrier-card-step-title {
   margin-bottom: 10px;
-  color: var(--brand);
+  color: var(--text);
   font-size: calc(var(--font-size-form-title) * 0.7);
-  font-weight: var(--font-weight-title);
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--letter-spacing-heading);
+  font-weight: var(--font-weight-strong);
+  line-height: 1.2;
+  letter-spacing: normal;
 }
 
 .carrier-join-steps {
