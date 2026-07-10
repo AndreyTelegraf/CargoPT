@@ -440,8 +440,28 @@ details p {
   }
 
   .product-explainer {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 4px;
+    margin-inline: -2px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .product-explainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-explainer .process-card {
+    flex: 0 0 272px;
+    scroll-snap-align: start;
+  }
+
+  .product-explainer .process-card-wide {
+    flex-basis: 272px;
   }
 }
 
