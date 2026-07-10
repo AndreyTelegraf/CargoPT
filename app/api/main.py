@@ -23,4 +23,15 @@ STATIC_DIR = Path(__file__).resolve().parents[1] / "static"
 async def tracking_page(tracking_token: str) -> FileResponse:
     return FileResponse(STATIC_DIR / "track" / "index.html")
 
+
+@app.get("/en/track/{tracking_token}", include_in_schema=False)
+async def tracking_page_en(tracking_token: str) -> FileResponse:
+    return FileResponse(STATIC_DIR / "en" / "track" / "index.html")
+
+
+@app.get("/ru/track/{tracking_token}", include_in_schema=False)
+async def tracking_page_ru(tracking_token: str) -> FileResponse:
+    return FileResponse(STATIC_DIR / "ru" / "track" / "index.html")
+
+
 app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="static")
