@@ -48,8 +48,14 @@ assert "_parse_offer_price_input" in source
 assert "update_offer_price_and_note" in source
 assert "OfferResponseStates.price" in source
 assert "offer_price_offer_id" in source
-assert "await state.update_data(offer_price_offer_id=offer_id)" in source
+assert "offer_price_offer_id=offer_id" in source
+assert "offer_price_message_chat_id=callback.message.chat.id" in source
+assert "offer_price_message_id=callback.message.message_id" in source
 assert "await state.set_state(OfferResponseStates.price)" in source
+assert "await message.bot.edit_message_reply_markup(" in source
+assert "chat_id=offer_message_chat_id" in source
+assert "message_id=offer_message_id" in source
+assert "reply_markup=None" in source
 assert "await state.clear()" in source
 assert "list_pending_offers_by_carrier" not in source
 

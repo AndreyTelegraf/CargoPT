@@ -70,7 +70,11 @@ async def _prompt_offer_price(
         return
 
     await state.clear()
-    await state.update_data(offer_price_offer_id=offer_id)
+    await state.update_data(
+        offer_price_offer_id=offer_id,
+        offer_price_message_chat_id=callback.message.chat.id,
+        offer_price_message_id=callback.message.message_id,
+    )
     await state.set_state(OfferResponseStates.price)
 
     await callback.message.answer(
@@ -311,6 +315,8 @@ async def handle_offer_response(callback: CallbackQuery, state: FSMContext) -> N
 async def handle_offer_price_input(message: Message, state: FSMContext) -> None:
     data = await state.get_data()
     offer_id = data.get("offer_price_offer_id")
+    offer_message_chat_id = data.get("offer_price_message_chat_id")
+    offer_message_id = data.get("offer_price_message_id")
 
     if offer_id is None:
         await state.clear()
@@ -400,6 +406,16 @@ async def handle_offer_price_input(message: Message, state: FSMContext) -> None:
     await state.clear()
 
     if accepted_offer is not None:
+        if offer_message_chat_id is not None and offer_message_id is not None:
+            try:
+                await message.bot.edit_message_reply_markup(
+                    chat_id=offer_message_chat_id,
+                    message_id=offer_message_id,
+                    reply_markup=None,
+                )
+            except TelegramBadRequest:
+                pass
+
         await message.answer(
             (
                 f"{message_text}\n\n"
