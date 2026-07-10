@@ -530,6 +530,7 @@ async def handle_client_offer_selection(callback: CallbackQuery) -> None:
     telegram_user_id = callback.from_user.id
 
     carrier_telegram_user_id = None
+    unselected_offer_message_refs: list[tuple[int | None, int | None]] = []
 
     async with async_session_maker() as session:
         job_repository = JobRepository(session)
@@ -545,6 +546,16 @@ async def handle_client_offer_selection(callback: CallbackQuery) -> None:
         if job.client_telegram_user_id != telegram_user_id:
             await callback.answer("Эта кнопка не для вас.", show_alert=True)
             return
+
+        offers_before_selection = await job_repository.list_offers_by_job(job_id)
+        unselected_offer_message_refs = [
+            (offer.carrier_message_chat_id, offer.carrier_message_id)
+            for offer in offers_before_selection
+            if offer.id != offer_id
+            and offer.status in {"pending", "accepted"}
+            and offer.carrier_message_chat_id is not None
+            and offer.carrier_message_id is not None
+        ]
 
         try:
             selected_offer = await offer_service.select_accepted_offer_for_client(
@@ -564,6 +575,13 @@ async def handle_client_offer_selection(callback: CallbackQuery) -> None:
             carrier_telegram_user_id = selected_carrier.telegram_user_id
 
         await session.commit()
+
+    for chat_id, message_id in unselected_offer_message_refs:
+        await _delete_message_by_id_safely(
+            callback.bot,
+            chat_id=chat_id,
+            message_id=message_id,
+        )
 
     if callback.message:
         await callback.message.edit_text(

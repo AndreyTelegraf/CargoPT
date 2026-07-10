@@ -20,6 +20,11 @@ assert "build_client_reopen_assignment_keyboard" in source
 assert "send_assignment_confirmation_requests" in source
 assert "selected_offer = await offer_service.select_accepted_offer_for_client" in source
 assert "selected_carrier = await carrier_repository.get_carrier_by_id" in source
+assert "unselected_offer_message_refs" in source
+assert 'offer.status in {"pending", "accepted"}' in source
+assert "offer.id != offer_id" in source
+assert "for chat_id, message_id in unselected_offer_message_refs:" in source
+assert "_delete_message_by_id_safely(" in source
 assert "Клиент выбрал ваше предложение" in source
 assert "подтвердите сделку" not in source.lower()
 
