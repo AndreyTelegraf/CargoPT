@@ -155,6 +155,7 @@
   --font-size-badge-small: 11px;
   --font-size-meta: 14px;
   --font-size-body-large: 19px;
+  --font-size-section-title: clamp(32px, 5vw, 56px);
   --font-size-card-title: 22px;
   --font-size-hero-eyebrow: 14px;
   --font-size-hero-title: clamp(58px, 5.7vw, 86px);

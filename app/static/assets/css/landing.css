@@ -40,7 +40,7 @@ h1 {
 h2 {
   max-width: 780px;
   margin-bottom: var(--layout-block-margin);
-  font-size: clamp(32px, 5vw, 56px);
+  font-size: var(--font-size-section-title);
   font-weight: var(--font-weight-heading);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-heading);
@@ -49,7 +49,8 @@ h2 {
 h3 {
   margin-bottom: 10px;
   font-size: var(--font-size-card-title);
-  font-weight: var(--font-weight-strong);
+  font-weight: var(--font-weight-title);
+  line-height: var(--line-height-card-title);
   letter-spacing: var(--letter-spacing-card-title);
 }
 
