@@ -56,7 +56,6 @@ h3 {
 
 .hero-text,
 .wide-text,
-.section-heading p,
 .final-cta p {
   max-width: 700px;
   color: var(--muted);
