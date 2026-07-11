@@ -575,25 +575,31 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
                 and offer.carrier_message_id is not None
             ]
 
+            now = datetime.now(UTC)
+
             for offer in offers:
                 if offer.status == "pending":
                     await job_repository.update_offer_status(
                         offer.id,
                         status="declined",
-                        responded_at=job.updated_at,
+                        responded_at=now,
                         decline_reason="admin_closed",
                     )
                 elif offer.status == "accepted":
                     await job_repository.update_offer_status(
                         offer.id,
                         status="cancelled",
-                        responded_at=job.updated_at,
+                        responded_at=now,
                     )
 
+            await job_repository.clear_assignment_confirmation_statuses(
+                job_id=job.id,
+                updated_at=now,
+            )
             await job_repository.update_job_status(
                 job_id=job.id,
                 status="cancelled",
-                updated_at=job.updated_at,
+                updated_at=now,
             )
             await session.commit()
 

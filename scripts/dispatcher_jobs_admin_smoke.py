@@ -182,6 +182,10 @@ assert 'status="offered"' in handler_source
 assert "уже отправлялась этому перевозчику" in handler_source
 assert "вручную отправлена перевозчику" in handler_source
 assert 'status="cancelled"' in handler_source
+assert "now = datetime.now(UTC)" in handler_source
+assert "clear_assignment_confirmation_statuses(" in handler_source
+assert "updated_at=now" in handler_source
+assert "responded_at=now" in handler_source
 assert "Заявка #{raw_job_id} закрыта." in handler_source
 assert "вручную переведена в статус cancelled" in handler_source
 assert "list_offers_by_job(job.id)" in handler_source
