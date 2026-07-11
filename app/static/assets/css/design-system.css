@@ -135,7 +135,7 @@
   --layout-gap-sm: var(--space-3);
   --layout-gap-md: 18px;
   --layout-gap-lg: var(--space-5);
-  --layout-section-margin: 34px;
+  --layout-section-margin: var(--space-6);
   --layout-block-margin: 18px;
   --layout-panel-offset: 22px;
   --layout-mobile-section-padding: var(--space-7);
