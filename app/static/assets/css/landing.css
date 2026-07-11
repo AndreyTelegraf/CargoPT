@@ -292,7 +292,7 @@ details p {
   margin-bottom: 22px;
   color: var(--brand);
   font-size: var(--font-size-hero-title);
-  line-height: var(--line-height-heading);
+  line-height: var(--line-height-hero-title);
   letter-spacing: var(--letter-spacing-hero-title);
 }
 

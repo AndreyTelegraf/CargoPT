@@ -185,6 +185,7 @@
 
   --line-height-tight: 1;
   --line-height-heading: 0.98;
+  --line-height-hero-title: 0.97;
   --line-height-card-title: 1.2;
   --line-height-copy: 1.35;
   --line-height-hero-copy: 1.45;
@@ -192,7 +193,7 @@
   --letter-spacing-logo: -0.055em;
   --letter-spacing-heading: -0.055em;
   --letter-spacing-heading-tight: -0.07em;
-  --letter-spacing-hero-title: -0.065em;
+  --letter-spacing-hero-title: -0.075em;
   --letter-spacing-hero-eyebrow: 0.11em;
   --letter-spacing-card-title: -0.035em;
   --letter-spacing-eyebrow: 0.095em;
