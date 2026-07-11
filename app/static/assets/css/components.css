@@ -704,7 +704,7 @@ details p {
 }
 
 .progress {
-  margin-bottom: 22px;
+  margin-bottom: var(--space-5);
 }
 
 .progress span {
