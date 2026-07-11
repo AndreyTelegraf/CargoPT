@@ -250,3 +250,12 @@
     margin-bottom: var(--space-6);
   }
 }
+
+@media (max-width: 360px) {
+  .guide-page .site-header .button-carrier {
+    min-width: 0;
+    max-width: 128px;
+    line-height: 1.15;
+    text-align: center;
+  }
+}
