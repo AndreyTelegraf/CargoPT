@@ -1,0 +1,1105 @@
+{
+  "version": 1,
+  "locale": "pt-PT",
+  "base_url": "https://cargopt.pt",
+  "guides_hub": "/guias/",
+  "statuses": [
+    "planned",
+    "draft",
+    "published",
+    "existing_landing"
+  ],
+  "intents": [
+    "commercial",
+    "transactional",
+    "informational",
+    "local"
+  ],
+  "clusters": [
+    {
+      "id": "cities",
+      "name": "Mudanças por cidade",
+      "priority": 1,
+      "description": "Páginas locais para pesquisas de mudanças e transporte nas principais cidades e municípios portugueses."
+    },
+    {
+      "id": "prices",
+      "name": "Preços e custos",
+      "priority": 2,
+      "description": "Respostas sobre preços, orçamentos e fatores que influenciam o custo de mudanças."
+    },
+    {
+      "id": "planning",
+      "name": "Planeamento da mudança",
+      "priority": 3,
+      "description": "Preparação, escolha de datas, transportadores, acessos e organização do serviço."
+    },
+    {
+      "id": "objects",
+      "name": "Móveis e objetos",
+      "priority": 4,
+      "description": "Preparação e transporte de móveis, eletrodomésticos e objetos especiais."
+    },
+    {
+      "id": "packing",
+      "name": "Embalamento",
+      "priority": 5,
+      "description": "Guias de embalagem e proteção dos bens antes do transporte."
+    },
+    {
+      "id": "rights",
+      "name": "Responsabilidade e segurança",
+      "priority": 6,
+      "description": "Responsabilidade por danos, seguros, verificação de transportadores e documentação."
+    }
+  ],
+  "topics": [
+    {
+      "id": "mudancas-lisboa",
+      "cluster": "cities",
+      "title": "Mudanças em Lisboa",
+      "slug": "mudancas-lisboa",
+      "path": "/mudancas-lisboa/",
+      "primary_query": "mudanças Lisboa",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-mudanca-lisboa",
+        "mudancas-apartamento-lisboa",
+        "como-escolher-empresa-mudancas"
+      ]
+    },
+    {
+      "id": "mudancas-porto",
+      "cluster": "cities",
+      "title": "Mudanças no Porto",
+      "slug": "mudancas-porto",
+      "path": "/mudancas-porto/",
+      "primary_query": "mudanças Porto",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-mudanca-porto",
+        "mudancas-lisboa-porto",
+        "como-escolher-empresa-mudancas"
+      ]
+    },
+    {
+      "id": "mudancas-braga",
+      "cluster": "cities",
+      "title": "Mudanças em Braga",
+      "slug": "mudancas-braga",
+      "path": "/mudancas-braga/",
+      "primary_query": "mudanças Braga",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-uma-mudanca",
+        "como-preparar-uma-mudanca"
+      ]
+    },
+    {
+      "id": "mudancas-coimbra",
+      "cluster": "cities",
+      "title": "Mudanças em Coimbra",
+      "slug": "mudancas-coimbra",
+      "path": "/mudancas-coimbra/",
+      "primary_query": "mudanças Coimbra",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-uma-mudanca",
+        "como-preparar-uma-mudanca"
+      ]
+    },
+    {
+      "id": "mudancas-cascais",
+      "cluster": "cities",
+      "title": "Mudanças em Cascais",
+      "slug": "mudancas-cascais",
+      "path": "/mudancas-cascais/",
+      "primary_query": "mudanças Cascais",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-mudanca-lisboa",
+        "mudancas-lisboa-cascais"
+      ]
+    },
+    {
+      "id": "mudancas-sintra",
+      "cluster": "cities",
+      "title": "Mudanças em Sintra",
+      "slug": "mudancas-sintra",
+      "path": "/mudancas-sintra/",
+      "primary_query": "mudanças Sintra",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-mudanca-lisboa",
+        "como-preparar-uma-mudanca"
+      ]
+    },
+    {
+      "id": "mudancas-oeiras",
+      "cluster": "cities",
+      "title": "Mudanças em Oeiras",
+      "slug": "mudancas-oeiras",
+      "path": "/mudancas-oeiras/",
+      "primary_query": "mudanças Oeiras",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-mudanca-lisboa",
+        "mudancas-cascais"
+      ]
+    },
+    {
+      "id": "mudancas-almada",
+      "cluster": "cities",
+      "title": "Mudanças em Almada",
+      "slug": "mudancas-almada",
+      "path": "/mudancas-almada/",
+      "primary_query": "mudanças Almada",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-mudanca-lisboa",
+        "como-preparar-uma-mudanca"
+      ]
+    },
+    {
+      "id": "mudancas-amadora",
+      "cluster": "cities",
+      "title": "Mudanças na Amadora",
+      "slug": "mudancas-amadora",
+      "path": "/guias/cidades/mudancas-amadora/",
+      "primary_query": "mudanças Amadora",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-lisboa",
+        "quanto-custa-mudanca-lisboa"
+      ]
+    },
+    {
+      "id": "mudancas-loures",
+      "cluster": "cities",
+      "title": "Mudanças em Loures",
+      "slug": "mudancas-loures",
+      "path": "/guias/cidades/mudancas-loures/",
+      "primary_query": "mudanças Loures",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-lisboa",
+        "quanto-custa-mudanca-lisboa"
+      ]
+    },
+    {
+      "id": "mudancas-odivelas",
+      "cluster": "cities",
+      "title": "Mudanças em Odivelas",
+      "slug": "mudancas-odivelas",
+      "path": "/guias/cidades/mudancas-odivelas/",
+      "primary_query": "mudanças Odivelas",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-lisboa",
+        "quanto-custa-mudanca-lisboa"
+      ]
+    },
+    {
+      "id": "mudancas-vila-nova-gaia",
+      "cluster": "cities",
+      "title": "Mudanças em Vila Nova de Gaia",
+      "slug": "mudancas-vila-nova-gaia",
+      "path": "/guias/cidades/mudancas-vila-nova-gaia/",
+      "primary_query": "mudanças Vila Nova de Gaia",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-porto",
+        "quanto-custa-mudanca-porto"
+      ]
+    },
+    {
+      "id": "mudancas-matosinhos",
+      "cluster": "cities",
+      "title": "Mudanças em Matosinhos",
+      "slug": "mudancas-matosinhos",
+      "path": "/guias/cidades/mudancas-matosinhos/",
+      "primary_query": "mudanças Matosinhos",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-porto",
+        "quanto-custa-mudanca-porto"
+      ]
+    },
+    {
+      "id": "mudancas-aveiro",
+      "cluster": "cities",
+      "title": "Mudanças em Aveiro",
+      "slug": "mudancas-aveiro",
+      "path": "/guias/cidades/mudancas-aveiro/",
+      "primary_query": "mudanças Aveiro",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-uma-mudanca",
+        "como-preparar-uma-mudanca"
+      ]
+    },
+    {
+      "id": "mudancas-leiria",
+      "cluster": "cities",
+      "title": "Mudanças em Leiria",
+      "slug": "mudancas-leiria",
+      "path": "/guias/cidades/mudancas-leiria/",
+      "primary_query": "mudanças Leiria",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-uma-mudanca",
+        "como-preparar-uma-mudanca"
+      ]
+    },
+    {
+      "id": "mudancas-faro",
+      "cluster": "cities",
+      "title": "Mudanças em Faro",
+      "slug": "mudancas-faro",
+      "path": "/guias/cidades/mudancas-faro/",
+      "primary_query": "mudanças Faro",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-uma-mudanca",
+        "mudancas-lisboa-algarve"
+      ]
+    },
+    {
+      "id": "mudancas-albufeira",
+      "cluster": "cities",
+      "title": "Mudanças em Albufeira",
+      "slug": "mudancas-albufeira",
+      "path": "/guias/cidades/mudancas-albufeira/",
+      "primary_query": "mudanças Albufeira",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-faro",
+        "quanto-custa-uma-mudanca"
+      ]
+    },
+    {
+      "id": "mudancas-portimao",
+      "cluster": "cities",
+      "title": "Mudanças em Portimão",
+      "slug": "mudancas-portimao",
+      "path": "/guias/cidades/mudancas-portimao/",
+      "primary_query": "mudanças Portimão",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-faro",
+        "quanto-custa-uma-mudanca"
+      ]
+    },
+    {
+      "id": "mudancas-evora",
+      "cluster": "cities",
+      "title": "Mudanças em Évora",
+      "slug": "mudancas-evora",
+      "path": "/guias/cidades/mudancas-evora/",
+      "primary_query": "mudanças Évora",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-uma-mudanca",
+        "como-preparar-uma-mudanca"
+      ]
+    },
+    {
+      "id": "mudancas-setubal",
+      "cluster": "cities",
+      "title": "Mudanças em Setúbal",
+      "slug": "mudancas-setubal",
+      "path": "/guias/cidades/mudancas-setubal/",
+      "primary_query": "mudanças Setúbal",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-almada",
+        "quanto-custa-uma-mudanca"
+      ]
+    },
+    {
+      "id": "quanto-custa-uma-mudanca",
+      "cluster": "prices",
+      "title": "Quanto custa uma mudança em Portugal?",
+      "slug": "quanto-custa-uma-mudanca",
+      "path": "/guias/precos/quanto-custa-uma-mudanca/",
+      "primary_query": "quanto custa uma mudança",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "fatores-preco-mudanca",
+        "como-pedir-orcamento-mudanca",
+        "como-reduzir-custo-mudanca"
+      ]
+    },
+    {
+      "id": "quanto-custa-mudanca-lisboa",
+      "cluster": "prices",
+      "title": "Quanto custa uma mudança em Lisboa?",
+      "slug": "quanto-custa-mudanca-lisboa",
+      "path": "/guias/precos/quanto-custa-mudanca-lisboa/",
+      "primary_query": "quanto custa mudança Lisboa",
+      "intent": [
+        "local",
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-lisboa",
+        "fatores-preco-mudanca",
+        "como-pedir-orcamento-mudanca"
+      ]
+    },
+    {
+      "id": "quanto-custa-mudanca-porto",
+      "cluster": "prices",
+      "title": "Quanto custa uma mudança no Porto?",
+      "slug": "quanto-custa-mudanca-porto",
+      "path": "/guias/precos/quanto-custa-mudanca-porto/",
+      "primary_query": "quanto custa mudança Porto",
+      "intent": [
+        "local",
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-porto",
+        "fatores-preco-mudanca",
+        "como-pedir-orcamento-mudanca"
+      ]
+    },
+    {
+      "id": "fatores-preco-mudanca",
+      "cluster": "prices",
+      "title": "O que influencia o preço de uma mudança?",
+      "slug": "fatores-preco-mudanca",
+      "path": "/guias/precos/fatores-preco-mudanca/",
+      "primary_query": "o que influencia preço mudança",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-uma-mudanca",
+        "como-reduzir-custo-mudanca"
+      ]
+    },
+    {
+      "id": "como-pedir-orcamento-mudanca",
+      "cluster": "prices",
+      "title": "Como pedir um orçamento de mudança",
+      "slug": "como-pedir-orcamento-mudanca",
+      "path": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "primary_query": "orçamento mudança",
+      "intent": [
+        "informational",
+        "commercial",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-uma-mudanca",
+        "como-escolher-empresa-mudancas"
+      ]
+    },
+    {
+      "id": "como-reduzir-custo-mudanca",
+      "cluster": "prices",
+      "title": "Como reduzir o custo de uma mudança",
+      "slug": "como-reduzir-custo-mudanca",
+      "path": "/guias/precos/como-reduzir-custo-mudanca/",
+      "primary_query": "como poupar numa mudança",
+      "intent": [
+        "informational"
+      ],
+      "priority": 2,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-uma-mudanca",
+        "quando-e-mais-barato-mudar"
+      ]
+    },
+    {
+      "id": "como-preparar-uma-mudanca",
+      "cluster": "planning",
+      "title": "Como preparar uma mudança",
+      "slug": "como-preparar-uma-mudanca",
+      "path": "/guias/planeamento/como-preparar-uma-mudanca/",
+      "primary_query": "como preparar uma mudança",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "checklist-mudanca",
+        "quando-reservar-transportador",
+        "como-embalar-caixas"
+      ]
+    },
+    {
+      "id": "checklist-mudanca",
+      "cluster": "planning",
+      "title": "Checklist completa para uma mudança",
+      "slug": "checklist-mudanca",
+      "path": "/guias/planeamento/checklist-mudanca/",
+      "primary_query": "checklist mudança",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "como-preparar-uma-mudanca",
+        "como-embalar-caixas"
+      ]
+    },
+    {
+      "id": "quando-reservar-transportador",
+      "cluster": "planning",
+      "title": "Com quanta antecedência reservar um transportador?",
+      "slug": "quando-reservar-transportador",
+      "path": "/guias/planeamento/quando-reservar-transportador/",
+      "primary_query": "quando reservar transportador mudança",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "como-preparar-uma-mudanca",
+        "quando-e-mais-barato-mudar"
+      ]
+    },
+    {
+      "id": "quando-e-mais-barato-mudar",
+      "cluster": "planning",
+      "title": "Quando é mais barato fazer uma mudança?",
+      "slug": "quando-e-mais-barato-mudar",
+      "path": "/guias/planeamento/quando-e-mais-barato-mudar/",
+      "primary_query": "quando é mais barato fazer mudança",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "quanto-custa-uma-mudanca",
+        "como-reduzir-custo-mudanca"
+      ]
+    },
+    {
+      "id": "como-escolher-empresa-mudancas",
+      "cluster": "planning",
+      "title": "Como escolher uma empresa de mudanças",
+      "slug": "como-escolher-empresa-mudancas",
+      "path": "/guias/planeamento/como-escolher-empresa-mudancas/",
+      "primary_query": "como escolher empresa de mudanças",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "como-verificar-transportador",
+        "como-pedir-orcamento-mudanca"
+      ]
+    },
+    {
+      "id": "elevador-na-mudanca",
+      "cluster": "planning",
+      "title": "Como o elevador e os andares afetam uma mudança",
+      "slug": "elevador-na-mudanca",
+      "path": "/guias/planeamento/elevador-andares-mudanca/",
+      "primary_query": "elevador mudança preço",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "fatores-preco-mudanca",
+        "como-pedir-orcamento-mudanca"
+      ]
+    },
+    {
+      "id": "transportar-frigorifico",
+      "cluster": "objects",
+      "title": "Como transportar um frigorífico",
+      "slug": "como-transportar-frigorifico",
+      "path": "/guias/objetos/como-transportar-frigorifico/",
+      "primary_query": "como transportar frigorífico",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "transporte-frigorifico-lisboa",
+        "preparar-frigorifico-transporte"
+      ]
+    },
+    {
+      "id": "preparar-frigorifico-transporte",
+      "cluster": "objects",
+      "title": "Como preparar um frigorífico para transporte",
+      "slug": "preparar-frigorifico-transporte",
+      "path": "/guias/objetos/preparar-frigorifico-transporte/",
+      "primary_query": "preparar frigorífico para transporte",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "transportar-frigorifico",
+        "transporte-frigorifico-lisboa"
+      ]
+    },
+    {
+      "id": "transportar-maquina-lavar",
+      "cluster": "objects",
+      "title": "Como transportar uma máquina de lavar",
+      "slug": "como-transportar-maquina-lavar",
+      "path": "/guias/objetos/como-transportar-maquina-lavar/",
+      "primary_query": "como transportar máquina de lavar",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "transporte-maquina-lavar-lisboa",
+        "como-embalar-eletrodomesticos"
+      ]
+    },
+    {
+      "id": "transportar-sofa",
+      "cluster": "objects",
+      "title": "Como transportar um sofá",
+      "slug": "como-transportar-sofa",
+      "path": "/guias/objetos/como-transportar-sofa/",
+      "primary_query": "como transportar sofá",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "transporte-sofa-lisboa",
+        "medir-moveis-antes-mudanca"
+      ]
+    },
+    {
+      "id": "transportar-piano",
+      "cluster": "objects",
+      "title": "Como transportar um piano",
+      "slug": "como-transportar-piano",
+      "path": "/guias/objetos/como-transportar-piano/",
+      "primary_query": "como transportar piano",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "transporte-piano-lisboa",
+        "seguro-transporte-moveis"
+      ]
+    },
+    {
+      "id": "medir-moveis-antes-mudanca",
+      "cluster": "objects",
+      "title": "Como medir móveis antes de uma mudança",
+      "slug": "medir-moveis-antes-mudanca",
+      "path": "/guias/objetos/medir-moveis-antes-mudanca/",
+      "primary_query": "como medir móveis para mudança",
+      "intent": [
+        "informational"
+      ],
+      "priority": 2,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "transportar-sofa",
+        "elevador-na-mudanca"
+      ]
+    },
+    {
+      "id": "como-embalar-caixas",
+      "cluster": "packing",
+      "title": "Como embalar caixas para uma mudança",
+      "slug": "como-embalar-caixas",
+      "path": "/guias/embalamento/como-embalar-caixas/",
+      "primary_query": "como embalar caixas para mudança",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "checklist-mudanca",
+        "transporte-caixas-lisboa"
+      ]
+    },
+    {
+      "id": "como-embalar-louca",
+      "cluster": "packing",
+      "title": "Como embalar loiça e copos para uma mudança",
+      "slug": "como-embalar-louca",
+      "path": "/guias/embalamento/como-embalar-louca/",
+      "primary_query": "como embalar loiça para mudança",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "como-embalar-caixas",
+        "como-preparar-uma-mudanca"
+      ]
+    },
+    {
+      "id": "como-embalar-televisao",
+      "cluster": "packing",
+      "title": "Como embalar uma televisão para transporte",
+      "slug": "como-embalar-televisao",
+      "path": "/guias/embalamento/como-embalar-televisao/",
+      "primary_query": "como embalar televisão para transporte",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "como-embalar-caixas",
+        "seguro-transporte-moveis"
+      ]
+    },
+    {
+      "id": "como-embalar-eletrodomesticos",
+      "cluster": "packing",
+      "title": "Como embalar eletrodomésticos para transporte",
+      "slug": "como-embalar-eletrodomesticos",
+      "path": "/guias/embalamento/como-embalar-eletrodomesticos/",
+      "primary_query": "como embalar eletrodomésticos mudança",
+      "intent": [
+        "informational"
+      ],
+      "priority": 2,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "transportar-frigorifico",
+        "transportar-maquina-lavar"
+      ]
+    },
+    {
+      "id": "responsabilidade-danos-mudanca",
+      "cluster": "rights",
+      "title": "Quem é responsável por danos durante uma mudança?",
+      "slug": "responsabilidade-danos-mudanca",
+      "path": "/guias/seguranca/responsabilidade-danos-mudanca/",
+      "primary_query": "quem paga danos mudança",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "seguro-transporte-moveis",
+        "como-verificar-transportador"
+      ]
+    },
+    {
+      "id": "seguro-transporte-moveis",
+      "cluster": "rights",
+      "title": "É necessário seguro para transportar móveis?",
+      "slug": "seguro-transporte-moveis",
+      "path": "/guias/seguranca/seguro-transporte-moveis/",
+      "primary_query": "seguro transporte móveis",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "responsabilidade-danos-mudanca",
+        "transportar-piano"
+      ]
+    },
+    {
+      "id": "como-verificar-transportador",
+      "cluster": "rights",
+      "title": "Como verificar um transportador antes da mudança",
+      "slug": "como-verificar-transportador",
+      "path": "/guias/seguranca/como-verificar-transportador/",
+      "primary_query": "como verificar transportador",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "planned",
+      "parent": "/guias/",
+      "related": [
+        "como-escolher-empresa-mudancas",
+        "responsabilidade-danos-mudanca"
+      ]
+    },
+    {
+      "id": "mudancas-apartamento-lisboa",
+      "cluster": "planning",
+      "title": "Mudanças de apartamento em Lisboa",
+      "slug": "mudancas-apartamento-lisboa",
+      "path": "/mudancas-apartamento-lisboa/",
+      "primary_query": "mudanças apartamento Lisboa",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-lisboa",
+        "quanto-custa-mudanca-lisboa",
+        "como-preparar-uma-mudanca"
+      ]
+    },
+    {
+      "id": "mudancas-lisboa-porto",
+      "cluster": "cities",
+      "title": "Mudanças de Lisboa para o Porto",
+      "slug": "mudancas-lisboa-porto",
+      "path": "/mudancas-lisboa-porto/",
+      "primary_query": "mudanças Lisboa Porto",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-lisboa",
+        "mudancas-porto",
+        "quanto-custa-uma-mudanca"
+      ]
+    },
+    {
+      "id": "mudancas-lisboa-cascais",
+      "cluster": "cities",
+      "title": "Mudanças de Lisboa para Cascais",
+      "slug": "mudancas-lisboa-cascais",
+      "path": "/mudancas-lisboa-cascais/",
+      "primary_query": "mudanças Lisboa Cascais",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-lisboa",
+        "mudancas-cascais",
+        "quanto-custa-mudanca-lisboa"
+      ]
+    },
+    {
+      "id": "mudancas-lisboa-algarve",
+      "cluster": "cities",
+      "title": "Mudanças de Lisboa para o Algarve",
+      "slug": "mudancas-lisboa-algarve",
+      "path": "/mudancas-lisboa-algarve/",
+      "primary_query": "mudanças Lisboa Algarve",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-lisboa",
+        "mudancas-faro",
+        "quanto-custa-uma-mudanca"
+      ]
+    },
+    {
+      "id": "transporte-frigorifico-lisboa",
+      "cluster": "objects",
+      "title": "Transporte de frigorífico em Lisboa",
+      "slug": "transporte-frigorifico-lisboa",
+      "path": "/transporte-frigorifico-lisboa/",
+      "primary_query": "transporte frigorífico Lisboa",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "transportar-frigorifico",
+        "preparar-frigorifico-transporte",
+        "mudancas-lisboa"
+      ]
+    },
+    {
+      "id": "transporte-maquina-lavar-lisboa",
+      "cluster": "objects",
+      "title": "Transporte de máquina de lavar em Lisboa",
+      "slug": "transporte-maquina-lavar-lisboa",
+      "path": "/transporte-maquina-lavar-lisboa/",
+      "primary_query": "transporte máquina de lavar Lisboa",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "transportar-maquina-lavar",
+        "como-embalar-eletrodomesticos",
+        "mudancas-lisboa"
+      ]
+    },
+    {
+      "id": "transporte-sofa-lisboa",
+      "cluster": "objects",
+      "title": "Transporte de sofá em Lisboa",
+      "slug": "transporte-sofa-lisboa",
+      "path": "/transporte-sofa-lisboa/",
+      "primary_query": "transporte sofá Lisboa",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "transportar-sofa",
+        "medir-moveis-antes-mudanca",
+        "mudancas-lisboa"
+      ]
+    },
+    {
+      "id": "transporte-piano-lisboa",
+      "cluster": "objects",
+      "title": "Transporte de piano em Lisboa",
+      "slug": "transporte-piano-lisboa",
+      "path": "/transporte-piano-lisboa/",
+      "primary_query": "transporte piano Lisboa",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "transportar-piano",
+        "seguro-transporte-moveis",
+        "mudancas-lisboa"
+      ]
+    },
+    {
+      "id": "transporte-caixas-lisboa",
+      "cluster": "packing",
+      "title": "Transporte de caixas em Lisboa",
+      "slug": "transporte-caixas-lisboa",
+      "path": "/transporte-caixas-lisboa/",
+      "primary_query": "transporte caixas Lisboa",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "como-embalar-caixas",
+        "checklist-mudanca",
+        "mudancas-lisboa"
+      ]
+    }
+  ]
+}
