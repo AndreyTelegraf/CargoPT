@@ -37,7 +37,13 @@ def main() -> None:
     assert RENDERER_PATH.is_file()
     assert ARTICLE_PATH.is_file()
     assert REGISTRY_PATH.is_file()
-    assert not OUTPUT_PATH.exists(), OUTPUT_PATH
+
+    output_existed_before = OUTPUT_PATH.exists()
+    output_bytes_before = (
+        OUTPUT_PATH.read_bytes()
+        if output_existed_before
+        else None
+    )
 
     article = json.loads(
         ARTICLE_PATH.read_text(encoding="utf-8")
@@ -157,7 +163,11 @@ def main() -> None:
 
     assert "GUIDE_RENDER_CHECK_OK" in result.stdout
     assert article["id"] in result.stdout
-    assert not OUTPUT_PATH.exists(), OUTPUT_PATH
+    assert OUTPUT_PATH.exists() is output_existed_before
+
+    if output_existed_before:
+        assert OUTPUT_PATH.read_bytes() == output_bytes_before
+
     assert rendered.endswith("</html>\n")
 
     print(

@@ -81,7 +81,7 @@ def main() -> None:
                 related_id,
             )
 
-        if topic["status"] == "existing_landing":
+        if topic["status"] in {"existing_landing", "published"}:
             relative_path = topic["path"].strip("/")
             expected_file = static_root / relative_path / "index.html"
             assert expected_file.is_file(), (

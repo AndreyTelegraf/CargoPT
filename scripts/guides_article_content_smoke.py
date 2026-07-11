@@ -69,7 +69,6 @@ def main() -> None:
     assert article_path.is_file()
     assert registry_path.is_file()
     assert sitemap_path.is_file()
-    assert not generated_page.exists(), generated_page
 
     article = json.loads(article_path.read_text(encoding="utf-8"))
     registry = json.loads(registry_path.read_text(encoding="utf-8"))
@@ -85,7 +84,7 @@ def main() -> None:
         if item["id"] == article["id"]
     )
 
-    assert topic["status"] == "planned"
+    assert topic["status"] in {"planned", "draft", "published"}
     assert article["cluster"] == topic["cluster"]
     assert article["path"] == topic["path"]
     assert article["title"] == topic["title"]
@@ -207,7 +206,13 @@ def main() -> None:
         registry["base_url"].rstrip("/")
         + article["path"]
     )
-    assert public_url not in sitemap
+
+    if topic["status"] == "published":
+        assert generated_page.is_file(), generated_page
+        assert public_url in sitemap, public_url
+    else:
+        assert not generated_page.exists(), generated_page
+        assert public_url not in sitemap, public_url
 
     assert article_path.read_text(
         encoding="utf-8"
