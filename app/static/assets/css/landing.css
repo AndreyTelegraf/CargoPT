@@ -282,17 +282,17 @@ details p {
 
 .hero-v2 .eyebrow {
   color: var(--brand-blue);
-  font-size: 15px;
-  letter-spacing: 0.14em;
+  font-size: var(--font-size-hero-eyebrow);
+  letter-spacing: var(--letter-spacing-hero-eyebrow);
 }
 
 .hero-v2 h1 {
   max-width: 720px;
   margin-bottom: 22px;
   color: var(--brand);
-  font-size: clamp(58px, 5.7vw, 86px);
-  line-height: 0.97;
-  letter-spacing: -0.075em;
+  font-size: var(--font-size-hero-title);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-hero-title);
 }
 
 .hero-v2 h1 span {
@@ -304,8 +304,8 @@ details p {
   max-width: 620px;
   margin-bottom: 30px;
   color: var(--muted);
-  font-size: clamp(19px, 1.6vw, 22px);
-  line-height: 1.45;
+  font-size: var(--font-size-hero-copy);
+  line-height: var(--line-height-hero-copy);
 }
 
 .product-explainer[hidden] {
@@ -437,11 +437,11 @@ details p {
   }
 
   .hero-v2 h1 {
-    font-size: clamp(40px, 12vw, 58px);
+    font-size: var(--font-size-hero-title-mobile);
   }
 
   .hero-v2 .hero-text {
-    font-size: 17px;
+    font-size: var(--font-size-hero-copy-mobile);
     margin-bottom: 20px;
   }
 

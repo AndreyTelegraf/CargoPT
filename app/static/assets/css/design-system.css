@@ -156,6 +156,11 @@
   --font-size-meta: 14px;
   --font-size-body-large: 19px;
   --font-size-card-title: 22px;
+  --font-size-hero-eyebrow: 14px;
+  --font-size-hero-title: clamp(58px, 5.7vw, 86px);
+  --font-size-hero-title-mobile: clamp(40px, 12vw, 58px);
+  --font-size-hero-copy: clamp(19px, 1.6vw, 22px);
+  --font-size-hero-copy-mobile: 17px;
   --font-size-status-title: clamp(28px, 4vw, 38px);
   --font-size-status-text: 16px;
   --font-size-offer-price: 20px;
@@ -186,6 +191,8 @@
   --letter-spacing-logo: -0.055em;
   --letter-spacing-heading: -0.055em;
   --letter-spacing-heading-tight: -0.07em;
+  --letter-spacing-hero-title: -0.065em;
+  --letter-spacing-hero-eyebrow: 0.11em;
   --letter-spacing-card-title: -0.035em;
   --letter-spacing-eyebrow: 0.095em;
   --letter-spacing-label: 0.08em;
