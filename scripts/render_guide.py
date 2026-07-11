@@ -308,6 +308,7 @@ def render_guide(
   <link rel="stylesheet" href="/assets/css/design-system.css?v=tokens-v1">
   <link rel="stylesheet" href="/assets/css/components.css?v=components-v1">
   <link rel="stylesheet" href="/assets/css/landing.css?v=design-unified-v1">
+  <link rel="stylesheet" href="/assets/css/guides.css?v=guides-v1">
 </head>
 <body data-locale="pt" class="guide-page">
   <header class="site-header">

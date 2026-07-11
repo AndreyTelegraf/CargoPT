@@ -1,0 +1,252 @@
+/* CargoPT long-form guide layout. Scoped to generated guide pages. */
+
+.guide-page main {
+  padding-bottom: var(--space-7);
+}
+
+.guide-page .guide-content {
+  width: min(780px, 100%);
+}
+
+.guide-page .guide-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding-top: var(--space-5);
+  padding-bottom: 0;
+  color: var(--muted);
+  font-size: var(--font-size-form-note);
+}
+
+.guide-page .guide-breadcrumb a {
+  color: var(--primary);
+  font-weight: var(--font-weight-meta);
+}
+
+.guide-page .guide-breadcrumb a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.guide-page .guide-breadcrumb [aria-current="page"] {
+  overflow: hidden;
+  max-width: min(560px, 100%);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.guide-page .guide-hero {
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
+}
+
+.guide-page .guide-hero h1 {
+  max-width: 900px;
+  margin-bottom: var(--space-5);
+  font-size: clamp(44px, 6vw, 72px);
+  line-height: var(--line-height-heading);
+}
+
+.guide-page .guide-hero .hero-text {
+  max-width: 760px;
+  margin-bottom: var(--space-4);
+  line-height: var(--line-height-hero-copy);
+}
+
+.guide-page .guide-meta {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: var(--font-size-meta);
+  font-weight: var(--font-weight-meta);
+}
+
+.guide-page .guide-section {
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
+}
+
+.guide-page .guide-section .section-heading {
+  margin-bottom: var(--space-5);
+}
+
+.guide-page .guide-section h2 {
+  max-width: 760px;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.05;
+}
+
+.guide-page .guide-content > p {
+  max-width: 760px;
+  margin-bottom: var(--space-4);
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.guide-page .guide-content > p:last-child {
+  margin-bottom: 0;
+}
+
+.guide-page .guide-direct-answer .guide-content {
+  padding: var(--space-6);
+  border: var(--surface-border);
+  border-radius: var(--surface-radius-card);
+  background: var(--surface-soft-bg);
+  box-shadow: var(--surface-shadow-subtle);
+}
+
+.guide-page .guide-direct-answer p:last-child {
+  font-size: var(--font-size-body-large);
+  line-height: 1.6;
+}
+
+.guide-page .guide-key-points,
+.guide-page .guide-checklist {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guide-page .guide-key-points li,
+.guide-page .guide-checklist li {
+  position: relative;
+  padding: var(--space-4) var(--space-4) var(--space-4) 46px;
+  border: var(--surface-border);
+  border-radius: var(--radius-md);
+  background: var(--surface-panel-bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.guide-page .guide-key-points li::before,
+.guide-page .guide-checklist li::before {
+  content: "✓";
+  position: absolute;
+  top: 15px;
+  left: 16px;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-pill);
+  background: var(--primary-fill);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: var(--font-weight-heavy);
+}
+
+.guide-page .guide-item-grid {
+  margin-top: var(--space-5);
+}
+
+.guide-page .guide-item-card {
+  box-shadow: var(--surface-shadow-subtle);
+}
+
+.guide-page .guide-item-card p {
+  margin-bottom: 0;
+  line-height: 1.55;
+}
+
+.guide-page .guide-mid-cta,
+.guide-page .guide-final-cta {
+  width: min(980px, calc(100% - 48px));
+  margin-top: var(--space-7);
+  margin-bottom: var(--space-7);
+}
+
+.guide-page .guide-mid-cta {
+  background: var(--surface-soft-bg);
+  box-shadow: var(--surface-shadow-subtle);
+}
+
+.guide-page .guide-related-links a {
+  transition:
+    color var(--motion-fast),
+    border-color var(--motion-fast),
+    background var(--motion-fast);
+}
+
+.guide-page .guide-related-links a:focus-visible {
+  outline: 2px solid var(--primary-border-strong);
+  outline-offset: 2px;
+}
+
+.guide-page .faq details {
+  box-shadow: var(--surface-shadow-subtle);
+}
+
+.guide-page .faq summary {
+  line-height: 1.4;
+}
+
+.guide-page .faq details p {
+  line-height: 1.6;
+}
+
+@media (max-width: 920px) {
+  .guide-page .guide-item-grid.cards.three {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .guide-page .guide-breadcrumb {
+    gap: var(--space-1) var(--space-2);
+    padding-top: var(--space-4);
+  }
+
+  .guide-page .guide-breadcrumb [aria-current="page"] {
+    max-width: 220px;
+  }
+
+  .guide-page .guide-hero {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+  }
+
+  .guide-page .guide-hero h1 {
+    font-size: clamp(38px, 11vw, 52px);
+    line-height: 1;
+  }
+
+  .guide-page .guide-hero .hero-text {
+    font-size: var(--font-size-hero-copy-mobile);
+  }
+
+  .guide-page .guide-section {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+  }
+
+  .guide-page .guide-section h2 {
+    font-size: clamp(28px, 9vw, 38px);
+  }
+
+  .guide-page .guide-content > p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .guide-page .guide-direct-answer .guide-content {
+    padding: var(--space-5);
+  }
+
+  .guide-page .guide-direct-answer p:last-child {
+    font-size: 18px;
+  }
+
+  .guide-page .guide-item-grid.cards.three {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-page .guide-mid-cta,
+  .guide-page .guide-final-cta {
+    width: min(100% - 28px, 1160px);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-6);
+  }
+}

@@ -70,6 +70,7 @@ def main() -> None:
             f'{article["path"]}">'
         ),
         '<meta property="og:type" content="article">',
+        '<link rel="stylesheet" href="/assets/css/guides.css?v=guides-v1">',
         '"@type":"Article"',
         '"@type":"BreadcrumbList"',
         '"@type":"FAQPage"',
