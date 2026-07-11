@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "id": "quanto-custa-uma-mudanca",
+  "locale": "pt-PT",
+  "cluster": "prices",
+  "path": "/guias/precos/quanto-custa-uma-mudanca/",
+  "title": "Quanto custa uma mudança em Portugal?",
+  "meta_title": "Quanto custa uma mudança em Portugal? — CargoPT",
+  "meta_description": "Saiba quais fatores influenciam o preço de uma mudança em Portugal, o que pode estar incluído e como pedir propostas comparáveis.",
+  "primary_query": "quanto custa uma mudança",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Preços e custos",
+  "eyebrow": "Preços de mudanças",
+  "hero_description": "Não existe um preço único para todas as mudanças. O valor depende da rota, do volume, dos acessos, do trabalho necessário e dos serviços incluídos.",
+  "date_published": "2026-07-11",
+  "date_modified": "2026-07-11",
+  "review_owner": "CargoPT",
+  "direct_answer": "Não existe um preço fixo para uma mudança em Portugal. Duas mudanças entre os mesmos locais podem ter valores diferentes porque o orçamento depende do volume, do peso e tipo dos objetos, dos andares, do elevador, da distância entre o imóvel e o veículo, do número de ajudantes e dos serviços adicionais. Desmontagem, montagem, embalagem, materiais e equipamento especial também podem alterar a proposta. Para comparar valores de forma útil, todos os transportadores devem receber a mesma descrição do serviço, com origem, destino, lista de objetos, acessos, data e necessidades adicionais.",
+  "key_points": [
+    "Não há um preço universal aplicável a todas as mudanças.",
+    "Volume, rota, acessos e mão de obra são fatores centrais.",
+    "Serviços adicionais devem ser identificados antes de comparar propostas.",
+    "Propostas só são comparáveis quando descrevem exatamente o mesmo serviço.",
+    "Fotografias e informações completas reduzem dúvidas no orçamento."
+  ],
+  "sections": [
+    {
+      "id": "fatores-preco",
+      "heading": "O que influencia o preço de uma mudança?",
+      "paragraphs": [
+        "O orçamento resulta da combinação entre deslocação, capacidade necessária, tempo de trabalho e dificuldade de acesso. Uma lista curta de objetos leves num rés do chão não exige os mesmos meios que uma mudança completa num andar sem elevador.",
+        "Também importa saber se o veículo pode parar perto da entrada. Uma distância longa entre o imóvel e a zona de carga aumenta o percurso feito pelos ajudantes e pode prolongar o serviço."
+      ],
+      "items": [
+        {
+          "title": "Rota e distância",
+          "text": "A origem, o destino e o percurso necessário influenciam o tempo de deslocação e a utilização do veículo."
+        },
+        {
+          "title": "Quantidade e volume",
+          "text": "Mais objetos podem exigir um veículo maior, mais viagens ou mais tempo de carga e descarga."
+        },
+        {
+          "title": "Peso e complexidade",
+          "text": "Pianos, eletrodomésticos, móveis grandes e objetos frágeis podem exigir mais pessoas, proteção ou equipamento."
+        },
+        {
+          "title": "Andares e acessos",
+          "text": "Escadas, elevadores pequenos, corredores estreitos e distâncias até ao veículo alteram a dificuldade do trabalho."
+        },
+        {
+          "title": "Número de ajudantes",
+          "text": "A quantidade de pessoas necessária depende do volume, do peso dos objetos e das condições de acesso."
+        },
+        {
+          "title": "Data e flexibilidade",
+          "text": "A disponibilidade para ajustar dia ou horário pode facilitar a organização do transporte, mas não garante um valor específico."
+        }
+      ]
+    },
+    {
+      "id": "incluido-separado",
+      "heading": "O que pode estar incluído ou ser cobrado separadamente?",
+      "paragraphs": [
+        "Uma proposta deve indicar claramente o âmbito do serviço. O transporte pode incluir apenas veículo e motorista ou também carga, descarga e ajudantes. Não se deve assumir que desmontagem, embalagem ou materiais estão incluídos."
+      ],
+      "items": [
+        {
+          "title": "Carga e descarga",
+          "text": "Confirme quem transporta os objetos entre o imóvel e o veículo."
+        },
+        {
+          "title": "Desmontagem e montagem",
+          "text": "Indique previamente quais móveis precisam deste serviço."
+        },
+        {
+          "title": "Embalagem e proteção",
+          "text": "Confirme se o transportador fornece caixas, mantas, película ou outros materiais."
+        },
+        {
+          "title": "Equipamento especial",
+          "text": "Elevadores exteriores, plataformas, gruas ou outros meios devem aparecer de forma explícita na proposta."
+        },
+        {
+          "title": "Espera e alterações",
+          "text": "Pergunte como são tratadas esperas, mudanças de horário ou objetos adicionados depois do orçamento."
+        }
+      ]
+    },
+    {
+      "id": "comparar-propostas",
+      "heading": "Como comparar propostas de mudança",
+      "paragraphs": [
+        "O preço isolado não permite perceber se duas propostas cobrem o mesmo trabalho. Antes de escolher, compare o veículo previsto, o número de ajudantes, os serviços incluídos, as condições de acesso consideradas e eventuais custos adicionais.",
+        "A comparação torna-se mais fiável quando a descrição enviada é igual para todos. Caso uma proposta tenha sido calculada sem informação sobre andares, elevador ou objetos pesados, o valor pode não representar o serviço completo."
+      ],
+      "items": [
+        {
+          "title": "Mesmo inventário",
+          "text": "Envie a mesma lista de objetos a todos os transportadores."
+        },
+        {
+          "title": "Mesmos acessos",
+          "text": "Indique andares, elevadores, escadas e distância até à zona de carga."
+        },
+        {
+          "title": "Mesmo âmbito",
+          "text": "Confirme se embalagem, desmontagem, montagem e ajudantes estão incluídos."
+        },
+        {
+          "title": "Condições por escrito",
+          "text": "Guarde a proposta e confirme por escrito os serviços acordados."
+        }
+      ]
+    },
+    {
+      "id": "reduzir-custo",
+      "heading": "Como reduzir custos evitáveis",
+      "paragraphs": [
+        "Reduzir o custo não significa omitir informação importante. Uma descrição incompleta pode originar propostas difíceis de comparar ou alterações quando o transportador encontra condições diferentes no local."
+      ],
+      "items": [
+        {
+          "title": "Separar o que não será transportado",
+          "text": "Evite incluir objetos que serão vendidos, doados ou eliminados."
+        },
+        {
+          "title": "Preparar caixas com antecedência",
+          "text": "Quando a embalagem não faz parte do serviço, deixe os objetos prontos para reduzir atrasos."
+        },
+        {
+          "title": "Descrever os acessos corretamente",
+          "text": "Informação exata permite escolher os meios adequados antes da mudança."
+        },
+        {
+          "title": "Manter alguma flexibilidade",
+          "text": "Indique datas alternativas quando isso for possível, sem assumir que a flexibilidade garante um preço menor."
+        }
+      ]
+    },
+    {
+      "id": "informacao-orcamento",
+      "heading": "Que informação deve fornecer para receber propostas?",
+      "paragraphs": [
+        "Quanto mais concreta for a descrição, menor será a necessidade de perguntas adicionais. Fotografias são particularmente úteis para móveis grandes, objetos especiais e acessos difíceis."
+      ],
+      "checklist": [
+        "Morada ou localização exata de recolha e entrega.",
+        "Data pretendida e eventual flexibilidade.",
+        "Lista dos objetos ou descrição da mudança.",
+        "Dimensões de objetos grandes quando relevantes.",
+        "Estimativa de volume, quando disponível.",
+        "Andar na recolha e na entrega.",
+        "Existência e dimensão aproximada dos elevadores.",
+        "Escadas, corredores estreitos ou outros obstáculos.",
+        "Distância prevista entre a entrada e o veículo.",
+        "Necessidade de ajudantes.",
+        "Necessidade de desmontagem, montagem ou embalagem.",
+        "Fotografias dos objetos e dos acessos quando forem úteis."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "Como a CargoPT ajuda a comparar propostas",
+      "paragraphs": [
+        "A CargoPT é um serviço de pedidos e comparação para mudanças e transporte em Portugal. O cliente descreve o serviço uma vez e o pedido pode ser encaminhado para transportadores independentes adequados às características indicadas.",
+        "Cada transportador define a sua própria proposta. O cliente pode comparar as respostas disponíveis antes de decidir, sem que a CargoPT seja a empresa que executa fisicamente a mudança."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare uma descrição comparável",
+    "text": "Indique a mesma rota, os mesmos objetos e as mesmas condições de acesso para que as propostas correspondam ao mesmo serviço.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "É possível saber o preço sem indicar os objetos?",
+      "answer": "Uma indicação sem inventário tende a ser pouco precisa. Para uma proposta útil, descreva pelo menos os principais objetos, o volume aproximado e as condições de acesso."
+    },
+    {
+      "question": "O preço inclui sempre ajudantes?",
+      "answer": "Não deve assumir que inclui. A proposta deve indicar quantas pessoas participam na carga e descarga e quais tarefas ficam a cargo do cliente."
+    },
+    {
+      "question": "A desmontagem de móveis está incluída?",
+      "answer": "Depende do âmbito proposto pelo transportador. Identifique previamente os móveis que precisam de desmontagem e confirme esse serviço por escrito."
+    },
+    {
+      "question": "O elevador pode alterar a proposta?",
+      "answer": "Sim. A existência, o tamanho e a possibilidade de utilizar o elevador influenciam a forma como os objetos são movimentados."
+    },
+    {
+      "question": "Como evitar alterações no valor no dia da mudança?",
+      "answer": "Forneça informação completa, envie fotografias relevantes e confirme por escrito o inventário, os acessos e os serviços incluídos."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Guias de mudanças e transporte",
+      "href": "/guias/",
+      "type": "parent"
+    },
+    {
+      "title": "Mudanças em Lisboa",
+      "href": "/mudancas-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "Mudanças no Porto",
+      "href": "/mudancas-porto/",
+      "type": "landing"
+    },
+    {
+      "title": "Mudanças de apartamento em Lisboa",
+      "href": "/mudancas-apartamento-lisboa/",
+      "type": "landing"
+    }
+  ],
+  "final_cta": {
+    "heading": "Receba propostas para a sua mudança",
+    "text": "Descreva uma vez a rota, os objetos, os acessos e os serviços necessários. Depois compare as propostas disponíveis antes de decidir.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}
