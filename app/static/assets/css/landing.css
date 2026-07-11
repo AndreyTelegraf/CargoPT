@@ -390,9 +390,13 @@ details p {
   display: none;
 }
 
+.process-carousel {
+  display: none;
+}
+
 @media (max-width: 1180px) {
   .hero-v2 {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     width: min(980px, calc(100% - 44px));
   }
 
@@ -410,7 +414,8 @@ details p {
     order: 2;
   }
 
-  .hero-v2 .product-explainer {
+  .hero-v2 .product-explainer,
+  .hero-v2 .process-carousel {
     order: 3;
     max-width: none;
   }
@@ -445,28 +450,88 @@ details p {
   }
 
   .product-explainer {
+    display: none;
+  }
+
+  .process-carousel {
+    display: block;
+    margin-top: 0;
+  }
+
+  .process-carousel-track {
     display: flex;
-    gap: 12px;
+    gap: 0;
     overflow-x: auto;
     overflow-y: hidden;
-    padding-bottom: 4px;
-    margin-inline: -2px;
+    padding-inline: 2px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
 
-  .product-explainer::-webkit-scrollbar {
+  .process-carousel-track::-webkit-scrollbar {
     display: none;
   }
 
-  .product-explainer .process-card {
-    flex: 0 0 272px;
+  .process-carousel-track .process-card {
+    position: relative;
+    flex: 0 0 min(272px, calc(100vw - 72px));
     scroll-snap-align: start;
   }
 
-  .product-explainer .process-card-wide {
-    flex-basis: 272px;
+  .process-carousel-track .process-card + .process-card {
+    margin-left: -28px;
+  }
+
+  .process-carousel-track .process-card:nth-child(1) {
+    z-index: 4;
+  }
+
+  .process-carousel-track .process-card:nth-child(2) {
+    z-index: 3;
+  }
+
+  .process-carousel-track .process-card:nth-child(3) {
+    z-index: 2;
+  }
+
+  .process-carousel-track .process-card:nth-child(4) {
+    z-index: 1;
+  }
+
+  .process-carousel-track .process-card-wide {
+    flex-basis: min(272px, calc(100vw - 72px));
+  }
+
+  .process-carousel-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  .process-carousel-prev,
+  .process-carousel-next {
+    display: none;
+  }
+
+  .process-carousel-dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  .process-carousel-dots button {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: var(--border);
+  }
+
+  .process-carousel-dots button.is-active {
+    background: var(--brand-blue);
   }
 }
 

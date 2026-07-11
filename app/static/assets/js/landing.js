@@ -390,6 +390,66 @@ form.addEventListener("submit", (event) => {
   submitRequest();
 });
 
+const carousel = document.querySelector(".process-carousel");
+
+if (carousel) {
+  const track = carousel.querySelector(".process-carousel-track");
+  const cards = [...track.querySelectorAll(".process-card")];
+  const prev = carousel.querySelector(".process-carousel-prev");
+  const next = carousel.querySelector(".process-carousel-next");
+  const dots = [...carousel.querySelectorAll(".process-carousel-dots button")];
+
+  let index = 0;
+
+  function update() {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("is-active", i === index);
+    });
+
+    prev.disabled = index === 0;
+    next.disabled = index === cards.length - 1;
+  }
+
+  function go(i) {
+    index = Math.max(0, Math.min(i, cards.length - 1));
+
+    track.scrollTo({
+      left: cards[index].offsetLeft,
+      behavior: "smooth"
+    });
+
+    update();
+  }
+
+  track.addEventListener("scroll", () => {
+    let closest = 0;
+    let distance = Infinity;
+
+    cards.forEach((card, i) => {
+      const d = Math.abs(track.scrollLeft - card.offsetLeft);
+      if (d < distance) {
+        distance = d;
+        closest = i;
+      }
+    });
+
+    if (closest !== index) {
+      index = closest;
+      update();
+    }
+  });
+
+  prev.addEventListener("click", () => go(index - 1));
+  next.addEventListener("click", () => go(index + 1));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => go(i));
+  });
+
+  update();
+}
+
+
 restoreDraft();
 setStep(1);
 renderOpenPedidos();
