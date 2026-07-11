@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from scripts.atomic_write import atomic_write_text
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_REGISTRY_PATH = PROJECT_ROOT / "content/guides/topics.json"
@@ -468,7 +470,7 @@ def main() -> None:
         )
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(rendered, encoding="utf-8")
+    atomic_write_text(output_path, rendered)
 
     print(
         "GUIDE_RENDERED",
