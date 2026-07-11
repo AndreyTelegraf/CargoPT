@@ -133,7 +133,7 @@
   --space-7: 48px;
 
   --layout-gap-sm: var(--space-3);
-  --layout-gap-md: 18px;
+  --layout-gap-md: var(--space-4);
   --layout-gap-lg: var(--space-5);
   --layout-section-margin: var(--space-6);
   --layout-block-margin: 18px;
