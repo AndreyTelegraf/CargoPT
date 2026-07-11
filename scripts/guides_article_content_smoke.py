@@ -21,6 +21,10 @@ REQUIRED_TOP_LEVEL_FIELDS = {
     "date_published",
     "date_modified",
     "review_owner",
+    "direct_answer_heading",
+    "key_points_heading",
+    "faq_heading",
+    "related_links_heading",
     "direct_answer",
     "key_points",
     "sections",
@@ -99,6 +103,17 @@ def main() -> None:
     published = parse_iso_date(article["date_published"])
     modified = parse_iso_date(article["date_modified"])
     assert modified >= published
+
+    heading_fields = (
+        "direct_answer_heading",
+        "key_points_heading",
+        "faq_heading",
+        "related_links_heading",
+    )
+
+    for field in heading_fields:
+        assert isinstance(article[field], str)
+        assert article[field].strip()
 
     direct_answer_words = article["direct_answer"].split()
     assert 60 <= len(direct_answer_words) <= 140, len(

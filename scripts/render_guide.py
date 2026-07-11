@@ -113,7 +113,10 @@ def render_cta(
     )
 
 
-def render_faq(faq_items: list[dict[str, str]]) -> str:
+def render_faq(
+    faq_items: list[dict[str, str]],
+    heading: str,
+) -> str:
     details = "\n".join(
         (
             "        <details>\n"
@@ -129,7 +132,7 @@ def render_faq(faq_items: list[dict[str, str]]) -> str:
         '      <div class="guide-content">\n'
         '        <div class="section-heading">\n'
         '          <p class="eyebrow">Perguntas frequentes</p>\n'
-        "          <h2>Dúvidas sobre preços de mudanças</h2>\n"
+        f"          <h2>{escape_text(heading)}</h2>\n"
         "        </div>\n"
         '        <div class="faq">\n'
         f"{details}\n"
@@ -141,6 +144,7 @@ def render_faq(faq_items: list[dict[str, str]]) -> str:
 
 def render_related_links(
     links: list[dict[str, str]],
+    heading: str,
 ) -> str:
     rendered_links = "\n".join(
         (
@@ -155,7 +159,7 @@ def render_related_links(
         '      <div class="guide-content">\n'
         '        <div class="section-heading">\n'
         '          <p class="eyebrow">Continuar</p>\n'
-        "          <h2>Guias e serviços relacionados</h2>\n"
+        f"          <h2>{escape_text(heading)}</h2>\n"
         "        </div>\n"
         '        <div class="chips guide-related-links">\n'
         f"{rendered_links}\n"
@@ -351,7 +355,7 @@ def render_guide(
       <div class="guide-content">
         <div class="section-heading">
           <p class="eyebrow">Resposta direta</p>
-          <h2>O preço depende do serviço concreto</h2>
+          <h2>{escape_text(article["direct_answer_heading"])}</h2>
         </div>
         <p>{escape_text(article["direct_answer"])}</p>
       </div>
@@ -361,7 +365,7 @@ def render_guide(
       <div class="guide-content">
         <div class="section-heading">
           <p class="eyebrow">Pontos principais</p>
-          <h2>O que deve saber antes de pedir propostas</h2>
+          <h2>{escape_text(article["key_points_heading"])}</h2>
         </div>
         <ul class="guide-key-points">
 {key_points}
@@ -373,9 +377,15 @@ def render_guide(
 
 {render_cta(article["mid_cta"], "final-cta guide-mid-cta")}
 
-{render_faq(article["faq"])}
+{render_faq(
+    article["faq"],
+    article["faq_heading"],
+)}
 
-{render_related_links(article["related_links"])}
+{render_related_links(
+    article["related_links"],
+    article["related_links_heading"],
+)}
 
 {render_cta(article["final_cta"], "final-cta guide-final-cta")}
   </main>
