@@ -395,8 +395,6 @@ const carousel = document.querySelector(".process-carousel");
 if (carousel) {
   const track = carousel.querySelector(".process-carousel-track");
   const cards = [...track.querySelectorAll(".process-card")];
-  const prev = carousel.querySelector(".process-carousel-prev");
-  const next = carousel.querySelector(".process-carousel-next");
   const dots = [...carousel.querySelectorAll(".process-carousel-dots button")];
 
   let index = 0;
@@ -406,8 +404,6 @@ if (carousel) {
       dot.classList.toggle("is-active", i === index);
     });
 
-    prev.disabled = index === 0;
-    next.disabled = index === cards.length - 1;
   }
 
   function go(i) {
@@ -439,8 +435,6 @@ if (carousel) {
     }
   });
 
-  prev.addEventListener("click", () => go(index - 1));
-  next.addEventListener("click", () => go(index + 1));
 
   dots.forEach((dot, i) => {
     dot.addEventListener("click", () => go(i));

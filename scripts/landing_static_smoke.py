@@ -96,6 +96,117 @@ def main() -> None:
             if expected not in response.text:
                 raise SystemExit(f"{path} missing expected content: {expected}")
 
+        carousel_checks = {
+            "/": [
+                "Mostrar cartão 1",
+                "Mostrar cartão 2",
+                "Mostrar cartão 3",
+                "Mostrar cartão 4",
+            ],
+            "/en/": [
+                "Show card 1",
+                "Show card 2",
+                "Show card 3",
+                "Show card 4",
+            ],
+            "/ru/": [
+                "Показать карточку 1",
+                "Показать карточку 2",
+                "Показать карточку 3",
+                "Показать карточку 4",
+            ],
+        }
+
+        mobile_svg = "/assets/hero/process-cards/card_03_varias_propostas_mobile.svg"
+
+        for route, aria_labels in carousel_checks.items():
+            response = client.get(route)
+            if response.status_code != 200:
+                raise SystemExit(
+                    f"{route} carousel check failed: "
+                    f"{response.status_code} {response.text[:200]}"
+                )
+
+            html = response.text
+
+            if html.count('class="process-carousel"') != 1:
+                raise SystemExit(
+                    f"{route} must contain exactly one process carousel"
+                )
+
+            carousel_start = html.index('<div class="process-carousel"')
+            form_start = html.index('<form id="requestForm"', carousel_start)
+            carousel_html = html[carousel_start:form_start]
+
+            if carousel_html.count('<article class="process-card') != 4:
+                raise SystemExit(
+                    f"{route} process carousel must contain exactly four cards"
+                )
+
+            if carousel_html.count('data-slide="') != 4:
+                raise SystemExit(
+                    f"{route} process carousel must contain exactly four dots"
+                )
+
+            if carousel_html.count(mobile_svg) != 1:
+                raise SystemExit(
+                    f"{route} process carousel must contain the mobile third-card SVG"
+                )
+
+            if "process-carousel-prev" in carousel_html:
+                raise SystemExit(
+                    f"{route} process carousel must not contain a previous arrow"
+                )
+
+            if "process-carousel-next" in carousel_html:
+                raise SystemExit(
+                    f"{route} process carousel must not contain a next arrow"
+                )
+
+            for index, aria_label in enumerate(aria_labels):
+                expected_dot = (
+                    f'<button type="button" data-slide="{index}" '
+                    f'aria-label="{aria_label}"></button>'
+                )
+                if carousel_html.count(expected_dot) != 1:
+                    raise SystemExit(
+                        f"{route} missing localized carousel dot: {expected_dot}"
+                    )
+
+        js_response = client.get("/assets/js/landing.js")
+        if js_response.status_code != 200:
+            raise SystemExit(
+                "/assets/js/landing.js carousel check failed: "
+                f"{js_response.status_code} {js_response.text[:200]}"
+            )
+
+        js = js_response.text
+
+        required_js = [
+            'const carousel = document.querySelector(".process-carousel")',
+            'track.addEventListener("scroll"',
+            'dot.addEventListener("click", () => go(i))',
+        ]
+
+        for expected in required_js:
+            if expected not in js:
+                raise SystemExit(
+                    f"/assets/js/landing.js missing carousel behavior: {expected}"
+                )
+
+        forbidden_js = [
+            "process-carousel-prev",
+            "process-carousel-next",
+            "prev.disabled",
+            "next.disabled",
+        ]
+
+        for forbidden in forbidden_js:
+            if forbidden in js:
+                raise SystemExit(
+                    f"/assets/js/landing.js contains stale arrow behavior: {forbidden}"
+                )
+
     print("LANDING_STATIC_SMOKE_OK")
 
 
