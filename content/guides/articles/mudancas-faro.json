@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "id": "mudancas-faro",
+  "locale": "pt-PT",
+  "cluster": "cities",
+  "path": "/guias/cidades/mudancas-faro/",
+  "title": "Mudanças em Faro",
+  "meta_title": "Mudanças em Faro — CargoPT",
+  "meta_description": "Prepare uma mudança em Faro: inventário, acessos, rota, ajudantes e serviços necessários para pedir propostas.",
+  "primary_query": "mudanças Faro",
+  "intent": [
+    "local",
+    "transactional"
+  ],
+  "article_section": "Mudanças por cidade",
+  "eyebrow": "Mudanças em Faro",
+  "hero_description": "Uma mudança em Faro fica mais fácil de organizar quando a carga, os acessos, a rota e os serviços necessários são descritos antes de pedir propostas.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Como preparar uma mudança em Faro",
+  "key_points_heading": "Informação necessária para receber propostas úteis",
+  "faq_heading": "Dúvidas sobre mudanças em Faro",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para organizar uma mudança em Faro, indique os locais de recolha e entrega, a data pretendida, os móveis, eletrodomésticos, caixas e objetos especiais. Informe também os andares, elevadores, escadas, estacionamento e distância entre a entrada e o veículo. Confirme previamente se precisa de ajudantes, desmontagem, montagem, embalagem ou equipamento adicional.",
+  "key_points": [
+    "Indique claramente a recolha, a entrega e a data pretendida.",
+    "Faça uma lista dos móveis, eletrodomésticos, caixas e objetos especiais.",
+    "Descreva andares, elevadores, escadas e condições de estacionamento.",
+    "Confirme o número de ajudantes e os serviços adicionais necessários.",
+    "Compare propostas preparadas com base na mesma descrição."
+  ],
+  "sections": [
+    {
+      "id": "informacao-pedido",
+      "heading": "Que informação incluir num pedido de mudança em Faro?",
+      "paragraphs": [
+        "O transportador precisa de perceber o percurso, a dimensão aproximada da carga e as condições em que o serviço será realizado. Uma descrição vaga normalmente exige perguntas adicionais antes de ser possível preparar uma proposta.",
+        "Não é necessário calcular antecipadamente o peso total. Uma lista organizada dos objetos, acompanhada por fotografias quando existirem peças grandes ou acessos difíceis, costuma ser suficiente para uma primeira avaliação."
+      ],
+      "checklist": [
+        "Morada ou localização da recolha.",
+        "Morada ou localização da entrega.",
+        "Data preferida e possíveis alternativas.",
+        "Lista dos principais objetos.",
+        "Quantidade aproximada de caixas.",
+        "Objetos pesados, frágeis ou de grandes dimensões.",
+        "Andares e existência de elevador.",
+        "Condições de estacionamento e acesso ao imóvel.",
+        "Número de ajudantes necessário.",
+        "Serviços adicionais pretendidos."
+      ]
+    },
+    {
+      "id": "inventario",
+      "heading": "Como descrever a carga",
+      "paragraphs": [
+        "Organize o inventário por divisões ou por categorias. Separe mobiliário, eletrodomésticos, caixas e objetos que exigem cuidados especiais.",
+        "Nos objetos maiores, indique dimensões aproximadas quando forem relevantes. Explique também se os móveis já estão desmontados ou se essa tarefa deverá ser incluída no serviço."
+      ],
+      "items": [
+        {
+          "title": "Mobiliário",
+          "text": "Liste camas, colchões, sofás, mesas, cadeiras, armários, cómodas e estantes."
+        },
+        {
+          "title": "Eletrodomésticos",
+          "text": "Identifique frigorífico, máquina de lavar, televisão e outros equipamentos."
+        },
+        {
+          "title": "Caixas",
+          "text": "Forneça uma estimativa mesmo que a embalagem ainda não esteja concluída."
+        },
+        {
+          "title": "Objetos especiais",
+          "text": "Destaque peças frágeis, pesadas, valiosas ou difíceis de movimentar."
+        }
+      ]
+    },
+    {
+      "id": "acessos",
+      "heading": "Porque são importantes os acessos",
+      "paragraphs": [
+        "Os acessos ajudam a determinar o número de pessoas, o tempo necessário e o equipamento adequado. Um apartamento sem elevador ou uma entrada distante da zona de carga pode alterar significativamente o trabalho.",
+        "Confirme se os objetos maiores passam pelas portas, corredores e escadas. Quando existirem dúvidas, envie fotografias e medidas aproximadas."
+      ],
+      "items": [
+        {
+          "title": "Andares",
+          "text": "Indique o piso na recolha e na entrega, incluindo caves e pisos intermédios."
+        },
+        {
+          "title": "Elevadores",
+          "text": "Confirme se existem, se funcionam e se têm espaço para os principais objetos."
+        },
+        {
+          "title": "Escadas e corredores",
+          "text": "Mencione curvas apertadas, portas pequenas e outros obstáculos."
+        },
+        {
+          "title": "Estacionamento",
+          "text": "Explique onde o veículo poderá parar e a distância até à entrada."
+        }
+      ]
+    },
+    {
+      "id": "servicos",
+      "heading": "Que serviços adicionais pode ser necessário incluir",
+      "paragraphs": [
+        "As propostas podem abranger tarefas diferentes. Confirme se o valor inclui apenas veículo e motorista ou também ajudantes, carga, descarga e proteção dos bens.",
+        "Desmontagem, montagem, embalagem e equipamento especial devem ser indicados antes da data da mudança."
+      ],
+      "items": [
+        {
+          "title": "Ajudantes",
+          "text": "Confirme quantas pessoas participarão na carga e descarga."
+        },
+        {
+          "title": "Desmontagem e montagem",
+          "text": "Identifique os móveis que precisam deste serviço."
+        },
+        {
+          "title": "Embalagem",
+          "text": "Confirme se materiais e preparação dos objetos estão incluídos."
+        },
+        {
+          "title": "Equipamento adicional",
+          "text": "Informe antecipadamente quando possam ser necessárias plataformas ou outros meios."
+        }
+      ]
+    },
+    {
+      "id": "comparar-propostas",
+      "heading": "Como comparar propostas para a mesma mudança",
+      "paragraphs": [
+        "Envie a mesma descrição a todos os transportadores. Dessa forma, as propostas correspondem ao mesmo inventário, aos mesmos acessos e aos mesmos serviços.",
+        "Além do preço, compare o veículo previsto, o número de ajudantes, as tarefas incluídas, a data, o horário e as condições de pagamento."
+      ],
+      "checklist": [
+        "O inventário considerado é o mesmo.",
+        "Os dois locais e respetivos acessos estão identificados.",
+        "O número de ajudantes está indicado.",
+        "Carga e descarga estão incluídas ou atribuídas.",
+        "Os serviços adicionais estão discriminados.",
+        "O valor e as condições estão registados por escrito."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "Como pedir propostas através da CargoPT",
+      "paragraphs": [
+        "Na CargoPT, pode descrever uma mudança em Faro uma única vez. O pedido pode depois ser encaminhado para transportadores adequados às características indicadas.",
+        "Cada transportador apresenta a sua própria proposta. O cliente pode comparar as respostas recebidas antes de escolher."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare o pedido da sua mudança em Faro",
+    "text": "Indique a rota, a carga, os acessos e os serviços necessários para receber propostas comparáveis.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Que informação devo enviar para uma mudança em Faro?",
+      "answer": "Indique recolha, entrega, data, inventário, andares, elevadores, estacionamento e serviços adicionais."
+    },
+    {
+      "question": "É obrigatório conhecer o volume exato?",
+      "answer": "Não. Uma lista dos objetos, uma estimativa das caixas e fotografias permitem uma primeira avaliação."
+    },
+    {
+      "question": "Devo enviar fotografias?",
+      "answer": "São recomendáveis quando existem móveis grandes, objetos pesados, peças frágeis ou acessos difíceis."
+    },
+    {
+      "question": "Como comparar propostas diferentes?",
+      "answer": "Confirme se todas consideram o mesmo inventário, acessos, ajudantes e serviços adicionais."
+    },
+    {
+      "question": "O valor pode mudar depois do pedido?",
+      "answer": "Alterações ao inventário, aos acessos, à data ou aos serviços podem modificar o trabalho necessário. Confirme qualquer alteração antes da mudança."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Quanto custa uma mudança em Portugal?",
+      "href": "/guias/precos/quanto-custa-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Guias de mudanças e transporte",
+      "href": "/guias/",
+      "type": "parent"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Peça propostas para a sua mudança em Faro",
+    "text": "Descreva os locais, os objetos, os acessos e os serviços necessários. Depois compare as propostas disponíveis.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}
