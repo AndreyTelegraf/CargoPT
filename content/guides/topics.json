@@ -533,7 +533,7 @@
         "transactional"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "quanto-custa-uma-mudanca",
