@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "id": "fatores-preco-mudanca",
+  "locale": "pt-PT",
+  "cluster": "prices",
+  "path": "/guias/precos/fatores-preco-mudanca/",
+  "title": "O que influencia o preço de uma mudança?",
+  "meta_title": "O que influencia o preço de uma mudança? — CargoPT",
+  "meta_description": "Conheça os principais fatores que influenciam o preço de uma mudança, desde o volume e os acessos até aos ajudantes e serviços adicionais.",
+  "primary_query": "o que influencia preço mudança",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Preços e custos",
+  "eyebrow": "Fatores de preço",
+  "hero_description": "O valor de uma mudança depende do trabalho necessário para transportar os bens, das condições nos dois locais e dos serviços incluídos na proposta.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "O preço resulta da combinação entre carga, acessos e serviço",
+  "key_points_heading": "Os fatores que mais alteram uma proposta de mudança",
+  "faq_heading": "Dúvidas sobre fatores de preço",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "O preço de uma mudança é influenciado pelo volume e pelo tipo dos objetos, pela distância entre a recolha e a entrega, pelo número de ajudantes, pelo tempo necessário e pelas condições de acesso aos imóveis. Andares sem elevador, corredores estreitos, estacionamento distante, móveis que precisam de ser desmontados e objetos pesados podem aumentar o trabalho. Também devem ser considerados serviços como embalagem, montagem, materiais de proteção e equipamento adicional. Para comparar propostas, descreva as mesmas condições a todos os transportadores e confirme por escrito o que está incluído.",
+  "key_points": [
+    "O volume e o tipo dos objetos determinam o veículo e o espaço necessários.",
+    "A distância e o tempo previsto influenciam a utilização do veículo e da equipa.",
+    "Andares, elevadores, escadas e estacionamento alteram a dificuldade do serviço.",
+    "Ajudantes, desmontagem, montagem e embalagem devem ser identificados na proposta.",
+    "Propostas só são comparáveis quando descrevem o mesmo trabalho."
+  ],
+  "sections": [
+    {
+      "id": "volume-tipo-carga",
+      "heading": "Como o volume e o tipo de carga influenciam o preço?",
+      "paragraphs": [
+        "O volume aproximado ajuda a definir o tipo de veículo e o número de viagens necessários. Uma mudança com poucos volumes pode exigir uma solução diferente de uma habitação completa.",
+        "O tipo dos objetos também é relevante. Peças grandes, frágeis, pesadas ou difíceis de empilhar podem ocupar mais espaço e exigir cuidados adicionais durante a carga e o transporte."
+      ],
+      "items": [
+        {
+          "title": "Quantidade de bens",
+          "text": "Mais caixas, móveis e eletrodomésticos normalmente exigem mais espaço e tempo de trabalho."
+        },
+        {
+          "title": "Dimensões",
+          "text": "Móveis volumosos podem limitar a organização da carga e determinar um veículo maior."
+        },
+        {
+          "title": "Peso",
+          "text": "Objetos pesados podem exigir mais pessoas ou equipamento específico para serem movimentados."
+        },
+        {
+          "title": "Fragilidade",
+          "text": "Peças frágeis podem precisar de proteção, fixação e manuseamento mais cuidadoso."
+        }
+      ]
+    },
+    {
+      "id": "distancia-tempo",
+      "heading": "Que efeito têm a distância e o tempo de trabalho?",
+      "paragraphs": [
+        "A rota entre os dois locais influencia o tempo de utilização do veículo, o combustível e a disponibilidade da equipa. O percurso deve ser considerado juntamente com o tempo necessário para carregar e descarregar.",
+        "Uma deslocação curta pode ainda assim exigir muitas horas quando existem muitos objetos ou acessos difíceis. Por outro lado, um serviço simples pode ter uma distância maior, mas menos trabalho manual."
+      ],
+      "items": [
+        {
+          "title": "Distância da rota",
+          "text": "O percurso entre recolha e entrega afeta o tempo e a utilização do veículo."
+        },
+        {
+          "title": "Duração da carga",
+          "text": "A quantidade de objetos e a organização prévia influenciam o tempo no local de recolha."
+        },
+        {
+          "title": "Duração da descarga",
+          "text": "A distribuição dos objetos no destino também pode prolongar o serviço."
+        }
+      ]
+    },
+    {
+      "id": "acessos-imoveis",
+      "heading": "Porque é que os acessos aos imóveis são importantes?",
+      "paragraphs": [
+        "As condições de acesso determinam quanto trabalho manual será necessário. Deve indicar o andar, a existência de elevador e eventuais obstáculos nos dois locais.",
+        "A distância entre a entrada e o lugar onde o veículo pode parar também deve ser descrita. Um percurso longo feito a pé pode aumentar o tempo de carga e descarga."
+      ],
+      "checklist": [
+        "Andar da recolha e da entrega.",
+        "Existência e dimensão dos elevadores.",
+        "Número de lanços de escadas.",
+        "Portas, corredores ou curvas estreitas.",
+        "Distância entre a entrada e o veículo.",
+        "Restrições de estacionamento ou acesso."
+      ]
+    },
+    {
+      "id": "equipa-servicos",
+      "heading": "Como a equipa e os serviços adicionais alteram a proposta?",
+      "paragraphs": [
+        "Uma proposta pode incluir apenas transporte ou abranger também carga, descarga e outros trabalhos. O número de pessoas deve corresponder ao volume, ao peso dos objetos e às condições dos imóveis.",
+        "Serviços adicionais devem ser combinados antes da mudança. Quando não estão claramente descritos, duas propostas com valores diferentes podem representar trabalhos muito distintos."
+      ],
+      "items": [
+        {
+          "title": "Ajudantes",
+          "text": "O número de pessoas influencia a capacidade de movimentação e a duração do serviço."
+        },
+        {
+          "title": "Desmontagem e montagem",
+          "text": "Móveis que exigem intervenção acrescentam tarefas antes e depois do transporte."
+        },
+        {
+          "title": "Embalagem",
+          "text": "A preparação de caixas e a proteção dos bens podem ser realizadas pelo cliente ou pela equipa."
+        },
+        {
+          "title": "Equipamento",
+          "text": "Plataformas, elevadores exteriores e outros meios devem ser previstos antecipadamente."
+        }
+      ]
+    },
+    {
+      "id": "data-disponibilidade",
+      "heading": "A data e a flexibilidade podem influenciar o serviço?",
+      "paragraphs": [
+        "A disponibilidade dos transportadores varia consoante o dia, o horário, a duração prevista e a antecedência do pedido. Uma data rígida reduz as alternativas possíveis.",
+        "Quando existe flexibilidade, indique datas ou horários alternativos. Isso permite que cada transportador avalie a disponibilidade real antes de apresentar a proposta."
+      ],
+      "checklist": [
+        "Data pretendida para a mudança.",
+        "Horário de início necessário.",
+        "Datas alternativas possíveis.",
+        "Limitações de acesso ao edifício.",
+        "Prazo disponível para concluir o serviço."
+      ]
+    },
+    {
+      "id": "comparar-propostas",
+      "heading": "Como comparar propostas com fatores diferentes?",
+      "paragraphs": [
+        "Antes de comparar o valor final, confirme se todos os transportadores receberam a mesma descrição da carga, dos acessos e dos serviços necessários.",
+        "Verifique o veículo previsto, o número de ajudantes, as tarefas incluídas, os materiais, o equipamento e as condições aplicáveis a alterações no pedido."
+      ],
+      "checklist": [
+        "A mesma lista de objetos foi considerada.",
+        "Os acessos foram descritos nos dois locais.",
+        "O número de ajudantes está identificado.",
+        "Carga e descarga estão incluídas ou excluídas.",
+        "Serviços adicionais estão especificados.",
+        "As condições acordadas estão registadas por escrito."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "Como a CargoPT ajuda a obter propostas comparáveis",
+      "paragraphs": [
+        "Na CargoPT, o cliente descreve a mudança uma vez, incluindo a rota, os objetos, os acessos e os serviços necessários.",
+        "Os transportadores independentes podem apresentar as suas próprias propostas com base nessa descrição comum, permitindo ao cliente comparar o âmbito do serviço antes de escolher."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Descreva todos os fatores da sua mudança",
+    "text": "Indique os objetos, os acessos, a rota e os serviços necessários para receber propostas sobre o mesmo trabalho.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "O volume é o principal fator no preço de uma mudança?",
+      "answer": "É um dos fatores principais, mas deve ser considerado juntamente com a distância, os acessos, o número de ajudantes e os serviços incluídos."
+    },
+    {
+      "question": "Um andar sem elevador pode alterar a proposta?",
+      "answer": "Sim. Escadas e outros acessos difíceis podem aumentar o trabalho manual e o tempo necessário para carregar ou descarregar."
+    },
+    {
+      "question": "A desmontagem de móveis está sempre incluída?",
+      "answer": "Não. Deve indicar previamente quais os móveis que precisam de ser desmontados e confirmar se esse trabalho faz parte da proposta."
+    },
+    {
+      "question": "O estacionamento junto ao imóvel é relevante?",
+      "answer": "Sim. Quando o veículo não pode parar próximo da entrada, os objetos têm de ser transportados manualmente por uma distância maior."
+    },
+    {
+      "question": "Como evitar propostas baseadas em trabalhos diferentes?",
+      "answer": "Envie a mesma descrição a todos os transportadores e confirme o inventário, os acessos, os ajudantes e os serviços incluídos."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Quanto custa uma mudança em Portugal?",
+      "href": "/guias/precos/quanto-custa-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Guias de mudanças e transporte",
+      "href": "/guias/",
+      "type": "parent"
+    },
+    {
+      "title": "Mudanças em Lisboa",
+      "href": "/mudancas-lisboa/",
+      "type": "landing"
+    }
+  ],
+  "final_cta": {
+    "heading": "Receba propostas para a sua mudança",
+    "text": "Descreva a carga, os acessos e os serviços necessários uma vez e compare as propostas disponíveis.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}
