@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "id": "como-preparar-uma-mudanca",
+  "locale": "pt-PT",
+  "cluster": "planning",
+  "path": "/guias/planeamento/como-preparar-uma-mudanca/",
+  "title": "Como preparar uma mudança",
+  "meta_title": "Como preparar uma mudança passo a passo — CargoPT",
+  "meta_description": "Organize a sua mudança: inventário, datas, embalagem, acessos, serviços e informação necessária para pedir propostas.",
+  "primary_query": "como preparar uma mudança",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Planeamento da mudança",
+  "eyebrow": "Preparação da mudança",
+  "hero_description": "Uma mudança bem preparada começa com um inventário realista, uma data possível, acessos verificados e tarefas distribuídas antes do dia do transporte.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Comece pelo inventário, pelos acessos e pela data",
+  "key_points_heading": "Etapas essenciais",
+  "faq_heading": "Perguntas sobre preparação de mudanças",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para preparar uma mudança, defina o que será transportado, confirme os locais e acessos, escolha uma data e separe as tarefas que fará das que pretende contratar. Embale por categorias, identifique caixas, proteja objetos frágeis e comunique antecipadamente móveis grandes, eletrodomésticos, pisos, elevadores, escadas e necessidades de desmontagem ou montagem.",
+  "key_points": [
+    "Decida o que será transportado, vendido, doado ou eliminado.",
+    "Faça um inventário dos móveis, eletrodomésticos, caixas e objetos especiais.",
+    "Confirme datas, moradas, pisos, elevadores e estacionamento.",
+    "Distribua embalagem, desmontagem, carga e montagem.",
+    "Envie a mesma descrição completa aos transportadores."
+  ],
+  "sections": [
+    {
+      "id": "definir-inventario",
+      "heading": "Defina o que vai transportar",
+      "paragraphs": [
+        "Percorra cada divisão e separe os objetos que seguem para o novo local daqueles que serão vendidos, doados, reciclados ou eliminados.",
+        "Reduzir o volume antes de pedir propostas facilita a estimativa do veículo, do número de ajudantes e do tempo necessário."
+      ],
+      "checklist": [
+        "Móveis e respetivas dimensões aproximadas.",
+        "Eletrodomésticos.",
+        "Quantidade estimada de caixas.",
+        "Objetos pesados ou frágeis.",
+        "Peças que precisam de desmontagem.",
+        "Bens que não serão transportados."
+      ]
+    },
+    {
+      "id": "datas-rota",
+      "heading": "Confirme a data e a rota",
+      "paragraphs": [
+        "Defina uma data preferida e, quando possível, alternativas. Confirme quando pode entrar no novo imóvel e durante quanto tempo terá acesso ao local de origem.",
+        "Registe as moradas completas e verifique se existem restrições de circulação, horários ou estacionamento nos dois pontos."
+      ]
+    },
+    {
+      "id": "acessos",
+      "heading": "Verifique os acessos nos dois imóveis",
+      "paragraphs": [
+        "Andares, elevadores, escadas e distância até ao veículo influenciam a organização da equipa e do equipamento.",
+        "Meça os pontos mais apertados quando existirem móveis grandes. Fotografias de portas, corredores e escadas ajudam o transportador a avaliar o serviço."
+      ],
+      "items": [
+        {
+          "title": "Pisos",
+          "text": "Indique o andar na recolha e na entrega."
+        },
+        {
+          "title": "Elevadores",
+          "text": "Confirme dimensões, funcionamento e capacidade."
+        },
+        {
+          "title": "Escadas",
+          "text": "Mencione curvas, patamares estreitos e desníveis."
+        },
+        {
+          "title": "Estacionamento",
+          "text": "Explique onde o veículo pode parar e a distância até à entrada."
+        }
+      ]
+    },
+    {
+      "id": "embalagem",
+      "heading": "Organize a embalagem por categorias",
+      "paragraphs": [
+        "Embale primeiro os objetos menos utilizados e deixe para o fim os bens necessários no quotidiano.",
+        "Use caixas resistentes, distribua o peso e identifique o conteúdo e a divisão de destino. Objetos frágeis precisam de proteção individual e espaço sem folgas."
+      ],
+      "checklist": [
+        "Identificar caixas por divisão.",
+        "Não criar caixas excessivamente pesadas.",
+        "Separar documentos e objetos de valor.",
+        "Proteger loiça, vidro e eletrónica.",
+        "Preparar uma caixa para a primeira noite."
+      ]
+    },
+    {
+      "id": "tarefas-servicos",
+      "heading": "Separe as tarefas próprias dos serviços contratados",
+      "paragraphs": [
+        "Defina quem fará a embalagem, desmontagem, carga, transporte, descarga e montagem.",
+        "Uma proposta deve indicar claramente o que está incluído. Alterações no próprio dia podem exigir mais tempo, pessoas ou equipamento."
+      ],
+      "items": [
+        {
+          "title": "Embalagem",
+          "text": "Confirme se os materiais e a preparação estão incluídos."
+        },
+        {
+          "title": "Desmontagem",
+          "text": "Identifique os móveis que não passam montados."
+        },
+        {
+          "title": "Ajudantes",
+          "text": "Defina quem participa na carga e descarga."
+        },
+        {
+          "title": "Equipamento",
+          "text": "Informe se existem objetos pesados ou acessos especiais."
+        }
+      ]
+    },
+    {
+      "id": "pedido-propostas",
+      "heading": "Prepare um pedido completo",
+      "paragraphs": [
+        "Envie a mesma informação a todos os transportadores: rota, data, inventário, acessos, fotografias e tarefas pretendidas.",
+        "Assim, as propostas correspondem ao mesmo serviço e podem ser comparadas com menos ambiguidades."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Transforme o planeamento num pedido completo",
+    "text": "Descreva a carga, os acessos, a data e as tarefas necessárias para receber propostas comparáveis.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Com quanto tempo devo começar a preparar a mudança?",
+      "answer": "Comece assim que a data for previsível. Quanto maior for o volume, a distância ou a dificuldade dos acessos, mais cedo deve organizar inventário, embalagem e transportador."
+    },
+    {
+      "question": "Preciso de saber o peso total da mudança?",
+      "answer": "Não necessariamente. Uma lista organizada, dimensões dos objetos maiores, número aproximado de caixas e fotografias permitem uma primeira avaliação."
+    },
+    {
+      "question": "O que devo embalar primeiro?",
+      "answer": "Comece por objetos sazonais, decoração, livros e bens pouco utilizados. Deixe medicamentos, documentos e artigos essenciais consigo."
+    },
+    {
+      "question": "Devo desmontar os móveis sozinho?",
+      "answer": "Apenas quando conhece o procedimento e consegue guardar peças e ferragens sem danificar o móvel."
+    },
+    {
+      "question": "Que informação devo enviar ao transportador?",
+      "answer": "Indique moradas, data, inventário, pisos, elevadores, escadas, estacionamento, ajudantes e serviços adicionais."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Checklist completa para uma mudança",
+      "href": "/guias/planeamento/checklist-mudanca/",
+      "type": "planned"
+    },
+    {
+      "title": "Com quanta antecedência reservar um transportador?",
+      "href": "/guias/planeamento/quando-reservar-transportador/",
+      "type": "planned"
+    },
+    {
+      "title": "Como embalar caixas para uma mudança",
+      "href": "/guias/embalamento/como-embalar-caixas/",
+      "type": "planned"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Receba propostas para uma mudança bem preparada",
+    "text": "Indique uma única vez os locais, os objetos, os acessos e as tarefas e compare as respostas recebidas.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

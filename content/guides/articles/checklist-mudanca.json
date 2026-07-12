@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "id": "checklist-mudanca",
+  "locale": "pt-PT",
+  "cluster": "planning",
+  "path": "/guias/planeamento/checklist-mudanca/",
+  "title": "Checklist completa para uma mudança",
+  "meta_title": "Checklist completa para organizar uma mudança — CargoPT",
+  "meta_description": "Use esta checklist para organizar datas, inventário, embalagem, transportador, acessos e tarefas antes e depois da mudança.",
+  "primary_query": "checklist mudança",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Planeamento da mudança",
+  "eyebrow": "Checklist da mudança",
+  "hero_description": "Uma checklist reduz esquecimentos e permite distribuir tarefas por etapas, em vez de concentrar toda a preparação nos últimos dias.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Divida a mudança em preparação, contratação, embalagem e instalação",
+  "key_points_heading": "O que não pode faltar",
+  "faq_heading": "Perguntas sobre a checklist de mudança",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Uma checklist de mudança deve incluir inventário, datas, acessos, contratação do transporte, materiais de embalagem, desmontagem, identificação das caixas, documentos, objetos essenciais e verificação final dos dois imóveis. Atribua responsáveis e prazos a cada tarefa para acompanhar o que está concluído.",
+  "key_points": [
+    "Defina a data e confirme os acessos aos dois imóveis.",
+    "Crie o inventário antes de pedir propostas.",
+    "Reserve o transportador e confirme o serviço por escrito.",
+    "Embale e identifique os objetos por divisão.",
+    "Faça uma verificação final antes de entregar as chaves."
+  ],
+  "sections": [
+    {
+      "id": "planeamento-inicial",
+      "heading": "Planeamento inicial",
+      "paragraphs": [
+        "Comece por definir a data, os locais e o volume aproximado. Separe o que será transportado do que será vendido, doado ou eliminado.",
+        "Registe todas as tarefas num único documento e atribua uma data a cada uma."
+      ],
+      "checklist": [
+        "Confirmar a data possível da mudança.",
+        "Verificar acesso ao novo imóvel.",
+        "Criar inventário por divisão.",
+        "Separar bens que não serão transportados.",
+        "Identificar objetos pesados, frágeis ou valiosos.",
+        "Medir móveis e acessos apertados."
+      ]
+    },
+    {
+      "id": "transportador",
+      "heading": "Escolha e confirme o transportador",
+      "paragraphs": [
+        "Envie um pedido completo e compare propostas equivalentes. Confirme o veículo, a equipa, as tarefas, a data e o valor.",
+        "Guarde por escrito a proposta escolhida e os contactos necessários para o dia da mudança."
+      ],
+      "checklist": [
+        "Enviar inventário e fotografias.",
+        "Informar pisos, elevadores e escadas.",
+        "Confirmar número de ajudantes.",
+        "Confirmar embalagem, desmontagem e montagem.",
+        "Registar data, horário e condições de pagamento.",
+        "Confirmar responsabilidade por danos."
+      ]
+    },
+    {
+      "id": "materiais",
+      "heading": "Prepare materiais e embalagem",
+      "paragraphs": [
+        "Reúna caixas, fita, etiquetas e materiais de proteção antes de começar. Embale primeiro os objetos menos utilizados.",
+        "Não misture objetos frágeis com volumes pesados e evite caixas difíceis de levantar."
+      ],
+      "checklist": [
+        "Caixas de vários tamanhos.",
+        "Fita e etiquetas.",
+        "Proteção para objetos frágeis.",
+        "Sacos para ferragens.",
+        "Marcador para identificar caixas.",
+        "Proteção de colchões e mobiliário."
+      ]
+    },
+    {
+      "id": "semana-anterior",
+      "heading": "Na semana anterior",
+      "paragraphs": [
+        "Confirme que a maior parte da embalagem está concluída e reveja o inventário enviado ao transportador.",
+        "Prepare documentos, medicamentos, chaves, carregadores e objetos essenciais para seguirem consigo."
+      ],
+      "checklist": [
+        "Confirmar horário com o transportador.",
+        "Atualizar alterações ao inventário.",
+        "Descongelar e preparar eletrodomésticos.",
+        "Separar documentos e objetos de valor.",
+        "Preparar mala ou caixa de primeira necessidade.",
+        "Reservar elevador ou acesso quando aplicável."
+      ]
+    },
+    {
+      "id": "dia-mudanca",
+      "heading": "No dia da mudança",
+      "paragraphs": [
+        "Mantenha corredores livres e indique os objetos que exigem maior cuidado. Confirme o inventário à medida que a carga é efetuada.",
+        "Antes de sair, verifique todas as divisões, armários, arrecadações, varandas e áreas comuns."
+      ],
+      "checklist": [
+        "Proteger pisos e zonas de passagem.",
+        "Garantir acesso às chaves.",
+        "Manter crianças e animais afastados da movimentação.",
+        "Confirmar objetos frágeis e prioritários.",
+        "Verificar contadores e instalações quando necessário.",
+        "Fazer inspeção final ao imóvel."
+      ]
+    },
+    {
+      "id": "apos-chegada",
+      "heading": "Depois da chegada",
+      "paragraphs": [
+        "Confirme se os volumes chegaram ao destino e coloque primeiro os móveis essenciais.",
+        "Verifique danos visíveis e registe qualquer problema imediatamente. Não ligue eletrodomésticos antes de cumprir os cuidados aplicáveis ao modelo."
+      ],
+      "checklist": [
+        "Conferir volumes e objetos principais.",
+        "Verificar danos visíveis.",
+        "Montar camas e móveis essenciais.",
+        "Confirmar ligações de água e eletricidade.",
+        "Guardar documentos do serviço.",
+        "Atualizar a morada nos serviços necessários."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Já tem o inventário da mudança?",
+    "text": "Utilize a informação da checklist para preparar um pedido claro e comparar propostas.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Quando devo começar a checklist?",
+      "answer": "Assim que tiver uma data provável. Pode acrescentar detalhes à medida que confirma o inventário e os serviços."
+    },
+    {
+      "question": "Preciso de listar todos os objetos?",
+      "answer": "Liste os principais móveis, eletrodomésticos, objetos especiais e quantidade aproximada de caixas."
+    },
+    {
+      "question": "O que deve seguir comigo?",
+      "answer": "Documentos, medicamentos, valores, chaves, equipamentos essenciais e objetos de primeira necessidade."
+    },
+    {
+      "question": "Como evitar esquecer objetos?",
+      "answer": "Faça a verificação final por divisão, incluindo armários, arrecadações, varandas e espaços comuns."
+    },
+    {
+      "question": "Devo guardar a proposta do transportador?",
+      "answer": "Sim. Guarde por escrito o serviço, o valor, a equipa, as tarefas e as condições acordadas."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como preparar uma mudança",
+      "href": "/guias/planeamento/como-preparar-uma-mudanca/",
+      "type": "planned"
+    },
+    {
+      "title": "Como embalar caixas para uma mudança",
+      "href": "/guias/embalamento/como-embalar-caixas/",
+      "type": "planned"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Transforme a checklist num pedido de transporte",
+    "text": "Descreva a carga, os acessos e as tarefas para receber propostas baseadas na mesma informação.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

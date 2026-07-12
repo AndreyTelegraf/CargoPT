@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "id": "como-escolher-empresa-mudancas",
+  "locale": "pt-PT",
+  "cluster": "planning",
+  "path": "/guias/planeamento/como-escolher-empresa-mudancas/",
+  "title": "Como escolher uma empresa de mudanças",
+  "meta_title": "Como escolher uma empresa de mudanças — CargoPT",
+  "meta_description": "Compare empresas de mudanças pelo serviço incluído, experiência, equipa, veículo, condições e responsabilidade, não apenas pelo preço.",
+  "primary_query": "como escolher empresa de mudanças",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Planeamento da mudança",
+  "eyebrow": "Escolha do transportador",
+  "hero_description": "Uma boa escolha começa por comparar propostas baseadas no mesmo inventário, acessos e tarefas.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Compare capacidade, clareza e condições do serviço",
+  "key_points_heading": "Critérios de comparação",
+  "faq_heading": "Perguntas sobre escolha de empresas de mudanças",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para escolher uma empresa de mudanças, envie a mesma descrição completa a vários transportadores e compare o veículo, a equipa, as tarefas, o valor e as condições. Verifique contactos, identificação, experiência relevante, responsabilidade por danos e o que acontece em caso de alterações. Evite decidir apenas pelo preço mais baixo.",
+  "key_points": [
+    "Compare propostas baseadas no mesmo inventário.",
+    "Confirme veículo, equipa e experiência para o serviço.",
+    "Peça descrição escrita das tarefas incluídas.",
+    "Verifique responsabilidade, pagamentos e alterações.",
+    "Desconfie de respostas vagas ou condições contraditórias."
+  ],
+  "sections": [
+    {
+      "id": "pedido-comparavel",
+      "heading": "Comece por um pedido igual para todos",
+      "paragraphs": [
+        "Envie a mesma rota, data, lista de objetos, fotografias, acessos e tarefas a todas as empresas.",
+        "Sem uma base comum, valores diferentes podem corresponder a serviços diferentes."
+      ]
+    },
+    {
+      "id": "capacidade",
+      "heading": "Confirme a capacidade para o serviço",
+      "paragraphs": [
+        "O veículo, o número de ajudantes e o equipamento devem ser adequados ao volume e aos acessos.",
+        "Quando existem pianos, eletrodomésticos pesados, escadas ou móveis de grandes dimensões, pergunte pela experiência em situações semelhantes."
+      ],
+      "checklist": [
+        "Tipo e capacidade do veículo.",
+        "Número de ajudantes.",
+        "Equipamento de movimentação.",
+        "Experiência com objetos especiais.",
+        "Capacidade para desmontagem e montagem.",
+        "Disponibilidade na data necessária."
+      ]
+    },
+    {
+      "id": "proposta-escrita",
+      "heading": "Peça uma proposta clara por escrito",
+      "paragraphs": [
+        "A proposta deve indicar o serviço incluído, o valor, a data, os locais e as principais condições.",
+        "Confirme se embalagem, materiais, desmontagem, carga, descarga e montagem fazem parte do valor ou são cobrados separadamente."
+      ]
+    },
+    {
+      "id": "verificacao",
+      "heading": "Verifique identidade e contactos",
+      "paragraphs": [
+        "Confirme a identificação usada na proposta, os contactos disponíveis e quem será responsável pelo serviço.",
+        "Avaliações e referências podem ser úteis, mas devem ser analisadas juntamente com a clareza da proposta e a adequação ao trabalho."
+      ]
+    },
+    {
+      "id": "responsabilidade",
+      "heading": "Confirme responsabilidade e condições",
+      "paragraphs": [
+        "Pergunte como são tratados danos, atrasos, cancelamentos e alterações ao inventário ou aos acessos.",
+        "Registe os acordos por escrito e esclareça antecipadamente quando e como será efetuado o pagamento."
+      ],
+      "items": [
+        {
+          "title": "Danos",
+          "text": "Confirme o procedimento de registo e responsabilidade."
+        },
+        {
+          "title": "Alterações",
+          "text": "Pergunte como objetos ou tarefas adicionais afetam o serviço."
+        },
+        {
+          "title": "Cancelamento",
+          "text": "Verifique prazos e condições aplicáveis."
+        },
+        {
+          "title": "Pagamento",
+          "text": "Confirme valor, momento e método acordado."
+        }
+      ]
+    },
+    {
+      "id": "sinais-alerta",
+      "heading": "Sinais de alerta antes de escolher",
+      "paragraphs": [
+        "Respostas que ignoram o inventário e os acessos podem não refletir o trabalho real.",
+        "Tenha cuidado com condições que mudam repetidamente, falta de identificação, pressão para decidir imediatamente ou pedidos de pagamento sem registo claro."
+      ],
+      "checklist": [
+        "Valor apresentado sem perguntas sobre o serviço.",
+        "Recusa em confirmar tarefas por escrito.",
+        "Informações contraditórias sobre equipa ou veículo.",
+        "Condições de pagamento pouco claras.",
+        "Ausência de contactos verificáveis.",
+        "Pressão para decidir sem esclarecer dúvidas."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Compare empresas com a mesma descrição",
+    "text": "Indique o inventário, os acessos e as tarefas para receber propostas mais fáceis de comparar.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Devo escolher a proposta mais barata?",
+      "answer": "Não automaticamente. Confirme se inclui o mesmo veículo, equipa, tarefas, materiais e condições."
+    },
+    {
+      "question": "É importante ter uma proposta por escrito?",
+      "answer": "Sim. O registo ajuda a confirmar o serviço, o valor, a data e as responsabilidades."
+    },
+    {
+      "question": "Como avaliar experiência com objetos especiais?",
+      "answer": "Pergunte por serviços semelhantes, equipa, equipamento e procedimento previsto para o objeto e os acessos."
+    },
+    {
+      "question": "Devo pagar antecipadamente?",
+      "answer": "Confirme por escrito o valor, o momento e as condições do pagamento antes de aceitar."
+    },
+    {
+      "question": "Que alterações podem modificar a proposta?",
+      "answer": "Objetos adicionais, acessos diferentes, novas tarefas, mudança de data ou necessidade de mais ajudantes podem alterar o serviço."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como verificar um transportador antes da mudança",
+      "href": "/guias/seguranca/como-verificar-transportador/",
+      "type": "planned"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Quanto custa uma mudança em Portugal?",
+      "href": "/guias/precos/quanto-custa-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas antes de escolher",
+    "text": "Descreva a mudança uma única vez e avalie preço, equipa, tarefas e condições de cada resposta.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

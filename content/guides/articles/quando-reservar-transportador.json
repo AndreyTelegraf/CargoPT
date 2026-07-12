@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "id": "quando-reservar-transportador",
+  "locale": "pt-PT",
+  "cluster": "planning",
+  "path": "/guias/planeamento/quando-reservar-transportador/",
+  "title": "Com quanta antecedência reservar um transportador?",
+  "meta_title": "Quando reservar um transportador para a mudança — CargoPT",
+  "meta_description": "Saiba quando começar a pedir propostas e como a data, rota, volume e acessos influenciam a antecedência necessária.",
+  "primary_query": "quando reservar transportador mudança",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Planeamento da mudança",
+  "eyebrow": "Reserva do transportador",
+  "hero_description": "A antecedência necessária depende da flexibilidade da data, da dimensão da carga, da distância e da dificuldade dos acessos.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Peça propostas quando a data e o inventário já forem suficientemente claros",
+  "key_points_heading": "Fatores que determinam a antecedência",
+  "faq_heading": "Perguntas sobre reserva de transportadores",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Reserve o transportador assim que conhecer a data provável, a rota, o volume e os principais acessos. Serviços maiores, datas rígidas, percursos longos, escadas, objetos especiais ou necessidade de embalagem e montagem justificam mais antecedência. Mesmo quando ainda faltam alguns detalhes, pode começar a pedir propostas com um inventário provisório claramente identificado.",
+  "key_points": [
+    "Datas fixas exigem mais antecedência do que datas flexíveis.",
+    "Mudanças grandes precisam de mais planeamento de equipa e veículo.",
+    "Escadas e objetos especiais podem exigir equipamento próprio.",
+    "Indique claramente o que ainda pode mudar no inventário.",
+    "Confirme novamente os detalhes antes do dia do serviço."
+  ],
+  "sections": [
+    {
+      "id": "momento-certo",
+      "heading": "Quando começar a pedir propostas",
+      "paragraphs": [
+        "Comece quando conseguir indicar pelo menos os locais, a data provável, os objetos principais e as condições dos acessos.",
+        "Não é necessário que todas as caixas estejam prontas, mas o transportador precisa de compreender a dimensão e as exigências do serviço."
+      ]
+    },
+    {
+      "id": "datas-rigidas",
+      "heading": "Datas rígidas precisam de maior margem",
+      "paragraphs": [
+        "Quando a mudança só pode acontecer num dia ou horário específico, a disponibilidade torna-se um fator central.",
+        "Se puder indicar alternativas, aumenta a possibilidade de encontrar uma equipa e um veículo compatíveis."
+      ]
+    },
+    {
+      "id": "dimensao",
+      "heading": "A dimensão e a distância influenciam o planeamento",
+      "paragraphs": [
+        "Uma carga pequena e local pode ser mais simples de encaixar do que uma mudança completa entre cidades.",
+        "Percursos longos, vários pontos de recolha ou entrega e grandes volumes exigem planeamento de rota, tempo e capacidade."
+      ],
+      "items": [
+        {
+          "title": "Carga pequena",
+          "text": "Pode exigir menos equipa e um veículo menor."
+        },
+        {
+          "title": "Mudança completa",
+          "text": "Requer avaliação mais detalhada do inventário e do volume."
+        },
+        {
+          "title": "Longa distância",
+          "text": "Precisa de coordenação de horários e disponibilidade do veículo."
+        },
+        {
+          "title": "Vários locais",
+          "text": "Aumentam a complexidade da rota e do tempo previsto."
+        }
+      ]
+    },
+    {
+      "id": "servicos-especiais",
+      "heading": "Serviços especiais devem ser comunicados cedo",
+      "paragraphs": [
+        "Pianos, eletrodomésticos grandes, móveis volumosos, escadas difíceis e ausência de elevador podem exigir mais ajudantes ou equipamento.",
+        "Embalagem, desmontagem e montagem também precisam de ser consideradas na duração e na composição da equipa."
+      ]
+    },
+    {
+      "id": "pedido-provisorio",
+      "heading": "Pode pedir propostas com um inventário provisório?",
+      "paragraphs": [
+        "Pode, desde que identifique claramente as estimativas e os pontos ainda por confirmar.",
+        "Atualize o transportador quando surgirem alterações relevantes. Objetos adicionais, novos acessos ou tarefas podem modificar o serviço necessário."
+      ]
+    },
+    {
+      "id": "confirmacao-final",
+      "heading": "O que confirmar antes da mudança",
+      "paragraphs": [
+        "Reveja por escrito a data, o horário, os endereços, o inventário, os acessos, a equipa e os serviços incluídos.",
+        "Confirme também os contactos do dia, o estacionamento, as condições de pagamento e o procedimento para alterações."
+      ],
+      "checklist": [
+        "Data e janela horária.",
+        "Moradas e contactos.",
+        "Inventário atualizado.",
+        "Pisos, elevadores e escadas.",
+        "Equipa e veículo.",
+        "Tarefas incluídas.",
+        "Valor e condições."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Já conhece a data provável da mudança?",
+    "text": "Envie o inventário e os acessos para começar a comparar a disponibilidade dos transportadores.",
+    "label": "Pedir propostas",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Posso reservar sem ter todas as caixas prontas?",
+      "answer": "Sim, desde que forneça uma estimativa realista e atualize alterações relevantes antes do serviço."
+    },
+    {
+      "question": "Uma mudança pequena pode ser marcada em cima da hora?",
+      "answer": "Pode existir disponibilidade, mas não é garantida. Quanto mais rígida for a data, maior é o risco de ter poucas opções."
+    },
+    {
+      "question": "Quando devo confirmar o inventário final?",
+      "answer": "Assim que terminar a preparação principal e sempre antes da data, para que equipa, veículo e valor possam ser confirmados."
+    },
+    {
+      "question": "Escadas exigem reserva antecipada?",
+      "answer": "Podem exigir mais ajudantes, tempo ou equipamento, por isso devem ser comunicadas desde o primeiro pedido."
+    },
+    {
+      "question": "É melhor indicar várias datas?",
+      "answer": "Quando possível, sim. A flexibilidade pode aumentar as opções de transportadores disponíveis."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como preparar uma mudança",
+      "href": "/guias/planeamento/como-preparar-uma-mudanca/",
+      "type": "planned"
+    },
+    {
+      "title": "Quando é mais barato fazer uma mudança?",
+      "href": "/guias/planeamento/quando-e-mais-barato-mudar/",
+      "type": "planned"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare disponibilidade e condições",
+    "text": "Descreva a mudança uma única vez e receba propostas de transportadores adequados ao serviço.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

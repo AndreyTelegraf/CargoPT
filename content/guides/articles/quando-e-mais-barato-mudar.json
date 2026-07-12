@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "id": "quando-e-mais-barato-mudar",
+  "locale": "pt-PT",
+  "cluster": "planning",
+  "path": "/guias/planeamento/quando-e-mais-barato-mudar/",
+  "title": "Quando é mais barato fazer uma mudança?",
+  "meta_title": "Quando é mais barato fazer uma mudança — CargoPT",
+  "meta_description": "Perceba como data, flexibilidade, procura, volume, acessos e preparação podem influenciar o custo de uma mudança.",
+  "primary_query": "quando é mais barato fazer mudança",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Planeamento da mudança",
+  "eyebrow": "Data e custo da mudança",
+  "hero_description": "Não existe um dia universalmente mais barato: o custo depende da disponibilidade do transportador e das características concretas do serviço.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "A flexibilidade ajuda, mas não substitui uma descrição completa",
+  "key_points_heading": "Como reduzir o risco de pagar mais",
+  "faq_heading": "Perguntas sobre datas e preços",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Uma mudança pode ficar mais económica quando existe flexibilidade de data e horário, o pedido é feito com antecedência e o volume e os acessos estão claramente descritos. Não existe, porém, uma regra universal para dias da semana ou meses. Compare propostas para o mesmo serviço e avalie o que cada uma inclui.",
+  "key_points": [
+    "Datas flexíveis podem aumentar as opções disponíveis.",
+    "Pedidos urgentes podem limitar a comparação de propostas.",
+    "Volume, distância e acessos pesam mais do que o calendário isolado.",
+    "Uma preparação eficiente pode reduzir tempo e tarefas.",
+    "Compare sempre propostas com o mesmo âmbito."
+  ],
+  "sections": [
+    {
+      "id": "sem-regra-universal",
+      "heading": "Não existe uma data sempre mais barata",
+      "paragraphs": [
+        "Cada transportador gere a sua própria agenda, equipa, veículos e rotas. Uma data livre para uma empresa pode estar totalmente ocupada para outra.",
+        "Por isso, afirmações absolutas sobre dias ou meses devem ser tratadas apenas como hipóteses, não como garantia de preço."
+      ]
+    },
+    {
+      "id": "flexibilidade",
+      "heading": "Porque a flexibilidade pode ajudar",
+      "paragraphs": [
+        "Ao indicar alternativas de dia ou horário, permite que o transportador proponha uma opção compatível com a sua disponibilidade.",
+        "A flexibilidade também facilita a comparação entre propostas, sobretudo quando a data inicial ainda não é definitiva."
+      ]
+    },
+    {
+      "id": "antecedencia",
+      "heading": "Evite depender apenas de pedidos urgentes",
+      "paragraphs": [
+        "Um pedido feito muito perto da data pode encontrar menos transportadores disponíveis.",
+        "Começar mais cedo permite esclarecer dúvidas, atualizar o inventário e confirmar o serviço por escrito."
+      ]
+    },
+    {
+      "id": "fatores-principais",
+      "heading": "Os principais fatores de custo continuam a ser operacionais",
+      "paragraphs": [
+        "O volume, a distância, os pisos, as escadas, o estacionamento, o número de ajudantes e os serviços adicionais determinam grande parte do trabalho.",
+        "Escolher uma data diferente não elimina essas necessidades."
+      ],
+      "items": [
+        {
+          "title": "Volume",
+          "text": "Influencia o veículo, a equipa e o tempo de carga."
+        },
+        {
+          "title": "Distância",
+          "text": "Afeta a rota e o tempo de utilização do veículo."
+        },
+        {
+          "title": "Acessos",
+          "text": "Escadas e longas distâncias até ao veículo aumentam a movimentação."
+        },
+        {
+          "title": "Serviços",
+          "text": "Embalagem, desmontagem e montagem acrescentam tarefas."
+        }
+      ]
+    },
+    {
+      "id": "preparacao",
+      "heading": "Como a preparação pode reduzir trabalho",
+      "paragraphs": [
+        "Separar objetos desnecessários, fechar e identificar caixas e libertar corredores torna a movimentação mais eficiente.",
+        "Não omita dificuldades para obter um valor inicial mais baixo. Informações incompletas podem obrigar a alterar o serviço."
+      ],
+      "checklist": [
+        "Reduzir o volume antes do pedido.",
+        "Preparar caixas com antecedência.",
+        "Desmontar apenas o que consegue montar novamente.",
+        "Facilitar estacionamento e acessos.",
+        "Comunicar alterações ao inventário."
+      ]
+    },
+    {
+      "id": "comparar",
+      "heading": "Compare propostas equivalentes",
+      "paragraphs": [
+        "Confirme que todas as propostas consideram o mesmo inventário, data, rota, acessos, equipa e tarefas.",
+        "Um valor mais baixo não representa necessariamente menor custo se excluir serviços de que vai precisar."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Tem flexibilidade de data?",
+    "text": "Indique as alternativas no pedido para comparar disponibilidade, tarefas e condições.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Mudar durante a semana é sempre mais barato?",
+      "answer": "Não. O valor depende da disponibilidade de cada transportador e das características concretas do serviço."
+    },
+    {
+      "question": "O fim do mês é sempre mais caro?",
+      "answer": "Não é possível garantir uma regra universal. Compare propostas para as datas específicas de que dispõe."
+    },
+    {
+      "question": "Uma data flexível reduz o preço?",
+      "answer": "Pode aumentar as opções disponíveis, mas não garante um valor menor."
+    },
+    {
+      "question": "Pedir com antecedência garante melhor preço?",
+      "answer": "Não garante, mas permite comparar mais opções e reduzir o risco de depender apenas da disponibilidade de última hora."
+    },
+    {
+      "question": "O que devo comparar além do valor?",
+      "answer": "Compare veículo, equipa, tarefas, materiais, acessos considerados e condições para alterações."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Quanto custa uma mudança em Portugal?",
+      "href": "/guias/precos/quanto-custa-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Como reduzir o custo de uma mudança",
+      "href": "/guias/precos/como-reduzir-custo-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Com quanta antecedência reservar um transportador?",
+      "href": "/guias/planeamento/quando-reservar-transportador/",
+      "type": "planned"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para as datas disponíveis",
+    "text": "Indique a sua flexibilidade, a carga e os acessos e verifique as condições apresentadas por cada transportador.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}
