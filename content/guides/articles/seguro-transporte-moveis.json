@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "id": "seguro-transporte-moveis",
+  "locale": "pt-PT",
+  "cluster": "rights",
+  "path": "/guias/seguranca/seguro-transporte-moveis/",
+  "title": "É necessário seguro para transportar móveis?",
+  "meta_title": "É necessário seguro para transportar móveis? — CargoPT",
+  "meta_description": "Perceba que cobertura pode existir no transporte de móveis e que perguntas fazer antes de contratar.",
+  "primary_query": "seguro transporte móveis",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Segurança e responsabilidade",
+  "eyebrow": "Cobertura dos bens",
+  "hero_description": "A existência de um seguro não significa que todos os móveis e todas as ocorrências estejam automaticamente cobertos.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Confirme a cobertura em vez de presumir que existe",
+  "key_points_heading": "Perguntas essenciais sobre cobertura",
+  "faq_heading": "Perguntas sobre seguro de móveis",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Não existe uma resposta única para todas as mudanças. A necessidade de contratar cobertura adicional depende do valor e da fragilidade dos bens, do serviço acordado e da proteção já existente. Pergunte ao transportador que seguro ou cobertura se aplica aos objetos, quais são os riscos abrangidos, os limites, as exclusões e o procedimento em caso de dano. Não confunda seguro obrigatório do veículo com cobertura automática dos móveis.",
+  "key_points": [
+    "Pergunte que bens e ocorrências estão cobertos.",
+    "Confirme limites, exclusões e eventual franquia.",
+    "Declare objetos valiosos ou especialmente frágeis.",
+    "Guarde por escrito a informação sobre cobertura.",
+    "Documente os bens antes da recolha."
+  ],
+  "sections": [
+    {
+      "id": "tipos-protecao",
+      "heading": "Diferencie veículo, responsabilidade e bens",
+      "paragraphs": [
+        "Podem existir proteções diferentes para o veículo, para responsabilidade perante terceiros e para os objetos transportados.",
+        "O nome de um seguro, por si só, não demonstra que um móvel específico ou uma determinada ocorrência estejam cobertos."
+      ]
+    },
+    {
+      "id": "perguntas",
+      "heading": "Perguntas a fazer ao transportador",
+      "paragraphs": [
+        "Peça uma explicação clara sobre a cobertura antes de aceitar a proposta.",
+        "Quando a proteção for importante para a decisão, solicite confirmação escrita."
+      ],
+      "checklist": [
+        "Que bens estão abrangidos?",
+        "Que tipos de dano estão cobertos?",
+        "Qual é o limite máximo?",
+        "Existem exclusões?",
+        "Existe franquia ou valor a cargo do cliente?",
+        "Como e quando deve ser comunicado um dano?"
+      ]
+    },
+    {
+      "id": "valor-bens",
+      "heading": "Considere o valor e a fragilidade dos objetos",
+      "paragraphs": [
+        "Móveis comuns, antiguidades, obras, instrumentos e equipamentos podem justificar níveis diferentes de precaução.",
+        "Informe previamente objetos de valor elevado ou com características especiais e pergunte se exigem declaração, embalagem ou condições próprias."
+      ]
+    },
+    {
+      "id": "exclusoes",
+      "heading": "Leia limites e exclusões",
+      "paragraphs": [
+        "Uma cobertura pode excluir embalagem inadequada, defeitos anteriores, certos materiais ou bens não declarados.",
+        "Também pode haver limites por objeto, por ocorrência ou para o conjunto do serviço."
+      ],
+      "items": [
+        {
+          "title": "Limite global",
+          "text": "Valor máximo para a ocorrência ou serviço."
+        },
+        {
+          "title": "Limite por objeto",
+          "text": "Valor máximo atribuído a cada bem."
+        },
+        {
+          "title": "Exclusão",
+          "text": "Situação ou bem que não está abrangido."
+        },
+        {
+          "title": "Franquia",
+          "text": "Parte do prejuízo que pode ficar a cargo do segurado."
+        }
+      ]
+    },
+    {
+      "id": "documentacao",
+      "heading": "Documente os bens e o acordo",
+      "paragraphs": [
+        "Fotografe os objetos antes da recolha e registe danos anteriores.",
+        "Guarde proposta, inventário, mensagens, informação sobre cobertura e comprovativos."
+      ],
+      "checklist": [
+        "Fotografias antes da recolha.",
+        "Inventário dos bens.",
+        "Descrição de objetos frágeis.",
+        "Valor declarado quando aplicável.",
+        "Condições recebidas por escrito.",
+        "Comprovativos do serviço."
+      ]
+    },
+    {
+      "id": "cobertura-adicional",
+      "heading": "Quando avaliar proteção adicional",
+      "paragraphs": [
+        "Considere obter aconselhamento específico quando transportar bens de elevado valor, antiguidades, obras ou instrumentos especiais.",
+        "Compare o risco, os limites da proteção existente e o custo de uma cobertura adicional antes de decidir."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Inclua objetos frágeis na descrição",
+    "text": "Informe os transportadores sobre valor, fragilidade e necessidades especiais antes de comparar propostas.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "É obrigatório contratar um seguro separado para os móveis?",
+      "answer": "Não há uma resposta universal. Confirme o serviço, a cobertura existente e o risco dos bens."
+    },
+    {
+      "question": "O seguro do veículo cobre a carga?",
+      "answer": "Não presuma que cobre. Peça confirmação específica sobre os objetos transportados."
+    },
+    {
+      "question": "Objetos valiosos devem ser declarados?",
+      "answer": "Informe-os previamente e pergunte se existem condições ou limites especiais."
+    },
+    {
+      "question": "O que significa uma exclusão?",
+      "answer": "É uma situação, ocorrência ou tipo de bem que não fica abrangido pela cobertura."
+    },
+    {
+      "question": "Que provas devo guardar?",
+      "answer": "Guarde fotografias, inventário, proposta, mensagens, condições e comprovativos."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Quem é responsável por danos durante uma mudança?",
+      "href": "/guias/seguranca/responsabilidade-danos-mudanca/",
+      "type": "planned"
+    },
+    {
+      "title": "Como transportar um piano",
+      "href": "/guias/objetos/como-transportar-piano/",
+      "type": "guide"
+    },
+    {
+      "title": "Como verificar um transportador antes da mudança",
+      "href": "/guias/seguranca/como-verificar-transportador/",
+      "type": "planned"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas e condições de proteção",
+    "text": "Descreva os bens uma vez e confirme com cada transportador o serviço e a cobertura aplicável.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

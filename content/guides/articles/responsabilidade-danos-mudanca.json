@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "id": "responsabilidade-danos-mudanca",
+  "locale": "pt-PT",
+  "cluster": "rights",
+  "path": "/guias/seguranca/responsabilidade-danos-mudanca/",
+  "title": "Quem é responsável por danos durante uma mudança?",
+  "meta_title": "Quem paga danos durante uma mudança? — CargoPT",
+  "meta_description": "Saiba como documentar danos numa mudança, verificar o acordo e apresentar o problema ao transportador.",
+  "primary_query": "quem paga danos mudança",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Segurança e responsabilidade",
+  "eyebrow": "Danos durante o serviço",
+  "hero_description": "A resposta depende do que aconteceu, do acordo, das provas e das condições aplicáveis ao serviço.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "A responsabilidade depende do caso e deve ser documentada",
+  "key_points_heading": "O que fazer perante um dano",
+  "faq_heading": "Perguntas sobre danos durante mudanças",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Não é possível determinar automaticamente quem paga um dano sem analisar como ocorreu, quem tinha o objeto sob controlo, o serviço acordado e as condições aplicáveis. Registe o estado dos bens antes da mudança, comunique o dano assim que o detetar e guarde fotografias, mensagens, proposta e comprovativos. Peça ao transportador uma resposta escrita e verifique eventual cobertura antes de aceitar uma solução.",
+  "key_points": [
+    "Fotografe bens valiosos e frágeis antes do serviço.",
+    "Registe o dano logo que seja detetado.",
+    "Guarde proposta, mensagens e comprovativos.",
+    "Peça uma resposta escrita ao transportador.",
+    "Verifique condições, limites e eventual cobertura."
+  ],
+  "sections": [
+    {
+      "id": "antes-mudanca",
+      "heading": "Documente o estado dos bens antes da mudança",
+      "paragraphs": [
+        "Fotografias datadas ajudam a distinguir danos anteriores de ocorrências durante o serviço.",
+        "Registe especialmente móveis frágeis, cantos, eletrodomésticos, vidro, obras e objetos valiosos."
+      ],
+      "checklist": [
+        "Fotografar várias faces do objeto.",
+        "Registar riscos e defeitos existentes.",
+        "Guardar números de série quando relevantes.",
+        "Confirmar o inventário transportado.",
+        "Fotografar a embalagem de objetos frágeis.",
+        "Guardar a descrição enviada ao transportador."
+      ]
+    },
+    {
+      "id": "quando-detetar",
+      "heading": "O que fazer ao detetar um dano",
+      "paragraphs": [
+        "Não altere nem descarte imediatamente a embalagem ou as peças relacionadas com o dano.",
+        "Fotografe o objeto, a embalagem e o local, registe a data e comunique o problema por escrito."
+      ]
+    },
+    {
+      "id": "analisar-servico",
+      "heading": "Compare o dano com o serviço acordado",
+      "paragraphs": [
+        "Verifique quem ficou responsável por embalagem, desmontagem, carga, transporte, descarga e montagem.",
+        "A análise pode ser diferente quando o objeto foi embalado pelo cliente ou quando existiam defeitos ou fragilidades não comunicadas."
+      ]
+    },
+    {
+      "id": "provas",
+      "heading": "Reúna a informação relevante",
+      "paragraphs": [
+        "Organize a proposta, as mensagens, as fotografias, os comprovativos e a descrição cronológica.",
+        "Evite afirmações vagas. Identifique o objeto, o dano observado, quando foi detetado e a solução pedida."
+      ],
+      "checklist": [
+        "Proposta ou acordo do serviço.",
+        "Inventário enviado.",
+        "Fotografias antes e depois.",
+        "Mensagens trocadas.",
+        "Comprovativos de pagamento.",
+        "Orçamento de reparação quando disponível."
+      ]
+    },
+    {
+      "id": "cobertura",
+      "heading": "Verifique se existe cobertura aplicável",
+      "paragraphs": [
+        "Pergunte ao transportador se existe cobertura para os bens e peça informação sobre riscos, limites, exclusões e procedimento.",
+        "Um seguro automóvel obrigatório não deve ser confundido automaticamente com cobertura dos móveis."
+      ],
+      "items": [
+        {
+          "title": "Risco coberto",
+          "text": "Confirme que ocorrência está abrangida."
+        },
+        {
+          "title": "Limite",
+          "text": "Verifique o valor máximo aplicável."
+        },
+        {
+          "title": "Exclusões",
+          "text": "Pergunte por bens ou circunstâncias não cobertos."
+        },
+        {
+          "title": "Participação",
+          "text": "Confirme documentos e prazos indicados para o caso."
+        }
+      ]
+    },
+    {
+      "id": "resolucao",
+      "heading": "Peça resposta e solução por escrito",
+      "paragraphs": [
+        "Apresente o problema de forma objetiva e peça uma resposta escrita num prazo razoável.",
+        "Quando não houver acordo, procure informação junto de uma entidade de apoio ao consumidor ou aconselhamento jurídico adequado ao caso."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Registe o serviço antes da mudança",
+    "text": "Uma descrição completa e propostas escritas tornam mais claro o que cada parte aceitou fazer.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "O transportador paga sempre qualquer dano?",
+      "answer": "Não é possível afirmar isso sem analisar a causa, o acordo, as provas e as condições aplicáveis."
+    },
+    {
+      "question": "Devo fotografar os móveis antes da mudança?",
+      "answer": "Sim, sobretudo objetos frágeis, valiosos ou com danos anteriores."
+    },
+    {
+      "question": "Posso comunicar o dano depois da entrega?",
+      "answer": "Comunique-o assim que for detetado e guarde provas do estado do objeto e da data."
+    },
+    {
+      "question": "O seguro automóvel cobre os móveis?",
+      "answer": "Não presuma que sim. Confirme especificamente que cobertura existe para os bens transportados."
+    },
+    {
+      "question": "O que guardar para apresentar uma reclamação?",
+      "answer": "Guarde proposta, mensagens, fotografias, inventário, comprovativos e eventual orçamento de reparação."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "É necessário seguro para transportar móveis?",
+      "href": "/guias/seguranca/seguro-transporte-moveis/",
+      "type": "planned"
+    },
+    {
+      "title": "Como verificar um transportador antes da mudança",
+      "href": "/guias/seguranca/como-verificar-transportador/",
+      "type": "planned"
+    },
+    {
+      "title": "Como escolher uma empresa de mudanças",
+      "href": "/guias/planeamento/como-escolher-empresa-mudancas/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare condições antes da mudança",
+    "text": "Peça propostas claras e confirme como cada transportador trata bens frágeis, danos e alterações.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

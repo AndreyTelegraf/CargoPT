@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "id": "elevador-na-mudanca",
+  "locale": "pt-PT",
+  "cluster": "planning",
+  "path": "/guias/planeamento/elevador-andares-mudanca/",
+  "title": "Como o elevador e os andares afetam uma mudança",
+  "meta_title": "Elevador, andares e preço de uma mudança — CargoPT",
+  "meta_description": "Perceba como elevador, escadas, distância à viatura e dimensões dos móveis podem influenciar uma proposta de mudança.",
+  "primary_query": "elevador mudança preço",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Planeamento da mudança",
+  "eyebrow": "Acessos do imóvel",
+  "hero_description": "Andares, elevadores e distância até à viatura influenciam o método, a equipa e o tempo necessário.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Os acessos podem alterar o trabalho necessário",
+  "key_points_heading": "Informação que afeta a proposta",
+  "faq_heading": "Perguntas sobre elevadores, escadas e andares",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "O elevador e o número de andares podem afetar uma mudança porque determinam quanto do percurso será feito manualmente, que objetos cabem no acesso e que equipa ou equipamento pode ser necessário. Para receber propostas comparáveis, indique os andares de origem e destino, a existência e as dimensões do elevador, as escadas e a distância até ao estacionamento.",
+  "key_points": [
+    "Indique os andares de recolha e entrega.",
+    "Confirme se o elevador pode ser usado durante a mudança.",
+    "Meça a porta e o interior do elevador para objetos grandes.",
+    "Descreva escadas, corredores e distância até à viatura.",
+    "Avise quando pode ser necessário desmontar um objeto."
+  ],
+  "sections": [
+    {
+      "id": "porque-acessos-importam",
+      "heading": "Porque os acessos influenciam a mudança",
+      "paragraphs": [
+        "Uma mudança não depende apenas da distância entre moradas. O percurso entre cada divisão e a viatura também exige tempo e esforço.",
+        "Vários andares, escadas estreitas ou um percurso longo até ao estacionamento podem exigir ajustes na equipa, no método ou na duração prevista."
+      ]
+    },
+    {
+      "id": "informacao-elevador",
+      "heading": "Que informação dar sobre o elevador",
+      "paragraphs": [
+        "Não basta indicar que o prédio tem elevador. Confirme se está operacional, se pode ser usado para mudanças e se existe reserva obrigatória.",
+        "Para móveis e eletrodomésticos grandes, meça a porta e o espaço interior útil."
+      ],
+      "checklist": [
+        "Largura e altura da porta.",
+        "Dimensões interiores aproximadas.",
+        "Capacidade indicada no elevador.",
+        "Disponibilidade no dia previsto.",
+        "Regras do condomínio.",
+        "Distância entre o elevador e a entrada."
+      ]
+    },
+    {
+      "id": "escadas-corredores",
+      "heading": "Descreva escadas, patamares e corredores",
+      "paragraphs": [
+        "Escadas estreitas, curvas fechadas, tetos baixos e patamares pequenos podem impedir a passagem de um objeto montado.",
+        "Fotografias e medidas ajudam a avaliar se será necessário desmontar o móvel ou usar outro método."
+      ]
+    },
+    {
+      "id": "estacionamento",
+      "heading": "Inclua a distância entre a porta e a viatura",
+      "paragraphs": [
+        "Mesmo num rés-do-chão, um estacionamento distante, uma rua pedonal ou degraus podem aumentar o percurso manual.",
+        "Informe onde a viatura pode parar e se existem restrições, portões, rampas ou horários."
+      ]
+    },
+    {
+      "id": "efeito-proposta",
+      "heading": "Como os acessos entram na proposta",
+      "paragraphs": [
+        "Cada transportador define a proposta de acordo com o serviço descrito. Os acessos podem influenciar a equipa, o equipamento e a duração.",
+        "Não existe uma regra universal segundo a qual cada andar acrescenta sempre o mesmo valor."
+      ],
+      "items": [
+        {
+          "title": "Equipa",
+          "text": "Pode ser necessário distribuir o esforço por mais ajudantes."
+        },
+        {
+          "title": "Tempo",
+          "text": "Percursos manuais longos podem prolongar a carga e a descarga."
+        },
+        {
+          "title": "Equipamento",
+          "text": "Alguns acessos podem exigir proteção ou equipamento adequado."
+        },
+        {
+          "title": "Desmontagem",
+          "text": "Objetos que não passam podem ter de ser desmontados quando isso for possível."
+        }
+      ]
+    },
+    {
+      "id": "verificacao",
+      "heading": "Verifique os acessos antes do dia da mudança",
+      "paragraphs": [
+        "Percorra o trajeto completo dos objetos maiores: portas, corredores, escadas ou elevador, entrada do prédio e estacionamento.",
+        "Registe medidas e fotografias e comunique alterações antes do serviço."
+      ],
+      "checklist": [
+        "Medir portas e passagens críticas.",
+        "Confirmar o funcionamento do elevador.",
+        "Verificar regras e horários do condomínio.",
+        "Identificar degraus e curvas apertadas.",
+        "Confirmar o local de estacionamento.",
+        "Enviar fotografias dos acessos difíceis."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Descreva os acessos juntamente com os objetos",
+    "text": "Indique andares, elevadores, escadas e estacionamento para receber propostas baseadas no trabalho real.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Ter elevador torna sempre a mudança mais barata?",
+      "answer": "Não necessariamente. Depende das dimensões, da disponibilidade e dos objetos que cabem no elevador."
+    },
+    {
+      "question": "Como medir o elevador para um móvel?",
+      "answer": "Meça a porta e o espaço interior útil e compare com o móvel e com a rotação necessária."
+    },
+    {
+      "question": "Devo indicar o andar quando existe elevador?",
+      "answer": "Sim. Alguns objetos podem não caber e o transportador precisa de conhecer o percurso alternativo."
+    },
+    {
+      "question": "A distância até ao estacionamento é importante?",
+      "answer": "Sim. Um percurso longo ou com obstáculos aumenta a parte manual da carga e da descarga."
+    },
+    {
+      "question": "O que fazer se um móvel não passar?",
+      "answer": "Envie medidas e fotografias para avaliar desmontagem ou outro método antes do serviço."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Fatores que influenciam o preço de uma mudança",
+      "href": "/guias/precos/fatores-preco-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Como medir móveis antes da mudança",
+      "href": "/guias/objetos/medir-moveis-antes-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Receba propostas com os acessos incluídos",
+    "text": "Descreva os andares, o elevador e o percurso dos objetos para comparar respostas adequadas ao serviço.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

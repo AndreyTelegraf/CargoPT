@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "id": "como-verificar-transportador",
+  "locale": "pt-PT",
+  "cluster": "rights",
+  "path": "/guias/seguranca/como-verificar-transportador/",
+  "title": "Como verificar um transportador antes da mudança",
+  "meta_title": "Como verificar um transportador antes da mudança — CargoPT",
+  "meta_description": "Confirme identidade, contactos, habilitação aplicável, proposta, pagamentos e procedimento para danos.",
+  "primary_query": "como verificar transportador",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Segurança e responsabilidade",
+  "eyebrow": "Verificação do prestador",
+  "hero_description": "A verificação deve combinar identidade, capacidade, condições escritas e respostas claras.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Verifique quem presta o serviço e o que foi acordado",
+  "key_points_heading": "Verificações antes de aceitar",
+  "faq_heading": "Perguntas sobre verificação de transportadores",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Antes de contratar um transportador, confirme a identidade da pessoa ou empresa, os contactos, a capacidade para o trabalho e as condições da proposta. Quando aplicável ao tipo de atividade, consulte os registos disponibilizados pelo IMT. Peça por escrito o serviço, o valor, a data, o pagamento e o procedimento previsto para danos ou alterações.",
+  "key_points": [
+    "Confirme nome, identificação e contactos verificáveis.",
+    "Verifique o enquadramento aplicável ao transporte.",
+    "Compare veículo, equipa e experiência com o serviço.",
+    "Peça proposta e condições por escrito.",
+    "Esclareça pagamentos, danos e cancelamento."
+  ],
+  "sections": [
+    {
+      "id": "identidade",
+      "heading": "Comece pela identidade e pelos contactos",
+      "paragraphs": [
+        "Confirme o nome usado na proposta, a identificação da empresa ou do profissional e os contactos.",
+        "Os dados de quem aceita o serviço, recebe o pagamento e emite documentos devem ser coerentes."
+      ],
+      "checklist": [
+        "Nome da empresa ou profissional.",
+        "Número de identificação fiscal quando aplicável.",
+        "Telefone e endereço de email.",
+        "Morada ou outro contacto profissional.",
+        "Identidade de quem executará o serviço.",
+        "Dados associados ao pagamento."
+      ]
+    },
+    {
+      "id": "registos",
+      "heading": "Consulte os registos aplicáveis",
+      "paragraphs": [
+        "O transporte rodoviário de mercadorias por conta de outrem pode estar sujeito a requisitos próprios.",
+        "Use os canais oficiais do IMT para verificar a informação disponível sobre empresas e veículos, considerando o tipo de serviço e de viatura."
+      ]
+    },
+    {
+      "id": "capacidade",
+      "heading": "Confirme capacidade para o trabalho",
+      "paragraphs": [
+        "A existência de contactos ou avaliações não substitui a verificação do veículo, da equipa e do equipamento necessários.",
+        "Pergunte por experiência relevante quando existem escadas, pianos, eletrodomésticos ou objetos frágeis."
+      ]
+    },
+    {
+      "id": "proposta",
+      "heading": "Peça uma proposta clara por escrito",
+      "paragraphs": [
+        "A proposta deve identificar a data, os locais, o inventário, as tarefas e o valor acordado.",
+        "Confirme se materiais, embalagem, desmontagem, ajudantes e montagem estão incluídos."
+      ],
+      "checklist": [
+        "Data e intervalo horário.",
+        "Moradas de recolha e entrega.",
+        "Inventário ou descrição do volume.",
+        "Número de ajudantes.",
+        "Tarefas e materiais incluídos.",
+        "Valor e condições de alteração."
+      ]
+    },
+    {
+      "id": "responsabilidade",
+      "heading": "Pergunte como são tratados danos e imprevistos",
+      "paragraphs": [
+        "Peça uma explicação escrita sobre registo de danos, reclamações, atrasos, cancelamentos e alterações.",
+        "Não presuma que qualquer seguro do veículo cobre automaticamente os objetos transportados."
+      ],
+      "items": [
+        {
+          "title": "Danos",
+          "text": "Confirme como devem ser documentados."
+        },
+        {
+          "title": "Cobertura",
+          "text": "Pergunte que riscos e limites estão efetivamente abrangidos."
+        },
+        {
+          "title": "Alterações",
+          "text": "Registe como objetos ou tarefas adicionais afetam a proposta."
+        },
+        {
+          "title": "Cancelamento",
+          "text": "Confirme prazos e condições aplicáveis."
+        }
+      ]
+    },
+    {
+      "id": "sinais-alerta",
+      "heading": "Reconheça sinais de alerta",
+      "paragraphs": [
+        "Tenha cuidado com respostas que ignoram o inventário, os acessos e as tarefas.",
+        "Falta de identificação, condições contraditórias ou pressão para pagar sem registo justificam uma verificação adicional."
+      ],
+      "checklist": [
+        "Valor apresentado sem perguntas sobre o serviço.",
+        "Recusa em confirmar tarefas por escrito.",
+        "Contactos ou identidade inconsistentes.",
+        "Condições de pagamento pouco claras.",
+        "Informação contraditória sobre equipa ou veículo.",
+        "Pressão para decidir imediatamente."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Compare propostas baseadas no mesmo pedido",
+    "text": "Descreva o inventário, os acessos e as tarefas para avaliar respostas com uma base comum.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Onde posso verificar uma empresa de transporte?",
+      "answer": "Consulte os canais oficiais do IMT e confirme qual o enquadramento aplicável ao serviço proposto."
+    },
+    {
+      "question": "As avaliações online são suficientes?",
+      "answer": "Não. Use-as apenas como um elemento adicional à identidade, proposta e capacidade verificadas."
+    },
+    {
+      "question": "É importante receber uma proposta por escrito?",
+      "answer": "Sim. O registo ajuda a confirmar tarefas, valor, data e condições."
+    },
+    {
+      "question": "Devo pagar tudo antecipadamente?",
+      "answer": "Confirme por escrito o valor, o momento e as condições antes de efetuar o pagamento."
+    },
+    {
+      "question": "Que dados devo guardar?",
+      "answer": "Guarde proposta, mensagens, comprovativos, contactos, inventário e fotografias relevantes."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como escolher uma empresa de mudanças",
+      "href": "/guias/planeamento/como-escolher-empresa-mudancas/",
+      "type": "guide"
+    },
+    {
+      "title": "Quem é responsável por danos durante uma mudança?",
+      "href": "/guias/seguranca/responsabilidade-danos-mudanca/",
+      "type": "planned"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare antes de escolher o transportador",
+    "text": "Descreva a mudança uma vez e compare preço, equipa, tarefas e condições de cada proposta.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}
