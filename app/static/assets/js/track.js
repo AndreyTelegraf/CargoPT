@@ -22,6 +22,56 @@ const localizedTrackPaths = {
   RU: "/ru/track"
 };
 
+const STATUS_CHROME_COLORS = {
+  searching: "#2B6FD6",
+  pending: "#d97706",
+  success: "#0F8A5F",
+  cancelled: "#D92D20"
+};
+
+function buildStatusFaviconSvg(color) {
+  return `<svg xmlns="http://www.w3.org/2000/svg"
+    width="512"
+    height="512"
+    viewBox="90 56 78 78">
+    <circle
+      cx="129.3"
+      cy="95.86"
+      r="36.77"
+      fill="${color}"/>
+    <path
+      fill="#ffffff"
+      d="M110.71,95.53c-1.22-1.35-1.23-3-.02-4.07,1.37-1.22,2.99-.86,4.18.47l11.64,13.01,18.06-27.32c.88-1.33,2.51-1.67,3.78-.87,1.24.79,1.75,2.46.84,3.84l-20.12,30.45c-.48.72-1.35,1.06-1.98,1.1-.86.06-1.67-.23-2.29-.92l-14.09-15.69Z"/>
+    <path
+      fill="#fbfcfc"
+      d="M126.88,113.56c-1.21,0-2.31-.49-3.12-1.4l-14.09-15.69c-.89-.99-1.34-2.17-1.28-3.32.06-1.04.55-2.02,1.37-2.75,1.89-1.67,4.36-1.43,6.17.59l10.42,11.64,17.05-25.79c1.28-1.94,3.79-2.5,5.71-1.28.95.6,1.64,1.58,1.87,2.67.23,1.08.02,2.2-.61,3.14l-20.12,30.45c-.78,1.18-2.09,1.67-3.07,1.73-.1,0-.21.01-.31.01ZM112.52,92.13c-.3,0-.6.13-.89.39-.26.23-.41.5-.42.8-.02.4.18.85.56,1.27h0s14.09,15.69,14.09,15.69c.3.34.64.48,1.15.45.26-.02.7-.17.9-.47l20.12-30.45c.26-.39.25-.75.2-.99-.08-.36-.3-.68-.62-.88-.63-.4-1.41-.21-1.85.45l-19.07,28.85-12.86-14.37c-.44-.49-.88-.74-1.3-.74Z"/>
+  </svg>`;
+}
+
+function updateStatusChrome(statusDotState) {
+  const color =
+    STATUS_CHROME_COLORS[statusDotState]
+    || STATUS_CHROME_COLORS.searching;
+
+  const favicon = document.querySelector(
+    'link[rel="icon"][type="image/svg+xml"]'
+  );
+
+  if (favicon) {
+    const svg = buildStatusFaviconSvg(color);
+    favicon.href =
+      `data:image/svg+xml,${encodeURIComponent(svg)}`;
+  }
+
+  const themeColor = document.querySelector(
+    'meta[name="theme-color"]'
+  );
+
+  if (themeColor) {
+    themeColor.content = color;
+  }
+}
+
 function updateLocaleLinks() {
   document.querySelectorAll(".locale-menu a").forEach((link) => {
     const basePath = localizedTrackPaths[link.textContent.trim()];
@@ -466,6 +516,11 @@ async function refreshTrackingToken(requestToken) {
   const entry = buildTrackingEntry(snapshot, requestToken);
 
   liveEntriesByToken.set(requestToken, entry);
+
+  if (requestToken === token) {
+    updateStatusChrome(entry.status_dot_state);
+  }
+
   return entry;
 }
 
