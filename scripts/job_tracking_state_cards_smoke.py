@@ -24,7 +24,7 @@ def main() -> None:
 
     assert ".tracking-status-summary" in components_css
     assert ".tracking-status-dot" in components_css
-    assert ".tracking-assignment-actions" in landing_css
+    assert ".tracking-assignment-actions" in components_css
     assert ".track-workspace-shell .tracking-panel .hero-workspace" in track_css
 
     print("job_tracking_state_cards_ok")

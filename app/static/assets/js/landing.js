@@ -332,7 +332,6 @@ async function submitRequest() {
         tracking_url: body.tracking_url,
         token: body.tracking_token,
         created_at: new Date().toISOString(),
-        status_label: messages.waitingOffers,
         route_summary: buildRouteSummary(submittedData),
         item_summary: buildShortSummary(submittedData.items),
         comment_summary: buildShortSummary(submittedData.comment)

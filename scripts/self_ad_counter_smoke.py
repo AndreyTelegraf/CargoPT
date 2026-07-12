@@ -84,7 +84,7 @@ async def main():
 
                 preview = kwargs.get("link_preview_options")
                 assert preview is not None
-                assert preview.url == "https://t.me/CargoPT_bot"
+                assert preview.url == "https://cargopt.pt"
                 assert preview.is_disabled is False
 
             sent_text, _ = await trigger_next_ad()

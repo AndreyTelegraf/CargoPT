@@ -6,6 +6,8 @@ def main() -> None:
     css = Path("app/static/assets/css/track.css").read_text()
     components_css = Path("app/static/assets/css/components.css").read_text()
     workspace_js = Path("app/static/assets/js/tracking-workspace.js").read_text()
+    track_js = Path("app/static/assets/js/track.js").read_text()
+    landing_js = Path("app/static/assets/js/landing.js").read_text()
 
     assert 'class="section track-workspace-shell"' in html
     assert 'class="track-workspace-sidebar"' in html
@@ -22,6 +24,18 @@ def main() -> None:
     assert ".tracking-status-summary" in components_css
     assert ".tracking-status-details" in components_css
     assert "card.className = \"hero-workspace\"" in workspace_js
+
+    assert "delete merged.status_label;" in track_js
+    assert "delete merged.status_dot_state;" in track_js
+    assert "const liveEntriesByToken = new Map();" in track_js
+    assert "liveEntriesByToken.set(requestToken, entry);" in track_js
+    assert "function getActiveTrackingEntry()" in track_js
+    assert "refreshVisibleTrackingEntries({" in track_js
+    assert "SAVED_REQUESTS_POLL_INTERVAL_MS = 30000" in track_js
+    assert "savedTrackingEntries" not in track_js
+    assert "activeTrackingEntry" not in track_js
+    assert "loadSavedTrackingEntries(" not in track_js
+    assert "status_label: messages.waitingOffers" not in landing_js
 
     print("job_tracking_request_card_surface_ok")
 

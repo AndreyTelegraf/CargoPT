@@ -73,15 +73,17 @@ function saveTrackingLink(entry) {
     tracking_url: entry.tracking_url,
     token: entry.token,
     route_summary: entry.route_summary,
-    item_summary: entry.item_summary,
-    status_label: entry.status_label
+    item_summary: entry.item_summary
   };
 
   const links = getTrackingLinks();
   const existingIndex = links.findIndex((item) => item.token === entry.token);
 
   if (existingIndex >= 0) {
-    links[existingIndex] = {...links[existingIndex], ...current};
+    const merged = {...links[existingIndex], ...current};
+    delete merged.status_label;
+    delete merged.status_dot_state;
+    links[existingIndex] = merged;
   } else {
     links.unshift(current);
   }
@@ -89,10 +91,14 @@ function saveTrackingLink(entry) {
   localStorage.setItem(TRACKING_LINKS_KEY, JSON.stringify(links.slice(0, 20)));
 }
 
-function renderOpenPedidosNavigation(activeEntry) {
+function getVisibleTrackingLinks() {
+  return getTrackingLinks().slice(0, 5);
+}
+
+function renderOpenPedidosNavigation() {
   if (!trackPedidosList) return;
 
-  const links = getTrackingLinks();
+  const links = getVisibleTrackingLinks();
   trackPedidosList.textContent = "";
 
   if (!links.length) {
@@ -103,9 +109,19 @@ function renderOpenPedidosNavigation(activeEntry) {
     return;
   }
 
-  links.slice(0, 5).forEach((storedEntry) => {
-    const isActive = storedEntry.token === activeEntry.token;
-    const entry = isActive ? {...storedEntry, ...activeEntry} : storedEntry;
+  links.forEach((storedEntry) => {
+    const isActive = storedEntry.token === token;
+    const liveEntry = liveEntriesByToken.get(storedEntry.token);
+
+    const entry = liveEntry
+      ? {
+          ...storedEntry,
+          ...liveEntry,
+          item_summary:
+            storedEntry.item_summary || liveEntry.item_summary
+        }
+      : storedEntry;
+
     const card = document.createElement("article");
     card.className = "track-offer-nav-card";
     card.classList.toggle("is-chosen", isActive);
@@ -115,12 +131,18 @@ function renderOpenPedidosNavigation(activeEntry) {
     top.className = "track-offer-nav-top";
 
     const route = document.createElement("strong");
-    const routeLabel = entry.route_summary || messages.defaultRoute;
-    route.textContent = entry.job_id ? `#${entry.job_id} · ${routeLabel}` : routeLabel;
+    const routeLabel =
+      entry.route_summary || messages.defaultRoute;
+
+    route.textContent = entry.job_id
+      ? `#${entry.job_id} · ${routeLabel}`
+      : routeLabel;
 
     const status = document.createElement("span");
     status.className = "track-offer-nav-price";
-    status.textContent = isActive ? messages.currentRequest : messages.openRequest;
+    status.textContent = isActive
+      ? messages.currentRequest
+      : messages.openRequest;
 
     top.append(route, status);
 
@@ -128,14 +150,21 @@ function renderOpenPedidosNavigation(activeEntry) {
     line.className = "track-offer-nav-status";
 
     const dot = document.createElement("span");
-    dot.className = `tracking-status-dot tracking-status-dot-${entry.status_dot_state || "searching"}`;
+    dot.className = "tracking-status-dot";
+
+    if (liveEntry?.status_dot_state) {
+      dot.classList.add(
+        `tracking-status-dot-${liveEntry.status_dot_state}`
+      );
+    }
+
     dot.setAttribute("aria-hidden", "true");
 
     const statusText = document.createElement("span");
-    statusText.textContent = entry.status_label || messages.waitingOffers;
+    statusText.textContent =
+      liveEntry?.status_label || messages.waitingOffers;
 
     line.append(dot, statusText);
-
     card.appendChild(top);
 
     if (entry.item_summary) {
@@ -148,7 +177,9 @@ function renderOpenPedidosNavigation(activeEntry) {
     card.appendChild(line);
 
     const open = () => {
-      if (entry.tracking_url) window.location.href = entry.tracking_url;
+      if (entry.tracking_url) {
+        window.location.href = entry.tracking_url;
+      }
     };
 
     card.addEventListener("click", (event) => {
@@ -166,9 +197,13 @@ function renderOpenPedidosNavigation(activeEntry) {
   });
 }
 
-
 const POLL_INTERVAL_MS = 5000;
-let activeTrackingEntry = null;
+const SAVED_REQUESTS_POLL_INTERVAL_MS = 30000;
+
+const liveEntriesByToken = new Map();
+
+let isRefreshingActiveTrackingEntry = false;
+let isRefreshingSavedTrackingEntries = false;
 let activeSidebarOfferId = null;
 let isSelectingOffer = false;
 let isSendingAssignmentAction = false;
@@ -349,9 +384,9 @@ function withSelectedOfferSummary(entry) {
 }
 
 function renderTrackingWorkspace(entry) {
-  activeTrackingEntry = withSelectedOfferSummary(entry);
+  const workspaceEntry = withSelectedOfferSummary(entry);
 
-  window.CargoPTTrackingWorkspace.render(activeTrackingEntry, {
+  window.CargoPTTrackingWorkspace.render(workspaceEntry, {
     container: trackingPanelBody,
     locale: numberLocale,
     messages,
@@ -391,12 +426,13 @@ function formatTrackingStatus(snapshot) {
   return messages.waitingOffers;
 }
 
-function mergeTrackingSnapshot(snapshot) {
+function buildTrackingEntry(snapshot, fallbackToken) {
   const acceptedOffers = Array.isArray(snapshot.accepted_offers) ? snapshot.accepted_offers : [];
   const entry = {
     job_id: snapshot.job_id,
-    token: snapshot.tracking_token || token,
-    tracking_url: `${trackBasePath}/${snapshot.tracking_token || token}`,
+    token: snapshot.tracking_token || fallbackToken,
+    tracking_url:
+      `${trackBasePath}/${snapshot.tracking_token || fallbackToken}`,
     status_label: formatTrackingStatus(snapshot),
     status_dot_state: getTrackingStatusDotState(snapshot, acceptedOffers),
     accepted_offers_count: acceptedOffers.length,
@@ -408,26 +444,68 @@ function mergeTrackingSnapshot(snapshot) {
   return entry;
 }
 
-async function loadTrackingState() {
-  if (!token) throw new Error("missing tracking token");
+async function loadTrackingSnapshot(requestToken) {
+  if (!requestToken) {
+    throw new Error("missing tracking token");
+  }
 
-  const response = await fetch(`/api/v1/track/${encodeURIComponent(token)}`, {
-    headers: {"Accept": "application/json"}
-  });
+  const response = await fetch(
+    `/api/v1/track/${encodeURIComponent(requestToken)}`,
+    {headers: {"Accept": "application/json"}}
+  );
 
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+
   return response.json();
 }
 
-async function refresh() {
+async function refreshTrackingToken(requestToken) {
+  const snapshot = await loadTrackingSnapshot(requestToken);
+  const entry = buildTrackingEntry(snapshot, requestToken);
+
+  liveEntriesByToken.set(requestToken, entry);
+  return entry;
+}
+
+async function refreshVisibleTrackingEntries({
+  includeActive = true
+} = {}) {
+  const links = getVisibleTrackingLinks();
+
+  return Promise.allSettled(
+    links.map((storedEntry) => {
+      if (!includeActive && storedEntry.token === token) {
+        return Promise.resolve(null);
+      }
+
+      return refreshTrackingToken(storedEntry.token);
+    })
+  );
+}
+
+function getActiveTrackingEntry() {
+  return liveEntriesByToken.get(token) || null;
+}
+
+async function bootstrapTrackingPage() {
   try {
-    const snapshot = await loadTrackingState();
-    activeTrackingEntry = mergeTrackingSnapshot(snapshot);
+    await refreshVisibleTrackingEntries({
+      includeActive: true
+    });
+
+    const activeEntry = getActiveTrackingEntry();
+
+    if (!activeEntry) {
+      throw new Error("active tracking entry unavailable");
+    }
+
+    saveTrackingLink(activeEntry);
     errorCard.hidden = true;
 
-    saveTrackingLink(activeTrackingEntry);
-    renderOpenPedidosNavigation(activeTrackingEntry);
-    renderTrackingWorkspace(activeTrackingEntry);
+    renderOpenPedidosNavigation();
+    renderTrackingWorkspace(activeEntry);
   } catch (error) {
     console.error(error);
     errorCard.hidden = false;
@@ -435,22 +513,62 @@ async function refresh() {
   }
 }
 
+async function refreshActiveTrackingEntry() {
+  if (isRefreshingActiveTrackingEntry) return;
+
+  isRefreshingActiveTrackingEntry = true;
+
+  try {
+    const activeEntry = await refreshTrackingToken(token);
+
+    saveTrackingLink(activeEntry);
+    errorCard.hidden = true;
+
+    renderOpenPedidosNavigation();
+    renderTrackingWorkspace(activeEntry);
+  } catch (error) {
+    console.error(error);
+    errorCard.hidden = false;
+  } finally {
+    isRefreshingActiveTrackingEntry = false;
+  }
+}
+
+async function refreshSavedTrackingEntries() {
+  if (isRefreshingSavedTrackingEntries) return;
+
+  isRefreshingSavedTrackingEntries = true;
+
+  try {
+    await refreshVisibleTrackingEntries({
+      includeActive: false
+    });
+
+    renderOpenPedidosNavigation();
+  } catch (error) {
+    console.error(error);
+  } finally {
+    isRefreshingSavedTrackingEntries = false;
+  }
+}
+
 async function selectOffer(offerId, button) {
-  if (isSelectingOffer || !activeTrackingEntry) return;
+  const activeEntry = getActiveTrackingEntry();
+  if (isSelectingOffer || !activeEntry) return;
 
   isSelectingOffer = true;
   button.disabled = true;
   button.textContent = messages.selectingOffer;
 
   try {
-    const response = await fetch(`/api/v1/track/${encodeURIComponent(activeTrackingEntry.token)}/offers/${encodeURIComponent(offerId)}/select`, {
+    const response = await fetch(`/api/v1/track/${encodeURIComponent(activeEntry.token)}/offers/${encodeURIComponent(offerId)}/select`, {
       method: "POST",
       headers: {"Accept": "application/json"}
     });
 
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-    await refresh();
+    await refreshActiveTrackingEntry();
   } catch (error) {
     console.error(error);
     button.disabled = false;
@@ -461,7 +579,8 @@ async function selectOffer(offerId, button) {
 }
 
 async function sendAssignmentAction(action, button) {
-  if (isSendingAssignmentAction || !activeTrackingEntry) return;
+  const activeEntry = getActiveTrackingEntry();
+  if (isSendingAssignmentAction || !activeEntry) return;
 
   isSendingAssignmentAction = true;
 
@@ -470,14 +589,14 @@ async function sendAssignmentAction(action, button) {
   button.textContent = messages.sendingAction;
 
   try {
-    const response = await fetch(`/api/v1/track/${encodeURIComponent(activeTrackingEntry.token)}/assignment/${encodeURIComponent(action)}`, {
+    const response = await fetch(`/api/v1/track/${encodeURIComponent(activeEntry.token)}/assignment/${encodeURIComponent(action)}`, {
       method: "POST",
       headers: {"Accept": "application/json"}
     });
 
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-    await refresh();
+    await refreshActiveTrackingEntry();
   } catch (error) {
     console.error(error);
     button.disabled = false;
@@ -490,5 +609,14 @@ async function sendAssignmentAction(action, button) {
   }
 }
 
-refresh();
-window.setInterval(refresh, POLL_INTERVAL_MS);
+void bootstrapTrackingPage();
+
+window.setInterval(
+  () => void refreshActiveTrackingEntry(),
+  POLL_INTERVAL_MS
+);
+
+window.setInterval(
+  () => void refreshSavedTrackingEntries(),
+  SAVED_REQUESTS_POLL_INTERVAL_MS
+);
