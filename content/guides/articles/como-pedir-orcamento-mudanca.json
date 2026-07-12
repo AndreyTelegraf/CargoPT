@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "id": "como-pedir-orcamento-mudanca",
+  "locale": "pt-PT",
+  "cluster": "prices",
+  "path": "/guias/precos/como-pedir-orcamento-mudanca/",
+  "title": "Como pedir um orçamento de mudança",
+  "meta_title": "Como pedir um orçamento de mudança — CargoPT",
+  "meta_description": "Saiba que informações deve enviar para receber propostas de mudança claras, completas e comparáveis.",
+  "primary_query": "orçamento mudança",
+  "intent": [
+    "informational",
+    "commercial",
+    "transactional"
+  ],
+  "article_section": "Preços e custos",
+  "eyebrow": "Orçamentos de mudanças",
+  "hero_description": "Um pedido completo ajuda o transportador a perceber o trabalho necessário e reduz perguntas, omissões e diferenças entre a descrição enviada e o serviço real.",
+  "date_published": "2026-07-11",
+  "date_modified": "2026-07-11",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Descreva o mesmo serviço a todos os transportadores",
+  "key_points_heading": "Informação essencial para receber propostas úteis",
+  "faq_heading": "Dúvidas sobre pedidos de orçamento",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para pedir um orçamento de mudança, indique a morada ou localização de recolha e entrega, a data pretendida, a lista dos objetos, os andares, a existência de elevador, a distância até ao local onde o veículo pode parar e os serviços adicionais necessários. Inclua fotografias quando existirem móveis grandes, objetos pesados, acessos estreitos ou outras condições difíceis de explicar apenas por texto. Envie a mesma descrição a todos os transportadores para que as propostas correspondam ao mesmo trabalho e possam ser comparadas.",
+  "key_points": [
+    "Identifique claramente os locais de recolha e entrega.",
+    "Envie uma lista concreta dos objetos, incluindo peças grandes, pesadas ou frágeis.",
+    "Informe os andares, elevadores, escadas e distância até à zona de carga.",
+    "Indique se precisa de ajudantes, desmontagem, montagem ou embalagem.",
+    "Compare o âmbito do serviço e não apenas o valor final."
+  ],
+  "sections": [
+    {
+      "id": "informacao-inicial",
+      "heading": "Que informação deve incluir no primeiro pedido?",
+      "paragraphs": [
+        "O primeiro contacto deve permitir ao transportador perceber onde será realizado o serviço, quando deverá acontecer e que carga será movimentada. Um pedido como “preciso de uma mudança em Lisboa” não contém dados suficientes para preparar uma proposta concreta.",
+        "Não é necessário conhecer antecipadamente o peso exato ou o volume total. No entanto, deve fornecer uma descrição suficientemente detalhada para que o transportador possa estimar o veículo, o número de pessoas e o tempo de trabalho."
+      ],
+      "checklist": [
+        "Localização exata ou aproximada da recolha.",
+        "Localização exata ou aproximada da entrega.",
+        "Data pretendida e eventuais datas alternativas.",
+        "Tipo de serviço: mudança completa ou transporte parcial.",
+        "Lista dos principais objetos.",
+        "Quantidade aproximada de caixas e volumes pequenos.",
+        "Objetos grandes, pesados, frágeis ou desmontados.",
+        "Andar e condições de acesso nos dois locais.",
+        "Existência e dimensão aproximada dos elevadores.",
+        "Serviços adicionais necessários."
+      ]
+    },
+    {
+      "id": "inventario",
+      "heading": "Como descrever os objetos da mudança",
+      "paragraphs": [
+        "Uma descrição por divisões costuma ser mais clara do que uma frase genérica. Pode separar sala, quartos, cozinha, escritório, arrecadação e caixas.",
+        "Nos objetos maiores, indique o tipo e, quando for relevante, as dimensões aproximadas. Fotografias ajudam a perceber o formato, o estado de desmontagem e a dificuldade de movimentação."
+      ],
+      "items": [
+        {
+          "title": "Mobiliário",
+          "text": "Indique sofás, camas, colchões, mesas, armários, estantes e outros móveis de maior dimensão."
+        },
+        {
+          "title": "Eletrodomésticos",
+          "text": "Liste frigorífico, máquina de lavar, forno, televisão e outros equipamentos relevantes."
+        },
+        {
+          "title": "Caixas e volumes pequenos",
+          "text": "Forneça uma quantidade aproximada, mesmo que ainda não estejam todas preparadas."
+        },
+        {
+          "title": "Objetos especiais",
+          "text": "Identifique pianos, cofres, peças frágeis, obras de arte ou objetos que exigem cuidado adicional."
+        }
+      ]
+    },
+    {
+      "id": "acessos",
+      "heading": "Que detalhes dos acessos alteram o serviço?",
+      "paragraphs": [
+        "Os acessos influenciam a forma como os objetos serão movimentados. O transportador precisa de saber se pode usar elevador, quantos lanços de escadas existem e se móveis grandes passam pelas portas e corredores.",
+        "Também deve indicar onde o veículo poderá parar. Quando existe uma distância considerável entre a entrada e a zona de carga, o percurso feito pelos ajudantes pode aumentar."
+      ],
+      "items": [
+        {
+          "title": "Andares",
+          "text": "Informe o andar na recolha e na entrega, incluindo rés do chão, cave ou pisos intermédios."
+        },
+        {
+          "title": "Elevadores",
+          "text": "Confirme se existem, se funcionam e se têm espaço para os principais objetos."
+        },
+        {
+          "title": "Escadas e corredores",
+          "text": "Mencione escadas estreitas, curvas apertadas, portas pequenas ou outros obstáculos."
+        },
+        {
+          "title": "Estacionamento",
+          "text": "Explique se o veículo pode parar junto à entrada ou se haverá transporte manual por uma distância maior."
+        }
+      ]
+    },
+    {
+      "id": "servicos-incluidos",
+      "heading": "Que serviços deve confirmar na proposta?",
+      "paragraphs": [
+        "Nem todas as propostas incluem as mesmas tarefas. Uma pode abranger apenas veículo e motorista, enquanto outra inclui ajudantes, carga, descarga, desmontagem e materiais de proteção.",
+        "Antes de comparar valores, confirme por escrito o que cada transportador fará e que tarefas continuam a ser responsabilidade do cliente."
+      ],
+      "items": [
+        {
+          "title": "Carga e descarga",
+          "text": "Confirme o número de ajudantes e quem movimentará os objetos entre o imóvel e o veículo."
+        },
+        {
+          "title": "Desmontagem e montagem",
+          "text": "Indique previamente os móveis que precisam de ser desmontados ou montados."
+        },
+        {
+          "title": "Embalagem",
+          "text": "Confirme se a equipa embala os bens e se caixas, mantas, película ou outros materiais estão incluídos."
+        },
+        {
+          "title": "Equipamento adicional",
+          "text": "Plataformas, elevadores exteriores ou outros meios devem ser identificados antes da realização."
+        }
+      ]
+    },
+    {
+      "id": "comparar",
+      "heading": "Como comparar os orçamentos recebidos",
+      "paragraphs": [
+        "Duas propostas só são diretamente comparáveis quando foram preparadas com base na mesma informação. Se um transportador desconhece um andar sem elevador ou um objeto pesado, o valor apresentado pode não representar o serviço completo.",
+        "Analise o veículo previsto, o número de ajudantes, as tarefas incluídas, a data, as condições de pagamento e a forma como são tratadas alterações ao inventário ou ao horário."
+      ],
+      "checklist": [
+        "O inventário considerado é o mesmo.",
+        "Os acessos foram descritos da mesma forma.",
+        "O número de ajudantes está identificado.",
+        "Carga e descarga estão claramente atribuídas.",
+        "Desmontagem, montagem e embalagem estão especificadas.",
+        "Materiais e equipamento adicional estão identificados.",
+        "O valor e as condições acordadas estão registados por escrito."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "Como pedir propostas através da CargoPT",
+      "paragraphs": [
+        "Na CargoPT, o cliente descreve a mudança uma vez. O pedido pode depois ser encaminhado para transportadores independentes adequados às características indicadas.",
+        "Cada transportador define a sua própria proposta. O cliente pode comparar as respostas disponíveis antes de escolher, mantendo uma descrição comum do serviço."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare um pedido completo",
+    "text": "Indique a rota, os objetos, os acessos e os serviços necessários para receber propostas sobre o mesmo trabalho.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "É necessário conhecer o volume exato da mudança?",
+      "answer": "Não. Pode fornecer uma lista dos objetos, uma estimativa do número de caixas e fotografias. Quanto mais concreta for a descrição, mais útil será a proposta."
+    },
+    {
+      "question": "Devo enviar fotografias para pedir um orçamento?",
+      "answer": "São especialmente úteis para móveis grandes, objetos pesados, peças frágeis e acessos difíceis. As fotografias complementam, mas não substituem, a descrição do serviço."
+    },
+    {
+      "question": "O orçamento deve indicar o número de ajudantes?",
+      "answer": "É recomendável confirmar quantas pessoas participarão na carga e descarga e quais tarefas serão realizadas pela equipa."
+    },
+    {
+      "question": "Como comparar propostas com valores diferentes?",
+      "answer": "Confirme primeiro se todas incluem o mesmo inventário, os mesmos acessos, o mesmo número de ajudantes e os mesmos serviços adicionais."
+    },
+    {
+      "question": "O valor pode mudar se forem adicionados objetos?",
+      "answer": "Objetos ou condições não incluídos no pedido inicial podem alterar o trabalho necessário. Comunique qualquer mudança antes da data do serviço e confirme o novo âmbito por escrito."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Quanto custa uma mudança em Portugal?",
+      "href": "/guias/precos/quanto-custa-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Guias de mudanças e transporte",
+      "href": "/guias/",
+      "type": "parent"
+    },
+    {
+      "title": "Mudanças em Lisboa",
+      "href": "/mudancas-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "Como escolher uma empresa de mudanças",
+      "href": "/guias/planeamento/como-escolher-empresa-mudancas/",
+      "type": "planned"
+    }
+  ],
+  "final_cta": {
+    "heading": "Peça propostas para a sua mudança",
+    "text": "Descreva uma vez os locais, os objetos, os acessos e os serviços necessários. Depois compare as propostas disponíveis.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}
