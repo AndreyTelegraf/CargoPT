@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "id": "quanto-custa-mudanca-lisboa",
+  "locale": "pt-PT",
+  "cluster": "prices",
+  "path": "/guias/precos/quanto-custa-mudanca-lisboa/",
+  "title": "Quanto custa uma mudança em Lisboa?",
+  "meta_title": "Quanto custa uma mudança em Lisboa? — CargoPT",
+  "meta_description": "Perceba que fatores influenciam o preço de uma mudança em Lisboa e que informação deve fornecer para comparar propostas.",
+  "primary_query": "quanto custa mudança Lisboa",
+  "intent": [
+    "local",
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Preços e custos",
+  "eyebrow": "Preços de mudanças em Lisboa",
+  "hero_description": "O preço depende da carga, dos acessos, da distância, da equipa necessária e dos serviços incluídos. Uma descrição completa permite comparar propostas para o mesmo trabalho.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Não existe um preço único para uma mudança em Lisboa",
+  "key_points_heading": "Pontos essenciais",
+  "faq_heading": "Perguntas frequentes",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "O custo de uma mudança em Lisboa varia conforme o volume e o tipo de objetos, os locais de recolha e entrega, os andares, os elevadores, a possibilidade de estacionar junto aos imóveis, o número de ajudantes e serviços como desmontagem, montagem ou embalagem. Para obter propostas comparáveis, envie a todos os transportadores a mesma descrição do serviço.",
+  "key_points": [
+    "A quantidade e o tipo de objetos determinam o veículo e a equipa.",
+    "Andares, elevadores e escadas alteram o trabalho necessário.",
+    "A distância entre o veículo e a entrada deve ser comunicada.",
+    "Desmontagem, montagem e embalagem devem estar especificadas.",
+    "Compare sempre o conteúdo da proposta e não apenas o preço."
+  ],
+  "sections": [
+    {
+      "id": "fatores-principais",
+      "heading": "O que determina o preço da mudança?",
+      "paragraphs": [
+        "O transportador estima o serviço a partir da carga, dos acessos, da rota, do número de pessoas e do tempo previsto.",
+        "Uma descrição incompleta pode originar uma proposta que não inclui todo o trabalho necessário."
+      ],
+      "items": [
+        {
+          "title": "Carga",
+          "text": "Móveis, eletrodomésticos, caixas e objetos especiais influenciam o veículo e a duração."
+        },
+        {
+          "title": "Acessos",
+          "text": "Andares sem elevador, escadas estreitas e percursos longos aumentam a movimentação manual."
+        },
+        {
+          "title": "Equipa",
+          "text": "O número de ajudantes deve corresponder ao peso, ao volume e às condições dos imóveis."
+        },
+        {
+          "title": "Serviços",
+          "text": "Embalagem, desmontagem, montagem e materiais devem ser confirmados separadamente."
+        }
+      ]
+    },
+    {
+      "id": "estacionamento",
+      "heading": "Porque é importante explicar o estacionamento?",
+      "paragraphs": [
+        "O local onde o veículo pode parar influencia a distância percorrida pela equipa com os objetos.",
+        "Indique se existe acesso direto, estacionamento reservado ou necessidade de transportar a carga por uma distância maior."
+      ]
+    },
+    {
+      "id": "inventario",
+      "heading": "Como preparar o inventário",
+      "paragraphs": [
+        "Organize a lista por divisões e indique os móveis e eletrodomésticos principais.",
+        "Acrescente uma estimativa das caixas e fotografias dos objetos grandes, pesados ou frágeis."
+      ],
+      "checklist": [
+        "Sofás, camas, colchões, mesas e armários.",
+        "Frigorífico, máquinas, televisão e outros equipamentos.",
+        "Quantidade aproximada de caixas.",
+        "Objetos pesados, frágeis ou de formato irregular.",
+        "Móveis que precisam de desmontagem."
+      ]
+    },
+    {
+      "id": "comparar-propostas",
+      "heading": "Como comparar propostas para Lisboa",
+      "paragraphs": [
+        "Confirme se todas as propostas foram calculadas com base no mesmo inventário, rota e condições de acesso.",
+        "Verifique também o número de ajudantes, as tarefas incluídas, os materiais e as condições aplicáveis a alterações."
+      ]
+    },
+    {
+      "id": "reduzir-custo",
+      "heading": "Como evitar custos desnecessários",
+      "paragraphs": [
+        "Prepare caixas e objetos pequenos antecipadamente e elimine o que não pretende transportar.",
+        "Facilite os acessos, confirme o estacionamento e comunique alterações antes do dia do serviço."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "Pedir propostas através da CargoPT",
+      "paragraphs": [
+        "Na CargoPT, descreve a mudança uma vez e o pedido pode ser encaminhado para transportadores adequados.",
+        "Cada transportador apresenta a sua proposta e o cliente compara as respostas disponíveis."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Descreva a sua mudança em Lisboa",
+    "text": "Indique os locais, os objetos, os acessos e os serviços necessários para receber propostas sobre o mesmo trabalho.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "É possível obter um preço sem indicar os objetos?",
+      "answer": "Uma descrição genérica raramente permite calcular o serviço completo. Envie pelo menos os principais móveis, eletrodomésticos e uma estimativa das caixas."
+    },
+    {
+      "question": "O andar sem elevador influencia a proposta?",
+      "answer": "Sim. A movimentação por escadas pode exigir mais tempo ou mais pessoas e deve ser comunicada antecipadamente."
+    },
+    {
+      "question": "O estacionamento deve ser confirmado antes?",
+      "answer": "É recomendável explicar onde o veículo poderá parar e a distância até à entrada dos imóveis."
+    },
+    {
+      "question": "A desmontagem de móveis está sempre incluída?",
+      "answer": "Não. Confirme expressamente quais móveis serão desmontados ou montados e se esse trabalho está incluído."
+    },
+    {
+      "question": "Como comparar propostas diferentes?",
+      "answer": "Verifique se todas incluem o mesmo inventário, acessos, equipa, materiais e serviços adicionais."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Quanto custa uma mudança em Portugal?",
+      "href": "/guias/precos/quanto-custa-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Mudanças em Lisboa",
+      "href": "/mudancas-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "O que influencia o preço de uma mudança?",
+      "href": "/guias/precos/fatores-preco-mudanca/",
+      "type": "guide"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para a sua mudança em Lisboa",
+    "text": "Descreva uma vez a carga, os acessos e os serviços necessários e compare as propostas disponíveis.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

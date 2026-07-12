@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "id": "mudancas-albufeira",
+  "locale": "pt-PT",
+  "cluster": "cities",
+  "path": "/guias/cidades/mudancas-albufeira/",
+  "title": "Mudanças em Albufeira",
+  "meta_title": "Mudanças em Albufeira — CargoPT",
+  "meta_description": "Prepare uma mudança em Albufeira: inventário, acessos, rota, serviços adicionais e informação necessária para pedir propostas.",
+  "primary_query": "mudanças Albufeira",
+  "intent": [
+    "local",
+    "transactional"
+  ],
+  "article_section": "Mudanças por cidade",
+  "eyebrow": "Mudanças em Albufeira",
+  "hero_description": "Uma descrição completa da carga, dos imóveis e dos acessos ajuda a encontrar transportadores adequados e a comparar propostas.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Comece por descrever a carga e os dois locais",
+  "key_points_heading": "Pontos essenciais",
+  "faq_heading": "Perguntas frequentes",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para organizar uma mudança em Albufeira, indique a recolha, a entrega, a data, os objetos, os andares, os elevadores, o local possível de estacionamento e os serviços adicionais. Informe se a mudança é local ou envolve outra cidade e envie fotografias quando existirem objetos grandes ou acessos difíceis.",
+  "key_points": [
+    "Identifique claramente os locais de recolha e entrega.",
+    "Liste móveis, eletrodomésticos, caixas e objetos especiais.",
+    "Informe andares, elevadores, escadas e estacionamento.",
+    "Confirme ajudantes, desmontagem, montagem e embalagem.",
+    "Compare propostas baseadas na mesma descrição."
+  ],
+  "sections": [
+    {
+      "id": "pedido",
+      "heading": "Informação necessária para pedir propostas",
+      "paragraphs": [
+        "Indique a data pretendida, os locais e se existe flexibilidade de horário.",
+        "Descreva o inventário por divisões e acrescente fotografias dos objetos principais."
+      ],
+      "checklist": [
+        "Morada ou localização de recolha.",
+        "Morada ou localização de entrega.",
+        "Data e horário pretendidos.",
+        "Lista dos objetos.",
+        "Quantidade aproximada de caixas.",
+        "Serviços adicionais."
+      ]
+    },
+    {
+      "id": "acessos",
+      "heading": "Como descrever os acessos",
+      "paragraphs": [
+        "Informe o andar, a existência de elevador e eventuais escadas, corredores estreitos ou portas pequenas.",
+        "Explique onde o veículo poderá parar e a distância até à entrada."
+      ]
+    },
+    {
+      "id": "rota",
+      "heading": "Mudança local ou para outra região",
+      "paragraphs": [
+        "A rota deve ser indicada desde o início para que o transportador avalie o tempo e o veículo necessários.",
+        "Inclua eventuais paragens adicionais apenas quando fizerem parte do serviço."
+      ]
+    },
+    {
+      "id": "servicos",
+      "heading": "Serviços adicionais",
+      "paragraphs": [
+        "Confirme se precisa apenas de transporte ou também de carga, descarga, ajudantes, embalagem, desmontagem ou montagem.",
+        "Objetos pesados ou frágeis devem ser identificados antecipadamente."
+      ]
+    },
+    {
+      "id": "comparar",
+      "heading": "Como comparar transportadores",
+      "paragraphs": [
+        "Compare propostas preparadas com base no mesmo inventário e nas mesmas condições.",
+        "Verifique o veículo, a equipa, as tarefas incluídas, o horário e as condições acordadas."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "Pedir propostas através da CargoPT",
+      "paragraphs": [
+        "Na CargoPT, descreve o serviço uma vez e o pedido pode ser encaminhado para transportadores adequados.",
+        "Depois pode comparar as propostas disponíveis antes de escolher."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Descreva a sua mudança em Albufeira",
+    "text": "Indique a rota, os objetos, os acessos e os serviços necessários num único pedido.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Posso pedir uma mudança apenas dentro de Albufeira?",
+      "answer": "Sim. Indique os dois locais, o inventário e as condições de acesso."
+    },
+    {
+      "question": "É possível pedir transporte para outra cidade?",
+      "answer": "Sim. Informe claramente a origem, o destino e eventuais paragens incluídas."
+    },
+    {
+      "question": "Devo enviar fotografias?",
+      "answer": "São úteis para móveis grandes, objetos pesados, peças frágeis e acessos difíceis."
+    },
+    {
+      "question": "A embalagem está incluída?",
+      "answer": "Não deve ser presumida. Confirme se a equipa embala e fornece os materiais."
+    },
+    {
+      "question": "Como escolher entre várias propostas?",
+      "answer": "Compare o âmbito completo, o veículo, a equipa, as tarefas, a data e as condições."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Quanto custa uma mudança em Portugal?",
+      "href": "/guias/precos/quanto-custa-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Mudanças no Algarve",
+      "href": "/mudancas-algarve/",
+      "type": "landing"
+    },
+    {
+      "title": "Como preparar uma mudança",
+      "href": "/guias/planeamento/como-preparar-uma-mudanca/",
+      "type": "planned"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para mudanças em Albufeira",
+    "text": "Descreva o serviço uma vez e compare as propostas disponíveis para a sua rota e carga.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

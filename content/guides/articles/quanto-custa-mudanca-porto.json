@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "id": "quanto-custa-mudanca-porto",
+  "locale": "pt-PT",
+  "cluster": "prices",
+  "path": "/guias/precos/quanto-custa-mudanca-porto/",
+  "title": "Quanto custa uma mudança no Porto?",
+  "meta_title": "Quanto custa uma mudança no Porto? — CargoPT",
+  "meta_description": "Conheça os fatores que influenciam o preço de uma mudança no Porto e prepare um pedido completo para comparar propostas.",
+  "primary_query": "quanto custa mudança Porto",
+  "intent": [
+    "local",
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Preços e custos",
+  "eyebrow": "Preços de mudanças no Porto",
+  "hero_description": "Carga, acessos, rota, equipa e serviços adicionais determinam o trabalho necessário e devem ser descritos antes da proposta.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "O custo depende das características concretas do serviço",
+  "key_points_heading": "Pontos essenciais",
+  "faq_heading": "Perguntas frequentes",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Uma mudança no Porto não tem um valor único. O preço depende do inventário, da distância, dos andares, dos elevadores, das escadas, da zona de carga, do número de ajudantes e de tarefas como embalagem, desmontagem ou montagem. A melhor forma de comparar propostas é fornecer a mesma informação a todos os transportadores.",
+  "key_points": [
+    "Liste os principais móveis, eletrodomésticos e caixas.",
+    "Informe os acessos na recolha e na entrega.",
+    "Explique onde o veículo poderá parar.",
+    "Confirme o número de ajudantes e os serviços incluídos.",
+    "Registe por escrito o âmbito e as condições da proposta."
+  ],
+  "sections": [
+    {
+      "id": "calculo",
+      "heading": "Como é estimado o serviço",
+      "paragraphs": [
+        "A proposta deve refletir o veículo, a equipa, o tempo e os equipamentos necessários para executar a mudança.",
+        "Quanto mais concreta for a descrição, menor será o risco de diferenças entre o pedido e o serviço real."
+      ],
+      "items": [
+        {
+          "title": "Volume",
+          "text": "O número e a dimensão dos objetos ajudam a determinar o veículo."
+        },
+        {
+          "title": "Peso",
+          "text": "Objetos pesados podem exigir mais ajudantes ou equipamento específico."
+        },
+        {
+          "title": "Acessos",
+          "text": "Escadas, elevadores e corredores condicionam a movimentação."
+        },
+        {
+          "title": "Rota",
+          "text": "Os locais de recolha e entrega devem estar claramente identificados."
+        }
+      ]
+    },
+    {
+      "id": "acessos",
+      "heading": "Que acessos deve descrever?",
+      "paragraphs": [
+        "Indique o andar, a existência e dimensão do elevador, o número aproximado de escadas e eventuais obstáculos.",
+        "Explique também a distância entre a entrada e o local possível de estacionamento."
+      ]
+    },
+    {
+      "id": "servicos",
+      "heading": "Serviços que podem alterar a proposta",
+      "paragraphs": [
+        "Carga e descarga, desmontagem, montagem, embalagem e fornecimento de materiais não devem ser presumidos.",
+        "Confirme por escrito quais tarefas estão incluídas e quais permanecem a cargo do cliente."
+      ],
+      "checklist": [
+        "Número de ajudantes.",
+        "Carga e descarga.",
+        "Desmontagem e montagem.",
+        "Embalagem e materiais.",
+        "Equipamento para objetos pesados."
+      ]
+    },
+    {
+      "id": "comparacao",
+      "heading": "Como comparar os valores recebidos",
+      "paragraphs": [
+        "Uma proposta mais baixa pode incluir menos tarefas, menos ajudantes ou condições diferentes.",
+        "Compare o serviço completo, a disponibilidade, o veículo previsto e a forma como serão tratadas alterações."
+      ]
+    },
+    {
+      "id": "preparacao",
+      "heading": "Como preparar a mudança",
+      "paragraphs": [
+        "Finalize o inventário, prepare as caixas e identifique os objetos frágeis antes do dia combinado.",
+        "Comunique antecipadamente qualquer alteração de volume, acesso ou horário."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "Receber propostas através da CargoPT",
+      "paragraphs": [
+        "A CargoPT permite descrever o pedido uma vez e encaminhá-lo para transportadores adequados.",
+        "O cliente mantém uma descrição comum e compara as propostas disponíveis."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare o pedido da sua mudança no Porto",
+    "text": "Inclua o inventário, os acessos, a rota e os serviços necessários para que as propostas correspondam ao mesmo trabalho.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "É necessário saber o peso total?",
+      "answer": "Não. Uma lista detalhada dos objetos, quantidades e fotografias costuma ser suficiente para uma estimativa inicial."
+    },
+    {
+      "question": "Devo indicar o tamanho do elevador?",
+      "answer": "Quando possível, indique se os objetos maiores cabem no elevador e se existem limitações de uso."
+    },
+    {
+      "question": "Quantos ajudantes são necessários?",
+      "answer": "Depende da carga, dos acessos e dos objetos pesados. O número deve ser confirmado na proposta."
+    },
+    {
+      "question": "Os materiais de embalagem estão incluídos?",
+      "answer": "Não necessariamente. Confirme se caixas, mantas, película ou outros materiais fazem parte do valor."
+    },
+    {
+      "question": "O que fazer se o inventário mudar?",
+      "answer": "Comunique a alteração antes do serviço e peça confirmação do novo âmbito e valor."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Quanto custa uma mudança em Portugal?",
+      "href": "/guias/precos/quanto-custa-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Mudanças no Porto",
+      "href": "/mudancas-porto/",
+      "type": "landing"
+    },
+    {
+      "title": "Como reduzir o custo de uma mudança",
+      "href": "/guias/precos/como-reduzir-custo-mudanca/",
+      "type": "planned"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para a sua mudança no Porto",
+    "text": "Envie uma descrição completa e compare propostas preparadas para o mesmo inventário e as mesmas condições.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

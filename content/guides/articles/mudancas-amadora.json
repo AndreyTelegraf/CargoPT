@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "id": "mudancas-amadora",
+  "locale": "pt-PT",
+  "cluster": "cities",
+  "path": "/guias/cidades/mudancas-amadora/",
+  "title": "Mudanças na Amadora",
+  "meta_title": "Mudanças na Amadora — CargoPT",
+  "meta_description": "Saiba como preparar uma mudança na Amadora e que informação enviar para receber propostas completas e comparáveis.",
+  "primary_query": "mudanças Amadora",
+  "intent": [
+    "local",
+    "transactional"
+  ],
+  "article_section": "Mudanças por cidade",
+  "eyebrow": "Mudanças na Amadora",
+  "hero_description": "Inventário, acessos, estacionamento, rota e tarefas adicionais devem ser comunicados antes de comparar propostas.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Um pedido completo evita omissões na proposta",
+  "key_points_heading": "Pontos essenciais",
+  "faq_heading": "Perguntas frequentes",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para pedir uma mudança na Amadora, informe os locais de recolha e entrega, a data, os móveis, eletrodomésticos e caixas, os andares, elevadores, escadas e a distância até ao veículo. Confirme também se precisa de ajudantes, embalagem, desmontagem ou montagem.",
+  "key_points": [
+    "Envie o mesmo inventário a todos os transportadores.",
+    "Indique as condições de acesso nos dois imóveis.",
+    "Explique a possibilidade de estacionamento junto às entradas.",
+    "Identifique objetos pesados, frágeis ou volumosos.",
+    "Confirme por escrito todas as tarefas incluídas."
+  ],
+  "sections": [
+    {
+      "id": "inventario",
+      "heading": "Como preparar o inventário",
+      "paragraphs": [
+        "Separe a descrição por divisões e indique os objetos principais.",
+        "Inclua uma quantidade aproximada de caixas e fotografias dos volumes maiores."
+      ],
+      "items": [
+        {
+          "title": "Móveis",
+          "text": "Sofás, camas, mesas, armários, estantes e colchões."
+        },
+        {
+          "title": "Eletrodomésticos",
+          "text": "Frigorífico, máquinas, televisão e outros equipamentos."
+        },
+        {
+          "title": "Caixas",
+          "text": "Quantidade aproximada e presença de conteúdo frágil ou pesado."
+        },
+        {
+          "title": "Objetos especiais",
+          "text": "Peças pesadas, frágeis ou que exigem equipamento específico."
+        }
+      ]
+    },
+    {
+      "id": "acessos",
+      "heading": "Andares, elevadores e escadas",
+      "paragraphs": [
+        "Indique o piso nos dois locais e confirme se os objetos maiores cabem no elevador.",
+        "Escadas estreitas, corredores pequenos e outros obstáculos devem ser descritos."
+      ]
+    },
+    {
+      "id": "estacionamento",
+      "heading": "Zona de carga e estacionamento",
+      "paragraphs": [
+        "Explique se o veículo pode aproximar-se da entrada ou se será necessário transportar os objetos por uma distância maior.",
+        "Esta informação ajuda a estimar o tempo e o número de ajudantes."
+      ]
+    },
+    {
+      "id": "servicos",
+      "heading": "Que tarefas precisa de contratar?",
+      "paragraphs": [
+        "Defina se precisa apenas de veículo e motorista ou também de ajudantes, carga, descarga, desmontagem, montagem e embalagem.",
+        "Confirme se os materiais de proteção estão incluídos."
+      ]
+    },
+    {
+      "id": "comparar",
+      "heading": "Como comparar propostas",
+      "paragraphs": [
+        "Verifique se todas consideram o mesmo inventário, acessos, rota e serviços.",
+        "Compare o veículo, o número de ajudantes, as condições de pagamento e o tratamento de alterações."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "Receber propostas através da CargoPT",
+      "paragraphs": [
+        "A CargoPT permite enviar uma descrição comum do serviço a transportadores adequados.",
+        "O cliente pode comparar as propostas recebidas antes de escolher."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare o pedido da sua mudança na Amadora",
+    "text": "Descreva a carga, os acessos e os serviços para receber propostas preparadas sobre o mesmo trabalho.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "É necessário indicar a morada completa?",
+      "answer": "Pode começar por uma localização aproximada, mas a rota e as condições de acesso devem ficar claras antes da confirmação."
+    },
+    {
+      "question": "Um elevador reduz sempre o trabalho?",
+      "answer": "Depende da dimensão e das regras de utilização. Confirme se os objetos maiores cabem e se o elevador estará disponível."
+    },
+    {
+      "question": "Objetos pesados precisam de indicação especial?",
+      "answer": "Sim. Peso, formato e acessos podem exigir mais pessoas ou equipamento específico."
+    },
+    {
+      "question": "A desmontagem está incluída no transporte?",
+      "answer": "Não necessariamente. Liste os móveis e confirme por escrito quais serão desmontados e montados."
+    },
+    {
+      "question": "Como evitar diferenças no dia da mudança?",
+      "answer": "Envie um inventário completo e comunique alterações de carga, acesso, data ou horário antecipadamente."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Quanto custa uma mudança em Lisboa?",
+      "href": "/guias/precos/quanto-custa-mudanca-lisboa/",
+      "type": "planned"
+    },
+    {
+      "title": "Mudanças em Lisboa",
+      "href": "/mudancas-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "Como escolher uma empresa de mudanças",
+      "href": "/guias/planeamento/como-escolher-empresa-mudancas/",
+      "type": "planned"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para mudanças na Amadora",
+    "text": "Envie uma descrição completa e compare propostas para a mesma carga, rota e conjunto de serviços.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}
