@@ -16,6 +16,7 @@ def main() -> None:
     assert "CargoPTTrackingWorkspace.render" in track_js
     assert "CargoPTTrackingWorkspace.getVisualState" in track_js
     assert "tracking_visual_state" in track_js
+    assert 'return "searching";\n}\n\nfunction formatTrackingStatus' in track_js
 
     assert "function getVisualState(entry)" in workspace_js
     assert "tracking-status-summary" in workspace_js
