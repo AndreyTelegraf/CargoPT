@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "id": "como-embalar-louca",
+  "locale": "pt-PT",
+  "cluster": "packing",
+  "path": "/guias/embalamento/como-embalar-louca/",
+  "title": "Como embalar loiça e copos para uma mudança",
+  "meta_title": "Como embalar loiça e copos para mudança — CargoPT",
+  "meta_description": "Proteja pratos, copos, taças e outras peças frágeis com caixas resistentes, separação individual e espaços preenchidos.",
+  "primary_query": "como embalar loiça para mudança",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Embalamento",
+  "eyebrow": "Embalagem de loiça",
+  "hero_description": "A loiça deve ser embalada por grupos pequenos, com proteção individual e sem espaço para se deslocar dentro da caixa.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Proteja cada peça e evite movimentos dentro da caixa",
+  "key_points_heading": "Cuidados essenciais",
+  "faq_heading": "Perguntas sobre embalagem de loiça",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para embalar loiça e copos, utilize caixas pequenas ou médias, reforce o fundo e crie uma camada de proteção. Envolva cada peça individualmente, coloque pratos na vertical, preencha o interior dos copos quando adequado e separe camadas. Elimine espaços vazios, feche a caixa sem a comprimir e identifique-a como frágil.",
+  "key_points": [
+    "Use caixas resistentes e não demasiado grandes.",
+    "Envolva pratos, copos e taças individualmente.",
+    "Coloque os pratos na vertical, bem ajustados.",
+    "Separe camadas e preencha todas as folgas.",
+    "Identifique a caixa como frágil e indique a orientação."
+  ],
+  "sections": [
+    {
+      "id": "materiais",
+      "heading": "Materiais necessários",
+      "paragraphs": [
+        "Prepare caixas resistentes, fita, etiquetas e materiais de proteção limpos. Evite materiais húmidos ou que possam manchar as peças.",
+        "Divisórias podem ajudar com copos e garrafas, desde que fiquem ajustadas e não deixem as peças bater entre si."
+      ],
+      "checklist": [
+        "Caixas pequenas ou médias.",
+        "Material de proteção individual.",
+        "Separadores ou cartão adicional.",
+        "Material para preencher espaços.",
+        "Fita resistente.",
+        "Etiquetas de fragilidade."
+      ]
+    },
+    {
+      "id": "preparar-caixa",
+      "heading": "Prepare a caixa antes de colocar a loiça",
+      "paragraphs": [
+        "Reforce o fundo e coloque uma camada de proteção que absorva pequenas vibrações.",
+        "A caixa deve ficar estável e sem deformações. Não use embalagens grandes que permitam acumular peso excessivo."
+      ]
+    },
+    {
+      "id": "pratos",
+      "heading": "Como embalar pratos",
+      "paragraphs": [
+        "Envolva cada prato e proteja as bordas. Agrupe apenas uma quantidade que possa ser manuseada sem pressão excessiva.",
+        "Coloque os pratos na vertical, como discos, em vez de criar uma pilha horizontal alta. Preencha as folgas para impedir inclinação e choque."
+      ]
+    },
+    {
+      "id": "copos-tacas",
+      "heading": "Como embalar copos e taças",
+      "paragraphs": [
+        "Envolva cada peça separadamente. Quando apropriado, coloque uma pequena quantidade de proteção no interior sem exercer pressão.",
+        "Copos e taças devem ficar direitos, separados e sem contacto entre si. As hastes precisam de proteção adicional, mas não devem suportar peso."
+      ],
+      "items": [
+        {
+          "title": "Copos simples",
+          "text": "Envolva individualmente e coloque em divisórias ou filas bem ajustadas."
+        },
+        {
+          "title": "Taças com pé",
+          "text": "Proteja a haste e evite colocar peso sobre a parte superior."
+        },
+        {
+          "title": "Canecas",
+          "text": "Proteja especialmente as asas e não as use como ponto de apoio."
+        },
+        {
+          "title": "Garrafas",
+          "text": "Transporte fechadas, separadas e na orientação adequada."
+        }
+      ]
+    },
+    {
+      "id": "camadas",
+      "heading": "Separe camadas e preencha folgas",
+      "paragraphs": [
+        "Crie separação entre grupos de peças e coloque os objetos mais resistentes em baixo.",
+        "Antes de fechar, verifique se existe movimento ao deslocar suavemente a caixa. Acrescente preenchimento sem comprimir a loiça."
+      ]
+    },
+    {
+      "id": "fechar-transportar",
+      "heading": "Feche e identifique corretamente",
+      "paragraphs": [
+        "A caixa deve fechar sem abaular. Reforce as uniões e identifique-a em mais de uma face.",
+        "Indique frágil, loiça, manter na vertical e a divisão de destino. Não coloque caixas pesadas sobre estes volumes."
+      ],
+      "checklist": [
+        "Caixa fechada sem pressão sobre o conteúdo.",
+        "Sem som ou movimento interno significativo.",
+        "Identificação de fragilidade.",
+        "Orientação visível.",
+        "Divisão de destino indicada."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Inclua os volumes frágeis no inventário",
+    "text": "Indique a quantidade de caixas de loiça e outros objetos delicados ao pedir propostas.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Os pratos devem ser colocados na vertical?",
+      "answer": "Sim. Bem protegidos e ajustados na vertical, ficam menos sujeitos à pressão acumulada de uma pilha alta."
+    },
+    {
+      "question": "Posso juntar copos e pratos na mesma caixa?",
+      "answer": "Pode ser possível com separação adequada, mas é preferível organizar grupos semelhantes e evitar peso sobre peças delicadas."
+    },
+    {
+      "question": "Devo preencher o interior dos copos?",
+      "answer": "Pode colocar proteção leve quando apropriado, sem exercer pressão que possa partir o vidro."
+    },
+    {
+      "question": "Como verificar se a caixa está segura?",
+      "answer": "Antes de fechar, mova-a suavemente. Não deve existir deslocação significativa nem contacto entre as peças."
+    },
+    {
+      "question": "Posso empilhar outras caixas por cima?",
+      "answer": "Evite volumes pesados sobre caixas de loiça. Identifique-as claramente para serem colocadas numa posição protegida."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como embalar caixas para uma mudança",
+      "href": "/guias/embalamento/como-embalar-caixas/",
+      "type": "planned"
+    },
+    {
+      "title": "Como preparar uma mudança",
+      "href": "/guias/planeamento/como-preparar-uma-mudanca/",
+      "type": "planned"
+    },
+    {
+      "title": "Checklist completa para uma mudança",
+      "href": "/guias/planeamento/checklist-mudanca/",
+      "type": "planned"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Prepare o transporte dos objetos frágeis",
+    "text": "Descreva as caixas, a carga e os acessos para receber propostas adequadas à mudança.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

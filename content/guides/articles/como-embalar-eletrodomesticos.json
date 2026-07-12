@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "id": "como-embalar-eletrodomesticos",
+  "locale": "pt-PT",
+  "cluster": "packing",
+  "path": "/guias/embalamento/como-embalar-eletrodomesticos/",
+  "title": "Como embalar eletrodomésticos para transporte",
+  "meta_title": "Como embalar eletrodomésticos para transporte — CargoPT",
+  "meta_description": "Prepare frigoríficos, máquinas e pequenos eletrodomésticos: limpeza, drenagem, peças móveis, proteção e identificação.",
+  "primary_query": "como embalar eletrodomésticos mudança",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Embalamento",
+  "eyebrow": "Embalagem de eletrodomésticos",
+  "hero_description": "Cada eletrodoméstico precisa de ser desligado, limpo, seco e preparado de acordo com o respetivo manual antes da proteção exterior.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Prepare primeiro o equipamento e só depois a embalagem",
+  "key_points_heading": "Passos essenciais",
+  "faq_heading": "Perguntas sobre embalagem de eletrodomésticos",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para embalar eletrodomésticos, desligue as ligações elétricas, de água ou gás de forma segura, retire alimentos e líquidos, limpe e seque o equipamento e imobilize peças móveis conforme o manual. Proteja cabos, portas, painéis e cantos, utilize a embalagem original quando disponível e mantenha visível a orientação correta.",
+  "key_points": [
+    "Consulte o manual antes de desligar ou desmontar.",
+    "Esvazie, limpe, drene e seque completamente.",
+    "Retire ou imobilize peças móveis.",
+    "Proteja cabos, portas, painéis e cantos.",
+    "Identifique orientação e cuidados de transporte."
+  ],
+  "sections": [
+    {
+      "id": "inventario",
+      "heading": "Organize os eletrodomésticos por tipo",
+      "paragraphs": [
+        "Liste os equipamentos grandes e pequenos e identifique quais precisam de desligamento especializado.",
+        "Registe dimensões aproximadas, ligações existentes e peças que serão transportadas separadamente."
+      ],
+      "items": [
+        {
+          "title": "Frigoríficos",
+          "text": "Precisam de ser esvaziados, descongelados e secos."
+        },
+        {
+          "title": "Máquinas de lavar",
+          "text": "Precisam de drenagem e imobilização do tambor."
+        },
+        {
+          "title": "Fornos e placas",
+          "text": "Podem exigir desligamento por profissional adequado."
+        },
+        {
+          "title": "Pequenos equipamentos",
+          "text": "Devem seguir limpos, vazios e sem peças soltas."
+        }
+      ]
+    },
+    {
+      "id": "desligar",
+      "heading": "Desligue as ligações com segurança",
+      "paragraphs": [
+        "Retire fichas sem puxar pelo cabo e feche a alimentação de água antes de desligar mangueiras.",
+        "Equipamentos ligados a gás, instalações fixas ou circuitos específicos devem ser tratados por pessoa qualificada."
+      ]
+    },
+    {
+      "id": "esvaziar-limpar",
+      "heading": "Esvazie, limpe e seque",
+      "paragraphs": [
+        "Retire alimentos, água, detergentes, filtros soltos e resíduos. A humidade pode provocar derrames, odores e danos.",
+        "Deixe o equipamento arejar antes de fechar portas e aplicar proteção."
+      ],
+      "checklist": [
+        "Retirar alimentos e líquidos.",
+        "Esvaziar depósitos e gavetas.",
+        "Drenar mangueiras e filtros.",
+        "Limpar resíduos.",
+        "Secar superfícies e componentes."
+      ]
+    },
+    {
+      "id": "pecas-moveis",
+      "heading": "Retire ou imobilize peças móveis",
+      "paragraphs": [
+        "Prateleiras, tabuleiros, gavetas e acessórios podem deslocar-se durante o transporte. Retire e embale separadamente as peças frágeis.",
+        "Utilize apenas os sistemas de transporte previstos pelo fabricante, como parafusos de imobilização do tambor."
+      ]
+    },
+    {
+      "id": "protecao",
+      "heading": "Proteja o exterior",
+      "paragraphs": [
+        "Proteja portas, comandos, cantos e painéis com mantas ou materiais adequados. Evite fita diretamente em acabamentos delicados.",
+        "Fixe cabos e mangueiras sem os dobrar excessivamente. A proteção não deve impedir pontos necessários para agarrar ou movimentar."
+      ]
+    },
+    {
+      "id": "identificar-transportar",
+      "heading": "Identifique e respeite a posição de transporte",
+      "paragraphs": [
+        "Marque orientação, fragilidade e eventuais peças separadas. Consulte o manual sobre inclinação e posição permitida.",
+        "No veículo, os equipamentos devem ficar estáveis, fixados e sem volumes pesados sobre portas ou painéis."
+      ],
+      "checklist": [
+        "Orientação indicada.",
+        "Cabos e mangueiras fixados.",
+        "Peças separadas identificadas.",
+        "Equipamento protegido e imobilizado.",
+        "Manual disponível para instalação no destino."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Descreva os eletrodomésticos da mudança",
+    "text": "Indique tipos, dimensões, ligações, pisos e acessos para receber propostas adequadas.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Posso embalar um eletrodoméstico ainda húmido?",
+      "answer": "Não é recomendável. Água residual pode derramar, provocar odores e danificar o equipamento ou outros bens."
+    },
+    {
+      "question": "Devo retirar todas as prateleiras e gavetas?",
+      "answer": "Retire peças frágeis ou que não possam ser imobilizadas com segurança, seguindo as instruções do fabricante."
+    },
+    {
+      "question": "Posso desligar sozinho um equipamento ligado a gás?",
+      "answer": "A intervenção deve ser feita por pessoa qualificada e de acordo com as regras aplicáveis à instalação."
+    },
+    {
+      "question": "A embalagem original é necessária?",
+      "answer": "Não é obrigatória, mas pode oferecer proteção e encaixe adequados quando está completa e em bom estado."
+    },
+    {
+      "question": "Posso ligar os equipamentos logo após a entrega?",
+      "answer": "Depende do equipamento e da posição de transporte. Consulte o manual antes da instalação e utilização."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como transportar um frigorífico",
+      "href": "/guias/objetos/como-transportar-frigorifico/",
+      "type": "guide"
+    },
+    {
+      "title": "Como transportar uma máquina de lavar",
+      "href": "/guias/objetos/como-transportar-maquina-lavar/",
+      "type": "guide"
+    },
+    {
+      "title": "Como embalar caixas para uma mudança",
+      "href": "/guias/embalamento/como-embalar-caixas/",
+      "type": "planned"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para transportar eletrodomésticos",
+    "text": "Indique os equipamentos, as dimensões e os acessos para encontrar transportadores adequados.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

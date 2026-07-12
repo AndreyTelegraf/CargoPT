@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "id": "como-embalar-televisao",
+  "locale": "pt-PT",
+  "cluster": "packing",
+  "path": "/guias/embalamento/como-embalar-televisao/",
+  "title": "Como embalar uma televisão para transporte",
+  "meta_title": "Como embalar uma televisão para transporte — CargoPT",
+  "meta_description": "Saiba como desligar, proteger, embalar e transportar uma televisão na posição correta durante uma mudança.",
+  "primary_query": "como embalar televisão para transporte",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Embalamento",
+  "eyebrow": "Proteção da televisão",
+  "hero_description": "O ecrã precisa de proteção contra pressão, impacto, humidade e contacto com outros objetos durante a mudança.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Proteja o ecrã sem aplicar pressão",
+  "key_points_heading": "Cuidados essenciais",
+  "faq_heading": "Perguntas sobre embalagem de televisões",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para embalar uma televisão, desligue e identifique os cabos, retire o suporte apenas quando o procedimento for seguro e proteja o ecrã com materiais limpos que não exerçam pressão. Utilize de preferência a embalagem original ou uma caixa própria, elimine folgas e mantenha a televisão na vertical durante a movimentação e o transporte.",
+  "key_points": [
+    "Desligue, fotografe e identifique todas as ligações.",
+    "Proteja o ecrã contra pressão e fricção.",
+    "Use a caixa original ou embalagem compatível.",
+    "Preencha folgas sem comprimir o painel.",
+    "Transporte a televisão na vertical e bem fixada."
+  ],
+  "sections": [
+    {
+      "id": "desligar",
+      "heading": "Desligue e organize os cabos",
+      "paragraphs": [
+        "Desligue a televisão e aguarde antes de iniciar a embalagem. Retire os cabos sem puxar pelos conectores.",
+        "Fotografe as ligações e identifique cada cabo. Comandos, transformadores e acessórios devem seguir protegidos e associados ao equipamento."
+      ],
+      "checklist": [
+        "Fotografar as ligações.",
+        "Identificar cabos.",
+        "Retirar pilhas do comando quando necessário.",
+        "Guardar parafusos em saco identificado.",
+        "Separar acessórios frágeis."
+      ]
+    },
+    {
+      "id": "suporte-base",
+      "heading": "Retire a base ou o suporte quando necessário",
+      "paragraphs": [
+        "Algumas televisões ocupam menos espaço e ficam mais estáveis na caixa sem a base. Consulte as instruções do modelo antes de desmontar.",
+        "Não apoie o ecrã diretamente no chão. Guarde parafusos e componentes num saco identificado."
+      ]
+    },
+    {
+      "id": "proteger-ecra",
+      "heading": "Proteja o ecrã",
+      "paragraphs": [
+        "Utilize uma camada limpa e macia que não risque a superfície. Evite fita adesiva diretamente no ecrã ou na moldura.",
+        "A proteção deve cobrir o painel sem criar pontos de pressão. Cantos e bordas também precisam de proteção."
+      ]
+    },
+    {
+      "id": "caixa",
+      "heading": "Use uma caixa adequada",
+      "paragraphs": [
+        "A embalagem original, com os respetivos suportes internos, é normalmente a opção mais ajustada ao modelo.",
+        "Quando não existir, utilize uma caixa própria ou uma solução rígida compatível com as dimensões. Preencha folgas sem pressionar o painel."
+      ],
+      "items": [
+        {
+          "title": "Caixa original",
+          "text": "Utilize os suportes internos na posição prevista pelo fabricante."
+        },
+        {
+          "title": "Caixa própria",
+          "text": "Escolha um formato compatível com a dimensão e a espessura."
+        },
+        {
+          "title": "Proteção dos cantos",
+          "text": "Ajuda a absorver impactos sem tocar diretamente no ecrã."
+        },
+        {
+          "title": "Preenchimento",
+          "text": "Deve impedir movimento sem comprimir o equipamento."
+        }
+      ]
+    },
+    {
+      "id": "posicao",
+      "heading": "Mantenha a televisão na vertical",
+      "paragraphs": [
+        "A televisão deve seguir na posição recomendada para o modelo, geralmente na vertical. Não a coloque deitada sob outros volumes.",
+        "Marque claramente a orientação e a fragilidade na embalagem."
+      ]
+    },
+    {
+      "id": "veiculo",
+      "heading": "Como colocar no veículo",
+      "paragraphs": [
+        "Posicione a caixa numa zona estável, protegida contra deslocações e sem objetos pesados encostados ao ecrã.",
+        "Fixe a embalagem sem apertar excessivamente. Evite humidade, extremos de temperatura e superfícies irregulares."
+      ],
+      "checklist": [
+        "Televisão na vertical.",
+        "Ecrã sem pressão lateral.",
+        "Caixa imobilizada.",
+        "Sem objetos pesados por cima.",
+        "Proteção contra humidade."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Inclua a televisão no pedido da mudança",
+    "text": "Indique o tamanho, a embalagem disponível e os acessos para receber propostas adequadas.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Posso transportar a televisão deitada?",
+      "answer": "O recomendado é seguir a orientação indicada pelo fabricante, normalmente na vertical, sem peso sobre o painel."
+    },
+    {
+      "question": "Posso aplicar fita diretamente no ecrã?",
+      "answer": "Não. A fita pode deixar resíduos ou danificar a superfície e não deve ser aplicada diretamente no painel."
+    },
+    {
+      "question": "A caixa original é necessária?",
+      "answer": "Não é obrigatória, mas costuma oferecer um ajuste adequado. Sem ela, utilize uma embalagem rígida compatível."
+    },
+    {
+      "question": "Como transportar os cabos e o comando?",
+      "answer": "Identifique e proteja os acessórios separadamente, mantendo-os associados à televisão."
+    },
+    {
+      "question": "Posso colocar outras caixas junto à televisão?",
+      "answer": "Podem ser colocadas de forma estável, mas nunca devem pressionar o ecrã ou deslocar-se contra a embalagem."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como embalar caixas para uma mudança",
+      "href": "/guias/embalamento/como-embalar-caixas/",
+      "type": "planned"
+    },
+    {
+      "title": "É necessário seguro para transportar móveis?",
+      "href": "/guias/seguranca/seguro-transporte-moveis/",
+      "type": "planned"
+    },
+    {
+      "title": "Como preparar uma mudança",
+      "href": "/guias/planeamento/como-preparar-uma-mudanca/",
+      "type": "planned"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para transportar a televisão",
+    "text": "Descreva o equipamento, a embalagem e os acessos antes de escolher o serviço.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "id": "como-embalar-caixas",
+  "locale": "pt-PT",
+  "cluster": "packing",
+  "path": "/guias/embalamento/como-embalar-caixas/",
+  "title": "Como embalar caixas para uma mudança",
+  "meta_title": "Como embalar caixas para uma mudança — CargoPT",
+  "meta_description": "Saiba como escolher caixas, distribuir o peso, proteger objetos e identificar os volumes para uma mudança.",
+  "primary_query": "como embalar caixas para mudança",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Embalamento",
+  "eyebrow": "Caixas para mudança",
+  "hero_description": "Caixas resistentes, com peso controlado e conteúdo bem identificado, tornam a carga, o transporte e a organização no destino mais seguros.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Use caixas adequadas e distribua o peso",
+  "key_points_heading": "Regras essenciais para embalar caixas",
+  "faq_heading": "Perguntas sobre caixas de mudança",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para embalar caixas para uma mudança, escolha embalagens resistentes e adequadas ao conteúdo, reforce o fundo, coloque os objetos mais pesados em baixo e preencha espaços vazios. Evite caixas difíceis de levantar, proteja individualmente os bens frágeis e identifique cada volume com a divisão, o conteúdo geral e os cuidados necessários.",
+  "key_points": [
+    "Escolha caixas resistentes e de tamanho adequado.",
+    "Reforce o fundo antes de colocar os objetos.",
+    "Distribua o peso e evite volumes difíceis de levantar.",
+    "Preencha espaços vazios para limitar movimentos.",
+    "Identifique a divisão, o conteúdo e a fragilidade."
+  ],
+  "sections": [
+    {
+      "id": "escolher-caixas",
+      "heading": "Como escolher as caixas",
+      "paragraphs": [
+        "Use caixas limpas, secas e sem deformações. O cartão deve suportar o peso previsto sem abrir ou perder a forma.",
+        "Caixas pequenas são mais adequadas para livros, loiça e outros objetos pesados. Caixas maiores devem ser reservadas para objetos leves e volumosos."
+      ],
+      "items": [
+        {
+          "title": "Caixas pequenas",
+          "text": "Adequadas para livros, ferramentas e objetos densos."
+        },
+        {
+          "title": "Caixas médias",
+          "text": "Úteis para utensílios, roupa dobrada e objetos variados."
+        },
+        {
+          "title": "Caixas grandes",
+          "text": "Indicadas para roupa de cama, almofadas e objetos leves."
+        },
+        {
+          "title": "Caixas especiais",
+          "text": "Podem facilitar o transporte de roupa pendurada, garrafas ou peças frágeis."
+        }
+      ]
+    },
+    {
+      "id": "preparar-fundo",
+      "heading": "Prepare e reforce o fundo",
+      "paragraphs": [
+        "Feche as abas sem deixar folgas e aplique fita resistente nas uniões. Quando o conteúdo for pesado, reforce o fundo antes de começar.",
+        "Não dependa apenas do encaixe das abas. Uma abertura durante a movimentação pode provocar queda e danos no conteúdo."
+      ]
+    },
+    {
+      "id": "distribuir-peso",
+      "heading": "Distribua corretamente o peso",
+      "paragraphs": [
+        "Coloque os objetos mais pesados no fundo e os mais leves por cima. Distribua o peso de forma uniforme para a caixa não inclinar.",
+        "Se uma caixa não puder ser levantada e transportada com controlo, divida o conteúdo por mais volumes."
+      ],
+      "checklist": [
+        "Objetos pesados no fundo.",
+        "Objetos leves na parte superior.",
+        "Peso distribuído pelos quatro lados.",
+        "Sem objetos soltos ou salientes.",
+        "Caixa possível de levantar com segurança."
+      ]
+    },
+    {
+      "id": "preencher-proteger",
+      "heading": "Proteja os objetos e preencha os espaços",
+      "paragraphs": [
+        "Envolva individualmente objetos frágeis e separe superfícies que possam riscar-se. Utilize materiais limpos e adequados ao bem.",
+        "Preencha folgas para impedir que o conteúdo se desloque. A caixa não deve ficar abaulada nem comprimida ao fechar."
+      ]
+    },
+    {
+      "id": "fechar-identificar",
+      "heading": "Feche e identifique cada caixa",
+      "paragraphs": [
+        "Feche todas as abas e aplique fita nas uniões principais. Não deixe objetos a sair pela parte superior.",
+        "Identifique a divisão de destino, o conteúdo geral e indicações como frágil, pesado ou manter na vertical."
+      ],
+      "checklist": [
+        "Divisão de destino.",
+        "Descrição geral do conteúdo.",
+        "Indicação de fragilidade.",
+        "Orientação quando necessária.",
+        "Número da caixa ou referência no inventário."
+      ]
+    },
+    {
+      "id": "erros",
+      "heading": "Erros frequentes ao embalar caixas",
+      "paragraphs": [
+        "Misturar objetos pesados e frágeis sem separação aumenta o risco de quebra. Caixas demasiado cheias podem abrir ou deformar-se.",
+        "Sacos abertos, caixas húmidas e embalagens sem identificação atrasam a carga e dificultam a organização no destino."
+      ],
+      "items": [
+        {
+          "title": "Peso excessivo",
+          "text": "Aumenta o risco de queda, abertura e lesão."
+        },
+        {
+          "title": "Espaços vazios",
+          "text": "Permitem que os objetos ganhem movimento durante o transporte."
+        },
+        {
+          "title": "Caixas reutilizadas em mau estado",
+          "text": "Podem perder resistência mesmo quando parecem fechadas."
+        },
+        {
+          "title": "Falta de identificação",
+          "text": "Dificulta a descarga e a colocação correta dos volumes."
+        }
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Já sabe quantas caixas vai transportar?",
+    "text": "Inclua a quantidade aproximada, os objetos maiores e os acessos no pedido da mudança.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Qual é o peso máximo de uma caixa?",
+      "answer": "Não existe um valor universal. A caixa deve manter a forma e poder ser levantada e transportada com controlo, sem esforço excessivo."
+    },
+    {
+      "question": "Posso usar caixas grandes para livros?",
+      "answer": "É preferível usar caixas pequenas, porque os livros tornam rapidamente uma caixa grande demasiado pesada."
+    },
+    {
+      "question": "É necessário preencher todos os espaços vazios?",
+      "answer": "Sim, sobretudo em caixas com objetos frágeis. O preenchimento limita movimentos e impactos internos."
+    },
+    {
+      "question": "Onde devo escrever o conteúdo?",
+      "answer": "Identifique pelo menos a parte superior e uma lateral, para a informação continuar visível quando as caixas estiverem empilhadas."
+    },
+    {
+      "question": "Posso transportar caixas abertas?",
+      "answer": "Não é recomendável. Caixas fechadas protegem melhor o conteúdo e podem ser movimentadas e organizadas com maior segurança."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Checklist completa para uma mudança",
+      "href": "/guias/planeamento/checklist-mudanca/",
+      "type": "planned"
+    },
+    {
+      "title": "Como embalar loiça e copos para uma mudança",
+      "href": "/guias/embalamento/como-embalar-louca/",
+      "type": "planned"
+    },
+    {
+      "title": "Transporte de caixas em Lisboa",
+      "href": "/transporte-caixas-lisboa/",
+      "type": "service"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Receba propostas para transportar as suas caixas",
+    "text": "Indique a quantidade, os locais e os acessos para comparar propostas adequadas ao serviço.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}
