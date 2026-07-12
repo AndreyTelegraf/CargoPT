@@ -233,7 +233,7 @@ a {
   transition: var(--button-transition);
 }
 
-.button:hover {
+.button:hover:not(:disabled) {
   transform: translateY(-1px);
   box-shadow: var(--button-hover-shadow);
 }
