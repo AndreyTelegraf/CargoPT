@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "id": "transportar-piano",
+  "locale": "pt-PT",
+  "cluster": "objects",
+  "path": "/guias/objetos/como-transportar-piano/",
+  "title": "Como transportar um piano",
+  "meta_title": "Como transportar um piano com segurança — CargoPT",
+  "meta_description": "Veja como planear o transporte de um piano: tipo, dimensões, acessos, proteção, equipa e condições do serviço.",
+  "primary_query": "como transportar piano",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Móveis e objetos",
+  "eyebrow": "Transporte de piano",
+  "hero_description": "Um piano combina peso elevado, peças delicadas e distribuição irregular da carga, exigindo planeamento e equipamento adequados.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "O transporte de um piano deve ser planeado como um serviço especial",
+  "key_points_heading": "Informação indispensável",
+  "faq_heading": "Perguntas sobre transporte de pianos",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para transportar um piano, identifique o tipo e as dimensões, fotografe o instrumento e todos os acessos e confirme pisos, escadas, elevadores e estacionamento. O serviço deve utilizar uma equipa experiente, proteção adequada, equipamento compatível com o peso e fixação segura no veículo. Depois da entrega, pode ser necessário deixar o instrumento estabilizar antes da afinação.",
+  "key_points": [
+    "Identifique o tipo, as dimensões e o peso quando conhecido.",
+    "Fotografe o piano e todo o percurso nos dois locais.",
+    "Confirme escadas, elevadores, curvas e estacionamento.",
+    "Escolha uma equipa habituada a objetos pesados e delicados.",
+    "Confirme proteção, fixação, responsabilidade e seguro."
+  ],
+  "sections": [
+    {
+      "id": "tipo-piano",
+      "heading": "Identifique corretamente o piano",
+      "paragraphs": [
+        "Um piano vertical, um piano de cauda e um piano digital apresentam dimensões, distribuição de peso e necessidades diferentes.",
+        "Indique marca, modelo, altura, largura e profundidade quando possível. Se não conhecer o peso, forneça fotografias completas para uma primeira avaliação."
+      ],
+      "items": [
+        {
+          "title": "Piano vertical",
+          "text": "Indique a altura e se existem rodas, puxadores ou elementos salientes."
+        },
+        {
+          "title": "Piano de cauda",
+          "text": "Informe o comprimento e confirme se a desmontagem parcial será necessária."
+        },
+        {
+          "title": "Piano digital",
+          "text": "Esclareça se possui estrutura, pedaleira, colunas ou componentes desmontáveis."
+        }
+      ]
+    },
+    {
+      "id": "acessos",
+      "heading": "Avalie todo o percurso",
+      "paragraphs": [
+        "O principal desafio pode não ser a distância entre os imóveis, mas o percurso entre o piano e o veículo. Portas estreitas, corredores, degraus, curvas e pisos sem elevador alteram o serviço.",
+        "Meça os pontos mais apertados e envie fotografias de cada lanço. Inclua também entradas exteriores, rampas, pavimentos irregulares e o local de estacionamento."
+      ],
+      "checklist": [
+        "Piso na recolha e na entrega.",
+        "Número e configuração das escadas.",
+        "Dimensões e carga máxima do elevador.",
+        "Largura de portas e corredores.",
+        "Curvas, patamares e desníveis.",
+        "Distância até ao veículo.",
+        "Restrições de estacionamento."
+      ]
+    },
+    {
+      "id": "equipa",
+      "heading": "Porque é importante uma equipa adequada",
+      "paragraphs": [
+        "O peso elevado e a forma do instrumento tornam inadequada uma movimentação improvisada. Uma equipa insuficiente aumenta o risco para pessoas, piano e imóvel.",
+        "Confirme se o transportador possui experiência, número de ajudantes e equipamento compatíveis com o tipo de piano e os acessos."
+      ]
+    },
+    {
+      "id": "protecao",
+      "heading": "Como proteger o instrumento",
+      "paragraphs": [
+        "Teclado, tampa, pedais, cantos e acabamento precisam de proteção contra abertura, impactos e fricção. Os materiais devem ser aplicados sem pressionar componentes frágeis.",
+        "Num piano de cauda, qualquer desmontagem parcial deve ser realizada por pessoas que conheçam o procedimento e consigam voltar a montar o instrumento corretamente."
+      ]
+    },
+    {
+      "id": "veiculo",
+      "heading": "Transporte e fixação no veículo",
+      "paragraphs": [
+        "O piano deve ficar apoiado e imobilizado de forma estável, sem contacto direto com outros volumes que possam deslocar-se.",
+        "Confirme que o veículo possui espaço, capacidade de carga e pontos de fixação adequados. Rampas, plataformas ou outros meios podem ser necessários."
+      ]
+    },
+    {
+      "id": "proposta",
+      "heading": "O que confirmar numa proposta",
+      "paragraphs": [
+        "A proposta deve considerar o tipo de piano, os acessos, o número de ajudantes, a proteção, o equipamento e as tarefas incluídas.",
+        "Registe por escrito as condições de responsabilidade por danos, eventual seguro, desmontagem, montagem e alterações ao serviço."
+      ],
+      "checklist": [
+        "Equipa e equipamento previstos.",
+        "Proteção do piano e do imóvel.",
+        "Carga, transporte e colocação no destino.",
+        "Desmontagem e montagem quando necessárias.",
+        "Condições de responsabilidade e seguro.",
+        "Valor final e situações que podem alterá-lo."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare um pedido completo para o piano",
+    "text": "Envie o tipo, dimensões, fotografias e acessos para receber propostas adequadas ao serviço.",
+    "label": "Descrever o transporte",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Posso transportar um piano com uma empresa de mudanças comum?",
+      "answer": "Confirme se a equipa possui experiência, ajudantes e equipamento adequados ao tipo de piano e aos acessos."
+    },
+    {
+      "question": "Quantas pessoas são necessárias?",
+      "answer": "Depende do tipo, peso, dimensões e percurso. Escadas e pianos maiores podem exigir uma equipa reforçada."
+    },
+    {
+      "question": "Um piano de cauda precisa de ser desmontado?",
+      "answer": "Pode ser necessária desmontagem parcial, dependendo do modelo e dos acessos. O procedimento deve ser realizado por pessoas experientes."
+    },
+    {
+      "question": "É necessário afinar o piano depois do transporte?",
+      "answer": "O transporte e a mudança de ambiente podem afetar a afinação. Um técnico pode indicar quando é adequado verificar o instrumento após a estabilização."
+    },
+    {
+      "question": "Devo contratar seguro?",
+      "answer": "Confirme por escrito a responsabilidade do transportador e a cobertura aplicável, especialmente para instrumentos de valor elevado."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Transporte de piano em Lisboa",
+      "href": "/transporte-piano-lisboa/",
+      "type": "service"
+    },
+    {
+      "title": "É necessário seguro para transportar móveis?",
+      "href": "/guias/seguranca/seguro-transporte-moveis/",
+      "type": "planned"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas de transporte",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para transportar o piano",
+    "text": "Descreva o instrumento e os acessos para encontrar uma equipa adequada ao serviço.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "id": "transportar-maquina-lavar",
+  "locale": "pt-PT",
+  "cluster": "objects",
+  "path": "/guias/objetos/como-transportar-maquina-lavar/",
+  "title": "Como transportar uma máquina de lavar",
+  "meta_title": "Como transportar uma máquina de lavar — CargoPT",
+  "meta_description": "Saiba como desligar, drenar, proteger e transportar uma máquina de lavar sem danificar o equipamento ou os acessos.",
+  "primary_query": "como transportar máquina de lavar",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Móveis e objetos",
+  "eyebrow": "Transporte de máquina de lavar",
+  "hero_description": "A máquina deve seguir vazia, drenada, protegida e com o tambor imobilizado de acordo com as instruções do fabricante.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Drene a água e proteja o tambor antes do transporte",
+  "key_points_heading": "Passos essenciais",
+  "faq_heading": "Perguntas sobre transporte de máquinas de lavar",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para transportar uma máquina de lavar, desligue a eletricidade e a água, drene completamente o equipamento e fixe mangueiras e cabo. Instale os parafusos ou sistemas de transporte indicados pelo fabricante para imobilizar o tambor. Mantenha a máquina na vertical, proteja as superfícies e fixe-a no veículo.",
+  "key_points": [
+    "Desligue eletricidade, entrada de água e esgoto.",
+    "Drene a água residual antes de mover a máquina.",
+    "Imobilize o tambor conforme o manual do fabricante.",
+    "Transporte a máquina na vertical e bem protegida.",
+    "Guarde os sistemas de transporte para utilizações futuras."
+  ],
+  "sections": [
+    {
+      "id": "desligar",
+      "heading": "Desligue a máquina de lavar corretamente",
+      "paragraphs": [
+        "Retire a ficha da tomada, feche a torneira de alimentação e desligue as mangueiras de entrada e descarga. Tenha recipientes e panos preparados para recolher água residual.",
+        "Não puxe a máquina pelo cabo nem pelas mangueiras. Confirme que todas as ligações estão livres antes de afastar o equipamento."
+      ]
+    },
+    {
+      "id": "drenar",
+      "heading": "Retire a água residual",
+      "paragraphs": [
+        "Mesmo depois de um ciclo concluído, pode permanecer água na bomba, no filtro e nas mangueiras. Consulte o manual para executar a drenagem e limpar o filtro com segurança.",
+        "Depois de esvaziar, mantenha as mangueiras elevadas ou protegidas para evitar novos derrames."
+      ],
+      "checklist": [
+        "Fechar a alimentação de água.",
+        "Desligar as mangueiras.",
+        "Drenar a bomba e o filtro.",
+        "Secar a gaveta do detergente.",
+        "Fixar mangueiras e cabo ao equipamento."
+      ]
+    },
+    {
+      "id": "tambor",
+      "heading": "Imobilize o tambor",
+      "paragraphs": [
+        "Muitas máquinas utilizam parafusos ou elementos próprios de transporte para impedir movimentos excessivos do tambor. A ausência destes componentes pode aumentar o risco de danos internos.",
+        "Consulte o manual para identificar as peças corretas e a forma de instalação. Não improvise sistemas que pressionem ou perfurem componentes da máquina."
+      ]
+    },
+    {
+      "id": "acessos",
+      "heading": "Prepare os acessos",
+      "paragraphs": [
+        "Meça a máquina, portas, corredores, elevadores e escadas. Retire obstáculos e proteja o chão antes da movimentação.",
+        "A máquina é compacta, mas pesada e difícil de agarrar. Utilize um carrinho adequado e ajudantes suficientes para os acessos."
+      ],
+      "items": [
+        {
+          "title": "Portas",
+          "text": "Confirme a largura útil e considere dobradiças, puxadores e rodapés."
+        },
+        {
+          "title": "Escadas",
+          "text": "Indique número de lanços, curvas, largura e estado dos degraus."
+        },
+        {
+          "title": "Elevador",
+          "text": "Verifique dimensões internas, carga máxima e percurso até à entrada."
+        },
+        {
+          "title": "Estacionamento",
+          "text": "Informe a distância entre o imóvel e o local onde o veículo pode parar."
+        }
+      ]
+    },
+    {
+      "id": "transporte",
+      "heading": "Como transportar no veículo",
+      "paragraphs": [
+        "Mantenha a máquina na vertical. Proteja painéis, porta, comandos e cantos com mantas ou materiais adequados.",
+        "Fixe o equipamento a pontos seguros do veículo para evitar deslocações. Não coloque volumes pesados sobre a máquina."
+      ]
+    },
+    {
+      "id": "instalacao",
+      "heading": "Cuidados antes de voltar a utilizar",
+      "paragraphs": [
+        "No destino, retire os parafusos de transporte antes de utilizar a máquina. Guarde-os para uma mudança futura.",
+        "Confirme o nivelamento, o estado das mangueiras e a ausência de fugas. A instalação elétrica e hidráulica deve respeitar o manual do fabricante."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare o transporte da máquina de lavar",
+    "text": "Indique dimensões, acessos, pisos e necessidade de ajudantes para receber propostas adequadas.",
+    "label": "Descrever o transporte",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "É obrigatório usar parafusos de transporte?",
+      "answer": "Siga o manual do fabricante. Muitos modelos exigem parafusos ou elementos próprios para imobilizar o tambor durante o transporte."
+    },
+    {
+      "question": "Posso transportar a máquina deitada?",
+      "answer": "O recomendado é transportá-la na vertical. Confirme sempre as instruções específicas do fabricante."
+    },
+    {
+      "question": "Como retirar toda a água?",
+      "answer": "Utilize o procedimento de drenagem indicado no manual, incluindo bomba, filtro e mangueiras, e tenha recipientes preparados para a água residual."
+    },
+    {
+      "question": "Posso ligar a máquina logo após a entrega?",
+      "answer": "Primeiro retire os elementos de transporte, nivele a máquina, ligue corretamente as mangueiras e confirme que não existem fugas."
+    },
+    {
+      "question": "Que informação devo dar ao transportador?",
+      "answer": "Indique dimensões, pisos, elevadores, escadas, estacionamento, distância até ao veículo e se precisa de desligamento ou instalação."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Transporte de máquina de lavar em Lisboa",
+      "href": "/transporte-maquina-lavar-lisboa/",
+      "type": "service"
+    },
+    {
+      "title": "Como embalar eletrodomésticos para transporte",
+      "href": "/guias/embalamento/como-embalar-eletrodomesticos/",
+      "type": "planned"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas de transporte",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para transportar a máquina de lavar",
+    "text": "Descreva o equipamento, os locais e os acessos antes de escolher o transportador.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "id": "transportar-sofa",
+  "locale": "pt-PT",
+  "cluster": "objects",
+  "path": "/guias/objetos/como-transportar-sofa/",
+  "title": "Como transportar um sofá",
+  "meta_title": "Como transportar um sofá sem o danificar — CargoPT",
+  "meta_description": "Saiba como medir, desmontar, proteger e transportar um sofá através de portas, elevadores e escadas.",
+  "primary_query": "como transportar sofá",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Móveis e objetos",
+  "eyebrow": "Transporte de sofá",
+  "hero_description": "Antes de mover um sofá, é necessário confirmar se passa por portas, corredores, elevadores e escadas nos dois imóveis.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Meça o sofá e o percurso antes de iniciar o transporte",
+  "key_points_heading": "Passos essenciais",
+  "faq_heading": "Perguntas sobre transporte de sofás",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para transportar um sofá, meça largura, altura e profundidade, incluindo braços, pés e módulos. Compare essas medidas com portas, corredores, elevadores e escadas. Retire almofadas e componentes desmontáveis, proteja tecido, couro, cantos e estrutura e utilize ajudantes suficientes. No veículo, mantenha o sofá protegido e fixado.",
+  "key_points": [
+    "Meça o sofá e todos os pontos do percurso.",
+    "Confirme que peças podem ser desmontadas.",
+    "Proteja tecido, couro, cantos e estrutura.",
+    "Planeie a orientação em portas, elevadores e escadas.",
+    "Fixe o sofá no veículo sem apoiar peso excessivo sobre ele."
+  ],
+  "sections": [
+    {
+      "id": "medir-sofa",
+      "heading": "Como medir o sofá",
+      "paragraphs": [
+        "Meça a largura total, a profundidade e a altura. Inclua braços, encostos, pés, módulos, mecanismos reclináveis e outros elementos salientes.",
+        "Num sofá modular, registe também as dimensões de cada módulo. Fotografias ajudam a perceber a forma e os pontos de separação."
+      ],
+      "checklist": [
+        "Largura total.",
+        "Altura máxima.",
+        "Profundidade máxima.",
+        "Altura e largura sem pés removíveis.",
+        "Dimensões de cada módulo.",
+        "Peso aproximado quando conhecido."
+      ]
+    },
+    {
+      "id": "medir-acessos",
+      "heading": "Meça portas, corredores e escadas",
+      "paragraphs": [
+        "A largura de uma porta não é a única medida relevante. O sofá precisa de espaço para rodar antes e depois da passagem.",
+        "Meça a largura e a altura úteis, curvas, patamares, corrimões, tetos baixos e o interior do elevador. Repita a verificação no local de entrega."
+      ],
+      "items": [
+        {
+          "title": "Portas",
+          "text": "Considere a abertura real, dobradiças, puxadores e espaço para rotação."
+        },
+        {
+          "title": "Corredores",
+          "text": "Verifique largura, comprimento e mudanças de direção."
+        },
+        {
+          "title": "Escadas",
+          "text": "Meça largura, patamares, curvas, corrimões e altura disponível."
+        },
+        {
+          "title": "Elevador",
+          "text": "Confirme porta, dimensões internas e capacidade máxima."
+        }
+      ]
+    },
+    {
+      "id": "desmontar",
+      "heading": "O que pode ser desmontado",
+      "paragraphs": [
+        "Retire almofadas, pés e módulos quando o modelo permitir. Alguns braços, encostos ou mecanismos também podem ser desmontáveis, mas o procedimento varia.",
+        "Não force uniões nem corte revestimentos. Fotografe a montagem, identifique as peças e guarde ferragens num saco fechado."
+      ]
+    },
+    {
+      "id": "proteger",
+      "heading": "Como proteger o sofá",
+      "paragraphs": [
+        "Aspire e seque o sofá antes de o envolver. Proteja cantos, pés, braços e mecanismos, que são zonas vulneráveis durante a passagem por acessos estreitos.",
+        "Use materiais adequados ao revestimento. A proteção deve evitar sujidade e fricção sem reter humidade nem aplicar adesivos diretamente no tecido ou couro."
+      ]
+    },
+    {
+      "id": "movimentar",
+      "heading": "Como movimentar o sofá",
+      "paragraphs": [
+        "Planeie a orientação antes de levantar. Um sofá pode passar de lado, na vertical ou por rotação, mas a manobra deve respeitar a estrutura e o espaço disponível.",
+        "Utilize ajudantes suficientes e proteja chão, paredes e corrimões. Não arraste o sofá diretamente nem o levante por almofadas ou peças frágeis."
+      ]
+    },
+    {
+      "id": "veiculo",
+      "heading": "Como colocar o sofá no veículo",
+      "paragraphs": [
+        "O sofá deve seguir protegido e imobilizado, sem contacto com objetos cortantes, sujos ou húmidos.",
+        "Evite apoiar volumes pesados sobre braços, encostos ou mecanismos. Fixe os módulos separadamente quando isso proporcionar maior estabilidade."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Confirme se o sofá passa pelos acessos",
+    "text": "Envie medidas e fotografias do sofá, das portas, do elevador e das escadas para receber propostas adequadas.",
+    "label": "Descrever o transporte",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Como saber se o sofá passa pela porta?",
+      "answer": "Compare as dimensões do sofá com a abertura útil e confirme se existe espaço suficiente para rodar antes e depois da porta."
+    },
+    {
+      "question": "É possível desmontar todos os sofás?",
+      "answer": "Não. Pés, módulos e almofadas são frequentemente removíveis, mas braços, encostos e mecanismos dependem do modelo."
+    },
+    {
+      "question": "Posso transportar o sofá na vertical?",
+      "answer": "Pode ser uma manobra possível em alguns acessos, desde que a estrutura seja suportada corretamente e exista altura suficiente."
+    },
+    {
+      "question": "Como proteger um sofá de couro?",
+      "answer": "Utilize proteção limpa e adequada ao material, evitando adesivos diretamente no couro, pressão excessiva e contacto com superfícies abrasivas."
+    },
+    {
+      "question": "Que fotografias devo enviar?",
+      "answer": "Envie o sofá de vários ângulos, módulos e pés, portas, corredores, escadas, elevadores e o percurso até ao veículo."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Transporte de sofá em Lisboa",
+      "href": "/transporte-sofa-lisboa/",
+      "type": "service"
+    },
+    {
+      "title": "Como medir móveis antes de uma mudança",
+      "href": "/guias/objetos/medir-moveis-antes-mudanca/",
+      "type": "planned"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas de transporte",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para transportar o sofá",
+    "text": "Descreva o sofá, os acessos e a rota para encontrar transportadores adequados.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

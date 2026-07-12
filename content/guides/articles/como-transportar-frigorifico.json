@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "id": "transportar-frigorifico",
+  "locale": "pt-PT",
+  "cluster": "objects",
+  "path": "/guias/objetos/como-transportar-frigorifico/",
+  "title": "Como transportar um frigorífico",
+  "meta_title": "Como transportar um frigorífico com segurança — CargoPT",
+  "meta_description": "Veja como preparar, proteger e transportar um frigorífico, incluindo acessos, posição e cuidados após a entrega.",
+  "primary_query": "como transportar frigorífico",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Móveis e objetos",
+  "eyebrow": "Transporte de frigorífico",
+  "hero_description": "O transporte exige preparação, proteção adequada, controlo da inclinação e uma rota compatível com as dimensões do frigorífico.",
+  "date_published": "2026-07-12",
+  "date_modified": "2026-07-12",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Transporte o frigorífico vazio, protegido e tão vertical quanto possível",
+  "key_points_heading": "Cuidados principais",
+  "faq_heading": "Perguntas sobre transporte de frigoríficos",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para transportar um frigorífico, esvazie, descongele e seque o equipamento. Retire ou fixe componentes móveis, proteja portas e superfícies e planeie o percurso até ao veículo. O aparelho deve permanecer tão vertical quanto possível e ser imobilizado no veículo. Após uma inclinação significativa, siga as instruções do fabricante antes de voltar a ligá-lo.",
+  "key_points": [
+    "Prepare e seque completamente o equipamento.",
+    "Meça o frigorífico e todos os pontos do percurso.",
+    "Utilize ajudantes e meios adequados ao peso.",
+    "Mantenha o aparelho tão vertical quanto possível.",
+    "Fixe-o no veículo e siga o manual antes de o ligar."
+  ],
+  "sections": [
+    {
+      "id": "antes-transporte",
+      "heading": "O que fazer antes do transporte",
+      "paragraphs": [
+        "O frigorífico deve estar vazio, desligado, descongelado e seco. Prateleiras, gavetas, cabos e tubos precisam de ser removidos ou imobilizados.",
+        "Confirme também se existe água acumulada na bandeja, no dispensador ou nas ligações. Uma preparação incompleta pode provocar derrames durante a movimentação."
+      ]
+    },
+    {
+      "id": "medidas-percurso",
+      "heading": "Meça o equipamento e o percurso",
+      "paragraphs": [
+        "Registe altura, largura e profundidade, incluindo pegas e outros elementos salientes. Meça portas, elevadores, corredores, patamares e curvas de escada.",
+        "Confirme onde o veículo pode parar e a distância até à entrada. Se o frigorífico não passar por algum ponto, pode ser necessário desmontar portas do imóvel ou componentes autorizados pelo fabricante."
+      ],
+      "checklist": [
+        "Dimensões exteriores do frigorífico.",
+        "Largura das portas nos dois imóveis.",
+        "Espaço dentro do elevador.",
+        "Curvas e largura das escadas.",
+        "Distância até ao veículo.",
+        "Obstáculos e diferenças de nível."
+      ]
+    },
+    {
+      "id": "movimentacao",
+      "heading": "Como movimentar um frigorífico",
+      "paragraphs": [
+        "Um frigorífico é volumoso, pesado e difícil de agarrar. Não deve ser arrastado diretamente sobre o chão nem movimentado apenas pelas portas ou pegas.",
+        "Utilize um carrinho adequado, cintas e proteção. O número de ajudantes deve corresponder ao peso, às dimensões e aos acessos."
+      ],
+      "items": [
+        {
+          "title": "Chão protegido",
+          "text": "Use proteção adequada para evitar riscos e danos durante a saída e a entrada."
+        },
+        {
+          "title": "Carrinho de transporte",
+          "text": "Escolha equipamento compatível com o peso e prenda o frigorífico antes de deslocá-lo."
+        },
+        {
+          "title": "Cintas",
+          "text": "Devem estabilizar o aparelho sem esmagar portas, painéis ou tubagens."
+        },
+        {
+          "title": "Ajudantes",
+          "text": "Escadas, desníveis e modelos grandes podem exigir uma equipa reforçada."
+        }
+      ]
+    },
+    {
+      "id": "posicao",
+      "heading": "Em que posição deve seguir",
+      "paragraphs": [
+        "O frigorífico deve ser transportado tão vertical quanto possível. A inclinação deve ser limitada ao necessário para ultrapassar acessos e utilizar o equipamento de movimentação.",
+        "Quando o transporte numa posição diferente for inevitável, consulte previamente o manual ou o fabricante. A orientação permitida e o tempo de espera antes da ligação variam entre modelos."
+      ]
+    },
+    {
+      "id": "veiculo",
+      "heading": "Como proteger o frigorífico no veículo",
+      "paragraphs": [
+        "Coloque o equipamento numa zona estável, protegido por mantas e sem contacto direto com objetos rígidos ou pontiagudos.",
+        "Fixe-o a pontos adequados do veículo para impedir deslocações, quedas e impactos durante travagens e curvas. Não coloque volumes pesados sobre o frigorífico."
+      ]
+    },
+    {
+      "id": "apos-entrega",
+      "heading": "O que fazer depois da entrega",
+      "paragraphs": [
+        "Coloque o frigorífico no local definitivo, verifique se está estável e confirme que cabos e tubos não ficaram presos ou danificados.",
+        "Não o ligue automaticamente logo após a chegada se tiver sido inclinado. Consulte as instruções do fabricante e respeite o período indicado para o modelo."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Planeie o transporte do frigorífico",
+    "text": "Envie dimensões, fotografias, rota e acessos para receber propostas preparadas para o serviço.",
+    "label": "Descrever o transporte",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "O frigorífico pode ser transportado deitado?",
+      "answer": "O recomendado é mantê-lo tão vertical quanto possível. Caso outra posição seja inevitável, confirme previamente no manual ou com o fabricante qual a orientação permitida."
+    },
+    {
+      "question": "Posso ligar o frigorífico imediatamente?",
+      "answer": "Depende da posição e do modelo. Se houve inclinação, siga o período de espera indicado pelo fabricante antes de ligar."
+    },
+    {
+      "question": "Quantas pessoas são necessárias?",
+      "answer": "Depende do peso, das dimensões e dos acessos. Modelos grandes, escadas e ausência de elevador podem exigir mais ajudantes."
+    },
+    {
+      "question": "É necessário retirar as portas do frigorífico?",
+      "answer": "Só quando os acessos o exigirem e o procedimento for permitido pelo fabricante. Deve ser feito por alguém com conhecimento adequado."
+    },
+    {
+      "question": "Que informação devo incluir no pedido?",
+      "answer": "Indique dimensões, tipo de frigorífico, pisos, elevadores, escadas, estacionamento, rota e fotografias dos acessos."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como preparar um frigorífico para transporte",
+      "href": "/guias/objetos/preparar-frigorifico-transporte/",
+      "type": "planned"
+    },
+    {
+      "title": "Transporte de frigorífico em Lisboa",
+      "href": "/transporte-frigorifico-lisboa/",
+      "type": "service"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas de transporte",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para transportar o frigorífico",
+    "text": "Descreva o equipamento e os acessos para encontrar transportadores adequados ao serviço.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}
