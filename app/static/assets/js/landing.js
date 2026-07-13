@@ -394,52 +394,110 @@ const carousel = document.querySelector(".process-carousel");
 if (carousel) {
   const track = carousel.querySelector(".process-carousel-track");
   const cards = [...track.querySelectorAll(".process-card")];
-  const dots = [...carousel.querySelectorAll(".process-carousel-dots button")];
 
   let index = 0;
+  let animationFrame = 0;
 
-  function update() {
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("is-active", i === index);
-    });
-
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
   }
 
-  function go(i) {
-    index = Math.max(0, Math.min(i, cards.length - 1));
+  function renderCarousel() {
+    animationFrame = 0;
 
-    track.scrollTo({
-      left: cards[index].offsetLeft,
-      behavior: "smooth"
-    });
-
-    update();
-  }
-
-  track.addEventListener("scroll", () => {
+    const trackRect = track.getBoundingClientRect();
+    const trackCenter = trackRect.left + trackRect.width / 2;
     let closest = 0;
-    let distance = Infinity;
+    let closestDistance = Infinity;
 
     cards.forEach((card, i) => {
-      const d = Math.abs(track.scrollLeft - card.offsetLeft);
-      if (d < distance) {
-        distance = d;
+      const cardRect = card.getBoundingClientRect();
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      const signedDistance = cardCenter - trackCenter;
+      const normalizedDistance = clamp(
+        signedDistance / Math.max(cardRect.width * 0.82, 1),
+        -1.4,
+        1.4
+      );
+      const proximity = 1 - clamp(Math.abs(normalizedDistance), 0, 1);
+
+      const scale = 0.82 + proximity * 0.22;
+      const lift = 10 - proximity * 18;
+      const rotation = -normalizedDistance * 10;
+      const opacity = 0.5 + proximity * 0.5;
+      const saturation = 0.68 + proximity * 0.32;
+      const brightness = 0.94 + proximity * 0.06;
+      const shadowStrength = 0.12 + proximity * 0.12;
+
+      card.style.setProperty("--carousel-scale", scale.toFixed(4));
+      card.style.setProperty("--carousel-lift", `${lift.toFixed(2)}px`);
+      card.style.setProperty(
+        "--carousel-rotation",
+        `${rotation.toFixed(2)}deg`
+      );
+      card.style.setProperty(
+        "--carousel-opacity",
+        opacity.toFixed(4)
+      );
+      card.style.setProperty(
+        "--carousel-saturation",
+        saturation.toFixed(4)
+      );
+      card.style.setProperty(
+        "--carousel-brightness",
+        brightness.toFixed(4)
+      );
+      card.style.setProperty(
+        "--carousel-shadow-strength",
+        shadowStrength.toFixed(4)
+      );
+      card.style.zIndex = String(
+        10 + Math.round(proximity * 20)
+      );
+
+      const absoluteDistance = Math.abs(signedDistance);
+
+      if (absoluteDistance < closestDistance) {
+        closestDistance = absoluteDistance;
         closest = i;
       }
     });
 
     if (closest !== index) {
       index = closest;
-      update();
     }
-  });
 
+    cards.forEach((card, i) => {
+      const distance = i - index;
 
-  dots.forEach((dot, i) => {
-    dot.addEventListener("click", () => go(i));
-  });
+      card.classList.toggle("is-active", distance === 0);
+      card.classList.toggle("is-prev", distance === -1);
+      card.classList.toggle("is-next", distance === 1);
+      card.classList.toggle("is-far", Math.abs(distance) > 1);
+      card.setAttribute(
+        "aria-current",
+        distance === 0 ? "true" : "false"
+      );
+    });
+  }
 
-  update();
+  function requestCarouselRender() {
+    if (animationFrame) {
+      return;
+    }
+
+    animationFrame = requestAnimationFrame(renderCarousel);
+  }
+
+  track.addEventListener(
+    "scroll",
+    requestCarouselRender,
+    { passive: true }
+  );
+
+  window.addEventListener("resize", requestCarouselRender);
+
+  requestCarouselRender();
 }
 
 

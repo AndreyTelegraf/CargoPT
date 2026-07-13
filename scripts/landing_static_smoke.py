@@ -23,9 +23,9 @@ def main() -> None:
             ("/ru/", '<span class="field-label">WhatsApp<span class="field-optional">необязательно</span></span>'),
             ("/assets/css/components.css", ".request-form .field-required"),
             ("/assets/css/components.css", 'content: "– "'),
-            ("/", "landing.css?v=design-unified-v1"),
-            ("/en/", "landing.css?v=design-unified-v1"),
-            ("/ru/", "landing.css?v=design-unified-v1"),
+            ("/", "landing.css?v=carousel-motion-v3"),
+            ("/en/", "landing.css?v=carousel-motion-v3"),
+            ("/ru/", "landing.css?v=carousel-motion-v3"),
             ("/", 'id="openPedidosCta"'),
             ("/en/", 'id="openPedidosCta"'),
             ("/ru/", 'id="openPedidosCta"'),
@@ -96,30 +96,15 @@ def main() -> None:
             if expected not in response.text:
                 raise SystemExit(f"{path} missing expected content: {expected}")
 
-        carousel_checks = {
-            "/": [
-                "Mostrar cartão 1",
-                "Mostrar cartão 2",
-                "Mostrar cartão 3",
-                "Mostrar cartão 4",
-            ],
-            "/en/": [
-                "Show card 1",
-                "Show card 2",
-                "Show card 3",
-                "Show card 4",
-            ],
-            "/ru/": [
-                "Показать карточку 1",
-                "Показать карточку 2",
-                "Показать карточку 3",
-                "Показать карточку 4",
-            ],
-        }
+        carousel_routes = [
+            "/",
+            "/en/",
+            "/ru/",
+        ]
 
         mobile_svg = "/assets/hero/process-cards/card_03_varias_propostas_mobile.svg"
 
-        for route, aria_labels in carousel_checks.items():
+        for route in carousel_routes:
             response = client.get(route)
             if response.status_code != 200:
                 raise SystemExit(
@@ -143,11 +128,6 @@ def main() -> None:
                     f"{route} process carousel must contain exactly four cards"
                 )
 
-            if carousel_html.count('data-slide="') != 4:
-                raise SystemExit(
-                    f"{route} process carousel must contain exactly four dots"
-                )
-
             if carousel_html.count(mobile_svg) != 1:
                 raise SystemExit(
                     f"{route} process carousel must contain the mobile third-card SVG"
@@ -163,16 +143,6 @@ def main() -> None:
                     f"{route} process carousel must not contain a next arrow"
                 )
 
-            for index, aria_label in enumerate(aria_labels):
-                expected_dot = (
-                    f'<button type="button" data-slide="{index}" '
-                    f'aria-label="{aria_label}"></button>'
-                )
-                if carousel_html.count(expected_dot) != 1:
-                    raise SystemExit(
-                        f"{route} missing localized carousel dot: {expected_dot}"
-                    )
-
         js_response = client.get("/assets/js/landing.js")
         if js_response.status_code != 200:
             raise SystemExit(
@@ -184,8 +154,17 @@ def main() -> None:
 
         required_js = [
             'const carousel = document.querySelector(".process-carousel")',
-            'track.addEventListener("scroll"',
-            'dot.addEventListener("click", () => go(i))',
+            'function renderCarousel()',
+            'function requestCarouselRender()',
+            'requestAnimationFrame(renderCarousel)',
+            'const proximity = 1 - clamp(Math.abs(normalizedDistance), 0, 1)',
+            'card.style.setProperty("--carousel-scale"',
+            '"--carousel-rotation",',
+            'card.classList.toggle("is-active", distance === 0)',
+            'track.addEventListener(',
+            '"scroll",',
+            'requestCarouselRender,',
+            '{ passive: true }',
         ]
 
         for expected in required_js:
