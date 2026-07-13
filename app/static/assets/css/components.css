@@ -796,14 +796,14 @@ label {
 .request-form .field-required {
   color: var(--danger);
   font-weight: var(--font-weight-required);
-  line-height: 1;
+  line-height: var(--line-height-field-marker);
 }
 
 .field-optional {
   color: var(--muted-2);
-  font-size: 12px;
+  font-size: var(--font-size-field-secondary);
   font-weight: var(--font-weight-title);
-  letter-spacing: 0.01em;
+  letter-spacing: var(--letter-spacing-field-secondary);
 }
 
 .field-optional::before {

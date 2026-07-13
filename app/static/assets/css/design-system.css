@@ -153,6 +153,7 @@
   --font-size-eyebrow: 13px;
   --font-size-badge: 13px;
   --font-size-badge-small: 11px;
+  --font-size-field-secondary: 12px;
   --font-size-meta: 14px;
   --font-size-body-large: 19px;
   --font-size-section-title: clamp(32px, 5vw, 56px);
@@ -182,6 +183,7 @@
   --font-weight-required: var(--font-weight-strong);
 
   --line-height-tight: 1;
+  --line-height-field-marker: 1;
   --line-height-heading: 0.98;
   --line-height-hero-title: 0.97;
   --line-height-card-title: 1.2;
@@ -196,6 +198,7 @@
   --letter-spacing-card-title: -0.035em;
   --letter-spacing-eyebrow: 0.095em;
   --letter-spacing-label: 0.08em;
+  --letter-spacing-field-secondary: 0.01em;
   --motion-fast: 0.16s ease;
   --motion-base: 0.18s ease;
   --motion-slow: 0.22s ease;
