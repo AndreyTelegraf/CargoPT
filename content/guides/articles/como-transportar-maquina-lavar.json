@@ -135,22 +135,22 @@
   ],
   "related_links": [
     {
-      "title": "Transporte de máquina de lavar em Lisboa",
-      "href": "/transporte-maquina-lavar-lisboa/",
-      "type": "service"
-    },
-    {
-      "title": "Como embalar eletrodomésticos para transporte",
-      "href": "/guias/embalamento/como-embalar-eletrodomesticos/",
+      "title": "Como preparar um frigorífico para transporte",
+      "href": "/guias/objetos/preparar-frigorifico-transporte/",
       "type": "planned"
     },
     {
-      "title": "Como pedir um orçamento de mudança",
-      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
-      "type": "guide"
+      "title": "Como transportar um sofá",
+      "href": "/guias/objetos/como-transportar-sofa/",
+      "type": "planned"
     },
     {
-      "title": "Pedir propostas de transporte",
+      "title": "Transporte de máquina de lavar em Lisboa",
+      "href": "/transporte-maquina-lavar-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
       "href": "/#request",
       "type": "service"
     }

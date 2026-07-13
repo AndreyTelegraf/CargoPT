@@ -116,24 +116,24 @@
   ],
   "related_links": [
     {
-      "title": "Quanto custa uma mudança em Portugal?",
-      "href": "/guias/precos/quanto-custa-uma-mudanca/",
-      "type": "guide"
-    },
-    {
-      "title": "O que influencia o preço de uma mudança?",
-      "href": "/guias/precos/fatores-preco-mudanca/",
-      "type": "guide"
-    },
-    {
       "title": "Como pedir um orçamento de mudança",
       "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Quanto custa uma mudança em Portugal?",
+      "href": "/guias/precos/quanto-custa-uma-mudanca/",
       "type": "guide"
     },
     {
       "title": "Quando é mais barato fazer uma mudança?",
       "href": "/guias/planeamento/quando-e-mais-barato-mudar/",
       "type": "planned"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
     }
   ],
   "final_cta": {

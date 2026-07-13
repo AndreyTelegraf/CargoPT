@@ -128,9 +128,14 @@
   ],
   "related_links": [
     {
-      "title": "Como pedir um orçamento de mudança",
-      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
-      "type": "guide"
+      "title": "Mudanças em Loures",
+      "href": "/guias/cidades/mudancas-loures/",
+      "type": "planned"
+    },
+    {
+      "title": "Mudanças em Odivelas",
+      "href": "/guias/cidades/mudancas-odivelas/",
+      "type": "planned"
     },
     {
       "title": "Quanto custa uma mudança em Lisboa?",
@@ -138,14 +143,9 @@
       "type": "planned"
     },
     {
-      "title": "Mudanças em Lisboa",
-      "href": "/mudancas-lisboa/",
-      "type": "landing"
-    },
-    {
-      "title": "Como escolher uma empresa de mudanças",
-      "href": "/guias/planeamento/como-escolher-empresa-mudancas/",
-      "type": "planned"
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
     }
   ],
   "final_cta": {

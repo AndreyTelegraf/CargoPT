@@ -141,22 +141,22 @@
   ],
   "related_links": [
     {
-      "title": "Transporte de piano em Lisboa",
-      "href": "/transporte-piano-lisboa/",
-      "type": "service"
-    },
-    {
-      "title": "É necessário seguro para transportar móveis?",
-      "href": "/guias/seguranca/seguro-transporte-moveis/",
+      "title": "Como medir móveis antes de uma mudança",
+      "href": "/guias/objetos/medir-moveis-antes-mudanca/",
       "type": "planned"
     },
     {
-      "title": "Como pedir um orçamento de mudança",
-      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
-      "type": "guide"
+      "title": "Como transportar um frigorífico",
+      "href": "/guias/objetos/como-transportar-frigorifico/",
+      "type": "planned"
     },
     {
-      "title": "Pedir propostas de transporte",
+      "title": "Transporte de piano em Lisboa",
+      "href": "/transporte-piano-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
       "href": "/#request",
       "type": "service"
     }

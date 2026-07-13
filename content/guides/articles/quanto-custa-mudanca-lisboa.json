@@ -141,9 +141,9 @@
       "type": "guide"
     },
     {
-      "title": "Como pedir um orçamento de mudança",
-      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
-      "type": "guide"
+      "title": "Quanto custa uma mudança no Porto?",
+      "href": "/guias/precos/quanto-custa-mudanca-porto/",
+      "type": "planned"
     },
     {
       "title": "Mudanças em Lisboa",
@@ -151,9 +151,9 @@
       "type": "landing"
     },
     {
-      "title": "O que influencia o preço de uma mudança?",
-      "href": "/guias/precos/fatores-preco-mudanca/",
-      "type": "guide"
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
     }
   ],
   "final_cta": {

@@ -1,0 +1,826 @@
+{
+  "schema_version": 2,
+  "standard": "content/guides/internal-linking-standard.md",
+  "request_target": {
+    "id": "@request",
+    "title": "Pedir propostas para uma mudança",
+    "href": "/#request",
+    "type": "service"
+  },
+  "links": {
+    "checklist-mudanca": [
+      {
+        "target": "como-preparar-uma-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "quando-reservar-transportador",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-embalar-louca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "como-embalar-caixas": [
+      {
+        "target": "como-embalar-louca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "como-embalar-televisao",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "checklist-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "como-embalar-eletrodomesticos": [
+      {
+        "target": "como-embalar-televisao",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "como-embalar-louca",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "transportar-maquina-lavar",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "como-embalar-louca": [
+      {
+        "target": "como-embalar-caixas",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "como-embalar-eletrodomesticos",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-preparar-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "como-embalar-televisao": [
+      {
+        "target": "como-embalar-eletrodomesticos",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "como-embalar-caixas",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "seguro-transporte-moveis",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "como-escolher-empresa-mudancas": [
+      {
+        "target": "quando-e-mais-barato-mudar",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "elevador-na-mudanca",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-verificar-transportador",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "como-pedir-orcamento-mudanca": [
+      {
+        "target": "fatores-preco-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "como-reduzir-custo-mudanca",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-escolher-empresa-mudancas",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "como-preparar-uma-mudanca": [
+      {
+        "target": "elevador-na-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "checklist-mudanca",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-embalar-caixas",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "como-reduzir-custo-mudanca": [
+      {
+        "target": "como-pedir-orcamento-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "quanto-custa-uma-mudanca",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quando-e-mais-barato-mudar",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "como-verificar-transportador": [
+      {
+        "target": "responsabilidade-danos-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "seguro-transporte-moveis",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-escolher-empresa-mudancas",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "elevador-na-mudanca": [
+      {
+        "target": "como-escolher-empresa-mudancas",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "como-preparar-uma-mudanca",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "medir-moveis-antes-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "fatores-preco-mudanca": [
+      {
+        "target": "quanto-custa-mudanca-porto",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "como-pedir-orcamento-mudanca",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "elevador-na-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "medir-moveis-antes-mudanca": [
+      {
+        "target": "transportar-sofa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "transportar-piano",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-preparar-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-albufeira": [
+      {
+        "target": "mudancas-faro",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-evora",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-amadora": [
+      {
+        "target": "mudancas-loures",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-odivelas",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-aveiro": [
+      {
+        "target": "mudancas-leiria",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-vila-nova-gaia",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-porto",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-evora": [
+      {
+        "target": "mudancas-portimao",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-albufeira",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-faro": [
+      {
+        "target": "mudancas-albufeira",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-portimao",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-leiria": [
+      {
+        "target": "mudancas-aveiro",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-matosinhos",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-loures": [
+      {
+        "target": "mudancas-amadora",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-setubal",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-matosinhos": [
+      {
+        "target": "mudancas-leiria",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-vila-nova-gaia",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-porto",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-odivelas": [
+      {
+        "target": "mudancas-loures",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-setubal",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-portimao": [
+      {
+        "target": "mudancas-faro",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-evora",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-setubal": [
+      {
+        "target": "mudancas-odivelas",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-amadora",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-vila-nova-gaia": [
+      {
+        "target": "mudancas-matosinhos",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-aveiro",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-porto",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "preparar-frigorifico-transporte": [
+      {
+        "target": "transportar-frigorifico",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "transportar-maquina-lavar",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "transporte-frigorifico-lisboa",
+        "reason": "commercial",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "quando-e-mais-barato-mudar": [
+      {
+        "target": "quando-reservar-transportador",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "como-escolher-empresa-mudancas",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-reduzir-custo-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "quando-reservar-transportador": [
+      {
+        "target": "checklist-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "quando-e-mais-barato-mudar",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-pedir-orcamento-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "quanto-custa-mudanca-lisboa": [
+      {
+        "target": "quanto-custa-uma-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "quanto-custa-mudanca-porto",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "mudancas-lisboa",
+        "reason": "commercial",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "quanto-custa-mudanca-porto": [
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "fatores-preco-mudanca",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "mudancas-porto",
+        "reason": "commercial",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "quanto-custa-uma-mudanca": [
+      {
+        "target": "como-reduzir-custo-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-preparar-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "responsabilidade-danos-mudanca": [
+      {
+        "target": "como-verificar-transportador",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "seguro-transporte-moveis",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "transportar-piano",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "seguro-transporte-moveis": [
+      {
+        "target": "como-verificar-transportador",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "responsabilidade-danos-mudanca",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-embalar-televisao",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "transportar-frigorifico": [
+      {
+        "target": "transportar-piano",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "preparar-frigorifico-transporte",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "transporte-frigorifico-lisboa",
+        "reason": "commercial",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "transportar-maquina-lavar": [
+      {
+        "target": "preparar-frigorifico-transporte",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "transportar-sofa",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "transporte-maquina-lavar-lisboa",
+        "reason": "commercial",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "transportar-piano": [
+      {
+        "target": "medir-moveis-antes-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "transportar-frigorifico",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "transporte-piano-lisboa",
+        "reason": "commercial",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "transportar-sofa": [
+      {
+        "target": "transportar-maquina-lavar",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "medir-moveis-antes-mudanca",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "transporte-sofa-lisboa",
+        "reason": "commercial",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ]
+  }
+}

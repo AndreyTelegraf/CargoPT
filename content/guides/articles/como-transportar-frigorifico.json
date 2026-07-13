@@ -136,6 +136,11 @@
   ],
   "related_links": [
     {
+      "title": "Como transportar um piano",
+      "href": "/guias/objetos/como-transportar-piano/",
+      "type": "planned"
+    },
+    {
       "title": "Como preparar um frigorífico para transporte",
       "href": "/guias/objetos/preparar-frigorifico-transporte/",
       "type": "planned"
@@ -143,15 +148,10 @@
     {
       "title": "Transporte de frigorífico em Lisboa",
       "href": "/transporte-frigorifico-lisboa/",
-      "type": "service"
+      "type": "landing"
     },
     {
-      "title": "Como pedir um orçamento de mudança",
-      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
-      "type": "guide"
-    },
-    {
-      "title": "Pedir propostas de transporte",
+      "title": "Pedir propostas para uma mudança",
       "href": "/#request",
       "type": "service"
     }

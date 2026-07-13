@@ -136,14 +136,14 @@
   ],
   "related_links": [
     {
-      "title": "Quanto custa uma mudança em Portugal?",
-      "href": "/guias/precos/quanto-custa-uma-mudanca/",
-      "type": "guide"
+      "title": "Quanto custa uma mudança em Lisboa?",
+      "href": "/guias/precos/quanto-custa-mudanca-lisboa/",
+      "type": "planned"
     },
     {
-      "title": "Como pedir um orçamento de mudança",
-      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
-      "type": "guide"
+      "title": "O que influencia o preço de uma mudança?",
+      "href": "/guias/precos/fatores-preco-mudanca/",
+      "type": "planned"
     },
     {
       "title": "Mudanças no Porto",
@@ -151,9 +151,9 @@
       "type": "landing"
     },
     {
-      "title": "Como reduzir o custo de uma mudança",
-      "href": "/guias/precos/como-reduzir-custo-mudanca/",
-      "type": "planned"
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
     }
   ],
   "final_cta": {

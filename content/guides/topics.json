@@ -223,7 +223,7 @@
         "transactional"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "mudancas-lisboa",
@@ -242,7 +242,7 @@
         "transactional"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "mudancas-lisboa",
@@ -261,7 +261,7 @@
         "transactional"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "mudancas-lisboa",
@@ -280,7 +280,7 @@
         "transactional"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "mudancas-porto",
@@ -299,7 +299,7 @@
         "transactional"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "mudancas-porto",
@@ -318,7 +318,7 @@
         "transactional"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "quanto-custa-uma-mudanca",
@@ -337,7 +337,7 @@
         "transactional"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "quanto-custa-uma-mudanca",
@@ -356,7 +356,7 @@
         "transactional"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "quanto-custa-uma-mudanca",
@@ -375,7 +375,7 @@
         "transactional"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "mudancas-faro",
@@ -394,7 +394,7 @@
         "transactional"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "mudancas-faro",
@@ -413,7 +413,7 @@
         "transactional"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "quanto-custa-uma-mudanca",
@@ -432,7 +432,7 @@
         "transactional"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "mudancas-almada",
@@ -472,7 +472,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "mudancas-lisboa",
@@ -493,7 +493,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "mudancas-porto",
@@ -513,7 +513,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "quanto-custa-uma-mudanca",
@@ -551,7 +551,7 @@
         "informational"
       ],
       "priority": 2,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "quanto-custa-uma-mudanca",
@@ -569,7 +569,7 @@
         "informational"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "checklist-mudanca",
@@ -588,7 +588,7 @@
         "informational"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "como-preparar-uma-mudanca",
@@ -607,7 +607,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "como-preparar-uma-mudanca",
@@ -626,7 +626,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "quanto-custa-uma-mudanca",
@@ -645,7 +645,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "como-verificar-transportador",
@@ -664,7 +664,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "fatores-preco-mudanca",
@@ -683,7 +683,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "transporte-frigorifico-lisboa",
@@ -701,7 +701,7 @@
         "informational"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "transportar-frigorifico",
@@ -720,7 +720,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "transporte-maquina-lavar-lisboa",
@@ -739,7 +739,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "transporte-sofa-lisboa",
@@ -758,7 +758,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "transporte-piano-lisboa",
@@ -776,7 +776,7 @@
         "informational"
       ],
       "priority": 2,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "transportar-sofa",
@@ -794,7 +794,7 @@
         "informational"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "checklist-mudanca",
@@ -812,7 +812,7 @@
         "informational"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "como-embalar-caixas",
@@ -830,7 +830,7 @@
         "informational"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "como-embalar-caixas",
@@ -848,7 +848,7 @@
         "informational"
       ],
       "priority": 2,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "transportar-frigorifico",
@@ -867,7 +867,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "seguro-transporte-moveis",
@@ -886,7 +886,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "responsabilidade-danos-mudanca",
@@ -905,7 +905,7 @@
         "commercial"
       ],
       "priority": 1,
-      "status": "planned",
+      "status": "published",
       "parent": "/guias/",
       "related": [
         "como-escolher-empresa-mudancas",

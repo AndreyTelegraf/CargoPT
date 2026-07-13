@@ -205,24 +205,24 @@
   ],
   "related_links": [
     {
-      "title": "Guias de mudanças e transporte",
-      "href": "/guias/",
-      "type": "parent"
+      "title": "Como reduzir o custo de uma mudança",
+      "href": "/guias/precos/como-reduzir-custo-mudanca/",
+      "type": "planned"
     },
     {
-      "title": "Mudanças em Lisboa",
-      "href": "/mudancas-lisboa/",
-      "type": "landing"
+      "title": "Quanto custa uma mudança em Lisboa?",
+      "href": "/guias/precos/quanto-custa-mudanca-lisboa/",
+      "type": "planned"
     },
     {
-      "title": "Mudanças no Porto",
-      "href": "/mudancas-porto/",
-      "type": "landing"
+      "title": "Como preparar uma mudança",
+      "href": "/guias/planeamento/como-preparar-uma-mudanca/",
+      "type": "planned"
     },
     {
-      "title": "Mudanças de apartamento em Lisboa",
-      "href": "/mudancas-apartamento-lisboa/",
-      "type": "landing"
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
     }
   ],
   "final_cta": {

@@ -191,9 +191,9 @@
   ],
   "related_links": [
     {
-      "title": "Quanto custa uma mudança em Portugal?",
-      "href": "/guias/precos/quanto-custa-uma-mudanca/",
-      "type": "guide"
+      "title": "Quanto custa uma mudança no Porto?",
+      "href": "/guias/precos/quanto-custa-mudanca-porto/",
+      "type": "planned"
     },
     {
       "title": "Como pedir um orçamento de mudança",
@@ -201,14 +201,14 @@
       "type": "guide"
     },
     {
-      "title": "Guias de mudanças e transporte",
-      "href": "/guias/",
-      "type": "parent"
+      "title": "Como o elevador e os andares afetam uma mudança",
+      "href": "/guias/planeamento/elevador-andares-mudanca/",
+      "type": "planned"
     },
     {
-      "title": "Mudanças em Lisboa",
-      "href": "/mudancas-lisboa/",
-      "type": "landing"
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
     }
   ],
   "final_cta": {

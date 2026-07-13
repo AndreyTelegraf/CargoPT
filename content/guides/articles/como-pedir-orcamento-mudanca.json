@@ -186,24 +186,24 @@
   ],
   "related_links": [
     {
-      "title": "Quanto custa uma mudança em Portugal?",
-      "href": "/guias/precos/quanto-custa-uma-mudanca/",
-      "type": "guide"
+      "title": "O que influencia o preço de uma mudança?",
+      "href": "/guias/precos/fatores-preco-mudanca/",
+      "type": "planned"
     },
     {
-      "title": "Guias de mudanças e transporte",
-      "href": "/guias/",
-      "type": "parent"
-    },
-    {
-      "title": "Mudanças em Lisboa",
-      "href": "/mudancas-lisboa/",
-      "type": "landing"
+      "title": "Como reduzir o custo de uma mudança",
+      "href": "/guias/precos/como-reduzir-custo-mudanca/",
+      "type": "planned"
     },
     {
       "title": "Como escolher uma empresa de mudanças",
       "href": "/guias/planeamento/como-escolher-empresa-mudancas/",
       "type": "planned"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
     }
   ],
   "final_cta": {
