@@ -166,6 +166,15 @@
   --font-size-status-title: clamp(28px, 4vw, 38px);
   --font-size-status-text: 16px;
   --font-size-offer-price: 20px;
+  --font-size-track-sidebar-title: var(--font-size-offer-price);
+  --font-size-track-eyebrow: 12px;
+  --font-size-track-detail-label: 12px;
+  --font-size-track-sidebar-intro: 15px;
+
+  --line-height-track-sidebar-title: 1.15;
+
+  --letter-spacing-track-sidebar-title: -0.04em;
+
   --font-size-track-h1: clamp(34px, 6vw, 58px);
   --font-size-track-h2: clamp(26px, 4vw, 38px);
 

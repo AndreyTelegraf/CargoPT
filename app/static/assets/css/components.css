@@ -339,7 +339,7 @@ details p {
 .tracking-status-eyebrow {
   margin: 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--font-size-track-eyebrow);
   font-weight: var(--font-weight-heavy);
   letter-spacing: var(--letter-spacing-eyebrow);
   text-transform: uppercase;
@@ -513,7 +513,7 @@ details p {
 
 .tracking-status-detail-label {
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--font-size-track-detail-label);
   font-weight: var(--font-weight-heavy);
   letter-spacing: var(--letter-spacing-label);
   text-transform: uppercase;
@@ -554,7 +554,7 @@ details p {
 .open-pedidos-eyebrow {
   margin: 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--font-size-track-eyebrow);
   font-weight: var(--font-weight-heavy);
   letter-spacing: var(--letter-spacing-eyebrow);
   text-transform: uppercase;
@@ -564,15 +564,15 @@ details p {
 .open-pedidos-title {
   margin: 0;
   color: var(--text);
-  font-size: var(--font-size-offer-price);
-  line-height: 1.15;
-  letter-spacing: -0.04em;
+  font-size: var(--font-size-track-sidebar-title);
+  line-height: var(--line-height-track-sidebar-title);
+  letter-spacing: var(--letter-spacing-track-sidebar-title);
 }
 
 .track-sidebar-intro {
   margin: -4px 0 2px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--font-size-track-sidebar-intro);
   font-weight: var(--font-weight-meta-text);
 }
 
