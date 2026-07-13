@@ -171,16 +171,14 @@
   --font-weight-regular: 400;
   --font-weight-meta: 500;
   --font-weight-strong: 600;
-  --font-weight-bold: 650;
-  --font-weight-heavy: 600;
   --font-weight-black: 750;
 
   --font-weight-heading: var(--font-weight-strong);
   --font-weight-title: var(--font-weight-strong);
+  --font-weight-heavy: var(--font-weight-strong);
   --font-weight-label: var(--font-weight-meta);
   --font-weight-control: var(--font-weight-meta);
   --font-weight-meta-text: var(--font-weight-meta);
-  --font-weight-body: var(--font-weight-regular);
   --font-weight-required: var(--font-weight-strong);
 
   --line-height-tight: 1;
