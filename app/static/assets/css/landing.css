@@ -83,15 +83,16 @@ h3 {
 
 .trust-list span::before {
   content: "✓";
-  display: grid;
-  place-items: center;
-  width: 24px;
-  height: 24px;
-  border-radius: var(--radius-pill);
-  background: var(--brand);
-  color: var(--button-primary-text);
-  font-size: var(--font-size-form-note);
-  font-weight: var(--font-weight-heavy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--success);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
   flex: 0 0 auto;
 }
 
