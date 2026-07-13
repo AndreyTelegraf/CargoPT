@@ -744,7 +744,7 @@ fieldset {
 
 legend {
   margin-bottom: var(--space-2);
-  font-size: 30px;
+  font-size: var(--font-size-form-legend);
   font-weight: var(--font-weight-heavy);
   letter-spacing: var(--letter-spacing-heading);
 }

@@ -172,7 +172,7 @@ details p {
   }
 
   legend {
-    font-size: 27px;
+    font-size: var(--font-size-form-legend-compact);
   }
 
   .form-step.is-active {
