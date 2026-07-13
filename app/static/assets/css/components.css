@@ -697,7 +697,7 @@ details p {
   width: 100%;
   min-height: calc(var(--button-height) + var(--space-3));
   border-radius: var(--button-radius);
-  font-size: var(--font-size-offer-price);
+  font-size: var(--font-size-request-button);
   font-weight: var(--font-weight-title);
 }
 
