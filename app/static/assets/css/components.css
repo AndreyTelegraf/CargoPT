@@ -714,7 +714,7 @@ details p {
 
 .progress span {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: var(--space-3);
   color: var(--muted);
   font-weight: var(--font-weight-heavy);
 }
@@ -743,7 +743,7 @@ fieldset {
 }
 
 legend {
-  margin-bottom: 7px;
+  margin-bottom: var(--space-2);
   font-size: 30px;
   font-weight: var(--font-weight-heavy);
   letter-spacing: var(--letter-spacing-heading);
@@ -765,13 +765,13 @@ legend {
 
 .form-step.is-active {
   display: grid;
-  gap: 15px;
+  gap: var(--space-4);
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: var(--space-4);
 }
 
 @media (max-width: 640px) {
@@ -782,7 +782,7 @@ legend {
 
 label {
   display: grid;
-  gap: 7px;
+  gap: var(--space-2);
   color: var(--muted);
   font-weight: var(--font-weight-label);
 }
@@ -790,7 +790,7 @@ label {
 .field-label {
   display: inline-flex;
   align-items: baseline;
-  gap: 6px;
+  gap: var(--space-2);
 }
 
 .request-form .field-required {
@@ -842,7 +842,7 @@ textarea:focus {
 }
 
 .form-message {
-  margin: 16px 0 0;
+  margin: var(--space-4) 0 0;
   font-weight: var(--font-weight-strong);
 }
 
