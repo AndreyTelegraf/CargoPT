@@ -78,6 +78,10 @@ const MESSAGES = {
 
 const localeKey = pageLocale === "pt-PT" ? "pt" : pageLocale.slice(0, 2);
 const messages = MESSAGES[localeKey] || MESSAGES.pt;
+const localizedHomePath = {
+  en: "/en/",
+  ru: "/ru/",
+}[localeKey] || "/";
 
 function setMessage(text, type) {
   formMessage.textContent = text || "";
@@ -395,7 +399,7 @@ form.addEventListener("focusout", (event) => {
 document.addEventListener("click", (event) => {
   const newRequest = event.target.closest("[data-new-request]");
   if (!newRequest || form.contains(newRequest)) return;
-  window.location.href = "/";
+  window.location.href = localizedHomePath;
 });
 
 form.addEventListener("click", (event) => {
@@ -404,7 +408,7 @@ form.addEventListener("click", (event) => {
   const newRequest = event.target.closest("[data-new-request]");
 
   if (newRequest) {
-    window.location.href = "/";
+    window.location.href = localizedHomePath;
     return;
   }
 
