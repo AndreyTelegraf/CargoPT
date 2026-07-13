@@ -137,11 +137,16 @@ async def submit_web_request(
     if result.job.tracking_token is None:
         raise RuntimeError("web request tracking token missing")
 
+    tracking_prefix = {
+        "en": "/en/track",
+        "ru": "/ru/track",
+    }.get(result.job.source_locale, "/track")
+
     return WebRequestResponse(
         job_id=result.job.id,
         status=str(result.job.status),
         tracking_token=result.job.tracking_token,
-        tracking_url=f"/track/{result.job.tracking_token}",
+        tracking_url=f"{tracking_prefix}/{result.job.tracking_token}",
         offers_count=result.offers_count,
         sent_count=result.sent_count,
     )

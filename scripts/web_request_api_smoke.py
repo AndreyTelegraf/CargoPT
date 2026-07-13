@@ -108,8 +108,16 @@ def main() -> None:
         raise SystemExit(f"unexpected status: {body.get('status')}")
     if not body.get("tracking_token"):
         raise SystemExit("tracking_token missing")
-    if body.get("tracking_url") != f"/track/{body['tracking_token']}":
-        raise SystemExit(f"unexpected tracking_url: {body.get('tracking_url')}")
+    tracking_prefix = {
+        "en": "/en/track",
+        "ru": "/ru/track",
+    }.get(payload.get("source_locale"), "/track")
+    expected_tracking_url = f"{tracking_prefix}/{body['tracking_token']}"
+    if body.get("tracking_url") != expected_tracking_url:
+        raise SystemExit(
+            f"unexpected tracking_url: "
+            f"{body.get('tracking_url')} != {expected_tracking_url}"
+        )
     if body.get("offers_count") != 0:
         raise SystemExit(f"unexpected offers_count: {body.get('offers_count')}")
     if body.get("sent_count") != 0:
