@@ -128,13 +128,13 @@
           <legend>Get offers</legend>
           <p class="form-intro">Start with three simple questions.</p>
           <label><span class="field-label">From</span>
-            <input name="pickup" autocomplete="street-address" required placeholder="Required · Example: Lisbon">
+            <input name="pickup" autocomplete="street-address" required placeholder="Example: Lisbon">
           </label>
           <label><span class="field-label">To</span>
-            <input name="dropoff" autocomplete="street-address" required placeholder="Required · Example: Cascais">
+            <input name="dropoff" autocomplete="street-address" required placeholder="Example: Cascais">
           </label>
           <label><span class="field-label">What are you moving?</span>
-            <textarea name="items" required placeholder="Required · Example: sofa, 20 boxes, washing machine"></textarea>
+            <textarea name="items" required placeholder="Example: sofa, 20 boxes, washing machine"></textarea>
           </label>
           <div class="form-actions">
             <button class="button" type="button" data-next>Continue</button>
@@ -145,19 +145,19 @@
           <legend>Details and contacts</legend>
           <p class="form-intro">Add the details carriers need to estimate the request.</p>
           <div class="form-grid">
-            <label><span class="field-label">Name</span><input name="customer_name" autocomplete="name" required placeholder="Required"></label>
-            <label><span class="field-label">Moving date</span><input name="requested_date" type="text" required list="requestedDateOptions" placeholder="Required · DD/MM/YYYY, today, tomorrow"><datalist id="requestedDateOptions"><option value="today"></option><option value="tomorrow"></option><option value="next few days"></option><option value="any day"></option></datalist></label>
+            <label><span class="field-label">Name</span><input name="customer_name" autocomplete="name" required></label>
+            <label><span class="field-label">Moving date</span><input name="requested_date" type="text" required list="requestedDateOptions" placeholder="DD/MM/YYYY, today, tomorrow"><datalist id="requestedDateOptions"><option value="today"></option><option value="tomorrow"></option><option value="next few days"></option><option value="any day"></option></datalist></label>
           </div>
           <div class="form-grid">
-            <label><span class="field-label">Phone</span><input name="client_phone" autocomplete="tel" placeholder="Required · +351..." required></label>
+            <label><span class="field-label">Phone</span><input name="client_phone" autocomplete="tel" placeholder="+351..." required></label>
             <label><span class="field-label">WhatsApp</span><input name="client_whatsapp" autocomplete="tel" placeholder="+351..."></label>
           </div>
           <label><span class="field-label">Email</span><input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"></label>
           <div class="form-grid">
-            <label><span class="field-label">Pickup floor</span><input name="pickup_floor" type="number" min="-1" max="24" required placeholder="Required"></label>
-            <label><span class="field-label">Elevator at pickup</span><select name="pickup_elevator" required><option value="">Select · required</option><option value="true">Yes</option><option value="false">No</option></select></label>
-            <label><span class="field-label">Drop-off floor</span><input name="dropoff_floor" type="number" min="-1" max="24" required placeholder="Required"></label>
-            <label><span class="field-label">Elevator at drop-off</span><select name="dropoff_elevator" required><option value="">Select · required</option><option value="true">Yes</option><option value="false">No</option></select></label>
+            <label><span class="field-label">Pickup floor</span><input name="pickup_floor" type="number" min="-1" max="24" required></label>
+            <label><span class="field-label">Elevator at pickup</span><select name="pickup_elevator" required><option value="">Select</option><option value="true">Yes</option><option value="false">No</option></select></label>
+            <label><span class="field-label">Drop-off floor</span><input name="dropoff_floor" type="number" min="-1" max="24" required></label>
+            <label><span class="field-label">Elevator at drop-off</span><select name="dropoff_elevator" required><option value="">Select</option><option value="true">Yes</option><option value="false">No</option></select></label>
           </div>
           <div class="form-grid">
             <label><span class="field-label">Need movers</span><select name="required_loaders"><option value="">Not sure / not important</option><option value="0">No</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>

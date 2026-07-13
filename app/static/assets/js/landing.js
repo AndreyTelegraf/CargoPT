@@ -197,23 +197,35 @@ function restoreDraft() {
   }
 }
 
-function markFieldInvalid(field, message) {
+function markFieldInvalid(field, message, focusField = true) {
   field.setCustomValidity(message);
   field.reportValidity();
-  field.focus();
+
+  if (focusField) {
+    field.focus();
+  }
 }
 
 function clearFieldValidity(field) {
   field.setCustomValidity("");
 }
 
+function validateRequiredField(field, focusField = false) {
+  clearFieldValidity(field);
+
+  if (!field.value.trim()) {
+    markFieldInvalid(field, messages.required, focusField);
+    return false;
+  }
+
+  return true;
+}
+
 function validateStep(step) {
   const activeStep = steps[step - 1];
   const requiredFields = Array.from(activeStep.querySelectorAll("[required]"));
   for (const field of requiredFields) {
-    clearFieldValidity(field);
-    if (!field.value.trim()) {
-      markFieldInvalid(field, messages.required);
+    if (!validateRequiredField(field, true)) {
       return false;
     }
   }
@@ -355,8 +367,30 @@ async function submitRequest() {
   }
 }
 
-form.addEventListener("input", saveDraft);
-form.addEventListener("change", saveDraft);
+form.addEventListener("input", (event) => {
+  saveDraft();
+
+  const field = event.target.closest("[required]");
+  if (field) {
+    clearFieldValidity(field);
+  }
+});
+
+form.addEventListener("change", (event) => {
+  saveDraft();
+
+  const field = event.target.closest("[required]");
+  if (field) {
+    clearFieldValidity(field);
+  }
+});
+
+form.addEventListener("focusout", (event) => {
+  const field = event.target.closest("[required]");
+  if (!field || !form.contains(field)) return;
+
+  validateRequiredField(field);
+});
 
 document.addEventListener("click", (event) => {
   const newRequest = event.target.closest("[data-new-request]");

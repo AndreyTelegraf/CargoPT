@@ -131,13 +131,13 @@
           <legend>Receber propostas</legend>
           <p class="form-intro">Comece com três perguntas simples.</p>
           <label><span class="field-label">De onde</span>
-            <input name="pickup" autocomplete="street-address" required placeholder="Obrigatório · Exemplo: Lisboa">
+            <input name="pickup" autocomplete="street-address" required placeholder="Exemplo: Lisboa">
           </label>
           <label><span class="field-label">Para onde</span>
-            <input name="dropoff" autocomplete="street-address" required placeholder="Obrigatório · Exemplo: Cascais">
+            <input name="dropoff" autocomplete="street-address" required placeholder="Exemplo: Cascais">
           </label>
           <label><span class="field-label">O que vai transportar?</span>
-            <textarea name="items" required placeholder="Obrigatório · Exemplo: sofá, 20 caixas, máquina de lavar"></textarea>
+            <textarea name="items" required placeholder="Exemplo: sofá, 20 caixas, máquina de lavar"></textarea>
           </label>
           <div class="form-actions">
             <button class="button" type="button" data-next>Continuar</button>
@@ -148,19 +148,19 @@
           <legend>Detalhes e contactos</legend>
           <p class="form-intro">Adicione os detalhes necessários para os transportadores avaliarem o pedido.</p>
           <div class="form-grid">
-            <label><span class="field-label">Nome</span><input name="customer_name" autocomplete="name" required placeholder="Obrigatório"></label>
-            <label><span class="field-label">Data da mudança</span><input name="requested_date" type="text" required list="requestedDateOptions" placeholder="Obrigatório · DD/MM/AAAA, hoje, amanhã"><datalist id="requestedDateOptions"><option value="hoje"></option><option value="amanhã"></option><option value="próximos dias"></option><option value="qualquer dia"></option></datalist></label>
+            <label><span class="field-label">Nome</span><input name="customer_name" autocomplete="name" required></label>
+            <label><span class="field-label">Data da mudança</span><input name="requested_date" type="text" required list="requestedDateOptions" placeholder="DD/MM/AAAA, hoje, amanhã"><datalist id="requestedDateOptions"><option value="hoje"></option><option value="amanhã"></option><option value="próximos dias"></option><option value="qualquer dia"></option></datalist></label>
           </div>
           <div class="form-grid">
-            <label><span class="field-label">Telefone</span><input name="client_phone" autocomplete="tel" placeholder="Obrigatório · +351..." required></label>
+            <label><span class="field-label">Telefone</span><input name="client_phone" autocomplete="tel" placeholder="+351..." required></label>
             <label><span class="field-label">WhatsApp</span><input name="client_whatsapp" autocomplete="tel" placeholder="+351..."></label>
           </div>
           <label><span class="field-label">Email</span><input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"></label>
           <div class="form-grid">
-            <label><span class="field-label">Andar de recolha</span><input name="pickup_floor" type="number" min="-1" max="24" required placeholder="Obrigatório"></label>
-            <label><span class="field-label">Elevador na recolha</span><select name="pickup_elevator" required><option value="">Selecione · obrigatório</option><option value="true">Sim</option><option value="false">Não</option></select></label>
-            <label><span class="field-label">Andar de entrega</span><input name="dropoff_floor" type="number" min="-1" max="24" required placeholder="Obrigatório"></label>
-            <label><span class="field-label">Elevador na entrega</span><select name="dropoff_elevator" required><option value="">Selecione · obrigatório</option><option value="true">Sim</option><option value="false">Não</option></select></label>
+            <label><span class="field-label">Andar de recolha</span><input name="pickup_floor" type="number" min="-1" max="24" required></label>
+            <label><span class="field-label">Elevador na recolha</span><select name="pickup_elevator" required><option value="">Selecione</option><option value="true">Sim</option><option value="false">Não</option></select></label>
+            <label><span class="field-label">Andar de entrega</span><input name="dropoff_floor" type="number" min="-1" max="24" required></label>
+            <label><span class="field-label">Elevador na entrega</span><select name="dropoff_elevator" required><option value="">Selecione</option><option value="true">Sim</option><option value="false">Não</option></select></label>
           </div>
           <div class="form-grid">
             <label><span class="field-label">Precisa de ajudantes</span><select name="required_loaders"><option value="">Não sei / não é importante</option><option value="0">Não</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
