@@ -799,17 +799,6 @@ label {
   line-height: var(--line-height-field-marker);
 }
 
-.field-optional {
-  color: var(--muted-2);
-  font-size: var(--font-size-field-secondary);
-  font-weight: var(--font-weight-title);
-  letter-spacing: var(--letter-spacing-field-secondary);
-}
-
-.field-optional::before {
-  content: "– ";
-}
-
 input,
 select,
 textarea {
