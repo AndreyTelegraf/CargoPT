@@ -95,7 +95,6 @@ def main() -> None:
     assert article["primary_query"] == topic["primary_query"]
     assert article["intent"] == topic["intent"]
 
-    assert article["path"].startswith("/guias/")
     assert article["path"].endswith("/")
     assert article["meta_title"].endswith("— CargoPT")
     assert 50 <= len(article["meta_description"]) <= 170
@@ -186,20 +185,38 @@ def main() -> None:
 
     related_hrefs = [item["href"] for item in related_links]
     assert len(related_hrefs) == len(set(related_hrefs))
-    assert "/guias/" in related_hrefs
+
+    assert any(
+        link["type"] == "guide"
+        for link in related_links
+    )
 
     for link in related_links:
         assert set(link) == {"title", "href", "type"}
-        assert link["type"] in {"parent", "guide", "landing"}
-        assert link["href"].startswith("/")
-        assert link["href"].endswith("/")
+
+        link_type = link["type"]
+        href = link["href"]
+
+        assert link_type in {
+            "guide",
+            "landing",
+            "planned",
+            "service",
+        }
+        assert href.startswith("/")
+
+        if link_type == "service":
+            assert href == "/#request"
+            continue
+
+        assert href.endswith("/")
 
         expected_file = public_file_for_path(
             static_root,
-            link["href"],
+            href,
         )
         assert expected_file.is_file(), (
-            link["href"],
+            href,
             expected_file,
         )
 

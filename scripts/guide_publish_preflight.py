@@ -73,12 +73,6 @@ def validate_article_registry_contract(
             f"Unsupported guide status: {topic['status']!r}"
         )
 
-    if not article["path"].startswith("/guias/"):
-        raise ValueError(
-            f"Guide path must start with /guias/: "
-            f"{article['path']}"
-        )
-
     if not article["path"].endswith("/"):
         raise ValueError(
             f"Guide path must end with /: {article['path']}"

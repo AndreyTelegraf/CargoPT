@@ -821,6 +821,116 @@
         "reason": "conversion",
         "priority": 4
       }
+    ],
+    "mudancas-lisboa": [
+      {
+        "target": "mudancas-porto",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-braga",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-porto": [
+      {
+        "target": "mudancas-braga",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-coimbra",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-porto",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-braga": [
+      {
+        "target": "mudancas-coimbra",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-cascais",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-coimbra": [
+      {
+        "target": "mudancas-cascais",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-lisboa",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-preparar-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-cascais": [
+      {
+        "target": "mudancas-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-porto",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
     ]
   }
 }

@@ -217,6 +217,200 @@ Each rights article links to:
 3. one relevant planning, packing, or object article;
 4. the request form.
 
+## Deterministic relationship generation
+
+Canonical relationship selection must be deterministic. Given the same
+registry, article corpus, explicit editorial relations, and batch topic ids,
+the generated relationship plan must be identical.
+
+The selection order is:
+
+1. explicit editorial relation from the registry or an approved batch plan;
+2. geographic or semantic proximity defined by the cluster rules;
+3. deterministic cluster-ring fallback.
+
+Random selection and dependence on filesystem iteration order are prohibited.
+
+### Required relationship layout
+
+Every source uses this ordered layout:
+
+1. `same_cluster`;
+2. one journey reason: `next_step`, `dependency`, or `prerequisite`;
+3. `authority` or `commercial`;
+4. `conversion` targeting `@request`.
+
+`next_step` is the default journey reason.
+
+Use `dependency` only when the source task depends on information in the
+destination.
+
+Use `prerequisite` only when the destination should be understood or completed
+before the source task.
+
+Use `authority` for an informational guide that supplies broader, foundational,
+price, planning, safety, packing, or object context.
+
+Use `commercial` only for a separate transactional landing that is directly
+relevant to the source. A commercial landing does not replace the
+`@request` conversion relationship.
+
+### City selection algorithm
+
+For a city source, choose `same_cluster` using this precedence:
+
+1. the same metropolitan or functional area;
+2. the nearest major city represented in the corpus;
+3. a city with a similar moving context;
+4. the next city in the deterministic city ring.
+
+Choose the journey target using this precedence:
+
+1. a directly relevant route article;
+2. a regional price article;
+3. a preparation or planning article;
+4. another city article that represents a natural next step.
+
+Choose the third relationship using this precedence:
+
+1. a dedicated commercial landing for the city;
+2. a regional price guide;
+3. the national price guide;
+4. a foundational planning guide.
+
+Examples:
+
+    Lisboa -> Cascais          same_cluster
+    Lisboa -> Lisboa-Porto     next_step
+    Lisboa -> price guide      authority
+    Lisboa -> @request         conversion
+
+    Porto -> Braga             same_cluster
+    Porto -> Lisboa-Porto      next_step
+    Porto -> Porto price guide authority
+    Porto -> @request          conversion
+
+### Object selection algorithm
+
+For an object source, choose:
+
+1. a related object with similar handling requirements;
+2. the next preparation, measurement, packing, or safety step;
+3. a dedicated object-service landing when available, otherwise an authority
+   guide;
+4. `@request`.
+
+Examples:
+
+    refrigerator -> washing machine     same_cluster
+    refrigerator -> prepare refrigerator prerequisite
+    refrigerator -> refrigerator service commercial
+    refrigerator -> @request            conversion
+
+### Packing selection algorithm
+
+For a packing source, choose:
+
+1. another packing article covering a related material or risk;
+2. the natural next packing or transport step;
+3. a relevant object, planning, or safety authority article;
+4. `@request`.
+
+### Planning selection algorithm
+
+For a planning source, choose:
+
+1. the closest article in the same planning stage;
+2. the next chronological or decision-making step;
+3. a relevant price, packing, object, or safety authority article;
+4. `@request`.
+
+### Price selection algorithm
+
+For a price source, choose:
+
+1. another price article with the closest scope;
+2. the next price-comparison or cost-reduction step;
+3. a directly relevant city or service landing when available, otherwise a
+   planning authority article;
+4. `@request`.
+
+### Rights selection algorithm
+
+For a rights source, choose:
+
+1. another rights or safety article addressing the closest risk;
+2. the next verification or prevention step;
+3. a relevant planning, packing, or object authority article;
+4. `@request`.
+
+### Incoming topology for new batches
+
+Every new article must receive at least two incoming article relationships.
+
+For a homogeneous batch without sufficient existing incoming links, create two
+independent deterministic topologies:
+
+1. one `same_cluster` ring;
+2. one journey ring.
+
+For ordered batch nodes `A, B, C, D, E`, an acceptable topology is:
+
+    same_cluster:
+    A -> B
+    B -> C
+    C -> D
+    D -> E
+    E -> A
+
+    journey:
+    A -> C
+    C -> E
+    E -> B
+    B -> D
+    D -> A
+
+The journey ring must not duplicate the `same_cluster` destination for any
+source.
+
+Existing incoming links may replace ring edges only when every new article
+still receives at least two incoming article links.
+
+### Batch planning algorithm
+
+For each new batch:
+
+1. load the registry and existing article corpus;
+2. identify new topic ids and their clusters;
+3. preserve explicit registry relations where they satisfy this standard;
+4. select `same_cluster` targets deterministically;
+5. select independent journey targets deterministically;
+6. select `authority` or `commercial` targets;
+7. append the required `@request` conversion;
+8. reject self-links, duplicate targets, duplicate reasons, and priority gaps;
+9. calculate incoming and outgoing article-link counts for the future corpus;
+10. adjust only the minimum number of existing relationships needed to satisfy
+    graph gates;
+11. validate the canonical map before rendering article JSON;
+12. run the corpus release audit before publication.
+
+### Acceptance criteria for a generated batch
+
+A generated batch is valid only when:
+
+- every source has exactly four relationship objects;
+- priorities are exactly `1`, `2`, `3`, and `4`;
+- every source has one `same_cluster` relationship;
+- every source has one journey relationship;
+- every source has one `authority` or `commercial` relationship;
+- every source has one `conversion` relationship targeting `@request`;
+- no source targets itself;
+- targets and reasons are unique within each source;
+- every structured article has at least two incoming article links;
+- every structured article has at least two outgoing article links;
+- broken links, orphan articles, and dead ends remain zero;
+- rendered `related_links` exactly match the canonical map.
+
 ## Graph quality gates
 
 A release-ready corpus must have:

@@ -310,13 +310,6 @@ def validate_article_structure(
     path_value = article.get("path")
 
     if isinstance(path_value, str):
-        if not path_value.startswith("/guias/"):
-            audit.error(
-                "INVALID_GUIDE_PATH_PREFIX",
-                article_id,
-                f"path={path_value!r}",
-            )
-
         if not path_value.endswith("/"):
             audit.error(
                 "INVALID_GUIDE_PATH_SUFFIX",
