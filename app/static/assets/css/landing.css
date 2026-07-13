@@ -650,31 +650,45 @@ details p {
 
 .carrier-join-steps {
   display: grid;
-  gap: 15px;
+  gap: 10px;
   margin: var(--space-5) 0 var(--space-6);
   padding: 0;
   list-style: none;
 }
 
 .carrier-join-steps li {
+  position: relative;
   display: flex;
-  align-items: baseline;
-  gap: 6px;
-  min-height: 58px;
-  padding: 16px 18px;
+  align-items: center;
+  min-height: 52px;
+  padding: 14px 16px 14px 46px;
   border: var(--surface-border);
   border-radius: var(--surface-radius-card);
   background: var(--surface-muted-bg);
   color: var(--text);
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-meta);
-  line-height: var(--line-height-copy);
+  line-height: 1.35;
+}
+
+.carrier-join-steps li::before {
+  content: "✓";
+  position: absolute;
+  left: 16px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--success);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .carrier-join-steps .field-required {
-  color: var(--danger);
-  font-weight: var(--font-weight-required);
-  line-height: 1;
+  display: none;
 }
 
 .carrier-page-section .cards.three {
