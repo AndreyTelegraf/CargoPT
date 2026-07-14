@@ -170,3 +170,29 @@
     steps: DEFAULT_STEPS
   };
 })();
+
+// CANCELLED_PROGRESS_LABEL_V2
+(function () {
+  const api = window.CargoPTProgressHeader;
+
+  if (!api || typeof api.render !== "function") {
+    throw new Error("CargoPTProgressHeader.render is unavailable");
+  }
+
+  const originalRender = api.render.bind(api);
+
+  api.render = function (entry, options = {}) {
+    const result = originalRender(entry, options);
+    const status = String(entry?.tracking_snapshot?.status || "");
+
+    if (status === "cancelled") {
+      const label = options.container?.querySelector(
+        ".progress-header-current-label"
+      );
+
+      if (label) label.textContent = "Cancelado";
+    }
+
+    return result;
+  };
+})();

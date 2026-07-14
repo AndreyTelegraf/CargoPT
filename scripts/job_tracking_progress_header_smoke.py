@@ -14,7 +14,7 @@ def main() -> None:
     assert 'id="trackingProgressHeader"' in html
     assert 'class="progress-header-shell"' in html
     assert "/assets/css/progress-header.css?v=progress-cancelled-v4" in html
-    assert "/assets/js/progress-header.js?v=progress-v1" in html
+    assert "/assets/js/progress-header.js?v=progress-v2" in html
     assert "/assets/js/track.js?v=status-favicon-v10" in html
 
     for label in (
@@ -65,3 +65,19 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+# CANCELLED_PROGRESS_LABEL_SMOKE_V2
+from pathlib import Path as _CancelledPath
+
+_cancelled_root = _CancelledPath(__file__).resolve().parents[1]
+_cancelled_html = (
+    _cancelled_root / "app/static/track/index.html"
+).read_text(encoding="utf-8")
+_cancelled_js = (
+    _cancelled_root / "app/static/assets/js/progress-header.js"
+).read_text(encoding="utf-8")
+
+assert "/assets/js/progress-header.js?v=progress-v2" in _cancelled_html
+assert "CANCELLED_PROGRESS_LABEL_V2" in _cancelled_js
+assert 'label.textContent = "Cancelado";' in _cancelled_js
+print("CANCELLED_PROGRESS_LABEL_SMOKE_OK")
