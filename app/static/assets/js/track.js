@@ -282,6 +282,8 @@ const MESSAGE_SETS = {
     trackingEyebrow: "Estado do pedido",
     trackingTitle: "Acompanhe o seu pedido",
     trackingText: "Quando houver propostas, poderá escolher o transportador nesta página, sem login e sem instalar nada.",
+    searchingTitle: "Pedido enviado com sucesso",
+    searchingText: "Estamos a procurar transportadores adequados. Pode fechar esta página: este link continuará a mostrar novas propostas.",
     viewStatus: "Ver estado",
     copyLink: "Copiar link",
     linkCopied: "Link copiado",
@@ -478,6 +480,10 @@ function formatTrackingStatus(snapshot) {
 
 function buildTrackingEntry(snapshot, fallbackToken) {
   const acceptedOffers = Array.isArray(snapshot.accepted_offers) ? snapshot.accepted_offers : [];
+  const isSearching =
+    acceptedOffers.length === 0
+    && ["ready_for_matching", "matching", "offered"].includes(snapshot.status);
+
   const entry = {
     job_id: snapshot.job_id,
     token: snapshot.tracking_token || fallbackToken,
@@ -485,6 +491,8 @@ function buildTrackingEntry(snapshot, fallbackToken) {
       `${trackBasePath}/${snapshot.tracking_token || fallbackToken}`,
     status_label: formatTrackingStatus(snapshot),
     status_dot_state: getTrackingStatusDotState(snapshot, acceptedOffers),
+    status_title: isSearching ? messages.searchingTitle : null,
+    status_text: isSearching ? messages.searchingText : null,
     accepted_offers_count: acceptedOffers.length,
     route_summary: snapshot.route_summary || messages.defaultRoute,
     tracking_snapshot: snapshot

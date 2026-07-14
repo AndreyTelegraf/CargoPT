@@ -25,7 +25,7 @@ def main() -> None:
     assert "/assignment/" in js
     assert "renderAssignmentActions(entry" in workspace_js
 
-    css = open("app/static/assets/css/landing.css", encoding="utf-8").read()
+    css = open("app/static/assets/css/components.css", encoding="utf-8").read()
     assert ".tracking-assignment-actions" in css
     assert ".tracking-assignment-fail" in css
 

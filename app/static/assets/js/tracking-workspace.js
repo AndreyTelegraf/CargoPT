@@ -168,11 +168,11 @@
 
     const title = document.createElement("strong");
     title.className = "tracking-status-title";
-    title.textContent = messages.trackingTitle;
+    title.textContent = entry.status_title || messages.trackingTitle;
 
     const text = document.createElement("span");
     text.className = "tracking-status-text";
-    text.textContent = messages.trackingText;
+    text.textContent = entry.status_text || messages.trackingText;
 
     const summary = document.createElement("span");
     summary.className = "tracking-status-summary";
