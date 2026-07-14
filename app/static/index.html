@@ -43,7 +43,7 @@
   ]}</script>
   <link rel="stylesheet" href="/assets/css/design-system.css?v=tokens-v1">
   <link rel="stylesheet" href="/assets/css/components.css?v=components-v2">
-  <link rel="stylesheet" href="/assets/css/landing.css?v=carousel-motion-v3">
+  <link rel="stylesheet" href="/assets/css/landing.css?v=legal-v2">
 </head>
 <body data-locale="pt">
   <header class="site-header">
@@ -168,6 +168,7 @@
           </div>
           <label><span class="field-label">Comentário</span><textarea name="comment" placeholder="Detalhes adicionais"></textarea></label>
           <p class="form-note">É necessário indicar pelo menos um contacto: telefone, WhatsApp ou email.</p>
+          <p class="privacy-notice">Ao enviar este pedido, os seus dados serão utilizados para gerir o pedido e partilhados com transportadores adequados. Consulte a <a href="/privacy/">Política de Privacidade</a>.</p>
           <div class="form-actions">
             <button class="button button-secondary" type="button" data-prev>Voltar</button>
             <button class="button" type="submit">Receber propostas</button>
@@ -233,7 +234,18 @@
     <section class="section final-cta"><h2>Receba várias propostas com uma única descrição</h2><p>Descreva o transporte uma única vez. Depois compare propostas e escolha a melhor opção para si.</p><a class="button" href="#request">Receber propostas</a></section>
   </main>
 
-  <footer class="site-footer"><strong class="footer-logo"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></strong><span>Serviço de pedidos para mudanças e transporte em Portugal.</span><a href="mailto:hello@cargopt.pt">hello@cargopt.pt</a></footer>
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <strong class="footer-logo"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></strong>
+    </div>
+    <nav class="footer-links" aria-label="Informação legal">
+      <a href="/transportadores/">Para transportadores</a>
+      <a href="/privacy/">Privacidade</a>
+      <a href="/terms/">Termos</a>
+      <a href="/cookies/">Cookies</a>
+      <a href="mailto:hello@cargopt.pt">Contacto</a>
+    </nav>
+  </footer>
   <script src="/assets/js/tracking-workspace.js?v=shared-v1" defer></script>
   <script src="/assets/js/landing.js?v=carousel-motion-v3" defer></script>
 </body>
