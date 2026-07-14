@@ -114,6 +114,75 @@ def _format_offer_counts(rows) -> str:
     )
 
 
+def _format_acquisition_rate(value: int, submitted: int) -> str:
+    if submitted <= 0:
+        return "—"
+    return f"{value / submitted:.1%}"
+
+
+def _format_acquisition_snapshot(summary, rows) -> str:
+    submitted = int(summary["submitted"] or 0)
+
+    summary_lines = (
+        f"Records: {_safe(summary['records'] or 0)}",
+        f"Drafts: {_safe(summary['drafts'] or 0)}",
+        f"Submitted: {_safe(submitted)}",
+        (
+            f"Has offers: {_safe(summary['has_offers'] or 0)} "
+            f"({_safe(_format_acquisition_rate(summary['has_offers'] or 0, submitted))})"
+        ),
+        (
+            f"Accepted now: {_safe(summary['accepted_now'] or 0)} "
+            f"({_safe(_format_acquisition_rate(summary['accepted_now'] or 0, submitted))})"
+        ),
+        (
+            f"Assignment signal: {_safe(summary['assignment_signal'] or 0)} "
+            f"({_safe(_format_acquisition_rate(summary['assignment_signal'] or 0, submitted))})"
+        ),
+        (
+            f"Assigned now: {_safe(summary['assigned_now'] or 0)} "
+            f"({_safe(_format_acquisition_rate(summary['assigned_now'] or 0, submitted))})"
+        ),
+        (
+            f"In progress now: {_safe(summary['in_progress_now'] or 0)} "
+            f"({_safe(_format_acquisition_rate(summary['in_progress_now'] or 0, submitted))})"
+        ),
+        (
+            f"Completed now: {_safe(summary['completed_now'] or 0)} "
+            f"({_safe(_format_acquisition_rate(summary['completed_now'] or 0, submitted))})"
+        ),
+        (
+            f"Cancelled now: {_safe(summary['cancelled_now'] or 0)} "
+            f"({_safe(_format_acquisition_rate(summary['cancelled_now'] or 0, submitted))})"
+        ),
+    )
+
+    group_lines = []
+    for row in rows:
+        group_lines.append(
+            (
+                f"<b>{_safe(row['source'])} / {_safe(row['utm_source'])} / "
+                f"{_safe(row['utm_medium'])} / {_safe(row['utm_campaign'])}</b>\n"
+                f"submitted={_safe(row['submitted'])} | "
+                f"offers={_safe(row['has_offers'])} | "
+                f"accepted_now={_safe(row['accepted_now'])} | "
+                f"assignment_signal={_safe(row['assignment_signal'])} | "
+                f"assigned_now={_safe(row['assigned_now'])} | "
+                f"completed_now={_safe(row['completed_now'])}"
+            )
+        )
+
+    groups = "\n\n".join(group_lines) if group_lines else "—"
+
+    return (
+        "<b>Snapshot</b>\n"
+        + "\n".join(summary_lines)
+        + "\n\n"
+        + "<b>Acquisition groups — top 10</b>\n"
+        + groups
+    )
+
+
 def _format_report_status(row) -> str:
     if row["status"] == "offered" and row["accepted"] > 0:
         return "ожидает выбора клиента"
@@ -747,6 +816,157 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
         return
 
     await callback.answer("Некорректное действие.", show_alert=True)
+
+
+@router.message(Command("jobs_acquisition"))
+async def dispatcher_jobs_acquisition(message: Message) -> None:
+    if message.from_user.id not in ADMIN_TELEGRAM_USER_IDS:
+        await message.answer("Команда доступна только диспетчеру CargoPT.")
+        return
+
+    try:
+        since_text, until_text = _parse_jobs_report_period(message.text or "")
+    except ValueError:
+        await message.answer(
+            "Формат: /jobs_acquisition [YYYY-MM-DD] [YYYY-MM-DD]\n"
+            "Или: /jobs_acquisition "
+            "YYYY-MM-DD HH:MM YYYY-MM-DD HH:MM"
+        )
+        return
+
+    period_filter = "j.created_at >= :since"
+    params = {"since": since_text}
+
+    if until_text is not None:
+        period_filter += " AND j.created_at <= :until"
+        params["until"] = until_text
+
+    async with async_session_maker() as session:
+        summary = (
+            await session.execute(
+                text(f"""
+                    SELECT
+                        COUNT(*) AS records,
+                        COALESCE(SUM(CASE
+                            WHEN j.status = 'draft' THEN 1 ELSE 0
+                        END), 0) AS drafts,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft' THEN 1 ELSE 0
+                        END), 0) AS submitted,
+                        COALESCE(SUM(CASE
+                            WHEN EXISTS (
+                                SELECT 1
+                                FROM job_offer offer_exists
+                                WHERE offer_exists.job_id = j.id
+                            )
+                            THEN 1 ELSE 0
+                        END), 0) AS has_offers,
+                        COALESCE(SUM(CASE
+                            WHEN EXISTS (
+                                SELECT 1
+                                FROM job_offer accepted_offer
+                                WHERE accepted_offer.job_id = j.id
+                                  AND accepted_offer.status = 'accepted'
+                            )
+                            THEN 1 ELSE 0
+                        END), 0) AS accepted_now,
+                        COALESCE(SUM(CASE
+                            WHEN j.assigned_at IS NOT NULL THEN 1 ELSE 0
+                        END), 0) AS assignment_signal,
+                        COALESCE(SUM(CASE
+                            WHEN j.status = 'assigned' THEN 1 ELSE 0
+                        END), 0) AS assigned_now,
+                        COALESCE(SUM(CASE
+                            WHEN j.status = 'in_progress' THEN 1 ELSE 0
+                        END), 0) AS in_progress_now,
+                        COALESCE(SUM(CASE
+                            WHEN j.status = 'completed' THEN 1 ELSE 0
+                        END), 0) AS completed_now,
+                        COALESCE(SUM(CASE
+                            WHEN j.status = 'cancelled' THEN 1 ELSE 0
+                        END), 0) AS cancelled_now
+                    FROM job j
+                    WHERE {period_filter}
+                """),
+                params,
+            )
+        ).mappings().one()
+
+        acquisition_rows = (
+            await session.execute(
+                text(f"""
+                    SELECT
+                        COALESCE(NULLIF(j.source, ''), '—') AS source,
+                        COALESCE(NULLIF(j.utm_source, ''), '—')
+                            AS utm_source,
+                        COALESCE(NULLIF(j.utm_medium, ''), '—')
+                            AS utm_medium,
+                        COALESCE(NULLIF(j.utm_campaign, ''), '—')
+                            AS utm_campaign,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft' THEN 1 ELSE 0
+                        END), 0) AS submitted,
+                        COALESCE(SUM(CASE
+                            WHEN EXISTS (
+                                SELECT 1
+                                FROM job_offer offer_exists
+                                WHERE offer_exists.job_id = j.id
+                            )
+                            THEN 1 ELSE 0
+                        END), 0) AS has_offers,
+                        COALESCE(SUM(CASE
+                            WHEN EXISTS (
+                                SELECT 1
+                                FROM job_offer accepted_offer
+                                WHERE accepted_offer.job_id = j.id
+                                  AND accepted_offer.status = 'accepted'
+                            )
+                            THEN 1 ELSE 0
+                        END), 0) AS accepted_now,
+                        COALESCE(SUM(CASE
+                            WHEN j.assigned_at IS NOT NULL THEN 1 ELSE 0
+                        END), 0) AS assignment_signal,
+                        COALESCE(SUM(CASE
+                            WHEN j.status = 'assigned' THEN 1 ELSE 0
+                        END), 0) AS assigned_now,
+                        COALESCE(SUM(CASE
+                            WHEN j.status = 'completed' THEN 1 ELSE 0
+                        END), 0) AS completed_now
+                    FROM job j
+                    WHERE {period_filter}
+                    GROUP BY 1, 2, 3, 4
+                    HAVING submitted > 0
+                    ORDER BY
+                        submitted DESC,
+                        has_offers DESC,
+                        source,
+                        utm_source,
+                        utm_campaign
+                    LIMIT 10
+                """),
+                params,
+            )
+        ).mappings().all()
+
+    report = (
+        "<b>CargoPT acquisition snapshot</b>\n"
+        f"Период: с {_safe(since_text)} UTC"
+        + (f" по {_safe(until_text)} UTC" if until_text else "")
+        + "\n\n"
+        + _format_acquisition_snapshot(summary, acquisition_rows)
+        + "\n\n"
+        + "<i>assignment_signal = assigned_at заполнен; "
+        "это не обязательно текущая назначенная сделка.</i>"
+    )
+
+    if len(report) > 4096:
+        await message.answer(
+            "Acquisition snapshot превышает лимит Telegram. "
+            "Укажите более короткий период."
+        )
+        return
+
+    await message.answer(report, parse_mode="HTML")
 
 
 @router.message(Command("jobs_report"))

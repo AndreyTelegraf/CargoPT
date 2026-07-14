@@ -9,10 +9,13 @@ sys.path.insert(0, str(PROJECT_ROOT))
 os.environ["BOT_TOKEN"] = "123456:TESTTOKEN"
 os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///data/cargopt_dev.db"
 
+from app.bot.handlers.dispatcher_jobs_admin import _format_acquisition_rate
+from app.bot.handlers.dispatcher_jobs_admin import _format_acquisition_snapshot
 from app.bot.handlers.dispatcher_jobs_admin import _format_job_line
 from app.bot.handlers.dispatcher_jobs_admin import _format_status
 from app.bot.handlers.dispatcher_jobs_admin import _parse_jobs_report_period
 from app.bot.handlers.dispatcher_jobs_admin import dispatcher_jobs
+from app.bot.handlers.dispatcher_jobs_admin import dispatcher_jobs_acquisition
 from app.bot.handlers.dispatcher_jobs_admin import dispatcher_jobs_attention
 from app.bot.handlers.dispatcher_jobs_admin import dispatcher_jobs_report
 from app.bot.handlers.dispatcher_jobs_admin import dispatcher_job_detail
@@ -26,6 +29,7 @@ from app.repositories.job import JobRepository
 
 assert router is not None
 assert dispatcher_jobs is not None
+assert dispatcher_jobs_acquisition is not None
 assert dispatcher_jobs_attention is not None
 assert dispatcher_jobs_report is not None
 assert dispatcher_job_detail is not None
@@ -146,6 +150,13 @@ assert "ADMIN_TELEGRAM_USER_IDS" in handler_source
 assert "list_recent_jobs(limit=20)" in handler_source
 assert "list_attention_jobs(limit=20)" in handler_source
 assert 'Command("jobs_report")' in handler_source
+assert 'Command("jobs_acquisition")' in handler_source
+assert "CargoPT acquisition snapshot" in handler_source
+assert "Acquisition groups — top 10" in handler_source
+assert "HAVING submitted > 0" in handler_source
+assert "LIMIT 10" in handler_source
+assert "if len(report) > 4096:" in handler_source
+assert "assignment_signal = assigned_at заполнен" in handler_source
 assert 'Command("job")' in handler_source
 assert 'dispatcher_job_detail' in handler_source
 assert '_build_job_card_text' in handler_source
@@ -198,8 +209,6 @@ assert "callback.bot.delete_message" in handler_source
 assert "attention_reason" in handler_source
 assert "offers_count" in handler_source
 
-print("DISPATCHER_JOBS_ADMIN_SMOKE_OK")
-
 from app.bot.handlers.dispatcher_jobs_admin import _format_report_job_rows
 
 accepted_report_rows = [
@@ -221,3 +230,47 @@ accepted_report_text = _format_report_job_rows(accepted_report_rows)
 assert "ожидает выбора клиента" in accepted_report_text
 assert "отправлена перевозчикам" not in accepted_report_text
 assert "#999" in accepted_report_text
+
+assert _format_acquisition_rate(0, 0) == "—"
+assert _format_acquisition_rate(5, 10) == "50.0%"
+
+acquisition_snapshot = _format_acquisition_snapshot(
+    {
+        "records": 12,
+        "drafts": 2,
+        "submitted": 10,
+        "has_offers": 8,
+        "accepted_now": 5,
+        "assignment_signal": 4,
+        "assigned_now": 3,
+        "in_progress_now": 1,
+        "completed_now": 1,
+        "cancelled_now": 2,
+    },
+    [
+        {
+            "source": "web_form",
+            "utm_source": "reddit",
+            "utm_medium": "social",
+            "utm_campaign": "launch",
+            "submitted": 10,
+            "has_offers": 8,
+            "accepted_now": 5,
+            "assignment_signal": 4,
+            "assigned_now": 3,
+            "completed_now": 1,
+        }
+    ],
+)
+
+assert "Records: 12" in acquisition_snapshot
+assert "Submitted: 10" in acquisition_snapshot
+assert "Has offers: 8 (80.0%)" in acquisition_snapshot
+assert "Accepted now: 5 (50.0%)" in acquisition_snapshot
+assert "Assignment signal: 4 (40.0%)" in acquisition_snapshot
+assert "Assigned now: 3 (30.0%)" in acquisition_snapshot
+assert "web_form / reddit / social / launch" in acquisition_snapshot
+assert "completed_now=1" in acquisition_snapshot
+assert len(acquisition_snapshot) < 4096
+
+print("DISPATCHER_JOBS_ADMIN_SMOKE_OK")
