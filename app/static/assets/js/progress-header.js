@@ -39,7 +39,6 @@
 
     if (
       bothConfirmed
-      || status === "assigned"
       || status === "in_progress"
       || status === "completed"
     ) {
@@ -50,7 +49,10 @@
       };
     }
 
-    if (status === "assigned_pending_confirmation") {
+    if (
+      status === "assigned_pending_confirmation"
+      || status === "assigned"
+    ) {
       return {
         activeIndex: 3,
         finalComplete: false,
