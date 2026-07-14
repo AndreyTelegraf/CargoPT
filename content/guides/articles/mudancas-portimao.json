@@ -5,8 +5,8 @@
   "cluster": "cities",
   "path": "/guias/cidades/mudancas-portimao/",
   "title": "Mudanças em Portimão",
-  "meta_title": "Mudanças em Portimão — CargoPT",
-  "meta_description": "Prepare uma mudança em Portimão: inventário, acessos, rota, ajudantes e serviços necessários para pedir propostas.",
+  "meta_title": "Mudanças em Portimão: acessos, zonas e preparação — CargoPT",
+  "meta_description": "Prepare uma mudança em Portimão, Praia da Rocha, Alvor ou Mexilhoeira Grande: carga, acessos, estacionamento, rota e serviços.",
   "primary_query": "mudanças Portimão",
   "intent": [
     "local",
@@ -14,172 +14,170 @@
   ],
   "article_section": "Mudanças por cidade",
   "eyebrow": "Mudanças em Portimão",
-  "hero_description": "Uma mudança em Portimão fica mais fácil de organizar quando a carga, os acessos, a rota e os serviços necessários são descritos antes de pedir propostas.",
+  "hero_description": "Organize uma mudança em Portimão considerando a zona concreta, os acessos ao imóvel, a proximidade possível da viatura e as diferenças entre o centro urbano, Praia da Rocha, Alvor e Mexilhoeira Grande.",
   "date_published": "2026-07-12",
-  "date_modified": "2026-07-12",
+  "date_modified": "2026-07-14",
   "review_owner": "CargoPT",
-  "direct_answer_heading": "Como preparar uma mudança em Portimão",
+  "direct_answer_heading": "O que deve confirmar antes de uma mudança em Portimão",
   "key_points_heading": "Informação necessária para receber propostas úteis",
   "faq_heading": "Dúvidas sobre mudanças em Portimão",
   "related_links_heading": "Guias e serviços relacionados",
-  "direct_answer": "Para organizar uma mudança em Portimão, indique os locais de recolha e entrega, a data pretendida, os móveis, eletrodomésticos, caixas e objetos especiais. Informe também os andares, elevadores, escadas, estacionamento e distância entre a entrada e o veículo. Confirme previamente se precisa de ajudantes, desmontagem, montagem, embalagem ou equipamento adicional.",
+  "direct_answer": "Para receber propostas adequadas para uma mudança em Portimão, indique se a recolha e a entrega ficam no centro da cidade, em Praia da Rocha, Alvor, Mexilhoeira Grande ou noutra localidade. Descreva separadamente os acessos nos dois pontos: piso, elevador, escadas, largura das passagens, local onde a viatura poderá parar e distância de transporte manual. Inclua o inventário, fotografias dos volumes maiores e os serviços necessários.",
   "key_points": [
-    "Indique claramente a recolha, a entrega e a data pretendida.",
-    "Faça uma lista dos móveis, eletrodomésticos, caixas e objetos especiais.",
-    "Descreva andares, elevadores, escadas e condições de estacionamento.",
-    "Confirme o número de ajudantes e os serviços adicionais necessários.",
-    "Compare propostas preparadas com base na mesma descrição."
+    "Identifique a zona concreta da recolha e da entrega.",
+    "Confirme antecipadamente onde a viatura poderá parar.",
+    "Descreva pisos, elevadores, escadas, portas e corredores.",
+    "Destaque móveis de exterior, eletrodomésticos e objetos volumosos.",
+    "Indique se precisa de ajudantes, desmontagem, montagem ou embalagem."
   ],
   "sections": [
     {
-      "id": "informacao-pedido",
-      "heading": "Que informação incluir num pedido de mudança em Portimão?",
+      "id": "zonas-rotas",
+      "heading": "Zonas e percursos frequentes em Portimão",
       "paragraphs": [
-        "O transportador precisa de perceber o percurso, a dimensão aproximada da carga e as condições em que o serviço será realizado. Uma descrição vaga normalmente exige perguntas adicionais antes de ser possível preparar uma proposta.",
-        "Não é necessário calcular antecipadamente o peso total. Uma lista organizada dos objetos, acompanhada por fotografias quando existirem peças grandes ou acessos difíceis, costuma ser suficiente para uma primeira avaliação."
-      ],
-      "checklist": [
-        "Morada ou localização da recolha.",
-        "Morada ou localização da entrega.",
-        "Data preferida e possíveis alternativas.",
-        "Lista dos principais objetos.",
-        "Quantidade aproximada de caixas.",
-        "Objetos pesados, frágeis ou de grandes dimensões.",
-        "Andares e existência de elevador.",
-        "Condições de estacionamento e acesso ao imóvel.",
-        "Número de ajudantes necessário.",
-        "Serviços adicionais pretendidos."
-      ]
-    },
-    {
-      "id": "inventario",
-      "heading": "Como descrever a carga",
-      "paragraphs": [
-        "Organize o inventário por divisões ou por categorias. Separe mobiliário, eletrodomésticos, caixas e objetos que exigem cuidados especiais.",
-        "Nos objetos maiores, indique dimensões aproximadas quando forem relevantes. Explique também se os móveis já estão desmontados ou se essa tarefa deverá ser incluída no serviço."
+        "A indicação genérica de “Portimão” pode não ser suficiente. O acesso e o tempo de carga podem ser diferentes no centro urbano, em Praia da Rocha, em Alvor ou em Mexilhoeira Grande.",
+        "Indique a localização concreta nos dois extremos da mudança. Quando o percurso segue para outro município do Algarve ou para Lisboa, informe também a janela disponível para carga e entrega."
       ],
       "items": [
         {
-          "title": "Mobiliário",
-          "text": "Liste camas, colchões, sofás, mesas, cadeiras, armários, cómodas e estantes."
+          "title": "Centro de Portimão",
+          "text": "Confirme a largura da rua, o acesso ao prédio e o local possível para aproximar a viatura."
+        },
+        {
+          "title": "Praia da Rocha",
+          "text": "Indique o edifício, o piso, as regras do condomínio e as condições de acesso à entrada."
+        },
+        {
+          "title": "Alvor",
+          "text": "Especifique se o imóvel fica no núcleo urbano, numa zona residencial ou num empreendimento com acesso condicionado."
+        },
+        {
+          "title": "Mexilhoeira Grande",
+          "text": "Forneça a localização exata e confirme se existem acessos estreitos, portões ou distância adicional até ao imóvel."
+        }
+      ]
+    },
+    {
+      "id": "carga-local",
+      "heading": "Que carga deve ser descrita com mais detalhe",
+      "paragraphs": [
+        "Organize o inventário por divisões e separe mobiliário, eletrodomésticos, caixas e objetos que exigem desmontagem ou proteção adicional.",
+        "Em apartamentos, moradias e alojamentos mobilados, indique também móveis de varanda ou terraço, colchões, sofás-cama, televisões e equipamentos que não possam ser inclinados."
+      ],
+      "items": [
+        {
+          "title": "Mobiliário interior",
+          "text": "Liste camas, colchões, sofás, mesas, cadeiras, armários, estantes e cómodas."
+        },
+        {
+          "title": "Móveis de exterior",
+          "text": "Inclua mesas, cadeiras, espreguiçadeiras, vasos e outros objetos de varanda, terraço ou jardim."
         },
         {
           "title": "Eletrodomésticos",
-          "text": "Identifique frigorífico, máquina de lavar, televisão e outros equipamentos."
+          "text": "Identifique frigorífico, máquinas, televisão e outros equipamentos, incluindo dimensões quando relevante."
         },
         {
-          "title": "Caixas",
-          "text": "Forneça uma estimativa mesmo que a embalagem ainda não esteja concluída."
-        },
-        {
-          "title": "Objetos especiais",
-          "text": "Destaque peças frágeis, pesadas, valiosas ou difíceis de movimentar."
+          "title": "Caixas e objetos especiais",
+          "text": "Indique quantidades aproximadas e destaque peças frágeis, pesadas ou de formato irregular."
         }
       ]
     },
     {
-      "id": "acessos",
-      "heading": "Porque são importantes os acessos",
+      "id": "estacionamento-acessos",
+      "heading": "Estacionamento, carga e acesso ao imóvel",
       "paragraphs": [
-        "Os acessos ajudam a determinar o número de pessoas, o tempo necessário e o equipamento adequado. Um apartamento sem elevador ou uma entrada distante da zona de carga pode alterar significativamente o trabalho.",
-        "Confirme se os objetos maiores passam pelas portas, corredores e escadas. Quando existirem dúvidas, envie fotografias e medidas aproximadas."
+        "Não presuma que a viatura poderá parar junto à entrada. Confirme antecipadamente o local possível de carga ou descarga e indique a distância até ao prédio, moradia ou apartamento.",
+        "Em condomínios, empreendimentos e edifícios com receção, confirme horários, entrada de prestadores, utilização do elevador e eventual necessidade de proteger áreas comuns."
       ],
-      "items": [
-        {
-          "title": "Andares",
-          "text": "Indique o piso na recolha e na entrega, incluindo caves e pisos intermédios."
-        },
-        {
-          "title": "Elevadores",
-          "text": "Confirme se existem, se funcionam e se têm espaço para os principais objetos."
-        },
-        {
-          "title": "Escadas e corredores",
-          "text": "Mencione curvas apertadas, portas pequenas e outros obstáculos."
-        },
-        {
-          "title": "Estacionamento",
-          "text": "Explique onde o veículo poderá parar e a distância até à entrada."
-        }
+      "checklist": [
+        "Local possível para parar a viatura.",
+        "Distância entre a viatura e a entrada.",
+        "Piso na recolha e na entrega.",
+        "Existência e dimensões aproximadas do elevador.",
+        "Número de lanços de escadas.",
+        "Portas, corredores ou curvas apertadas.",
+        "Portões, receção ou controlo de entrada.",
+        "Horários ou regras comunicadas pelo condomínio."
       ]
     },
     {
-      "id": "servicos",
-      "heading": "Que serviços adicionais pode ser necessário incluir",
+      "id": "servicos-especificos",
+      "heading": "Serviços que devem ficar definidos",
       "paragraphs": [
-        "As propostas podem abranger tarefas diferentes. Confirme se o valor inclui apenas veículo e motorista ou também ajudantes, carga, descarga e proteção dos bens.",
-        "Desmontagem, montagem, embalagem e equipamento especial devem ser indicados antes da data da mudança."
+        "A proposta deve distinguir transporte, carga, descarga, número de ajudantes e proteção dos objetos. Não presuma que desmontagem, montagem ou embalagem estão incluídas.",
+        "Quando existem acessos longos, escadas, objetos pesados ou mobiliário de grandes dimensões, envie fotografias para que a equipa e o equipamento possam ser avaliados previamente."
       ],
       "items": [
         {
           "title": "Ajudantes",
-          "text": "Confirme quantas pessoas participarão na carga e descarga."
+          "text": "Confirme quantas pessoas estarão presentes na carga e na descarga."
         },
         {
           "title": "Desmontagem e montagem",
-          "text": "Identifique os móveis que precisam deste serviço."
+          "text": "Identifique exatamente os móveis abrangidos e quem fará cada tarefa."
         },
         {
-          "title": "Embalagem",
-          "text": "Confirme se materiais e preparação dos objetos estão incluídos."
+          "title": "Embalagem e proteção",
+          "text": "Confirme materiais para móveis, eletrodomésticos, vidro e objetos frágeis."
         },
         {
           "title": "Equipamento adicional",
-          "text": "Informe antecipadamente quando possam ser necessárias plataformas ou outros meios."
+          "text": "Informe antecipadamente sobre peças pesadas, escadas ou outros acessos que possam exigir meios específicos."
         }
       ]
     },
     {
       "id": "comparar-propostas",
-      "heading": "Como comparar propostas para a mesma mudança",
+      "heading": "Como comparar propostas para Portimão",
       "paragraphs": [
-        "Envie a mesma descrição a todos os transportadores. Dessa forma, as propostas correspondem ao mesmo inventário, aos mesmos acessos e aos mesmos serviços.",
-        "Além do preço, compare o veículo previsto, o número de ajudantes, as tarefas incluídas, a data, o horário e as condições de pagamento."
+        "Todas as propostas devem considerar a mesma zona, o mesmo inventário, os mesmos acessos e os mesmos serviços.",
+        "Compare não apenas o preço, mas também o veículo, o número de ajudantes, o tempo previsto, as tarefas incluídas e as condições para alterações de carga ou horário."
       ],
       "checklist": [
-        "O inventário considerado é o mesmo.",
-        "Os dois locais e respetivos acessos estão identificados.",
+        "As localizações concretas são iguais em todas as propostas.",
+        "A distância da viatura às entradas foi considerada.",
+        "Os pisos, elevadores e escadas estão descritos.",
+        "O inventário e os objetos especiais são os mesmos.",
         "O número de ajudantes está indicado.",
-        "Carga e descarga estão incluídas ou atribuídas.",
-        "Os serviços adicionais estão discriminados.",
-        "O valor e as condições estão registados por escrito."
+        "Os serviços adicionais estão discriminados."
       ]
     },
     {
       "id": "cargopt",
       "heading": "Como pedir propostas através da CargoPT",
       "paragraphs": [
-        "Na CargoPT, pode descrever uma mudança em Portimão uma única vez. O pedido pode depois ser encaminhado para transportadores adequados às características indicadas.",
-        "Cada transportador apresenta a sua própria proposta. O cliente pode comparar as respostas recebidas antes de escolher."
+        "Na CargoPT, pode descrever uma mudança em Portimão uma única vez, indicando a zona, os locais, a carga, os acessos e as tarefas necessárias.",
+        "Os transportadores apresentam as suas próprias propostas e o cliente pode comparar respostas preparadas a partir da mesma descrição."
       ]
     }
   ],
   "mid_cta": {
-    "heading": "Prepare o pedido da sua mudança em Portimão",
-    "text": "Indique a rota, a carga, os acessos e os serviços necessários para receber propostas comparáveis.",
+    "heading": "Descreva a sua mudança em Portimão",
+    "text": "Indique a zona, a rota, a carga, o estacionamento possível, os acessos e os serviços necessários.",
     "label": "Descrever a mudança",
     "href": "/#request"
   },
   "faq": [
     {
-      "question": "Que informação devo enviar para uma mudança em Portimão?",
-      "answer": "Indique recolha, entrega, data, inventário, andares, elevadores, estacionamento e serviços adicionais."
+      "question": "Devo indicar apenas Portimão ou a zona concreta da mudança?",
+      "answer": "Indique a zona ou localidade concreta, como o centro de Portimão, Praia da Rocha, Alvor ou Mexilhoeira Grande, além da localização da recolha e da entrega."
     },
     {
-      "question": "É obrigatório conhecer o volume exato?",
-      "answer": "Não. Uma lista dos objetos, uma estimativa das caixas e fotografias permitem uma primeira avaliação."
+      "question": "Como confirmar o estacionamento para a viatura?",
+      "answer": "Verifique antecipadamente onde a viatura poderá parar e informe a distância entre esse local e a entrada. Regras específicas devem ser confirmadas junto do condomínio ou entidade responsável."
     },
     {
-      "question": "Devo enviar fotografias?",
-      "answer": "São recomendáveis quando existem móveis grandes, objetos pesados, peças frágeis ou acessos difíceis."
+      "question": "Que informação devo fornecer sobre um apartamento?",
+      "answer": "Indique o piso, elevador, escadas, largura das passagens, regras do edifício e distância entre a entrada e a zona de carga."
     },
     {
-      "question": "Como comparar propostas diferentes?",
-      "answer": "Confirme se todas consideram o mesmo inventário, acessos, ajudantes e serviços adicionais."
+      "question": "Que objetos devo fotografar antes de pedir propostas?",
+      "answer": "Fotografe móveis grandes, eletrodomésticos, peças frágeis ou pesadas e acessos difíceis de explicar apenas por texto."
     },
     {
-      "question": "O valor pode mudar depois do pedido?",
-      "answer": "Alterações ao inventário, aos acessos, à data ou aos serviços podem modificar o trabalho necessário. Confirme qualquer alteração antes da mudança."
+      "question": "Uma mudança dentro de Portimão é igual a uma rota para outra cidade?",
+      "answer": "Não. Uma rota intermunicipal exige considerar a distância, a janela de carga e entrega, a capacidade do veículo e a proteção necessária durante um percurso mais longo."
     }
   ],
   "related_links": [
@@ -205,8 +203,8 @@
     }
   ],
   "final_cta": {
-    "heading": "Peça propostas para a sua mudança em Portimão",
-    "text": "Descreva os locais, os objetos, os acessos e os serviços necessários. Depois compare as propostas disponíveis.",
+    "heading": "Receba propostas para a sua mudança em Portimão",
+    "text": "Descreva os locais, a zona, os objetos, os acessos e as tarefas. Depois compare propostas para o mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
   }
