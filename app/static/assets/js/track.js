@@ -1,5 +1,6 @@
 
 const trackingPanelBody = document.querySelector("#trackingPanelBody");
+const trackingProgressHeader = document.querySelector("#trackingProgressHeader");
 const errorCard = document.querySelector("#errorCard");
 const trackPedidosList = document.querySelector("#trackPedidosList");
 const copyTrackingLink = document.querySelector("#copyTrackingLink");
@@ -435,8 +436,22 @@ function withSelectedOfferSummary(entry) {
   };
 }
 
+function renderTrackingProgress(entry) {
+  if (!trackingProgressHeader) return;
+
+  if (!window.CargoPTProgressHeader) {
+    throw new Error("tracking progress header component unavailable");
+  }
+
+  window.CargoPTProgressHeader.render(entry, {
+    container: trackingProgressHeader
+  });
+}
+
 function renderTrackingWorkspace(entry) {
   const workspaceEntry = withSelectedOfferSummary(entry);
+
+  renderTrackingProgress(workspaceEntry);
 
   window.CargoPTTrackingWorkspace.render(workspaceEntry, {
     container: trackingPanelBody,
@@ -573,6 +588,10 @@ async function bootstrapTrackingPage() {
     console.error(error);
     errorCard.hidden = false;
     trackingPanelBody.textContent = "";
+
+    if (trackingProgressHeader) {
+      trackingProgressHeader.textContent = "";
+    }
   }
 }
 
