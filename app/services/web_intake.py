@@ -22,7 +22,9 @@ class WebIntakeRequest:
     client_phone: str | None
     client_whatsapp: str | None
     utm_source: str | None
+    utm_medium: str | None
     utm_campaign: str | None
+    utm_content: str | None
     landing_version: str | None
     requested_date: datetime | None
     addresses: tuple[WebIntakeAddress, ...]

@@ -1,6 +1,11 @@
 import asyncio
+import sys
 from datetime import UTC
 from datetime import datetime
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
 
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
@@ -31,7 +36,9 @@ async def main() -> None:
                 client_phone=None,
                 client_whatsapp=None,
                 utm_source=None,
+                utm_medium=None,
                 utm_campaign=None,
+                utm_content=None,
                 landing_version=None,
                 status=JobStatus.DRAFT,
                 requested_date=None,

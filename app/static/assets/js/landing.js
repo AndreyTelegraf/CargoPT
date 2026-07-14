@@ -291,7 +291,9 @@ function buildPayload() {
     client_phone: data.client_phone || null,
     client_whatsapp: data.client_whatsapp || null,
     utm_source: new URLSearchParams(window.location.search).get("utm_source"),
+    utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
     utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
+    utm_content: new URLSearchParams(window.location.search).get("utm_content"),
     landing_version: "landing_static_v2",
     requested_date: requestedDate,
     addresses: [

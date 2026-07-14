@@ -35,7 +35,9 @@ class RequestIntakeInput:
     client_phone: str | None
     client_whatsapp: str | None
     utm_source: str | None
+    utm_medium: str | None
     utm_campaign: str | None
+    utm_content: str | None
     landing_version: str | None
     requested_date: datetime | None
     addresses: tuple[RequestIntakeAddress, ...]
@@ -77,7 +79,9 @@ class RequestIntakeService:
                 client_phone=request.client_phone,
                 client_whatsapp=request.client_whatsapp,
                 utm_source=request.utm_source,
+                utm_medium=request.utm_medium,
                 utm_campaign=request.utm_campaign,
+                utm_content=request.utm_content,
                 landing_version=request.landing_version,
                 requested_date=request.requested_date,
                 needs_assembly=request.needs_assembly,

@@ -263,7 +263,10 @@ def _build_job_card_text(*, job, addresses, items, offers) -> str:
         f"<b>Комментарий</b>\n{_format_optional(job.comment)}\n\n"
         f"<b>Источник</b>\n"
         f"{_format_optional(job.source)} / {_format_optional(job.source_locale)}\n"
-        f"UTM: {_format_optional(job.utm_source)} / {_format_optional(job.utm_campaign)}\n"
+        f"UTM source: {_format_optional(job.utm_source)}\n"
+        f"UTM medium: {_format_optional(job.utm_medium)}\n"
+        f"UTM campaign: {_format_optional(job.utm_campaign)}\n"
+        f"UTM content: {_format_optional(job.utm_content)}\n"
         f"Landing: {_format_optional(job.landing_version)}"
     )
 

@@ -43,7 +43,9 @@ class Job(Base):
     client_whatsapp: Mapped[str | None] = mapped_column(String)
 
     utm_source: Mapped[str | None] = mapped_column(String)
+    utm_medium: Mapped[str | None] = mapped_column(String)
     utm_campaign: Mapped[str | None] = mapped_column(String)
+    utm_content: Mapped[str | None] = mapped_column(String)
     landing_version: Mapped[str | None] = mapped_column(String)
 
     status: Mapped[str] = mapped_column(String, nullable=False)

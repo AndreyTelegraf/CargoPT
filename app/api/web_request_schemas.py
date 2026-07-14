@@ -44,7 +44,9 @@ class WebRequestPayload(BaseModel):
     client_phone: str | None = Field(default=None, max_length=64)
     client_whatsapp: str | None = Field(default=None, max_length=64)
     utm_source: str | None = Field(default=None, max_length=255)
+    utm_medium: str | None = Field(default=None, max_length=255)
     utm_campaign: str | None = Field(default=None, max_length=255)
+    utm_content: str | None = Field(default=None, max_length=255)
     landing_version: str | None = Field(default=None, max_length=64)
     requested_date: datetime | None = None
     addresses: list[WebRequestAddressPayload] = Field(min_length=2)
@@ -79,7 +81,9 @@ class WebRequestPayload(BaseModel):
             client_phone=self.client_phone,
             client_whatsapp=self.client_whatsapp,
             utm_source=self.utm_source,
+            utm_medium=self.utm_medium,
             utm_campaign=self.utm_campaign,
+            utm_content=self.utm_content,
             landing_version=self.landing_version,
             requested_date=self.requested_date,
             addresses=tuple(address.to_service_address() for address in self.addresses),

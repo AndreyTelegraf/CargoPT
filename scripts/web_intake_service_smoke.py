@@ -68,7 +68,9 @@ async def exercise_web_intake() -> None:
                 client_phone="+351900000000",
                 client_whatsapp="+351900000000",
                 utm_source="landing",
+                utm_medium="organic",
                 utm_campaign="lisbon_launch",
+                utm_content="hero_form",
                 landing_version="v1",
                 requested_date=datetime(2026, 7, 1, 10, 0, tzinfo=UTC),
                 addresses=(
@@ -94,8 +96,14 @@ async def exercise_web_intake() -> None:
             raise SystemExit(f"unexpected source: {loaded.source}")
         if loaded.customer_name != "Web Client":
             raise SystemExit("customer name not stored")
+        if loaded.utm_source != "landing":
+            raise SystemExit("utm source not stored")
+        if loaded.utm_medium != "organic":
+            raise SystemExit("utm medium not stored")
         if loaded.utm_campaign != "lisbon_launch":
             raise SystemExit("utm campaign not stored")
+        if loaded.utm_content != "hero_form":
+            raise SystemExit("utm content not stored")
 
         addresses = await job_repository.list_addresses_by_job(loaded.id)
         if len(addresses) != 2:

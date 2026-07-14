@@ -100,7 +100,9 @@ async def submit_web_request(
             client_phone=service_request.client_phone,
             client_whatsapp=service_request.client_whatsapp,
             utm_source=service_request.utm_source,
+            utm_medium=service_request.utm_medium,
             utm_campaign=service_request.utm_campaign,
+            utm_content=service_request.utm_content,
             landing_version=service_request.landing_version,
             requested_date=service_request.requested_date,
             addresses=tuple(

@@ -72,7 +72,9 @@ def main() -> None:
         "client_phone": "+351900000000",
         "client_whatsapp": "+351900000000",
         "utm_source": "landing",
+        "utm_medium": "organic",
         "utm_campaign": "lisbon_launch",
+        "utm_content": "hero_form",
         "landing_version": "v1",
         "requested_date": "2026-07-01T10:00:00+00:00",
         "addresses": [

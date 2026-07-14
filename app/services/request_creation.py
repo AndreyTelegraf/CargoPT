@@ -22,7 +22,9 @@ class WebDraftInput:
     client_phone: str | None
     client_whatsapp: str | None
     utm_source: str | None
+    utm_medium: str | None
     utm_campaign: str | None
+    utm_content: str | None
     landing_version: str | None
     requested_date: datetime | None
     needs_assembly: bool = False
@@ -52,7 +54,9 @@ class RequestCreationService:
             client_phone=None,
             client_whatsapp=None,
             utm_source=None,
+            utm_medium=None,
             utm_campaign=None,
+            utm_content=None,
             landing_version=None,
             status=JobStatus.DRAFT,
             requested_date=None,
@@ -89,7 +93,9 @@ class RequestCreationService:
             client_phone=payload.client_phone,
             client_whatsapp=payload.client_whatsapp,
             utm_source=payload.utm_source,
+            utm_medium=payload.utm_medium,
             utm_campaign=payload.utm_campaign,
+            utm_content=payload.utm_content,
             landing_version=payload.landing_version,
             status=JobStatus.DRAFT,
             requested_date=payload.requested_date,
