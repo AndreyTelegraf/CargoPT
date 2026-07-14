@@ -5,6 +5,7 @@ from app.models.job import Job
 from app.models.job import JobAddress
 from app.models.job import JobItem
 from app.models.job import JobOffer
+from app.models.job import JobStatusEvent
 
 __all__ = [
     "AdminInviteToken",
@@ -14,4 +15,5 @@ __all__ = [
     "JobAddress",
     "JobItem",
     "JobOffer",
+    "JobStatusEvent",
 ]

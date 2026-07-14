@@ -13,6 +13,7 @@ from app.models.job import JobAddress
 from app.models.job import JobItem
 from app.models.job import JobMedia
 from app.models.job import JobOffer
+from app.models.job import JobStatusEvent
 
 
 class JobRepository:
@@ -104,6 +105,18 @@ class JobRepository:
             job.tracking_token = await self._generate_tracking_token()
 
         self.session.add(job)
+        await self.session.flush()
+
+        initial_status = getattr(job.status, "value", job.status)
+        self.session.add(
+            JobStatusEvent(
+                job_id=job.id,
+                from_status=None,
+                to_status=initial_status,
+                occurred_at=job.created_at,
+            )
+        )
+
         await self.session.flush()
         return job
 
@@ -599,6 +612,7 @@ class JobRepository:
         if job is None:
             raise ValueError("job not found")
 
+        previous_status = getattr(job.status, "value", job.status)
         status_value = getattr(status, "value", status)
 
         job.status = status_value
@@ -612,6 +626,16 @@ class JobRepository:
             job.completed_at = updated_at
         elif status_value == "cancelled" and job.cancelled_at is None:
             job.cancelled_at = updated_at
+
+        if previous_status != status_value:
+            self.session.add(
+                JobStatusEvent(
+                    job_id=job.id,
+                    from_status=previous_status,
+                    to_status=status_value,
+                    occurred_at=updated_at,
+                )
+            )
 
         await self.session.flush()
 
@@ -773,9 +797,22 @@ class JobRepository:
         if job is None:
             raise ValueError("job not found")
 
+        previous_status = getattr(job.status, "value", job.status)
+        status_value = getattr(status, "value", status)
+
         job.comment = comment
-        job.status = status
+        job.status = status_value
         job.updated_at = updated_at
+
+        if previous_status != status_value:
+            self.session.add(
+                JobStatusEvent(
+                    job_id=job.id,
+                    from_status=previous_status,
+                    to_status=status_value,
+                    occurred_at=updated_at,
+                )
+            )
 
         await self.session.flush()
 

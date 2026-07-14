@@ -82,6 +82,28 @@ class Job(Base):
     media = relationship("JobMedia", back_populates="job")
 
 
+class JobStatusEvent(Base):
+    __tablename__ = "job_status_event"
+
+    __table_args__ = (
+        Index("ix_job_status_event_job_id", "job_id"),
+        Index("ix_job_status_event_to_status", "to_status"),
+        Index("ix_job_status_event_occurred_at", "occurred_at"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    job_id: Mapped[int] = mapped_column(
+        ForeignKey("job.id"),
+        nullable=False,
+    )
+    from_status: Mapped[str | None] = mapped_column(String)
+    to_status: Mapped[str] = mapped_column(String, nullable=False)
+    occurred_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+    )
+
+
 class JobAddress(Base):
     __tablename__ = "job_address"
 
