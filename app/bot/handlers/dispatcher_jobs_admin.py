@@ -25,6 +25,36 @@ from app.services.offer_notification import send_job_offers_to_carriers
 router = Router()
 
 
+ACQUISITION_INTERNAL_TRAFFIC_SQL = """
+(
+    COALESCE(j.source, '') IN (
+        'synthetic_test',
+        'synthetic_fsm_track_test'
+    )
+    OR COALESCE(j.utm_source, '') IN (
+        'internal_test',
+        'synthetic',
+        'synthetic_acceptance',
+        'https_smoke',
+        'manual_audit',
+        'manual_visual_smoke'
+    )
+    OR COALESCE(j.utm_campaign, '') IN (
+        'floor_elevator_smoke'
+    )
+    OR COALESCE(j.landing_version, '') IN (
+        'synthetic',
+        'synthetic-test-carriers-16-17',
+        'synthetic-test-carrier-17',
+        'manual_audit',
+        'manual_visual_smoke',
+        'runtime_audit',
+        'contract_verify'
+    )
+)
+"""
+
+
 def _safe(value) -> str:
     return html.escape(str(value), quote=False)
 
@@ -124,7 +154,8 @@ def _format_acquisition_snapshot(summary, rows) -> str:
     submitted = int(summary["submitted"] or 0)
 
     summary_lines = (
-        f"Records: {_safe(summary['records'] or 0)}",
+        f"Production records: {_safe(summary['records'] or 0)}",
+        f"Excluded internal/test: {_safe(summary['excluded_internal'] or 0)}",
         f"Drafts: {_safe(summary['drafts'] or 0)}",
         f"Submitted: {_safe(submitted)}",
         (
@@ -841,7 +872,24 @@ async def dispatcher_jobs_acquisition(message: Message) -> None:
         period_filter += " AND j.created_at <= :until"
         params["until"] = until_text
 
+    production_filter = (
+        f"{period_filter} "
+        f"AND NOT {ACQUISITION_INTERNAL_TRAFFIC_SQL}"
+    )
+
     async with async_session_maker() as session:
+        excluded_internal = (
+            await session.execute(
+                text(f"""
+                    SELECT COUNT(*)
+                    FROM job j
+                    WHERE {period_filter}
+                      AND {ACQUISITION_INTERNAL_TRAFFIC_SQL}
+                """),
+                params,
+            )
+        ).scalar_one()
+
         summary = (
             await session.execute(
                 text(f"""
@@ -886,11 +934,14 @@ async def dispatcher_jobs_acquisition(message: Message) -> None:
                             WHEN j.status = 'cancelled' THEN 1 ELSE 0
                         END), 0) AS cancelled_now
                     FROM job j
-                    WHERE {period_filter}
+                    WHERE {production_filter}
                 """),
                 params,
             )
         ).mappings().one()
+
+        summary = dict(summary)
+        summary["excluded_internal"] = excluded_internal
 
         acquisition_rows = (
             await session.execute(
@@ -933,7 +984,7 @@ async def dispatcher_jobs_acquisition(message: Message) -> None:
                             WHEN j.status = 'completed' THEN 1 ELSE 0
                         END), 0) AS completed_now
                     FROM job j
-                    WHERE {period_filter}
+                    WHERE {production_filter}
                     GROUP BY 1, 2, 3, 4
                     HAVING submitted > 0
                     ORDER BY
@@ -955,7 +1006,8 @@ async def dispatcher_jobs_acquisition(message: Message) -> None:
         + "\n\n"
         + _format_acquisition_snapshot(summary, acquisition_rows)
         + "\n\n"
-        + "<i>assignment_signal = assigned_at заполнен; "
+        + "<i>internal/test исключены по явному реестру маркеров. "
+        "assignment_signal = assigned_at заполнен; "
         "это не обязательно текущая назначенная сделка.</i>"
     )
 

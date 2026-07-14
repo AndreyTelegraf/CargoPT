@@ -9,6 +9,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 os.environ["BOT_TOKEN"] = "123456:TESTTOKEN"
 os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///data/cargopt_dev.db"
 
+from app.bot.handlers.dispatcher_jobs_admin import ACQUISITION_INTERNAL_TRAFFIC_SQL
 from app.bot.handlers.dispatcher_jobs_admin import _format_acquisition_rate
 from app.bot.handlers.dispatcher_jobs_admin import _format_acquisition_snapshot
 from app.bot.handlers.dispatcher_jobs_admin import _format_job_line
@@ -152,6 +153,10 @@ assert "list_attention_jobs(limit=20)" in handler_source
 assert 'Command("jobs_report")' in handler_source
 assert 'Command("jobs_acquisition")' in handler_source
 assert "CargoPT acquisition snapshot" in handler_source
+assert "ACQUISITION_INTERNAL_TRAFFIC_SQL" in handler_source
+assert "excluded_internal" in handler_source
+assert "production_filter" in handler_source
+assert "internal/test исключены по явному реестру маркеров" in handler_source
 assert "Acquisition groups — top 10" in handler_source
 assert "HAVING submitted > 0" in handler_source
 assert "LIMIT 10" in handler_source
@@ -237,6 +242,7 @@ assert _format_acquisition_rate(5, 10) == "50.0%"
 acquisition_snapshot = _format_acquisition_snapshot(
     {
         "records": 12,
+        "excluded_internal": 7,
         "drafts": 2,
         "submitted": 10,
         "has_offers": 8,
@@ -263,7 +269,8 @@ acquisition_snapshot = _format_acquisition_snapshot(
     ],
 )
 
-assert "Records: 12" in acquisition_snapshot
+assert "Production records: 12" in acquisition_snapshot
+assert "Excluded internal/test: 7" in acquisition_snapshot
 assert "Submitted: 10" in acquisition_snapshot
 assert "Has offers: 8 (80.0%)" in acquisition_snapshot
 assert "Accepted now: 5 (50.0%)" in acquisition_snapshot
@@ -272,5 +279,16 @@ assert "Assigned now: 3 (30.0%)" in acquisition_snapshot
 assert "web_form / reddit / social / launch" in acquisition_snapshot
 assert "completed_now=1" in acquisition_snapshot
 assert len(acquisition_snapshot) < 4096
+
+assert "'synthetic_test'" in ACQUISITION_INTERNAL_TRAFFIC_SQL
+assert "'synthetic_fsm_track_test'" in ACQUISITION_INTERNAL_TRAFFIC_SQL
+assert "'internal_test'" in ACQUISITION_INTERNAL_TRAFFIC_SQL
+assert "'synthetic_acceptance'" in ACQUISITION_INTERNAL_TRAFFIC_SQL
+assert "'https_smoke'" in ACQUISITION_INTERNAL_TRAFFIC_SQL
+assert "'manual_audit'" in ACQUISITION_INTERNAL_TRAFFIC_SQL
+assert "'manual_visual_smoke'" in ACQUISITION_INTERNAL_TRAFFIC_SQL
+assert "'floor_elevator_smoke'" in ACQUISITION_INTERNAL_TRAFFIC_SQL
+assert "'runtime_audit'" in ACQUISITION_INTERNAL_TRAFFIC_SQL
+assert "'contract_verify'" in ACQUISITION_INTERNAL_TRAFFIC_SQL
 
 print("DISPATCHER_JOBS_ADMIN_SMOKE_OK")
