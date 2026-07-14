@@ -13,7 +13,7 @@ def main() -> None:
 
     assert 'id="trackingProgressHeader"' in html
     assert 'class="progress-header-shell"' in html
-    assert "/assets/css/progress-header.css?v=progress-v1" in html
+    assert "/assets/css/progress-header.css?v=progress-cancelled-v4" in html
     assert "/assets/js/progress-header.js?v=progress-v1" in html
     assert "/assets/js/track.js?v=status-favicon-v10" in html
 

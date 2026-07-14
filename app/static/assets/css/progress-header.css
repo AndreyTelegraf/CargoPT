@@ -110,12 +110,16 @@
 }
 
 .progress-header-step-cancelled {
-  color: var(--muted);
+  color: var(--danger);
 }
 
 .progress-header-step-cancelled .progress-header-marker {
-  border-color: var(--muted);
-  background: var(--muted);
+  border-color: var(--danger);
+  background: var(--danger);
+}
+
+.progress-header-shell[data-tone="cancelled"] .progress-header-current-label {
+  color: var(--danger);
 }
 
 @media (max-width: 720px) {
@@ -131,8 +135,8 @@
 
   .progress-header-current-label {
     display: block;
-    color: var(--text);
-    font-size: var(--font-size-card-title);
+    color: var(--muted);
+    font-size: var(--font-size-field-secondary);
     font-weight: var(--font-weight-title);
     line-height: var(--line-height-card-title);
     text-align: center;

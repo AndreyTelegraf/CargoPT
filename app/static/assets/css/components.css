@@ -848,7 +848,8 @@ textarea:focus {
 
 .tracking-offers-title {
   margin: 0;
-  font-size: var(--font-size-offer-section-title);
+  color: var(--brand-blue);
+  font-size: var(--font-size-body-large);
   font-weight: var(--font-weight-title);
   line-height: var(--line-height-card-title);
 }
