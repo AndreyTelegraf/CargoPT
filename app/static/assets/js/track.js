@@ -1,6 +1,8 @@
 
 const trackingPanelBody = document.querySelector("#trackingPanelBody");
 const trackingProgressHeader = document.querySelector("#trackingProgressHeader");
+const trackWorkspaceShell = document.querySelector(".track-workspace-shell");
+const otherRequestsPanel = document.querySelector("#otherRequestsPanel");
 const errorCard = document.querySelector("#errorCard");
 const trackPedidosList = document.querySelector("#trackPedidosList");
 const copyTrackingLink = document.querySelector("#copyTrackingLink");
@@ -146,22 +148,32 @@ function getVisibleTrackingLinks() {
   return getTrackingLinks().slice(0, 5);
 }
 
+function getOtherTrackingLinks() {
+  return getTrackingLinks()
+    .filter((entry) => entry?.token && entry.token !== token)
+    .slice(0, 5);
+}
+
 function renderOpenPedidosNavigation() {
-  if (!trackPedidosList) return;
+  if (
+    !trackPedidosList
+    || !otherRequestsPanel
+    || !trackWorkspaceShell
+  ) return;
 
-  const links = getVisibleTrackingLinks();
+  const links = getOtherTrackingLinks();
+  const hasOtherRequests = links.length > 0;
+
   trackPedidosList.textContent = "";
+  otherRequestsPanel.hidden = !hasOtherRequests;
+  trackWorkspaceShell.classList.toggle(
+    "has-no-other-requests",
+    !hasOtherRequests
+  );
 
-  if (!links.length) {
-    const empty = document.createElement("p");
-    empty.className = "track-offer-nav-empty";
-    empty.textContent = messages.noSavedRequests;
-    trackPedidosList.appendChild(empty);
-    return;
-  }
+  if (!hasOtherRequests) return;
 
   links.forEach((storedEntry) => {
-    const isActive = storedEntry.token === token;
     const liveEntry = liveEntriesByToken.get(storedEntry.token);
 
     const entry = liveEntry
@@ -175,7 +187,6 @@ function renderOpenPedidosNavigation() {
 
     const card = document.createElement("article");
     card.className = "track-offer-nav-card";
-    card.classList.toggle("is-chosen", isActive);
     card.tabIndex = 0;
 
     const top = document.createElement("div");
@@ -191,9 +202,7 @@ function renderOpenPedidosNavigation() {
 
     const status = document.createElement("span");
     status.className = "track-offer-nav-price";
-    status.textContent = isActive
-      ? messages.currentRequest
-      : messages.openRequest;
+    status.textContent = messages.openRequest;
 
     top.append(route, status);
 
@@ -285,6 +294,12 @@ const MESSAGE_SETS = {
     trackingText: "Quando houver propostas, poderá escolher o transportador nesta página, sem login e sem instalar nada.",
     searchingTitle: "Pedido enviado com sucesso",
     searchingText: "Estamos a procurar transportadores adequados. Pode fechar esta página: este link continuará a mostrar novas propostas.",
+    offersTitle: "Propostas",
+    waitingTitle: "Ainda não recebemos propostas.",
+    waitingText: "Estamos à procura de transportadores.",
+    waitingNote: "Isto normalmente demora apenas alguns minutos.",
+    closedRequestText: "Este pedido já não está ativo.",
+    noOffersText: "Não recebemos propostas para este pedido.",
     viewStatus: "Ver estado",
     copyLink: "Copiar link",
     linkCopied: "Link copiado",
@@ -332,6 +347,12 @@ const MESSAGE_SETS = {
     trackingEyebrow: "Request status",
     trackingTitle: "Track your request",
     trackingText: "When offers arrive, you can choose a carrier on this page without logging in or installing anything.",
+    offersTitle: "Offers",
+    waitingTitle: "We have not received any offers yet.",
+    waitingText: "We are looking for suitable carriers.",
+    waitingNote: "This usually takes only a few minutes.",
+    closedRequestText: "This request is no longer active.",
+    noOffersText: "We did not receive any offers for this request.",
     viewStatus: "View status",
     copyLink: "Copy link",
     linkCopied: "Link copied",
@@ -379,6 +400,12 @@ const MESSAGE_SETS = {
     trackingEyebrow: "Статус заявки",
     trackingTitle: "Следите за своей заявкой",
     trackingText: "Когда поступят предложения, вы сможете выбрать перевозчика на этой странице без регистрации и установки приложений.",
+    offersTitle: "Предложения",
+    waitingTitle: "Предложений пока нет.",
+    waitingText: "Мы ищем подходящих перевозчиков.",
+    waitingNote: "Обычно это занимает всего несколько минут.",
+    closedRequestText: "Эта заявка больше не активна.",
+    noOffersText: "На эту заявку не поступило предложений.",
     viewStatus: "Посмотреть статус",
     copyLink: "Скопировать ссылку",
     linkCopied: "Ссылка скопирована",

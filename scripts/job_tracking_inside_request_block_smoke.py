@@ -14,9 +14,9 @@ def main() -> None:
     assert "track.css" in html
 
     assert ".tracking-request-card" in css
-    assert ".track-workspace-shell .tracking-panel .hero-workspace" in css
-    assert "container.appendChild(card)" in workspace_js
-    assert "card.className = \"hero-workspace\"" in workspace_js
+    assert ".track-workspace-shell .tracking-panel .tracking-workspace-content" in css
+    assert "container.appendChild(workspace)" in workspace_js
+    assert "workspace.className = \"tracking-workspace-content\"" in workspace_js
 
     print("job_tracking_inside_request_block_ok")
 

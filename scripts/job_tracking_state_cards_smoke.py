@@ -27,14 +27,14 @@ def main() -> None:
     assert 'meta[name="theme-color"]' in track_js
 
     assert "function getVisualState(entry)" in workspace_js
-    assert "tracking-status-summary" in workspace_js
-    assert "tracking-status-dot-${entry.status_dot_state" in workspace_js
+    assert "function renderWaitingState(entry, messages)" in workspace_js
+    assert "workspace.className = \"tracking-workspace-content\"" in workspace_js
     assert "renderAssignmentActions(entry" in workspace_js
 
-    assert ".tracking-status-summary" in components_css
-    assert ".tracking-status-dot" in components_css
+    assert ".tracking-offers" in components_css
+    assert ".tracking-offer-card" in components_css
     assert ".tracking-assignment-actions" in components_css
-    assert ".track-workspace-shell .tracking-panel .hero-workspace" in track_css
+    assert ".track-workspace-shell .tracking-panel .tracking-workspace-content" in track_css
 
     print("job_tracking_state_cards_ok")
 

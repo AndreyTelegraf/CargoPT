@@ -19,11 +19,11 @@ def main() -> None:
     assert ".track-workspace-shell" in css
     assert ".track-workspace-sidebar" in css
     assert ".track-workspace-shell .tracking-request-card" in css
-    assert ".track-workspace-shell .tracking-panel .hero-workspace" in css
+    assert ".track-workspace-shell .tracking-panel .tracking-workspace-content" in css
 
-    assert ".tracking-status-summary" in components_css
-    assert ".tracking-status-details" in components_css
-    assert "card.className = \"hero-workspace\"" in workspace_js
+    assert ".tracking-offers" in components_css
+    assert ".tracking-offer-card" in components_css
+    assert "workspace.className = \"tracking-workspace-content\"" in workspace_js
 
     assert "delete merged.status_label;" in track_js
     assert "delete merged.status_dot_state;" in track_js

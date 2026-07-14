@@ -4,6 +4,12 @@
     trackingEyebrow: "Estado do pedido",
     trackingTitle: "Acompanhe o seu pedido",
     trackingText: "Quando houver propostas, poderá escolher o transportador nesta página, sem login e sem instalar nada.",
+    offersTitle: "Propostas",
+    waitingTitle: "Ainda não recebemos propostas.",
+    waitingText: "Estamos à procura de transportadores.",
+    waitingNote: "Isto normalmente demora apenas alguns minutos.",
+    closedRequestText: "Este pedido já não está ativo.",
+    noOffersText: "Não recebemos propostas para este pedido.",
     viewStatus: "Ver estado",
     copyLink: "Copiar link",
     linkCopied: "Link copiado",
@@ -17,6 +23,8 @@
     offersAvailable: "{count} oferta(s) disponível(eis)",
     defaultRoute: "Pedido CargoPT",
     waitingOffers: "A aguardar ofertas",
+    statusCancelled: "Pedido cancelado",
+    statusNoOffers: "Sem ofertas disponíveis",
     detailsTitle: "Detalhes do pedido",
     itemsLabel: "Itens",
     commentLabel: "Comentário",
@@ -149,165 +157,128 @@
     return actions;
   }
 
-  function render(entry, options = {}) {
-    const container = options.container;
-    if (!container) throw new Error("tracking workspace container is required");
+  function getEmptyStateCopy(entry, messages) {
+    const status = String(
+      entry.tracking_snapshot?.status || ""
+    );
 
-    const messages = {...DEFAULT_MESSAGES, ...(options.messages || {})};
-    container.textContent = "";
+    if (status === "cancelled") {
+      return {
+        title: messages.statusCancelled,
+        text: messages.closedRequestText,
+        note: ""
+      };
+    }
 
-    const card = document.createElement("section");
-    const visualState = entry.tracking_visual_state || getVisualState(entry);
-    card.className = "hero-workspace";
-    card.dataset.state = visualState;
-    card.classList.toggle("has-offers", (entry.accepted_offers_count || 0) > 0);
+    if (
+      status === "offers_exhausted"
+      || status === "expired_without_response"
+    ) {
+      return {
+        title: messages.statusNoOffers,
+        text: messages.noOffersText,
+        note: ""
+      };
+    }
 
-    const eyebrow = document.createElement("span");
-    eyebrow.className = "tracking-status-eyebrow";
-    eyebrow.textContent = messages.trackingEyebrow;
+    return {
+      title: messages.waitingTitle,
+      text: messages.waitingText,
+      note: messages.waitingNote
+    };
+  }
+
+  function renderWaitingState(entry, messages) {
+    const copy = getEmptyStateCopy(entry, messages);
+
+    const waiting = document.createElement("section");
+    waiting.className = "tracking-waiting-state";
 
     const title = document.createElement("strong");
-    title.className = "tracking-status-title";
-    title.textContent = entry.status_title || messages.trackingTitle;
+    title.className = "tracking-waiting-title";
+    title.textContent = copy.title;
 
     const text = document.createElement("span");
-    text.className = "tracking-status-text";
-    text.textContent = entry.status_text || messages.trackingText;
+    text.className = "tracking-waiting-text";
+    text.textContent = copy.text;
 
-    const summary = document.createElement("span");
-    summary.className = "tracking-status-summary";
+    waiting.append(title, text);
 
-    const route = document.createElement("strong");
-    const routeLabel = entry.route_summary || messages.defaultRoute;
-    route.textContent = entry.job_id ? `#${entry.job_id} · ${routeLabel}` : routeLabel;
-
-    const status = document.createElement("span");
-    status.className = "tracking-status-line";
-
-    const statusDot = document.createElement("span");
-    statusDot.className = `tracking-status-dot tracking-status-dot-${entry.status_dot_state || visualState || "searching"}`;
-    statusDot.setAttribute("aria-hidden", "true");
-
-    const statusLabel = document.createElement("span");
-    statusLabel.textContent = entry.status_label || messages.waitingOffers;
-
-    status.append(statusDot, statusLabel);
-
-    summary.append(route, status);
-
-    const details = document.createElement("span");
-    details.className = "tracking-status-details";
-
-    const detailsTitle = document.createElement("strong");
-    detailsTitle.className = "tracking-status-details-title";
-    detailsTitle.textContent = messages.detailsTitle;
-    details.appendChild(detailsTitle);
-
-    if (entry.item_summary) {
-      const label = document.createElement("span");
-      label.className = "tracking-status-detail-label";
-      label.textContent = messages.itemsLabel;
-      const value = document.createElement("span");
-      value.className = "tracking-status-detail-text";
-      value.textContent = entry.item_summary;
-      details.append(label, value);
+    if (copy.note) {
+      const note = document.createElement("span");
+      note.className = "tracking-waiting-note";
+      note.textContent = copy.note;
+      waiting.appendChild(note);
     }
 
-    if (entry.comment_summary) {
-      const label = document.createElement("span");
-      label.className = "tracking-status-detail-label";
-      label.textContent = messages.commentLabel;
-      const value = document.createElement("span");
-      value.className = "tracking-status-detail-text";
-      value.textContent = entry.comment_summary;
-      details.append(label, value);
-    }
+    return waiting;
+  }
 
-    const actions = document.createElement("span");
-    actions.className = "tracking-success-actions";
-
-    const statusButton = document.createElement("button");
-    statusButton.className = entry.accepted_offers_count > 0 ? "button button-small tracking-status-primary-action" : "button button-small";
-    statusButton.type = "button";
-    statusButton.textContent = entry.accepted_offers_count > 0 ? messages.viewOffers : messages.viewStatus;
-    statusButton.addEventListener("click", () => {
-      const target = entry.accepted_offers_count > 0 ? container.querySelector(".tracking-offers") : container.querySelector(".tracking-status-summary");
-      target?.scrollIntoView({behavior: "smooth", block: "nearest"});
-    });
-
-    const copyButton = document.createElement("button");
-    copyButton.className = "button button-small button-secondary";
-    copyButton.type = "button";
-    copyButton.textContent = messages.copyLink;
-    copyButton.addEventListener("click", async () => {
-      await navigator.clipboard.writeText(absoluteUrl(entry.tracking_url));
-      copyButton.textContent = messages.linkCopied;
-
-      clearTimeout(copyButton._copyResetTimer);
-      copyButton._copyResetTimer = setTimeout(() => {
-        if (copyButton.isConnected) {
-          copyButton.textContent = messages.copyLink;
-        }
-      }, 3000);
-    });
-
-    const whatsappLink = document.createElement("a");
-    whatsappLink.className = "button button-small button-secondary";
-    whatsappLink.href = `https://wa.me/?text=${encodeURIComponent(absoluteUrl(entry.tracking_url))}`;
-    whatsappLink.target = "_blank";
-    whatsappLink.rel = "noopener noreferrer";
-    whatsappLink.textContent = messages.shareWhatsApp;
-
-    card.append(eyebrow, title, text, summary);
-
-    if (entry.selected_offer_summary) {
-      const selectedOffer = document.createElement("span");
-      selectedOffer.className = "tracking-status-selected-offer";
-
-      const selectedLabel = document.createElement("span");
-      selectedLabel.className = "tracking-status-selected-label";
-      selectedLabel.textContent = messages.selectedOfferLabel;
-
-      const selectedCompany = document.createElement("strong");
-      selectedCompany.textContent = entry.selected_offer_summary.company_name || messages.defaultCarrier;
-
-      const selectedMeta = document.createElement("span");
-      selectedMeta.textContent = [
-        entry.selected_offer_summary.price_label,
-        entry.selected_offer_summary.vehicle_label
-      ].filter(Boolean).join(" · ");
-
-      selectedOffer.append(selectedLabel, selectedCompany, selectedMeta);
-      card.appendChild(selectedOffer);
-    }
-
-    if (entry.item_summary || entry.comment_summary) card.appendChild(details);
-
+  function renderOffers(entry, options, messages) {
     const offers = entry.tracking_snapshot?.accepted_offers || [];
-    if (offers.length && !options.hideOffers) {
-      const wrap = document.createElement("section");
-      wrap.className = "tracking-offers";
 
-      const offersTitle = document.createElement("strong");
-      offersTitle.className = "tracking-offers-title";
-      offersTitle.textContent = messages.viewOffers;
+    const wrap = document.createElement("section");
+    wrap.className = "tracking-offers";
 
-      const offersList = document.createElement("div");
-      offersList.className = "tracking-offers-list";
+    const offersTitle = document.createElement("strong");
+    offersTitle.className = "tracking-offers-title";
+    offersTitle.textContent =
+      messages.offersTitle || messages.viewOffers;
 
-      offers.forEach((offer) => {
-        offersList.appendChild(renderOffer(offer, entry, options, messages));
-      });
+    const offersList = document.createElement("div");
+    offersList.className = "tracking-offers-list";
 
-      wrap.append(offersTitle, offersList);
-      card.appendChild(wrap);
+    offers.forEach((offer) => {
+      offersList.appendChild(
+        renderOffer(offer, entry, options, messages)
+      );
+    });
+
+    wrap.append(offersTitle, offersList);
+    return wrap;
+  }
+
+  function render(entry, options = {}) {
+    const container = options.container;
+
+    if (!container) {
+      throw new Error("tracking workspace container is required");
     }
 
-    const assignmentActions = renderAssignmentActions(entry, options, messages);
-    if (assignmentActions) card.appendChild(assignmentActions);
+    const messages = {
+      ...DEFAULT_MESSAGES,
+      ...(options.messages || {})
+    };
 
-    card.appendChild(actions);
-    container.appendChild(card);
+    const offers =
+      entry.tracking_snapshot?.accepted_offers || [];
+
+    container.textContent = "";
+
+    const workspace = document.createElement("div");
+    workspace.className = "tracking-workspace-content";
+
+    if (offers.length > 0 && !options.hideOffers) {
+      workspace.appendChild(
+        renderOffers(entry, options, messages)
+      );
+    } else {
+      workspace.appendChild(
+        renderWaitingState(entry, messages)
+      );
+    }
+
+    const assignmentActions = renderAssignmentActions(
+      entry,
+      options,
+      messages
+    );
+
+    if (assignmentActions) {
+      workspace.appendChild(assignmentActions);
+    }
+
+    container.appendChild(workspace);
   }
 
   window.CargoPTTrackingWorkspace = {render, getVisualState};
