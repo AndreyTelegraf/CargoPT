@@ -29,9 +29,9 @@ def main() -> None:
     assert "Os seus pedidos" not in html
     assert "track-new-request" not in html
 
-    assert "/assets/css/track.css?v=workspace-design-v4" in html
+    assert "/assets/css/track.css?v=workspace-design-v5" in html
     assert "/assets/js/tracking-workspace.js?v=shared-v3" in html
-    assert "/assets/js/track.js?v=status-favicon-v9" in html
+    assert "/assets/js/track.js?v=status-favicon-v10" in html
 
     assert (
         'document.querySelector("#otherRequestsPanel")'

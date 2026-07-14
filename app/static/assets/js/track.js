@@ -3,6 +3,7 @@ const trackingPanelBody = document.querySelector("#trackingPanelBody");
 const trackingProgressHeader = document.querySelector("#trackingProgressHeader");
 const trackWorkspaceShell = document.querySelector(".track-workspace-shell");
 const otherRequestsPanel = document.querySelector("#otherRequestsPanel");
+const otherRequestsToggle = document.querySelector("#otherRequestsToggle");
 const errorCard = document.querySelector("#errorCard");
 const trackPedidosList = document.querySelector("#trackPedidosList");
 const copyTrackingLink = document.querySelector("#copyTrackingLink");
@@ -154,6 +155,31 @@ function getOtherTrackingLinks() {
     .slice(0, 5);
 }
 
+function setOtherRequestsExpanded(isExpanded) {
+  if (!otherRequestsPanel || !otherRequestsToggle) return;
+
+  otherRequestsPanel.classList.toggle(
+    "is-mobile-expanded",
+    isExpanded
+  );
+
+  otherRequestsToggle.setAttribute(
+    "aria-expanded",
+    String(isExpanded)
+  );
+}
+
+if (otherRequestsToggle) {
+  otherRequestsToggle.addEventListener("click", () => {
+    const isExpanded =
+      otherRequestsPanel?.classList.contains(
+        "is-mobile-expanded"
+      ) || false;
+
+    setOtherRequestsExpanded(!isExpanded);
+  });
+}
+
 function renderOpenPedidosNavigation() {
   if (
     !trackPedidosList
@@ -165,13 +191,25 @@ function renderOpenPedidosNavigation() {
   const hasOtherRequests = links.length > 0;
 
   trackPedidosList.textContent = "";
+
+  if (otherRequestsToggle) {
+    otherRequestsToggle.textContent =
+      messages.otherRequestsLabel.replace(
+        "{count}",
+        String(links.length)
+      );
+  }
+
   otherRequestsPanel.hidden = !hasOtherRequests;
   trackWorkspaceShell.classList.toggle(
     "has-no-other-requests",
     !hasOtherRequests
   );
 
-  if (!hasOtherRequests) return;
+  if (!hasOtherRequests) {
+    setOtherRequestsExpanded(false);
+    return;
+  }
 
   links.forEach((storedEntry) => {
     const liveEntry = liveEntriesByToken.get(storedEntry.token);
@@ -275,6 +313,7 @@ const MESSAGE_SETS = {
     noSavedRequests: "Ainda não há pedidos guardados neste dispositivo.",
     currentRequest: "Atual",
     openRequest: "Abrir",
+    otherRequestsLabel: "Outros pedidos ({count})",
     statusSearching: "À procura de transportadores",
     statusAssigned: "Transportador escolhido",
     statusCompleted: "Pedido concluído",
@@ -330,6 +369,7 @@ const MESSAGE_SETS = {
     noSavedRequests: "There are no requests saved on this device yet.",
     currentRequest: "Current",
     openRequest: "Open",
+    otherRequestsLabel: "Other requests ({count})",
     statusSearching: "Looking for carriers",
     statusAssigned: "Carrier selected",
     statusCompleted: "Request completed",
@@ -383,6 +423,7 @@ const MESSAGE_SETS = {
     noSavedRequests: "На этом устройстве пока нет сохранённых заявок.",
     currentRequest: "Текущая",
     openRequest: "Открыть",
+    otherRequestsLabel: "Другие заявки ({count})",
     statusSearching: "Ищем перевозчиков",
     statusAssigned: "Перевозчик выбран",
     statusCompleted: "Заявка завершена",
