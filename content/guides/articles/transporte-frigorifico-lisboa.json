@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "id": "transporte-frigorifico-lisboa",
+  "locale": "pt-PT",
+  "cluster": "objects",
+  "path": "/transporte-frigorifico-lisboa/",
+  "title": "Transporte de frigorífico em Lisboa",
+  "meta_title": "Transporte de frigorífico em Lisboa — CargoPT",
+  "meta_description": "Peça propostas para transporte de frigorífico em Lisboa: preparação, acessos, equipa e proteção.",
+  "primary_query": "transporte frigorífico Lisboa",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Móveis e objetos",
+  "eyebrow": "Transporte de frigorífico em Lisboa",
+  "hero_description": "O transporte de frigorífico em Lisboa deve considerar a preparação do objeto, os acessos, a equipa, a proteção e a fixação no veículo.",
+  "date_published": "2026-07-14",
+  "date_modified": "2026-07-14",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Como pedir transporte de frigorífico em Lisboa",
+  "key_points_heading": "Informação necessária para o serviço",
+  "faq_heading": "Perguntas sobre transporte de frigorífico em Lisboa",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para pedir transporte de frigorífico em Lisboa, indique os locais de recolha e entrega, as dimensões, o estado de preparação, os pisos, elevadores, escadas e estacionamento. Envie fotografias do objeto e dos acessos e confirme a equipa, a proteção, o equipamento e as tarefas incluídas.",
+  "key_points": [
+    "Indique dimensões e fotografias de frigorífico.",
+    "Descreva pisos, elevadores, escadas e estacionamento.",
+    "Confirme a preparação necessária antes da recolha.",
+    "Defina equipa, equipamento, proteção e fixação.",
+    "Compare propostas baseadas na mesma informação."
+  ],
+  "sections": [
+    {
+      "id": "informacao-pedido",
+      "heading": "Que informação enviar",
+      "paragraphs": [
+        "Identifique o tipo de frigorífico, as dimensões e qualquer característica que afete a movimentação.",
+        "Inclua fotografias completas, localização da recolha e entrega, data pretendida e detalhes dos acessos."
+      ],
+      "checklist": [
+        "Tipo e dimensões de frigorífico.",
+        "Fotografias do objeto.",
+        "Localização da recolha e da entrega.",
+        "Pisos, elevadores e escadas.",
+        "Estacionamento e distância até ao veículo.",
+        "Serviços adicionais pretendidos."
+      ]
+    },
+    {
+      "id": "preparacao",
+      "heading": "Preparação antes da recolha",
+      "paragraphs": [
+        "O frigorífico deve estar vazio, desligado, descongelado e seco. Prateleiras, gavetas e componentes móveis devem ser retirados ou imobilizados.",
+        "Informe antecipadamente o que já estará preparado e o que deverá ser executado pela equipa."
+      ]
+    },
+    {
+      "id": "acessos",
+      "heading": "Meça e fotografe os acessos",
+      "paragraphs": [
+        "Confirme portas, corredores, elevadores, escadas, patamares e percurso exterior nos dois locais.",
+        "As medidas e fotografias ajudam a definir a orientação, os ajudantes e o equipamento."
+      ],
+      "items": [
+        {
+          "title": "Portas",
+          "text": "Registe a abertura útil e o espaço para rotação."
+        },
+        {
+          "title": "Elevadores",
+          "text": "Confirme porta, dimensões internas e capacidade."
+        },
+        {
+          "title": "Escadas",
+          "text": "Indique lanços, curvas, largura e desníveis."
+        },
+        {
+          "title": "Estacionamento",
+          "text": "Informe a distância entre a entrada e o veículo."
+        }
+      ]
+    },
+    {
+      "id": "equipa-equipamento",
+      "heading": "Equipa e equipamento",
+      "paragraphs": [
+        "O aparelho é pesado e difícil de agarrar. Deve ser movimentado com meios adequados e mantido tão vertical quanto possível.",
+        "A proposta deve indicar o número de ajudantes e os meios previstos para movimentar o objeto."
+      ],
+      "checklist": [
+        "Número de ajudantes.",
+        "Carrinho, cintas ou equipamento aplicável.",
+        "Proteção do chão, paredes e elevador.",
+        "Carga e descarga.",
+        "Colocação no local de destino.",
+        "Tarefas adicionais acordadas."
+      ]
+    },
+    {
+      "id": "protecao-veiculo",
+      "heading": "Proteção e transporte no veículo",
+      "paragraphs": [
+        "Portas, superfícies e componentes internos precisam de proteção. Siga as instruções do fabricante antes de voltar a ligar o aparelho.",
+        "Confirme como o objeto será protegido e imobilizado para evitar impactos e deslocações durante o percurso."
+      ]
+    },
+    {
+      "id": "comparar-propostas",
+      "heading": "Como comparar propostas",
+      "paragraphs": [
+        "Envie a mesma descrição a todos os transportadores e confirme se cada proposta considera o mesmo objeto, os mesmos acessos e as mesmas tarefas.",
+        "Compare equipa, equipamento, proteção, horário, valor e condições de responsabilidade."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare o transporte de frigorífico",
+    "text": "Envie dimensões, fotografias e acessos para receber propostas adequadas.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Que fotografias devo enviar?",
+      "answer": "Envie o objeto de vários ângulos e todo o percurso, incluindo portas, elevadores, escadas e estacionamento."
+    },
+    {
+      "question": "Quantas pessoas são necessárias?",
+      "answer": "Depende do peso, dimensões, possibilidade de agarrar o objeto e dificuldade dos acessos."
+    },
+    {
+      "question": "A preparação está incluída no transporte?",
+      "answer": "Não automaticamente. Confirme por escrito as tarefas a executar antes da movimentação."
+    },
+    {
+      "question": "Como evitar danos durante o percurso?",
+      "answer": "Use proteção adequada, equipa suficiente e fixação compatível com o objeto e o veículo."
+    },
+    {
+      "question": "O que pode alterar o valor da proposta?",
+      "answer": "Alterações ao objeto, aos acessos, à equipa, à data ou às tarefas podem modificar o serviço."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Transporte de máquina de lavar em Lisboa",
+      "href": "/transporte-maquina-lavar-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "Transporte de piano em Lisboa",
+      "href": "/transporte-piano-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "Como preparar um frigorífico para transporte",
+      "href": "/guias/objetos/preparar-frigorifico-transporte/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para transportar frigorífico",
+    "text": "Descreva o objeto, os locais e os acessos antes de escolher o transportador.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

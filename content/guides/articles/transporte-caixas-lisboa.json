@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "id": "transporte-caixas-lisboa",
+  "locale": "pt-PT",
+  "cluster": "packing",
+  "path": "/transporte-caixas-lisboa/",
+  "title": "Transporte de caixas em Lisboa",
+  "meta_title": "Transporte de caixas em Lisboa — CargoPT",
+  "meta_description": "Peça propostas para transporte de caixas em Lisboa: quantidade, peso, acessos, carga e descarga.",
+  "primary_query": "transporte caixas Lisboa",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Embalamento",
+  "eyebrow": "Transporte de caixas em Lisboa",
+  "hero_description": "O transporte de caixas em Lisboa deve considerar quantidade, dimensões, peso, fragilidade, acessos e espaço no veículo.",
+  "date_published": "2026-07-14",
+  "date_modified": "2026-07-14",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Como pedir transporte de caixas em Lisboa",
+  "key_points_heading": "Informação necessária para o pedido",
+  "faq_heading": "Perguntas sobre transporte de caixas em Lisboa",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para pedir transporte de caixas em Lisboa, indique a quantidade aproximada, os tamanhos, o peso estimado e os conteúdos frágeis. Descreva os locais, pisos, elevadores, escadas, estacionamento e distância até ao veículo. Confirme quem fará a carga, a descarga e a colocação das caixas no destino.",
+  "key_points": [
+    "Indique quantidade e tamanhos aproximados.",
+    "Destaque caixas frágeis, pesadas ou especiais.",
+    "Descreva acessos e distância até ao veículo.",
+    "Confirme carga, descarga e número de ajudantes.",
+    "Compare propostas para a mesma quantidade de volumes."
+  ],
+  "sections": [
+    {
+      "id": "quantidade",
+      "heading": "Conte e organize as caixas",
+      "paragraphs": [
+        "Forneça uma quantidade aproximada mesmo quando a embalagem ainda não estiver concluída.",
+        "Separe caixas pequenas, médias e grandes e indique volumes fora do formato habitual."
+      ]
+    },
+    {
+      "id": "peso-conteudo",
+      "heading": "Peso e tipo de conteúdo",
+      "paragraphs": [
+        "Uma caixa excessivamente pesada aumenta o risco de abertura, queda e lesão.",
+        "Destaque livros, loiça, ferramentas, equipamentos e outros conteúdos que exijam cuidado."
+      ],
+      "checklist": [
+        "Caixas leves, médias e pesadas.",
+        "Conteúdo frágil.",
+        "Caixas que devem permanecer na vertical.",
+        "Volumes com documentos ou valor.",
+        "Caixas fora do tamanho habitual."
+      ]
+    },
+    {
+      "id": "embalagem",
+      "heading": "Confirme se as caixas estão prontas",
+      "paragraphs": [
+        "As caixas devem estar fechadas, resistentes, secas e identificadas antes da recolha.",
+        "Se precisar de materiais ou ajuda para embalar, inclua essa tarefa no pedido."
+      ]
+    },
+    {
+      "id": "acessos",
+      "heading": "Acessos para carga e descarga",
+      "paragraphs": [
+        "Indique pisos, elevadores, escadas e distância entre a entrada e o veículo nos dois locais.",
+        "Percursos longos ou ausência de elevador podem exigir mais ajudantes e tempo."
+      ]
+    },
+    {
+      "id": "veiculo",
+      "heading": "Espaço e organização no veículo",
+      "paragraphs": [
+        "A quantidade, os tamanhos e o peso ajudam a definir o espaço necessário no veículo.",
+        "Caixas frágeis não devem ficar sob volumes pesados e toda a carga deve permanecer estável."
+      ]
+    },
+    {
+      "id": "comparar",
+      "heading": "Como comparar propostas",
+      "paragraphs": [
+        "Confirme se todas as propostas consideram a mesma quantidade de caixas, acessos e tarefas.",
+        "Compare veículo, ajudantes, carga, descarga, horário e valor final."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare o pedido para transportar as caixas",
+    "text": "Indique quantidade, peso, locais e acessos para receber propostas comparáveis.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Preciso de saber o número exato de caixas?",
+      "answer": "Uma estimativa é suficiente inicialmente, mas deve ser atualizada antes da data do transporte."
+    },
+    {
+      "question": "Existe um peso máximo por caixa?",
+      "answer": "Não existe um valor universal. Cada caixa deve manter a forma e poder ser movimentada com controlo."
+    },
+    {
+      "question": "As caixas podem seguir abertas?",
+      "answer": "Não é recomendável. Devem estar fechadas, identificadas e protegidas antes da carga."
+    },
+    {
+      "question": "A carga e a descarga estão incluídas?",
+      "answer": "Depende da proposta. Confirme o número de ajudantes e as tarefas incluídas."
+    },
+    {
+      "question": "Como indicar caixas frágeis?",
+      "answer": "Identifique-as de forma visível e descreva o conteúdo geral no pedido."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como embalar caixas para uma mudança",
+      "href": "/guias/embalamento/como-embalar-caixas/",
+      "type": "guide"
+    },
+    {
+      "title": "Mudanças de apartamento em Lisboa",
+      "href": "/mudancas-apartamento-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "Checklist completa para uma mudança",
+      "href": "/guias/planeamento/checklist-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para transportar as suas caixas",
+    "text": "Descreva os volumes, os locais e os acessos antes de escolher o serviço.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

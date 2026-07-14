@@ -10,7 +10,7 @@
   "links": {
     "checklist-mudanca": [
       {
-        "target": "como-preparar-uma-mudanca",
+        "target": "mudancas-apartamento-lisboa",
         "reason": "same_cluster",
         "priority": 1
       },
@@ -32,7 +32,7 @@
     ],
     "como-embalar-caixas": [
       {
-        "target": "como-embalar-louca",
+        "target": "transporte-caixas-lisboa",
         "reason": "same_cluster",
         "priority": 1
       },
@@ -316,6 +316,28 @@
         "priority": 4
       }
     ],
+    "mudancas-almada": [
+      {
+        "target": "mudancas-oeiras",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-sintra",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
     "mudancas-amadora": [
       {
         "target": "mudancas-loures",
@@ -324,6 +346,28 @@
       },
       {
         "target": "mudancas-odivelas",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-apartamento-lisboa": [
+      {
+        "target": "como-preparar-uma-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "transporte-caixas-lisboa",
         "reason": "next_step",
         "priority": 2
       },
@@ -351,6 +395,72 @@
       },
       {
         "target": "quanto-custa-mudanca-porto",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-braga": [
+      {
+        "target": "mudancas-coimbra",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-cascais",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-cascais": [
+      {
+        "target": "mudancas-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-porto",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-coimbra": [
+      {
+        "target": "mudancas-cascais",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-lisboa",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-preparar-uma-mudanca",
         "reason": "authority",
         "priority": 3
       },
@@ -412,6 +522,94 @@
       },
       {
         "target": "mudancas-matosinhos",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-lisboa": [
+      {
+        "target": "mudancas-porto",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-braga",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-lisboa-algarve": [
+      {
+        "target": "mudancas-almada",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-lisboa-cascais",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-lisboa-cascais": [
+      {
+        "target": "mudancas-lisboa-porto",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-lisboa-algarve",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-lisboa-porto": [
+      {
+        "target": "mudancas-lisboa-algarve",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-oeiras",
         "reason": "next_step",
         "priority": 2
       },
@@ -492,6 +690,28 @@
         "priority": 4
       }
     ],
+    "mudancas-oeiras": [
+      {
+        "target": "mudancas-sintra",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-almada",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
     "mudancas-portimao": [
       {
         "target": "mudancas-faro",
@@ -514,6 +734,28 @@
         "priority": 4
       }
     ],
+    "mudancas-porto": [
+      {
+        "target": "mudancas-braga",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-coimbra",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-porto",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
     "mudancas-setubal": [
       {
         "target": "mudancas-odivelas",
@@ -527,6 +769,28 @@
       },
       {
         "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "mudancas-sintra": [
+      {
+        "target": "mudancas-lisboa-cascais",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "mudancas-lisboa-porto",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-preparar-uma-mudanca",
         "reason": "authority",
         "priority": 3
       },
@@ -822,19 +1086,19 @@
         "priority": 4
       }
     ],
-    "mudancas-lisboa": [
+    "transporte-caixas-lisboa": [
       {
-        "target": "mudancas-porto",
+        "target": "como-embalar-caixas",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-braga",
+        "target": "mudancas-apartamento-lisboa",
         "reason": "next_step",
         "priority": 2
       },
       {
-        "target": "quanto-custa-mudanca-lisboa",
+        "target": "checklist-mudanca",
         "reason": "authority",
         "priority": 3
       },
@@ -844,19 +1108,19 @@
         "priority": 4
       }
     ],
-    "mudancas-porto": [
+    "transporte-frigorifico-lisboa": [
       {
-        "target": "mudancas-braga",
+        "target": "transporte-maquina-lavar-lisboa",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-coimbra",
+        "target": "transporte-piano-lisboa",
         "reason": "next_step",
         "priority": 2
       },
       {
-        "target": "quanto-custa-mudanca-porto",
+        "target": "preparar-frigorifico-transporte",
         "reason": "authority",
         "priority": 3
       },
@@ -866,19 +1130,19 @@
         "priority": 4
       }
     ],
-    "mudancas-braga": [
+    "transporte-maquina-lavar-lisboa": [
       {
-        "target": "mudancas-coimbra",
+        "target": "transporte-sofa-lisboa",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-cascais",
+        "target": "transporte-frigorifico-lisboa",
         "reason": "next_step",
         "priority": 2
       },
       {
-        "target": "quanto-custa-uma-mudanca",
+        "target": "como-embalar-eletrodomesticos",
         "reason": "authority",
         "priority": 3
       },
@@ -888,19 +1152,19 @@
         "priority": 4
       }
     ],
-    "mudancas-coimbra": [
+    "transporte-piano-lisboa": [
       {
-        "target": "mudancas-cascais",
+        "target": "transporte-frigorifico-lisboa",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-lisboa",
+        "target": "transporte-sofa-lisboa",
         "reason": "next_step",
         "priority": 2
       },
       {
-        "target": "como-preparar-uma-mudanca",
+        "target": "seguro-transporte-moveis",
         "reason": "authority",
         "priority": 3
       },
@@ -910,19 +1174,19 @@
         "priority": 4
       }
     ],
-    "mudancas-cascais": [
+    "transporte-sofa-lisboa": [
       {
-        "target": "mudancas-lisboa",
+        "target": "transporte-piano-lisboa",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-porto",
+        "target": "transporte-maquina-lavar-lisboa",
         "reason": "next_step",
         "priority": 2
       },
       {
-        "target": "quanto-custa-mudanca-lisboa",
+        "target": "medir-moveis-antes-mudanca",
         "reason": "authority",
         "priority": 3
       },

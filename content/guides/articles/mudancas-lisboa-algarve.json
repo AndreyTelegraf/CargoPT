@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "id": "mudancas-lisboa-algarve",
+  "locale": "pt-PT",
+  "cluster": "cities",
+  "path": "/mudancas-lisboa-algarve/",
+  "title": "Mudanças de Lisboa para o Algarve",
+  "meta_title": "Mudanças de Lisboa para o Algarve — CargoPT",
+  "meta_description": "Prepare uma mudança entre Lisboa e Algarve: inventário, rota, acessos, equipa e serviços.",
+  "primary_query": "mudanças Lisboa Algarve",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Mudanças por cidade",
+  "eyebrow": "Mudanças Lisboa–Algarve",
+  "hero_description": "Uma mudança entre Lisboa e Algarve exige uma descrição completa da carga, dos acessos, da distância e dos serviços incluídos.",
+  "date_published": "2026-07-14",
+  "date_modified": "2026-07-14",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Como preparar uma mudança entre Lisboa e Algarve",
+  "key_points_heading": "Informação essencial para a rota",
+  "faq_heading": "Perguntas sobre mudanças Lisboa–Algarve",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para organizar uma mudança entre Lisboa e Algarve, indique as localizações completas, a data, o inventário, os pisos, elevadores e estacionamento nos dois pontos. Confirme o veículo, o número de ajudantes, a carga e descarga, a proteção dos bens e eventuais tarefas de desmontagem, montagem ou embalagem.",
+  "key_points": [
+    "Identifique claramente a origem e o destino.",
+    "Prepare um inventário adequado à distância da viagem.",
+    "Descreva os acessos nos dois imóveis.",
+    "Confirme equipa, veículo e tarefas incluídas.",
+    "Compare propostas para exatamente o mesmo serviço."
+  ],
+  "sections": [
+    {
+      "id": "rota-data",
+      "heading": "Como descrever a rota Lisboa–Algarve",
+      "paragraphs": [
+        "A localização exata no Algarve deve ser indicada, porque a distância final e o horário dependem do município e dos acessos ao imóvel.",
+        "Indique uma data preferida e alternativas. Confirme também os horários disponíveis para carga e entrega nos dois imóveis."
+      ],
+      "checklist": [
+        "Localização completa da recolha.",
+        "Localização completa da entrega.",
+        "Data preferida e alternativas.",
+        "Horários possíveis nos dois locais.",
+        "Restrições de acesso ou estacionamento.",
+        "Contacto disponível durante o serviço."
+      ]
+    },
+    {
+      "id": "inventario-veiculo",
+      "heading": "Inventário e capacidade do veículo",
+      "paragraphs": [
+        "Numa rota entre localidades, um inventário incompleto pode resultar num veículo inadequado ou numa segunda viagem não prevista.",
+        "Liste móveis, eletrodomésticos, caixas e objetos especiais. Inclua medidas e fotografias dos volumes maiores."
+      ],
+      "items": [
+        {
+          "title": "Mobiliário",
+          "text": "Indique peças desmontadas e peças que precisam de desmontagem."
+        },
+        {
+          "title": "Eletrodomésticos",
+          "text": "Identifique dimensões e preparação necessária."
+        },
+        {
+          "title": "Caixas",
+          "text": "Forneça uma estimativa realista antes da data."
+        },
+        {
+          "title": "Objetos especiais",
+          "text": "Destaque peças frágeis, pesadas ou de valor."
+        }
+      ]
+    },
+    {
+      "id": "acessos",
+      "heading": "Acessos na origem e no destino",
+      "paragraphs": [
+        "Pisos, elevadores, escadas e distância até ao veículo devem ser descritos separadamente para cada local.",
+        "Meça portas e passagens quando existirem sofás, armários, eletrodomésticos ou outras peças grandes."
+      ],
+      "checklist": [
+        "Piso e elevador na recolha.",
+        "Piso e elevador na entrega.",
+        "Escadas, corredores e portas estreitas.",
+        "Distância entre as entradas e o veículo.",
+        "Estacionamento e zonas de carga.",
+        "Regras de condomínio ou acesso."
+      ]
+    },
+    {
+      "id": "protecao-viagem",
+      "heading": "Proteção durante a viagem",
+      "paragraphs": [
+        "Os objetos devem ser protegidos contra impactos, fricção e deslocações durante todo o percurso.",
+        "Confirme como serão protegidos móveis, equipamentos e caixas e como a carga será imobilizada."
+      ],
+      "items": [
+        {
+          "title": "Mantas e proteção",
+          "text": "Devem separar superfícies e proteger cantos."
+        },
+        {
+          "title": "Fixação",
+          "text": "A carga deve ficar estável durante travagens e curvas."
+        },
+        {
+          "title": "Distribuição",
+          "text": "Volumes pesados não devem pressionar objetos frágeis."
+        },
+        {
+          "title": "Inventário",
+          "text": "Ajuda a conferir a carga na origem e no destino."
+        }
+      ]
+    },
+    {
+      "id": "servicos",
+      "heading": "Serviços que devem ficar registados",
+      "paragraphs": [
+        "A proposta deve indicar equipa, veículo, carga, descarga, proteção, desmontagem, montagem e embalagem.",
+        "Confirme data, janela de chegada, valor, pagamento e situações que podem alterar a proposta."
+      ],
+      "checklist": [
+        "Número de ajudantes.",
+        "Tipo e capacidade do veículo.",
+        "Carga e descarga.",
+        "Desmontagem e montagem.",
+        "Materiais e embalagem.",
+        "Valor e condições por escrito."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "Como comparar propostas através da CargoPT",
+      "paragraphs": [
+        "Descreva a mudança Lisboa–Algarve uma única vez, incluindo inventário, acessos e tarefas necessárias.",
+        "Compare propostas preparadas com base na mesma descrição antes de escolher o transportador."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare o pedido para a rota Lisboa–Algarve",
+    "text": "Indique locais, carga, acessos e serviços para receber propostas comparáveis.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Que informação é necessária para uma mudança Lisboa–Algarve?",
+      "answer": "Indique locais, data, inventário, acessos, serviços, objetos especiais e fotografias relevantes."
+    },
+    {
+      "question": "Como escolher o tamanho do veículo?",
+      "answer": "O transportador deve avaliar o inventário, as medidas dos volumes maiores e a quantidade de caixas."
+    },
+    {
+      "question": "A carga e a descarga estão sempre incluídas?",
+      "answer": "Não necessariamente. Confirme por escrito a equipa e todas as tarefas incluídas."
+    },
+    {
+      "question": "É necessário desmontar os móveis?",
+      "answer": "Depende das dimensões, dos acessos e da capacidade de proteção e fixação no veículo."
+    },
+    {
+      "question": "Como comparar propostas diferentes?",
+      "answer": "Garanta que todas consideram a mesma carga, acessos, equipa, veículo e serviços adicionais."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Mudanças em Almada",
+      "href": "/mudancas-almada/",
+      "type": "landing"
+    },
+    {
+      "title": "Mudanças de Lisboa para Cascais",
+      "href": "/mudancas-lisboa-cascais/",
+      "type": "landing"
+    },
+    {
+      "title": "Quanto custa uma mudança em Portugal?",
+      "href": "/guias/precos/quanto-custa-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para a mudança Lisboa–Algarve",
+    "text": "Descreva a rota, a carga e os acessos para receber propostas adequadas à viagem.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

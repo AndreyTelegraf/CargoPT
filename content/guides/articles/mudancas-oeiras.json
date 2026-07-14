@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "id": "mudancas-oeiras",
+  "locale": "pt-PT",
+  "cluster": "cities",
+  "path": "/mudancas-oeiras/",
+  "title": "Mudanças em Oeiras",
+  "meta_title": "Mudanças em Oeiras — CargoPT",
+  "meta_description": "Prepare uma mudança em Oeiras: inventário, acessos, estacionamento, ajudantes e serviços necessários.",
+  "primary_query": "mudanças Oeiras",
+  "intent": [
+    "local",
+    "transactional"
+  ],
+  "article_section": "Mudanças por cidade",
+  "eyebrow": "Mudanças em Oeiras",
+  "hero_description": "Uma mudança em Oeiras deve ser planeada com base na carga, nos acessos, no estacionamento e nos serviços necessários nos dois imóveis.",
+  "date_published": "2026-07-14",
+  "date_modified": "2026-07-14",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Como preparar uma mudança em Oeiras",
+  "key_points_heading": "Informação necessária para receber propostas comparáveis",
+  "faq_heading": "Perguntas frequentes sobre mudanças em Oeiras",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para organizar uma mudança em Oeiras, indique os locais de recolha e entrega, a data, os móveis, eletrodomésticos, caixas e objetos especiais. Descreva pisos, elevadores, escadas, estacionamento e distância até ao veículo. Confirme também ajudantes, desmontagem, montagem, embalagem e outros serviços que devam integrar a proposta.",
+  "key_points": [
+    "Indique claramente os locais de recolha e entrega.",
+    "Prepare um inventário dos móveis, equipamentos e caixas.",
+    "Descreva pisos, elevadores, escadas e estacionamento.",
+    "Identifique objetos pesados, frágeis ou volumosos.",
+    "Compare propostas baseadas na mesma descrição."
+  ],
+  "sections": [
+    {
+      "id": "informacao-pedido",
+      "heading": "Que informação incluir num pedido em Oeiras?",
+      "paragraphs": [
+        "O transportador precisa de conhecer a rota, a carga, os acessos e as tarefas incluídas antes de preparar uma proposta.",
+        "Uma lista organizada e fotografias dos volumes maiores ajudam a avaliar o veículo, a equipa e o tempo necessário."
+      ],
+      "checklist": [
+        "Local de recolha e local de entrega.",
+        "Data pretendida e possíveis alternativas.",
+        "Lista dos principais móveis e eletrodomésticos.",
+        "Quantidade aproximada de caixas.",
+        "Objetos frágeis, pesados ou volumosos.",
+        "Serviços adicionais pretendidos."
+      ]
+    },
+    {
+      "id": "inventario",
+      "heading": "Como descrever a carga",
+      "paragraphs": [
+        "Organize o inventário por divisões ou categorias. Separe mobiliário, eletrodomésticos, caixas e objetos que exigem cuidados especiais.",
+        "Indique medidas aproximadas quando existirem dúvidas sobre portas, elevadores, escadas ou capacidade do veículo."
+      ],
+      "items": [
+        {
+          "title": "Mobiliário",
+          "text": "Liste sofás, camas, mesas, armários, estantes e outros móveis."
+        },
+        {
+          "title": "Eletrodomésticos",
+          "text": "Identifique frigorífico, máquinas, televisão e equipamentos semelhantes."
+        },
+        {
+          "title": "Caixas",
+          "text": "Forneça uma estimativa e destaque caixas frágeis ou especialmente pesadas."
+        },
+        {
+          "title": "Objetos especiais",
+          "text": "Assinale peças pesadas, valiosas, frágeis ou difíceis de movimentar."
+        }
+      ]
+    },
+    {
+      "id": "acessos",
+      "heading": "Acessos e estacionamento em Oeiras",
+      "paragraphs": [
+        "Em Oeiras, indique se o imóvel fica numa zona residencial, num condomínio ou num edifício com regras específicas para carga, elevador e estacionamento.",
+        "Confirme a distância entre a entrada e o local onde o veículo pode parar. Informe também portarias, garagens, rampas e corredores estreitos."
+      ],
+      "items": [
+        {
+          "title": "Pisos",
+          "text": "Indique o andar na recolha e na entrega, incluindo caves e garagens."
+        },
+        {
+          "title": "Elevadores",
+          "text": "Confirme disponibilidade, dimensões e regras de utilização."
+        },
+        {
+          "title": "Escadas",
+          "text": "Mencione curvas, patamares estreitos e outros obstáculos."
+        },
+        {
+          "title": "Estacionamento",
+          "text": "Explique onde o veículo pode parar e a distância até à entrada."
+        }
+      ]
+    },
+    {
+      "id": "servicos",
+      "heading": "Que serviços incluir na proposta",
+      "paragraphs": [
+        "Confirme se o serviço inclui apenas veículo e motorista ou também ajudantes, carga, descarga e proteção dos objetos.",
+        "Desmontagem, montagem, embalagem e equipamento adicional devem ser acordados antes da mudança."
+      ],
+      "items": [
+        {
+          "title": "Ajudantes",
+          "text": "Confirme quantas pessoas participarão na carga e descarga."
+        },
+        {
+          "title": "Desmontagem",
+          "text": "Identifique os móveis que não podem seguir montados."
+        },
+        {
+          "title": "Embalagem",
+          "text": "Defina quem fornece os materiais e prepara os objetos."
+        },
+        {
+          "title": "Equipamento",
+          "text": "Informe sobre objetos pesados ou acessos especiais."
+        }
+      ]
+    },
+    {
+      "id": "comparar-propostas",
+      "heading": "Como comparar propostas",
+      "paragraphs": [
+        "Envie a mesma descrição a todos os transportadores. Assim, cada proposta considera a mesma carga, os mesmos acessos e as mesmas tarefas.",
+        "Além do valor, compare veículo, ajudantes, serviços incluídos, data, horário e condições de pagamento."
+      ],
+      "checklist": [
+        "O inventário considerado é o mesmo.",
+        "Os dois locais e acessos estão identificados.",
+        "O número de ajudantes está indicado.",
+        "Carga e descarga estão incluídas ou atribuídas.",
+        "Os serviços adicionais estão discriminados.",
+        "O valor e as condições estão registados."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "Como pedir propostas através da CargoPT",
+      "paragraphs": [
+        "Na CargoPT, pode descrever uma mudança em Oeiras uma única vez, incluindo carga, acessos e serviços.",
+        "Os transportadores apresentam as suas propostas e o cliente pode comparar as respostas antes de escolher."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare o pedido da sua mudança em Oeiras",
+    "text": "Indique carga, acessos, data e serviços para receber propostas comparáveis.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Que informação devo enviar para uma mudança em Oeiras?",
+      "answer": "Indique recolha, entrega, data, inventário, pisos, elevadores, estacionamento e serviços adicionais."
+    },
+    {
+      "question": "É necessário conhecer o volume exato?",
+      "answer": "Não. Uma lista dos objetos, uma estimativa das caixas e fotografias permitem uma primeira avaliação."
+    },
+    {
+      "question": "Quando devo enviar fotografias?",
+      "answer": "Envie fotografias de móveis grandes, objetos especiais e acessos que possam dificultar a movimentação."
+    },
+    {
+      "question": "A desmontagem está incluída automaticamente?",
+      "answer": "Não necessariamente. Identifique os móveis e confirme por escrito as tarefas incluídas."
+    },
+    {
+      "question": "Como evitar alterações ao valor?",
+      "answer": "Forneça informação completa e comunique antecipadamente alterações de carga, acesso, data ou serviço."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Mudanças em Sintra",
+      "href": "/mudancas-sintra/",
+      "type": "landing"
+    },
+    {
+      "title": "Mudanças em Almada",
+      "href": "/mudancas-almada/",
+      "type": "landing"
+    },
+    {
+      "title": "Quanto custa uma mudança em Lisboa?",
+      "href": "/guias/precos/quanto-custa-mudanca-lisboa/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para a sua mudança em Oeiras",
+    "text": "Descreva os locais, a carga, os acessos e as tarefas. Depois compare propostas para o mesmo serviço.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

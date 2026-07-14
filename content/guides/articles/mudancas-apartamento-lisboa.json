@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "id": "mudancas-apartamento-lisboa",
+  "locale": "pt-PT",
+  "cluster": "planning",
+  "path": "/mudancas-apartamento-lisboa/",
+  "title": "Mudanças de apartamento em Lisboa",
+  "meta_title": "Mudanças de apartamento em Lisboa — CargoPT",
+  "meta_description": "Prepare uma mudança de apartamento em Lisboa: inventário, acessos, elevador, estacionamento e serviços.",
+  "primary_query": "mudanças apartamento Lisboa",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Planeamento da mudança",
+  "eyebrow": "Mudanças de apartamento em Lisboa",
+  "hero_description": "Uma mudança de apartamento em Lisboa exige inventário, verificação de elevadores e escadas, estacionamento e uma distribuição clara das tarefas.",
+  "date_published": "2026-07-14",
+  "date_modified": "2026-07-14",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Como preparar uma mudança de apartamento em Lisboa",
+  "key_points_heading": "Etapas essenciais",
+  "faq_heading": "Perguntas sobre mudanças de apartamento em Lisboa",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para preparar uma mudança de apartamento em Lisboa, faça um inventário, confirme a data, os pisos, elevadores, escadas, portas e estacionamento nos dois edifícios. Identifique móveis que precisam de desmontagem, objetos especiais, quantidade de caixas e tarefas que pretende contratar.",
+  "key_points": [
+    "Faça o inventário antes de pedir propostas.",
+    "Confirme pisos, elevadores, escadas e portas.",
+    "Verifique estacionamento e distância até ao veículo.",
+    "Defina embalagem, desmontagem, carga e montagem.",
+    "Registe por escrito o serviço escolhido."
+  ],
+  "sections": [
+    {
+      "id": "inventario",
+      "heading": "Crie o inventário do apartamento",
+      "paragraphs": [
+        "Percorra cada divisão e liste móveis, eletrodomésticos, caixas e objetos especiais.",
+        "Separe o que será transportado do que será vendido, doado ou eliminado antes da mudança."
+      ],
+      "checklist": [
+        "Móveis por divisão.",
+        "Eletrodomésticos.",
+        "Quantidade aproximada de caixas.",
+        "Objetos frágeis ou pesados.",
+        "Peças que precisam de desmontagem.",
+        "Bens que não serão transportados."
+      ]
+    },
+    {
+      "id": "medidas",
+      "heading": "Meça móveis e passagens",
+      "paragraphs": [
+        "Meça os principais móveis e compare com portas, corredores, elevadores e escadas.",
+        "Fotografe pontos apertados e identifique peças que terão de ser desmontadas."
+      ]
+    },
+    {
+      "id": "elevador",
+      "heading": "Confirme elevadores e regras do edifício",
+      "paragraphs": [
+        "Verifique dimensões, capacidade, horários e necessidade de reserva ou proteção do elevador.",
+        "Quando não existir elevador adequado, informe os pisos e a configuração das escadas."
+      ]
+    },
+    {
+      "id": "estacionamento",
+      "heading": "Planeie a zona de carga",
+      "paragraphs": [
+        "Indique onde o veículo pode parar em cada local e a distância até à entrada.",
+        "Portarias, garagens, acessos condicionados e percursos internos devem constar do pedido."
+      ]
+    },
+    {
+      "id": "tarefas",
+      "heading": "Distribua as tarefas",
+      "paragraphs": [
+        "Defina quem fará embalagem, desmontagem, carga, transporte, descarga e montagem.",
+        "A proposta deve indicar claramente materiais, ajudantes e equipamento incluídos."
+      ]
+    },
+    {
+      "id": "comparar",
+      "heading": "Compare propostas equivalentes",
+      "paragraphs": [
+        "Envie a mesma descrição a todos os transportadores e confirme inventário, acessos e tarefas.",
+        "Compare equipa, veículo, horário, valor, pagamento e responsabilidade por danos."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare o pedido da mudança de apartamento",
+    "text": "Indique inventário, edifícios, acessos e tarefas para receber propostas comparáveis.",
+    "label": "Descrever a mudança",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Preciso de reservar o elevador?",
+      "answer": "Depende das regras do edifício. Confirme previamente com o condomínio ou responsável pelo imóvel."
+    },
+    {
+      "question": "Como saber se os móveis passam?",
+      "answer": "Compare as medidas dos móveis com portas, corredores, elevadores, escadas e espaço para rotação."
+    },
+    {
+      "question": "Devo desmontar os móveis antes?",
+      "answer": "Apenas quando conhece o procedimento. Caso contrário, inclua desmontagem e montagem na proposta."
+    },
+    {
+      "question": "Que fotografias devo enviar?",
+      "answer": "Envie móveis grandes, portas, elevadores, escadas, corredores e zonas de estacionamento."
+    },
+    {
+      "question": "Como evitar alterações ao preço?",
+      "answer": "Forneça inventário e acessos completos e comunique qualquer alteração antes da data."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como preparar uma mudança",
+      "href": "/guias/planeamento/como-preparar-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Transporte de caixas em Lisboa",
+      "href": "/transporte-caixas-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "Quanto custa uma mudança em Lisboa?",
+      "href": "/guias/precos/quanto-custa-mudanca-lisboa/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para a sua mudança de apartamento",
+    "text": "Descreva a carga, os dois edifícios e as tarefas antes de escolher o transportador.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}
