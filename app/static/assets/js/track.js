@@ -109,40 +109,59 @@ if (copyTrackingLink) {
 
 const TRACKING_LINKS_KEY = "cargopt_tracking_links";
 
+function normalizeTrackingLink(entry) {
+  if (!entry || !entry.token) return null;
+
+  return {
+    job_id: entry.job_id ?? null,
+    tracking_url:
+      entry.tracking_url
+      || `${trackBasePath}/${encodeURIComponent(entry.token)}`,
+    token: entry.token
+  };
+}
+
 function getTrackingLinks() {
   try {
     const raw = localStorage.getItem(TRACKING_LINKS_KEY);
     const parsed = raw ? JSON.parse(raw) : [];
-    return Array.isArray(parsed) ? parsed : [];
+
+    if (!Array.isArray(parsed)) return [];
+
+    const links = parsed
+      .map(normalizeTrackingLink)
+      .filter(Boolean)
+      .slice(0, 20);
+
+    if (JSON.stringify(parsed) !== JSON.stringify(links)) {
+      localStorage.setItem(TRACKING_LINKS_KEY, JSON.stringify(links));
+    }
+
+    return links;
   } catch {
     return [];
   }
 }
 
 function saveTrackingLink(entry) {
-  if (!entry.token) return;
-
-  const current = {
-    job_id: entry.job_id,
-    tracking_url: entry.tracking_url,
-    token: entry.token,
-    route_summary: entry.route_summary,
-    item_summary: entry.item_summary
-  };
+  const current = normalizeTrackingLink(entry);
+  if (!current) return;
 
   const links = getTrackingLinks();
-  const existingIndex = links.findIndex((item) => item.token === entry.token);
+  const existingIndex = links.findIndex(
+    (item) => item.token === current.token
+  );
 
   if (existingIndex >= 0) {
-    const merged = {...links[existingIndex], ...current};
-    delete merged.status_label;
-    delete merged.status_dot_state;
-    links[existingIndex] = merged;
+    links[existingIndex] = current;
   } else {
     links.unshift(current);
   }
 
-  localStorage.setItem(TRACKING_LINKS_KEY, JSON.stringify(links.slice(0, 20)));
+  localStorage.setItem(
+    TRACKING_LINKS_KEY,
+    JSON.stringify(links.slice(0, 20))
+  );
 }
 
 function getVisibleTrackingLinks() {

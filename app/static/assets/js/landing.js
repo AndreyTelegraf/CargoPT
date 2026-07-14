@@ -1,4 +1,3 @@
-const STORAGE_KEY = "cargopt_landing_request_v2";
 const TRACKING_LINKS_KEY = "cargopt_tracking_links";
 const pageLocale = document.body.dataset.locale || document.documentElement.lang || "ru";
 const form = document.querySelector("#requestForm");
@@ -89,33 +88,51 @@ function setMessage(text, type) {
   formMessage.classList.toggle("is-success", type === "success");
 }
 
-function buildRouteSummary(data) {
-  const pickup = data.pickup ? data.pickup.trim() : "";
-  const dropoff = data.dropoff ? data.dropoff.trim() : "";
-  if (pickup && dropoff) return `${pickup} → ${dropoff}`;
-  return pickup || dropoff || messages.defaultRoute;
-}
+function normalizeTrackingLink(entry) {
+  if (!entry || !entry.token || !entry.tracking_url) return null;
 
-function buildShortSummary(value) {
-  const normalized = value ? value.trim().replace(/\s+/g, " ") : "";
-  if (normalized.length <= 80) return normalized;
-  return `${normalized.slice(0, 77)}...`;
+  return {
+    job_id: entry.job_id ?? null,
+    tracking_url: entry.tracking_url,
+    token: entry.token
+  };
 }
 
 function getTrackingLinks() {
   try {
     const raw = localStorage.getItem(TRACKING_LINKS_KEY);
     const parsed = raw ? JSON.parse(raw) : [];
-    return Array.isArray(parsed) ? parsed : [];
+
+    if (!Array.isArray(parsed)) return [];
+
+    const links = parsed
+      .map(normalizeTrackingLink)
+      .filter(Boolean)
+      .slice(0, 20);
+
+    if (JSON.stringify(parsed) !== JSON.stringify(links)) {
+      localStorage.setItem(TRACKING_LINKS_KEY, JSON.stringify(links));
+    }
+
+    return links;
   } catch {
     return [];
   }
 }
 
 function saveTrackingLink(entry) {
-  const links = getTrackingLinks().filter((item) => item.token !== entry.token);
-  links.unshift(entry);
-  localStorage.setItem(TRACKING_LINKS_KEY, JSON.stringify(links.slice(0, 20)));
+  const current = normalizeTrackingLink(entry);
+  if (!current) return;
+
+  const links = getTrackingLinks()
+    .filter((item) => item.token !== current.token);
+
+  links.unshift(current);
+
+  localStorage.setItem(
+    TRACKING_LINKS_KEY,
+    JSON.stringify(links.slice(0, 20))
+  );
 }
 
 
@@ -180,25 +197,6 @@ function parseOptionalBool(value) {
 
 function getFormData() {
   return Object.fromEntries(new FormData(form).entries());
-}
-
-function saveDraft() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(getFormData()));
-}
-
-function restoreDraft() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return;
-
-  try {
-    const data = JSON.parse(raw);
-    Object.entries(data).forEach(([name, value]) => {
-      const field = form.elements[name];
-      if (field) field.value = value;
-    });
-  } catch {
-    localStorage.removeItem(STORAGE_KEY);
-  }
 }
 
 function markFieldInvalid(field, message, focusField = true) {
@@ -342,25 +340,18 @@ async function submitRequest() {
     }
 
     const body = await response.json();
-    const submittedData = getFormData();
 
     if (body.tracking_token && body.tracking_url) {
       const trackingEntry = {
         job_id: body.job_id,
         tracking_url: body.tracking_url,
-        token: body.tracking_token,
-        created_at: new Date().toISOString(),
-        route_summary: buildRouteSummary(submittedData),
-        item_summary: buildShortSummary(submittedData.items),
-        comment_summary: buildShortSummary(submittedData.comment)
+        token: body.tracking_token
       };
       saveTrackingLink(trackingEntry);
       window.location.href = body.tracking_url;
     } else {
       setMessage(messages.success, "success");
     }
-
-    localStorage.removeItem(STORAGE_KEY);
     if (!body.tracking_token || !body.tracking_url) {
       form.reset();
       setStep(1);
@@ -374,7 +365,6 @@ async function submitRequest() {
 }
 
 form.addEventListener("input", (event) => {
-  saveDraft();
 
   const field = event.target.closest("[required]");
   if (field) {
@@ -383,7 +373,6 @@ form.addEventListener("input", (event) => {
 });
 
 form.addEventListener("change", (event) => {
-  saveDraft();
 
   const field = event.target.closest("[required]");
   if (field) {
@@ -415,7 +404,6 @@ form.addEventListener("click", (event) => {
   }
 
   if (next && validateStep(currentStep)) {
-    saveDraft();
     setStep(currentStep + 1);
   }
 
@@ -541,7 +529,6 @@ if (carousel) {
 }
 
 
-restoreDraft();
 setStep(1);
 renderOpenPedidos();
 window.addEventListener("resize", renderOpenPedidos);
