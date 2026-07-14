@@ -171,27 +171,101 @@
   };
 })();
 
-// CANCELLED_PROGRESS_LABEL_V2
+// CANCELLED_PROGRESS_LABEL_V3
 (function () {
   const api = window.CargoPTProgressHeader;
 
-  if (!api || typeof api.render !== "function") {
-    throw new Error("CargoPTProgressHeader.render is unavailable");
-  }
+  if (!api || typeof api.render !== "function") return;
 
   const originalRender = api.render.bind(api);
 
+  const cancelledLabels = Object.freeze({
+    pt: "Cancelado",
+    en: "Cancelled",
+    ru: "Отменено"
+  });
+
+  function getLocale() {
+    return (
+      document.body?.dataset.locale
+      || document.documentElement.lang
+      || "pt"
+    )
+      .toLowerCase()
+      .split("-")[0];
+  }
+
+  function replaceExactText(root, expected, replacement) {
+    if (!root) return;
+
+    const walker = document.createTreeWalker(
+      root,
+      NodeFilter.SHOW_TEXT
+    );
+
+    const nodes = [];
+    let node;
+
+    while ((node = walker.nextNode())) {
+      nodes.push(node);
+    }
+
+    for (const textNode of nodes) {
+      const raw = textNode.nodeValue || "";
+
+      if (raw.trim() !== expected) continue;
+
+      textNode.nodeValue = raw.replace(
+        expected,
+        replacement
+      );
+    }
+  }
+
   api.render = function (entry, options = {}) {
     const result = originalRender(entry, options);
-    const status = String(entry?.tracking_snapshot?.status || "");
+    const status = String(
+      entry?.tracking_snapshot?.status || ""
+    );
 
-    if (status === "cancelled") {
-      const label = options.container?.querySelector(
+    if (status !== "cancelled") return result;
+
+    const locale = getLocale();
+    const cancelledLabel =
+      cancelledLabels[locale]
+      || cancelledLabels.pt;
+
+    const currentLabel =
+      options.container?.querySelector(
         ".progress-header-current-label"
       );
 
-      if (label) label.textContent = "Cancelado";
+    if (currentLabel) {
+      currentLabel.textContent = cancelledLabel;
     }
+
+    const cancelledStep =
+      options.container?.querySelector(
+        ".progress-header-step-cancelled"
+      );
+
+    replaceExactText(
+      cancelledStep,
+      "Recebido",
+      cancelledLabel
+    );
+
+    replaceExactText(
+      cancelledStep,
+      "Received",
+      cancelledLabel
+    );
+
+    replaceExactText(
+      cancelledStep,
+      "Получено",
+      cancelledLabel
+    );
 
     return result;
   };
