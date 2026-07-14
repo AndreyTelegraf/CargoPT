@@ -637,8 +637,9 @@ function getActiveTrackingEntry() {
 
 async function bootstrapTrackingPage() {
   try {
+    await refreshTrackingToken(token);
     await refreshVisibleTrackingEntries({
-      includeActive: true
+      includeActive: false
     });
 
     const activeEntry = getActiveTrackingEntry();
