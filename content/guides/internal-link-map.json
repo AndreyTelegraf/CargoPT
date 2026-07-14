@@ -296,7 +296,7 @@
     ],
     "mudancas-albufeira": [
       {
-        "target": "mudancas-faro",
+        "target": "mudancas-portimao",
         "reason": "same_cluster",
         "priority": 1
       },
@@ -499,7 +499,7 @@
         "priority": 1
       },
       {
-        "target": "mudancas-portimao",
+        "target": "mudancas-evora",
         "reason": "next_step",
         "priority": 2
       },
@@ -587,7 +587,7 @@
         "priority": 1
       },
       {
-        "target": "mudancas-lisboa-algarve",
+        "target": "mudancas-faro",
         "reason": "next_step",
         "priority": 2
       },
@@ -719,7 +719,7 @@
         "priority": 1
       },
       {
-        "target": "mudancas-evora",
+        "target": "mudancas-lisboa-algarve",
         "reason": "next_step",
         "priority": 2
       },
