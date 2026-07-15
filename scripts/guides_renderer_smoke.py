@@ -153,7 +153,8 @@ def main() -> None:
     result = subprocess.run(
         [
             sys.executable,
-            str(RENDERER_PATH),
+            "-m",
+            "scripts.render_guide",
             str(ARTICLE_PATH),
             "--registry",
             str(REGISTRY_PATH),
