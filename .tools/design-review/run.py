@@ -8,6 +8,7 @@ import platform
 import re
 import shutil
 import socket
+import sqlite3
 import subprocess
 import sys
 import time
@@ -169,6 +170,57 @@ def collector_command(
     raise RuntimeError(f"unsupported collector: {collector_id}")
 
 
+def backup_sqlite_database(
+    source: Path,
+    destination: Path,
+) -> str:
+    if source.is_symlink():
+        raise RuntimeError(
+            "SQLite backup source is a symbolic link"
+        )
+
+    if destination.exists() or destination.is_symlink():
+        raise RuntimeError(
+            "SQLite backup destination already exists"
+        )
+
+    source_uri = source.resolve().as_uri() + "?mode=ro"
+
+    with sqlite3.connect(
+        source_uri,
+        uri=True,
+    ) as source_connection:
+        with sqlite3.connect(
+            destination
+        ) as destination_connection:
+            source_connection.backup(
+                destination_connection
+            )
+
+    destination_uri = (
+        destination.resolve().as_uri()
+        + "?mode=ro&immutable=1"
+    )
+
+    with sqlite3.connect(
+        destination_uri,
+        uri=True,
+    ) as verification_connection:
+        row = verification_connection.execute(
+            "PRAGMA quick_check"
+        ).fetchone()
+
+    quick_check = str(row[0]) if row else ""
+
+    if quick_check != "ok":
+        raise RuntimeError(
+            "preserved SQLite database failed "
+            f"quick_check: {quick_check!r}"
+        )
+
+    return quick_check
+
+
 def preserve_and_remove_fullstack_tmp(
     output_directory: Path,
 ) -> dict[str, Any]:
@@ -203,9 +255,14 @@ def preserve_and_remove_fullstack_tmp(
 
     if database.is_file():
         preserved = output_directory / "isolated-e2e.db"
-        shutil.copy2(database, preserved)
+        quick_check = backup_sqlite_database(
+            database,
+            preserved,
+        )
         result["database_preserved"] = True
         result["preserved_database"] = relative_path(preserved)
+        result["database_preservation_mode"] = "sqlite_backup"
+        result["database_quick_check"] = quick_check
 
     shutil.rmtree(resolved)
     result["temporary_directory_removed"] = True
