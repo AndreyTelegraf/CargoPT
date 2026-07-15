@@ -22,3 +22,15 @@ venv/
 .vscode/
 
 data/
+
+# Local browser-audit runtime
+.tools/node_modules/
+.tools/browser-audit/.venv/
+.tools/browser-audit/browsers/
+
+# Generated browser-audit state and evidence
+.tmp_fullstack_conversion_e2e/
+artifacts/release-browser-audit-*/
+artifacts/release-browser-audit-*.tar.gz
+artifacts/conversion-frontend-e2e-*/
+artifacts/conversion-frontend-e2e-*.tar.gz
