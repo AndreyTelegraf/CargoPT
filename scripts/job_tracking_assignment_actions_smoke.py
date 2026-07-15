@@ -29,7 +29,7 @@ def main() -> None:
     assert ".tracking-assignment-actions" in css
     assert ".tracking-assignment-fail" in css
 
-    print("job_tracking_assignment_actions_ok")
+    print("JOB_TRACKING_ASSIGNMENT_ACTIONS_SMOKE_OK")
 
 
 if __name__ == "__main__":

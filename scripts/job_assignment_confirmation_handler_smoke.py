@@ -3,7 +3,9 @@ from pathlib import Path
 source = Path("app/bot/handlers/job_assignment_confirmation.py").read_text(encoding="utf-8")
 
 assert "except TelegramBadRequest:" in source
-assert "await callback.message.edit_text(result_text, reply_markup=None)" in source
+assert "await callback.message.edit_text(" in source
+assert "_build_assignment_confirmation_final_text(" in source
+assert 'parse_mode="HTML"' in source
 assert "await callback.message.edit_reply_markup(reply_markup=None)" in source
 assert "build_assignment_failure_reason_keyboard" in source
 assert "assignment:fail_reason:" in source
