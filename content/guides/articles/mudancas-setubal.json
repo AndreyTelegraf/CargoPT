@@ -5,8 +5,8 @@
   "cluster": "cities",
   "path": "/guias/cidades/mudancas-setubal/",
   "title": "Mudanças em Setúbal",
-  "meta_title": "Mudanças em Setúbal — CargoPT",
-  "meta_description": "Prepare uma mudança em Setúbal: inventário, acessos, rota, ajudantes e serviços necessários para pedir propostas.",
+  "meta_title": "Mudanças em Setúbal: zonas, acessos e preparação — CargoPT",
+  "meta_description": "Prepare uma mudança em Setúbal: zona concreta, carga, acessos, estacionamento, ajudantes e serviços adicionais.",
   "primary_query": "mudanças Setúbal",
   "intent": [
     "local",
@@ -14,133 +14,131 @@
   ],
   "article_section": "Mudanças por cidade",
   "eyebrow": "Mudanças em Setúbal",
-  "hero_description": "Uma mudança em Setúbal fica mais fácil de organizar quando a carga, os acessos, a rota e os serviços necessários são descritos antes de pedir propostas.",
+  "hero_description": "Uma mudança em Setúbal deve considerar a zona concreta, o tipo de imóvel, os acessos e o ponto onde a viatura poderá parar. No município de Setúbal, as condições variam entre o centro urbano, bairros residenciais, moradias e localidades mais afastadas.",
   "date_published": "2026-07-12",
-  "date_modified": "2026-07-12",
+  "date_modified": "2026-07-14",
   "review_owner": "CargoPT",
-  "direct_answer_heading": "Como preparar uma mudança em Setúbal",
+  "direct_answer_heading": "O que deve confirmar antes de uma mudança em Setúbal",
   "key_points_heading": "Informação necessária para receber propostas úteis",
   "faq_heading": "Dúvidas sobre mudanças em Setúbal",
   "related_links_heading": "Guias e serviços relacionados",
-  "direct_answer": "Para organizar uma mudança em Setúbal, indique os locais de recolha e entrega, a data pretendida, os móveis, eletrodomésticos, caixas e objetos especiais. Informe também os andares, elevadores, escadas, estacionamento e distância entre a entrada e o veículo. Confirme previamente se precisa de ajudantes, desmontagem, montagem, embalagem ou equipamento adicional.",
+  "direct_answer": "Para receber propostas adequadas para uma mudança em Setúbal, indique a zona concreta da recolha e da entrega, a data, o inventário, os pisos, os elevadores, as escadas e o local onde a viatura poderá parar. Informe a distância de transporte manual e confirme se precisa de ajudantes, desmontagem, montagem, embalagem ou proteção adicional. No município de Setúbal, as condições variam entre o centro urbano, bairros residenciais, moradias e localidades mais afastadas.",
   "key_points": [
-    "Indique claramente a recolha, a entrega e a data pretendida.",
-    "Faça uma lista dos móveis, eletrodomésticos, caixas e objetos especiais.",
-    "Descreva andares, elevadores, escadas e condições de estacionamento.",
-    "Confirme o número de ajudantes e os serviços adicionais necessários.",
-    "Compare propostas preparadas com base na mesma descrição."
+    "Identifique a zona concreta da recolha e da entrega.",
+    "Confirme onde a viatura poderá parar em cada local.",
+    "Descreva pisos, elevadores, escadas, portas e corredores.",
+    "Envie fotografias de móveis grandes e acessos difíceis.",
+    "Compare propostas baseadas na mesma carga e nas mesmas tarefas."
   ],
   "sections": [
     {
-      "id": "informacao-pedido",
-      "heading": "Que informação incluir num pedido de mudança em Setúbal?",
+      "id": "zonas-setubal",
+      "heading": "Zonas e condições de acesso em Setúbal",
       "paragraphs": [
-        "O transportador precisa de perceber o percurso, a dimensão aproximada da carga e as condições em que o serviço será realizado. Uma descrição vaga normalmente exige perguntas adicionais antes de ser possível preparar uma proposta.",
-        "Não é necessário calcular antecipadamente o peso total. Uma lista organizada dos objetos, acompanhada por fotografias quando existirem peças grandes ou acessos difíceis, costuma ser suficiente para uma primeira avaliação."
+        "A indicação genérica de “Setúbal” pode não ser suficiente para avaliar o serviço. A zona concreta influencia o percurso, a aproximação da viatura e a movimentação entre a rua e o imóvel.",
+        "Indique a localização nos dois extremos da mudança e descreva separadamente as condições de recolha e entrega."
       ],
-      "checklist": [
-        "Morada ou localização da recolha.",
-        "Morada ou localização da entrega.",
-        "Data preferida e possíveis alternativas.",
-        "Lista dos principais objetos.",
-        "Quantidade aproximada de caixas.",
-        "Objetos pesados, frágeis ou de grandes dimensões.",
-        "Andares e existência de elevador.",
-        "Condições de estacionamento e acesso ao imóvel.",
-        "Número de ajudantes necessário.",
-        "Serviços adicionais pretendidos."
+      "items": [
+        {
+          "title": "Centro de Setúbal",
+          "text": "Confirme ruas, estacionamento, pisos, escadas e distância até à entrada."
+        },
+        {
+          "title": "São Sebastião",
+          "text": "Indique o edifício, o elevador, a garagem e o local possível para a viatura."
+        },
+        {
+          "title": "Azeitão",
+          "text": "Descreva portões, acessos de moradias, estradas locais e distância dentro da propriedade."
+        },
+        {
+          "title": "Zona do Sado",
+          "text": "Forneça a localização exata e confirme acessos, pavimento e espaço de manobra."
+        }
       ]
     },
     {
-      "id": "inventario",
-      "heading": "Como descrever a carga",
+      "id": "inventario-setubal",
+      "heading": "Como preparar o inventário para a mudança em Setúbal",
       "paragraphs": [
-        "Organize o inventário por divisões ou por categorias. Separe mobiliário, eletrodomésticos, caixas e objetos que exigem cuidados especiais.",
-        "Nos objetos maiores, indique dimensões aproximadas quando forem relevantes. Explique também se os móveis já estão desmontados ou se essa tarefa deverá ser incluída no serviço."
+        "Organize a carga por divisões ou categorias e separe mobiliário, eletrodomésticos, caixas e objetos que exigem cuidados especiais.",
+        "Indique dimensões aproximadas e envie fotografias dos volumes maiores quando existirem dúvidas sobre portas, escadas ou elevadores."
       ],
       "items": [
         {
           "title": "Mobiliário",
-          "text": "Liste camas, colchões, sofás, mesas, cadeiras, armários, cómodas e estantes."
+          "text": "Liste camas, colchões, sofás, mesas, armários, estantes e outros móveis de grandes dimensões."
         },
         {
           "title": "Eletrodomésticos",
-          "text": "Identifique frigorífico, máquina de lavar, televisão e outros equipamentos."
+          "text": "Identifique frigorífico, máquinas, televisão e outros equipamentos relevantes."
         },
         {
           "title": "Caixas",
-          "text": "Forneça uma estimativa mesmo que a embalagem ainda não esteja concluída."
+          "text": "Indique uma quantidade aproximada e destaque caixas frágeis ou especialmente pesadas."
         },
         {
           "title": "Objetos especiais",
-          "text": "Destaque peças frágeis, pesadas, valiosas ou difíceis de movimentar."
+          "text": "Assinale peças pesadas, frágeis, valiosas ou difíceis de movimentar."
         }
       ]
     },
     {
-      "id": "acessos",
-      "heading": "Porque são importantes os acessos",
+      "id": "acessos-setubal",
+      "heading": "Acessos e estacionamento em Setúbal",
       "paragraphs": [
-        "Os acessos ajudam a determinar o número de pessoas, o tempo necessário e o equipamento adequado. Um apartamento sem elevador ou uma entrada distante da zona de carga pode alterar significativamente o trabalho.",
-        "Confirme se os objetos maiores passam pelas portas, corredores e escadas. Quando existirem dúvidas, envie fotografias e medidas aproximadas."
+        "No município de Setúbal, as condições variam entre o centro urbano, bairros residenciais, moradias e localidades mais afastadas.",
+        "Quando não for possível aproximar a viatura da entrada, indique a distância, a inclinação, os degraus e o tipo de percurso que a equipa terá de fazer."
       ],
-      "items": [
-        {
-          "title": "Andares",
-          "text": "Indique o piso na recolha e na entrega, incluindo caves e pisos intermédios."
-        },
-        {
-          "title": "Elevadores",
-          "text": "Confirme se existem, se funcionam e se têm espaço para os principais objetos."
-        },
-        {
-          "title": "Escadas e corredores",
-          "text": "Mencione curvas apertadas, portas pequenas e outros obstáculos."
-        },
-        {
-          "title": "Estacionamento",
-          "text": "Explique onde o veículo poderá parar e a distância até à entrada."
-        }
+      "checklist": [
+        "Piso na recolha e na entrega.",
+        "Existência e dimensões aproximadas do elevador.",
+        "Número de lanços de escadas.",
+        "Portas, corredores e curvas apertadas.",
+        "Local possível para parar a viatura.",
+        "Distância entre a viatura e a entrada.",
+        "Portões, garagens ou controlo de entrada.",
+        "Regras comunicadas pelo condomínio ou edifício."
       ]
     },
     {
-      "id": "servicos",
-      "heading": "Que serviços adicionais pode ser necessário incluir",
+      "id": "servicos-setubal",
+      "heading": "Serviços que devem ficar definidos",
       "paragraphs": [
-        "As propostas podem abranger tarefas diferentes. Confirme se o valor inclui apenas veículo e motorista ou também ajudantes, carga, descarga e proteção dos bens.",
-        "Desmontagem, montagem, embalagem e equipamento especial devem ser indicados antes da data da mudança."
+        "A proposta deve indicar claramente o veículo, o número de ajudantes, a carga, a descarga e a proteção dos objetos.",
+        "Desmontagem, montagem, embalagem, materiais e equipamento adicional devem ser acordados antes da data da mudança."
       ],
       "items": [
         {
           "title": "Ajudantes",
-          "text": "Confirme quantas pessoas participarão na carga e descarga."
+          "text": "Confirme quantas pessoas participarão na carga e na descarga."
         },
         {
           "title": "Desmontagem e montagem",
-          "text": "Identifique os móveis que precisam deste serviço."
+          "text": "Identifique os móveis abrangidos e quem realizará cada tarefa."
         },
         {
-          "title": "Embalagem",
-          "text": "Confirme se materiais e preparação dos objetos estão incluídos."
+          "title": "Embalagem e proteção",
+          "text": "Confirme materiais para mobiliário, eletrodomésticos e objetos frágeis."
         },
         {
           "title": "Equipamento adicional",
-          "text": "Informe antecipadamente quando possam ser necessárias plataformas ou outros meios."
+          "text": "Informe sobre peças pesadas ou acessos que possam exigir meios específicos."
         }
       ]
     },
     {
-      "id": "comparar-propostas",
-      "heading": "Como comparar propostas para a mesma mudança",
+      "id": "comparar-setubal",
+      "heading": "Como comparar propostas para uma mudança em Setúbal",
       "paragraphs": [
-        "Envie a mesma descrição a todos os transportadores. Dessa forma, as propostas correspondem ao mesmo inventário, aos mesmos acessos e aos mesmos serviços.",
-        "Além do preço, compare o veículo previsto, o número de ajudantes, as tarefas incluídas, a data, o horário e as condições de pagamento."
+        "Envie a mesma descrição a todos os transportadores, incluindo zona, inventário, acessos, distância até à viatura e tarefas necessárias.",
+        "Compare o preço juntamente com o veículo, a equipa, os serviços incluídos, o horário e as condições para alterações do pedido."
       ],
       "checklist": [
-        "O inventário considerado é o mesmo.",
-        "Os dois locais e respetivos acessos estão identificados.",
+        "A origem e o destino são os mesmos.",
+        "O inventário considerado é idêntico.",
+        "Os acessos e o estacionamento foram descritos.",
         "O número de ajudantes está indicado.",
-        "Carga e descarga estão incluídas ou atribuídas.",
         "Os serviços adicionais estão discriminados.",
         "O valor e as condições estão registados por escrito."
       ]
@@ -149,37 +147,37 @@
       "id": "cargopt",
       "heading": "Como pedir propostas através da CargoPT",
       "paragraphs": [
-        "Na CargoPT, pode descrever uma mudança em Setúbal uma única vez. O pedido pode depois ser encaminhado para transportadores adequados às características indicadas.",
-        "Cada transportador apresenta a sua própria proposta. O cliente pode comparar as respostas recebidas antes de escolher."
+        "Na CargoPT, pode descrever uma mudança em Setúbal uma única vez, incluindo a zona, a carga, os acessos e as tarefas necessárias.",
+        "Os transportadores apresentam as suas próprias propostas e o cliente pode comparar respostas baseadas na mesma descrição."
       ]
     }
   ],
   "mid_cta": {
-    "heading": "Prepare o pedido da sua mudança em Setúbal",
-    "text": "Indique a rota, a carga, os acessos e os serviços necessários para receber propostas comparáveis.",
+    "heading": "Descreva a sua mudança em Setúbal",
+    "text": "Indique a zona, os objetos, os acessos, o estacionamento possível e os serviços necessários.",
     "label": "Descrever a mudança",
     "href": "/#request"
   },
   "faq": [
     {
-      "question": "Que informação devo enviar para uma mudança em Setúbal?",
-      "answer": "Indique recolha, entrega, data, inventário, andares, elevadores, estacionamento e serviços adicionais."
+      "question": "É suficiente indicar apenas que a mudança é em Setúbal?",
+      "answer": "Não. Indique a zona ou rua concreta na recolha e na entrega, porque os acessos e a distância até à viatura podem variar."
     },
     {
-      "question": "É obrigatório conhecer o volume exato?",
-      "answer": "Não. Uma lista dos objetos, uma estimativa das caixas e fotografias permitem uma primeira avaliação."
+      "question": "Que detalhes devo confirmar sobre o imóvel?",
+      "answer": "Verifique pisos, escadas, largura de portas e corredores, curvas, elevadores, portões e acesso à garagem."
     },
     {
-      "question": "Devo enviar fotografias?",
-      "answer": "São recomendáveis quando existem móveis grandes, objetos pesados, peças frágeis ou acessos difíceis."
+      "question": "A distância até à viatura influencia o serviço?",
+      "answer": "Sim. Um percurso longo, inclinado ou com degraus aumenta a movimentação manual e pode exigir mais tempo ou ajudantes."
+    },
+    {
+      "question": "Quando devo enviar fotografias?",
+      "answer": "Envie fotografias de móveis grandes, objetos especiais, escadas, portas estreitas e outros acessos difíceis."
     },
     {
       "question": "Como comparar propostas diferentes?",
-      "answer": "Confirme se todas consideram o mesmo inventário, acessos, ajudantes e serviços adicionais."
-    },
-    {
-      "question": "O valor pode mudar depois do pedido?",
-      "answer": "Alterações ao inventário, aos acessos, à data ou aos serviços podem modificar o trabalho necessário. Confirme qualquer alteração antes da mudança."
+      "answer": "Confirme se todas consideram a mesma carga, os mesmos acessos, o mesmo número de ajudantes e os mesmos serviços."
     }
   ],
   "related_links": [
@@ -205,8 +203,8 @@
     }
   ],
   "final_cta": {
-    "heading": "Peça propostas para a sua mudança em Setúbal",
-    "text": "Descreva os locais, os objetos, os acessos e os serviços necessários. Depois compare as propostas disponíveis.",
+    "heading": "Compare propostas para a sua mudança em Setúbal",
+    "text": "Descreva a zona, a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
   }

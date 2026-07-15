@@ -5,8 +5,8 @@
   "cluster": "cities",
   "path": "/mudancas-sintra/",
   "title": "Mudanças em Sintra",
-  "meta_title": "Mudanças em Sintra — CargoPT",
-  "meta_description": "Prepare uma mudança em Sintra: inventário, acessos, estacionamento, ajudantes e serviços necessários.",
+  "meta_title": "Mudanças em Sintra: zonas, acessos e preparação — CargoPT",
+  "meta_description": "Prepare uma mudança em Sintra: zona concreta, carga, acessos, estacionamento, ajudantes e serviços adicionais.",
   "primary_query": "mudanças Sintra",
   "intent": [
     "local",
@@ -14,168 +14,170 @@
   ],
   "article_section": "Mudanças por cidade",
   "eyebrow": "Mudanças em Sintra",
-  "hero_description": "Uma mudança em Sintra deve ser planeada com base na carga, nos acessos, no estacionamento e nos serviços necessários nos dois imóveis.",
+  "hero_description": "Uma mudança em Sintra deve considerar a zona concreta, o tipo de imóvel, os acessos e o ponto onde a viatura poderá parar. Sintra reúne zonas históricas, áreas urbanas densas e localidades mais dispersas. A localização concreta é essencial para avaliar o percurso, o veículo e a equipa.",
   "date_published": "2026-07-14",
   "date_modified": "2026-07-14",
   "review_owner": "CargoPT",
-  "direct_answer_heading": "Como preparar uma mudança em Sintra",
+  "direct_answer_heading": "O que deve confirmar antes de uma mudança em Sintra",
   "key_points_heading": "Informação necessária para receber propostas comparáveis",
   "faq_heading": "Perguntas frequentes sobre mudanças em Sintra",
   "related_links_heading": "Guias e serviços relacionados",
-  "direct_answer": "Para organizar uma mudança em Sintra, indique os locais de recolha e entrega, a data, os móveis, eletrodomésticos, caixas e objetos especiais. Descreva pisos, elevadores, escadas, estacionamento e distância até ao veículo. Confirme também ajudantes, desmontagem, montagem, embalagem e outros serviços que devam integrar a proposta.",
+  "direct_answer": "Para receber propostas adequadas para uma mudança em Sintra, indique a zona concreta da recolha e da entrega, a data, o inventário, os pisos, os elevadores, as escadas e o local onde a viatura poderá parar. Informe a distância de transporte manual e confirme se precisa de ajudantes, desmontagem, montagem, embalagem ou proteção adicional. Sintra reúne zonas históricas, áreas urbanas densas e localidades mais dispersas. A localização concreta é essencial para avaliar o percurso, o veículo e a equipa.",
   "key_points": [
-    "Indique claramente os locais de recolha e entrega.",
-    "Prepare um inventário dos móveis, equipamentos e caixas.",
-    "Descreva pisos, elevadores, escadas e estacionamento.",
-    "Identifique objetos pesados, frágeis ou volumosos.",
-    "Compare propostas baseadas na mesma descrição."
+    "Identifique a zona concreta da recolha e da entrega.",
+    "Confirme onde a viatura poderá parar em cada local.",
+    "Descreva pisos, elevadores, escadas, portas e corredores.",
+    "Envie fotografias de móveis grandes e acessos difíceis.",
+    "Compare propostas baseadas na mesma carga e nas mesmas tarefas."
   ],
   "sections": [
     {
-      "id": "informacao-pedido",
-      "heading": "Que informação incluir num pedido em Sintra?",
+      "id": "zonas-sintra",
+      "heading": "Zonas e condições de acesso em Sintra",
       "paragraphs": [
-        "O transportador precisa de conhecer a rota, a carga, os acessos e as tarefas incluídas antes de preparar uma proposta.",
-        "Uma lista organizada e fotografias dos volumes maiores ajudam a avaliar o veículo, a equipa e o tempo necessário."
+        "A indicação genérica de “Sintra” pode não ser suficiente para avaliar o serviço. A zona concreta influencia o percurso, a aproximação da viatura e a movimentação entre a rua e o imóvel.",
+        "Indique a localização nos dois extremos da mudança e descreva separadamente as condições de recolha e entrega."
       ],
-      "checklist": [
-        "Local de recolha e local de entrega.",
-        "Data pretendida e possíveis alternativas.",
-        "Lista dos principais móveis e eletrodomésticos.",
-        "Quantidade aproximada de caixas.",
-        "Objetos frágeis, pesados ou volumosos.",
-        "Serviços adicionais pretendidos."
+      "items": [
+        {
+          "title": "Centro histórico de Sintra",
+          "text": "Ruas inclinadas, curvas, acessos estreitos e distância de carga devem ser avaliados antecipadamente."
+        },
+        {
+          "title": "Agualva e Cacém",
+          "text": "Confirme pisos, elevadores, estacionamento e acesso aos edifícios residenciais."
+        },
+        {
+          "title": "Queluz e Massamá",
+          "text": "Indique a entrada correta, o elevador, as escadas e a distância desde a viatura."
+        },
+        {
+          "title": "Colares e zonas dispersas",
+          "text": "Forneça a localização exata e descreva portões, estradas estreitas ou percursos dentro da propriedade."
+        }
       ]
     },
     {
-      "id": "inventario",
-      "heading": "Como descrever a carga",
+      "id": "inventario-sintra",
+      "heading": "Como preparar o inventário para a mudança em Sintra",
       "paragraphs": [
-        "Organize o inventário por divisões ou categorias. Separe mobiliário, eletrodomésticos, caixas e objetos que exigem cuidados especiais.",
-        "Indique medidas aproximadas quando existirem dúvidas sobre portas, elevadores, escadas ou capacidade do veículo."
+        "Organize a carga por divisões ou categorias e separe mobiliário, eletrodomésticos, caixas e objetos que exigem cuidados especiais.",
+        "Indique dimensões aproximadas e envie fotografias dos volumes maiores quando existirem dúvidas sobre portas, escadas ou elevadores."
       ],
       "items": [
         {
           "title": "Mobiliário",
-          "text": "Liste sofás, camas, mesas, armários, estantes e outros móveis."
+          "text": "Liste camas, colchões, sofás, mesas, armários, estantes e outros móveis de grandes dimensões."
         },
         {
           "title": "Eletrodomésticos",
-          "text": "Identifique frigorífico, máquinas, televisão e equipamentos semelhantes."
+          "text": "Identifique frigorífico, máquinas, televisão e outros equipamentos relevantes."
         },
         {
           "title": "Caixas",
-          "text": "Forneça uma estimativa e destaque caixas frágeis ou especialmente pesadas."
+          "text": "Indique uma quantidade aproximada e destaque caixas frágeis ou especialmente pesadas."
         },
         {
           "title": "Objetos especiais",
-          "text": "Assinale peças pesadas, valiosas, frágeis ou difíceis de movimentar."
+          "text": "Assinale peças pesadas, frágeis, valiosas ou difíceis de movimentar."
         }
       ]
     },
     {
-      "id": "acessos",
+      "id": "acessos-sintra",
       "heading": "Acessos e estacionamento em Sintra",
       "paragraphs": [
-        "No concelho de Sintra, os acessos variam entre localidades. Indique a localização exata e mencione ruas estreitas, inclinações ou percursos longos.",
-        "Confirme a distância entre a entrada e o local onde o veículo pode parar. Informe também portarias, garagens, rampas e corredores estreitos."
+        "Sintra reúne zonas históricas, áreas urbanas densas e localidades mais dispersas. A localização concreta é essencial para avaliar o percurso, o veículo e a equipa.",
+        "Quando não for possível aproximar a viatura da entrada, indique a distância, a inclinação, os degraus e o tipo de percurso que a equipa terá de fazer."
       ],
-      "items": [
-        {
-          "title": "Pisos",
-          "text": "Indique o andar na recolha e na entrega, incluindo caves e garagens."
-        },
-        {
-          "title": "Elevadores",
-          "text": "Confirme disponibilidade, dimensões e regras de utilização."
-        },
-        {
-          "title": "Escadas",
-          "text": "Mencione curvas, patamares estreitos e outros obstáculos."
-        },
-        {
-          "title": "Estacionamento",
-          "text": "Explique onde o veículo pode parar e a distância até à entrada."
-        }
+      "checklist": [
+        "Piso na recolha e na entrega.",
+        "Existência e dimensões aproximadas do elevador.",
+        "Número de lanços de escadas.",
+        "Portas, corredores e curvas apertadas.",
+        "Local possível para parar a viatura.",
+        "Distância entre a viatura e a entrada.",
+        "Portões, garagens ou controlo de entrada.",
+        "Regras comunicadas pelo condomínio ou edifício."
       ]
     },
     {
-      "id": "servicos",
-      "heading": "Que serviços incluir na proposta",
+      "id": "servicos-sintra",
+      "heading": "Serviços que devem ficar definidos",
       "paragraphs": [
-        "Confirme se o serviço inclui apenas veículo e motorista ou também ajudantes, carga, descarga e proteção dos objetos.",
-        "Desmontagem, montagem, embalagem e equipamento adicional devem ser acordados antes da mudança."
+        "A proposta deve indicar claramente o veículo, o número de ajudantes, a carga, a descarga e a proteção dos objetos.",
+        "Desmontagem, montagem, embalagem, materiais e equipamento adicional devem ser acordados antes da data da mudança."
       ],
       "items": [
         {
           "title": "Ajudantes",
-          "text": "Confirme quantas pessoas participarão na carga e descarga."
+          "text": "Confirme quantas pessoas participarão na carga e na descarga."
         },
         {
-          "title": "Desmontagem",
-          "text": "Identifique os móveis que não podem seguir montados."
+          "title": "Desmontagem e montagem",
+          "text": "Identifique os móveis abrangidos e quem realizará cada tarefa."
         },
         {
-          "title": "Embalagem",
-          "text": "Defina quem fornece os materiais e prepara os objetos."
+          "title": "Embalagem e proteção",
+          "text": "Confirme materiais para mobiliário, eletrodomésticos e objetos frágeis."
         },
         {
-          "title": "Equipamento",
-          "text": "Informe sobre objetos pesados ou acessos especiais."
+          "title": "Equipamento adicional",
+          "text": "Informe sobre peças pesadas ou acessos que possam exigir meios específicos."
         }
       ]
     },
     {
-      "id": "comparar-propostas",
-      "heading": "Como comparar propostas",
+      "id": "comparar-sintra",
+      "heading": "Como comparar propostas para uma mudança em Sintra",
       "paragraphs": [
-        "Envie a mesma descrição a todos os transportadores. Assim, cada proposta considera a mesma carga, os mesmos acessos e as mesmas tarefas.",
-        "Além do valor, compare veículo, ajudantes, serviços incluídos, data, horário e condições de pagamento."
+        "Envie a mesma descrição a todos os transportadores, incluindo zona, inventário, acessos, distância até à viatura e tarefas necessárias.",
+        "Compare o preço juntamente com o veículo, a equipa, os serviços incluídos, o horário e as condições para alterações do pedido."
       ],
       "checklist": [
-        "O inventário considerado é o mesmo.",
-        "Os dois locais e acessos estão identificados.",
+        "A origem e o destino são os mesmos.",
+        "O inventário considerado é idêntico.",
+        "Os acessos e o estacionamento foram descritos.",
         "O número de ajudantes está indicado.",
-        "Carga e descarga estão incluídas ou atribuídas.",
         "Os serviços adicionais estão discriminados.",
-        "O valor e as condições estão registados."
+        "O valor e as condições estão registados por escrito."
       ]
     },
     {
       "id": "cargopt",
       "heading": "Como pedir propostas através da CargoPT",
       "paragraphs": [
-        "Na CargoPT, pode descrever uma mudança em Sintra uma única vez, incluindo carga, acessos e serviços.",
-        "Os transportadores apresentam as suas propostas e o cliente pode comparar as respostas antes de escolher."
+        "Na CargoPT, pode descrever uma mudança em Sintra uma única vez, incluindo a zona, a carga, os acessos e as tarefas necessárias.",
+        "Os transportadores apresentam as suas próprias propostas e o cliente pode comparar respostas baseadas na mesma descrição."
       ]
     }
   ],
   "mid_cta": {
-    "heading": "Prepare o pedido da sua mudança em Sintra",
-    "text": "Indique carga, acessos, data e serviços para receber propostas comparáveis.",
+    "heading": "Descreva a sua mudança em Sintra",
+    "text": "Indique a zona, os objetos, os acessos, o estacionamento possível e os serviços necessários.",
     "label": "Descrever a mudança",
     "href": "/#request"
   },
   "faq": [
     {
-      "question": "Que informação devo enviar para uma mudança em Sintra?",
-      "answer": "Indique recolha, entrega, data, inventário, pisos, elevadores, estacionamento e serviços adicionais."
+      "question": "É suficiente indicar apenas que a mudança é em Sintra?",
+      "answer": "Não. Indique a zona ou rua concreta na recolha e na entrega, porque os acessos e a distância até à viatura podem variar."
     },
     {
-      "question": "É necessário conhecer o volume exato?",
-      "answer": "Não. Uma lista dos objetos, uma estimativa das caixas e fotografias permitem uma primeira avaliação."
+      "question": "Que detalhes devo confirmar sobre o imóvel?",
+      "answer": "Verifique pisos, escadas, largura de portas e corredores, curvas, elevadores, portões e acesso à garagem."
+    },
+    {
+      "question": "A distância até à viatura influencia o serviço?",
+      "answer": "Sim. Um percurso longo, inclinado ou com degraus aumenta a movimentação manual e pode exigir mais tempo ou ajudantes."
     },
     {
       "question": "Quando devo enviar fotografias?",
-      "answer": "Envie fotografias de móveis grandes, objetos especiais e acessos que possam dificultar a movimentação."
+      "answer": "Envie fotografias de móveis grandes, objetos especiais, escadas, portas estreitas e outros acessos difíceis."
     },
     {
-      "question": "A desmontagem está incluída automaticamente?",
-      "answer": "Não necessariamente. Identifique os móveis e confirme por escrito as tarefas incluídas."
-    },
-    {
-      "question": "Como evitar alterações ao valor?",
-      "answer": "Forneça informação completa e comunique antecipadamente alterações de carga, acesso, data ou serviço."
+      "question": "Como comparar propostas diferentes?",
+      "answer": "Confirme se todas consideram a mesma carga, os mesmos acessos, o mesmo número de ajudantes e os mesmos serviços."
     }
   ],
   "related_links": [
@@ -202,7 +204,7 @@
   ],
   "final_cta": {
     "heading": "Compare propostas para a sua mudança em Sintra",
-    "text": "Descreva os locais, a carga, os acessos e as tarefas. Depois compare propostas para o mesmo serviço.",
+    "text": "Descreva a zona, a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
   }

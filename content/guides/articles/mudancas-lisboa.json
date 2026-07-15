@@ -5,8 +5,8 @@
   "cluster": "cities",
   "path": "/mudancas-lisboa/",
   "title": "Mudanças em Lisboa",
-  "meta_title": "Mudanças em Lisboa — CargoPT",
-  "meta_description": "Prepare uma mudança em Lisboa: inventário, acessos, estacionamento, ajudantes e serviços necessários.",
+  "meta_title": "Mudanças em Lisboa: zonas, acessos e preparação — CargoPT",
+  "meta_description": "Prepare uma mudança em Lisboa: zona concreta, carga, acessos, estacionamento, ajudantes e serviços adicionais.",
   "primary_query": "mudanças Lisboa",
   "intent": [
     "local",
@@ -15,58 +15,64 @@
   ],
   "article_section": "Mudanças por cidade",
   "eyebrow": "Mudanças em Lisboa",
-  "hero_description": "Uma mudança em Lisboa exige uma descrição clara da carga, dos acessos e da zona de estacionamento para que as propostas correspondam ao trabalho real.",
+  "hero_description": "Uma mudança em Lisboa deve considerar a zona concreta, o tipo de imóvel, os acessos e o ponto onde a viatura poderá parar. Em Lisboa, a largura da rua, a inclinação, o estacionamento, as zonas de acesso condicionado e a distância de transporte manual podem alterar significativamente o serviço.",
   "date_published": "2026-07-13",
-  "date_modified": "2026-07-13",
+  "date_modified": "2026-07-14",
   "review_owner": "CargoPT",
-  "direct_answer_heading": "Como preparar uma mudança em Lisboa",
+  "direct_answer_heading": "O que deve confirmar antes de uma mudança em Lisboa",
   "key_points_heading": "Informação necessária para pedir propostas",
   "faq_heading": "Perguntas frequentes sobre mudanças em Lisboa",
   "related_links_heading": "Guias e serviços relacionados",
-  "direct_answer": "Para organizar uma mudança em Lisboa, indique os locais de recolha e entrega, a data pretendida, os móveis, eletrodomésticos, caixas e objetos especiais. Descreva os andares, elevadores, escadas, estacionamento e distância até ao veículo. Confirme também se precisa de ajudantes, desmontagem, montagem, embalagem ou equipamento adicional.",
+  "direct_answer": "Para receber propostas adequadas para uma mudança em Lisboa, indique a zona concreta da recolha e da entrega, a data, o inventário, os pisos, os elevadores, as escadas e o local onde a viatura poderá parar. Informe a distância de transporte manual e confirme se precisa de ajudantes, desmontagem, montagem, embalagem ou proteção adicional. Em Lisboa, a largura da rua, a inclinação, o estacionamento, as zonas de acesso condicionado e a distância de transporte manual podem alterar significativamente o serviço.",
   "key_points": [
-    "Indique claramente os locais de recolha e entrega.",
-    "Prepare um inventário dos móveis, eletrodomésticos e caixas.",
-    "Descreva andares, elevadores, escadas e estacionamento.",
-    "Identifique objetos pesados, frágeis ou volumosos.",
-    "Compare propostas baseadas na mesma descrição do serviço."
+    "Identifique a zona concreta da recolha e da entrega.",
+    "Confirme onde a viatura poderá parar em cada local.",
+    "Descreva pisos, elevadores, escadas, portas e corredores.",
+    "Envie fotografias de móveis grandes e acessos difíceis.",
+    "Compare propostas baseadas na mesma carga e nas mesmas tarefas."
   ],
   "sections": [
     {
-      "id": "informacao-pedido",
-      "heading": "Que informação incluir num pedido em Lisboa?",
+      "id": "zonas-lisboa",
+      "heading": "Zonas e condições de acesso em Lisboa",
       "paragraphs": [
-        "Uma proposta só pode ser comparada corretamente quando o transportador conhece a carga, a rota, os acessos e as tarefas que terá de executar.",
-        "Não é necessário calcular o peso total. Uma lista organizada, uma estimativa do número de caixas e fotografias dos volumes maiores permitem uma primeira avaliação."
+        "A indicação genérica de “Lisboa” pode não ser suficiente para avaliar o serviço. A zona concreta influencia o percurso, a aproximação da viatura e a movimentação entre a rua e o imóvel.",
+        "Indique a localização nos dois extremos da mudança e descreva separadamente as condições de recolha e entrega."
       ],
-      "checklist": [
-        "Localização da recolha.",
-        "Localização da entrega.",
-        "Data pretendida e possíveis alternativas.",
-        "Lista dos principais móveis e eletrodomésticos.",
-        "Quantidade aproximada de caixas.",
-        "Objetos frágeis, pesados ou volumosos.",
-        "Andares, elevadores e escadas.",
-        "Distância entre a entrada e o veículo.",
-        "Número de ajudantes necessário.",
-        "Serviços adicionais pretendidos."
+      "items": [
+        {
+          "title": "Baixa, Alfama e Mouraria",
+          "text": "Ruas estreitas, inclinação, escadas e distância entre a entrada e a zona possível de carga devem ser descritas com detalhe."
+        },
+        {
+          "title": "Avenidas Novas e Alvalade",
+          "text": "Confirme o piso, o elevador, a entrada de serviço e as condições para aproximar a viatura do edifício."
+        },
+        {
+          "title": "Benfica e zona ocidental",
+          "text": "Indique acessos por garagem, portões, pátios ou percursos interiores até ao imóvel."
+        },
+        {
+          "title": "Parque das Nações",
+          "text": "Confirme regras do condomínio, acesso à garagem, utilização de elevadores e horários disponíveis."
+        }
       ]
     },
     {
-      "id": "inventario",
-      "heading": "Como descrever a carga",
+      "id": "inventario-lisboa",
+      "heading": "Como preparar o inventário para a mudança em Lisboa",
       "paragraphs": [
-        "Organize o inventário por divisões ou categorias. Separe mobiliário, eletrodomésticos, caixas e objetos que exigem cuidados especiais.",
-        "Indique se os móveis já estão desmontados e forneça medidas aproximadas quando existirem dúvidas sobre portas, elevadores ou escadas."
+        "Organize a carga por divisões ou categorias e separe mobiliário, eletrodomésticos, caixas e objetos que exigem cuidados especiais.",
+        "Indique dimensões aproximadas e envie fotografias dos volumes maiores quando existirem dúvidas sobre portas, escadas ou elevadores."
       ],
       "items": [
         {
           "title": "Mobiliário",
-          "text": "Liste sofás, camas, colchões, mesas, armários, estantes, cómodas e outros móveis."
+          "text": "Liste camas, colchões, sofás, mesas, armários, estantes e outros móveis de grandes dimensões."
         },
         {
           "title": "Eletrodomésticos",
-          "text": "Identifique frigorífico, máquinas, televisão e equipamentos semelhantes."
+          "text": "Identifique frigorífico, máquinas, televisão e outros equipamentos relevantes."
         },
         {
           "title": "Caixas",
@@ -79,69 +85,61 @@
       ]
     },
     {
-      "id": "acessos-locais",
-      "heading": "Acessos e estacionamento numa mudança em Lisboa",
+      "id": "acessos-lisboa",
+      "heading": "Acessos e estacionamento em Lisboa",
       "paragraphs": [
-        "Em Lisboa, a distância entre a entrada do imóvel e o local onde o veículo pode parar pode influenciar significativamente o tempo de carga e descarga.",
-        "Indique antecipadamente se existem ruas estreitas, acessos condicionados, escadas, elevadores pequenos ou necessidade de transportar os objetos por uma distância maior."
+        "Em Lisboa, a largura da rua, a inclinação, o estacionamento, as zonas de acesso condicionado e a distância de transporte manual podem alterar significativamente o serviço.",
+        "Quando não for possível aproximar a viatura da entrada, indique a distância, a inclinação, os degraus e o tipo de percurso que a equipa terá de fazer."
       ],
-      "items": [
-        {
-          "title": "Andares",
-          "text": "Indique o piso na recolha e na entrega, incluindo caves, garagens e pisos intermédios."
-        },
-        {
-          "title": "Elevadores",
-          "text": "Confirme a disponibilidade, as dimensões e as regras de utilização."
-        },
-        {
-          "title": "Escadas e corredores",
-          "text": "Mencione curvas apertadas, portas pequenas e outros obstáculos."
-        },
-        {
-          "title": "Estacionamento",
-          "text": "Explique onde o veículo pode parar e qual é a distância até à entrada."
-        }
+      "checklist": [
+        "Piso na recolha e na entrega.",
+        "Existência e dimensões aproximadas do elevador.",
+        "Número de lanços de escadas.",
+        "Portas, corredores e curvas apertadas.",
+        "Local possível para parar a viatura.",
+        "Distância entre a viatura e a entrada.",
+        "Portões, garagens ou controlo de entrada.",
+        "Regras comunicadas pelo condomínio ou edifício."
       ]
     },
     {
-      "id": "servicos",
-      "heading": "Que serviços devem ser incluídos",
+      "id": "servicos-lisboa",
+      "heading": "Serviços que devem ficar definidos",
       "paragraphs": [
-        "Confirme se a proposta inclui apenas veículo e motorista ou também ajudantes, carga, descarga e proteção dos objetos.",
-        "Desmontagem, montagem, embalagem e equipamento adicional devem ser acordados antes da mudança."
+        "A proposta deve indicar claramente o veículo, o número de ajudantes, a carga, a descarga e a proteção dos objetos.",
+        "Desmontagem, montagem, embalagem, materiais e equipamento adicional devem ser acordados antes da data da mudança."
       ],
       "items": [
         {
           "title": "Ajudantes",
-          "text": "Confirme quantas pessoas participarão na carga e descarga."
+          "text": "Confirme quantas pessoas participarão na carga e na descarga."
         },
         {
           "title": "Desmontagem e montagem",
-          "text": "Identifique os móveis que precisam destas tarefas."
+          "text": "Identifique os móveis abrangidos e quem realizará cada tarefa."
         },
         {
-          "title": "Embalagem",
-          "text": "Confirme se os materiais e a preparação estão incluídos."
+          "title": "Embalagem e proteção",
+          "text": "Confirme materiais para mobiliário, eletrodomésticos e objetos frágeis."
         },
         {
           "title": "Equipamento adicional",
-          "text": "Informe se podem ser necessários meios específicos para movimentar a carga."
+          "text": "Informe sobre peças pesadas ou acessos que possam exigir meios específicos."
         }
       ]
     },
     {
-      "id": "comparar-propostas",
-      "heading": "Como comparar propostas para a mesma mudança",
+      "id": "comparar-lisboa",
+      "heading": "Como comparar propostas para uma mudança em Lisboa",
       "paragraphs": [
-        "Envie a mesma descrição a todos os transportadores. Assim, cada proposta considera o mesmo inventário, os mesmos acessos e as mesmas tarefas.",
-        "Além do valor, compare o veículo, o número de ajudantes, os serviços incluídos, o horário e as condições de pagamento."
+        "Envie a mesma descrição a todos os transportadores, incluindo zona, inventário, acessos, distância até à viatura e tarefas necessárias.",
+        "Compare o preço juntamente com o veículo, a equipa, os serviços incluídos, o horário e as condições para alterações do pedido."
       ],
       "checklist": [
-        "O inventário considerado é o mesmo.",
-        "Os locais e os acessos estão identificados.",
+        "A origem e o destino são os mesmos.",
+        "O inventário considerado é idêntico.",
+        "Os acessos e o estacionamento foram descritos.",
         "O número de ajudantes está indicado.",
-        "Carga e descarga estão incluídas ou atribuídas.",
         "Os serviços adicionais estão discriminados.",
         "O valor e as condições estão registados por escrito."
       ]
@@ -150,37 +148,37 @@
       "id": "cargopt",
       "heading": "Como pedir propostas através da CargoPT",
       "paragraphs": [
-        "Na CargoPT, pode descrever uma mudança em Lisboa uma única vez e indicar a carga, os acessos e os serviços necessários.",
-        "Os transportadores apresentam as suas próprias propostas. O cliente pode comparar as respostas antes de escolher."
+        "Na CargoPT, pode descrever uma mudança em Lisboa uma única vez, incluindo a zona, a carga, os acessos e as tarefas necessárias.",
+        "Os transportadores apresentam as suas próprias propostas e o cliente pode comparar respostas baseadas na mesma descrição."
       ]
     }
   ],
   "mid_cta": {
-    "heading": "Prepare o pedido da sua mudança em Lisboa",
-    "text": "Indique a rota, a carga, os acessos e os serviços para receber propostas comparáveis.",
+    "heading": "Descreva a sua mudança em Lisboa",
+    "text": "Indique a zona, os objetos, os acessos, o estacionamento possível e os serviços necessários.",
     "label": "Descrever a mudança",
     "href": "/#request"
   },
   "faq": [
     {
-      "question": "Que informação devo enviar para uma mudança em Lisboa?",
-      "answer": "Indique recolha, entrega, data, inventário, andares, elevadores, estacionamento e serviços adicionais."
+      "question": "É suficiente indicar apenas que a mudança é em Lisboa?",
+      "answer": "Não. Indique a zona ou rua concreta na recolha e na entrega, porque os acessos e a distância até à viatura podem variar."
     },
     {
-      "question": "É necessário conhecer o volume exato da carga?",
-      "answer": "Não. Uma lista dos objetos, uma estimativa das caixas e fotografias permitem uma primeira avaliação."
+      "question": "Que detalhes devo confirmar sobre o imóvel?",
+      "answer": "Verifique pisos, escadas, largura de portas e corredores, curvas, elevadores, portões e acesso à garagem."
+    },
+    {
+      "question": "A distância até à viatura influencia o serviço?",
+      "answer": "Sim. Um percurso longo, inclinado ou com degraus aumenta a movimentação manual e pode exigir mais tempo ou ajudantes."
     },
     {
       "question": "Quando devo enviar fotografias?",
-      "answer": "Envie fotografias quando existirem móveis grandes, objetos pesados, peças frágeis ou acessos difíceis."
+      "answer": "Envie fotografias de móveis grandes, objetos especiais, escadas, portas estreitas e outros acessos difíceis."
     },
     {
-      "question": "A desmontagem está incluída automaticamente?",
-      "answer": "Não necessariamente. Identifique os móveis e confirme por escrito as tarefas incluídas."
-    },
-    {
-      "question": "Como evitar alterações ao valor acordado?",
-      "answer": "Forneça uma descrição completa e comunique antecipadamente qualquer alteração de carga, acesso, data ou serviço."
+      "question": "Como comparar propostas diferentes?",
+      "answer": "Confirme se todas consideram a mesma carga, os mesmos acessos, o mesmo número de ajudantes e os mesmos serviços."
     }
   ],
   "related_links": [
@@ -207,7 +205,7 @@
   ],
   "final_cta": {
     "heading": "Compare propostas para a sua mudança em Lisboa",
-    "text": "Descreva os locais, a carga, os acessos e as tarefas. Depois compare propostas para o mesmo serviço.",
+    "text": "Descreva a zona, a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
   }

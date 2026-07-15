@@ -5,8 +5,8 @@
   "cluster": "cities",
   "path": "/guias/cidades/mudancas-amadora/",
   "title": "Mudanças na Amadora",
-  "meta_title": "Mudanças na Amadora — CargoPT",
-  "meta_description": "Saiba como preparar uma mudança na Amadora e que informação enviar para receber propostas completas e comparáveis.",
+  "meta_title": "Mudanças na Amadora: zonas, acessos e preparação — CargoPT",
+  "meta_description": "Prepare uma mudança na Amadora: zona concreta, carga, acessos, estacionamento, ajudantes e serviços adicionais.",
   "primary_query": "mudanças Amadora",
   "intent": [
     "local",
@@ -14,116 +14,170 @@
   ],
   "article_section": "Mudanças por cidade",
   "eyebrow": "Mudanças na Amadora",
-  "hero_description": "Inventário, acessos, estacionamento, rota e tarefas adicionais devem ser comunicados antes de comparar propostas.",
+  "hero_description": "Uma mudança na Amadora deve considerar a zona concreta, o tipo de imóvel, os acessos e o ponto onde a viatura poderá parar. Na Amadora, a densidade urbana, os blocos residenciais e a distância entre o estacionamento e a entrada devem ser descritos separadamente para cada local.",
   "date_published": "2026-07-12",
-  "date_modified": "2026-07-12",
+  "date_modified": "2026-07-14",
   "review_owner": "CargoPT",
-  "direct_answer_heading": "Um pedido completo evita omissões na proposta",
+  "direct_answer_heading": "O que deve confirmar antes de uma mudança na Amadora",
   "key_points_heading": "Pontos essenciais",
   "faq_heading": "Perguntas frequentes",
   "related_links_heading": "Guias e serviços relacionados",
-  "direct_answer": "Para pedir uma mudança na Amadora, informe os locais de recolha e entrega, a data, os móveis, eletrodomésticos e caixas, os andares, elevadores, escadas e a distância até ao veículo. Confirme também se precisa de ajudantes, embalagem, desmontagem ou montagem.",
+  "direct_answer": "Para receber propostas adequadas para uma mudança na Amadora, indique a zona concreta da recolha e da entrega, a data, o inventário, os pisos, os elevadores, as escadas e o local onde a viatura poderá parar. Informe a distância de transporte manual e confirme se precisa de ajudantes, desmontagem, montagem, embalagem ou proteção adicional. Na Amadora, a densidade urbana, os blocos residenciais e a distância entre o estacionamento e a entrada devem ser descritos separadamente para cada local.",
   "key_points": [
-    "Envie o mesmo inventário a todos os transportadores.",
-    "Indique as condições de acesso nos dois imóveis.",
-    "Explique a possibilidade de estacionamento junto às entradas.",
-    "Identifique objetos pesados, frágeis ou volumosos.",
-    "Confirme por escrito todas as tarefas incluídas."
+    "Identifique a zona concreta da recolha e da entrega.",
+    "Confirme onde a viatura poderá parar em cada local.",
+    "Descreva pisos, elevadores, escadas, portas e corredores.",
+    "Envie fotografias de móveis grandes e acessos difíceis.",
+    "Compare propostas baseadas na mesma carga e nas mesmas tarefas."
   ],
   "sections": [
     {
-      "id": "inventario",
-      "heading": "Como preparar o inventário",
+      "id": "zonas-amadora",
+      "heading": "Zonas e condições de acesso na Amadora",
       "paragraphs": [
-        "Separe a descrição por divisões e indique os objetos principais.",
-        "Inclua uma quantidade aproximada de caixas e fotografias dos volumes maiores."
+        "A indicação genérica de “Amadora” pode não ser suficiente para avaliar o serviço. A zona concreta influencia o percurso, a aproximação da viatura e a movimentação entre a rua e o imóvel.",
+        "Indique a localização nos dois extremos da mudança e descreva separadamente as condições de recolha e entrega."
       ],
       "items": [
         {
-          "title": "Móveis",
-          "text": "Sofás, camas, mesas, armários, estantes e colchões."
+          "title": "Venteira",
+          "text": "Confirme pisos, elevadores, estacionamento e distância até à entrada do edifício."
         },
         {
-          "title": "Eletrodomésticos",
-          "text": "Frigorífico, máquinas, televisão e outros equipamentos."
+          "title": "Mina de Água",
+          "text": "Indique escadas, corredores, acesso ao prédio e local possível para a viatura."
         },
         {
-          "title": "Caixas",
-          "text": "Quantidade aproximada e presença de conteúdo frágil ou pesado."
+          "title": "Damaia",
+          "text": "Descreva a entrada correta, a utilização do elevador e eventuais percursos entre blocos."
         },
         {
-          "title": "Objetos especiais",
-          "text": "Peças pesadas, frágeis ou que exigem equipamento específico."
+          "title": "Alfragide",
+          "text": "Confirme acessos de condomínios, garagens, portões e regras para prestadores."
         }
       ]
     },
     {
-      "id": "acessos",
-      "heading": "Andares, elevadores e escadas",
+      "id": "inventario-amadora",
+      "heading": "Como preparar o inventário para a mudança na Amadora",
       "paragraphs": [
-        "Indique o piso nos dois locais e confirme se os objetos maiores cabem no elevador.",
-        "Escadas estreitas, corredores pequenos e outros obstáculos devem ser descritos."
+        "Organize a carga por divisões ou categorias e separe mobiliário, eletrodomésticos, caixas e objetos que exigem cuidados especiais.",
+        "Indique dimensões aproximadas e envie fotografias dos volumes maiores quando existirem dúvidas sobre portas, escadas ou elevadores."
+      ],
+      "items": [
+        {
+          "title": "Mobiliário",
+          "text": "Liste camas, colchões, sofás, mesas, armários, estantes e outros móveis de grandes dimensões."
+        },
+        {
+          "title": "Eletrodomésticos",
+          "text": "Identifique frigorífico, máquinas, televisão e outros equipamentos relevantes."
+        },
+        {
+          "title": "Caixas",
+          "text": "Indique uma quantidade aproximada e destaque caixas frágeis ou especialmente pesadas."
+        },
+        {
+          "title": "Objetos especiais",
+          "text": "Assinale peças pesadas, frágeis, valiosas ou difíceis de movimentar."
+        }
       ]
     },
     {
-      "id": "estacionamento",
-      "heading": "Zona de carga e estacionamento",
+      "id": "acessos-amadora",
+      "heading": "Acessos e estacionamento na Amadora",
       "paragraphs": [
-        "Explique se o veículo pode aproximar-se da entrada ou se será necessário transportar os objetos por uma distância maior.",
-        "Esta informação ajuda a estimar o tempo e o número de ajudantes."
+        "Na Amadora, a densidade urbana, os blocos residenciais e a distância entre o estacionamento e a entrada devem ser descritos separadamente para cada local.",
+        "Quando não for possível aproximar a viatura da entrada, indique a distância, a inclinação, os degraus e o tipo de percurso que a equipa terá de fazer."
+      ],
+      "checklist": [
+        "Piso na recolha e na entrega.",
+        "Existência e dimensões aproximadas do elevador.",
+        "Número de lanços de escadas.",
+        "Portas, corredores e curvas apertadas.",
+        "Local possível para parar a viatura.",
+        "Distância entre a viatura e a entrada.",
+        "Portões, garagens ou controlo de entrada.",
+        "Regras comunicadas pelo condomínio ou edifício."
       ]
     },
     {
-      "id": "servicos",
-      "heading": "Que tarefas precisa de contratar?",
+      "id": "servicos-amadora",
+      "heading": "Serviços que devem ficar definidos",
       "paragraphs": [
-        "Defina se precisa apenas de veículo e motorista ou também de ajudantes, carga, descarga, desmontagem, montagem e embalagem.",
-        "Confirme se os materiais de proteção estão incluídos."
+        "A proposta deve indicar claramente o veículo, o número de ajudantes, a carga, a descarga e a proteção dos objetos.",
+        "Desmontagem, montagem, embalagem, materiais e equipamento adicional devem ser acordados antes da data da mudança."
+      ],
+      "items": [
+        {
+          "title": "Ajudantes",
+          "text": "Confirme quantas pessoas participarão na carga e na descarga."
+        },
+        {
+          "title": "Desmontagem e montagem",
+          "text": "Identifique os móveis abrangidos e quem realizará cada tarefa."
+        },
+        {
+          "title": "Embalagem e proteção",
+          "text": "Confirme materiais para mobiliário, eletrodomésticos e objetos frágeis."
+        },
+        {
+          "title": "Equipamento adicional",
+          "text": "Informe sobre peças pesadas ou acessos que possam exigir meios específicos."
+        }
       ]
     },
     {
-      "id": "comparar",
-      "heading": "Como comparar propostas",
+      "id": "comparar-amadora",
+      "heading": "Como comparar propostas para uma mudança na Amadora",
       "paragraphs": [
-        "Verifique se todas consideram o mesmo inventário, acessos, rota e serviços.",
-        "Compare o veículo, o número de ajudantes, as condições de pagamento e o tratamento de alterações."
+        "Envie a mesma descrição a todos os transportadores, incluindo zona, inventário, acessos, distância até à viatura e tarefas necessárias.",
+        "Compare o preço juntamente com o veículo, a equipa, os serviços incluídos, o horário e as condições para alterações do pedido."
+      ],
+      "checklist": [
+        "A origem e o destino são os mesmos.",
+        "O inventário considerado é idêntico.",
+        "Os acessos e o estacionamento foram descritos.",
+        "O número de ajudantes está indicado.",
+        "Os serviços adicionais estão discriminados.",
+        "O valor e as condições estão registados por escrito."
       ]
     },
     {
       "id": "cargopt",
-      "heading": "Receber propostas através da CargoPT",
+      "heading": "Como pedir propostas através da CargoPT",
       "paragraphs": [
-        "A CargoPT permite enviar uma descrição comum do serviço a transportadores adequados.",
-        "O cliente pode comparar as propostas recebidas antes de escolher."
+        "Na CargoPT, pode descrever uma mudança na Amadora uma única vez, incluindo a zona, a carga, os acessos e as tarefas necessárias.",
+        "Os transportadores apresentam as suas próprias propostas e o cliente pode comparar respostas baseadas na mesma descrição."
       ]
     }
   ],
   "mid_cta": {
-    "heading": "Prepare o pedido da sua mudança na Amadora",
-    "text": "Descreva a carga, os acessos e os serviços para receber propostas preparadas sobre o mesmo trabalho.",
+    "heading": "Descreva a sua mudança na Amadora",
+    "text": "Indique a zona, os objetos, os acessos, o estacionamento possível e os serviços necessários.",
     "label": "Descrever a mudança",
     "href": "/#request"
   },
   "faq": [
     {
-      "question": "É necessário indicar a morada completa?",
-      "answer": "Pode começar por uma localização aproximada, mas a rota e as condições de acesso devem ficar claras antes da confirmação."
+      "question": "É suficiente indicar apenas que a mudança é na Amadora?",
+      "answer": "Não. Indique a zona ou rua concreta na recolha e na entrega, porque os acessos e a distância até à viatura podem variar."
     },
     {
-      "question": "Um elevador reduz sempre o trabalho?",
-      "answer": "Depende da dimensão e das regras de utilização. Confirme se os objetos maiores cabem e se o elevador estará disponível."
+      "question": "Que detalhes devo confirmar sobre o imóvel?",
+      "answer": "Verifique pisos, escadas, largura de portas e corredores, curvas, elevadores, portões e acesso à garagem."
     },
     {
-      "question": "Objetos pesados precisam de indicação especial?",
-      "answer": "Sim. Peso, formato e acessos podem exigir mais pessoas ou equipamento específico."
+      "question": "A distância até à viatura influencia o serviço?",
+      "answer": "Sim. Um percurso longo, inclinado ou com degraus aumenta a movimentação manual e pode exigir mais tempo ou ajudantes."
     },
     {
-      "question": "A desmontagem está incluída no transporte?",
-      "answer": "Não necessariamente. Liste os móveis e confirme por escrito quais serão desmontados e montados."
+      "question": "Quando devo enviar fotografias?",
+      "answer": "Envie fotografias de móveis grandes, objetos especiais, escadas, portas estreitas e outros acessos difíceis."
     },
     {
-      "question": "Como evitar diferenças no dia da mudança?",
-      "answer": "Envie um inventário completo e comunique alterações de carga, acesso, data ou horário antecipadamente."
+      "question": "Como comparar propostas diferentes?",
+      "answer": "Confirme se todas consideram a mesma carga, os mesmos acessos, o mesmo número de ajudantes e os mesmos serviços."
     }
   ],
   "related_links": [
@@ -149,8 +203,8 @@
     }
   ],
   "final_cta": {
-    "heading": "Compare propostas para mudanças na Amadora",
-    "text": "Envie uma descrição completa e compare propostas para a mesma carga, rota e conjunto de serviços.",
+    "heading": "Compare propostas para a sua mudança na Amadora",
+    "text": "Descreva a zona, a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
   }
