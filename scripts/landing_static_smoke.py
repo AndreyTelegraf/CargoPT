@@ -187,6 +187,56 @@ def main() -> None:
                     f"/assets/js/landing.js contains stale arrow behavior: {forbidden}"
                 )
 
+        en_home = client.get("/en/").text
+        ru_home = client.get("/ru/").text
+
+        assert (
+            '<meta property="og:title" '
+            'content="Choose the right carrier">'
+        ) in en_home
+
+        assert (
+            '<meta property="og:title" '
+            'content="Выберите подходящего перевозчика">'
+        ) in ru_home
+
+        assert (
+            'href="/guias/">See guides</a>'
+        ) in en_home
+        assert (
+            'class="form-note guide-language-note">'
+            'In Portuguese</p>'
+        ) in en_home
+
+        assert (
+            'href="/guias/">Смотреть гайды</a>'
+        ) in ru_home
+        assert (
+            'class="form-note guide-language-note">'
+            'На португальском</p>'
+        ) in ru_home
+
+        assert en_home.count(
+            'type="application/ld+json"'
+        ) == 5
+
+        assert ru_home.count(
+            'type="application/ld+json"'
+        ) == 5
+
+        for required_type in (
+            '"@type":"Organization"',
+            '"@type":"WebSite"',
+            '"@type":"WebPage"',
+            '"@type":"Service"',
+            '"@type":"FAQPage"',
+        ):
+            assert required_type in en_home
+            assert required_type in ru_home
+
+        assert '<p class="eyebrow">Problem</p>' not in ru_home
+        assert '<p class="eyebrow">Cargo</p>' not in ru_home
+
     print("LANDING_STATIC_SMOKE_OK")
 
 
