@@ -131,6 +131,121 @@ class FakeBot:
 fake_bot = FakeBot()
 
 
+class FakeAssignmentCallbackMessage:
+    def __init__(self) -> None:
+        self.text = "Подтвердите, состоялась ли сделка."
+        self.caption = None
+        self.edits: list[dict] = []
+
+    async def edit_text(self, text, **kwargs):
+        self.text = text
+        self.edits.append(
+            {
+                "method": "edit_text",
+                "text": text,
+                "kwargs": {
+                    key: (
+                        value.model_dump(mode="json")
+                        if hasattr(value, "model_dump")
+                        else value
+                    )
+                    for key, value in kwargs.items()
+                },
+            }
+        )
+        return self
+
+    async def edit_reply_markup(self, **kwargs):
+        self.edits.append(
+            {
+                "method": "edit_reply_markup",
+                "kwargs": {
+                    key: (
+                        value.model_dump(mode="json")
+                        if hasattr(value, "model_dump")
+                        else value
+                    )
+                    for key, value in kwargs.items()
+                },
+            }
+        )
+        return self
+
+
+class FakeAssignmentCallback:
+    def __init__(
+        self,
+        *,
+        job_id: int,
+        telegram_user_id: int,
+    ) -> None:
+        self.data = f"assignment:confirm:{job_id}"
+        self.from_user = SimpleNamespace(
+            id=telegram_user_id,
+        )
+        self.bot = fake_bot
+        self.message = FakeAssignmentCallbackMessage()
+        self.answers: list[dict] = []
+
+    async def answer(self, text=None, **kwargs):
+        self.answers.append(
+            {
+                "text": text,
+                "kwargs": kwargs,
+            }
+        )
+        return True
+
+
+async def confirm_carrier_assignment(job_id: int) -> dict:
+    from app.bot.handlers.job_assignment_confirmation import (
+        handle_assignment_confirmation,
+    )
+
+    carrier_chat_ids = [
+        int(message["chat_id"])
+        for message in fake_bot.messages
+        if (
+            message.get("method") == "send_message"
+            and message.get("chat_id") is not None
+        )
+    ]
+
+    if not carrier_chat_ids:
+        raise AssertionError(
+            "carrier Telegram chat id was not captured"
+        )
+
+    callback = FakeAssignmentCallback(
+        job_id=job_id,
+        telegram_user_id=carrier_chat_ids[-1],
+    )
+
+    bot_message_count_before = len(fake_bot.messages)
+
+    await handle_assignment_confirmation(callback)
+
+    if not callback.answers:
+        raise AssertionError(
+            "carrier callback answer was not recorded"
+        )
+
+    if not callback.message.edits:
+        raise AssertionError(
+            "carrier callback message was not edited"
+        )
+
+    return {
+        "telegram_user_id": callback.from_user.id,
+        "answers": callback.answers,
+        "message_edits": callback.message.edits,
+        "new_bot_messages": (
+            len(fake_bot.messages)
+            - bot_message_count_before
+        ),
+    }
+
+
 async def override_bot():
     yield fake_bot
 
@@ -587,6 +702,148 @@ async def run_browser(base_url: str) -> dict:
             animations="disabled",
         )
 
+        selected_database_state = await inspect_database(
+            submit_body["job_id"],
+            accepted["offer_id"],
+        )
+
+        assert (
+            selected_database_state["job"]["status"]
+            == JobStatus.ASSIGNED_PENDING_CONFIRMATION
+        )
+        assert (
+            selected_database_state["job"]
+            ["client_confirmation_status"]
+            is None
+        )
+        assert (
+            selected_database_state["job"]
+            ["carrier_confirmation_status"]
+            is None
+        )
+        assert (
+            selected_database_state["offer"]["status"]
+            == JobOfferStatus.ACCEPTED
+        )
+
+        client_confirmation_result = await page.evaluate(
+            """
+            async ({token}) => {
+              const response = await fetch(
+                `/api/v1/track/${
+                  encodeURIComponent(token)
+                }/assignment/confirm`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Accept": "application/json"
+                  }
+                }
+              );
+
+              let body = null;
+
+              try {
+                body = await response.json();
+              } catch (error) {
+                body = {
+                  parse_error: String(error)
+                };
+              }
+
+              return {
+                status: response.status,
+                body
+              };
+            }
+            """,
+            {
+                "token": tracking_token,
+            },
+        )
+
+        client_confirmation_body = (
+            client_confirmation_result["body"]
+        )
+
+        assert client_confirmation_result["status"] == 200, (
+            client_confirmation_result
+        )
+        assert (
+            client_confirmation_body["status"]
+            == JobStatus.ASSIGNED_PENDING_CONFIRMATION
+        )
+        assert (
+            client_confirmation_body[
+                "client_confirmation_status"
+            ]
+            == "confirmed"
+        )
+        assert (
+            client_confirmation_body[
+                "carrier_confirmation_status"
+            ]
+            is None
+        )
+
+        await page.wait_for_timeout(300)
+        await page.reload(wait_until="networkidle")
+
+        client_confirmation_recorded_visible = (
+            await page.locator(
+                ".tracking-assignment-actions"
+            ).is_visible()
+        )
+
+        assert client_confirmation_recorded_visible is True
+
+        client_confirmation_progress_label = (
+            await page.locator(
+                ".progress-header-current-label"
+            ).inner_text()
+        )
+
+        await page.screenshot(
+            path=str(
+                OUT
+                / "04-mobile-client-confirmed.png"
+            ),
+            full_page=True,
+            animations="disabled",
+        )
+
+        carrier_confirmation = (
+            await confirm_carrier_assignment(
+                submit_body["job_id"]
+            )
+        )
+
+        assert carrier_confirmation["answers"]
+        assert carrier_confirmation["message_edits"]
+
+        await page.wait_for_timeout(300)
+        await page.reload(wait_until="networkidle")
+
+        final_progress_label = await page.locator(
+            ".progress-header-current-label"
+        ).inner_text()
+
+        final_horizontal_overflow = await page.evaluate(
+            """
+            document.documentElement.scrollWidth >
+            document.documentElement.clientWidth + 1
+            """
+        )
+
+        await page.screenshot(
+            path=str(
+                OUT
+                / "05-mobile-both-confirmed.png"
+            ),
+            full_page=True,
+            animations="disabled",
+        )
+
         database_state = await inspect_database(
             submit_body["job_id"],
             accepted["offer_id"],
@@ -594,10 +851,24 @@ async def run_browser(base_url: str) -> dict:
 
         assert (
             database_state["job"]["status"]
-            == JobStatus.ASSIGNED_PENDING_CONFIRMATION
+            == JobStatus.ASSIGNED
         )
-        assert database_state["offer"]["status"] == JobOfferStatus.ACCEPTED
+        assert (
+            database_state["job"]
+            ["client_confirmation_status"]
+            == "confirmed"
+        )
+        assert (
+            database_state["job"]
+            ["carrier_confirmation_status"]
+            == "confirmed"
+        )
+        assert (
+            database_state["offer"]["status"]
+            == JobOfferStatus.ACCEPTED
+        )
         assert horizontal_overflow is False
+        assert final_horizontal_overflow is False
         assert page_errors == []
         assert failed_requests == []
 
@@ -619,6 +890,23 @@ async def run_browser(base_url: str) -> dict:
             "failButtonVisible": True,
             "progressLabel": progress_label,
             "horizontalOverflow": horizontal_overflow,
+        },
+        "selectedDatabaseState":
+            selected_database_state,
+        "clientConfirmationResponse":
+            client_confirmation_body,
+        "clientConfirmationUi": {
+            "recordedVisible":
+                client_confirmation_recorded_visible,
+            "progressLabel":
+                client_confirmation_progress_label,
+        },
+        "carrierConfirmation":
+            carrier_confirmation,
+        "finalUi": {
+            "progressLabel": final_progress_label,
+            "horizontalOverflow":
+                final_horizontal_overflow,
         },
         "databaseState": database_state,
         "fakeBotMessages": fake_bot.messages,
