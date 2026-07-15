@@ -322,6 +322,67 @@ async def create_schema_and_carrier() -> tuple[int, int]:
     return carrier_id, vehicle_id
 
 
+async def create_redispatch_carrier() -> tuple[int, int]:
+    engine = create_async_engine(DATABASE_URL)
+    session_maker = async_sessionmaker(
+        engine,
+        expire_on_commit=False,
+    )
+    now = datetime.now(UTC)
+
+    async with session_maker() as session:
+        repository = CarrierRepository(session)
+
+        carrier = await repository.create_carrier(
+            CarrierCompany(
+                company_name="CargoPT Redispatch Carrier",
+                contact_name="Segundo Transportador E2E",
+                phone="+351920000002",
+                telegram_user_id=880002,
+                telegram_username="cargopt_e2e_redispatch",
+                status=CarrierStatus.ACTIVE,
+                paid_until=now + timedelta(days=30),
+                assembly_required=False,
+                packing_required=False,
+                operating_regions="Lisboa",
+                profile_completed_at=now,
+                current_profile_step=None,
+                internal_note="positive redispatch fixture",
+                created_at=now,
+                updated_at=now,
+            )
+        )
+
+        vehicle = await repository.create_vehicle(
+            CarrierVehicle(
+                carrier_id=carrier.id,
+                vehicle_type="large_van",
+                payload_kg=2200,
+                volume_m3=22.0,
+                max_loaders=4,
+                has_tail_lift=True,
+                has_crane=False,
+                has_mobile_lift=False,
+                mobile_lift_max_floor=None,
+                mobile_lift_max_weight_kg=None,
+                crane_max_weight_kg=None,
+                crane_reach_meters=None,
+                is_active=True,
+                created_at=now,
+                updated_at=now,
+            )
+        )
+
+        await session.commit()
+
+        carrier_id = carrier.id
+        vehicle_id = vehicle.id
+
+    await engine.dispose()
+
+    return carrier_id, vehicle_id
+
+
 async def wait_for_server(base_url: str) -> None:
     import httpx
 
@@ -401,6 +462,20 @@ async def inspect_database(job_id: int, offer_id: int) -> dict:
 
         job = await job_repository.get_job_by_id(job_id)
         offer = await job_repository.get_offer_by_id(offer_id)
+
+        offers_result = await session.execute(
+            select(JobOffer)
+            .where(JobOffer.job_id == job_id)
+            .order_by(JobOffer.id)
+        )
+        offers = list(offers_result.scalars().all())
+
+        accepted_offer = (
+            await job_repository.get_accepted_offer_by_job_id(
+                job_id
+            )
+        )
+
         addresses = await job_repository.list_addresses_by_job(job_id)
         items = await job_repository.list_items_by_job(job_id)
 
@@ -428,6 +503,25 @@ async def inspect_database(job_id: int, offer_id: int) -> dict:
                 "price_cents": offer.price_cents,
                 "carrier_note": offer.carrier_note,
             },
+            "offers": [
+                {
+                    "id": current_offer.id,
+                    "carrier_id": current_offer.carrier_id,
+                    "vehicle_id": current_offer.vehicle_id,
+                    "status": str(current_offer.status),
+                    "price_cents": current_offer.price_cents,
+                    "carrier_message_chat_id":
+                        current_offer.carrier_message_chat_id,
+                    "carrier_message_id":
+                        current_offer.carrier_message_id,
+                }
+                for current_offer in offers
+            ],
+            "accepted_offer_id": (
+                accepted_offer.id
+                if accepted_offer is not None
+                else None
+            ),
             "addresses": [
                 {
                     "kind": address.kind,
@@ -867,6 +961,225 @@ async def run_browser(base_url: str) -> dict:
             database_state["offer"]["status"]
             == JobOfferStatus.ACCEPTED
         )
+
+        (
+            redispatch_carrier_id,
+            redispatch_vehicle_id,
+        ) = await create_redispatch_carrier()
+
+        bot_message_count_before_reopen = len(
+            fake_bot.messages
+        )
+
+        reopen_result = await page.evaluate(
+            """
+            async ({token}) => {
+              const response = await fetch(
+                `/api/v1/track/${
+                  encodeURIComponent(token)
+                }/assignment/fail`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Accept": "application/json"
+                  }
+                }
+              );
+
+              let body = null;
+
+              try {
+                body = await response.json();
+              } catch (error) {
+                body = {
+                  parse_error: String(error)
+                };
+              }
+
+              return {
+                status: response.status,
+                body
+              };
+            }
+            """,
+            {
+                "token": tracking_token,
+            },
+        )
+
+        reopen_body = reopen_result["body"]
+
+        assert reopen_result["status"] == 200, reopen_result
+        assert reopen_body["status"] == JobStatus.OFFERED
+        assert (
+            reopen_body["client_confirmation_status"]
+            is None
+        )
+        assert (
+            reopen_body["carrier_confirmation_status"]
+            is None
+        )
+
+        await page.wait_for_timeout(300)
+        await page.reload(wait_until="networkidle")
+
+        reopen_progress_label = await page.locator(
+            ".progress-header-current-label"
+        ).inner_text()
+
+        reopen_waiting_state_count = await page.locator(
+            ".tracking-waiting-state"
+        ).count()
+
+        reopen_offer_card_count = await page.locator(
+            ".tracking-offer-card"
+        ).count()
+
+        reopen_select_button_count = await page.locator(
+            ".tracking-select-button"
+        ).count()
+
+        reopen_fail_button_count = await page.locator(
+            ".tracking-assignment-fail"
+        ).count()
+
+        reopen_horizontal_overflow = await page.evaluate(
+            """
+            document.documentElement.scrollWidth >
+            document.documentElement.clientWidth + 1
+            """
+        )
+
+        await page.screenshot(
+            path=str(
+                OUT
+                / "06-mobile-positive-redispatch.png"
+            ),
+            full_page=True,
+            animations="disabled",
+        )
+
+        reopen_database_state = await inspect_database(
+            submit_body["job_id"],
+            accepted["offer_id"],
+        )
+
+        assert (
+            reopen_database_state["job"]["status"]
+            == JobStatus.OFFERED
+        )
+        assert (
+            reopen_database_state["job"]
+            ["client_confirmation_status"]
+            is None
+        )
+        assert (
+            reopen_database_state["job"]
+            ["carrier_confirmation_status"]
+            is None
+        )
+        assert (
+            reopen_database_state["accepted_offer_id"]
+            is None
+        )
+
+        offers_by_id = {
+            offer_state["id"]: offer_state
+            for offer_state in (
+                reopen_database_state["offers"]
+            )
+        }
+
+        assert len(offers_by_id) == 2
+
+        original_offer_state = offers_by_id[
+            accepted["offer_id"]
+        ]
+
+        assert (
+            original_offer_state["status"]
+            == JobOfferStatus.CANCELLED
+        )
+        assert (
+            original_offer_state["carrier_id"]
+            != redispatch_carrier_id
+        )
+
+        redispatch_offers = [
+            offer_state
+            for offer_state in offers_by_id.values()
+            if offer_state["id"] != accepted["offer_id"]
+        ]
+
+        assert len(redispatch_offers) == 1
+
+        redispatch_offer = redispatch_offers[0]
+
+        assert (
+            redispatch_offer["carrier_id"]
+            == redispatch_carrier_id
+        )
+        assert (
+            redispatch_offer["vehicle_id"]
+            == redispatch_vehicle_id
+        )
+        assert (
+            redispatch_offer["status"]
+            == JobOfferStatus.PENDING
+        )
+        assert (
+            redispatch_offer["carrier_message_chat_id"]
+            == 880002
+        )
+        assert (
+            redispatch_offer["carrier_message_id"]
+            is not None
+        )
+
+        redispatch_bot_messages = fake_bot.messages[
+            bot_message_count_before_reopen:
+        ]
+
+        assert len(redispatch_bot_messages) == 1
+
+        redispatch_bot_message = (
+            redispatch_bot_messages[0]
+        )
+
+        assert (
+            redispatch_bot_message["method"]
+            == "send_message"
+        )
+        assert (
+            redispatch_bot_message["chat_id"]
+            == 880002
+        )
+        assert (
+            "<b>Новая заявка #"
+            in redispatch_bot_message["text"]
+        )
+
+        redispatch_keyboard = (
+            redispatch_bot_message["kwargs"]
+            ["reply_markup"]
+            ["inline_keyboard"]
+        )
+
+        assert (
+            redispatch_keyboard[0][0]["callback_data"]
+            == (
+                "offer:accept:"
+                f"{redispatch_offer['id']}"
+            )
+        )
+
+        assert reopen_progress_label == "À procura"
+        assert reopen_waiting_state_count == 1
+        assert reopen_offer_card_count == 0
+        assert reopen_select_button_count == 0
+        assert reopen_fail_button_count == 0
+        assert reopen_horizontal_overflow is False
+
         assert horizontal_overflow is False
         assert final_horizontal_overflow is False
         assert page_errors == []
@@ -909,6 +1222,29 @@ async def run_browser(base_url: str) -> dict:
                 final_horizontal_overflow,
         },
         "databaseState": database_state,
+        "redispatchCarrier": {
+            "carrierId": redispatch_carrier_id,
+            "vehicleId": redispatch_vehicle_id,
+        },
+        "reopenResponse": reopen_body,
+        "reopenHttpStatus": reopen_result["status"],
+        "reopenDatabaseState": reopen_database_state,
+        "reopenUi": {
+            "progressLabel": reopen_progress_label,
+            "waitingStateCount":
+                reopen_waiting_state_count,
+            "offerCardCount":
+                reopen_offer_card_count,
+            "selectButtonCount":
+                reopen_select_button_count,
+            "failButtonCount":
+                reopen_fail_button_count,
+            "horizontalOverflow":
+                reopen_horizontal_overflow,
+        },
+        "redispatchOffer": redispatch_offer,
+        "redispatchBotMessages":
+            redispatch_bot_messages,
         "fakeBotMessages": fake_bot.messages,
         "requestResponses": request_responses,
         "consoleErrors": console_errors,
@@ -967,7 +1303,15 @@ async def main() -> None:
         )
         print(
             "FINAL_STATUS="
-            f"{browser_result['databaseState']['job']['status']}"
+            f"{browser_result['reopenDatabaseState']['job']['status']}"
+        )
+        print(
+            "REDISPATCH_CARRIER_ID="
+            f"{browser_result['redispatchCarrier']['carrierId']}"
+        )
+        print(
+            "REDISPATCH_OFFER_ID="
+            f"{browser_result['redispatchOffer']['id']}"
         )
         print(
             "FAKE_BOT_MESSAGES="
