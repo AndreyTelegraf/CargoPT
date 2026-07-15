@@ -69,19 +69,25 @@ def relative_path(path: Path) -> str:
 def resolve_executable(value: str) -> str:
     candidate = Path(value).expanduser()
 
-    if candidate.is_absolute():
-        resolved = candidate.resolve()
-        if not resolved.is_file():
-            raise RuntimeError(f"Python executable does not exist: {resolved}")
-        if not os.access(resolved, os.X_OK):
-            raise RuntimeError(f"Python executable is not executable: {resolved}")
-        return str(resolved)
+    if not candidate.is_absolute():
+        located = shutil.which(value)
+        if located is None:
+            raise RuntimeError(f"Python executable was not found: {value}")
+        candidate = Path(located)
 
-    located = shutil.which(value)
-    if located is None:
-        raise RuntimeError(f"Python executable was not found: {value}")
+    executable = candidate.absolute()
 
-    return str(Path(located).resolve())
+    if not executable.is_file():
+        raise RuntimeError(
+            f"Python executable does not exist: {executable}"
+        )
+
+    if not os.access(executable, os.X_OK):
+        raise RuntimeError(
+            f"Python executable is not executable: {executable}"
+        )
+
+    return str(executable)
 
 
 def validate_contract(config: dict[str, Any]) -> None:
