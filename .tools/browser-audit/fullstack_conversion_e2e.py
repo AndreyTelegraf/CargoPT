@@ -1501,6 +1501,230 @@ async def run_browser(base_url: str) -> dict:
         )
         assert second_selected_horizontal_overflow is False
 
+        second_client_confirmation_result = await page.evaluate(
+            """
+            async ({token}) => {
+              const response = await fetch(
+                `/api/v1/track/${
+                  encodeURIComponent(token)
+                }/assignment/confirm`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Accept": "application/json"
+                  }
+                }
+              );
+
+              let body = null;
+
+              try {
+                body = await response.json();
+              } catch (error) {
+                body = {
+                  parse_error: String(error)
+                };
+              }
+
+              return {
+                status: response.status,
+                body
+              };
+            }
+            """,
+            {
+                "token": tracking_token,
+            },
+        )
+
+        second_client_confirmation_body = (
+            second_client_confirmation_result["body"]
+        )
+
+        assert (
+            second_client_confirmation_result["status"]
+            == 200
+        ), second_client_confirmation_result
+        assert (
+            second_client_confirmation_body["status"]
+            == JobStatus.ASSIGNED_PENDING_CONFIRMATION
+        )
+        assert (
+            second_client_confirmation_body[
+                "client_confirmation_status"
+            ]
+            == "confirmed"
+        )
+        assert (
+            second_client_confirmation_body[
+                "carrier_confirmation_status"
+            ]
+            is None
+        )
+
+        await page.wait_for_timeout(300)
+        await page.reload(wait_until="networkidle")
+
+        second_client_confirmation_actions_visible = (
+            await page.locator(
+                ".tracking-assignment-actions"
+            ).is_visible()
+        )
+        second_client_confirmation_progress_label = (
+            await page.locator(
+                ".progress-header-current-label"
+            ).inner_text()
+        )
+
+        assert (
+            second_client_confirmation_actions_visible
+            is True
+        )
+        assert (
+            second_client_confirmation_progress_label
+            == "Escolha"
+        )
+
+        await page.screenshot(
+            path=str(
+                OUT
+                / "09-mobile-redispatch-client-confirmed.png"
+            ),
+            full_page=True,
+            animations="disabled",
+        )
+
+        bot_message_count_before_second_carrier_confirmation = len(
+            fake_bot.messages
+        )
+
+        second_carrier_confirmation = (
+            await confirm_carrier_assignment(
+                submit_body["job_id"]
+            )
+        )
+
+        assert (
+            second_carrier_confirmation["telegram_user_id"]
+            == 880002
+        )
+        assert second_carrier_confirmation["answers"]
+        assert second_carrier_confirmation["message_edits"]
+        assert (
+            second_carrier_confirmation["new_bot_messages"]
+            == 1
+        )
+
+        second_final_messages = fake_bot.messages[
+            bot_message_count_before_second_carrier_confirmation:
+        ]
+
+        assert len(second_final_messages) == 1
+        assert (
+            second_final_messages[0]["method"]
+            == "send_message"
+        )
+        assert (
+            second_final_messages[0]["chat_id"]
+            == 880002
+        )
+        assert (
+            "подтверждена обеими сторонами"
+            in second_final_messages[0]["text"]
+        )
+
+        await page.wait_for_timeout(300)
+        await page.reload(wait_until="networkidle")
+
+        redispatch_final_progress_label = (
+            await page.locator(
+                ".progress-header-current-label"
+            ).inner_text()
+        )
+        redispatch_final_horizontal_overflow = (
+            await page.evaluate(
+                """
+                document.documentElement.scrollWidth >
+                document.documentElement.clientWidth + 1
+                """
+            )
+        )
+
+        await page.screenshot(
+            path=str(
+                OUT
+                / "10-mobile-redispatch-both-confirmed.png"
+            ),
+            full_page=True,
+            animations="disabled",
+        )
+
+        redispatch_final_database_state = (
+            await inspect_database(
+                submit_body["job_id"],
+                accepted["offer_id"],
+            )
+        )
+
+        assert (
+            redispatch_final_database_state["job"]["status"]
+            == JobStatus.ASSIGNED
+        )
+        assert (
+            redispatch_final_database_state["job"]
+            ["client_confirmation_status"]
+            == "confirmed"
+        )
+        assert (
+            redispatch_final_database_state["job"]
+            ["carrier_confirmation_status"]
+            == "confirmed"
+        )
+        assert (
+            redispatch_final_database_state[
+                "accepted_offer_id"
+            ]
+            == redispatch_offer["id"]
+        )
+
+        redispatch_final_offers_by_id = {
+            offer_state["id"]: offer_state
+            for offer_state in (
+                redispatch_final_database_state["offers"]
+            )
+        }
+
+        redispatch_final_original_offer = (
+            redispatch_final_offers_by_id[
+                accepted["offer_id"]
+            ]
+        )
+        redispatch_final_selected_offer = (
+            redispatch_final_offers_by_id[
+                redispatch_offer["id"]
+            ]
+        )
+
+        assert (
+            redispatch_final_original_offer["status"]
+            == JobOfferStatus.CANCELLED
+        )
+        assert (
+            redispatch_final_selected_offer["status"]
+            == JobOfferStatus.ACCEPTED
+        )
+        assert (
+            redispatch_final_selected_offer["carrier_id"]
+            == redispatch_carrier_id
+        )
+        assert (
+            redispatch_final_selected_offer["price_cents"]
+            == 13750
+        )
+
+        assert redispatch_final_progress_label == "Confirmado"
+        assert redispatch_final_horizontal_overflow is False
+
         assert horizontal_overflow is False
         assert final_horizontal_overflow is False
         assert page_errors == []
@@ -1593,6 +1817,26 @@ async def run_browser(base_url: str) -> dict:
             post_redispatch_database_state,
         "redispatchAssignmentMessages":
             redispatch_assignment_messages,
+        "secondClientConfirmationResponse":
+            second_client_confirmation_body,
+        "secondClientConfirmationUi": {
+            "actionsVisible":
+                second_client_confirmation_actions_visible,
+            "progressLabel":
+                second_client_confirmation_progress_label,
+        },
+        "secondCarrierConfirmation":
+            second_carrier_confirmation,
+        "secondFinalMessages":
+            second_final_messages,
+        "redispatchFinalUi": {
+            "progressLabel":
+                redispatch_final_progress_label,
+            "horizontalOverflow":
+                redispatch_final_horizontal_overflow,
+        },
+        "redispatchFinalDatabaseState":
+            redispatch_final_database_state,
         "fakeBotMessages": fake_bot.messages,
         "requestResponses": request_responses,
         "consoleErrors": console_errors,
@@ -1651,7 +1895,7 @@ async def main() -> None:
         )
         print(
             "FINAL_STATUS="
-            f"{browser_result['postRedispatchDatabaseState']['job']['status']}"
+            f"{browser_result['redispatchFinalDatabaseState']['job']['status']}"
         )
         print(
             "STALE_OFFER_SELECT_STATUS="
