@@ -27,6 +27,11 @@ SCREENSHOTS_PER_TEMPLATE = 3
 NAVIGATION_TIMEOUT_MS = 45_000
 POST_LOAD_WAIT_MS = 800
 
+NON_HTML_RESOURCE_SUFFIXES = {
+    ".md",
+    ".txt",
+}
+
 
 def fetch_text(url: str) -> str:
     request = urllib.request.Request(
@@ -42,11 +47,17 @@ def fetch_text(url: str) -> str:
         return response.read().decode("utf-8", errors="replace")
 
 
-def load_sitemap_urls() -> list[str]:
+def is_html_page_url(url: str) -> bool:
+    suffix = Path(urlparse(url).path).suffix.lower()
+    return suffix not in NON_HTML_RESOURCE_SUFFIXES
+
+
+def load_sitemap_urls() -> tuple[list[str], list[str]]:
     xml_text = fetch_text(f"{BASE}/sitemap.xml")
     root = ET.fromstring(xml_text)
 
-    urls: set[str] = set()
+    html_urls: set[str] = set()
+    non_html_resources: set[str] = set()
 
     for node in root.iter():
         if not node.tag.endswith("loc") or not node.text:
@@ -54,10 +65,15 @@ def load_sitemap_urls() -> list[str]:
 
         url = node.text.strip()
 
-        if url.startswith(BASE):
-            urls.add(url)
+        if not url.startswith(BASE):
+            continue
 
-    return sorted(urls)
+        if is_html_page_url(url):
+            html_urls.add(url)
+        else:
+            non_html_resources.add(url)
+
+    return sorted(html_urls), sorted(non_html_resources)
 
 
 def classify_template(url: str) -> str:
@@ -597,10 +613,19 @@ async def main() -> None:
     screenshots_root = OUT / "screenshots"
     screenshots_root.mkdir(parents=True, exist_ok=True)
 
-    urls = load_sitemap_urls()
+    urls, non_html_resources = load_sitemap_urls()
 
     (OUT / "urls.txt").write_text(
         "\n".join(urls) + "\n",
+        encoding="utf-8",
+    )
+
+    (OUT / "non-html-resources.txt").write_text(
+        (
+            "\n".join(non_html_resources) + "\n"
+            if non_html_resources
+            else ""
+        ),
         encoding="utf-8",
     )
 
@@ -711,6 +736,8 @@ async def main() -> None:
     summary = {
         "baseUrl": BASE,
         "urlCount": len(urls),
+        "nonHtmlResourceCount": len(non_html_resources),
+        "nonHtmlResources": non_html_resources,
         "auditCount": len(results),
         "desktopAuditCount": sum(
             result["viewportName"] == "desktop"
@@ -739,6 +766,10 @@ async def main() -> None:
 
     print()
     print(f"URL_COUNT={summary['urlCount']}")
+    print(
+        "NON_HTML_RESOURCE_COUNT="
+        f"{summary['nonHtmlResourceCount']}"
+    )
     print(f"AUDIT_COUNT={summary['auditCount']}")
     print(f"AUDITS_WITH_ISSUES={summary['auditsWithIssues']}")
     print(f"AUDITS_WITHOUT_ISSUES={summary['auditsWithoutIssues']}")
