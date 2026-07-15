@@ -5,8 +5,8 @@
   "cluster": "cities",
   "path": "/mudancas-braga/",
   "title": "Mudanças em Braga",
-  "meta_title": "Mudanças em Braga — CargoPT",
-  "meta_description": "Saiba como preparar uma mudança em Braga e que informação enviar para receber propostas completas.",
+  "meta_title": "Mudanças em Braga: zonas, acessos e preparação — CargoPT",
+  "meta_description": "Prepare uma mudança em Braga: zona concreta, inventário, acessos, estacionamento, ajudantes e serviços adicionais.",
   "primary_query": "mudanças Braga",
   "intent": [
     "local",
@@ -14,58 +14,64 @@
   ],
   "article_section": "Mudanças por cidade",
   "eyebrow": "Mudanças em Braga",
-  "hero_description": "Uma descrição completa da carga, da rota e dos acessos permite comparar propostas para uma mudança em Braga sem omissões.",
+  "hero_description": "Uma mudança em Braga deve considerar a localização concreta, o tipo de imóvel, os acessos e o local possível para a viatura. Em Braga, o serviço pode variar entre o centro histórico, bairros residenciais, condomínios recentes e moradias com acesso por portão.",
   "date_published": "2026-07-13",
-  "date_modified": "2026-07-13",
+  "date_modified": "2026-07-15",
   "review_owner": "CargoPT",
-  "direct_answer_heading": "Como preparar uma mudança em Braga",
+  "direct_answer_heading": "O que deve confirmar antes de uma mudança em Braga",
   "key_points_heading": "Informação necessária para pedir propostas",
   "faq_heading": "Perguntas frequentes sobre mudanças em Braga",
   "related_links_heading": "Guias e serviços relacionados",
-  "direct_answer": "Para organizar uma mudança em Braga, indique os locais de recolha e entrega, a data pretendida, os móveis, eletrodomésticos, caixas e objetos especiais. Descreva os andares, elevadores, escadas, estacionamento e distância até ao veículo. Confirme também se precisa de ajudantes, desmontagem, montagem, embalagem ou equipamento adicional.",
+  "direct_answer": "Indique a zona concreta da recolha e da entrega, a data, o inventário, os pisos, os elevadores, as escadas e o ponto onde a viatura poderá parar. Informe também a distância de transporte manual e se precisa de ajudantes, desmontagem, montagem ou embalagem. Em Braga, o serviço pode variar entre o centro histórico, bairros residenciais, condomínios recentes e moradias com acesso por portão.",
   "key_points": [
-    "Indique claramente os locais de recolha e entrega.",
-    "Prepare um inventário dos móveis, eletrodomésticos e caixas.",
-    "Descreva andares, elevadores, escadas e estacionamento.",
-    "Identifique objetos pesados, frágeis ou volumosos.",
-    "Compare propostas baseadas na mesma descrição do serviço."
+    "Identifique a zona concreta da recolha e da entrega.",
+    "Confirme onde a viatura poderá parar em cada local.",
+    "Descreva pisos, elevadores, escadas, portões e garagens.",
+    "Envie fotografias de móveis grandes e acessos difíceis.",
+    "Compare propostas baseadas na mesma carga e nas mesmas tarefas."
   ],
   "sections": [
     {
-      "id": "informacao-pedido",
-      "heading": "Que informação incluir num pedido em Braga?",
+      "id": "zonas-braga",
+      "heading": "Zonas e condições de acesso em Braga",
       "paragraphs": [
-        "Uma proposta só pode ser comparada corretamente quando o transportador conhece a carga, a rota, os acessos e as tarefas que terá de executar.",
-        "Não é necessário calcular o peso total. Uma lista organizada, uma estimativa do número de caixas e fotografias dos volumes maiores permitem uma primeira avaliação."
+        "A indicação genérica de “Braga” pode não ser suficiente para avaliar a mudança. A zona concreta influencia a aproximação da viatura, o percurso manual e o tempo necessário.",
+        "Indique a localização nos dois extremos e descreva separadamente os acessos da recolha e da entrega."
       ],
-      "checklist": [
-        "Localização da recolha.",
-        "Localização da entrega.",
-        "Data pretendida e possíveis alternativas.",
-        "Lista dos principais móveis e eletrodomésticos.",
-        "Quantidade aproximada de caixas.",
-        "Objetos frágeis, pesados ou volumosos.",
-        "Andares, elevadores e escadas.",
-        "Distância entre a entrada e o veículo.",
-        "Número de ajudantes necessário.",
-        "Serviços adicionais pretendidos."
+      "items": [
+        {
+          "title": "Centro histórico",
+          "text": "Confirme ruas estreitas, circulação, estacionamento e distância entre a viatura e a entrada."
+        },
+        {
+          "title": "São Victor",
+          "text": "Indique pisos, elevadores, garagens e acessos dos edifícios residenciais."
+        },
+        {
+          "title": "Nogueira, Fraião e Lamaçães",
+          "text": "Descreva condomínios, portões, acessos interiores e percursos desde a rua."
+        },
+        {
+          "title": "Real e Maximinos",
+          "text": "Confirme o edifício correto, o local de carga e as condições das escadas ou elevadores."
+        }
       ]
     },
     {
-      "id": "inventario",
-      "heading": "Como descrever a carga",
+      "id": "inventario-braga",
+      "heading": "Como preparar o inventário para a mudança em Braga",
       "paragraphs": [
-        "Organize o inventário por divisões ou categorias. Separe mobiliário, eletrodomésticos, caixas e objetos que exigem cuidados especiais.",
-        "Indique se os móveis já estão desmontados e forneça medidas aproximadas quando existirem dúvidas sobre portas, elevadores ou escadas."
+        "Organize a carga por divisões ou categorias e separe mobiliário, eletrodomésticos, caixas e objetos especiais.",
+        "Indique medidas aproximadas e envie fotografias quando existirem dúvidas sobre portas, escadas ou elevadores."
       ],
       "items": [
         {
           "title": "Mobiliário",
-          "text": "Liste sofás, camas, colchões, mesas, armários, estantes, cómodas e outros móveis."
+          "text": "Liste camas, colchões, sofás, mesas, armários, estantes e outros móveis grandes."
         },
         {
           "title": "Eletrodomésticos",
-          "text": "Identifique frigorífico, máquinas, televisão e equipamentos semelhantes."
+          "text": "Identifique frigorífico, máquinas, televisão e outros equipamentos relevantes."
         },
         {
           "title": "Caixas",
@@ -78,69 +84,61 @@
       ]
     },
     {
-      "id": "acessos-locais",
-      "heading": "O que confirmar antes de uma mudança em Braga",
+      "id": "acessos-braga",
+      "heading": "Acessos e estacionamento em Braga",
       "paragraphs": [
-        "Confirme se o veículo pode aproximar-se dos dois imóveis e se os objetos maiores passam pelas portas, corredores, escadas e elevadores.",
-        "Quando a recolha ou a entrega ocorrer fora da zona urbana, indique a localização com precisão e descreva eventuais limitações de acesso ao veículo."
+        "Em Braga, o serviço pode variar entre o centro histórico, bairros residenciais, condomínios recentes e moradias com acesso por portão.",
+        "Quando a viatura não puder aproximar-se da entrada, indique a distância, a inclinação, os degraus e o tipo de pavimento do percurso."
       ],
-      "items": [
-        {
-          "title": "Andares",
-          "text": "Indique o piso na recolha e na entrega, incluindo caves, garagens e pisos intermédios."
-        },
-        {
-          "title": "Elevadores",
-          "text": "Confirme a disponibilidade, as dimensões e as regras de utilização."
-        },
-        {
-          "title": "Escadas e corredores",
-          "text": "Mencione curvas apertadas, portas pequenas e outros obstáculos."
-        },
-        {
-          "title": "Estacionamento",
-          "text": "Explique onde o veículo pode parar e qual é a distância até à entrada."
-        }
+      "checklist": [
+        "Piso na recolha e na entrega.",
+        "Existência e dimensões aproximadas do elevador.",
+        "Número de lanços de escadas.",
+        "Portas, corredores e curvas apertadas.",
+        "Local possível para parar a viatura.",
+        "Distância entre a viatura e a entrada.",
+        "Portões, garagens ou controlo de acesso.",
+        "Regras do condomínio ou edifício."
       ]
     },
     {
-      "id": "servicos",
-      "heading": "Que serviços devem ser incluídos",
+      "id": "servicos-braga",
+      "heading": "Serviços que devem ficar definidos",
       "paragraphs": [
-        "Confirme se a proposta inclui apenas veículo e motorista ou também ajudantes, carga, descarga e proteção dos objetos.",
-        "Desmontagem, montagem, embalagem e equipamento adicional devem ser acordados antes da mudança."
+        "A proposta deve indicar o veículo, o número de ajudantes, a carga, a descarga e a proteção dos objetos.",
+        "Desmontagem, montagem, embalagem, materiais e equipamento adicional devem ser acordados previamente."
       ],
       "items": [
         {
           "title": "Ajudantes",
-          "text": "Confirme quantas pessoas participarão na carga e descarga."
+          "text": "Confirme quantas pessoas participarão na carga e na descarga."
         },
         {
           "title": "Desmontagem e montagem",
-          "text": "Identifique os móveis que precisam destas tarefas."
+          "text": "Identifique os móveis abrangidos e quem realizará cada tarefa."
         },
         {
-          "title": "Embalagem",
-          "text": "Confirme se os materiais e a preparação estão incluídos."
+          "title": "Embalagem e proteção",
+          "text": "Confirme os materiais previstos para móveis, eletrodomésticos e objetos frágeis."
         },
         {
           "title": "Equipamento adicional",
-          "text": "Informe se podem ser necessários meios específicos para movimentar a carga."
+          "text": "Informe sobre peças pesadas ou acessos que possam exigir meios específicos."
         }
       ]
     },
     {
-      "id": "comparar-propostas",
-      "heading": "Como comparar propostas para a mesma mudança",
+      "id": "comparar-braga",
+      "heading": "Como comparar propostas para uma mudança em Braga",
       "paragraphs": [
-        "Envie a mesma descrição a todos os transportadores. Assim, cada proposta considera o mesmo inventário, os mesmos acessos e as mesmas tarefas.",
-        "Além do valor, compare o veículo, o número de ajudantes, os serviços incluídos, o horário e as condições de pagamento."
+        "Envie a mesma descrição a todos os transportadores, incluindo localização, inventário, acessos e tarefas.",
+        "Compare o preço juntamente com o veículo, a equipa, os serviços incluídos e as condições apresentadas."
       ],
       "checklist": [
-        "O inventário considerado é o mesmo.",
-        "Os locais e os acessos estão identificados.",
+        "A origem e o destino são os mesmos.",
+        "O inventário considerado é idêntico.",
+        "Os acessos e o estacionamento foram descritos.",
         "O número de ajudantes está indicado.",
-        "Carga e descarga estão incluídas ou atribuídas.",
         "Os serviços adicionais estão discriminados.",
         "O valor e as condições estão registados por escrito."
       ]
@@ -149,37 +147,37 @@
       "id": "cargopt",
       "heading": "Como pedir propostas através da CargoPT",
       "paragraphs": [
-        "Na CargoPT, pode descrever uma mudança em Braga uma única vez e indicar a carga, os acessos e os serviços necessários.",
-        "Os transportadores apresentam as suas próprias propostas. O cliente pode comparar as respostas antes de escolher."
+        "Na CargoPT, pode descrever uma mudança em Braga uma única vez, incluindo a localização, a carga, os acessos e as tarefas necessárias.",
+        "Os transportadores apresentam as suas próprias propostas e o cliente pode comparar respostas baseadas na mesma descrição."
       ]
     }
   ],
   "mid_cta": {
-    "heading": "Prepare o pedido da sua mudança em Braga",
-    "text": "Indique a rota, a carga, os acessos e os serviços para receber propostas comparáveis.",
+    "heading": "Descreva a sua mudança em Braga",
+    "text": "Indique a zona, os objetos, os acessos, o estacionamento possível e os serviços necessários.",
     "label": "Descrever a mudança",
     "href": "/#request"
   },
   "faq": [
     {
-      "question": "Que informação devo enviar para uma mudança em Braga?",
-      "answer": "Indique recolha, entrega, data, inventário, andares, elevadores, estacionamento e serviços adicionais."
+      "question": "É suficiente indicar apenas que a mudança é em Braga?",
+      "answer": "Não. Indique a zona ou rua concreta na recolha e na entrega, porque os acessos podem variar."
     },
     {
-      "question": "É necessário conhecer o volume exato da carga?",
-      "answer": "Não. Uma lista dos objetos, uma estimativa das caixas e fotografias permitem uma primeira avaliação."
+      "question": "Que detalhes devo confirmar sobre o imóvel?",
+      "answer": "Verifique pisos, escadas, portas, corredores, elevadores, portões e acesso à garagem."
+    },
+    {
+      "question": "A distância até à viatura influencia o serviço?",
+      "answer": "Sim. Um percurso longo, inclinado ou com degraus pode aumentar o tempo e o número de ajudantes necessários."
     },
     {
       "question": "Quando devo enviar fotografias?",
-      "answer": "Envie fotografias quando existirem móveis grandes, objetos pesados, peças frágeis ou acessos difíceis."
+      "answer": "Envie fotografias de móveis grandes, objetos especiais e acessos difíceis de descrever."
     },
     {
-      "question": "A desmontagem está incluída automaticamente?",
-      "answer": "Não necessariamente. Identifique os móveis e confirme por escrito as tarefas incluídas."
-    },
-    {
-      "question": "Como evitar alterações ao valor acordado?",
-      "answer": "Forneça uma descrição completa e comunique antecipadamente qualquer alteração de carga, acesso, data ou serviço."
+      "question": "Como comparar propostas diferentes?",
+      "answer": "Confirme se todas consideram a mesma carga, os mesmos acessos, ajudantes e serviços adicionais."
     }
   ],
   "related_links": [
@@ -206,7 +204,7 @@
   ],
   "final_cta": {
     "heading": "Compare propostas para a sua mudança em Braga",
-    "text": "Descreva os locais, a carga, os acessos e as tarefas. Depois compare propostas para o mesmo serviço.",
+    "text": "Descreva a localização, a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
   }
