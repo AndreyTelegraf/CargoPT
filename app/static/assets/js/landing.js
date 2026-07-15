@@ -11,7 +11,7 @@ let currentStep = 1;
 
 const MESSAGES = {
   pt: {
-    required: "Preencha os campos obrigatórios deste passo.",
+    required: "Preencha os campos obrigatórios para continuar.",
     contact: "Indique pelo menos um contacto: telefone, WhatsApp ou email.",
     submitting: "A enviar o pedido...",
     success: "Pedido enviado. Vamos encaminhá-lo para transportadores.",
@@ -32,7 +32,7 @@ const MESSAGES = {
     openRequestsLong: "Meus pedidos"
   },
   en: {
-    required: "Fill in the required fields for this step.",
+    required: "Fill in the required fields to continue.",
     contact: "Add at least one contact: phone, WhatsApp or email.",
     submitting: "Sending request...",
     success: "Request sent. We will forward it to carriers.",
@@ -53,7 +53,7 @@ const MESSAGES = {
     openRequestsLong: "My requests"
   },
   ru: {
-    required: "Заполните обязательные поля этого шага.",
+    required: "Заполните обязательные поля, чтобы продолжить.",
     contact: "Укажите хотя бы один контакт: телефон, WhatsApp или email.",
     submitting: "Отправляем заявку...",
     success: "Заявка отправлена. Мы передадим её перевозчикам.",
@@ -199,18 +199,85 @@ function getFormData() {
   return Object.fromEntries(new FormData(form).entries());
 }
 
+function getFieldValidationMessage(field) {
+  const messageId = field.dataset.validationMessageId;
+  return messageId ? document.getElementById(messageId) : null;
+}
+
+function removeFieldValidationMessage(field) {
+  const message = getFieldValidationMessage(field);
+
+  if (message) {
+    message.remove();
+  }
+
+  delete field.dataset.validationMessageId;
+  field.removeAttribute("aria-describedby");
+}
+
+function showFieldValidationMessage(field, message) {
+  removeFieldValidationMessage(field);
+
+  const messageNode = document.createElement("div");
+  const messageId =
+    `field-validation-${field.name || "field"}-${Date.now()}`;
+
+  messageNode.id = messageId;
+  messageNode.className = "field-validation-message";
+  messageNode.setAttribute("role", "alert");
+
+  const icon = document.createElement("span");
+  icon.className = "field-validation-icon";
+  icon.setAttribute("aria-hidden", "true");
+  icon.textContent = "!";
+
+  const text = document.createElement("span");
+  text.className = "field-validation-text";
+  text.textContent = message;
+
+  messageNode.append(icon, text);
+  field.insertAdjacentElement("afterend", messageNode);
+
+  field.dataset.validationMessageId = messageId;
+  field.setAttribute("aria-describedby", messageId);
+}
+
 function markFieldInvalid(field, message, focusField = true) {
   field.setCustomValidity(message);
-  field.reportValidity();
+  field.setAttribute("aria-invalid", "true");
+  showFieldValidationMessage(field, message);
 
   if (focusField) {
-    field.focus();
+    field.focus({preventScroll: true});
+    field.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
   }
 }
 
 function clearFieldValidity(field) {
   field.setCustomValidity("");
+  field.removeAttribute("aria-invalid");
+  removeFieldValidationMessage(field);
 }
+
+function clearEditedFieldValidity(event) {
+  const field = event.target;
+
+  if (
+    !(field instanceof HTMLInputElement)
+    && !(field instanceof HTMLTextAreaElement)
+    && !(field instanceof HTMLSelectElement)
+  ) {
+    return;
+  }
+
+  clearFieldValidity(field);
+}
+
+form.addEventListener("input", clearEditedFieldValidity);
+form.addEventListener("change", clearEditedFieldValidity);
 
 function validateRequiredField(field, focusField = false) {
   clearFieldValidity(field);
