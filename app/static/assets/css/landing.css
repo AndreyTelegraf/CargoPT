@@ -369,7 +369,7 @@ details p {
   width: min(100%, 164px);
 }
 
-.process-card-svg h3 {
+.process-card-svg h2 {
   margin: var(--space-1) 0 var(--space-1);
   color: var(--brand);
   font-size: var(--font-size-process-title);
