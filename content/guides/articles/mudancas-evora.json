@@ -5,8 +5,8 @@
   "cluster": "cities",
   "path": "/guias/cidades/mudancas-evora/",
   "title": "Mudanças em Évora",
-  "meta_title": "Mudanças em Évora — CargoPT",
-  "meta_description": "Prepare uma mudança em Évora: inventário, acessos, rota, ajudantes e serviços necessários para pedir propostas.",
+  "meta_title": "Mudanças em Évora: preparação e acessos — CargoPT",
+  "meta_description": "Prepare uma mudança em Évora: carga, acessos, estacionamento, ajudantes, proteção e serviços adicionais.",
   "primary_query": "mudanças Évora",
   "intent": [
     "local",
@@ -14,133 +14,131 @@
   ],
   "article_section": "Mudanças por cidade",
   "eyebrow": "Mudanças em Évora",
-  "hero_description": "Uma mudança em Évora fica mais fácil de organizar quando a carga, os acessos, a rota e os serviços necessários são descritos antes de pedir propostas.",
+  "hero_description": "Uma mudança em Évora deve considerar as condições concretas de recolha e entrega. Em Évora, o centro histórico protegido, o pavimento, os acessos condicionados e as diferenças entre bairros urbanos e moradias influenciam o serviço.",
   "date_published": "2026-07-12",
-  "date_modified": "2026-07-12",
+  "date_modified": "2026-07-15",
   "review_owner": "CargoPT",
-  "direct_answer_heading": "Como preparar uma mudança em Évora",
+  "direct_answer_heading": "O que deve confirmar antes de uma mudança em Évora",
   "key_points_heading": "Informação necessária para receber propostas úteis",
   "faq_heading": "Dúvidas sobre mudanças em Évora",
   "related_links_heading": "Guias e serviços relacionados",
-  "direct_answer": "Para organizar uma mudança em Évora, indique os locais de recolha e entrega, a data pretendida, os móveis, eletrodomésticos, caixas e objetos especiais. Informe também os andares, elevadores, escadas, estacionamento e distância entre a entrada e o veículo. Confirme previamente se precisa de ajudantes, desmontagem, montagem, embalagem ou equipamento adicional.",
+  "direct_answer": "Indique as localizações concretas da recolha e da entrega, a data, o inventário, os pisos, os elevadores, as escadas e o local possível para a viatura. Informe também a distância de transporte manual, os serviços necessários e os objetos que exigem proteção especial. Em Évora, o centro histórico protegido, o pavimento, os acessos condicionados e as diferenças entre bairros urbanos e moradias influenciam o serviço.",
   "key_points": [
-    "Indique claramente a recolha, a entrega e a data pretendida.",
-    "Faça uma lista dos móveis, eletrodomésticos, caixas e objetos especiais.",
-    "Descreva andares, elevadores, escadas e condições de estacionamento.",
-    "Confirme o número de ajudantes e os serviços adicionais necessários.",
-    "Compare propostas preparadas com base na mesma descrição."
+    "Identifique os locais concretos de recolha e entrega.",
+    "Confirme onde a viatura poderá parar nos dois extremos.",
+    "Descreva pisos, elevadores, escadas, portões e garagens.",
+    "Envie fotografias dos maiores objetos e dos acessos difíceis.",
+    "Compare propostas baseadas na mesma carga e nas mesmas tarefas."
   ],
   "sections": [
     {
-      "id": "informacao-pedido",
-      "heading": "Que informação incluir num pedido de mudança em Évora?",
+      "id": "zonas-evora",
+      "heading": "Zonas e condições de acesso em Évora",
       "paragraphs": [
-        "O transportador precisa de perceber o percurso, a dimensão aproximada da carga e as condições em que o serviço será realizado. Uma descrição vaga normalmente exige perguntas adicionais antes de ser possível preparar uma proposta.",
-        "Não é necessário calcular antecipadamente o peso total. Uma lista organizada dos objetos, acompanhada por fotografias quando existirem peças grandes ou acessos difíceis, costuma ser suficiente para uma primeira avaliação."
+        "A indicação genérica de “Évora” pode não ser suficiente. A zona concreta influencia a aproximação da viatura e o percurso manual.",
+        "Indique a localização nos dois extremos e descreva separadamente os acessos da recolha e da entrega."
       ],
-      "checklist": [
-        "Morada ou localização da recolha.",
-        "Morada ou localização da entrega.",
-        "Data preferida e possíveis alternativas.",
-        "Lista dos principais objetos.",
-        "Quantidade aproximada de caixas.",
-        "Objetos pesados, frágeis ou de grandes dimensões.",
-        "Andares e existência de elevador.",
-        "Condições de estacionamento e acesso ao imóvel.",
-        "Número de ajudantes necessário.",
-        "Serviços adicionais pretendidos."
+      "items": [
+        {
+          "title": "Centro histórico",
+          "text": "Confirme acessos condicionados, ruas estreitas, pavimento, estacionamento e percurso manual."
+        },
+        {
+          "title": "Horta das Figueiras",
+          "text": "Indique pisos, elevadores, garagens e condições de acesso aos edifícios."
+        },
+        {
+          "title": "Malagueira",
+          "text": "Descreva a entrada correta, ruas residenciais, estacionamento e distância até ao imóvel."
+        },
+        {
+          "title": "Bacelo e Senhora da Saúde",
+          "text": "Confirme acessos de moradias, portões, pátios e espaço para manobrar a viatura."
+        }
       ]
     },
     {
-      "id": "inventario",
-      "heading": "Como descrever a carga",
+      "id": "inventario-evora",
+      "heading": "Como preparar o inventário",
       "paragraphs": [
-        "Organize o inventário por divisões ou por categorias. Separe mobiliário, eletrodomésticos, caixas e objetos que exigem cuidados especiais.",
-        "Nos objetos maiores, indique dimensões aproximadas quando forem relevantes. Explique também se os móveis já estão desmontados ou se essa tarefa deverá ser incluída no serviço."
+        "Organize a carga por divisões ou categorias e separe mobiliário, eletrodomésticos, caixas e objetos especiais.",
+        "Indique medidas aproximadas e envie fotografias quando existirem dúvidas sobre portas, escadas, elevadores ou proteção."
       ],
       "items": [
         {
           "title": "Mobiliário",
-          "text": "Liste camas, colchões, sofás, mesas, cadeiras, armários, cómodas e estantes."
+          "text": "Liste sofás, camas, mesas, armários, estantes e outros móveis grandes."
         },
         {
           "title": "Eletrodomésticos",
-          "text": "Identifique frigorífico, máquina de lavar, televisão e outros equipamentos."
+          "text": "Identifique frigorífico, máquinas, televisão e outros equipamentos."
         },
         {
           "title": "Caixas",
-          "text": "Forneça uma estimativa mesmo que a embalagem ainda não esteja concluída."
+          "text": "Indique uma quantidade aproximada e destaque caixas frágeis ou pesadas."
         },
         {
           "title": "Objetos especiais",
-          "text": "Destaque peças frágeis, pesadas, valiosas ou difíceis de movimentar."
+          "text": "Assinale peças frágeis, valiosas, pesadas ou difíceis de movimentar."
         }
       ]
     },
     {
-      "id": "acessos",
-      "heading": "Porque são importantes os acessos",
+      "id": "acessos-evora",
+      "heading": "Acessos, estacionamento e percurso",
       "paragraphs": [
-        "Os acessos ajudam a determinar o número de pessoas, o tempo necessário e o equipamento adequado. Um apartamento sem elevador ou uma entrada distante da zona de carga pode alterar significativamente o trabalho.",
-        "Confirme se os objetos maiores passam pelas portas, corredores e escadas. Quando existirem dúvidas, envie fotografias e medidas aproximadas."
+        "Em Évora, o centro histórico protegido, o pavimento, os acessos condicionados e as diferenças entre bairros urbanos e moradias influenciam o serviço.",
+        "Quando a viatura não puder aproximar-se da entrada, indique a distância, a inclinação, os degraus e o tipo de pavimento."
       ],
-      "items": [
-        {
-          "title": "Andares",
-          "text": "Indique o piso na recolha e na entrega, incluindo caves e pisos intermédios."
-        },
-        {
-          "title": "Elevadores",
-          "text": "Confirme se existem, se funcionam e se têm espaço para os principais objetos."
-        },
-        {
-          "title": "Escadas e corredores",
-          "text": "Mencione curvas apertadas, portas pequenas e outros obstáculos."
-        },
-        {
-          "title": "Estacionamento",
-          "text": "Explique onde o veículo poderá parar e a distância até à entrada."
-        }
+      "checklist": [
+        "Piso na recolha e na entrega.",
+        "Existência e dimensões aproximadas dos elevadores.",
+        "Escadas, portas, corredores e curvas apertadas.",
+        "Local possível para parar a viatura.",
+        "Distância entre a viatura e cada entrada.",
+        "Portões, garagens ou controlo de acesso.",
+        "Regras dos condomínios ou edifícios.",
+        "Horários permitidos para carga e descarga."
       ]
     },
     {
-      "id": "servicos",
-      "heading": "Que serviços adicionais pode ser necessário incluir",
+      "id": "servicos-evora",
+      "heading": "Serviços que devem ficar definidos",
       "paragraphs": [
-        "As propostas podem abranger tarefas diferentes. Confirme se o valor inclui apenas veículo e motorista ou também ajudantes, carga, descarga e proteção dos bens.",
-        "Desmontagem, montagem, embalagem e equipamento especial devem ser indicados antes da data da mudança."
+        "A proposta deve indicar o veículo, o número de ajudantes, a carga, a descarga e a proteção dos objetos.",
+        "Desmontagem, montagem, embalagem, materiais e equipamento adicional devem ser acordados previamente."
       ],
       "items": [
         {
           "title": "Ajudantes",
-          "text": "Confirme quantas pessoas participarão na carga e descarga."
+          "text": "Confirme quantas pessoas participarão na carga e na descarga."
         },
         {
           "title": "Desmontagem e montagem",
-          "text": "Identifique os móveis que precisam deste serviço."
+          "text": "Identifique os móveis abrangidos e quem realizará cada tarefa."
         },
         {
-          "title": "Embalagem",
-          "text": "Confirme se materiais e preparação dos objetos estão incluídos."
+          "title": "Embalagem e proteção",
+          "text": "Confirme os materiais previstos para móveis, eletrodomésticos e objetos frágeis."
         },
         {
           "title": "Equipamento adicional",
-          "text": "Informe antecipadamente quando possam ser necessárias plataformas ou outros meios."
+          "text": "Informe sobre peças pesadas ou acessos que possam exigir meios específicos."
         }
       ]
     },
     {
-      "id": "comparar-propostas",
-      "heading": "Como comparar propostas para a mesma mudança",
+      "id": "comparar-evora",
+      "heading": "Como comparar propostas para a mudança em Évora",
       "paragraphs": [
-        "Envie a mesma descrição a todos os transportadores. Dessa forma, as propostas correspondem ao mesmo inventário, aos mesmos acessos e aos mesmos serviços.",
-        "Além do preço, compare o veículo previsto, o número de ajudantes, as tarefas incluídas, a data, o horário e as condições de pagamento."
+        "Envie a mesma descrição a todos os transportadores, incluindo localizações, inventário, acessos e tarefas.",
+        "Compare o preço juntamente com o veículo, a equipa, a proteção, os serviços incluídos e as condições apresentadas."
       ],
       "checklist": [
-        "O inventário considerado é o mesmo.",
-        "Os dois locais e respetivos acessos estão identificados.",
+        "A origem e o destino são os mesmos.",
+        "O inventário considerado é idêntico.",
+        "Os acessos dos dois locais foram descritos.",
         "O número de ajudantes está indicado.",
-        "Carga e descarga estão incluídas ou atribuídas.",
         "Os serviços adicionais estão discriminados.",
         "O valor e as condições estão registados por escrito."
       ]
@@ -149,37 +147,37 @@
       "id": "cargopt",
       "heading": "Como pedir propostas através da CargoPT",
       "paragraphs": [
-        "Na CargoPT, pode descrever uma mudança em Évora uma única vez. O pedido pode depois ser encaminhado para transportadores adequados às características indicadas.",
-        "Cada transportador apresenta a sua própria proposta. O cliente pode comparar as respostas recebidas antes de escolher."
+        "Na CargoPT, pode descrever uma mudança em Évora uma única vez, incluindo a carga, os acessos e as tarefas.",
+        "Os transportadores apresentam as suas próprias propostas e o cliente pode comparar respostas baseadas na mesma descrição."
       ]
     }
   ],
   "mid_cta": {
-    "heading": "Prepare o pedido da sua mudança em Évora",
-    "text": "Indique a rota, a carga, os acessos e os serviços necessários para receber propostas comparáveis.",
+    "heading": "Descreva a sua mudança em Évora",
+    "text": "Indique os locais, os objetos, os acessos, o estacionamento possível e os serviços necessários.",
     "label": "Descrever a mudança",
     "href": "/#request"
   },
   "faq": [
     {
-      "question": "Que informação devo enviar para uma mudança em Évora?",
-      "answer": "Indique recolha, entrega, data, inventário, andares, elevadores, estacionamento e serviços adicionais."
+      "question": "Que localizações devo indicar?",
+      "answer": "Indique a rua ou zona concreta da recolha e da entrega, não apenas o município ou a região."
     },
     {
-      "question": "É obrigatório conhecer o volume exato?",
-      "answer": "Não. Uma lista dos objetos, uma estimativa das caixas e fotografias permitem uma primeira avaliação."
+      "question": "Que detalhes devo confirmar sobre os imóveis?",
+      "answer": "Verifique pisos, escadas, portas, corredores, elevadores, portões, garagens e distância até à viatura."
     },
     {
-      "question": "Devo enviar fotografias?",
-      "answer": "São recomendáveis quando existem móveis grandes, objetos pesados, peças frágeis ou acessos difíceis."
+      "question": "A distância até à viatura influencia o serviço?",
+      "answer": "Sim. Um percurso longo, inclinado ou com degraus pode aumentar o tempo e o número de ajudantes necessários."
+    },
+    {
+      "question": "Quando devo enviar fotografias?",
+      "answer": "Envie fotografias de móveis grandes, objetos especiais e acessos difíceis de descrever."
     },
     {
       "question": "Como comparar propostas diferentes?",
-      "answer": "Confirme se todas consideram o mesmo inventário, acessos, ajudantes e serviços adicionais."
-    },
-    {
-      "question": "O valor pode mudar depois do pedido?",
-      "answer": "Alterações ao inventário, aos acessos, à data ou aos serviços podem modificar o trabalho necessário. Confirme qualquer alteração antes da mudança."
+      "answer": "Confirme se todas consideram a mesma carga, os mesmos acessos, ajudantes, proteção e serviços adicionais."
     }
   ],
   "related_links": [
@@ -205,8 +203,8 @@
     }
   ],
   "final_cta": {
-    "heading": "Peça propostas para a sua mudança em Évora",
-    "text": "Descreva os locais, os objetos, os acessos e os serviços necessários. Depois compare as propostas disponíveis.",
+    "heading": "Compare propostas para a sua mudança em Évora",
+    "text": "Descreva a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
   }
