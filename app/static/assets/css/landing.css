@@ -441,6 +441,11 @@ details p {
     font-size: var(--font-size-hero-title-mobile);
   }
 
+  .hero-v2 h1,
+  .legal-hero h1 {
+    overflow-wrap: anywhere;
+  }
+
   .hero-v2 .hero-text {
     font-size: var(--font-size-hero-copy-mobile);
     margin-bottom: 20px;
