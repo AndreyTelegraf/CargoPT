@@ -247,7 +247,7 @@ for locale, path in FILES.items():
     for asset in (
         (
             "/assets/css/components.css"
-            "?v=tracking-type-v3"
+            "?v=locale-switcher-v1"
         ),
         (
             "/assets/css/track.css"

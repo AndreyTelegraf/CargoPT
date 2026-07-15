@@ -65,7 +65,7 @@ a {
 }
 
 .locale-switcher {
-  display: none;
+  display: inline-flex;
   position: relative;
   align-items: center;
   color: var(--muted);
