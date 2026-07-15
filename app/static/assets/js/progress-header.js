@@ -158,6 +158,7 @@
     if (
       status === "ready_for_matching"
       || status === "matching"
+      || status === "no_carriers_found"
       || status === "offered"
       || status === "manual_review_required"
     ) {

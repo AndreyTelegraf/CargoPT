@@ -14,6 +14,10 @@ def main() -> None:
         "app/static/assets/js/tracking-workspace.js"
     ).read_text(encoding="utf-8")
 
+    progress_js = Path(
+        "app/static/assets/js/progress-header.js"
+    ).read_text(encoding="utf-8")
+
     track_css = Path(
         "app/static/assets/css/track.css"
     ).read_text(encoding="utf-8")
@@ -30,8 +34,9 @@ def main() -> None:
     assert "track-new-request" not in html
 
     assert "/assets/css/track.css?v=workspace-design-v5" in html
-    assert "/assets/js/tracking-workspace.js?v=shared-v3" in html
-    assert "/assets/js/track.js?v=status-favicon-v10" in html
+    assert "/assets/js/progress-header.js?v=progress-stage-v5" in html
+    assert "/assets/js/tracking-workspace.js?v=shared-v4" in html
+    assert "/assets/js/track.js?v=status-mapping-v11" in html
 
     assert (
         'document.querySelector("#otherRequestsPanel")'
@@ -74,6 +79,30 @@ def main() -> None:
         in workspace_js
     )
     assert "renderWaitingState(entry, messages)" in workspace_js
+
+    assert (
+        'if (snapshot.status === "no_carriers_found") '
+        'return "searching";'
+        in track_js
+    )
+    assert (
+        '["no_carriers_found", "offers_exhausted", '
+        '"expired_without_response"]'
+        in track_js
+    )
+    assert (
+        'if (snapshot.status === "no_carriers_found") '
+        'return "searching";'
+        in workspace_js
+    )
+    assert (
+        'status === "no_carriers_found"'
+        in workspace_js
+    )
+    assert (
+        '|| status === "no_carriers_found"'
+        in progress_js
+    )
 
     assert 'card.className = "hero-workspace"' not in workspace_js
     assert "tracking-status-title" not in workspace_js

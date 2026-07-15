@@ -54,6 +54,7 @@
     const acceptedOffers = Array.isArray(snapshot.accepted_offers) ? snapshot.accepted_offers : [];
     if (snapshot.status === "cancelled") return "cancelled";
     if (["offers_exhausted", "expired_without_response"].includes(snapshot.status)) return "cancelled";
+    if (snapshot.status === "no_carriers_found") return "searching";
     if (snapshot.status === "completed") return "success";
     if (snapshot.client_confirmation_status === "confirmed" && snapshot.carrier_confirmation_status === "confirmed") return "success";
     if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending") return "pending";
@@ -171,7 +172,8 @@
     }
 
     if (
-      status === "offers_exhausted"
+      status === "no_carriers_found"
+      || status === "offers_exhausted"
       || status === "expired_without_response"
     ) {
       return {
