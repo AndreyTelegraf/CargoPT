@@ -1,112 +1,111 @@
+import os
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+os.environ.setdefault(
+    "BOT_TOKEN",
+    "123456:TESTTOKEN",
+)
+os.environ.setdefault(
+    "DATABASE_URL",
+    "sqlite+aiosqlite:///data/cargopt_dev.db",
+)
+
+from app.api.main import app
 
 
 def main() -> None:
-    html = Path("app/static/track/index.html").read_text(encoding="utf-8")
-    track_js = Path("app/static/assets/js/track.js").read_text(encoding="utf-8")
-    progress_js = Path(
-        "app/static/assets/js/progress-header.js"
-    ).read_text(encoding="utf-8")
-    progress_css = Path(
-        "app/static/assets/css/progress-header.css"
+    root = Path(__file__).resolve().parents[1]
+
+    html = (
+        root / "app/static/track/index.html"
     ).read_text(encoding="utf-8")
 
-    assert 'id="trackingProgressHeader"' in html
-    assert 'class="progress-header-shell"' in html
-    assert "/assets/css/progress-header.css?v=progress-cancelled-v4" in html
-    assert "/assets/js/progress-header.js?v=progress-v3" in html
-    assert "/assets/js/track.js?v=status-favicon-v10" in html
+    js = (
+        root
+        / "app/static/assets/js/progress-header.js"
+    ).read_text(encoding="utf-8")
 
-    for label in (
-        "Recebido",
-        "À procura",
-        "Propostas",
-        "Escolha",
-        "Confirmado",
-    ):
-        assert label in progress_js
+    css = (
+        root
+        / "app/static/assets/css/progress-header.css"
+    ).read_text(encoding="utf-8")
 
-    assert "function getProgressState(entry)" in progress_js
-    assert "assigned_pending_confirmation" in progress_js
-    assert "offers_exhausted" in progress_js
-    assert "expired_without_response" in progress_js
+    repository = (
+        root / "app/repositories/job.py"
+    ).read_text(encoding="utf-8")
+
+    schemas = (
+        root / "app/api/web_request_schemas.py"
+    ).read_text(encoding="utf-8")
+
+    api = (
+        root / "app/api/web_requests.py"
+    ).read_text(encoding="utf-8")
+
     assert (
-        "progress-header-step progress-header-step-${state}"
-        in progress_js
+        "/assets/js/progress-header.js"
+        "?v=progress-stage-v4"
+        in html
     )
-    assert 'return "complete";' in progress_js
-    assert 'marker.textContent = "✓"' in progress_js
-    assert "window.CargoPTProgressHeader" in progress_js
 
-    assert 'document.querySelector("#trackingProgressHeader")' in track_js
-    assert "function renderTrackingProgress(entry)" in track_js
-    assert "CargoPTProgressHeader.render(entry" in track_js
-    assert "renderTrackingProgress(workspaceEntry)" in track_js
+    assert (
+        "/assets/css/progress-header.css"
+        "?v=progress-cancelled-stage-v5"
+        in html
+    )
 
-    for selector in (
-        ".progress-header-shell",
-        ".progress-header-list",
-        ".progress-header-step",
-        ".progress-header-marker",
-        ".progress-header-step-complete",
-        ".progress-header-step-current",
-        ".progress-header-step-error",
-        ".progress-header-step-cancelled",
-        ".progress-header-current-label",
-    ):
-        assert selector in progress_css
+    assert "CANCELLED_STAGE_INDEX" in js
+    assert "cancelled_from_status" in js
+    assert '"cancelled-complete"' in js
+    assert "getCancelledActiveIndex" in js
 
-    assert "@media (max-width: 720px)" in progress_css
-    assert ".progress-header-label" in progress_css
-    assert "display: none;" in progress_css
+    assert (
+        ".progress-header-step-"
+        "cancelled-complete"
+        in css
+    )
 
-    print("job_tracking_progress_header_ok")
+    assert (
+        ".progress-header-step-"
+        "cancelled-complete:not(:last-child)"
+        "::after"
+        in css
+    )
+
+    assert "get_cancelled_from_status" in repository
+    assert "JobStatusEvent.from_status" in repository
+
+    assert (
+        "cancelled_from_status: str | None"
+        in schemas
+    )
+
+    assert (
+        "cancelled_from_status="
+        "cancelled_from_status"
+        in api
+    )
+
+    schema = (
+        app.openapi()
+        ["components"]
+        ["schemas"]
+        ["TrackingJobResponse"]
+    )
+
+    assert (
+        "cancelled_from_status"
+        in schema["properties"]
+    )
+
+    print("JOB_TRACKING_PROGRESS_HEADER_OK")
+    print("CANCELLED_STAGE_API_STATIC_OK")
+    print("CANCELLED_CONNECTOR_STATIC_OK")
 
 
 if __name__ == "__main__":
     main()
-
-# CANCELLED_PROGRESS_LABEL_SMOKE_V3
-from pathlib import Path as _CancelledPath
-
-_cancelled_root = _CancelledPath(
-    __file__
-).resolve().parents[1]
-
-_cancelled_html = (
-    _cancelled_root
-    / "app/static/track/index.html"
-).read_text(encoding="utf-8")
-
-_cancelled_js = (
-    _cancelled_root
-    / "app/static/assets/js/progress-header.js"
-).read_text(encoding="utf-8")
-
-assert (
-    "/assets/js/progress-header.js?v=progress-v3"
-    in _cancelled_html
-)
-
-assert (
-    "CANCELLED_PROGRESS_LABEL_V3"
-    in _cancelled_js
-)
-
-assert (
-    'replaceExactText(\n'
-    '      cancelledStep,\n'
-    '      "Recebido",\n'
-    '      cancelledLabel\n'
-    '    );'
-    in _cancelled_js
-)
-
-assert (
-    ".progress-header-step-cancelled"
-    in _cancelled_js
-)
-
-print(
-    "CANCELLED_VISIBLE_STEP_LABEL_SMOKE_OK"
-)

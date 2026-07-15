@@ -109,13 +109,22 @@
   background: var(--danger);
 }
 
-.progress-header-step-cancelled {
-  color: var(--danger);
+.progress-header-step-cancelled-complete {
+  color: var(--text);
 }
 
+.progress-header-step-cancelled-complete .progress-header-marker,
 .progress-header-step-cancelled .progress-header-marker {
   border-color: var(--danger);
   background: var(--danger);
+}
+
+.progress-header-step-cancelled-complete:not(:last-child)::after {
+  background: var(--danger);
+}
+
+.progress-header-step-cancelled {
+  color: var(--danger);
 }
 
 .progress-header-shell[data-tone="cancelled"] .progress-header-current-label {

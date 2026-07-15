@@ -172,9 +172,19 @@ async def get_tracking_job(
     )
     accepted_offer_views = await presentation.list_accepted_offer_views(job.id)
 
+    cancelled_from_status = None
+
+    if str(job.status) == "cancelled":
+        cancelled_from_status = (
+            await job_repository.get_cancelled_from_status(
+                job.id
+            )
+        )
+
     return TrackingJobResponse(
         job_id=job.id,
         status=str(job.status),
+        cancelled_from_status=cancelled_from_status,
         tracking_token=job.tracking_token,
         route_summary=_format_tracking_route_summary(job),
         client_confirmation_status=job.client_confirmation_status,

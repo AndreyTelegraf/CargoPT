@@ -134,6 +134,54 @@ class JobRepository:
         result = await self.session.execute(stmt)
         return result.scalar_one_or_none()
 
+    async def get_cancelled_from_status(
+        self,
+        job_id: int,
+    ) -> str | None:
+        event_stmt = (
+            select(JobStatusEvent.from_status)
+            .where(JobStatusEvent.job_id == job_id)
+            .where(JobStatusEvent.to_status == "cancelled")
+            .order_by(
+                JobStatusEvent.occurred_at.desc(),
+                JobStatusEvent.id.desc(),
+            )
+            .limit(1)
+        )
+        event_result = await self.session.execute(
+            event_stmt
+        )
+        from_status = event_result.scalar_one_or_none()
+
+        if from_status:
+            return str(from_status)
+
+        job = await self.get_job_by_id(job_id)
+
+        if job is None or str(job.status) != "cancelled":
+            return None
+
+        # Historical fallback for cancellations created before
+        # job_status_event tracking was enabled.
+        if job.started_at is not None:
+            return "in_progress"
+
+        if job.assigned_at is not None:
+            return "assigned"
+
+        offers_stmt = (
+            select(func.count(JobOffer.id))
+            .where(JobOffer.job_id == job_id)
+        )
+        offers_result = await self.session.execute(
+            offers_stmt
+        )
+
+        if int(offers_result.scalar_one()) > 0:
+            return "offered"
+
+        return None
+
     async def get_latest_draft_job_by_client_id(
         self,
         telegram_user_id: int,
