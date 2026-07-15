@@ -1,0 +1,116 @@
+{
+  "contract_version": "1.0",
+  "project": "CargoPT",
+  "base_url": "https://cargopt.pt",
+  "output_root": ".audit/design-review-v1",
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "policies": {
+    "production_read_only": true,
+    "real_customer_requests_allowed": false,
+    "real_telegram_messages_allowed": false,
+    "overwrite_previous_runs": false,
+    "reviewers_independent_before_deduplication": true,
+    "evidence_required": true
+  },
+  "collectors": [
+    {
+      "id": "release-audit",
+      "path": ".tools/browser-audit/release_audit.py",
+      "kind": "browser-evidence",
+      "production_access": "read-only",
+      "required": true
+    },
+    {
+      "id": "conversion-frontend-e2e",
+      "path": ".tools/browser-audit/conversion_frontend_e2e.py",
+      "kind": "mocked-production-ui",
+      "production_access": "read-only-with-mocked-api",
+      "required": true
+    },
+    {
+      "id": "fullstack-conversion-e2e",
+      "path": ".tools/browser-audit/fullstack_conversion_e2e.py",
+      "kind": "isolated-fullstack",
+      "production_access": "none",
+      "required": true
+    }
+  ],
+  "reviewers": [
+    {
+      "id": "chatgpt",
+      "independent": true,
+      "focus": [
+        "User Flow",
+        "Form UX",
+        "Trust Layer",
+        "product clarity",
+        "Mobile UX",
+        "conversion friction"
+      ]
+    },
+    {
+      "id": "claude",
+      "independent": true,
+      "focus": [
+        "heuristic UI audit",
+        "Design System Consistency",
+        "Accessibility",
+        "responsive consistency",
+        "implementation patterns"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "name": "User Flow",
+      "default_roadmap_priority": "P0"
+    },
+    {
+      "name": "Form UX",
+      "default_roadmap_priority": "P1"
+    },
+    {
+      "name": "Trust Layer",
+      "default_roadmap_priority": "P2"
+    },
+    {
+      "name": "Visual Identity",
+      "default_roadmap_priority": "P3"
+    },
+    {
+      "name": "Design System Consistency",
+      "default_roadmap_priority": "NONE"
+    },
+    {
+      "name": "Accessibility",
+      "default_roadmap_priority": "NONE"
+    },
+    {
+      "name": "Performance",
+      "default_roadmap_priority": "NONE"
+    },
+    {
+      "name": "Mobile UX",
+      "default_roadmap_priority": "NONE"
+    }
+  ],
+  "reports": [
+    "00-executive-summary.md",
+    "01-full-audit.md",
+    "02-prioritized-backlog.csv",
+    "03-findings.json",
+    "04-disagreements.md",
+    "05-automated-checks.md",
+    "06-page-scorecards.md",
+    "07-run-manifest.json"
+  ]
+}

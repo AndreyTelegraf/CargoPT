@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cargopt.pt/schemas/design-review-v1-finding.schema.json",
+  "title": "CargoPT Design Review v1 Finding",
+  "description": "Normalized source finding emitted by an automated collector or independent reviewer.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "reviewer",
+    "collector",
+    "category",
+    "roadmap_priority",
+    "severity",
+    "confidence",
+    "summary",
+    "evidence",
+    "affected_surfaces",
+    "recommendation",
+    "acceptance_criteria",
+    "dedupe_key",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._:-]{2,127}$"
+    },
+    "reviewer": {
+      "type": "string",
+      "enum": [
+        "chatgpt",
+        "claude",
+        "automated"
+      ]
+    },
+    "collector": {
+      "type": "string",
+      "enum": [
+        "release-audit",
+        "conversion-frontend-e2e",
+        "fullstack-conversion-e2e",
+        "accessibility",
+        "lighthouse",
+        "manual-review"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "User Flow",
+        "Form UX",
+        "Trust Layer",
+        "Visual Identity",
+        "Design System Consistency",
+        "Accessibility",
+        "Performance",
+        "Mobile UX"
+      ]
+    },
+    "roadmap_priority": {
+      "type": "string",
+      "enum": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "NONE"
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "blocker",
+        "critical",
+        "major",
+        "moderate",
+        "minor",
+        "observation"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 500
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "affected_surfaces": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 300
+      }
+    },
+    "recommendation": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 2000
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 5,
+        "maxLength": 1000
+      }
+    },
+    "dedupe_key": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._:-]{2,255}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "proposed",
+        "confirmed",
+        "rejected",
+        "duplicate",
+        "planned",
+        "in_progress",
+        "resolved",
+        "accepted_risk"
+      ]
+    },
+    "source_finding_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 128
+      }
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 4000
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "source",
+        "description"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "screenshot",
+            "video",
+            "json",
+            "log",
+            "dom",
+            "accessibility-tree",
+            "lighthouse-report",
+            "manual-observation"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "description": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 1000
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "viewport": {
+          "type": "string",
+          "enum": [
+            "desktop",
+            "mobile",
+            "not-applicable"
+          ]
+        },
+        "selector": {
+          "type": "string",
+          "maxLength": 1000
+        }
+      }
+    }
+  }
+}

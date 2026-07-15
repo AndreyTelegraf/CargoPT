@@ -34,3 +34,6 @@ artifacts/release-browser-audit-*/
 artifacts/release-browser-audit-*.tar.gz
 artifacts/conversion-frontend-e2e-*/
 artifacts/conversion-frontend-e2e-*.tar.gz
+
+# Generated Design Review evidence and reports
+.audit/design-review-v1/
