@@ -197,22 +197,149 @@ async def inspect_page(page: Page) -> dict:
             'textarea, [role="button"], summary'
           ).filter(isVisible);
 
-          const smallTargets = visibleInteractive
-            .map((element) => {
+          const TARGET_SIZE_MINIMUM = 24;
+          const TARGET_SIZE_ENHANCED = 44;
+
+          const targetDetails = visibleInteractive.map(
+            (element) => {
               const rect = element.getBoundingClientRect();
+              const style = getComputedStyle(element);
+
+              const elementText = (
+                element.textContent ||
+                element.getAttribute("aria-label") ||
+                element.getAttribute("name") ||
+                ""
+              ).replace(/\\s+/g, " ").trim();
+
+              const inlineContainer = element.closest(
+                "p, dd, dt, figcaption, blockquote, li"
+              );
+
+              const containerText = (
+                inlineContainer?.textContent || ""
+              ).replace(/\\s+/g, " ").trim();
+
+              const inlineException = Boolean(
+                element.tagName === "A" &&
+                style.display.startsWith("inline") &&
+                inlineContainer &&
+                containerText.length > elementText.length
+              );
 
               return {
-                tag: element.tagName,
-                text:
-                  element.textContent?.replace(/\\s+/g, " ").trim().slice(0, 80)
-                  || element.getAttribute("aria-label")
-                  || element.getAttribute("name")
-                  || "",
-                width: Math.round(rect.width),
-                height: Math.round(rect.height),
+                element,
+                rect,
+                detail: {
+                  tag: element.tagName,
+                  text: elementText.slice(0, 80),
+                  width: Math.round(rect.width),
+                  height: Math.round(rect.height),
+                  display: style.display,
+                  inlineException,
+                },
               };
+            }
+          );
+
+          const compactTargets = targetDetails
+            .filter(
+              (target) =>
+                target.detail.width < TARGET_SIZE_ENHANCED ||
+                target.detail.height < TARGET_SIZE_ENHANCED
+            )
+            .map((target) => target.detail)
+            .slice(0, 50);
+
+          const circleIntersectsRect = (
+            centerX,
+            centerY,
+            radius,
+            rect
+          ) => {
+            const nearestX = Math.max(
+              rect.left,
+              Math.min(centerX, rect.right)
+            );
+            const nearestY = Math.max(
+              rect.top,
+              Math.min(centerY, rect.bottom)
+            );
+
+            const deltaX = centerX - nearestX;
+            const deltaY = centerY - nearestY;
+
+            return (
+              deltaX * deltaX + deltaY * deltaY <=
+              radius * radius
+            );
+          };
+
+          const smallTargets = targetDetails
+            .filter(
+              (target) =>
+                (
+                  target.detail.width < TARGET_SIZE_MINIMUM ||
+                  target.detail.height < TARGET_SIZE_MINIMUM
+                ) &&
+                !target.detail.inlineException
+            )
+            .filter((target) => {
+              const centerX =
+                target.rect.left + target.rect.width / 2;
+              const centerY =
+                target.rect.top + target.rect.height / 2;
+              const radius = TARGET_SIZE_MINIMUM / 2;
+
+              return targetDetails.some((other) => {
+                if (other.element === target.element) {
+                  return false;
+                }
+
+                if (
+                  target.element.contains(other.element) ||
+                  other.element.contains(target.element)
+                ) {
+                  return false;
+                }
+
+                if (
+                  circleIntersectsRect(
+                    centerX,
+                    centerY,
+                    radius,
+                    other.rect
+                  )
+                ) {
+                  return true;
+                }
+
+                const otherIsUndersized =
+                  other.detail.width < TARGET_SIZE_MINIMUM ||
+                  other.detail.height < TARGET_SIZE_MINIMUM;
+
+                if (!otherIsUndersized) {
+                  return false;
+                }
+
+                const otherCenterX =
+                  other.rect.left + other.rect.width / 2;
+                const otherCenterY =
+                  other.rect.top + other.rect.height / 2;
+
+                const deltaX = centerX - otherCenterX;
+                const deltaY = centerY - otherCenterY;
+
+                return (
+                  deltaX * deltaX + deltaY * deltaY <=
+                  TARGET_SIZE_MINIMUM * TARGET_SIZE_MINIMUM
+                );
+              });
             })
-            .filter((item) => item.width < 44 || item.height < 44)
+            .map((target) => ({
+              ...target.detail,
+              spacingFailure: true,
+            }))
             .slice(0, 50);
 
           const unnamedFields = qsa(
@@ -379,6 +506,7 @@ async def inspect_page(page: Page) -> dict:
             visibleCtaCount: ctas.length,
             forms: qsa("form").length,
             visibleInteractiveCount: visibleInteractive.length,
+            compactTargets,
             smallTargets,
             unnamedFields,
             emptyLinks,
