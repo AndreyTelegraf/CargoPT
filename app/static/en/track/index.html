@@ -10,9 +10,10 @@
   <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
   <meta name="theme-color" content="#111827">
   <link rel="stylesheet" href="/assets/css/design-system.css?v=tokens-v1">
-  <link rel="stylesheet" href="/assets/css/components.css?v=components-v2">
+  <link rel="stylesheet" href="/assets/css/components.css?v=tracking-type-v3">
   <link rel="stylesheet" href="/assets/css/landing.css?v=legal-v2">
-  <link rel="stylesheet" href="/assets/css/track.css?v=workspace-design-v1">
+  <link rel="stylesheet" href="/assets/css/track.css?v=workspace-design-v5">
+  <link rel="stylesheet" href="/assets/css/progress-header.css?v=progress-cancelled-stage-v5">
 </head>
 <body data-locale="en" class="tracking-page track-page-shell">
   <header class="site-header">
@@ -24,19 +25,33 @@
   </header>
 
   <main id="top">
-    <section class="section track-workspace-shell">
-      <aside class="track-workspace-sidebar" aria-label="Open requests">
-        <p class="track-sidebar-eyebrow">Open requests</p>
-        <h2 class="track-sidebar-title">Your requests</h2>
-        <p class="track-sidebar-intro">Track requests created on this device.</p>
-        <div id="trackPedidosList" class="track-offer-nav-list"></div>
+    <section
+      id="trackingProgressHeader"
+      class="progress-header-shell"
+      aria-label="Request progress"
+    ></section>
 
-        <a class="button button-secondary track-new-request" href="/en/">
-          ← New request
-        </a>
+    <section class="section track-workspace-shell">
+      <aside
+        id="otherRequestsPanel"
+        class="track-workspace-sidebar"
+        aria-label="Other requests"
+        hidden
+      >
+        <h2 class="track-sidebar-title">Other requests</h2>
+        <button
+          id="otherRequestsToggle"
+          class="track-other-requests-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="trackPedidosList"
+        >
+          Other requests
+        </button>
+        <div id="trackPedidosList" class="track-offer-nav-list"></div>
       </aside>
 
-      <section id="trackingPanel" class="tracking-panel tracking-request-card" aria-label="Request status card">
+      <section id="trackingPanel" class="tracking-panel tracking-request-card" aria-label="Request offers">
         <div id="trackingPanelBody"></div>
 
         <section id="errorCard" class="track-card error-card" hidden>
@@ -60,7 +75,8 @@
       <a href="mailto:hello@cargopt.pt">Contact</a>
     </nav>
   </footer>
-  <script src="/assets/js/tracking-workspace.js?v=shared-v1" defer></script>
-  <script src="/assets/js/track.js?v=status-favicon-v5" defer></script>
+  <script src="/assets/js/progress-header.js?v=progress-stage-v4" defer></script>
+  <script src="/assets/js/tracking-workspace.js?v=shared-v3" defer></script>
+  <script src="/assets/js/track.js?v=status-favicon-v10" defer></script>
 </body>
 </html>

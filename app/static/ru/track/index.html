@@ -10,9 +10,10 @@
   <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
   <meta name="theme-color" content="#111827">
   <link rel="stylesheet" href="/assets/css/design-system.css?v=tokens-v1">
-  <link rel="stylesheet" href="/assets/css/components.css?v=components-v2">
+  <link rel="stylesheet" href="/assets/css/components.css?v=tracking-type-v3">
   <link rel="stylesheet" href="/assets/css/landing.css?v=legal-v2">
-  <link rel="stylesheet" href="/assets/css/track.css?v=workspace-design-v1">
+  <link rel="stylesheet" href="/assets/css/track.css?v=workspace-design-v5">
+  <link rel="stylesheet" href="/assets/css/progress-header.css?v=progress-cancelled-stage-v5">
 </head>
 <body data-locale="ru" class="tracking-page track-page-shell">
   <header class="site-header">
@@ -24,19 +25,33 @@
   </header>
 
   <main id="top">
-    <section class="section track-workspace-shell">
-      <aside class="track-workspace-sidebar" aria-label="Открытые заявки">
-        <p class="track-sidebar-eyebrow">Открытые заявки</p>
-        <h2 class="track-sidebar-title">Ваши заявки</h2>
-        <p class="track-sidebar-intro">Отслеживайте заявки, созданные на этом устройстве.</p>
-        <div id="trackPedidosList" class="track-offer-nav-list"></div>
+    <section
+      id="trackingProgressHeader"
+      class="progress-header-shell"
+      aria-label="Ход выполнения заявки"
+    ></section>
 
-        <a class="button button-secondary track-new-request" href="/ru/">
-          ← Новая заявка
-        </a>
+    <section class="section track-workspace-shell">
+      <aside
+        id="otherRequestsPanel"
+        class="track-workspace-sidebar"
+        aria-label="Другие заявки"
+        hidden
+      >
+        <h2 class="track-sidebar-title">Другие заявки</h2>
+        <button
+          id="otherRequestsToggle"
+          class="track-other-requests-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="trackPedidosList"
+        >
+          Другие заявки
+        </button>
+        <div id="trackPedidosList" class="track-offer-nav-list"></div>
       </aside>
 
-      <section id="trackingPanel" class="tracking-panel tracking-request-card" aria-label="Карточка статуса заявки">
+      <section id="trackingPanel" class="tracking-panel tracking-request-card" aria-label="Предложения по заявке">
         <div id="trackingPanelBody"></div>
 
         <section id="errorCard" class="track-card error-card" hidden>
@@ -60,7 +75,8 @@
       <a href="mailto:hello@cargopt.pt">Контакты</a>
     </nav>
   </footer>
-  <script src="/assets/js/tracking-workspace.js?v=shared-v1" defer></script>
-  <script src="/assets/js/track.js?v=status-favicon-v5" defer></script>
+  <script src="/assets/js/progress-header.js?v=progress-stage-v4" defer></script>
+  <script src="/assets/js/tracking-workspace.js?v=shared-v3" defer></script>
+  <script src="/assets/js/track.js?v=status-favicon-v10" defer></script>
 </body>
 </html>

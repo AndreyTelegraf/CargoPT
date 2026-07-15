@@ -7,6 +7,24 @@
     {id: "confirmed", label: "Confirmado"}
   ]);
 
+  const LOCALIZED_STEPS = Object.freeze({
+    pt: DEFAULT_STEPS,
+    en: Object.freeze([
+      {id: "received", label: "Received"},
+      {id: "searching", label: "Searching"},
+      {id: "offers", label: "Offers"},
+      {id: "selection", label: "Selection"},
+      {id: "confirmed", label: "Confirmed"}
+    ]),
+    ru: Object.freeze([
+      {id: "received", label: "Получено"},
+      {id: "searching", label: "Поиск"},
+      {id: "offers", label: "Предложения"},
+      {id: "selection", label: "Выбор"},
+      {id: "confirmed", label: "Подтверждено"}
+    ])
+  });
+
   const CANCELLED_STAGE_INDEX = Object.freeze({
     draft: 0,
     ready_for_matching: 1,
@@ -37,6 +55,13 @@
     )
       .toLowerCase()
       .split("-")[0];
+  }
+
+  function getDefaultSteps() {
+    return (
+      LOCALIZED_STEPS[getLocale()]
+      || DEFAULT_STEPS
+    );
   }
 
   function getCancelledLabel() {
@@ -195,7 +220,7 @@
       Array.isArray(options.steps)
       && options.steps.length
         ? options.steps
-        : DEFAULT_STEPS;
+        : getDefaultSteps();
 
     const snapshot =
       entry?.tracking_snapshot || {};
