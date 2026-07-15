@@ -900,7 +900,7 @@
         "priority": 2
       },
       {
-        "target": "mudancas-lisboa",
+        "target": "transportadora-lisboa",
         "reason": "commercial",
         "priority": 3
       },
@@ -944,8 +944,8 @@
         "priority": 2
       },
       {
-        "target": "como-preparar-uma-mudanca",
-        "reason": "authority",
+        "target": "transportadora-lisboa",
+        "reason": "commercial",
         "priority": 3
       },
       {
@@ -1187,6 +1187,28 @@
       },
       {
         "target": "medir-moveis-antes-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "transportadora-lisboa": [
+      {
+        "target": "mudancas-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "como-pedir-orcamento-mudanca",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-escolher-empresa-mudancas",
         "reason": "authority",
         "priority": 3
       },

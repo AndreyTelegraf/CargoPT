@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "id": "transportadora-lisboa",
+  "locale": "pt-PT",
+  "cluster": "cities",
+  "path": "/transportadora-lisboa/",
+  "title": "Transportadora em Lisboa",
+  "meta_title": "Transportadora em Lisboa: comparar propostas — CargoPT",
+  "meta_description": "Procure uma transportadora em Lisboa para mudanças, móveis, caixas ou cargas. Saiba o que indicar e como comparar propostas.",
+  "primary_query": "transportadora Lisboa",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Transportadoras por cidade",
+  "eyebrow": "Transportadora em Lisboa",
+  "hero_description": "Procure uma transportadora em Lisboa com base no serviço concreto, e não apenas num preço isolado. Uma descrição completa da carga, das moradas, dos acessos e das tarefas permite receber propostas comparáveis para mudanças, móveis, eletrodomésticos, caixas, pequenas cargas ou serviços de escritório.",
+  "date_published": "2026-07-15",
+  "date_modified": "2026-07-15",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Como encontrar uma transportadora em Lisboa",
+  "key_points_heading": "Informação necessária para comparar transportadoras",
+  "faq_heading": "Perguntas frequentes sobre transportadoras em Lisboa",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para encontrar uma transportadora em Lisboa, descreva o serviço de forma comparável: moradas ou zonas de recolha e entrega, data, inventário, pisos, elevadores, escadas, estacionamento possível e tarefas adicionais. Indique se precisa apenas de viatura, de ajudantes, de desmontagem, montagem, embalagem ou proteção. Uma proposta útil deve identificar o veículo, a equipa, o que está incluído, o preço e as condições aplicáveis. Compare respostas baseadas exatamente na mesma informação e confirme por escrito os detalhes do serviço antes de escolher.",
+  "key_points": [
+    "Descreva a carga e os dois locais antes de pedir propostas.",
+    "Informe pisos, elevadores, escadas, estacionamento e distância até à entrada.",
+    "Defina se precisa de viatura, ajudantes, desmontagem, montagem ou embalagem.",
+    "Peça que cada proposta identifique claramente o serviço incluído.",
+    "Compare preço, equipa, veículo, horário e condições com base no mesmo pedido."
+  ],
+  "sections": [
+    {
+      "id": "tipos-servico",
+      "heading": "Serviços que pode pedir a uma transportadora em Lisboa",
+      "paragraphs": [
+        "Uma pesquisa por transportadora em Lisboa pode corresponder a serviços diferentes. Antes de pedir propostas, defina se pretende uma mudança completa, o transporte de alguns móveis, uma carga pequena, uma recolha comercial ou um serviço com desmontagem e montagem.",
+        "Separar o tipo de serviço evita propostas baseadas em pressupostos diferentes. O transporte de um sofá entre duas moradas não exige a mesma preparação de uma mudança de apartamento ou de escritório."
+      ],
+      "items": [
+        {
+          "title": "Mudança de habitação",
+          "text": "Inclua mobiliário, eletrodomésticos, caixas, objetos frágeis e tarefas necessárias na recolha e na entrega."
+        },
+        {
+          "title": "Transporte de móveis",
+          "text": "Indique quantidade, dimensões aproximadas, peso quando conhecido e fotografias dos volumes."
+        },
+        {
+          "title": "Pequenas mudanças",
+          "text": "Especifique caixas, malas, peças soltas e objetos especialmente pesados ou frágeis."
+        },
+        {
+          "title": "Escritório ou carga profissional",
+          "text": "Identifique mobiliário, equipamento, horários permitidos e regras de acesso ao edifício."
+        }
+      ]
+    },
+    {
+      "id": "informacao-pedido",
+      "heading": "Informação necessária para receber propostas comparáveis",
+      "paragraphs": [
+        "Uma descrição vaga, como “preciso de uma carrinha em Lisboa”, não permite avaliar corretamente o veículo, a equipa, a duração nem as condições de carga.",
+        "Prepare um único pedido completo e utilize a mesma informação em todas as comparações."
+      ],
+      "checklist": [
+        "Zona, rua ou código postal da recolha e da entrega.",
+        "Data pretendida e eventual flexibilidade.",
+        "Lista de móveis, eletrodomésticos, caixas e objetos especiais.",
+        "Dimensões ou fotografias dos volumes maiores.",
+        "Pisos, elevadores, escadas, portas e corredores.",
+        "Local possível para estacionar e distância até à entrada.",
+        "Número de ajudantes necessário.",
+        "Desmontagem, montagem, embalagem ou materiais adicionais."
+      ]
+    },
+    {
+      "id": "acessos-lisboa",
+      "heading": "Acessos e estacionamento que deve descrever em Lisboa",
+      "paragraphs": [
+        "Em Lisboa, duas moradas próximas podem exigir operações muito diferentes. A aproximação da viatura, a largura da rua, a inclinação, os degraus e a distância de transporte manual influenciam o tempo e a equipa.",
+        "Descreva separadamente a recolha e a entrega. Confirme o ponto de paragem, o acesso ao prédio, o piso e o percurso entre a viatura e cada imóvel."
+      ],
+      "items": [
+        {
+          "title": "Baixa, Alfama e Mouraria",
+          "text": "Informe ruas estreitas, escadas, inclinação e eventual distância adicional de transporte manual."
+        },
+        {
+          "title": "Avenidas Novas e Alvalade",
+          "text": "Confirme piso, elevador, entrada de serviço, estacionamento e regras do edifício."
+        },
+        {
+          "title": "Benfica e zonas residenciais",
+          "text": "Indique garagens, portões, pátios e percursos interiores entre a rua e a entrada."
+        },
+        {
+          "title": "Parque das Nações e condomínios",
+          "text": "Confirme acesso à garagem, utilização de elevadores e horários permitidos."
+        }
+      ]
+    },
+    {
+      "id": "conteudo-proposta",
+      "heading": "O que uma proposta de transporte deve esclarecer",
+      "paragraphs": [
+        "Uma proposta útil não deve limitar-se a um valor total. Deve permitir perceber quem fará o serviço, com que meios e quais tarefas estão incluídas.",
+        "Peça confirmação escrita quando a proposta depender de fotografias, inventário provisório ou condições de acesso que ainda possam mudar."
+      ],
+      "checklist": [
+        "Tipo e capacidade do veículo previsto.",
+        "Número de pessoas na equipa.",
+        "Carga, descarga e transporte manual incluídos.",
+        "Objetos e quantidade de volumes considerados.",
+        "Desmontagem, montagem, embalagem e materiais incluídos ou excluídos.",
+        "Data e intervalo horário.",
+        "Preço e forma de pagamento.",
+        "Condições para alterações, cancelamento, atrasos ou dificuldades de acesso."
+      ]
+    },
+    {
+      "id": "comparar-transportadoras",
+      "heading": "Como comparar transportadoras e empresas de mudanças",
+      "paragraphs": [
+        "Compare propostas apenas depois de confirmar que todas consideram o mesmo inventário, as mesmas moradas, os mesmos acessos e as mesmas tarefas.",
+        "Uma proposta aparentemente mais barata pode incluir menos ajudantes, um veículo diferente ou excluir montagem, materiais ou transporte por escadas."
+      ],
+      "items": [
+        {
+          "title": "Âmbito igual",
+          "text": "Verifique se todos receberam a mesma lista de objetos, fotografias e condições de acesso."
+        },
+        {
+          "title": "Meios adequados",
+          "text": "Compare veículo, equipa e equipamento previsto para a carga indicada."
+        },
+        {
+          "title": "Serviços incluídos",
+          "text": "Confirme carga, descarga, desmontagem, montagem, embalagem e proteção."
+        },
+        {
+          "title": "Condições registadas",
+          "text": "Guarde por escrito o preço, a data, as exclusões e qualquer alteração aceite."
+        }
+      ]
+    },
+    {
+      "id": "verificar-transportador",
+      "heading": "O que verificar antes de escolher o transportador",
+      "paragraphs": [
+        "Antes de aceitar uma proposta, confirme a identificação e o contacto do prestador, o âmbito do serviço e a forma de comunicar alterações.",
+        "Para cargas frágeis, pesadas ou de valor elevado, pergunte como serão protegidas e que condições se aplicam em caso de dano."
+      ],
+      "checklist": [
+        "Identificação do prestador e contacto utilizável.",
+        "Descrição final da carga e das tarefas.",
+        "Moradas, data e horário confirmados.",
+        "Condições de acesso atualizadas.",
+        "Preço e forma de pagamento registados.",
+        "Procedimento acordado para alterações, atrasos ou danos."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "Como funciona o pedido através da CargoPT",
+      "paragraphs": [
+        "Na CargoPT, descreve o transporte uma vez e a informação é encaminhada para transportadores adequados ao pedido. Cada transportador apresenta a sua própria proposta.",
+        "A CargoPT organiza o pedido e a comunicação inicial; o transporte é realizado pelo profissional escolhido pelo cliente."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Descreva o transporte em Lisboa",
+    "text": "Indique a carga, as moradas, os acessos, a data e as tarefas necessárias para receber propostas comparáveis.",
+    "label": "Descrever o transporte",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Transportadora e empresa de mudanças são a mesma coisa?",
+      "answer": "Uma transportadora pode realizar mudanças completas ou apenas transportar cargas e objetos. Confirme sempre quais tarefas e materiais estão incluídos."
+    },
+    {
+      "question": "Que informação é necessária para saber o preço?",
+      "answer": "Indique moradas, data, inventário, pisos, elevadores, escadas, estacionamento e serviços adicionais."
+    },
+    {
+      "question": "Posso pedir apenas o transporte de alguns móveis ou caixas?",
+      "answer": "Sim. Liste cada volume, envie fotografias quando necessário e informe as condições de recolha e entrega."
+    },
+    {
+      "question": "O estacionamento pode alterar a proposta?",
+      "answer": "Sim. Quando a viatura não consegue parar perto da entrada, a distância de transporte manual pode exigir mais tempo ou ajudantes."
+    },
+    {
+      "question": "A CargoPT escolhe a transportadora pelo cliente?",
+      "answer": "Não. A CargoPT encaminha o pedido e permite comparar propostas. A escolha pertence ao cliente."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Mudanças em Lisboa",
+      "href": "/mudancas-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "Como pedir um orçamento de mudança",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Como escolher uma empresa de mudanças",
+      "href": "/guias/planeamento/como-escolher-empresa-mudancas/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas de transportadoras em Lisboa",
+    "text": "Envie uma descrição completa para que as respostas considerem a mesma carga, os mesmos acessos e as mesmas tarefas.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  }
+}

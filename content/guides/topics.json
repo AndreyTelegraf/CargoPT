@@ -76,6 +76,27 @@
       ]
     },
     {
+      "id": "transportadora-lisboa",
+      "cluster": "cities",
+      "title": "Transportadora em Lisboa",
+      "slug": "transportadora-lisboa",
+      "path": "/transportadora-lisboa/",
+      "primary_query": "transportadora Lisboa",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "mudancas-lisboa",
+        "quanto-custa-mudanca-lisboa",
+        "como-escolher-empresa-mudancas"
+      ]
+    },
+    {
       "id": "mudancas-porto",
       "cluster": "cities",
       "title": "Mudanças no Porto",
