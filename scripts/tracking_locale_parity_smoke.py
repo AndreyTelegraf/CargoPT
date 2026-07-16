@@ -247,7 +247,7 @@ for locale, path in FILES.items():
     for asset in (
         (
             "/assets/css/components.css"
-            "?v=locale-switcher-v1"
+            "?v=components-a11y-v2"
         ),
         (
             "/assets/css/track.css"
@@ -263,11 +263,11 @@ for locale, path in FILES.items():
         ),
         (
             "/assets/js/tracking-workspace.js"
-            "?v=shared-v6"
+            "?v=shared-v7"
         ),
         (
             "/assets/js/track.js"
-            "?v=status-mapping-v12"
+            "?v=status-mapping-v14"
         ),
     ):
         assert asset in source, (
