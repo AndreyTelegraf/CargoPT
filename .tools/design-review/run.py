@@ -32,6 +32,7 @@ COLLECTOR_ORDER = [
     "tracking-status-matrix",
     "conversion-frontend-e2e",
     "fullstack-conversion-e2e",
+    "accessibility",
 ]
 
 
@@ -170,6 +171,9 @@ def collector_command(
             ".tmp_fullstack_conversion_e2e",
             str(fullstack_port),
         ]
+
+    if collector_id == "accessibility":
+        return base
 
     raise RuntimeError(f"unsupported collector: {collector_id}")
 

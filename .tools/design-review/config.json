@@ -49,6 +49,13 @@
       "kind": "isolated-fullstack",
       "production_access": "none",
       "required": true
+    },
+    {
+      "id": "accessibility",
+      "path": ".tools/browser-audit/accessibility_audit.py",
+      "kind": "browser-accessibility",
+      "production_access": "read-only",
+      "required": true
     }
   ],
   "reviewers": [
