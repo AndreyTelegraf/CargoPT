@@ -30,6 +30,13 @@
       "required": true
     },
     {
+      "id": "tracking-status-matrix",
+      "path": ".tools/browser-audit/tracking_status_matrix.py",
+      "kind": "static-contract",
+      "production_access": "none",
+      "required": true
+    },
+    {
       "id": "conversion-frontend-e2e",
       "path": ".tools/browser-audit/conversion_frontend_e2e.py",
       "kind": "mocked-production-ui",

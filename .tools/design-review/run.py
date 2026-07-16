@@ -29,6 +29,7 @@ FULLSTACK_TMP = PROJECT_ROOT / ".tmp_fullstack_conversion_e2e"
 RUN_ID_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{2,80}$")
 COLLECTOR_ORDER = [
     "release-audit",
+    "tracking-status-matrix",
     "conversion-frontend-e2e",
     "fullstack-conversion-e2e",
 ]
@@ -155,6 +156,9 @@ def collector_command(
     ]
 
     if collector_id == "release-audit":
+        return base
+
+    if collector_id == "tracking-status-matrix":
         return base
 
     if collector_id == "conversion-frontend-e2e":

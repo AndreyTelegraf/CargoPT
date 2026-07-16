@@ -24,6 +24,7 @@ P0-P3 are the strategic roadmap priorities. The remaining categories are cross-c
 The initial contract recognizes the existing collectors:
 
 - `release-audit` — broad read-only sitemap and viewport evidence.
+- `tracking-status-matrix` — backend/frontend status coverage, action guards and permanent tracking smoke contracts without production access.
 - `conversion-frontend-e2e` — production UI scenarios with mocked request submission and zero production writes.
 - `fullstack-conversion-e2e` — isolated local API, database, bot and geocoding flow.
 
