@@ -28,8 +28,7 @@ The initial contract recognizes the existing collectors:
 - `conversion-frontend-e2e` — production UI scenarios with mocked request submission and zero production writes.
 - `fullstack-conversion-e2e` — isolated local API, database, bot and geocoding flow.
 - `accessibility` — read-only Chromium checks for the accessibility tree, keyboard operation, focus indicators, ARIA references, reduced motion, contrast and 200% scaling.
-
-Lighthouse may be added later without changing the meaning of existing findings.
+- `lighthouse` — read-only Lighthouse performance reports for representative public pages in desktop and mobile modes.
 
 ## Safety policy
 

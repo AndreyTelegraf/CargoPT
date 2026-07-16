@@ -492,25 +492,39 @@ if (carousel) {
 
   let index = 0;
   let animationFrame = 0;
+  let trackWidth = 0;
+  let cardGeometry = [];
 
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
   }
 
+  function measureCarousel() {
+    trackWidth = track.clientWidth;
+
+    cardGeometry = cards.map((card) => ({
+      center: card.offsetLeft + card.offsetWidth / 2,
+      width: card.offsetWidth,
+    }));
+  }
+
   function renderCarousel() {
     animationFrame = 0;
 
-    const trackRect = track.getBoundingClientRect();
-    const trackCenter = trackRect.left + trackRect.width / 2;
+    const trackCenter = track.scrollLeft + trackWidth / 2;
     let closest = 0;
     let closestDistance = Infinity;
 
     cards.forEach((card, i) => {
-      const cardRect = card.getBoundingClientRect();
-      const cardCenter = cardRect.left + cardRect.width / 2;
-      const signedDistance = cardCenter - trackCenter;
+      const geometry = cardGeometry[i];
+
+      if (!geometry) {
+        return;
+      }
+
+      const signedDistance = geometry.center - trackCenter;
       const normalizedDistance = clamp(
-        signedDistance / Math.max(cardRect.width * 0.82, 1),
+        signedDistance / Math.max(geometry.width * 0.82, 1),
         -1.4,
         1.4
       );
@@ -558,9 +572,7 @@ if (carousel) {
       }
     });
 
-    if (closest !== index) {
-      index = closest;
-    }
+    index = closest;
 
     cards.forEach((card, i) => {
       const distance = i - index;
@@ -584,15 +596,23 @@ if (carousel) {
     animationFrame = requestAnimationFrame(renderCarousel);
   }
 
+  function refreshCarouselGeometry() {
+    measureCarousel();
+    requestCarouselRender();
+  }
+
   track.addEventListener(
     "scroll",
     requestCarouselRender,
     { passive: true }
   );
 
-  window.addEventListener("resize", requestCarouselRender);
+  window.addEventListener(
+    "resize",
+    refreshCarouselGeometry
+  );
 
-  requestCarouselRender();
+  refreshCarouselGeometry();
 }
 
 

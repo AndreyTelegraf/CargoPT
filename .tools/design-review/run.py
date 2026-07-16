@@ -33,6 +33,7 @@ COLLECTOR_ORDER = [
     "conversion-frontend-e2e",
     "fullstack-conversion-e2e",
     "accessibility",
+    "lighthouse",
 ]
 
 
@@ -173,6 +174,9 @@ def collector_command(
         ]
 
     if collector_id == "accessibility":
+        return base
+
+    if collector_id == "lighthouse":
         return base
 
     raise RuntimeError(f"unsupported collector: {collector_id}")

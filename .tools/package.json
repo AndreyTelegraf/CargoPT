@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "lighthouse": "12.8.2",
     "playwright": "^1.61.1",
     "svgo": "4.0.1"
   }

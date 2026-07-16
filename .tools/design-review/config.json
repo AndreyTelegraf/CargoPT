@@ -56,6 +56,13 @@
       "kind": "browser-accessibility",
       "production_access": "read-only",
       "required": true
+    },
+    {
+      "id": "lighthouse",
+      "path": ".tools/browser-audit/lighthouse_audit.py",
+      "kind": "browser-performance",
+      "production_access": "read-only",
+      "required": true
     }
   ],
   "reviewers": [
