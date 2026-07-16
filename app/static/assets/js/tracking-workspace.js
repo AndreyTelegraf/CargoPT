@@ -20,6 +20,7 @@
     confirmDeal: "Negócio confirmado",
     failDeal: "Não chegámos a acordo com o transportador",
     confirmationRecorded: "A sua confirmação foi registada. Aguardamos a confirmação do transportador.",
+    confirmationCompleted: "A confirmação de ambas as partes foi registada. O transporte está confirmado.",
     offersAvailable: "{count} oferta(s) disponível(eis)",
     defaultRoute: "Pedido CargoPT",
     waitingOffers: "A aguardar ofertas",
@@ -148,12 +149,18 @@
     ) return null;
     if (snapshot.client_confirmation_status !== "confirmed") return null;
 
+    const bothConfirmed =
+      snapshot.client_confirmation_status === "confirmed"
+      && snapshot.carrier_confirmation_status === "confirmed";
+
     const actions = document.createElement("div");
     actions.className = "tracking-assignment-actions";
 
     const note = document.createElement("p");
     note.className = "tracking-assignment-note";
-    note.textContent = messages.confirmationRecorded;
+    note.textContent = bothConfirmed
+      ? messages.confirmationCompleted
+      : messages.confirmationRecorded;
     actions.appendChild(note);
     return actions;
   }
