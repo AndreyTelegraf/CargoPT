@@ -61,7 +61,7 @@
     if (["assigned_pending_confirmation", "assigned", "in_progress"].includes(snapshot.status)) return "pending";
     if (acceptedOffers.length > 0) return "success";
     if (["ready_for_matching", "matching", "offered", "manual_review_required"].includes(snapshot.status)) return "searching";
-    return "completed";
+    return "searching";
   }
 
   function renderOffer(offer, entry, options, messages) {

@@ -35,7 +35,7 @@ def main() -> None:
 
     assert "/assets/css/track.css?v=workspace-design-v5" in html
     assert "/assets/js/progress-header.js?v=progress-stage-v5" in html
-    assert "/assets/js/tracking-workspace.js?v=shared-v5" in html
+    assert "/assets/js/tracking-workspace.js?v=shared-v6" in html
     assert "/assets/js/track.js?v=status-mapping-v12" in html
 
     assert (
@@ -112,6 +112,19 @@ def main() -> None:
     assert track_js.count(manual_review_group) == 3
     assert workspace_js.count(manual_review_group) == 1
     assert '"manual_review_required"' in progress_js
+
+    assert (
+        '    return "searching";\n'
+        '  }\n\n'
+        '  function renderOffer'
+        in workspace_js
+    )
+    assert (
+        '    return "completed";\n'
+        '  }\n\n'
+        '  function renderOffer'
+        not in workspace_js
+    )
 
     assert 'card.className = "hero-workspace"' not in workspace_js
     assert "tracking-status-title" not in workspace_js

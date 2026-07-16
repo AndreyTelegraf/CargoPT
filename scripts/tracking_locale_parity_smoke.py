@@ -263,7 +263,7 @@ for locale, path in FILES.items():
         ),
         (
             "/assets/js/tracking-workspace.js"
-            "?v=shared-v5"
+            "?v=shared-v6"
         ),
         (
             "/assets/js/track.js"

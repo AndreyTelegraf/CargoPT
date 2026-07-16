@@ -384,25 +384,28 @@ def main() -> int:
         "track_unknown_label_falls_back_to_waiting": (
             "return messages.waitingOffers;" in track_js
         ),
-        "workspace_unknown_visual_falls_back_to_completed": (
-            'return "completed";' in workspace_js
+        "workspace_unknown_visual_falls_back_to_searching": (
+            '    return "searching";\n'
+            '  }\n\n'
+            '  function renderOffer'
+            in workspace_js
         ),
         "progress_unknown_falls_back_to_received": (
             "activeIndex: 0" in progress_js
         ),
     }
 
-    if fallback_contracts[
-        "workspace_unknown_visual_falls_back_to_completed"
+    if not fallback_contracts[
+        "workspace_unknown_visual_falls_back_to_searching"
     ]:
-        warnings.append(
+        issues.append(
             {
                 "code": (
-                    "unknown_status_visual_fallback_"
-                    "is_completed"
+                    "unsafe_unknown_status_"
+                    "visual_fallback"
                 ),
                 "component": "workspace_js",
-                "current_fallback": "completed",
+                "required_fallback": "searching",
             }
         )
 
