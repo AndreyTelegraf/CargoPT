@@ -48,7 +48,7 @@ def main() -> None:
 
     assert (
         "/assets/js/progress-header.js"
-        "?v=progress-stage-v4"
+        "?v=progress-stage-v5"
         in html
     )
 

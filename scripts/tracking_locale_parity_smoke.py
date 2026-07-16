@@ -259,15 +259,15 @@ for locale, path in FILES.items():
         ),
         (
             "/assets/js/progress-header.js"
-            "?v=progress-stage-v4"
+            "?v=progress-stage-v5"
         ),
         (
             "/assets/js/tracking-workspace.js"
-            "?v=shared-v3"
+            "?v=shared-v4"
         ),
         (
             "/assets/js/track.js"
-            "?v=status-favicon-v10"
+            "?v=status-mapping-v11"
         ),
     ):
         assert asset in source, (
