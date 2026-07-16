@@ -940,6 +940,9 @@ textarea:focus {
 }
 
 .tracking-offer-card {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
   padding: var(--space-4);
   border: var(--surface-nested-border);
   border-radius: var(--surface-radius-card);
@@ -965,14 +968,39 @@ textarea:focus {
 .tracking-offer-top {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  min-width: 0;
   gap: var(--space-4);
-  align-items: center;
 }
 
-.tracking-offer-top > strong {
+.tracking-offer-identity {
+  min-width: 0;
+}
+
+.tracking-offer-company {
+  display: block;
+  color: var(--text);
+  overflow-wrap: anywhere;
   font-size: var(--font-size-offer-company);
   font-weight: var(--font-weight-offer-company);
   line-height: var(--line-height-card-title);
+}
+
+.tracking-offer-price-block {
+  display: grid;
+  flex: 0 0 auto;
+  justify-items: end;
+  gap: 2px;
+}
+
+.tracking-offer-price-label,
+.tracking-offer-equipment-label {
+  color: var(--muted);
+  font-size: var(--font-size-badge-small);
+  font-weight: var(--font-weight-strong);
+  letter-spacing: var(--letter-spacing-label);
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .tracking-offer-price {
@@ -983,22 +1011,106 @@ textarea:focus {
   white-space: nowrap;
 }
 
-.tracking-offer-meta {
-  margin-top: var(--space-1);
+.tracking-offer-section {
+  display: grid;
+  min-width: 0;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line);
+}
+
+.tracking-offer-section-title {
+  margin: 0;
   color: var(--muted);
+  font-size: var(--font-size-badge-small);
+  font-weight: var(--font-weight-strong);
+  letter-spacing: var(--letter-spacing-label);
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.tracking-offer-vehicle-type {
+  color: var(--text);
+  font-size: var(--font-size-detail-title);
+  font-weight: var(--font-weight-title);
+  line-height: var(--line-height-card-title);
+  overflow-wrap: anywhere;
+}
+
+.tracking-offer-spec-list,
+.tracking-offer-contact-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.tracking-offer-definition {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-panel-bg);
+}
+
+.tracking-offer-definition dt {
+  color: var(--muted);
+  font-size: var(--font-size-badge-small);
+  font-weight: var(--font-weight-strong);
+  line-height: 1.3;
+}
+
+.tracking-offer-definition dd {
+  min-width: 0;
+  margin: 0;
+  color: var(--text);
+  overflow-wrap: anywhere;
   font-size: var(--font-size-offer-meta);
+  font-weight: var(--font-weight-strong);
   line-height: var(--line-height-offer-meta);
+}
+
+.tracking-offer-equipment {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.tracking-offer-equipment-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tracking-offer-equipment-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 5px 10px;
+  border: 1px solid var(--primary-border);
+  border-radius: 999px;
+  background: var(--primary-fill);
+  color: var(--primary);
+  font-size: var(--font-size-badge);
+  font-weight: var(--font-weight-strong);
+  line-height: 1.25;
 }
 
 .tracking-offer-note {
-  margin-top: var(--space-3);
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-panel-bg);
+  color: var(--text);
+  overflow-wrap: anywhere;
   font-size: var(--font-size-offer-meta);
-  line-height: var(--line-height-offer-meta);
+  line-height: var(--line-height-copy);
 }
 
 .tracking-select-button {
-  margin-top: var(--space-3);
   width: 100%;
+  margin-top: 0;
   background: var(--primary);
 }
 
@@ -1007,7 +1119,25 @@ textarea:focus {
   border-color: var(--primary);
 }
 
-
 .tracking-select-button:disabled {
   opacity: .72;
+}
+
+@media (max-width: 640px) {
+  .tracking-offer-card {
+    padding: var(--space-3);
+  }
+
+  .tracking-offer-top {
+    gap: var(--space-3);
+  }
+
+  .tracking-offer-spec-list,
+  .tracking-offer-contact-list {
+    grid-template-columns: 1fr;
+  }
+
+  .tracking-offer-definition {
+    padding: 9px 11px;
+  }
 }

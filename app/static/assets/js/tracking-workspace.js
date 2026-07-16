@@ -38,7 +38,15 @@
     craneLabel: "Grua",
     mobileLiftLabel: "Elevador exterior",
     failDealShort: "Não chegámos a acordo",
-    selectedOfferLabel: "Oferta selecionada"
+    selectedOfferLabel: "Oferta selecionada",
+    priceLabel: "Preço",
+    vehicleDetailsLabel: "Veículo e capacidade",
+    vehicleLabel: "Veículo",
+    payloadLabel: "Carga",
+    volumeLabel: "Volume",
+    equipmentLabel: "Equipamento",
+    carrierContactLabel: "Contacto do transportador",
+    carrierNoteLabel: "Nota do transportador"
   };
 
   function absoluteUrl(path) {
@@ -65,6 +73,38 @@
     return "searching";
   }
 
+  function createOfferSection(className, title) {
+    const section = document.createElement("section");
+    section.className = `tracking-offer-section ${className}`;
+
+    const heading = document.createElement("h4");
+    heading.className = "tracking-offer-section-title";
+    heading.textContent = title;
+
+    section.appendChild(heading);
+    return section;
+  }
+
+  function appendOfferDefinition(list, label, value) {
+    if (
+      value === null
+      || value === undefined
+      || value === ""
+    ) return;
+
+    const item = document.createElement("div");
+    item.className = "tracking-offer-definition";
+
+    const term = document.createElement("dt");
+    term.textContent = label;
+
+    const description = document.createElement("dd");
+    description.textContent = String(value);
+
+    item.append(term, description);
+    list.appendChild(item);
+  }
+
   function renderOffer(offer, entry, options, messages) {
     const card = document.createElement("article");
     card.className = "tracking-offer-card";
@@ -72,56 +112,184 @@
     const top = document.createElement("div");
     top.className = "tracking-offer-top";
 
+    const identity = document.createElement("div");
+    identity.className = "tracking-offer-identity";
+
     const company = document.createElement("strong");
-    company.textContent = offer.company_name || messages.defaultCarrier;
+    company.className = "tracking-offer-company";
+    company.textContent =
+      offer.company_name || messages.defaultCarrier;
+
+    identity.appendChild(company);
+
+    const priceBlock = document.createElement("div");
+    priceBlock.className = "tracking-offer-price-block";
+
+    const priceLabel = document.createElement("span");
+    priceLabel.className = "tracking-offer-price-label";
+    priceLabel.textContent = messages.priceLabel;
 
     const price = document.createElement("strong");
     price.className = "tracking-offer-price";
-    price.textContent = formatPrice(offer.price_cents, options.locale);
+    price.textContent = formatPrice(
+      offer.price_cents,
+      options.locale
+    );
 
-    top.append(company, price);
+    priceBlock.append(priceLabel, price);
+    top.append(identity, priceBlock);
+    card.appendChild(top);
 
-    const meta = document.createElement("div");
-    meta.className = "tracking-offer-meta";
-    meta.textContent = [
-      offer.vehicle_type,
-      offer.payload_kg ? offer.payload_kg + " kg" : null,
-      offer.volume_m3 ? offer.volume_m3 + " m³" : null
-    ].filter(Boolean).join(" • ");
+    const vehicleSection = createOfferSection(
+      "tracking-offer-vehicle-section",
+      messages.vehicleDetailsLabel
+    );
 
-    card.append(top, meta);
+    if (offer.vehicle_type) {
+      const vehicleType = document.createElement("strong");
+      vehicleType.className = "tracking-offer-vehicle-type";
+      vehicleType.textContent = offer.vehicle_type;
+      vehicleSection.appendChild(vehicleType);
+    }
 
-    const shouldShowCarrierContacts = entry.tracking_snapshot?.status !== "offered";
-    const details = [
-      shouldShowCarrierContacts && offer.contact_name ? `${messages.contactLabel}: ${offer.contact_name}` : null,
-      shouldShowCarrierContacts && offer.phone ? `${messages.phoneLabel}: ${offer.phone}` : null,
-      shouldShowCarrierContacts && offer.telegram_username ? `${messages.telegramLabel}: @${offer.telegram_username}` : null,
-      offer.max_loaders ? `${messages.loadersLabel}: ${offer.max_loaders}` : null,
+    const specifications = document.createElement("dl");
+    specifications.className = "tracking-offer-spec-list";
+
+    appendOfferDefinition(
+      specifications,
+      messages.payloadLabel,
+      offer.payload_kg ? `${offer.payload_kg} kg` : null
+    );
+
+    appendOfferDefinition(
+      specifications,
+      messages.volumeLabel,
+      offer.volume_m3 ? `${offer.volume_m3} m³` : null
+    );
+
+    appendOfferDefinition(
+      specifications,
+      messages.loadersLabel,
+      offer.max_loaders || null
+    );
+
+    if (specifications.children.length) {
+      vehicleSection.appendChild(specifications);
+    }
+
+    const equipment = [
       offer.has_tail_lift ? messages.tailLiftLabel : null,
       offer.has_crane ? messages.craneLabel : null,
-      offer.has_mobile_lift ? messages.mobileLiftLabel : null
+      offer.has_mobile_lift
+        ? messages.mobileLiftLabel
+        : null
     ].filter(Boolean);
 
-    if (details.length) {
-      const detailsNode = document.createElement("div");
-      detailsNode.className = "tracking-offer-details";
-      detailsNode.textContent = details.join(" • ");
-      card.appendChild(detailsNode);
+    if (equipment.length) {
+      const equipmentBlock = document.createElement("div");
+      equipmentBlock.className =
+        "tracking-offer-equipment";
+
+      const equipmentLabel = document.createElement("span");
+      equipmentLabel.className =
+        "tracking-offer-equipment-label";
+      equipmentLabel.textContent = messages.equipmentLabel;
+
+      const equipmentList = document.createElement("div");
+      equipmentList.className =
+        "tracking-offer-equipment-list";
+
+      equipment.forEach((label) => {
+        const chip = document.createElement("span");
+        chip.className = "tracking-offer-equipment-chip";
+        chip.textContent = label;
+        equipmentList.appendChild(chip);
+      });
+
+      equipmentBlock.append(
+        equipmentLabel,
+        equipmentList
+      );
+      vehicleSection.appendChild(equipmentBlock);
+    }
+
+    card.appendChild(vehicleSection);
+
+    const shouldShowCarrierContacts =
+      entry.tracking_snapshot?.status !== "offered";
+
+    const hasCarrierContacts =
+      shouldShowCarrierContacts
+      && (
+        offer.contact_name
+        || offer.phone
+        || offer.telegram_username
+      );
+
+    if (hasCarrierContacts) {
+      const contactSection = createOfferSection(
+        "tracking-offer-contact-section",
+        messages.carrierContactLabel
+      );
+
+      const contactList = document.createElement("dl");
+      contactList.className =
+        "tracking-offer-contact-list";
+
+      appendOfferDefinition(
+        contactList,
+        messages.contactLabel,
+        offer.contact_name
+      );
+
+      appendOfferDefinition(
+        contactList,
+        messages.phoneLabel,
+        offer.phone
+      );
+
+      appendOfferDefinition(
+        contactList,
+        messages.telegramLabel,
+        offer.telegram_username
+          ? `@${offer.telegram_username}`
+          : null
+      );
+
+      contactSection.appendChild(contactList);
+      card.appendChild(contactSection);
     }
 
     if (offer.carrier_note) {
-      const note = document.createElement("div");
+      const noteSection = createOfferSection(
+        "tracking-offer-note-section",
+        messages.carrierNoteLabel
+      );
+
+      const note = document.createElement("p");
       note.className = "tracking-offer-note";
       note.textContent = offer.carrier_note;
-      card.appendChild(note);
+
+      noteSection.appendChild(note);
+      card.appendChild(noteSection);
     }
 
-    if (entry.tracking_snapshot?.status === "offered" && options.onSelectOffer) {
+    if (
+      entry.tracking_snapshot?.status === "offered"
+      && options.onSelectOffer
+    ) {
       const button = document.createElement("button");
-      button.className = "button button-small tracking-select-button";
+      button.className =
+        "button button-small tracking-select-button";
       button.type = "button";
       button.textContent = messages.selectOffer;
-      button.addEventListener("click", () => options.onSelectOffer(offer.offer_id, button));
+      button.addEventListener(
+        "click",
+        () => options.onSelectOffer(
+          offer.offer_id,
+          button
+        )
+      );
       card.appendChild(button);
     }
 
@@ -132,10 +300,18 @@
       && options.onAssignmentAction
     ) {
       const failButton = document.createElement("button");
-      failButton.className = "button button-small button-secondary tracking-select-button tracking-assignment-fail";
+      failButton.className =
+        "button button-small button-secondary "
+        + "tracking-select-button tracking-assignment-fail";
       failButton.type = "button";
       failButton.textContent = messages.failDealShort;
-      failButton.addEventListener("click", () => options.onAssignmentAction("fail", failButton));
+      failButton.addEventListener(
+        "click",
+        () => options.onAssignmentAction(
+          "fail",
+          failButton
+        )
+      );
       card.appendChild(failButton);
     }
 

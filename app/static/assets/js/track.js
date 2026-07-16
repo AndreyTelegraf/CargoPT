@@ -381,7 +381,15 @@ const MESSAGE_SETS = {
     tailLiftLabel: "Plataforma elevatória",
     craneLabel: "Grua",
     mobileLiftLabel: "Elevador exterior",
-    selectedOfferLabel: "Oferta selecionada"
+    selectedOfferLabel: "Oferta selecionada",
+    priceLabel: "Preço",
+    vehicleDetailsLabel: "Veículo e capacidade",
+    vehicleLabel: "Veículo",
+    payloadLabel: "Carga",
+    volumeLabel: "Volume",
+    equipmentLabel: "Equipamento",
+    carrierContactLabel: "Contacto do transportador",
+    carrierNoteLabel: "Nota do transportador"
   },
 
   en: {
@@ -436,7 +444,15 @@ const MESSAGE_SETS = {
     tailLiftLabel: "Tail lift",
     craneLabel: "Crane",
     mobileLiftLabel: "External lift",
-    selectedOfferLabel: "Selected offer"
+    selectedOfferLabel: "Selected offer",
+    priceLabel: "Price",
+    vehicleDetailsLabel: "Vehicle and capacity",
+    vehicleLabel: "Vehicle",
+    payloadLabel: "Payload",
+    volumeLabel: "Volume",
+    equipmentLabel: "Equipment",
+    carrierContactLabel: "Carrier contact",
+    carrierNoteLabel: "Carrier note"
   },
 
   ru: {
@@ -491,7 +507,15 @@ const MESSAGE_SETS = {
     tailLiftLabel: "Гидроборт",
     craneLabel: "Кран",
     mobileLiftLabel: "Внешний подъёмник",
-    selectedOfferLabel: "Выбранное предложение"
+    selectedOfferLabel: "Выбранное предложение",
+    priceLabel: "Цена",
+    vehicleDetailsLabel: "Машина и вместимость",
+    vehicleLabel: "Машина",
+    payloadLabel: "Грузоподъёмность",
+    volumeLabel: "Объём",
+    equipmentLabel: "Оборудование",
+    carrierContactLabel: "Контакт перевозчика",
+    carrierNoteLabel: "Комментарий перевозчика"
   }
 };
 
