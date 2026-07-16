@@ -607,6 +607,11 @@ async def contrast_audit(page: Page) -> dict[str, Any]:
           ) {
             if (!visible(element)) continue;
 
+            if (element.closest('[aria-hidden="true"]')) {
+              skipped += 1;
+              continue;
+            }
+
             const text = directText(element);
 
             if (!text) continue;
