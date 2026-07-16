@@ -44,7 +44,7 @@
     {"@type":"Question","name":"É possível fazer transporte entre cidades?","acceptedAnswer":{"@type":"Answer","text":"Sim. Pode receber propostas para transportes locais e também para mudanças entre cidades em Portugal, como Lisboa, Porto, Cascais, Sintra, Oeiras ou outras localidades."}}
   ]}</script>
   <link rel="stylesheet" href="/assets/css/design-system.css?v=tokens-v1">
-  <link rel="stylesheet" href="/assets/css/components.css?v=locale-switcher-v1">
+  <link rel="stylesheet" href="/assets/css/components.css?v=mobile-form-groups-v1">
   <link rel="stylesheet" href="/assets/css/landing.css?v=trust-marketplace-v1">
 </head>
 <body data-locale="pt">
@@ -149,26 +149,123 @@
         <fieldset class="form-step" data-step="2">
           <legend>Detalhes e contactos</legend>
           <p class="form-intro">Adicione os detalhes necessários para os transportadores avaliarem o pedido.</p>
-          <div class="form-grid">
-            <label><span class="field-label">Nome</span><input name="customer_name" autocomplete="name" required></label>
-            <label><span class="field-label">Data da mudança</span><input name="requested_date" type="text" required list="requestedDateOptions" placeholder="DD/MM/AAAA, hoje, amanhã"><datalist id="requestedDateOptions"><option value="hoje"></option><option value="amanhã"></option><option value="próximos dias"></option><option value="qualquer dia"></option></datalist></label>
+          <div class="form-section" aria-labelledby="contactDetailsTitle">
+            <div class="form-section-heading">
+              <h3 id="contactDetailsTitle" class="form-section-title">Contacto e data</h3>
+              <p class="form-section-copy">Indique quando pretende realizar o transporte e como podemos contactá-lo.</p>
+            </div>
+
+            <div class="form-grid">
+              <label>
+                <span class="field-label">Nome</span>
+                <input name="customer_name" autocomplete="name" required>
+              </label>
+              <label>
+                <span class="field-label">Data da mudança</span>
+                <input name="requested_date" type="text" required list="requestedDateOptions" placeholder="DD/MM/AAAA, hoje, amanhã">
+                <datalist id="requestedDateOptions">
+                  <option value="hoje"></option>
+                  <option value="amanhã"></option>
+                  <option value="próximos dias"></option>
+                  <option value="qualquer dia"></option>
+                </datalist>
+              </label>
+            </div>
+
+            <div class="form-grid">
+              <label>
+                <span class="field-label">Telefone</span>
+                <input name="client_phone" autocomplete="tel" placeholder="+351..." required>
+              </label>
+              <label>
+                <span class="field-label">WhatsApp <small class="field-optional">Opcional</small></span>
+                <input name="client_whatsapp" autocomplete="tel" placeholder="+351...">
+              </label>
+            </div>
+
+            <label>
+              <span class="field-label">Email <small class="field-optional">Opcional</small></span>
+              <input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com">
+            </label>
           </div>
-          <div class="form-grid">
-            <label><span class="field-label">Telefone</span><input name="client_phone" autocomplete="tel" placeholder="+351..." required></label>
-            <label><span class="field-label">WhatsApp</span><input name="client_whatsapp" autocomplete="tel" placeholder="+351..."></label>
+
+          <div class="form-section" aria-labelledby="accessDetailsTitle">
+            <div class="form-section-heading">
+              <h3 id="accessDetailsTitle" class="form-section-title">Acessos aos locais</h3>
+              <p class="form-section-copy">Os andares e elevadores ajudam os transportadores a calcular a equipa e o tempo necessários.</p>
+            </div>
+
+            <div class="form-access-grid">
+              <div class="form-access-card" role="group" aria-labelledby="pickupAccessTitle">
+                <h4 id="pickupAccessTitle" class="form-access-title">Recolha</h4>
+                <label>
+                  <span class="field-label">Andar</span>
+                  <input name="pickup_floor" type="number" min="-1" max="24" required>
+                </label>
+                <label>
+                  <span class="field-label">Existe elevador?</span>
+                  <select name="pickup_elevator" required>
+                    <option value="">Selecione</option>
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="form-access-card" role="group" aria-labelledby="dropoffAccessTitle">
+                <h4 id="dropoffAccessTitle" class="form-access-title">Entrega</h4>
+                <label>
+                  <span class="field-label">Andar</span>
+                  <input name="dropoff_floor" type="number" min="-1" max="24" required>
+                </label>
+                <label>
+                  <span class="field-label">Existe elevador?</span>
+                  <select name="dropoff_elevator" required>
+                    <option value="">Selecione</option>
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                  </select>
+                </label>
+              </div>
+            </div>
           </div>
-          <label><span class="field-label">Email</span><input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"></label>
-          <div class="form-grid">
-            <label><span class="field-label">Andar de recolha</span><input name="pickup_floor" type="number" min="-1" max="24" required></label>
-            <label><span class="field-label">Elevador na recolha</span><select name="pickup_elevator" required><option value="">Selecione</option><option value="true">Sim</option><option value="false">Não</option></select></label>
-            <label><span class="field-label">Andar de entrega</span><input name="dropoff_floor" type="number" min="-1" max="24" required></label>
-            <label><span class="field-label">Elevador na entrega</span><select name="dropoff_elevator" required><option value="">Selecione</option><option value="true">Sim</option><option value="false">Não</option></select></label>
+
+          <div class="form-section" aria-labelledby="serviceDetailsTitle">
+            <div class="form-section-heading">
+              <h3 id="serviceDetailsTitle" class="form-section-title">Equipa e dimensão</h3>
+              <p class="form-section-copy">Pode deixar estes campos em branco quando ainda não souber os detalhes.</p>
+            </div>
+
+            <div class="form-grid">
+              <label>
+                <span class="field-label">Precisa de ajudantes <small class="field-optional">Opcional</small></span>
+                <select name="required_loaders">
+                  <option value="">Não sei / não é importante</option>
+                  <option value="0">Não</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </label>
+              <label>
+                <span class="field-label">Volume aproximado, m³ <small class="field-optional">Opcional</small></span>
+                <input name="estimated_volume_m3" type="number" min="0" step="0.5">
+              </label>
+            </div>
           </div>
-          <div class="form-grid">
-            <label><span class="field-label">Precisa de ajudantes</span><select name="required_loaders"><option value="">Não sei / não é importante</option><option value="0">Não</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
-            <label><span class="field-label">Volume aproximado, m³</span><input name="estimated_volume_m3" type="number" min="0" step="0.5"></label>
+
+          <div class="form-section" aria-labelledby="additionalDetailsTitle">
+            <div class="form-section-heading">
+              <h3 id="additionalDetailsTitle" class="form-section-title">Detalhes adicionais</h3>
+              <p class="form-section-copy">Acrescente informações que possam alterar o preço, o equipamento ou a duração do serviço.</p>
+            </div>
+
+            <label>
+              <span class="field-label">Comentário <small class="field-optional">Opcional</small></span>
+              <textarea name="comment" placeholder="Exemplo: objetos pesados, acesso estreito ou necessidade de desmontagem"></textarea>
+            </label>
           </div>
-          <label><span class="field-label">Comentário</span><textarea name="comment" placeholder="Detalhes adicionais"></textarea></label>
           <p class="form-note">É necessário indicar pelo menos um contacto: telefone, WhatsApp ou email.</p>
           <p class="privacy-notice">Ao enviar este pedido, os seus dados serão utilizados para gerir o pedido e partilhados com transportadores adequados. Consulte a <a href="/privacy/">Política de Privacidade</a>.</p>
           <div class="form-actions">
