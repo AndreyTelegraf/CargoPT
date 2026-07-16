@@ -415,6 +415,14 @@ details p {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .tracking-status-dot-searching,
+  .tracking-status-dot-success,
+  .tracking-status-dot-pending {
+    animation: none;
+  }
+}
+
 .tracking-status-summary {
   display: grid;
   gap: var(--space-1);
