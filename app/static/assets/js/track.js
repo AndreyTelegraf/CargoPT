@@ -244,6 +244,7 @@ function renderOpenPedidosNavigation() {
 
     const card = document.createElement("article");
     card.className = "track-offer-nav-card";
+    card.setAttribute("role", "link");
     card.tabIndex = 0;
 
     const top = document.createElement("div");
