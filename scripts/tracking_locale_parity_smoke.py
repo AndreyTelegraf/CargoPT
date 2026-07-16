@@ -263,11 +263,11 @@ for locale, path in FILES.items():
         ),
         (
             "/assets/js/tracking-workspace.js"
-            "?v=shared-v4"
+            "?v=shared-v5"
         ),
         (
             "/assets/js/track.js"
-            "?v=status-mapping-v11"
+            "?v=status-mapping-v12"
         ),
     ):
         assert asset in source, (

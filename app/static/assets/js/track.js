@@ -560,7 +560,7 @@ function getTrackingStatusDotState(snapshot, acceptedOffers) {
   if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending") return "pending";
   if (["assigned_pending_confirmation", "assigned", "in_progress"].includes(snapshot.status)) return "pending";
   if (acceptedOffers.length > 0) return "success";
-  if (["ready_for_matching", "matching", "offered"].includes(snapshot.status)) return "searching";
+  if (["ready_for_matching", "matching", "offered", "manual_review_required"].includes(snapshot.status)) return "searching";
   return "searching";
 }
 
@@ -575,7 +575,7 @@ function formatTrackingStatus(snapshot) {
   if (["assigned_pending_confirmation", "assigned", "in_progress"].includes(snapshot.status)) return messages.statusAssigned;
 
   if (acceptedOffers.length > 0) return messages.offersAvailable.replace("{count}", String(acceptedOffers.length));
-  if (["ready_for_matching", "matching", "offered"].includes(snapshot.status)) return messages.statusSearching;
+  if (["ready_for_matching", "matching", "offered", "manual_review_required"].includes(snapshot.status)) return messages.statusSearching;
   if (["no_carriers_found", "offers_exhausted", "expired_without_response"].includes(snapshot.status)) return messages.statusNoOffers;
 
   return messages.waitingOffers;
@@ -585,7 +585,7 @@ function buildTrackingEntry(snapshot, fallbackToken) {
   const acceptedOffers = Array.isArray(snapshot.accepted_offers) ? snapshot.accepted_offers : [];
   const isSearching =
     acceptedOffers.length === 0
-    && ["ready_for_matching", "matching", "offered"].includes(snapshot.status);
+    && ["ready_for_matching", "matching", "offered", "manual_review_required"].includes(snapshot.status);
 
   const entry = {
     job_id: snapshot.job_id,

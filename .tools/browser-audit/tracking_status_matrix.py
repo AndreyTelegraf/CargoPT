@@ -37,9 +37,7 @@ NON_PUBLIC_JOB_STATUSES = {
     "unmatched",
 }
 
-IMPLICIT_FRONTEND_FALLBACK_STATUSES = {
-    "manual_review_required",
-}
+IMPLICIT_FRONTEND_FALLBACK_STATUSES: set[str] = set()
 
 SMOKE_TESTS = [
     "scripts/job_tracking_state_cards_smoke.py",

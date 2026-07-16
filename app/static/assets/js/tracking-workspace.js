@@ -60,7 +60,7 @@
     if (snapshot.client_confirmation_status === "pending" || snapshot.carrier_confirmation_status === "pending") return "pending";
     if (["assigned_pending_confirmation", "assigned", "in_progress"].includes(snapshot.status)) return "pending";
     if (acceptedOffers.length > 0) return "success";
-    if (["ready_for_matching", "matching", "offered"].includes(snapshot.status)) return "searching";
+    if (["ready_for_matching", "matching", "offered", "manual_review_required"].includes(snapshot.status)) return "searching";
     return "completed";
   }
 
