@@ -15,6 +15,9 @@ if str(PROJECT_ROOT) not in sys.path:
 from scripts.guide_locale_contract import (
     validate_guide_locale_path,
 )
+from scripts.guide_translation_contract import (
+    validate_guide_translation_contract,
+)
 from scripts.render_guide import (
     DEFAULT_REGISTRY_PATH,
     DEFAULT_STATIC_ROOT,
@@ -59,6 +62,7 @@ def validate_article_registry_contract(
         locale=article["locale"],
         path=article["path"],
     )
+    validate_guide_translation_contract(article)
 
     comparable_fields = (
         "id",
