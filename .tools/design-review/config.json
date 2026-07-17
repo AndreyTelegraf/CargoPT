@@ -37,6 +37,13 @@
       "required": true
     },
     {
+      "id": "offer-card-contract",
+      "path": ".tools/browser-audit/offer_card_contract.py",
+      "kind": "mocked-production-ui",
+      "production_access": "read-only-with-mocked-api",
+      "required": true
+    },
+    {
       "id": "conversion-frontend-e2e",
       "path": ".tools/browser-audit/conversion_frontend_e2e.py",
       "kind": "mocked-production-ui",
