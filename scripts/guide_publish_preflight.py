@@ -12,6 +12,9 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 
+from scripts.guide_locale_contract import (
+    validate_guide_locale_path,
+)
 from scripts.render_guide import (
     DEFAULT_REGISTRY_PATH,
     DEFAULT_STATIC_ROOT,
@@ -52,6 +55,11 @@ def validate_article_registry_contract(
     article: dict[str, Any],
     topic: dict[str, Any],
 ) -> None:
+    validate_guide_locale_path(
+        locale=article["locale"],
+        path=article["path"],
+    )
+
     comparable_fields = (
         "id",
         "cluster",
@@ -71,11 +79,6 @@ def validate_article_registry_contract(
     if topic["status"] not in ALLOWED_SOURCE_STATUSES:
         raise ValueError(
             f"Unsupported guide status: {topic['status']!r}"
-        )
-
-    if not article["path"].endswith("/"):
-        raise ValueError(
-            f"Guide path must end with /: {article['path']}"
         )
 
 
