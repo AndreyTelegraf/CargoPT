@@ -1,0 +1,361 @@
+{
+  "schema_version": 1,
+  "id": "leave-portugal-pt-br",
+  "locale": "pt-BR",
+  "cluster": "planning",
+  "path": "/pt-br/guias/como-sair-de-portugal/",
+  "title": "Como sair de Portugal da forma correta",
+  "meta_title": "Como sair de Portugal: aluguel, impostos e documentos — CargoPT",
+  "meta_description": "Checklist prático para sair de Portugal: aluguel, caução, serviços, internet, carro, impostos, recibos verdes, autorização de residência, proteção temporária e documentos.",
+  "primary_query": "como sair de Portugal",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Como sair de Portugal da forma correta",
+  "eyebrow": "Como sair de Portugal da forma correta",
+  "hero_description": "Checklist prático para sair de Portugal: aluguel, caução, serviços, internet, carro, impostos, recibos verdes, autorização de residência, proteção temporária e documentos.",
+  "date_published": "2026-07-17",
+  "date_modified": "2026-07-17",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Como sair de Portugal da forma correta",
+  "key_points_heading": "Como sair de Portugal da forma correta",
+  "faq_heading": "Como sair de Portugal da forma correta",
+  "related_links_heading": "Como sair de Portugal da forma correta",
+  "direct_answer": "Checklist prático para sair de Portugal: aluguel, caução, serviços, internet, carro, impostos, recibos verdes, autorização de residência, proteção temporária e documentos.",
+  "key_points": [
+    "Como sair de Portugal da forma correta",
+    "Checklist prático para sair de Portugal: aluguel, caução, serviços, internet, carro, impostos, recibos verdes, autorização de residência, proteção temporária e documentos.",
+    "CargoPT"
+  ],
+  "content_mode": "verbatim",
+  "translation_group": "leave-portugal",
+  "alternates": {
+    "en": "/en/guides/how-to-leave-portugal/",
+    "ru": "/ru/guides/kak-pravilno-uehat-iz-portugalii/",
+    "pt-BR": "/pt-br/guias/como-sair-de-portugal/"
+  },
+  "sections": [
+    {
+      "id": "housing-car",
+      "heading": "Moradia e carro",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Sair fisicamente do país pode ser feito em um dia. Já encerrar tudo por aqui de forma que depois não apareçam contas e cobranças de mais um ano de aluguel pode exigir vários meses de preparação."
+        },
+        {
+          "type": "paragraph",
+          "text": "Comece pelo imóvel."
+        },
+        {
+          "type": "paragraph",
+          "text": "Primeiro, releia o contrato: duração, renovação, denúncia e oposição à renovação. Se o contrato for renovado automaticamente, o inquilino normalmente precisa avisar o proprietário:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "com 120 dias de antecedência — para contratos de 6 anos ou mais;",
+            "com 90 dias — de 1 ano a menos de 6 anos;",
+            "com 60 dias — de 6 meses a menos de 1 ano;",
+            "com um terço do prazo — se o contrato tiver menos de 6 meses."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Em geral, é possível sair antes do fim depois que tiver passado um terço do prazo atual do contrato ou da renovação. Para contratos de um ano ou mais, o aviso é de 120 dias; para contratos mais curtos, 60 dias. Perder o prazo não impede a saída, mas o proprietário pode cobrar o aluguel correspondente ao período de aviso que faltou. Por isso, é melhor enviar a comunicação por carta registrada com aviso de receção. O WhatsApp pode ser usado como complemento, mas não no lugar da carta."
+        },
+        {
+          "type": "paragraph",
+          "text": "Converse separadamente e com antecedência sobre a caução. Em Portugal, existe a prática desagradável de atrasar a devolução ou encontrar danos só depois que o inquilino já foi embora. Por isso, vale tentar combinar por escrito que a caução seja usada no último mês de aluguel. Para o inquilino, isso é mais seguro do que sair do país, deixar o dinheiro com o proprietário e depois tentar recuperá-lo do exterior. Mas, sem consentimento escrito do proprietário, você não pode substituir por conta própria o último aluguel pela caução: juridicamente, são pagamentos diferentes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Antes de sair:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "combine a data da vistoria;",
+            "fotografe o imóvel, os móveis e os eletrodomésticos;",
+            "registre as leituras de água, gás e eletricidade;",
+            "documente por escrito a entrega do imóvel e das chaves;",
+            "obtenha uma lista de reclamações ou a confirmação de que não há nenhuma;",
+            "deixe os dados bancários para a devolução da caução."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Não deixe as chaves na caixa de correio sem confirmação do proprietário. Eletricidade, água e gás precisam ser encerrados ou transferidos. Não desligue antes da vistoria final: sem água e eletricidade, não dá para verificar torneiras, esquentador e eletrodomésticos. Guarde a confirmação do encerramento, a conta final, o comprovante de pagamento e as fotos dos medidores."
+        },
+        {
+          "type": "paragraph",
+          "text": "A internet é uma história à parte. Verifique a fidelização e pergunte à operadora com antecedência:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "quando o contrato pode ser encerrado;",
+            "quais documentos comprovam a emigração;",
+            "quanto ainda será necessário pagar;",
+            "onde devolver o roteador e o equipamento de TV."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A mudança para outro país pode permitir o encerramento do contrato sem a multa normal, mas a operadora exigirá provas. Uma ligação não basta — obtenha uma confirmação por escrito com a data do desligamento. A regra principal é: primeiro encerramos o contrato, depois cancelamos o débito direto. Se você simplesmente bloquear a cobrança, o contrato continuará ativo e, no lugar dos pagamentos, começará a se acumular uma dívida."
+        },
+        {
+          "type": "paragraph",
+          "text": "Se você tem um carro, antes de sair é preciso:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "vendê-lo ou decidir onde ele ficará;",
+            "verificar o registro do novo proprietário;",
+            "encerrar ou transferir o seguro;",
+            "verificar o IUC e a inspeção periódica;",
+            "encerrar a Via Verde;",
+            "confirmar as regras de registro no novo país, caso o carro vá com você."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Entregar o carro e receber o dinheiro ainda não significa que o veículo saiu do seu nome. Verifique o registro por conta própria."
+        }
+      ]
+    },
+    {
+      "id": "work-taxes",
+      "heading": "Trabalho e impostos",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Depois do imóvel, é preciso encerrar trabalho, atividade e questões fiscais. Se você trabalha com contrato, verifique o prazo de aviso prévio. Antes de sair, obtenha:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "o acerto final;",
+            "o pagamento das férias não utilizadas;",
+            "os valores proporcionais de férias e subsídio de Natal;",
+            "o certificado de trabalho;",
+            "os últimos recibos de vencimento;",
+            "a declaração de situação de desemprego, se você tiver sido demitido."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "O empregador deve encerrar o seu registro como trabalhador na Segurança Social. Depois da saída, é melhor conferir isso na Segurança Social Direta. Se você tem recibos verdes abertos e não precisa mais da atividade portuguesa, encerre a atividade no Portal das Finanças."
+        },
+        {
+          "type": "paragraph",
+          "text": "Antes de encerrar:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "emita os últimos recibos;",
+            "anule documentos incorretos;",
+            "entregue as declarações de IVA necessárias;",
+            "verifique as contribuições para a Segurança Social;",
+            "baixe o comprovativo de cessação de atividade;",
+            "confirme que não existem dívidas fiscais ou sociais."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "As Finanças comunicam automaticamente o encerramento da atividade à Segurança Social, mas a cobrança das contribuições só termina no mês seguinte. Por isso, ainda é necessário verificar a área pessoal."
+        },
+        {
+          "type": "paragraph",
+          "text": "O mais importante é alterar a morada fiscal para o endereço no novo país. Na mudança de residente para não residente, o prazo é de 60 dias. A passagem, sozinha, não encerra a residência fiscal. O que conta é a mudança real, o número de dias passados no país e a existência de uma moradia que ainda pareça ser a sua residência permanente."
+        },
+        {
+          "type": "paragraph",
+          "text": "Guarde provas:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "passagens;",
+            "o novo contrato de aluguel;",
+            "o registro em outro país;",
+            "o contrato de trabalho;",
+            "contas de serviços públicos;",
+            "documentos da autoridade fiscal local;",
+            "a matrícula das crianças na escola."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Ao se mudar para fora da UE, Islândia, Noruega e Liechtenstein, pode ser necessário ter um representante fiscal em Portugal ou ativar as notificações eletrônicas. Isso precisa ser verificado para a sua situação específica. Mesmo depois da mudança, ainda haverá uma última declaração de IRS. Por exemplo, se você sair em 2026, entregará a declaração de 2026 na primavera de 2027."
+        },
+        {
+          "type": "paragraph",
+          "text": "Nela, é importante indicar corretamente:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "o período de residência fiscal portuguesa;",
+            "a data da mudança;",
+            "os rendimentos antes e depois dessa data;",
+            "os rendimentos portugueses recebidos já como não residente."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "No ano da mudança, pode existir residência fiscal parcial. Se você recebeu rendimentos de vários países, é melhor procurar um contador que trabalhe com casos internacionais, e não apenas com declarações comuns de IRS. Não é necessário encerrar a conta bancária imediatamente. A caução, o salário ou o reembolso de IRS ainda podem cair nela. Mas é preciso informar ao banco o novo endereço, a residência fiscal e o número fiscal estrangeiro."
+        }
+      ]
+    },
+    {
+      "id": "residency-documents",
+      "heading": "Autorização de residência, proteção temporária, saúde, escola e documentos",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Normalmente, não é necessário “encerrar” formalmente uma autorização de residência portuguesa comum ao sair. Mas primeiro decida se a saída é definitiva ou se você quer preservar o status e a possibilidade de voltar, lembrando que a autorização de residência pode ser renovada dentro de cinco anos a partir do vencimento do seu último cartão."
+        },
+        {
+          "type": "paragraph",
+          "text": "Uma ausência longa pode afetar a autorização de residência, a residência permanente e uma futura naturalização. Por isso, em uma mudança temporária por trabalho, estudo ou motivos familiares, é melhor entrar em contato com a AIMA por escrito com antecedência e guardar os documentos comprobatórios. Não confie em respostas verbais por telefone."
+        }
+      ]
+    },
+    {
+      "id": "temporary-protection",
+      "heading": "Caso separado — deslocados da Ucrânia com proteção temporária",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A proteção temporária portuguesa está atualmente prorrogada até 4 de março de 2027. Mas não é possível usar os direitos associados a ela em dois países da UE ao mesmo tempo. Se você estiver apenas viajando, a proteção portuguesa permite permanecer em outros países do Espaço Schengen por até 90 dias em um período de 180 dias."
+        },
+        {
+          "type": "paragraph",
+          "text": "Se você estiver se mudando para viver em outro país da UE:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "informe a AIMA;",
+            "confirme o procedimento para encerrar a proteção portuguesa — atualmente ele não existe, mas pode vir a existir;",
+            "registre-se para a proteção temporária no novo país;",
+            "não conte com o recebimento simultâneo de pagamentos, assistência médica e outros benefícios em dois Estados."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Depois do registro no novo país, os direitos da proteção temporária portuguesa terminam, e o novo documento é emitido pelo país de destino."
+        },
+        {
+          "type": "paragraph",
+          "text": "Se você voltar para a Ucrânia ou sair definitivamente da UE, também avise a AIMA e as organizações das quais recebe moradia, benefícios ou outra ajuda. Simplesmente desaparecer de Portugal não garante o encerramento automático de pagamentos e registros. NIF, NISS e número de utente não precisam ser cancelados: são números permanentes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Peça à escola da criança o histórico escolar, as notas, o comprovante de frequência, os documentos médicos e de vacinação."
+        },
+        {
+          "type": "paragraph",
+          "text": "Guarde exames, imagens, relatórios de alta, diagnósticos, orientações e receitas das clínicas. É melhor levar uma reserva dos medicamentos de uso contínuo e pedir uma receita com o nome internacional da substância ativa."
+        },
+        {
+          "type": "paragraph",
+          "text": "Para um animal, normalmente são necessários microchip, vacina antirrábica e passaporte europeu para animais de companhia. Alguns países exigem exames adicionais, autorização de importação ou quarentena."
+        },
+        {
+          "type": "paragraph",
+          "text": "Antes de sair:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "mantenha o número de celular português;",
+            "verifique a Chave Móvel Digital;",
+            "mantenha o acesso às Finanças e à Segurança Social Direta;",
+            "baixe contratos, recibos, declarações e documentos médicos;",
+            "organize o encaminhamento de correspondência pelos CTT ou deixe alguém para verificar a sua caixa de correio."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "final-checklist",
+      "heading": "Checklist final",
+      "blocks": [
+        {
+          "type": "checklist",
+          "items": [
+            "o contrato de aluguel foi encerrado por escrito;",
+            "o imóvel e as chaves foram entregues;",
+            "os contratos de serviços públicos foram encerrados;",
+            "os equipamentos da operadora foram devolvidos;",
+            "a atividade foi encerrada;",
+            "a morada fiscal foi alterada;",
+            "o banco foi informado;",
+            "a AIMA foi informada, se o seu status exigir;",
+            "todas as confirmações foram baixadas."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A burocracia portuguesa tem memória longa: para cada serviço encerrado, chave entregue e status alterado, é melhor ter um documento comprobatório."
+        },
+        {
+          "type": "paragraph",
+          "text": "Boa viagem!"
+        }
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Como sair de Portugal da forma correta",
+    "text": "Checklist prático para sair de Portugal: aluguel, caução, serviços, internet, carro, impostos, recibos verdes, autorização de residência, proteção temporária e documentos.",
+    "label": "Como sair de Portugal da forma correta",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Como sair de Portugal da forma correta?",
+      "answer": "Checklist prático para sair de Portugal: aluguel, caução, serviços, internet, carro, impostos, recibos verdes, autorização de residência, proteção temporária e documentos."
+    },
+    {
+      "question": "Como sair de Portugal da forma correta — 2?",
+      "answer": "Checklist prático para sair de Portugal: aluguel, caução, serviços, internet, carro, impostos, recibos verdes, autorização de residência, proteção temporária e documentos."
+    },
+    {
+      "question": "Como sair de Portugal da forma correta — 3?",
+      "answer": "Checklist prático para sair de Portugal: aluguel, caução, serviços, internet, carro, impostos, recibos verdes, autorização de residência, proteção temporária e documentos."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "How to Leave Portugal Properly",
+      "href": "/en/guides/how-to-leave-portugal/",
+      "type": "guide"
+    },
+    {
+      "title": "Как правильно уехать из Португалии",
+      "href": "/ru/guides/kak-pravilno-uehat-iz-portugalii/",
+      "type": "guide"
+    },
+    {
+      "title": "Como preparar uma mudança",
+      "href": "/guias/planeamento/como-preparar-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Como sair de Portugal da forma correta",
+    "text": "Checklist prático para sair de Portugal: aluguel, caução, serviços, internet, carro, impostos, recibos verdes, autorização de residência, proteção temporária e documentos.",
+    "label": "Como sair de Portugal da forma correta",
+    "href": "/#request"
+  }
+}

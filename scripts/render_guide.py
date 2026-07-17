@@ -176,17 +176,56 @@ def render_checklist(items: list[str]) -> str:
     )
 
 
+def render_ordered_blocks(
+    blocks: list[dict[str, Any]],
+) -> str:
+    rendered: list[str] = []
+
+    for block in blocks:
+        block_type = block["type"]
+
+        if block_type == "paragraph":
+            rendered.append(
+                render_paragraphs([block["text"]])
+            )
+        elif block_type == "checklist":
+            rendered.append(
+                render_checklist(block["items"])
+            )
+        elif block_type == "subheading":
+            rendered.append(
+                f"        <h3>{escape_text(block['text'])}</h3>"
+            )
+        else:
+            raise ValueError(
+                f"UNSUPPORTED_ORDERED_BLOCK_TYPE: {block_type}"
+            )
+
+    return "\n\n".join(rendered)
+
+
 def render_section(section: dict[str, Any]) -> str:
     blocks: list[str] = []
 
-    if section.get("paragraphs"):
-        blocks.append(render_paragraphs(section["paragraphs"]))
+    if "blocks" in section:
+        blocks.append(
+            render_ordered_blocks(section["blocks"])
+        )
+    else:
+        if section.get("paragraphs"):
+            blocks.append(
+                render_paragraphs(section["paragraphs"])
+            )
 
-    if section.get("items"):
-        blocks.append(render_items(section["items"]))
+        if section.get("items"):
+            blocks.append(
+                render_items(section["items"])
+            )
 
-    if section.get("checklist"):
-        blocks.append(render_checklist(section["checklist"]))
+        if section.get("checklist"):
+            blocks.append(
+                render_checklist(section["checklist"])
+            )
 
     body = "\n\n".join(blocks)
 
@@ -395,7 +434,7 @@ def render_guide(
         for item in article["key_points"]
     )
 
-    return f'''<!doctype html>
+    rendered = f'''<!doctype html>
 <html lang="{escape_text(article["locale"])}">
 <head>
   <meta charset="utf-8">
@@ -518,6 +557,49 @@ def render_guide(
 </body>
 </html>
 '''
+
+    if article.get("content_mode") != "verbatim":
+        return rendered
+
+    faq_schema_line = (
+        '  <script type="application/ld+json">'
+        f'{json_ld(faq_schema)}</script>\n'
+    )
+    rendered = rendered.replace(faq_schema_line, "", 1)
+
+    hero_eyebrow = (
+        '        <p class="eyebrow">'
+        f'{escape_text(article["eyebrow"])}</p>\n'
+    )
+    rendered = rendered.replace(hero_eyebrow, "", 1)
+
+    hero_description = (
+        '        <p class="hero-text">'
+        f'{escape_text(article["hero_description"])}</p>\n'
+    )
+    rendered = rendered.replace(hero_description, "", 1)
+
+    body_start = rendered.index(
+        '    <section class="section guide-section '
+        'guide-direct-answer">\n'
+    )
+
+    final_cta_html = render_cta(
+        article["final_cta"],
+        "final-cta guide-final-cta",
+    )
+    body_end = (
+        rendered.index(final_cta_html, body_start)
+        + len(final_cta_html)
+    )
+
+    rendered = (
+        rendered[:body_start]
+        + section_html
+        + rendered[body_end:]
+    )
+
+    return rendered
 
 
 def load_json(path: Path) -> dict[str, Any]:

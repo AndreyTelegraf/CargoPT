@@ -1217,6 +1217,72 @@
         "reason": "conversion",
         "priority": 4
       }
+    ],
+    "leave-portugal-ru": [
+      {
+        "target": "leave-portugal-en",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "leave-portugal-pt-br",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-preparar-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "leave-portugal-en": [
+      {
+        "target": "leave-portugal-ru",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "leave-portugal-pt-br",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-preparar-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "leave-portugal-pt-br": [
+      {
+        "target": "leave-portugal-en",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "leave-portugal-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-preparar-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
     ]
   }
 }

@@ -1,0 +1,361 @@
+{
+  "schema_version": 1,
+  "id": "leave-portugal-en",
+  "locale": "en",
+  "cluster": "planning",
+  "path": "/en/guides/how-to-leave-portugal/",
+  "title": "How to Leave Portugal Properly",
+  "meta_title": "Leaving Portugal: Contracts, Taxes and Residency Matters — CargoPT",
+  "meta_description": "A practical checklist for leaving Portugal: rental contracts, deposits, utilities, internet, vehicles, taxes, self-employment, residence permits, temporary protection and essential documents.",
+  "primary_query": "how to leave Portugal",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "How to Leave Portugal Properly",
+  "eyebrow": "How to Leave Portugal Properly",
+  "hero_description": "A practical checklist for leaving Portugal: rental contracts, deposits, utilities, internet, vehicles, taxes, self-employment, residence permits, temporary protection and essential documents.",
+  "date_published": "2026-07-17",
+  "date_modified": "2026-07-17",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "How to Leave Portugal Properly",
+  "key_points_heading": "How to Leave Portugal Properly",
+  "faq_heading": "How to Leave Portugal Properly",
+  "related_links_heading": "How to Leave Portugal Properly",
+  "direct_answer": "A practical checklist for leaving Portugal: rental contracts, deposits, utilities, internet, vehicles, taxes, self-employment, residence permits, temporary protection and essential documents.",
+  "key_points": [
+    "How to Leave Portugal Properly",
+    "A practical checklist for leaving Portugal: rental contracts, deposits, utilities, internet, vehicles, taxes, self-employment, residence permits, temporary protection and essential documents.",
+    "CargoPT"
+  ],
+  "content_mode": "verbatim",
+  "translation_group": "leave-portugal",
+  "alternates": {
+    "en": "/en/guides/how-to-leave-portugal/",
+    "ru": "/ru/guides/kak-pravilno-uehat-iz-portugalii/",
+    "pt-BR": "/pt-br/guias/como-sair-de-portugal/"
+  },
+  "sections": [
+    {
+      "id": "housing-car",
+      "heading": "Housing and your car",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "You can physically leave the country in one day. But closing everything properly so that bills and demands to pay another year of rent do not follow you later may take several months of preparation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Start with the apartment."
+        },
+        {
+          "type": "paragraph",
+          "text": "First, reread the contract: duração, renovação, denúncia and oposição à renovação. If the contract renews automatically, tenants usually need to notify the landlord:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "120 days in advance — for a term of 6 years or more;",
+            "90 days — from 1 year to under 6 years;",
+            "60 days — from 6 months to under 1 year;",
+            "one third of the term — if the contract is shorter than 6 months."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "You can usually leave early after one third of the current contract term or its renewal has passed. For contracts of one year or more, the notice period is 120 days; for shorter contracts, 60 days. Missing the deadline does not prevent you from leaving, but the landlord may demand rent for the missing notice period. It is therefore better to send the notice by registered letter with aviso de receção. WhatsApp can be used as an additional channel, but not instead of the letter."
+        },
+        {
+          "type": "paragraph",
+          "text": "Discuss the deposit separately and in advance. In Portugal, there is an unpleasant practice of delaying its return or finding damage only after the tenant has left. It is therefore worth trying to agree in writing that the deposit will be counted towards the final month’s rent. For the tenant, this is safer than leaving, leaving the money with the landlord and then trying to recover it from another country. But without the owner’s written consent, you cannot replace the final rent payment with the deposit on your own: legally, they are different payments."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before moving out:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "agree on the inspection date;",
+            "photograph the apartment, furniture and appliances;",
+            "record the water, gas and electricity meter readings;",
+            "document the handover of the apartment and keys in writing;",
+            "obtain a list of claims or confirmation that there are none;",
+            "leave the bank details for returning the deposit."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not leave the keys in the letterbox without the landlord’s confirmation. Electricity, water and gas need to be terminated or transferred. Do not disconnect them before the final inspection: without water and electricity, it is impossible to check taps, the boiler and appliances. Keep the termination confirmation, final bill, payment receipt and photographs of the meters."
+        },
+        {
+          "type": "paragraph",
+          "text": "Internet is a separate story. Check the fidelização period and ask the provider in advance:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "when the contract can be terminated;",
+            "which documents will prove emigration;",
+            "how much more you will have to pay;",
+            "where to return the router and set-top box."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Moving to another country may allow you to terminate the contract without the usual penalty, but the provider will require evidence. One phone call is not enough — obtain written confirmation with the disconnection date. The main rule is: close the contract first, then cancel the débito direto. If you simply block the debit, the contract will remain active and debt will start accumulating instead of payments."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you have a car, before leaving you need to:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "sell it or decide where it will remain;",
+            "check the registration of the new owner;",
+            "terminate or transfer the insurance;",
+            "check the IUC and roadworthiness inspection;",
+            "close Via Verde;",
+            "find out the registration rules in the new country if the car is going with you."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Handing over the car and receiving the money does not mean that the vehicle has been removed from your name. Check the registration yourself."
+        }
+      ]
+    },
+    {
+      "id": "work-taxes",
+      "heading": "Work and taxes",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "After the apartment, you need to close employment, business activity and tax matters. If you are employed, check the notice period in your contract. Before leaving, obtain:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "the final settlement;",
+            "payment for unused holiday;",
+            "proportional férias and subsídio de Natal;",
+            "a certificado de trabalho;",
+            "the latest recibos de vencimento;",
+            "a declaração de situação de desemprego if you were dismissed."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Your employer must end your registration as an employee with Segurança Social. After leaving the job, it is better to verify this in Segurança Social Direta. If you have open recibos verdes and no longer need your Portuguese business activity, close the atividade on Portal das Finanças."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before closing it:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "issue the final recibos;",
+            "cancel incorrect documents;",
+            "submit the necessary IVA returns;",
+            "check Segurança Social contributions;",
+            "download the comprovativo de cessação de atividade;",
+            "make sure there are no tax or social-security debts."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Finanças sends the information about the closure of the activity to Segurança Social automatically, but contributions stop being charged only from the following month. You should therefore still check your online account."
+        },
+        {
+          "type": "paragraph",
+          "text": "The most important step is to change your morada fiscal to your address in the new country. When changing from resident to non-resident, you have 60 days to do this. A ticket by itself does not end tax residence. What matters is the actual move, the number of days spent in the country and whether you still have a home that continues to look like your permanent residence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep evidence:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "tickets;",
+            "the new rental contract;",
+            "registration in another country;",
+            "an employment contract;",
+            "utility bills;",
+            "documents from the local tax authority;",
+            "children’s school enrolment."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "When moving outside the EU, Iceland, Norway and Liechtenstein, you may need a tax representative in Portugal or to activate electronic notifications. This needs to be checked for your specific situation. Even after moving, one final IRS return will remain. For example, if you leave in 2026, you will file the 2026 return in spring 2027."
+        },
+        {
+          "type": "paragraph",
+          "text": "It is important to report correctly:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "the period of Portuguese tax residence;",
+            "the moving date;",
+            "income before and after that date;",
+            "Portuguese income received after becoming non-resident."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Split-year tax residence may apply in the year of departure. If you received income from several countries, it is better to use an accountant who handles international cases, not only ordinary IRS returns. You do not need to close your bank account immediately. Your deposit, salary or IRS refund may still be paid into it. But you must inform the bank of your new address, tax residence and foreign tax number."
+        }
+      ]
+    },
+    {
+      "id": "residency-documents",
+      "heading": "Residence permits, temporary protection, healthcare, school and documents",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "You usually do not need to formally “close” an ordinary Portuguese residence permit when leaving. But first decide whether you are leaving permanently or want to preserve your status and the option to return, bearing in mind that a residence permit can be renewed within five years from the expiry of your last card."
+        },
+        {
+          "type": "paragraph",
+          "text": "A long absence may affect a residence permit, permanent residence and future naturalisation. If the move is temporary for work, study or family reasons, it is therefore better to contact AIMA in writing in advance and keep the supporting documents. Do not rely on verbal answers given by phone."
+        }
+      ]
+    },
+    {
+      "id": "temporary-protection",
+      "heading": "A separate case — people displaced from Ukraine with temporary protection",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Portuguese temporary protection has currently been extended until 4 March 2027. However, you cannot use the rights attached to it in two EU countries at the same time. If you are only travelling, Portuguese protection allows you to stay in other Schengen countries for up to 90 days in any 180-day period."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you are moving to live in another EU country:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "inform AIMA;",
+            "clarify the procedure for terminating Portuguese protection — it does not currently exist, but it may appear;",
+            "register for temporary protection in the new country;",
+            "do not expect to receive payments, healthcare and other benefits in two countries at the same time."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "After registration in the new country, the rights under Portuguese temporary protection end and the new document is issued by the country you move to."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you return to Ukraine or leave the EU permanently, also notify AIMA and the organisations from which you receive housing, benefits or other assistance. Simply disappearing from Portugal does not guarantee that payments and registrations will close automatically. You do not need to cancel your NIF, NISS or número de utente: these are permanent numbers."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask the child’s school for the histórico escolar, grades, proof of attendance, medical records and vaccination documents."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep test results, scans, discharge summaries, diagnoses, treatment instructions and prescriptions from clinics. It is better to take a reserve supply of regular medication and ask for a prescription using the international name of the active substance."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a pet, you will usually need a microchip, rabies vaccination and an EU pet passport. Some countries require additional tests, an import permit or quarantine."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before leaving:"
+        },
+        {
+          "type": "checklist",
+          "items": [
+            "keep your Portuguese mobile number;",
+            "check Chave Móvel Digital;",
+            "retain access to Finanças and Segurança Social Direta;",
+            "download contracts, recibos, returns and medical documents;",
+            "arrange CTT mail forwarding or leave someone who will check your post."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "final-checklist",
+      "heading": "Final checklist",
+      "blocks": [
+        {
+          "type": "checklist",
+          "items": [
+            "the rental contract has been terminated in writing;",
+            "the apartment and keys have been handed over;",
+            "utility contracts have been closed;",
+            "the provider’s equipment has been returned;",
+            "the atividade has been closed;",
+            "the tax address has been changed;",
+            "the bank has been informed;",
+            "AIMA has been informed if your status requires it;",
+            "all confirmations have been downloaded."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Portuguese bureaucracy has a long memory: for every closed service, handed-over key and changed status, it is better to have a document confirming it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Boa viagem!"
+        }
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "How to Leave Portugal Properly",
+    "text": "A practical checklist for leaving Portugal: rental contracts, deposits, utilities, internet, vehicles, taxes, self-employment, residence permits, temporary protection and essential documents.",
+    "label": "How to Leave Portugal Properly",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "How to Leave Portugal Properly?",
+      "answer": "A practical checklist for leaving Portugal: rental contracts, deposits, utilities, internet, vehicles, taxes, self-employment, residence permits, temporary protection and essential documents."
+    },
+    {
+      "question": "How to Leave Portugal Properly — 2?",
+      "answer": "A practical checklist for leaving Portugal: rental contracts, deposits, utilities, internet, vehicles, taxes, self-employment, residence permits, temporary protection and essential documents."
+    },
+    {
+      "question": "How to Leave Portugal Properly — 3?",
+      "answer": "A practical checklist for leaving Portugal: rental contracts, deposits, utilities, internet, vehicles, taxes, self-employment, residence permits, temporary protection and essential documents."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Как правильно уехать из Португалии",
+      "href": "/ru/guides/kak-pravilno-uehat-iz-portugalii/",
+      "type": "guide"
+    },
+    {
+      "title": "Como sair de Portugal da forma correta",
+      "href": "/pt-br/guias/como-sair-de-portugal/",
+      "type": "guide"
+    },
+    {
+      "title": "Como preparar uma mudança",
+      "href": "/guias/planeamento/como-preparar-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "How to Leave Portugal Properly",
+    "text": "A practical checklist for leaving Portugal: rental contracts, deposits, utilities, internet, vehicles, taxes, self-employment, residence permits, temporary protection and essential documents.",
+    "label": "How to Leave Portugal Properly",
+    "href": "/#request"
+  }
+}

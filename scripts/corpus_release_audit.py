@@ -32,6 +32,7 @@ DEFAULT_JSON_REPORT = Path("/tmp/cargopt-corpus-release-audit.json")
 OPTIONAL_ARTICLE_FIELDS = {
     "translation_group",
     "alternates",
+    "content_mode",
 }
 
 REQUIRED_ARTICLE_FIELDS = {
@@ -79,6 +80,7 @@ ALLOWED_SECTION_FIELDS = {
     "paragraphs",
     "items",
     "checklist",
+    "blocks",
 }
 
 ALLOWED_LINK_TYPES = {
@@ -479,6 +481,15 @@ def validate_article_structure(
             str(error),
         )
 
+    content_mode = article.get("content_mode")
+
+    if content_mode not in {None, "verbatim"}:
+        audit.error(
+            "INVALID_CONTENT_MODE",
+            article_id,
+            f"value={content_mode!r}",
+        )
+
     if article.get("review_owner") != "CargoPT":
         audit.error(
             "INVALID_REVIEW_OWNER",
@@ -599,7 +610,12 @@ def validate_article_structure(
 
             content_fields = {
                 field
-                for field in ("paragraphs", "items", "checklist")
+                for field in (
+                    "paragraphs",
+                    "items",
+                    "checklist",
+                    "blocks",
+                )
                 if section.get(field)
             }
 
@@ -609,6 +625,91 @@ def validate_article_structure(
                     article_id,
                     f"section[{index}] has no content",
                 )
+
+            blocks = section.get("blocks")
+
+            if blocks is not None:
+                if not isinstance(blocks, list) or not blocks:
+                    audit.error(
+                        "INVALID_ORDERED_BLOCKS",
+                        article_id,
+                        f"section[{index}]",
+                    )
+                else:
+                    for block_index, block in enumerate(
+                        blocks,
+                        start=1,
+                    ):
+                        subject = (
+                            f"sections[{index}]."
+                            f"blocks[{block_index}]"
+                        )
+
+                        if not isinstance(block, dict):
+                            audit.error(
+                                "INVALID_ORDERED_BLOCK",
+                                article_id,
+                                subject,
+                            )
+                            continue
+
+                        block_type = block.get("type")
+
+                        if block_type in {
+                            "paragraph",
+                            "subheading",
+                        }:
+                            if set(block) != {"type", "text"}:
+                                audit.error(
+                                    "INVALID_ORDERED_BLOCK_FIELDS",
+                                    article_id,
+                                    subject,
+                                )
+                            require_nonempty_string(
+                                audit,
+                                article_id=article_id,
+                                field=f"{subject}.text",
+                                value=block.get("text"),
+                            )
+                        elif block_type == "checklist":
+                            if set(block) != {"type", "items"}:
+                                audit.error(
+                                    "INVALID_ORDERED_BLOCK_FIELDS",
+                                    article_id,
+                                    subject,
+                                )
+
+                            items = block.get("items")
+
+                            if (
+                                not isinstance(items, list)
+                                or not items
+                            ):
+                                audit.error(
+                                    "INVALID_ORDERED_CHECKLIST",
+                                    article_id,
+                                    subject,
+                                )
+                            else:
+                                for item_index, item in enumerate(
+                                    items,
+                                    start=1,
+                                ):
+                                    require_nonempty_string(
+                                        audit,
+                                        article_id=article_id,
+                                        field=(
+                                            f"{subject}.items"
+                                            f"[{item_index}]"
+                                        ),
+                                        value=item,
+                                    )
+                        else:
+                            audit.error(
+                                "INVALID_ORDERED_BLOCK_TYPE",
+                                article_id,
+                                f"{subject}:{block_type!r}",
+                            )
 
             paragraphs = section.get("paragraphs")
 

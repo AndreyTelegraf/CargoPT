@@ -1121,6 +1121,60 @@
         "checklist-mudanca",
         "mudancas-lisboa"
       ]
+    },
+    {
+      "id": "leave-portugal-ru",
+      "cluster": "planning",
+      "title": "Как правильно уехать из Португалии",
+      "slug": "leave-portugal-ru",
+      "path": "/ru/guides/kak-pravilno-uehat-iz-portugalii/",
+      "primary_query": "как правильно уехать из Португалии",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/guias/",
+      "related": [
+        "leave-portugal-en",
+        "leave-portugal-pt-br"
+      ]
+    },
+    {
+      "id": "leave-portugal-en",
+      "cluster": "planning",
+      "title": "How to Leave Portugal Properly",
+      "slug": "leave-portugal-en",
+      "path": "/en/guides/how-to-leave-portugal/",
+      "primary_query": "how to leave Portugal",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/guias/",
+      "related": [
+        "leave-portugal-ru",
+        "leave-portugal-pt-br"
+      ]
+    },
+    {
+      "id": "leave-portugal-pt-br",
+      "cluster": "planning",
+      "title": "Como sair de Portugal da forma correta",
+      "slug": "leave-portugal-pt-br",
+      "path": "/pt-br/guias/como-sair-de-portugal/",
+      "primary_query": "como sair de Portugal",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/guias/",
+      "related": [
+        "leave-portugal-ru",
+        "leave-portugal-en"
+      ]
     }
   ]
 }
