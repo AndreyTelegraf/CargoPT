@@ -11,6 +11,108 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_REGISTRY_PATH = PROJECT_ROOT / "content/guides/topics.json"
 DEFAULT_STATIC_ROOT = PROJECT_ROOT / "app/static"
 
+GUIDE_RENDER_LABELS = {
+    "pt-PT": {
+        "body_locale": "pt",
+        "guides": "Guias",
+        "guides_href": "/guias/",
+        "published": "Publicado em",
+        "reviewed": "Revisto por",
+        "direct_answer": "Resposta direta",
+        "key_points": "Pontos principais",
+        "faq": "Perguntas frequentes",
+        "continue": "Continuar",
+        "request": "Receber propostas",
+    },
+    "en": {
+        "body_locale": "en",
+        "guides": "Guides",
+        "guides_href": "/en/guides/",
+        "published": "Published on",
+        "reviewed": "Reviewed by",
+        "direct_answer": "Direct answer",
+        "key_points": "Key points",
+        "faq": "Frequently asked questions",
+        "continue": "Continue",
+        "request": "Get offers",
+    },
+    "ru": {
+        "body_locale": "ru",
+        "guides": "Статьи",
+        "guides_href": "/ru/guides/",
+        "published": "Опубликовано",
+        "reviewed": "Проверено",
+        "direct_answer": "Короткий ответ",
+        "key_points": "Главное",
+        "faq": "Частые вопросы",
+        "continue": "Читайте также",
+        "request": "Получить предложения",
+    },
+    "pt-BR": {
+        "body_locale": "pt-br",
+        "guides": "Guias",
+        "guides_href": "/pt-br/guias/",
+        "published": "Publicado em",
+        "reviewed": "Revisado por",
+        "direct_answer": "Resposta direta",
+        "key_points": "Pontos principais",
+        "faq": "Perguntas frequentes",
+        "continue": "Continuar",
+        "request": "Receber propostas",
+    },
+}
+
+
+def guide_render_labels(locale: str) -> dict[str, str]:
+    try:
+        return GUIDE_RENDER_LABELS[locale]
+    except KeyError as error:
+        raise ValueError(
+            f"UNSUPPORTED_GUIDE_RENDER_LOCALE:{locale}"
+        ) from error
+
+
+def render_hreflang_links(
+    article: dict[str, Any],
+    base_url: str,
+    current_url: str,
+) -> str:
+    alternates = article.get("alternates")
+
+    if not isinstance(alternates, dict):
+        return (
+            '  <link rel="alternate" '
+            'hreflang="pt-PT" '
+            f'href="{escape_text(current_url)}">\n'
+            '  <link rel="alternate" '
+            'hreflang="x-default" '
+            f'href="{escape_text(current_url)}">'
+        )
+
+    rendered = []
+
+    for locale, alternate_path in alternates.items():
+        alternate_url = public_url(base_url, alternate_path)
+        rendered.append(
+            '  <link rel="alternate" '
+            f'hreflang="{escape_text(locale)}" '
+            f'href="{escape_text(alternate_url)}">'
+        )
+
+    default_path = (
+        alternates.get("en")
+        or alternates.get(article["locale"])
+    )
+    default_url = public_url(base_url, default_path)
+
+    rendered.append(
+        '  <link rel="alternate" '
+        'hreflang="x-default" '
+        f'href="{escape_text(default_url)}">'
+    )
+
+    return "\n".join(rendered)
+
 
 def escape_text(value: Any) -> str:
     return html.escape(str(value), quote=True)
@@ -118,6 +220,7 @@ def render_cta(
 def render_faq(
     faq_items: list[dict[str, str]],
     heading: str,
+    eyebrow: str = "Perguntas frequentes",
 ) -> str:
     details = "\n".join(
         (
@@ -133,7 +236,7 @@ def render_faq(
         '    <section class="section guide-section">\n'
         '      <div class="guide-content">\n'
         '        <div class="section-heading">\n'
-        '          <p class="eyebrow">Perguntas frequentes</p>\n'
+        f'          <p class="eyebrow">{escape_text(eyebrow)}</p>\n'
         f"          <h2>{escape_text(heading)}</h2>\n"
         "        </div>\n"
         '        <div class="faq">\n'
@@ -147,6 +250,7 @@ def render_faq(
 def render_related_links(
     links: list[dict[str, str]],
     heading: str,
+    eyebrow: str = "Continuar",
 ) -> str:
     rendered_links = "\n".join(
         (
@@ -160,7 +264,7 @@ def render_related_links(
         '    <section class="section guide-section">\n'
         '      <div class="guide-content">\n'
         '        <div class="section-heading">\n'
-        '          <p class="eyebrow">Continuar</p>\n'
+        f'          <p class="eyebrow">{escape_text(eyebrow)}</p>\n'
         f"          <h2>{escape_text(heading)}</h2>\n"
         "        </div>\n"
         '        <div class="chips guide-related-links">\n'
@@ -270,6 +374,12 @@ def render_guide(
         registry["base_url"].rstrip("/")
         + "/assets/brand/og-image-v1.png"
     )
+    labels = guide_render_labels(article["locale"])
+    hreflang_links = render_hreflang_links(
+        article,
+        registry["base_url"],
+        url,
+    )
 
     article_schema, breadcrumb_schema, faq_schema = (
         build_structured_data(article, registry)
@@ -293,8 +403,7 @@ def render_guide(
   <title>{escape_text(article["meta_title"])}</title>
   <meta name="description" content="{escape_text(article["meta_description"])}">
   <link rel="canonical" href="{escape_text(url)}">
-  <link rel="alternate" hreflang="pt-PT" href="{escape_text(url)}">
-  <link rel="alternate" hreflang="x-default" href="{escape_text(url)}">
+{hreflang_links}
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="CargoPT">
   <meta property="og:title" content="{escape_text(article["meta_title"])}">
@@ -316,7 +425,7 @@ def render_guide(
   <link rel="stylesheet" href="/assets/css/landing.css?v=design-unified-v1">
   <link rel="stylesheet" href="/assets/css/guides.css?v=guides-v1">
 </head>
-<body data-locale="pt" class="guide-page">
+<body data-locale="{escape_text(labels["body_locale"])}" class="guide-page">
   <header class="site-header">
     <a class="logo" href="/" aria-label="CargoPT"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></a>
     <nav class="header-actions" aria-label="Navigation">
@@ -328,7 +437,7 @@ def render_guide(
           <a href="/ru/">RU</a>
         </span>
       </span>
-      <a class="button button-small button-carrier" href="/#request">Receber propostas</a>
+      <a class="button button-small button-carrier" href="/#request">{escape_text(labels["request"])}</a>
     </nav>
   </header>
 
@@ -336,7 +445,7 @@ def render_guide(
     <nav class="section guide-breadcrumb" aria-label="Breadcrumb">
       <a href="/">CargoPT</a>
       <span aria-hidden="true">→</span>
-      <a href="/guias/">Guias</a>
+      <a href="{escape_text(labels["guides_href"])}">{escape_text(labels["guides"])}</a>
       <span aria-hidden="true">→</span>
       <span aria-current="page">{escape_text(article["title"])}</span>
     </nav>
@@ -347,8 +456,8 @@ def render_guide(
         <h1>{escape_text(article["title"])}</h1>
         <p class="hero-text">{escape_text(article["hero_description"])}</p>
         <p class="guide-meta">
-          Publicado em <time datetime="{escape_text(article["date_published"])}">{escape_text(article["date_published"])}</time>
-          · Revisto por {escape_text(article["review_owner"])}
+          {escape_text(labels["published"])} <time datetime="{escape_text(article["date_published"])}">{escape_text(article["date_published"])}</time>
+          · {escape_text(labels["reviewed"])} {escape_text(article["review_owner"])}
         </p>
       </div>
     </header>
@@ -356,7 +465,7 @@ def render_guide(
     <section class="section guide-section guide-direct-answer">
       <div class="guide-content">
         <div class="section-heading">
-          <p class="eyebrow">Resposta direta</p>
+          <p class="eyebrow">{escape_text(labels["direct_answer"])}</p>
           <h2>{escape_text(article["direct_answer_heading"])}</h2>
         </div>
         <p>{escape_text(article["direct_answer"])}</p>
@@ -366,7 +475,7 @@ def render_guide(
     <section class="section guide-section">
       <div class="guide-content">
         <div class="section-heading">
-          <p class="eyebrow">Pontos principais</p>
+          <p class="eyebrow">{escape_text(labels["key_points"])}</p>
           <h2>{escape_text(article["key_points_heading"])}</h2>
         </div>
         <ul class="guide-key-points">
@@ -382,11 +491,13 @@ def render_guide(
 {render_faq(
     article["faq"],
     article["faq_heading"],
+    labels["faq"],
 )}
 
 {render_related_links(
     article["related_links"],
     article["related_links_heading"],
+    labels["continue"],
 )}
 
 {render_cta(article["final_cta"], "final-cta guide-final-cta")}
