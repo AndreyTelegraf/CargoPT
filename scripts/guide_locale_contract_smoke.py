@@ -38,6 +38,10 @@ def main() -> None:
             "/guias/planeamento/checklist-mudanca/",
         ),
         (
+            "pt-PT",
+            "/mudancas-lisboa/",
+        ),
+        (
             "en",
             "/en/guides/how-to-leave-portugal/",
         ),
@@ -76,6 +80,11 @@ def main() -> None:
         (
             "pt-PT",
             "/pt-br/guias/como-sair-de-portugal/",
+            "INVALID_GUIDE_PATH_PREFIX",
+        ),
+        (
+            "pt-PT",
+            "/track/",
             "INVALID_GUIDE_PATH_PREFIX",
         ),
         (
