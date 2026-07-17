@@ -377,6 +377,17 @@ def main() -> int:
                 }
             )
 
+    get_visual_state_body = ""
+    get_visual_state_marker = (
+        "function getVisualState(entry) {"
+    )
+    if get_visual_state_marker in workspace_js:
+        get_visual_state_body = (
+            workspace_js
+            .split(get_visual_state_marker, 1)[1]
+            .split("\n  function ", 1)[0]
+        )
+
     fallback_contracts = {
         "track_unknown_dot_falls_back_to_searching": (
             'return "searching";' in track_js
@@ -385,10 +396,9 @@ def main() -> int:
             "return messages.waitingOffers;" in track_js
         ),
         "workspace_unknown_visual_falls_back_to_searching": (
-            '    return "searching";\n'
-            '  }\n\n'
-            '  function renderOffer'
-            in workspace_js
+            get_visual_state_body.rstrip().endswith(
+                'return "searching";\n  }'
+            )
         ),
         "progress_unknown_falls_back_to_received": (
             "activeIndex: 0" in progress_js

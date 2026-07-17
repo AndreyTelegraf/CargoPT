@@ -35,8 +35,8 @@ def main() -> None:
 
     assert "/assets/css/track.css?v=workspace-design-v5" in html
     assert "/assets/js/progress-header.js?v=progress-stage-v5" in html
-    assert "/assets/js/tracking-workspace.js?v=shared-v7" in html
-    assert "/assets/js/track.js?v=status-mapping-v14" in html
+    assert "/assets/js/tracking-workspace.js?v=offer-card-architecture-v1" in html
+    assert "/assets/js/track.js?v=offer-card-architecture-v1" in html
 
     assert (
         'document.querySelector("#otherRequestsPanel")'
@@ -113,17 +113,22 @@ def main() -> None:
     assert workspace_js.count(manual_review_group) == 1
     assert '"manual_review_required"' in progress_js
 
-    assert (
-        '    return "searching";\n'
-        '  }\n\n'
-        '  function renderOffer'
-        in workspace_js
+    get_visual_state_marker = (
+        "function getVisualState(entry) {"
     )
-    assert (
-        '    return "completed";\n'
-        '  }\n\n'
-        '  function renderOffer'
-        not in workspace_js
+    assert get_visual_state_marker in workspace_js
+
+    get_visual_state_body = (
+        workspace_js
+        .split(get_visual_state_marker, 1)[1]
+        .split("\n  function ", 1)[0]
+    )
+
+    assert get_visual_state_body.rstrip().endswith(
+        'return "searching";\n  }'
+    )
+    assert not get_visual_state_body.rstrip().endswith(
+        'return "completed";\n  }'
     )
 
     assert 'card.className = "hero-workspace"' not in workspace_js
