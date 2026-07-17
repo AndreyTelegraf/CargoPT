@@ -10,11 +10,29 @@ from typing import Any
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+
+from scripts.guide_locale_contract import (
+    validate_guide_locale_path,
+)
+from scripts.guide_translation_contract import (
+    validate_guide_translation_contract,
+)
+
+
 DEFAULT_MAP = PROJECT_ROOT / "content/guides/internal-link-map.json"
 DEFAULT_REGISTRY = PROJECT_ROOT / "content/guides/topics.json"
 DEFAULT_ARTICLES_DIR = PROJECT_ROOT / "content/guides/articles"
 DEFAULT_TEXT_REPORT = Path("/tmp/cargopt-corpus-release-audit.txt")
 DEFAULT_JSON_REPORT = Path("/tmp/cargopt-corpus-release-audit.json")
+
+OPTIONAL_ARTICLE_FIELDS = {
+    "translation_group",
+    "alternates",
+}
 
 REQUIRED_ARTICLE_FIELDS = {
     "schema_version",
@@ -246,7 +264,11 @@ def validate_article_structure(
     article_id = str(article.get("id") or path.stem)
 
     missing = sorted(REQUIRED_ARTICLE_FIELDS - set(article))
-    extra = sorted(set(article) - REQUIRED_ARTICLE_FIELDS)
+    allowed_fields = (
+        REQUIRED_ARTICLE_FIELDS
+        | OPTIONAL_ARTICLE_FIELDS
+    )
+    extra = sorted(set(article) - allowed_fields)
 
     if missing:
         audit.error(
@@ -269,11 +291,35 @@ def validate_article_structure(
             f"value={article.get('schema_version')!r}",
         )
 
-    if article.get("locale") != "pt-PT":
+    locale = article.get("locale")
+    path_value = article.get("path")
+
+    if isinstance(locale, str) and isinstance(path_value, str):
+        try:
+            validate_guide_locale_path(
+                locale=locale,
+                path=path_value,
+            )
+        except ValueError as error:
+            code = str(error).split(":", 1)[0]
+            audit.error(
+                code,
+                article_id,
+                str(error),
+            )
+
+    try:
+        validate_guide_translation_contract(article)
+    except (KeyError, TypeError, ValueError) as error:
+        if isinstance(error, ValueError):
+            code = str(error).split(":", 1)[0]
+        else:
+            code = "INVALID_TRANSLATION_METADATA"
+
         audit.error(
-            "INVALID_LOCALE",
+            code,
             article_id,
-            f"value={article.get('locale')!r}",
+            str(error),
         )
 
     if article.get("review_owner") != "CargoPT":
@@ -306,16 +352,6 @@ def validate_article_structure(
             field=field,
             value=article.get(field),
         )
-
-    path_value = article.get("path")
-
-    if isinstance(path_value, str):
-        if not path_value.endswith("/"):
-            audit.error(
-                "INVALID_GUIDE_PATH_SUFFIX",
-                article_id,
-                f"path={path_value!r}",
-            )
 
     intent = article.get("intent")
 
