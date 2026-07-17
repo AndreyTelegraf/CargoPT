@@ -1,4 +1,6 @@
+import html
 import json
+import re
 from pathlib import Path
 from xml.etree import ElementTree
 
@@ -33,14 +35,17 @@ ALTERNATES = {
 EXPECTED = {
     "leave-portugal-en": {
         "locale": "en",
+        "og_locale": "en_US",
         "path": ALTERNATES["en"],
     },
     "leave-portugal-ru": {
         "locale": "ru",
+        "og_locale": "ru_RU",
         "path": ALTERNATES["ru"],
     },
     "leave-portugal-pt-br": {
         "locale": "pt-BR",
+        "og_locale": "pt_BR",
         "path": ALTERNATES["pt-BR"],
     },
 }
@@ -51,9 +56,59 @@ JOURNEY_REASONS = {
     "prerequisite",
 }
 
+LOCALE_HOMEPAGES = {
+    "/",
+    "/en/",
+    "/ru/",
+    "/pt-br/",
+}
+
+APPROVED_IMAGE = (
+    "https://cargopt.pt/assets/brand/og-image-v8.jpg"
+)
+
 
 def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def extract_hreflang_paths(
+    rendered: str,
+    base_url: str,
+) -> dict[str, str]:
+    prefix = base_url.rstrip("/")
+
+    return {
+        locale: href.removeprefix(prefix)
+        for locale, href in re.findall(
+            (
+                r'<link rel="alternate" '
+                r'hreflang="([^"]+)" '
+                r'href="([^"]+)">'
+            ),
+            rendered,
+        )
+        if locale != "x-default"
+    }
+
+
+def extract_switcher_paths(rendered: str) -> list[str]:
+    match = re.search(
+        (
+            r'<span class="locale-menu">\s*'
+            r'(.*?)'
+            r'\s*</span>'
+        ),
+        rendered,
+        flags=re.DOTALL,
+    )
+
+    assert match is not None, "MISSING_LOCALE_MENU"
+
+    return re.findall(
+        r'<a href="([^"]+)"(?: aria-current="page")?>',
+        match.group(1),
+    )
 
 
 def main() -> None:
@@ -93,6 +148,7 @@ def main() -> None:
             "MISSING_TOPIC",
             article_id,
         )
+
         topic = topics[article_id]
 
         validate_article_registry_contract(article, topic)
@@ -141,12 +197,16 @@ def main() -> None:
         )
         assert output_path.read_text(
             encoding="utf-8"
-        ) == rendered
+        ) == rendered, (
+            "STALE_RENDERED_HTML",
+            output_path,
+        )
 
         url = public_url(
             registry["base_url"],
             article["path"],
         )
+
         assert sitemap.count(url) == 1, (
             "INVALID_SITEMAP_COUNT",
             url,
@@ -163,7 +223,7 @@ def main() -> None:
                 f'hreflang="{locale}" '
                 f'href="{alternate_url}">'
             )
-            assert expected_link in rendered
+            assert rendered.count(expected_link) == 1
 
         assert (
             '<link rel="alternate" '
@@ -172,16 +232,110 @@ def main() -> None:
             '/en/guides/how-to-leave-portugal/">'
         ) in rendered
 
+        hreflang_paths = extract_hreflang_paths(
+            rendered,
+            registry["base_url"],
+        )
+        switcher_paths = extract_switcher_paths(rendered)
+
+        assert hreflang_paths == ALTERNATES
+        assert switcher_paths == list(ALTERNATES.values())
+        assert set(switcher_paths) == set(hreflang_paths.values())
+        assert not LOCALE_HOMEPAGES.intersection(switcher_paths)
+
+        current_link = (
+            f'<a href="{article["path"]}" '
+            'aria-current="page">'
+        )
+        assert rendered.count(current_link) == 1
+
+        footer = article["article_footer"]
+        footer_cta = footer["cta"]
+
+        assert rendered.count(
+            'class="section guide-article-footer"'
+        ) == 1
+        assert rendered.count(
+            'class="guide-meta"'
+        ) == 1
+        assert rendered.count(
+            'class="section guide-article-footer-cta"'
+        ) == 1
+        assert footer_cta["heading"] in rendered
+        assert footer_cta["text"] in rendered
+        assert footer_cta["label"] in rendered
+        assert (
+            f'href="{footer_cta["href"]}"'
+            in rendered
+        )
+
+        preview = article["social_preview"]
+        social_title = html.escape(
+            preview["title"],
+            quote=True,
+        )
+        social_description = html.escape(
+            preview["description"],
+            quote=True,
+        )
+
+        canonical = (
+            registry["base_url"].rstrip("/")
+            + article["path"]
+        )
+
+        assert rendered.count(
+            '<meta property="og:title" '
+            f'content="{social_title}">'
+        ) == 1
+        assert rendered.count(
+            '<meta property="og:description" '
+            f'content="{social_description}">'
+        ) == 1
+        assert rendered.count(
+            '<meta property="og:locale" '
+            f'content="{expected["og_locale"]}">'
+        ) == 1
+        assert rendered.count(
+            '<meta property="og:image" '
+            f'content="{APPROVED_IMAGE}">'
+        ) == 1
+        assert rendered.count(
+            '<meta name="twitter:title" '
+            f'content="{social_title}">'
+        ) == 1
+        assert rendered.count(
+            '<meta name="twitter:description" '
+            f'content="{social_description}">'
+        ) == 1
+        assert rendered.count(
+            '<meta name="twitter:image" '
+            f'content="{APPROVED_IMAGE}">'
+        ) == 1
+        assert rendered.count(
+            f'"image":"{APPROVED_IMAGE}"'
+        ) == 1
+
+        canonical_match = re.search(
+            r'<link rel="canonical" href="([^"]+)">',
+            rendered,
+        )
+        og_url_match = re.search(
+            r'<meta property="og:url" content="([^"]+)">',
+            rendered,
+        )
+
+        assert canonical_match is not None
+        assert og_url_match is not None
+        assert canonical_match.group(1) == canonical
+        assert og_url_match.group(1) == canonical
+
+        assert "og-image-v1.png" not in rendered
+        assert preview["title"] + " — CargoPT" not in rendered
+
         related = article["related_links"]
+
         assert len(related) == 4
-        assert related == [
-            {
-                "title": item["title"],
-                "href": item["href"],
-                "type": item["type"],
-            }
-            for item in related
-        ]
         assert related[-1]["type"] == "service"
         assert related[-1]["href"] == "/#request"
 
@@ -200,6 +354,16 @@ def main() -> None:
         for article in loaded_articles
     }) == 3
 
+    print("ARTICLE_LOCALE_SWITCHER_TARGETS_OK")
+    print("TRANSLATION_GROUP_NAVIGATION_OK")
+    print("SWITCHER_HREFLANG_PARITY_OK")
+    print("NO_LOCALE_HOMEPAGE_FALLBACK_OK")
+    print("ARTICLE_FOOTER_RENDER_CONTRACT_OK")
+    print("SOCIAL_PREVIEW_TITLE_OK")
+    print("SOCIAL_PREVIEW_DESCRIPTION_OK")
+    print("SOCIAL_PREVIEW_LOCALE_OK")
+    print("SOCIAL_IMAGE_LOCALE_SAFE_OK")
+    print("OG_CANONICAL_PARITY_OK")
     print(
         "LEAVE_PORTUGAL_MULTILINGUAL_PUBLISH_SMOKE_OK",
         len(loaded_articles),

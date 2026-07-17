@@ -114,6 +114,114 @@ def render_hreflang_links(
     return "\n".join(rendered)
 
 
+LOCALE_SWITCHER_LABELS = {
+    "pt-PT": "PT",
+    "pt-BR": "PT",
+    "en": "EN",
+    "ru": "RU",
+}
+
+
+def render_locale_switcher(article: dict[str, Any]) -> str:
+    current_locale = article["locale"]
+    current_label = LOCALE_SWITCHER_LABELS[current_locale]
+    alternates = article.get("alternates")
+
+    if not isinstance(alternates, dict):
+        return (
+            '      <span class="locale-switcher">\n'
+            '        <button class="locale-current" type="button" '
+            'aria-label="Choose language">'
+            f'{escape_text(current_label)}</button>\n'
+            '        <span class="locale-menu">\n'
+            f'          <a href="{escape_text(article["path"])}" '
+            'aria-current="page">'
+            f'{escape_text(current_label)}</a>\n'
+            '        </span>\n'
+            '      </span>'
+        )
+
+    links = []
+
+    for locale, href in alternates.items():
+        label = LOCALE_SWITCHER_LABELS[locale]
+        current_attribute = (
+            ' aria-current="page"'
+            if locale == current_locale
+            else ""
+        )
+
+        links.append(
+            f'          <a href="{escape_text(href)}"'
+            f'{current_attribute}>'
+            f'{escape_text(label)}</a>'
+        )
+
+    return (
+        '      <span class="locale-switcher">\n'
+        '        <button class="locale-current" type="button" '
+        'aria-label="Choose language">'
+        f'{escape_text(current_label)}</button>\n'
+        '        <span class="locale-menu">\n'
+        + "\n".join(links)
+        + '\n        </span>\n'
+        '      </span>'
+    )
+
+
+def render_article_meta(
+    article: dict[str, Any],
+    labels: dict[str, str],
+    *,
+    indent: str,
+) -> str:
+    return (
+        f'{indent}<p class="guide-meta">\n'
+        f'{indent}  {escape_text(labels["published"])} '
+        f'<time datetime="{escape_text(article["date_published"])}">'
+        f'{escape_text(article["date_published"])}</time>\n'
+        f'{indent}  · {escape_text(labels["reviewed"])} '
+        f'{escape_text(article["review_owner"])}\n'
+        f'{indent}</p>'
+    )
+
+
+def render_article_footer(
+    article: dict[str, Any],
+    labels: dict[str, str],
+) -> str:
+    footer = article.get("article_footer")
+
+    if not isinstance(footer, dict):
+        return ""
+
+    blocks = []
+
+    if footer.get("show_meta") is True:
+        blocks.append(
+            render_article_meta(
+                article,
+                labels,
+                indent="      ",
+            )
+        )
+
+    blocks.append(
+        render_cta(
+            footer["cta"],
+            "guide-article-footer-cta",
+        )
+    )
+
+    return (
+        '    <section class="section guide-article-footer">\n'
+        '      <div class="guide-content">\n'
+        + "\n\n".join(blocks)
+        + '\n      </div>\n'
+        '    </section>'
+    )
+
+
 def escape_text(value: Any) -> str:
     return html.escape(str(value), quote=True)
 
@@ -339,9 +447,15 @@ def build_structured_data(
         registry["base_url"],
         article["path"],
     )
+    social_preview = article.get("social_preview")
+    image_path = (
+        social_preview["image"]
+        if isinstance(social_preview, dict)
+        else "/assets/brand/og-image-v8.jpg"
+    )
     image_url = (
         registry["base_url"].rstrip("/")
-        + "/assets/brand/og-image-v1.png"
+        + image_path
     )
 
     article_schema = {
@@ -426,11 +540,43 @@ def render_guide(
         registry["base_url"],
         article["path"],
     )
+    social_preview = article.get("social_preview")
+
+    if isinstance(social_preview, dict):
+        social_title = social_preview["title"]
+        social_description = social_preview["description"]
+        social_image_path = social_preview["image"]
+    else:
+        social_title = article["meta_title"]
+        social_description = article["meta_description"]
+        social_image_path = "/assets/brand/og-image-v8.jpg"
+
     image_url = (
         registry["base_url"].rstrip("/")
-        + "/assets/brand/og-image-v1.png"
+        + social_image_path
     )
+    social_locale = {
+        "pt-PT": "pt_PT",
+        "pt-BR": "pt_BR",
+        "en": "en_US",
+        "ru": "ru_RU",
+    }[article["locale"]]
+
     labels = guide_render_labels(article["locale"])
+    locale_switcher = render_locale_switcher(article)
+    article_footer_html = render_article_footer(
+        article,
+        labels,
+    )
+    hero_meta_html = ""
+
+    if not isinstance(article.get("article_footer"), dict):
+        hero_meta_html = render_article_meta(
+            article,
+            labels,
+            indent="        ",
+        )
+
     hreflang_links = render_hreflang_links(
         article,
         registry["base_url"],
@@ -500,11 +646,14 @@ def render_guide(
 {hreflang_links}
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="CargoPT">
-  <meta property="og:title" content="{escape_text(article["meta_title"])}">
-  <meta property="og:description" content="{escape_text(article["meta_description"])}">
+  <meta property="og:locale" content="{escape_text(social_locale)}">
+  <meta property="og:title" content="{escape_text(social_title)}">
+  <meta property="og:description" content="{escape_text(social_description)}">
   <meta property="og:url" content="{escape_text(url)}">
   <meta property="og:image" content="{escape_text(image_url)}">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{escape_text(social_title)}">
+  <meta name="twitter:description" content="{escape_text(social_description)}">
   <meta name="twitter:image" content="{escape_text(image_url)}">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="/assets/brand/cargopt-icon.svg">
@@ -517,20 +666,13 @@ def render_guide(
   <link rel="stylesheet" href="/assets/css/design-system.css?v=tokens-v1">
   <link rel="stylesheet" href="/assets/css/components.css?v=locale-switcher-v1">
   <link rel="stylesheet" href="/assets/css/landing.css?v=design-unified-v1">
-  <link rel="stylesheet" href="/assets/css/guides.css?v=guides-v3">
+  <link rel="stylesheet" href="/assets/css/guides.css?v=guides-v4">
 </head>
 <body data-locale="{escape_text(labels["body_locale"])}" class="guide-page">
   <header class="site-header">
     <a class="logo" href="/" aria-label="CargoPT"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></a>
     <nav class="header-actions" aria-label="Navigation">
-      <span class="locale-switcher">
-        <button class="locale-current" type="button" aria-label="Choose language">PT</button>
-        <span class="locale-menu">
-          <a href="/guias/" aria-current="page">PT</a>
-          <a href="/en/">EN</a>
-          <a href="/ru/">RU</a>
-        </span>
-      </span>
+{locale_switcher}
       <a class="button button-small button-carrier" href="/#request">{escape_text(labels["request"])}</a>
     </nav>
   </header>
@@ -549,10 +691,7 @@ def render_guide(
         <p class="eyebrow">{escape_text(article["eyebrow"])}</p>
         <h1>{escape_text(article["title"])}</h1>
         <p class="hero-text">{escape_text(article["hero_description"])}</p>
-        <p class="guide-meta">
-          {escape_text(labels["published"])} <time datetime="{escape_text(article["date_published"])}">{escape_text(article["date_published"])}</time>
-          · {escape_text(labels["reviewed"])} {escape_text(article["review_owner"])}
-        </p>
+{hero_meta_html}
       </div>
     </header>
 
@@ -595,6 +734,8 @@ def render_guide(
 )}
 
 {render_cta(article["final_cta"], "final-cta guide-final-cta")}
+
+{article_footer_html}
   </main>
 
   <footer class="site-footer">

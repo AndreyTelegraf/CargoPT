@@ -34,6 +34,15 @@
     "ru": "/ru/guides/kak-pravilno-uehat-iz-portugalii/",
     "pt-BR": "/pt-br/guias/como-sair-de-portugal/"
   },
+  "article_footer": {
+    "show_meta": true,
+    "cta": {
+      "heading": "Нужно перевезти вещи перед отъездом?",
+      "text": "Оставьте одну заявку и сравните предложения перевозчиков.",
+      "label": "Получить предложения",
+      "href": "/#request"
+    }
+  },
   "sections": [
     {
       "id": "housing-car",
@@ -358,5 +367,10 @@
     "label": "Как правильно уехать из Португалии",
     "href": "/#request"
   },
-  "intro_from_first_block": true
+  "intro_from_first_block": true,
+  "social_preview": {
+    "title": "Как правильно уехать из Португалии",
+    "description": "Практический чек-лист: аренда, коммунальные договоры, налоги, ВНЖ, автомобиль и документы перед отъездом.",
+    "image": "/assets/brand/og-image-v8.jpg"
+  }
 }

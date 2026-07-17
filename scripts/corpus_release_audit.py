@@ -34,6 +34,8 @@ OPTIONAL_ARTICLE_FIELDS = {
     "alternates",
     "content_mode",
     "intro_from_first_block",
+    "article_footer",
+    "social_preview",
 }
 
 REQUIRED_ARTICLE_FIELDS = {
@@ -256,6 +258,131 @@ def validate_cta(
             field=f"{name}.{field}",
             value=value.get(field),
         )
+
+
+def validate_internal_href(
+    audit: Audit,
+    *,
+    article_id: str,
+    field: str,
+    value: Any,
+) -> None:
+    require_nonempty_string(
+        audit,
+        article_id=article_id,
+        field=field,
+        value=value,
+    )
+
+    if (
+        isinstance(value, str)
+        and value.strip()
+        and not value.startswith("/")
+    ):
+        audit.error(
+            "INVALID_INTERNAL_HREF",
+            article_id,
+            f"{field} must start with '/': value={value!r}",
+        )
+
+
+def validate_article_footer(
+    audit: Audit,
+    *,
+    article_id: str,
+    value: Any,
+) -> None:
+    if value is None:
+        return
+
+    expected = {"show_meta", "cta"}
+
+    if not isinstance(value, dict):
+        audit.error(
+            "INVALID_ARTICLE_FOOTER_TYPE",
+            article_id,
+            "article_footer must be an object",
+        )
+        return
+
+    if set(value) != expected:
+        audit.error(
+            "INVALID_ARTICLE_FOOTER_FIELDS",
+            article_id,
+            (
+                f"fields={sorted(value)} "
+                f"expected={sorted(expected)}"
+            ),
+        )
+
+    if not isinstance(value.get("show_meta"), bool):
+        audit.error(
+            "INVALID_ARTICLE_FOOTER_SHOW_META",
+            article_id,
+            "article_footer.show_meta must be boolean",
+        )
+
+    validate_cta(
+        audit,
+        article_id,
+        "article_footer.cta",
+        value.get("cta"),
+    )
+
+    cta = value.get("cta")
+
+    if isinstance(cta, dict):
+        validate_internal_href(
+            audit,
+            article_id=article_id,
+            field="article_footer.cta.href",
+            value=cta.get("href"),
+        )
+
+
+def validate_social_preview(
+    audit: Audit,
+    *,
+    article_id: str,
+    value: Any,
+) -> None:
+    if value is None:
+        return
+
+    expected = {"title", "description", "image"}
+
+    if not isinstance(value, dict):
+        audit.error(
+            "INVALID_SOCIAL_PREVIEW_TYPE",
+            article_id,
+            "social_preview must be an object",
+        )
+        return
+
+    if set(value) != expected:
+        audit.error(
+            "INVALID_SOCIAL_PREVIEW_FIELDS",
+            article_id,
+            (
+                f"fields={sorted(value)} "
+                f"expected={sorted(expected)}"
+            ),
+        )
+
+    for field in ("title", "description"):
+        require_nonempty_string(
+            audit,
+            article_id=article_id,
+            field=f"social_preview.{field}",
+            value=value.get(field),
+        )
+
+    validate_internal_href(
+        audit,
+        article_id=article_id,
+        field="social_preview.image",
+        value=value.get("image"),
+    )
 
 
 def validate_translation_groups(
@@ -897,6 +1024,17 @@ def validate_article_structure(
         article_id,
         "final_cta",
         article.get("final_cta"),
+    )
+
+    validate_article_footer(
+        audit,
+        article_id=article_id,
+        value=article.get("article_footer"),
+    )
+    validate_social_preview(
+        audit,
+        article_id=article_id,
+        value=article.get("social_preview"),
     )
 
 

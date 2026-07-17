@@ -34,6 +34,15 @@
     "ru": "/ru/guides/kak-pravilno-uehat-iz-portugalii/",
     "pt-BR": "/pt-br/guias/como-sair-de-portugal/"
   },
+  "article_footer": {
+    "show_meta": true,
+    "cta": {
+      "heading": "Precisa transportar seus pertences antes de sair?",
+      "text": "Envie uma solicitação e compare propostas de transportadoras.",
+      "label": "Receber propostas",
+      "href": "/#request"
+    }
+  },
   "sections": [
     {
       "id": "housing-car",
@@ -358,5 +367,10 @@
     "label": "Como sair de Portugal da forma correta",
     "href": "/#request"
   },
-  "intro_from_first_block": true
+  "intro_from_first_block": true,
+  "social_preview": {
+    "title": "Como sair de Portugal da forma correta",
+    "description": "Checklist prático sobre aluguel, serviços, impostos, residência, carro e documentos antes da saída.",
+    "image": "/assets/brand/og-image-v8.jpg"
+  }
 }

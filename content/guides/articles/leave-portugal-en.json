@@ -34,6 +34,15 @@
     "ru": "/ru/guides/kak-pravilno-uehat-iz-portugalii/",
     "pt-BR": "/pt-br/guias/como-sair-de-portugal/"
   },
+  "article_footer": {
+    "show_meta": true,
+    "cta": {
+      "heading": "Need to move your belongings before leaving?",
+      "text": "Submit one request and compare offers from transport providers.",
+      "label": "Get offers",
+      "href": "/#request"
+    }
+  },
   "sections": [
     {
       "id": "housing-car",
@@ -358,5 +367,10 @@
     "label": "How to Leave Portugal Properly",
     "href": "/#request"
   },
-  "intro_from_first_block": true
+  "intro_from_first_block": true,
+  "social_preview": {
+    "title": "How to Leave Portugal Properly",
+    "description": "A practical checklist covering rental contracts, utilities, taxes, residency, vehicles and documents.",
+    "image": "/assets/brand/og-image-v8.jpg"
+  }
 }
