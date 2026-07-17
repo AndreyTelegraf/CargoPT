@@ -17,6 +17,21 @@ ALLOWED_INTENTS = {
 }
 
 
+def expected_parent_for_topic(topic: dict) -> str:
+    topic_path = topic["path"]
+
+    if topic_path.startswith("/en/guides/"):
+        return "/en/guides/"
+
+    if topic_path.startswith("/ru/guides/"):
+        return "/ru/guides/"
+
+    if topic_path.startswith("/pt-br/guias/"):
+        return "/pt-br/guias/"
+
+    return "/guias/"
+
+
 def main() -> None:
     registry_path = Path("content/guides/topics.json")
     static_root = Path("app/static")
@@ -72,7 +87,9 @@ def main() -> None:
         assert topic["priority"] in {1, 2, 3}, topic["id"]
         assert topic["path"].startswith("/"), topic["id"]
         assert topic["path"].endswith("/"), topic["id"]
-        assert topic["parent"] == "/guias/", topic["id"]
+        assert topic["parent"] == expected_parent_for_topic(
+            topic
+        ), topic["id"]
         assert topic["id"] not in topic["related"], topic["id"]
 
         for related_id in topic["related"]:
