@@ -181,13 +181,30 @@ def render_ordered_blocks(
 ) -> str:
     rendered: list[str] = []
 
-    for block in blocks:
+    for block_index, block in enumerate(blocks):
         block_type = block["type"]
 
         if block_type == "paragraph":
-            rendered.append(
-                render_paragraphs([block["text"]])
+            next_block = (
+                blocks[block_index + 1]
+                if block_index + 1 < len(blocks)
+                else None
             )
+            is_list_heading = (
+                isinstance(next_block, dict)
+                and next_block.get("type") == "checklist"
+                and block["text"].rstrip().endswith(":")
+            )
+
+            if is_list_heading:
+                rendered.append(
+                    '        <p class="guide-list-heading">'
+                    f'{escape_text(block["text"])}</p>'
+                )
+            else:
+                rendered.append(
+                    render_paragraphs([block["text"]])
+                )
         elif block_type == "checklist":
             rendered.append(
                 render_checklist(block["items"])
@@ -424,9 +441,47 @@ def render_guide(
         build_structured_data(article, registry)
     )
 
+    sections_for_render = article["sections"]
+    verbatim_intro: str | None = None
+
+    if article.get("intro_from_first_block") is True:
+        if article.get("content_mode") != "verbatim":
+            raise ValueError(
+                "INTRO_FROM_FIRST_BLOCK_REQUIRES_VERBATIM"
+            )
+
+        if not sections_for_render:
+            raise ValueError(
+                "INTRO_FROM_FIRST_BLOCK_REQUIRES_SECTIONS"
+            )
+
+        first_section = sections_for_render[0]
+        first_blocks = first_section.get("blocks")
+
+        if (
+            not isinstance(first_blocks, list)
+            or not first_blocks
+            or first_blocks[0].get("type") != "paragraph"
+        ):
+            raise ValueError(
+                "INTRO_FROM_FIRST_BLOCK_REQUIRES_FIRST_PARAGRAPH"
+            )
+
+        verbatim_intro = first_blocks[0]["text"]
+
+        first_section_without_intro = dict(first_section)
+        first_section_without_intro["blocks"] = (
+            first_blocks[1:]
+        )
+
+        sections_for_render = [
+            first_section_without_intro,
+            *sections_for_render[1:],
+        ]
+
     section_html = "\n\n".join(
         render_section(section)
-        for section in article["sections"]
+        for section in sections_for_render
     )
 
     key_points = "\n".join(
@@ -462,7 +517,7 @@ def render_guide(
   <link rel="stylesheet" href="/assets/css/design-system.css?v=tokens-v1">
   <link rel="stylesheet" href="/assets/css/components.css?v=locale-switcher-v1">
   <link rel="stylesheet" href="/assets/css/landing.css?v=design-unified-v1">
-  <link rel="stylesheet" href="/assets/css/guides.css?v=guides-v1">
+  <link rel="stylesheet" href="/assets/css/guides.css?v=guides-v3">
 </head>
 <body data-locale="{escape_text(labels["body_locale"])}" class="guide-page">
   <header class="site-header">
@@ -578,6 +633,26 @@ def render_guide(
         f'{escape_text(article["hero_description"])}</p>\n'
     )
     rendered = rendered.replace(hero_description, "", 1)
+
+    if verbatim_intro is not None:
+        hero_heading = (
+            f'        <h1>{escape_text(article["title"])}</h1>\n'
+        )
+        hero_intro = (
+            '        <p class="guide-intro">'
+            f'{escape_text(verbatim_intro)}</p>\n'
+        )
+
+        if rendered.count(hero_heading) != 1:
+            raise ValueError(
+                "VERBATIM_HERO_HEADING_NOT_UNIQUE"
+            )
+
+        rendered = rendered.replace(
+            hero_heading,
+            hero_heading + hero_intro,
+            1,
+        )
 
     body_start = rendered.index(
         '    <section class="section guide-section '

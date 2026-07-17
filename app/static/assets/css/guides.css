@@ -259,3 +259,50 @@
     text-align: center;
   }
 }
+
+/* Verbatim article reading rhythm, v3 */
+.guide-page .guide-hero .guide-intro {
+  max-width: 900px;
+  margin: 24px 0 0;
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.guide-page .guide-list-heading {
+  margin-bottom: 16px;
+  font-weight: 800;
+}
+
+.guide-page .guide-checklist {
+  margin-bottom: 40px;
+}
+
+.guide-page .guide-section {
+  padding-top: 28px;
+  padding-bottom: 20px;
+}
+
+.guide-page .guide-section + .guide-section {
+  padding-top: 12px;
+}
+
+@media (max-width: 720px) {
+  .guide-page .guide-hero .guide-intro {
+    margin-top: 18px;
+    font-size: 19px;
+  }
+
+  .guide-page .guide-checklist {
+    margin-bottom: 32px;
+  }
+
+  .guide-page .guide-section {
+    padding-top: 22px;
+    padding-bottom: 16px;
+  }
+
+  .guide-page .guide-section + .guide-section {
+    padding-top: 8px;
+  }
+}

@@ -33,6 +33,7 @@ OPTIONAL_ARTICLE_FIELDS = {
     "translation_group",
     "alternates",
     "content_mode",
+    "intro_from_first_block",
 }
 
 REQUIRED_ARTICLE_FIELDS = {
@@ -488,6 +489,27 @@ def validate_article_structure(
             "INVALID_CONTENT_MODE",
             article_id,
             f"value={content_mode!r}",
+        )
+
+    intro_from_first_block = article.get(
+        "intro_from_first_block"
+    )
+
+    if intro_from_first_block not in {None, True, False}:
+        audit.error(
+            "INVALID_INTRO_FROM_FIRST_BLOCK",
+            article_id,
+            f"value={intro_from_first_block!r}",
+        )
+
+    if (
+        intro_from_first_block is True
+        and content_mode != "verbatim"
+    ):
+        audit.error(
+            "INTRO_REQUIRES_VERBATIM_MODE",
+            article_id,
+            f"content_mode={content_mode!r}",
         )
 
     if article.get("review_owner") != "CargoPT":
