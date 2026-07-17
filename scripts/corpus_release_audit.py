@@ -255,6 +255,163 @@ def validate_cta(
         )
 
 
+def validate_translation_groups(
+    audit: Audit,
+    articles: list[tuple[Path, dict[str, Any]]],
+) -> None:
+    translated_articles = [
+        (path, article)
+        for path, article in articles
+        if (
+            "translation_group" in article
+            or "alternates" in article
+        )
+    ]
+
+    if not translated_articles:
+        return
+
+    articles_by_path: dict[
+        str,
+        list[tuple[Path, dict[str, Any]]],
+    ] = {}
+
+    for path, article in translated_articles:
+        article_path = article.get("path")
+
+        if isinstance(article_path, str):
+            articles_by_path.setdefault(
+                article_path,
+                [],
+            ).append((path, article))
+
+    groups: dict[
+        str,
+        list[tuple[Path, dict[str, Any]]],
+    ] = {}
+
+    for path, article in translated_articles:
+        group = article.get("translation_group")
+
+        if isinstance(group, str) and group.strip():
+            groups.setdefault(group, []).append(
+                (path, article)
+            )
+
+    for group, members in groups.items():
+        locales: dict[
+            str,
+            list[tuple[Path, dict[str, Any]]],
+        ] = {}
+
+        canonical_alternates: dict[str, str] | None = None
+
+        for path, article in members:
+            locale = article.get("locale")
+
+            if isinstance(locale, str):
+                locales.setdefault(locale, []).append(
+                    (path, article)
+                )
+
+            alternates = article.get("alternates")
+
+            if not isinstance(alternates, dict):
+                continue
+
+            if canonical_alternates is None:
+                canonical_alternates = alternates
+            elif alternates != canonical_alternates:
+                audit.error(
+                    "TRANSLATION_ALTERNATES_MISMATCH",
+                    group,
+                    (
+                        f"article={article.get('id')!r} "
+                        f"file={path}"
+                    ),
+                )
+
+        for locale, locale_members in locales.items():
+            if len(locale_members) <= 1:
+                continue
+
+            article_ids = sorted(
+                str(member.get("id"))
+                for _, member in locale_members
+            )
+
+            audit.error(
+                "DUPLICATE_TRANSLATION_LOCALE",
+                group,
+                (
+                    f"locale={locale!r} "
+                    f"articles={article_ids}"
+                ),
+            )
+
+        if canonical_alternates is None:
+            continue
+
+        for alternate_locale, alternate_path in (
+            canonical_alternates.items()
+        ):
+            targets = articles_by_path.get(
+                alternate_path,
+                [],
+            )
+
+            if not targets:
+                audit.error(
+                    "MISSING_TRANSLATION_TARGET",
+                    group,
+                    (
+                        f"locale={alternate_locale!r} "
+                        f"path={alternate_path!r}"
+                    ),
+                )
+                continue
+
+            if len(targets) > 1:
+                audit.error(
+                    "AMBIGUOUS_TRANSLATION_TARGET",
+                    group,
+                    (
+                        f"locale={alternate_locale!r} "
+                        f"path={alternate_path!r} "
+                        f"matches={len(targets)}"
+                    ),
+                )
+                continue
+
+            _, target = targets[0]
+
+            target_group = target.get("translation_group")
+
+            if target_group != group:
+                audit.error(
+                    "TRANSLATION_TARGET_GROUP_MISMATCH",
+                    group,
+                    (
+                        f"locale={alternate_locale!r} "
+                        f"path={alternate_path!r} "
+                        f"target_group={target_group!r}"
+                    ),
+                )
+
+            target_locale = target.get("locale")
+
+            if target_locale != alternate_locale:
+                audit.error(
+                    "TRANSLATION_TARGET_LOCALE_MISMATCH",
+                    group,
+                    (
+                        f"path={alternate_path!r} "
+                        f"expected_locale={alternate_locale!r} "
+                        f"actual_locale={target_locale!r}"
+                    ),
+                )
+
+
 def validate_article_structure(
     audit: Audit,
     *,
@@ -1139,6 +1296,11 @@ def main() -> None:
             path=path,
             article=value,
         )
+
+    validate_translation_groups(
+        audit,
+        articles,
+    )
 
     topic_ids = [
         str(topic.get("id"))
