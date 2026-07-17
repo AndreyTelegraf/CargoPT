@@ -35,7 +35,7 @@ async def trigger_next_ad(
     *,
     username="baraholka_pt",
     topic_id=429,
-    every_n=20,
+    every_n=50,
     text="hello",
     caption=None,
 ):
@@ -92,7 +92,7 @@ async def main():
             assert published == list(self_ad_counter.SELF_AD_TEXTS)
 
             state = json.loads(state_path.read_text())
-            assert state["text_counts"]["baraholka_pt:429"] == 160
+            assert state["text_counts"]["baraholka_pt:429"] == 400
             assert state["variant_indexes"]["baraholka_pt:429"] == 1
 
             proflist_text, _ = await trigger_next_ad(

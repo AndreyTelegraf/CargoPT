@@ -62,7 +62,7 @@ SELF_AD_TARGETS = {
 }
 
 SELF_AD_TARGET_EVERY_N = {
-    "baraholka_pt:429": 20,
+    "baraholka_pt:429": 50,
     "proflistpt:8490": 9,
 }
 
