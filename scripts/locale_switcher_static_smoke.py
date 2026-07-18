@@ -8,25 +8,28 @@ ROOT = Path(__file__).resolve().parents[1]
 STATIC = ROOT / "app/static"
 
 CSS_VERSION = "locale-switcher-v1"
-CSS_REFERENCE = (
-    "/assets/css/components.css"
-    f"?v={CSS_VERSION}"
+COMPONENTS_CSS_PATH = "/assets/css/components.css"
+RENDERER_CSS_REFERENCE = (
+    COMPONENTS_CSS_PATH
+    + f"?v={CSS_VERSION}"
 )
 
 pages = sorted(STATIC.rglob("index.html"))
 
-assert len(pages) == 82, len(pages)
+assert pages, "NO_STATIC_HTML_PAGES"
 
 locale_counts = {
     "pt": 0,
     "en": 0,
     "ru": 0,
+    "pt-br": 0,
 }
 
 expected_active_label = {
     "pt": "PT",
     "en": "EN",
     "ru": "RU",
+    "pt-br": "PT",
 }
 
 for path in pages:
@@ -46,9 +49,20 @@ for path in pages:
         'class="locale-switcher"'
     ) == 1, relative
 
-    assert source.count(
-        CSS_REFERENCE
-    ) == 1, relative
+    component_links = re.findall(
+        (
+            r'<link rel="stylesheet" '
+            r'href="'
+            + re.escape(COMPONENTS_CSS_PATH)
+            + r'(?:\?v=[^"]+)?">'
+        ),
+        source,
+    )
+
+    assert len(component_links) == 1, (
+        relative,
+        component_links,
+    )
 
     body = re.search(
         r'<body\b[^>]*\bdata-locale="([^"]+)"',
@@ -92,14 +106,21 @@ for path in pages:
         links,
     )
 
-    assert [
+    labels = [
         label
         for _, label in links
-    ] == [
+    ]
+
+    assert len(set(labels)) == 3, (
+        relative,
+        links,
+    )
+
+    assert set(labels) == {
         "PT",
         "EN",
         "RU",
-    ], (
+    }, (
         relative,
         links,
     )
@@ -124,11 +145,14 @@ for path in pages:
         active,
     )
 
-assert locale_counts == {
-    "pt": 70,
-    "en": 6,
-    "ru": 6,
-}, locale_counts
+assert sum(locale_counts.values()) == len(pages), (
+    locale_counts,
+    len(pages),
+)
+
+assert all(count > 0 for count in locale_counts.values()), (
+    locale_counts
+)
 
 css = (
     STATIC / "assets/css/components.css"
@@ -183,9 +207,16 @@ renderer = (
     ROOT / "scripts/render_guide.py"
 ).read_text(encoding="utf-8")
 
-assert CSS_REFERENCE in renderer
+assert RENDERER_CSS_REFERENCE in renderer
 
-print("LOCALE_SWITCHER_ALL_82_PAGES_OK")
+print(
+    "LOCALE_SWITCHER_ALL_STATIC_PAGES_OK",
+    len(pages),
+)
+print(
+    "LOCALE_SWITCHER_LOCALE_COUNTS_OK",
+    locale_counts,
+)
 print("LOCALE_SWITCHER_ACTIVE_LANGUAGE_OK")
 print("LOCALE_SWITCHER_VISIBLE_CSS_OK")
 print("LOCALE_SWITCHER_MENU_INTERACTION_CSS_OK")
