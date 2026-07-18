@@ -101,7 +101,31 @@ for path in pages:
         menu,
     )
 
-    assert len(links) == 3, (
+    hreflang_paths = {
+        href.removeprefix("https://cargopt.pt")
+        for locale_name, href in re.findall(
+            (
+                r'<link rel="alternate" '
+                r'hreflang="([^"]+)" '
+                r'href="([^"]+)">'
+            ),
+            source,
+        )
+        if locale_name != "x-default"
+    }
+
+    switcher_paths = {
+        href
+        for href, _ in links
+    }
+
+    assert switcher_paths == hreflang_paths, (
+        relative,
+        links,
+        hreflang_paths,
+    )
+
+    assert len(links) in {1, 3}, (
         relative,
         links,
     )
@@ -111,19 +135,28 @@ for path in pages:
         for _, label in links
     ]
 
-    assert len(set(labels)) == 3, (
+    assert len(set(labels)) == len(labels), (
         relative,
         links,
     )
 
-    assert set(labels) == {
-        "PT",
-        "EN",
-        "RU",
-    }, (
-        relative,
-        links,
-    )
+    if len(links) == 3:
+        assert set(labels) == {
+            "PT",
+            "EN",
+            "RU",
+        }, (
+            relative,
+            links,
+        )
+    else:
+        assert labels == [
+            expected_active_label[locale]
+        ], (
+            relative,
+            locale,
+            links,
+        )
 
     active = re.findall(
         r'<a href="([^"]+)" '
@@ -217,6 +250,8 @@ print(
     "LOCALE_SWITCHER_LOCALE_COUNTS_OK",
     locale_counts,
 )
+print("LOCALE_SWITCHER_TRANSLATION_TARGET_PARITY_OK")
+print("LOCALE_SWITCHER_STANDALONE_PAGE_OK")
 print("LOCALE_SWITCHER_ACTIVE_LANGUAGE_OK")
 print("LOCALE_SWITCHER_VISIBLE_CSS_OK")
 print("LOCALE_SWITCHER_MENU_INTERACTION_CSS_OK")
