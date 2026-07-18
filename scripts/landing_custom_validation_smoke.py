@@ -34,6 +34,15 @@ assert 'field.setAttribute("aria-describedby", messageId)' in js
 assert 'form.addEventListener("input", clearEditedFieldValidity)' in js
 assert 'form.addEventListener("change", clearEditedFieldValidity)' in js
 
+assert "let firstInvalidField = null;" in js
+assert "const isValid = validateRequiredField(field);" in js
+assert "if (!isValid && firstInvalidField === null) {" in js
+assert "firstInvalidField = field;" in js
+assert "if (firstInvalidField) {" in js
+assert "firstInvalidField.focus({preventScroll: true});" in js
+assert "firstInvalidField.scrollIntoView({" in js
+assert "validateRequiredField(field, true)" not in js
+
 assert "const SUBMIT_TIMEOUT_MS = 15000;" in js
 assert "class RequestSubmissionError extends Error" in js
 assert 'if (status === 400 || status === 422) return "validation";' in js
@@ -65,7 +74,7 @@ for relative in (
         in html
     )
     assert (
-        "/assets/js/landing.js?v=dr002-error-classification-v1"
+        "/assets/js/landing.js?v=dr003-multiple-validation-v1"
         in html
     )
     assert 'id="requestForm"' in html

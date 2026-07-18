@@ -311,10 +311,23 @@ function validateRequiredField(field, focusField = false) {
 function validateStep(step) {
   const activeStep = steps[step - 1];
   const requiredFields = Array.from(activeStep.querySelectorAll("[required]"));
+  let firstInvalidField = null;
+
   for (const field of requiredFields) {
-    if (!validateRequiredField(field, true)) {
-      return false;
+    const isValid = validateRequiredField(field);
+
+    if (!isValid && firstInvalidField === null) {
+      firstInvalidField = field;
     }
+  }
+
+  if (firstInvalidField) {
+    firstInvalidField.focus({preventScroll: true});
+    firstInvalidField.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+    return false;
   }
 
   return true;
