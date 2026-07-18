@@ -23,6 +23,16 @@ GUIDE_RENDER_LABELS = {
         "faq": "Perguntas frequentes",
         "continue": "Continuar",
         "request": "Receber propostas",
+        "footer_aria": "Informação legal",
+        "footer_carriers": "Para transportadores",
+        "footer_carriers_href": "/transportadores/",
+        "footer_privacy": "Privacidade",
+        "footer_privacy_href": "/privacy/",
+        "footer_terms": "Termos",
+        "footer_terms_href": "/terms/",
+        "footer_cookies": "Cookies",
+        "footer_cookies_href": "/cookies/",
+        "footer_contact": "Contacto",
     },
     "en": {
         "body_locale": "en",
@@ -35,6 +45,16 @@ GUIDE_RENDER_LABELS = {
         "faq": "Frequently asked questions",
         "continue": "Continue",
         "request": "Get offers",
+        "footer_aria": "Legal information",
+        "footer_carriers": "Carriers",
+        "footer_carriers_href": "/en/carriers/",
+        "footer_privacy": "Privacy",
+        "footer_privacy_href": "/en/privacy/",
+        "footer_terms": "Terms",
+        "footer_terms_href": "/en/terms/",
+        "footer_cookies": "Cookies",
+        "footer_cookies_href": "/en/cookies/",
+        "footer_contact": "Contact",
     },
     "ru": {
         "body_locale": "ru",
@@ -47,6 +67,16 @@ GUIDE_RENDER_LABELS = {
         "faq": "Частые вопросы",
         "continue": "Читайте также",
         "request": "Получить предложения",
+        "footer_aria": "Юридическая информация",
+        "footer_carriers": "Перевозчикам",
+        "footer_carriers_href": "/ru/carriers/",
+        "footer_privacy": "Конфиденциальность",
+        "footer_privacy_href": "/ru/privacy/",
+        "footer_terms": "Условия",
+        "footer_terms_href": "/ru/terms/",
+        "footer_cookies": "Cookies",
+        "footer_cookies_href": "/ru/cookies/",
+        "footer_contact": "Контакты",
     },
     "pt-BR": {
         "body_locale": "pt-br",
@@ -59,6 +89,16 @@ GUIDE_RENDER_LABELS = {
         "faq": "Perguntas frequentes",
         "continue": "Continuar",
         "request": "Receber propostas",
+        "footer_aria": "Informações legais",
+        "footer_carriers": "Para transportadoras",
+        "footer_carriers_href": "/transportadores/",
+        "footer_privacy": "Privacidade",
+        "footer_privacy_href": "/privacy/",
+        "footer_terms": "Termos",
+        "footer_terms_href": "/terms/",
+        "footer_cookies": "Cookies",
+        "footer_cookies_href": "/cookies/",
+        "footer_contact": "Contato",
     },
 }
 
@@ -742,12 +782,12 @@ def render_guide(
     <div class="footer-brand">
       <strong class="footer-logo"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></strong>
     </div>
-    <nav class="footer-links" aria-label="Informação legal">
-      <a href="/transportadores/">Para transportadores</a>
-      <a href="/privacy/">Privacidade</a>
-      <a href="/terms/">Termos</a>
-      <a href="/cookies/">Cookies</a>
-      <a href="mailto:hello@cargopt.pt">Contacto</a>
+    <nav class="footer-links" aria-label="{escape_text(labels["footer_aria"])}">
+      <a href="{escape_text(labels["footer_carriers_href"])}">{escape_text(labels["footer_carriers"])}</a>
+      <a href="{escape_text(labels["footer_privacy_href"])}">{escape_text(labels["footer_privacy"])}</a>
+      <a href="{escape_text(labels["footer_terms_href"])}">{escape_text(labels["footer_terms"])}</a>
+      <a href="{escape_text(labels["footer_cookies_href"])}">{escape_text(labels["footer_cookies"])}</a>
+      <a href="mailto:hello@cargopt.pt">{escape_text(labels["footer_contact"])}</a>
     </nav>
   </footer>
 </body>

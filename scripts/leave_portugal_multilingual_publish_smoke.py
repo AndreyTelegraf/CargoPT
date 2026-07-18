@@ -37,16 +37,40 @@ EXPECTED = {
         "locale": "en",
         "og_locale": "en_US",
         "path": ALTERNATES["en"],
+        "footer_aria": "Legal information",
+        "footer_links": {
+            "/en/carriers/": "Carriers",
+            "/en/privacy/": "Privacy",
+            "/en/terms/": "Terms",
+            "/en/cookies/": "Cookies",
+            "mailto:hello@cargopt.pt": "Contact",
+        },
     },
     "leave-portugal-ru": {
         "locale": "ru",
         "og_locale": "ru_RU",
         "path": ALTERNATES["ru"],
+        "footer_aria": "Юридическая информация",
+        "footer_links": {
+            "/ru/carriers/": "Перевозчикам",
+            "/ru/privacy/": "Конфиденциальность",
+            "/ru/terms/": "Условия",
+            "/ru/cookies/": "Cookies",
+            "mailto:hello@cargopt.pt": "Контакты",
+        },
     },
     "leave-portugal-pt-br": {
         "locale": "pt-BR",
         "og_locale": "pt_BR",
         "path": ALTERNATES["pt-BR"],
+        "footer_aria": "Informações legais",
+        "footer_links": {
+            "/transportadores/": "Para transportadoras",
+            "/privacy/": "Privacidade",
+            "/terms/": "Termos",
+            "/cookies/": "Cookies",
+            "mailto:hello@cargopt.pt": "Contato",
+        },
     },
 }
 
@@ -252,6 +276,41 @@ def main() -> None:
         footer = article["article_footer"]
         footer_cta = footer["cta"]
 
+        site_footer_match = re.search(
+            (
+                r'<footer class="site-footer">\s*'
+                r'.*?'
+                r'<nav class="footer-links" '
+                r'aria-label="([^"]+)">'
+                r'(.*?)'
+                r'</nav>\s*'
+                r'</footer>'
+            ),
+            rendered,
+            flags=re.DOTALL,
+        )
+
+        assert site_footer_match is not None, (
+            "MISSING_SITE_FOOTER",
+            article_id,
+        )
+        assert site_footer_match.group(1) == expected["footer_aria"]
+
+        site_footer_links = {
+            href: html.unescape(label)
+            for href, label in re.findall(
+                r'<a href="([^"]+)">([^<]+)</a>',
+                site_footer_match.group(2),
+            )
+        }
+
+        assert site_footer_links == expected["footer_links"], (
+            "SITE_FOOTER_LOCALE_MISMATCH",
+            article_id,
+            site_footer_links,
+            expected["footer_links"],
+        )
+
         assert rendered.count(
             'class="section guide-article-footer"'
         ) == 1
@@ -359,6 +418,7 @@ def main() -> None:
     print("SWITCHER_HREFLANG_PARITY_OK")
     print("NO_LOCALE_HOMEPAGE_FALLBACK_OK")
     print("ARTICLE_FOOTER_RENDER_CONTRACT_OK")
+    print("SITE_FOOTER_LOCALE_PARITY_OK")
     print("SOCIAL_PREVIEW_TITLE_OK")
     print("SOCIAL_PREVIEW_DESCRIPTION_OK")
     print("SOCIAL_PREVIEW_LOCALE_OK")
