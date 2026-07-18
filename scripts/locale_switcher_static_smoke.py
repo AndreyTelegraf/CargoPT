@@ -32,6 +32,18 @@ expected_active_label = {
     "pt-br": "PT",
 }
 
+TRACKING_PAGES = {
+    Path("track/index.html"),
+    Path("en/track/index.html"),
+    Path("ru/track/index.html"),
+}
+
+TRACKING_SWITCHER_PATHS = {
+    "/track/",
+    "/en/track/",
+    "/ru/track/",
+}
+
 for path in pages:
     source = path.read_text(encoding="utf-8")
 
@@ -119,11 +131,22 @@ for path in pages:
         for href, _ in links
     }
 
-    assert switcher_paths == hreflang_paths, (
-        relative,
-        links,
-        hreflang_paths,
-    )
+    if relative in TRACKING_PAGES:
+        assert not hreflang_paths, (
+            relative,
+            hreflang_paths,
+        )
+
+        assert switcher_paths == TRACKING_SWITCHER_PATHS, (
+            relative,
+            links,
+        )
+    else:
+        assert switcher_paths == hreflang_paths, (
+            relative,
+            links,
+            hreflang_paths,
+        )
 
     assert len(links) in {1, 3}, (
         relative,
@@ -251,6 +274,7 @@ print(
     locale_counts,
 )
 print("LOCALE_SWITCHER_TRANSLATION_TARGET_PARITY_OK")
+print("TRACKING_SWITCHER_EXPLICIT_CONTRACT_OK")
 print("LOCALE_SWITCHER_STANDALONE_PAGE_OK")
 print("LOCALE_SWITCHER_ACTIVE_LANGUAGE_OK")
 print("LOCALE_SWITCHER_VISIBLE_CSS_OK")
