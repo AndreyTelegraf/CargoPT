@@ -15,7 +15,13 @@ const MESSAGES = {
     contact: "Indique pelo menos um contacto: telefone, WhatsApp ou email.",
     submitting: "A enviar o pedido...",
     success: "Pedido enviado. Vamos encaminhá-lo para transportadores.",
-    failure: "Não foi possível enviar o pedido. Verifique os campos ou tente mais tarde.",
+    validationFailure: "Alguns dados do pedido não são válidos. Verifique os campos e tente novamente.",
+    conflictFailure: "Este pedido já foi alterado ou enviado. Atualize a página antes de tentar novamente.",
+    rateLimitFailure: "Foram enviados demasiados pedidos. Aguarde um pouco e tente novamente.",
+    serverFailure: "Ocorreu um erro no servidor. Os dados introduzidos foram mantidos; tente novamente.",
+    timeoutFailure: "O envio demorou demasiado tempo. Verifique a ligação e tente novamente.",
+    networkFailure: "Não foi possível ligar ao servidor. Verifique a ligação à internet e tente novamente.",
+    unexpectedFailure: "Não foi possível enviar o pedido. Os dados introduzidos foram mantidos.",
     viewStatus: "Ver estado",
     newRequest: "← Novo pedido",
     statusNoOffers: "Sem propostas disponíveis",
@@ -36,7 +42,13 @@ const MESSAGES = {
     contact: "Add at least one contact: phone, WhatsApp or email.",
     submitting: "Sending request...",
     success: "Request sent. We will forward it to carriers.",
-    failure: "Could not send the request. Check the fields or try again later.",
+    validationFailure: "Some request details are invalid. Check the fields and try again.",
+    conflictFailure: "This request has already been changed or submitted. Refresh the page before trying again.",
+    rateLimitFailure: "Too many requests were submitted. Wait a moment and try again.",
+    serverFailure: "A server error occurred. Your entered data was kept; try again.",
+    timeoutFailure: "The request took too long to send. Check your connection and try again.",
+    networkFailure: "Could not connect to the server. Check your internet connection and try again.",
+    unexpectedFailure: "Could not send the request. Your entered data was kept.",
     viewStatus: "View status",
     newRequest: "← New request",
     statusNoOffers: "No offers available",
@@ -57,7 +69,13 @@ const MESSAGES = {
     contact: "Укажите хотя бы один контакт: телефон, WhatsApp или email.",
     submitting: "Отправляем заявку...",
     success: "Заявка отправлена. Мы передадим её перевозчикам.",
-    failure: "Не удалось отправить заявку. Проверьте поля или попробуйте позже.",
+    validationFailure: "Некоторые данные заявки заполнены неверно. Проверьте поля и отправьте ещё раз.",
+    conflictFailure: "Эта заявка уже была изменена или отправлена. Обновите страницу перед повторной попыткой.",
+    rateLimitFailure: "Отправлено слишком много заявок. Подождите немного и попробуйте снова.",
+    serverFailure: "На сервере произошла ошибка. Введённые данные сохранены; попробуйте отправить ещё раз.",
+    timeoutFailure: "Сервер слишком долго не отвечал. Проверьте соединение и попробуйте снова.",
+    networkFailure: "Не удалось соединиться с сервером. Проверьте интернет и попробуйте снова.",
+    unexpectedFailure: "Не удалось отправить заявку. Введённые данные сохранены.",
     viewStatus: "Статус заявки",
     newRequest: "← Новая заявка",
     statusNoOffers: "Нет доступных предложений",
@@ -387,23 +405,68 @@ function buildPayload() {
   };
 }
 
+const SUBMIT_TIMEOUT_MS = 15000;
+
+class RequestSubmissionError extends Error {
+  constructor(kind, status = null) {
+    super(kind);
+    this.name = "RequestSubmissionError";
+    this.kind = kind;
+    this.status = status;
+  }
+}
+
+function classifySubmissionStatus(status) {
+  if (status === 400 || status === 422) return "validation";
+  if (status === 409) return "conflict";
+  if (status === 429) return "rateLimit";
+  if (status >= 500) return "server";
+  return "unexpected";
+}
+
+function getSubmissionErrorMessage(error) {
+  if (error instanceof RequestSubmissionError) {
+    const messageKey = `${error.kind}Failure`;
+    return messages[messageKey] || messages.unexpectedFailure;
+  }
+
+  if (error instanceof DOMException && error.name === "AbortError") {
+    return messages.timeoutFailure;
+  }
+
+  if (error instanceof TypeError) {
+    return messages.networkFailure;
+  }
+
+  return messages.unexpectedFailure;
+}
+
 async function submitRequest() {
   if (!validateStep(2)) return;
 
   setMessage(messages.submitting, "");
   const submitButton = form.querySelector("button[type=\"submit\"]");
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(
+    () => controller.abort(),
+    SUBMIT_TIMEOUT_MS
+  );
+
   submitButton.disabled = true;
 
   try {
     const response = await fetch("/api/v1/requests", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(buildPayload())
+      body: JSON.stringify(buildPayload()),
+      signal: controller.signal
     });
 
     if (!response.ok) {
-      const text = await response.text();
-      throw new Error(text || `HTTP ${response.status}`);
+      throw new RequestSubmissionError(
+        classifySubmissionStatus(response.status),
+        response.status
+      );
     }
 
     const body = await response.json();
@@ -419,14 +482,16 @@ async function submitRequest() {
     } else {
       setMessage(messages.success, "success");
     }
+
     if (!body.tracking_token || !body.tracking_url) {
       form.reset();
       setStep(1);
     }
   } catch (error) {
-    setMessage(messages.failure, "error");
+    setMessage(getSubmissionErrorMessage(error), "error");
     console.error(error);
   } finally {
+    window.clearTimeout(timeoutId);
     submitButton.disabled = false;
   }
 }

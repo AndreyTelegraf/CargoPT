@@ -34,6 +34,20 @@ assert 'field.setAttribute("aria-describedby", messageId)' in js
 assert 'form.addEventListener("input", clearEditedFieldValidity)' in js
 assert 'form.addEventListener("change", clearEditedFieldValidity)' in js
 
+assert "const SUBMIT_TIMEOUT_MS = 15000;" in js
+assert "class RequestSubmissionError extends Error" in js
+assert 'if (status === 400 || status === 422) return "validation";' in js
+assert 'if (status === 409) return "conflict";' in js
+assert 'if (status === 429) return "rateLimit";' in js
+assert 'if (status >= 500) return "server";' in js
+assert 'error.name === "AbortError"' in js
+assert "error instanceof TypeError" in js
+assert "signal: controller.signal" in js
+assert "messages.failure" not in js
+assert 'validationFailure: "Alguns dados do pedido não são válidos.' in js
+assert 'serverFailure: "A server error occurred.' in js
+assert 'networkFailure: "Не удалось соединиться с сервером.' in js
+
 assert ".field-validation-message {" in css
 assert ".field-validation-message::before {" in css
 assert ".field-validation-icon {" in css
@@ -51,7 +65,7 @@ for relative in (
         in html
     )
     assert (
-        "/assets/js/landing.js?v=custom-validation-v1"
+        "/assets/js/landing.js?v=dr002-error-classification-v1"
         in html
     )
     assert 'id="requestForm"' in html
