@@ -1,5 +1,7 @@
 from dataclasses import dataclass
+from datetime import UTC
 from datetime import datetime
+from datetime import timedelta
 
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
@@ -65,10 +67,97 @@ class RequestIntakeService:
         self.carrier_repository = carrier_repository
         self.bot = bot
 
+    @staticmethod
+    def _normalized_text(value: str | None) -> str:
+        return " ".join((value or "").strip().casefold().split())
+
+    @classmethod
+    def _is_identical_request(cls, job, request: RequestIntakeInput) -> bool:
+        job_addresses = sorted(
+            (
+                address.kind,
+                cls._normalized_text(address.raw_text),
+                address.floor,
+                address.has_elevator,
+            )
+            for address in (job.addresses or [])
+        )
+        request_addresses = sorted(
+            (
+                address.kind,
+                cls._normalized_text(address.raw_text),
+                address.floor,
+                address.has_elevator,
+            )
+            for address in request.addresses
+        )
+
+        job_items = sorted(
+            (
+                cls._normalized_text(item.description),
+                item.quantity,
+            )
+            for item in (job.items or [])
+        )
+        request_items = sorted(
+            (
+                cls._normalized_text(item.description),
+                item.quantity,
+            )
+            for item in request.items
+        )
+
+        return (
+            job.source_locale == request.source_locale
+            and job.requested_date == request.requested_date
+            and bool(job.needs_assembly) == request.needs_assembly
+            and bool(job.needs_packing) == request.needs_packing
+            and bool(job.needs_tail_lift) == request.needs_tail_lift
+            and bool(job.needs_crane) == request.needs_crane
+            and bool(job.needs_mobile_lift) == request.needs_mobile_lift
+            and job.required_loaders == request.required_loaders
+            and job.estimated_payload_kg == request.estimated_payload_kg
+            and job.estimated_volume_m3 == request.estimated_volume_m3
+            and cls._normalized_text(job.comment)
+            == cls._normalized_text(request.comment)
+            and job_addresses == request_addresses
+            and job_items == request_items
+        )
+
     async def submit_web_intake(
         self,
         request: RequestIntakeInput,
     ) -> RequestSubmissionResult:
+        duplicate_cutoff = datetime.now(UTC) - timedelta(minutes=15)
+        recent_jobs = await self.job_repository.list_recent_web_jobs_for_contact(
+            since=duplicate_cutoff,
+            customer_email=request.customer_email,
+            client_phone=request.client_phone,
+            client_whatsapp=request.client_whatsapp,
+        )
+
+        duplicate_job = next(
+            (
+                job
+                for job in recent_jobs
+                if self._is_identical_request(job, request)
+            ),
+            None,
+        )
+
+        if duplicate_job is not None:
+            existing_offers = await self.job_repository.list_offers_by_job(
+                duplicate_job.id
+            )
+            return RequestSubmissionResult(
+                job=duplicate_job,
+                offers_count=len(existing_offers),
+                sent_count=sum(
+                    offer.carrier_message_id is not None
+                    for offer in existing_offers
+                ),
+            )
+
         creation = RequestCreationService(job_repository=self.job_repository)
         job = await creation.create_web_draft(
             WebDraftInput(

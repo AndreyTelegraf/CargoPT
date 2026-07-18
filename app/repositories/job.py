@@ -3,6 +3,7 @@ from datetime import datetime
 import secrets
 
 from sqlalchemy import func
+from sqlalchemy import or_
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
@@ -133,6 +134,58 @@ class JobRepository:
         )
         result = await self.session.execute(stmt)
         return result.scalar_one_or_none()
+
+    async def list_recent_web_jobs_for_contact(
+        self,
+        *,
+        since,
+        customer_email: str | None,
+        client_phone: str | None,
+        client_whatsapp: str | None,
+        limit: int = 10,
+    ) -> list[Job]:
+        contact_filters = []
+
+        if customer_email:
+            contact_filters.append(
+                func.lower(Job.customer_email) == customer_email.strip().lower()
+            )
+
+        if client_phone:
+            contact_filters.append(Job.client_phone == client_phone.strip())
+
+        if client_whatsapp:
+            contact_filters.append(Job.client_whatsapp == client_whatsapp.strip())
+
+        if not contact_filters:
+            return []
+
+        stmt = (
+            select(Job)
+            .options(
+                selectinload(Job.addresses),
+                selectinload(Job.items),
+            )
+            .where(Job.source == "web_form")
+            .where(Job.created_at >= since)
+            .where(
+                Job.status.in_(
+                    (
+                        "ready_for_matching",
+                        "matching",
+                        "offered",
+                        "assigned_pending_confirmation",
+                        "assigned",
+                        "in_progress",
+                    )
+                )
+            )
+            .where(or_(*contact_filters))
+            .order_by(Job.created_at.desc(), Job.id.desc())
+            .limit(limit)
+        )
+        result = await self.session.execute(stmt)
+        return list(result.scalars().unique().all())
 
     async def get_cancelled_from_status(
         self,
