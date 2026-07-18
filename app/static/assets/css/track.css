@@ -158,6 +158,19 @@
   transform: translateY(-1px);
 }
 
+.track-offer-nav-badge {
+  align-items: center;
+  min-width: 0;
+  padding: 3px 8px;
+  border: 1px solid var(--success-border, #9bd8be);
+  border-radius: 999px;
+  background: var(--success-soft, #eaf8f1);
+  color: var(--success-text, #08734d);
+  font-size: var(--font-size-meta);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
 .track-offer-nav-meta,
 .track-offer-nav-status,
 .track-offer-nav-note,

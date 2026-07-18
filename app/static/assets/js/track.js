@@ -259,8 +259,17 @@ function renderOpenPedidosNavigation() {
       : routeLabel;
 
     const status = document.createElement("span");
+    const hasAcceptedOffers =
+      Number(entry.accepted_offers_count || 0) > 0;
+
     status.className = "track-offer-nav-price";
-    status.textContent = messages.openRequest;
+
+    if (hasAcceptedOffers) {
+      status.classList.add("track-offer-nav-badge");
+      status.textContent = messages.offerAvailableBadge;
+    } else {
+      status.textContent = messages.openRequest;
+    }
 
     top.append(route, status);
 
@@ -333,6 +342,7 @@ const MESSAGE_SETS = {
     noSavedRequests: "Ainda não há pedidos guardados neste dispositivo.",
     currentRequest: "Atual",
     openRequest: "Abrir",
+    offerAvailableBadge: "Há proposta",
     otherRequestsLabel: "Outros pedidos ({count})",
     statusSearching: "À procura de transportadores",
     statusAssigned: "Transportador escolhido",
@@ -398,6 +408,7 @@ const MESSAGE_SETS = {
     noSavedRequests: "There are no requests saved on this device yet.",
     currentRequest: "Current",
     openRequest: "Open",
+    offerAvailableBadge: "Offer available",
     otherRequestsLabel: "Other requests ({count})",
     statusSearching: "Looking for carriers",
     statusAssigned: "Carrier selected",
@@ -461,6 +472,7 @@ const MESSAGE_SETS = {
     noSavedRequests: "На этом устройстве пока нет сохранённых заявок.",
     currentRequest: "Текущая",
     openRequest: "Открыть",
+    offerAvailableBadge: "Есть предложение",
     otherRequestsLabel: "Другие заявки ({count})",
     statusSearching: "Ищем перевозчиков",
     statusAssigned: "Перевозчик выбран",
