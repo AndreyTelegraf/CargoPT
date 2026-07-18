@@ -129,7 +129,11 @@ async def handle_assignment_confirmation(callback: CallbackQuery) -> None:
                 updated_at=now,
             )
             result_text = format_telegram_status_block(
-                f"Заявка №{job_id} возвращена в подбор перевозчика.",
+                (
+                    f"По заявке №{job_id} договориться с перевозчиком не удалось.\n\n"
+                    "Заявка снова в поиске. "
+                    "Мы отправляем её другим подходящим перевозчикам."
+                ),
                 state="searching",
             )
         else:

@@ -77,13 +77,17 @@ async def send_assignment_final_notifications(
     else:
         client_text = format_telegram_status_block(
             (
-                f"По заявке №{job.id} сделка не состоялась.\n\n"
-                "Заявка возвращена в поиск. Мы уже ищем нового перевозчика."
+                f"По заявке №{job.id} договориться с перевозчиком не удалось.\n\n"
+                "Заявка снова в поиске. "
+                "Мы отправляем её другим подходящим перевозчикам."
             ),
-            state="failed",
+            state="searching",
         )
         carrier_text = format_telegram_status_block(
-            "Спасибо.\n\nЗаявка возвращена в поиск.",
+            (
+                f"По заявке №{job.id} договориться с клиентом не удалось.\n\n"
+                "Для вас эта заявка закрыта."
+            ),
             state="failed",
         )
 

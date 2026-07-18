@@ -5,6 +5,7 @@ from datetime import timedelta
 from app.domain.job_status import JobStatus
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
+from app.services.assignment_confirmation import format_telegram_status_block
 from app.services.assignment_confirmation import process_assignment_failure_redispatch
 
 
@@ -54,9 +55,13 @@ async def process_stale_assignment_confirmations(
         if job.client_telegram_user_id is not None:
             await bot.send_message(
                 chat_id=job.client_telegram_user_id,
-                text=(
-                    f"По заявке №{job.id} сделка не была подтверждена вовремя.\n\n"
-                    "Заявка возвращена в поиск. Мы уже ищем нового перевозчика."
+                text=format_telegram_status_block(
+                    (
+                        f"По заявке №{job.id} подтверждение не было получено вовремя.\n\n"
+                        "Заявка снова в поиске. "
+                        "Мы отправляем её другим подходящим перевозчикам."
+                    ),
+                    state="searching",
                 ),
             )
 
@@ -65,9 +70,12 @@ async def process_stale_assignment_confirmations(
             if carrier is not None and carrier.telegram_user_id is not None:
                 await bot.send_message(
                     chat_id=carrier.telegram_user_id,
-                    text=(
-                        f"По заявке №{job.id} сделка не была подтверждена вовремя.\n\n"
-                        "Заявка возвращена в поиск."
+                    text=format_telegram_status_block(
+                        (
+                            f"По заявке №{job.id} подтверждение не было получено вовремя.\n\n"
+                            "Для вас эта заявка закрыта."
+                        ),
+                        state="failed",
                     ),
                 )
 

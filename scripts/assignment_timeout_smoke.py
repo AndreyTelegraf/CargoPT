@@ -170,6 +170,27 @@ async def exercise() -> None:
         if len(fake_bot.sent_messages) != 2:
             raise SystemExit(f"expected 2 timeout notifications, got {len(fake_bot.sent_messages)}")
 
+        messages_by_chat = dict(fake_bot.sent_messages)
+        client_text = messages_by_chat.get(9101)
+        carrier_text = messages_by_chat.get(6101)
+
+        expected_client_text = (
+            "🟡 Статус\n"
+            f"По заявке №{stale_job_id} подтверждение не было получено вовремя.\n\n"
+            "Заявка снова в поиске. "
+            "Мы отправляем её другим подходящим перевозчикам."
+        )
+        expected_carrier_text = (
+            "🔴 Статус\n"
+            f"По заявке №{stale_job_id} подтверждение не было получено вовремя.\n\n"
+            "Для вас эта заявка закрыта."
+        )
+
+        if client_text != expected_client_text:
+            raise SystemExit(f"unexpected client timeout text: {client_text!r}")
+        if carrier_text != expected_carrier_text:
+            raise SystemExit(f"unexpected carrier timeout text: {carrier_text!r}")
+
         await session.commit()
 
     await engine.dispose()

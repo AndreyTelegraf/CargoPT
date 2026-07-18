@@ -208,6 +208,19 @@ def main() -> None:
         job_status=JobStatus.ASSIGNED,
     )
 
+    redispatch_text = build_assignment_result_text(
+        job_id=123,
+        action="fail",
+        job_status=JobStatus.READY_FOR_MATCHING,
+    )
+    assert redispatch_text == (
+        "🟡 Статус\n"
+        "По заявке №123 договориться с перевозчиком не удалось.\n\n"
+        "Заявка снова в поиске. "
+        "Мы отправляем её другим подходящим перевозчикам."
+    )
+    assert "🔴" not in redispatch_text
+
     reset_db()
     run([".venv/bin/alembic", "upgrade", "head"])
     asyncio.run(exercise_assignment_confirmation())

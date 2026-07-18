@@ -244,10 +244,11 @@ def build_assignment_result_text(*, job_id: int, action: str, job_status: str) -
     if job_status == JobStatus.READY_FOR_MATCHING:
         return format_telegram_status_block(
             (
-                f"По заявке №{job_id} сделка не состоялась. "
-                "Заявка возвращена в активный поиск."
+                f"По заявке №{job_id} договориться с перевозчиком не удалось.\n\n"
+                "Заявка снова в поиске. "
+                "Мы отправляем её другим подходящим перевозчикам."
             ),
-            state="failed",
+            state="searching",
         )
 
     if action == "confirm":
@@ -261,8 +262,9 @@ def build_assignment_result_text(*, job_id: int, action: str, job_status: str) -
 
     return format_telegram_status_block(
         (
-            f"Ваш ответ по заявке №{job_id} принят. "
-            "Заявка будет возвращена в активный поиск."
+            f"Ваш ответ по заявке №{job_id} принят.\n\n"
+            "Если сделка не будет подтверждена, "
+            "заявка снова перейдёт в поиск перевозчика."
         ),
-        state="failed",
+        state="pending",
     )
