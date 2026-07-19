@@ -75,8 +75,8 @@ OFFER = {
 
 CURRENT_ASSETS = {
     "/assets/css/components.css": "offer-card-architecture-v1",
-    "/assets/js/tracking-workspace.js": "offer-card-architecture-v1",
-    "/assets/js/track.js": "offer-card-architecture-v1",
+    "/assets/js/tracking-workspace.js": "no-offers-visual-state-v2",
+    "/assets/js/track.js": "no-offers-visual-state-v2",
 }
 
 
