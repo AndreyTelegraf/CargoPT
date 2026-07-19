@@ -30,6 +30,7 @@ const STATUS_CHROME_COLORS = {
   searching: "#2B6FD6",
   pending: "#d97706",
   success: "#0F8A5F",
+  error: "#D92D20",
   cancelled: "#D92D20"
 };
 
@@ -593,7 +594,7 @@ function renderTrackingWorkspace(entry) {
 
 function getTrackingStatusDotState(snapshot, acceptedOffers) {
   if (snapshot.status === "cancelled") return "cancelled";
-  if (["offers_exhausted", "expired_without_response"].includes(snapshot.status)) return "cancelled";
+  if (["offers_exhausted", "expired_without_response"].includes(snapshot.status)) return "error";
   if (snapshot.status === "no_carriers_found") return "searching";
   if (snapshot.status === "completed") return "success";
   if (snapshot.client_confirmation_status === "confirmed" && snapshot.carrier_confirmation_status === "confirmed") return "success";

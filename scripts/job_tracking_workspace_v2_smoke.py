@@ -35,8 +35,8 @@ def main() -> None:
 
     assert "/assets/css/track.css?v=workspace-design-v5" in html
     assert "/assets/js/progress-header.js?v=progress-stage-v5" in html
-    assert "/assets/js/tracking-workspace.js?v=offer-card-architecture-v1" in html
-    assert "/assets/js/track.js?v=offer-card-architecture-v1" in html
+    assert "/assets/js/tracking-workspace.js?v=no-offers-visual-state-v2" in html
+    assert "/assets/js/track.js?v=no-offers-visual-state-v2" in html
 
     assert (
         'document.querySelector("#otherRequestsPanel")'
