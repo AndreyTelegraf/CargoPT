@@ -316,3 +316,9 @@
   }
 
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .track-other-requests-toggle::after {
+    transition: none;
+  }
+}
