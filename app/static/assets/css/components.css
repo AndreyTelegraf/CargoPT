@@ -174,7 +174,7 @@ a {
     min-height: 36px;
     padding-left: var(--space-2);
     padding-right: var(--space-2);
-    font-size: 13px;
+    font-size: var(--font-size-action-small);
   }
 
   .site-header .locale-current::after {
