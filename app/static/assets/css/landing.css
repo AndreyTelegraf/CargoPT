@@ -118,7 +118,7 @@ h3 {
 /* CargoPT trust and marketplace credibility v1 */
 .trust-marketplace-shell {
   padding: clamp(28px, 5vw, 56px);
-  border: 1px solid var(--line);
+  border: var(--surface-border);
   border-radius: var(--radius-xl);
   background:
     radial-gradient(
@@ -165,7 +165,7 @@ h3 {
   gap: var(--space-4);
   align-items: start;
   padding: 18px;
-  border: 1px solid var(--line);
+  border: var(--surface-border);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.78);
 }
