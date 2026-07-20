@@ -247,7 +247,7 @@ for locale, path in FILES.items():
     for asset in (
         (
             "/assets/css/components.css"
-            "?v=offer-card-architecture-v1"
+            "?v=reduced-motion-v2"
         ),
         (
             "/assets/css/track.css"

@@ -1114,3 +1114,10 @@ details p {
     font-size: 13px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .process-carousel .process-card,
+  .process-carousel-track .process-card {
+    transition: none;
+  }
+}

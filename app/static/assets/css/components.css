@@ -416,6 +416,10 @@ details p {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
   .tracking-status-dot-searching,
   .tracking-status-dot-success,
   .tracking-status-dot-pending {
@@ -741,6 +745,12 @@ details p {
   margin: 0;
   background: var(--brand);
   transition: width var(--motion-slow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar span {
+    transition: none;
+  }
 }
 
 fieldset {

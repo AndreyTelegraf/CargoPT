@@ -704,8 +704,8 @@ def render_guide(
   <script type="application/ld+json">{json_ld(breadcrumb_schema)}</script>
   <script type="application/ld+json">{json_ld(faq_schema)}</script>
   <link rel="stylesheet" href="/assets/css/design-system.css?v=tokens-v1">
-  <link rel="stylesheet" href="/assets/css/components.css?v=locale-switcher-v1">
-  <link rel="stylesheet" href="/assets/css/landing.css?v=design-unified-v1">
+  <link rel="stylesheet" href="/assets/css/components.css?v=reduced-motion-v2">
+  <link rel="stylesheet" href="/assets/css/landing.css?v=reduced-motion-v2">
   <link rel="stylesheet" href="/assets/css/guides.css?v=guides-v4">
 </head>
 <body data-locale="{escape_text(labels["body_locale"])}" class="guide-page">
