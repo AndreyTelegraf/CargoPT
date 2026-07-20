@@ -103,7 +103,7 @@ h3 {
 .benefits p {
   min-height: 116px;
   margin: 0;
-  padding: 24px;
+  padding: var(--card-padding);
   border: var(--surface-border);
   border-radius: var(--surface-radius-card);
   background: var(--surface-glass-bg);
