@@ -68,7 +68,7 @@ h3 {
 
 .trust-list {
   display: grid;
-  gap: 12px;
+  gap: var(--space-3);
   margin-top: 0;
 }
 
