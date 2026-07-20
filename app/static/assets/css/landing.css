@@ -558,7 +558,7 @@ details p {
   display: grid;
   grid-template-columns: repeat(4, minmax(150px, 1fr));
   align-items: stretch;
-  gap: 12px;
+  gap: var(--space-3);
   max-width: 820px;
   margin-top: auto;
 }
@@ -666,7 +666,7 @@ details p {
 @media (max-width: 820px) {
   .product-explainer {
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: var(--space-3);
   }
 }
 
