@@ -497,18 +497,6 @@ details p {
 }
 
 
-.chips a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 38px;
-  padding: 0 14px;
-  border: var(--surface-border);
-  border-radius: var(--chip-radius);
-  background: var(--chip-bg);
-  color: var(--muted);
-  font-weight: var(--font-weight-meta-text);
-}
-
 .chips a:hover {
   color: var(--text);
   border-color: var(--text);
