@@ -1008,7 +1008,7 @@ details p {
 .legal-page { min-height: calc(100vh - 150px); }
 .legal-hero { padding-bottom: var(--space-4); }
 .legal-hero h1 { max-width: 900px; margin-bottom: 18px; }
-.legal-updated { margin: 24px 0 0; color: var(--muted); font-size: 14px; }
+.legal-updated { margin: 24px 0 0; color: var(--muted); font-size: var(--font-size-meta); }
 .legal-content { max-width: 920px; padding-top: 0; }
 .legal-content section + section { margin-top: 34px; }
 .legal-content h2 { margin-bottom: 12px; font-size: clamp(22px, 3vw, 30px); }
