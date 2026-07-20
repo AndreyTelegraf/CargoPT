@@ -309,7 +309,7 @@ h3 {
 
 .offer-preview-note {
   margin: var(--space-4) 0 0;
-  padding: 12px 14px;
+  padding: var(--space-3) 14px;
   border-radius: var(--radius-md);
   background: var(--primary-fill);
   color: var(--text);
@@ -355,7 +355,7 @@ h3 {
 
   .offer-preview-route {
     grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr);
-    padding: 12px;
+    padding: var(--space-3);
   }
 
   .offer-preview-details div {
