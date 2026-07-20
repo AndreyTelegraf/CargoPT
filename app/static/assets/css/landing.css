@@ -886,7 +886,7 @@ details p {
   color: var(--text);
   font-size: calc(var(--font-size-form-title) * 0.7);
   font-weight: var(--font-weight-strong);
-  line-height: 1.2;
+  line-height: var(--line-height-card-title);
   letter-spacing: normal;
   text-transform: none;
 }
@@ -896,7 +896,7 @@ details p {
   color: var(--text);
   font-size: calc(var(--font-size-form-title) * 0.7);
   font-weight: var(--font-weight-strong);
-  line-height: 1.2;
+  line-height: var(--line-height-card-title);
   letter-spacing: normal;
 }
 
