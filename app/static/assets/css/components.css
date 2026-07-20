@@ -327,6 +327,11 @@ details p {
   font-weight: var(--font-weight-meta-text);
 }
 
+.chips a:focus-visible {
+  outline: 2px solid var(--primary-border);
+  outline-offset: 2px;
+}
+
 
 /* Shared tracking status */
 .tracking-success {
