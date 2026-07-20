@@ -314,7 +314,8 @@ details p {
   gap: 12px;
 }
 
-.chips span {
+.chips span,
+.chips a {
   display: inline-flex;
   align-items: center;
   min-height: 38px;
