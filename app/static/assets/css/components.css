@@ -311,7 +311,7 @@ details p {
 .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .chips span,
