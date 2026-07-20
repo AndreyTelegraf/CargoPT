@@ -163,7 +163,7 @@
   min-width: 0;
   padding: 3px 8px;
   border: 1px solid var(--success-border, #9bd8be);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--success-soft, #eaf8f1);
   color: var(--success-text, #08734d);
   font-size: var(--font-size-meta);

@@ -1110,7 +1110,7 @@ textarea:focus {
   min-height: 30px;
   padding: 5px 10px;
   border: 1px solid var(--primary-border);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--primary-fill);
   color: var(--primary);
   font-size: var(--font-size-badge);
