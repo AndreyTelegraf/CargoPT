@@ -69,7 +69,7 @@ a {
   position: relative;
   align-items: center;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--font-size-meta);
   font-weight: var(--font-weight-strong);
 }
 
@@ -85,7 +85,7 @@ a {
   background: var(--surface-panel-bg);
   color: var(--text);
   font: inherit;
-  font-size: 14px;
+  font-size: var(--font-size-meta);
   font-weight: var(--font-weight-strong);
   cursor: pointer;
 }
