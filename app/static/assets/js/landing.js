@@ -297,11 +297,126 @@ function clearEditedFieldValidity(event) {
 form.addEventListener("input", clearEditedFieldValidity);
 form.addEventListener("change", clearEditedFieldValidity);
 
-function validateRequiredField(field, focusField = false) {
+function isValidCalendarDate(year, month, day) {
+  const date = new Date(Date.UTC(year, month - 1, day));
+
+  return (
+    date.getUTCFullYear() === year
+    && date.getUTCMonth() === month - 1
+    && date.getUTCDate() === day
+  );
+}
+
+function isValidRequestedDate(value) {
+  const rawValue = (value || "").trim().toLowerCase();
+
+  if (!rawValue) return false;
+
+  const relativeValues = [
+    "hoje",
+    "today",
+    "сегодня",
+    "amanhã",
+    "amanha",
+    "tomorrow",
+    "завтра",
+    "próximos dias",
+    "proximos dias",
+    "next few days",
+    "в ближайшие дни",
+    "qualquer dia",
+    "any day",
+    "любой день"
+  ];
+
+  if (relativeValues.includes(rawValue)) {
+    return true;
+  }
+
+  const europeanDateMatch =
+    rawValue.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+
+  if (europeanDateMatch) {
+    const [, day, month, year] =
+      europeanDateMatch.map(Number);
+
+    return isValidCalendarDate(year, month, day);
+  }
+
+  const isoDateMatch =
+    rawValue.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+
+  if (isoDateMatch) {
+    const [, year, month, day] =
+      isoDateMatch.map(Number);
+
+    return isValidCalendarDate(year, month, day);
+  }
+
+  return false;
+}
+
+function isValidPhone(value) {
+  const normalizedValue = (value || "").trim();
+
+  if (!normalizedValue) return false;
+
+  if (!/^[+()\d\s.-]+$/.test(normalizedValue)) {
+    return false;
+  }
+
+  const digitCount =
+    (normalizedValue.match(/\d/g) || []).length;
+
+  return digitCount >= 7 && digitCount <= 15;
+}
+
+function validateField(field, focusField = false) {
   clearFieldValidity(field);
 
-  if (!field.value.trim()) {
-    markFieldInvalid(field, messages.required, focusField);
+  const value = field.value.trim();
+
+  if (field.required && !value) {
+    markFieldInvalid(
+      field,
+      messages.required,
+      focusField
+    );
+    return false;
+  }
+
+  if (
+    field.name === "requested_date"
+    && value
+    && !isValidRequestedDate(value)
+  ) {
+    markFieldInvalid(
+      field,
+      messages.validationFailure,
+      focusField
+    );
+    return false;
+  }
+
+  if (
+    ["client_phone", "client_whatsapp"].includes(field.name)
+    && value
+    && !isValidPhone(value)
+  ) {
+    markFieldInvalid(
+      field,
+      messages.validationFailure,
+      focusField
+    );
+    return false;
+  }
+
+  if (!field.validity.valid) {
+    markFieldInvalid(
+      field,
+      messages.validationFailure,
+      focusField
+    );
     return false;
   }
 
@@ -310,11 +425,15 @@ function validateRequiredField(field, focusField = false) {
 
 function validateStep(step) {
   const activeStep = steps[step - 1];
-  const requiredFields = Array.from(activeStep.querySelectorAll("[required]"));
+  const fields = Array.from(
+    activeStep.querySelectorAll(
+      "input, textarea, select"
+    )
+  );
   let firstInvalidField = null;
 
-  for (const field of requiredFields) {
-    const isValid = validateRequiredField(field);
+  for (const field of fields) {
+    const isValid = validateField(field);
 
     if (!isValid && firstInvalidField === null) {
       firstInvalidField = field;
@@ -526,10 +645,12 @@ form.addEventListener("change", (event) => {
 });
 
 form.addEventListener("focusout", (event) => {
-  const field = event.target.closest("[required]");
+  const field = event.target.closest(
+    "input, textarea, select"
+  );
   if (!field || !form.contains(field)) return;
 
-  validateRequiredField(field);
+  validateField(field);
 });
 
 document.addEventListener("click", (event) => {
