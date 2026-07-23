@@ -56,7 +56,7 @@ for relative in (
 
     assert (
         "/assets/js/track.js"
-        "?v=p4-9-clipboard-fallback-v1"
+        "?v=tracking-return-copy-v1"
     ) in html
 
 print("TRACKING_NO_OFFERS_VISUAL_STATE_ERROR_OK")

@@ -267,7 +267,7 @@ for locale, path in FILES.items():
         ),
         (
             "/assets/js/track.js"
-            "?v=p4-9-clipboard-fallback-v1"
+            "?v=tracking-return-copy-v1"
         ),
     ):
         assert asset in source, (
