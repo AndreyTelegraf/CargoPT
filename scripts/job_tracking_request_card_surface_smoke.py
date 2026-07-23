@@ -25,8 +25,22 @@ def main() -> None:
     assert ".tracking-offer-card" in components_css
     assert "workspace.className = \"tracking-workspace-content\"" in workspace_js
 
-    assert "delete merged.status_label;" in track_js
-    assert "delete merged.status_dot_state;" in track_js
+    normalize_start = track_js.index(
+        "function normalizeTrackingLink(entry) {"
+    )
+    normalize_end = track_js.index(
+        "\nfunction getTrackingLinks()",
+        normalize_start,
+    )
+    normalize_body = track_js[
+        normalize_start:normalize_end
+    ]
+
+    assert "job_id: entry.job_id ?? null" in normalize_body
+    assert "entry.tracking_url" in normalize_body
+    assert "token: entry.token" in normalize_body
+    assert "status_label" not in normalize_body
+    assert "status_dot_state" not in normalize_body
     assert "const liveEntriesByToken = new Map();" in track_js
     assert "liveEntriesByToken.set(requestToken, entry);" in track_js
     assert "function getActiveTrackingEntry()" in track_js
