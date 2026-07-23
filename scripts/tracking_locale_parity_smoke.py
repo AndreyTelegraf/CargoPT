@@ -251,7 +251,7 @@ for locale, path in FILES.items():
         ),
         (
             "/assets/css/track.css"
-            "?v=workspace-design-v5"
+            "?v=tracking-header-wrap-v1"
         ),
         (
             "/assets/css/progress-header.css"
@@ -267,7 +267,7 @@ for locale, path in FILES.items():
         ),
         (
             "/assets/js/track.js"
-            "?v=no-offers-visual-state-v2"
+            "?v=p4-9-clipboard-fallback-v1"
         ),
     ):
         assert asset in source, (
