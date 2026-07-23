@@ -93,8 +93,10 @@ async def exercise_service() -> None:
         if active_carrier is None:
             raise SystemExit("carrier missing after claim")
 
-        if active_carrier.status != "active":
-            raise SystemExit("carrier should be active")
+        if active_carrier.status != "invited":
+            raise SystemExit(
+                f"carrier should remain invited after claim, got {active_carrier.status}"
+            )
 
         if active_carrier.telegram_user_id != 555000111:
             raise SystemExit("telegram id mismatch")
@@ -106,8 +108,10 @@ async def exercise_service() -> None:
             operating_regions="Lisboa, Setubal",
         )
 
-        if completed.status != "profile_completed":
-            raise SystemExit("profile not completed")
+        if completed.status != "pending_moderation":
+            raise SystemExit(
+                f"completed profile should await moderation, got {completed.status}"
+            )
 
         if completed.profile_completed_at is None:
             raise SystemExit("profile_completed_at missing")

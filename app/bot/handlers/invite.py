@@ -10,6 +10,7 @@ from app.db.session import async_session_maker
 from app.repositories.carrier import CarrierRepository
 from app.services.carrier_onboarding import CarrierOnboardingService
 from app.domain.carrier_profile_step import CarrierProfileStep
+from app.domain.carrier_status import CarrierStatus
 from app.bot.states.carrier_onboarding import CarrierOnboardingStates
 
 router = Router()
@@ -50,6 +51,29 @@ async def invite_start(message: Message, state: FSMContext) -> None:
         existing_carrier = await repository.get_carrier_by_telegram_user_id(
             message.from_user.id
         )
+        if (
+            existing_carrier is not None
+            and existing_carrier.status == CarrierStatus.INVITED
+        ):
+            await session.commit()
+            await state.clear()
+            await state.update_data(
+                carrier_id=existing_carrier.id,
+                company_name=existing_carrier.company_name,
+                contact_name=existing_carrier.contact_name,
+                selected_regions=[],
+            )
+            await state.set_state(CarrierOnboardingStates.operating_regions)
+            await message.answer(
+                "Вы уже начали анкету перевозчика CargoPT.\n\n"
+                "Продолжим с шага выбора регионов.\n\n"
+                "Шаг 1 из 6. Регионы работы.\n\n"
+                "В каких регионах Португалии вы работаете?\n\n"
+                "Можно выбрать несколько регионов. Когда закончите, нажмите «Готово».",
+                reply_markup=regions_keyboard(),
+            )
+            return
+
         if existing_carrier is not None:
             await session.commit()
             await state.clear()
