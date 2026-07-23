@@ -216,11 +216,17 @@ async def exercise_offer_distribution() -> None:
 
         loaded_unmatched_job = await job_repo.get_job_by_id(unmatched_job.id)
 
-        if len(unmatched_offers) != 2:
-            raise SystemExit(f"expected 2 region-matched fallback offers, got {len(unmatched_offers)}")
+        if len(unmatched_offers) != 0:
+            raise SystemExit(
+                "expected 0 offers for impossible strict constraints, "
+                f"got {len(unmatched_offers)}"
+            )
 
-        if loaded_unmatched_job.status != JobStatus.OFFERED:
-            raise SystemExit(f"expected offered status for region-only fallback, got {loaded_unmatched_job.status}")
+        if loaded_unmatched_job.status != JobStatus.NO_CARRIERS_FOUND:
+            raise SystemExit(
+                "expected no carriers found for impossible strict "
+                f"constraints, got {loaded_unmatched_job.status}"
+            )
 
         unknown_region_job = await job_repo.create_job(
             build_job(now, payload=1000, volume=10.0)

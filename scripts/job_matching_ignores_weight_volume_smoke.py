@@ -1,19 +1,25 @@
 from pathlib import Path
 
-source = Path("app/services/job_matching.py").read_text(encoding="utf-8")
+source = Path(
+    "app/services/job_matching.py"
+).read_text(encoding="utf-8")
 
 assert "regions=sorted(regions) or None" in source
-
-assert "min_payload_kg=" not in source
-assert "min_volume_m3=" not in source
-assert "min_loaders=" not in source
-assert "needs_tail_lift=job.needs_tail_lift" not in source
-assert "needs_crane=job.needs_crane" not in source
-assert "needs_mobile_lift=job.needs_mobile_lift" not in source
-assert "needs_assembly=job.needs_assembly" not in source
-assert "needs_packing=job.needs_packing" not in source
-
 assert "if loaded_addresses and not regions:" in source
 assert "MatchingReason.REGION_NOT_DETERMINED" in source
 
-print("JOB_MATCHING_IGNORES_WEIGHT_VOLUME_SMOKE_OK")
+expected_constraints = (
+    "min_payload_kg=job.estimated_payload_kg",
+    "min_volume_m3=job.estimated_volume_m3",
+    "min_loaders=job.required_loaders",
+    "needs_tail_lift=job.needs_tail_lift",
+    "needs_crane=job.needs_crane",
+    "needs_mobile_lift=job.needs_mobile_lift",
+    "needs_assembly=job.needs_assembly",
+    "needs_packing=job.needs_packing",
+)
+
+for constraint in expected_constraints:
+    assert source.count(constraint) == 1, constraint
+
+print("JOB_MATCHING_FORWARDS_CONSTRAINTS_SMOKE_OK")
