@@ -6,7 +6,7 @@ def main() -> None:
     css = Path("app/static/assets/css/track.css").read_text()
     workspace_js = Path("app/static/assets/js/tracking-workspace.js").read_text()
 
-    assert 'class="tracking-page"' in html
+    assert 'class="tracking-page track-page-shell"' in html
     assert 'class="section track-workspace-shell"' in html
     assert 'class="tracking-panel tracking-request-card"' in html
     assert 'id="trackingPanelBody"' in html

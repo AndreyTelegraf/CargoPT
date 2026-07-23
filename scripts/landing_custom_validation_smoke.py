@@ -74,7 +74,7 @@ for relative in (
         in html
     )
     assert (
-        "/assets/js/landing.js?v=dr003-multiple-validation-v1"
+        "/assets/js/landing.js?v=p4-3-4-invalid-field-validation-v1"
         in html
     )
     assert 'id="requestForm"' in html

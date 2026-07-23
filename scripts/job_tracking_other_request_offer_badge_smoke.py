@@ -16,7 +16,7 @@ def main() -> None:
     assert "status.textContent = messages.openRequest" in js
 
     assert ".track-offer-nav-badge" in css
-    assert "border-radius: 999px" in css
+    assert "border-radius: var(--radius-pill)" in css
 
     print("JOB_TRACKING_OTHER_REQUEST_OFFER_BADGE_SMOKE_OK")
 

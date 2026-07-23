@@ -17,7 +17,7 @@ TRACK_PAGES = (
 TRACKING_REF = "/assets/js/tracking-workspace.js"
 LANDING_REF = (
     "/assets/js/landing.js"
-    "?v=dr003-multiple-validation-v1"
+    "?v=p4-3-4-invalid-field-validation-v1"
 )
 
 for path in LANDINGS:
