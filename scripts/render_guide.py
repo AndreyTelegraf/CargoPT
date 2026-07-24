@@ -546,10 +546,14 @@ def build_structured_data(
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Guias",
+                "name": labels["guides"],
                 "item": public_url(
                     registry["base_url"],
-                    registry["guides_hub"],
+                    (
+                        labels["guides_href"]
+                        if article["locale"] in {"en", "ru"}
+                        else registry["guides_hub"]
+                    ),
                 ),
             },
             {

@@ -3,6 +3,7 @@ import json
 import re
 from pathlib import Path
 
+from scripts.render_guide import build_structured_data
 from scripts.render_guide import render_guide
 
 
@@ -29,6 +30,7 @@ EXPECTED_LABELS = {
     "en": {
         "body_locale": "en",
         "guides": "Guides",
+        "guides_href": "/en/guides/",
         "published": "Published on",
         "reviewed": "Reviewed by",
         "direct_answer": "Direct answer",
@@ -40,6 +42,7 @@ EXPECTED_LABELS = {
     "ru": {
         "body_locale": "ru",
         "guides": "Статьи",
+        "guides_href": "/ru/guides/",
         "published": "Опубликовано",
         "reviewed": "Проверено",
         "direct_answer": "Короткий ответ",
@@ -51,6 +54,7 @@ EXPECTED_LABELS = {
     "pt-BR": {
         "body_locale": "pt-br",
         "guides": "Guias",
+        "guides_href": "/guias/",
         "published": "Publicado em",
         "reviewed": "Revisado por",
         "direct_answer": "Resposta direta",
@@ -152,6 +156,30 @@ def inspect_render_contract(
             f"{locale}:"
             f"actual={actual_alternates}:"
             f"expected={expected_alternates}"
+        )
+
+    _, breadcrumb_schema, _ = build_structured_data(
+        article,
+        registry,
+    )
+    actual_guides_crumb = breadcrumb_schema[
+        "itemListElement"
+    ][1]
+    expected_guides_crumb = {
+        "@type": "ListItem",
+        "position": 2,
+        "name": labels["guides"],
+        "item": (
+            base_url
+            + labels["guides_href"]
+        ),
+    }
+
+    if actual_guides_crumb != expected_guides_crumb:
+        failures.append(
+            "BREADCRUMB_GUIDES_MISMATCH:"
+            f"{locale}:actual={actual_guides_crumb}:"
+            f"expected={expected_guides_crumb}"
         )
 
     for key in (
