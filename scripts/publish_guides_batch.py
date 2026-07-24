@@ -187,8 +187,30 @@ def manifest_for_batch(
     *,
     registry_path: Path,
     sitemap_path: Path,
+    static_root: Path,
+    extra_static_paths: list[Path],
     mode: str,
 ) -> dict[str, Any]:
+    static_root = Path(static_root).resolve()
+    static_paths = [
+        plan.output_path.resolve()
+        for plan in batch.plans
+    ]
+    static_paths.extend(
+        path.resolve()
+        for path in extra_static_paths
+    )
+
+    resolved_sitemap = Path(sitemap_path).resolve()
+    resolved_sitemap.relative_to(static_root)
+    static_paths.append(resolved_sitemap)
+
+    if len(static_paths) != len(set(static_paths)):
+        raise ValueError("DUPLICATE_BATCH_STATIC_FILE")
+
+    for path in static_paths:
+        path.relative_to(static_root)
+
     return {
         "schema_version": 1,
         "mode": mode,
@@ -205,6 +227,11 @@ def manifest_for_batch(
         "shared_files": [
             str(Path(registry_path)),
             str(Path(sitemap_path)),
+        ],
+        "static_root": str(static_root),
+        "static_files": [
+            str(path)
+            for path in static_paths
         ],
     }
 
@@ -273,6 +300,16 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_MANIFEST_PATH,
     )
     parser.add_argument(
+        "--extra-static",
+        action="append",
+        default=[],
+        type=Path,
+        help=(
+            "Existing static file changed by the batch, such as a "
+            "localized hub or translated PT source page."
+        ),
+    )
+    parser.add_argument(
         "--check",
         action="store_true",
         help="Build every plan and write only the manifest.",
@@ -298,6 +335,12 @@ def main() -> None:
         if not path.is_file():
             raise FileNotFoundError(path)
 
+    static_root = args.static_root.resolve()
+    for path in args.extra_static:
+        if not path.is_file():
+            raise FileNotFoundError(path)
+        path.resolve().relative_to(static_root)
+
     registry = load_json(args.registry)
     sitemap_text = args.sitemap.read_text(encoding="utf-8")
     articles = [load_json(path) for path in args.articles]
@@ -314,6 +357,8 @@ def main() -> None:
         batch,
         registry_path=args.registry,
         sitemap_path=args.sitemap,
+        static_root=args.static_root,
+        extra_static_paths=args.extra_static,
         mode=mode,
     )
 
