@@ -1,0 +1,36 @@
+[Unit]
+Description=CargoPT email outbox dispatcher
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/bots/cargoPT_bot
+EnvironmentFile=/etc/cargopt_bot/cargopt_bot.env
+ExecStart=/opt/bots/cargoPT_bot/.venv/bin/python scripts/dispatch_email_notifications.py
+User=andrey
+Group=andrey
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+ProcSubset=pid
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+RemoveIPC=yes
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/opt/bots/cargoPT_bot/data
+UMask=0077

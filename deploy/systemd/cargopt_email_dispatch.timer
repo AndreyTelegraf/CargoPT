@@ -1,0 +1,12 @@
+[Unit]
+Description=Run CargoPT email dispatcher every minute
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+AccuracySec=10s
+Persistent=true
+Unit=cargopt_email_dispatch.service
+
+[Install]
+WantedBy=timers.target
