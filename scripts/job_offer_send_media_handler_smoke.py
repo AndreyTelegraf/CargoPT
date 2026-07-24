@@ -8,13 +8,11 @@ sys.path.insert(0, str(PROJECT_ROOT))
 os.environ["BOT_TOKEN"] = "123456:TESTTOKEN"
 os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///data/cargopt_dev.db"
 
-from app.bot.handlers.job_comment import job_comment
-from app.bot.handlers.job_comment import router
+from app.services.offer_notification import send_job_offers_to_carriers
 
-assert router is not None
-assert job_comment is not None
+assert send_job_offers_to_carriers is not None
 
-source = Path("app/bot/handlers/job_comment.py").read_text(encoding="utf-8")
+source = Path("app/services/offer_notification.py").read_text(encoding="utf-8")
 assert "list_media_by_job" in source
 assert "send_photo" in source
 assert "send_video" in source
