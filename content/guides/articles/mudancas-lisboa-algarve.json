@@ -183,14 +183,14 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças em Almada",
-      "href": "/mudancas-almada/",
-      "type": "landing"
+      "title": "Moving from Lisbon to the Algarve — versão em inglês",
+      "href": "/en/guides/moving-lisbon-to-algarve/",
+      "type": "guide"
     },
     {
-      "title": "Mudanças de Lisboa para Cascais",
-      "href": "/mudancas-lisboa-cascais/",
-      "type": "landing"
+      "title": "Переезд из Лиссабона в Алгарве — versão em russo",
+      "href": "/ru/guides/pereezd-lissabon-algarve/",
+      "type": "guide"
     },
     {
       "title": "Quanto custa uma mudança em Portugal?",
@@ -208,5 +208,11 @@
     "text": "Descreva a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-lisbon-algarve",
+  "alternates": {
+    "pt-PT": "/mudancas-lisboa-algarve/",
+    "en": "/en/guides/moving-lisbon-to-algarve/",
+    "ru": "/ru/guides/pereezd-lissabon-algarve/"
   }
 }

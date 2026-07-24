@@ -182,14 +182,14 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças em Coimbra",
-      "href": "/mudancas-coimbra/",
-      "type": "landing"
+      "title": "Moving services in Braga — versão em inglês",
+      "href": "/en/guides/moving-services-braga/",
+      "type": "guide"
     },
     {
-      "title": "Mudanças em Cascais",
-      "href": "/mudancas-cascais/",
-      "type": "landing"
+      "title": "Переезды в Браге — versão em russo",
+      "href": "/ru/guides/pereezdy-braga/",
+      "type": "guide"
     },
     {
       "title": "Quanto custa uma mudança em Portugal?",
@@ -207,5 +207,11 @@
     "text": "Descreva a localização, a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-services-braga",
+  "alternates": {
+    "pt-PT": "/mudancas-braga/",
+    "en": "/en/guides/moving-services-braga/",
+    "ru": "/ru/guides/pereezdy-braga/"
   }
 }

@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "id": "moving-services-portimao-en",
+  "locale": "en",
+  "cluster": "cities",
+  "path": "/en/guides/moving-services-portimao/",
+  "title": "Moving services in Portimão",
+  "meta_title": "Moving services in Portimão — CargoPT",
+  "meta_description": "Prepare a move in Portimão, Praia da Rocha, Alvor or Mexilhoeira Grande: cargo, access, parking, route and services.",
+  "primary_query": "moving services in portimão",
+  "intent": [
+    "local",
+    "transactional"
+  ],
+  "article_section": "Moving services by city",
+  "eyebrow": "Moving services in Portimão",
+  "hero_description": "Organize a move in Portimão considering the specific area, access to the property, the possible proximity of the vehicle and the differences between the urban center, Praia da Rocha, Alvor and Mexilhoeira Grande.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "What you should confirm before moving in Portimão",
+  "key_points_heading": "Information needed to receive useful quotes",
+  "faq_heading": "Questions about moving services in portimão",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To receive suitable quotes for a move in Portimão, indicate whether collection and delivery are in the city center, in Praia da Rocha, Alvor, Mexilhoeira Grande or in another location. Describe separately the access points at both points: floor, elevator, stairs, width of the passages, place where the vehicle can stop and manual carrying distance. Include inventory, photographs of larger volumes, and required services.",
+  "key_points": [
+    "Identify the specific collection and delivery area.",
+    "Confirm in advance where the vehicle will be able to stop.",
+    "Describe floors, lifts, stairs, doors, and hallways.",
+    "Highlight outdoor furniture, appliances and bulky items.",
+    "Indicate whether you need helpers, disassembly, assembly or packing."
+  ],
+  "sections": [
+    {
+      "id": "frequent-areas-and-routes-in-portimao",
+      "heading": "Frequent areas and routes in Portimão",
+      "paragraphs": [
+        "The generic indication of “Portimão” may not be enough. Access and charging time may be different in the urban center, in Praia da Rocha, in Alvor or in Mexilhoeira Grande.",
+        "Indicate the concrete location at both ends of the change. When the route goes to another municipality in the Algarve or to Lisbon, also inform the available window for loading and delivery."
+      ],
+      "items": [
+        {
+          "title": "Portimão Center",
+          "text": "Confirm the width of the street, access to the building and the possible location to approach the vehicle."
+        },
+        {
+          "title": "Rocha Beach",
+          "text": "Indicate the building, floor, condominium rules and entrance access conditions."
+        },
+        {
+          "title": "Alvor",
+          "text": "Specify whether the property is in the urban core, in a residential area or in a development with restricted access."
+        },
+        {
+          "title": "Mexilhoeira Grande",
+          "text": "Provide the exact location and confirm whether there are any narrow access points, gates or additional distance to the property."
+        }
+      ]
+    },
+    {
+      "id": "what-load-should-be-described-in-more-detail",
+      "heading": "What load should be described in more detail",
+      "paragraphs": [
+        "Organize the inventory by rooms and separate furniture, appliances, boxes and items that require disassembly or additional protection.",
+        "In apartments, houses and furnished accommodation, also indicate balcony or terrace furniture, mattresses, sofa beds, televisions and equipment that cannot be tilted."
+      ],
+      "items": [
+        {
+          "title": "Interior furniture",
+          "text": "List beds, mattresses, sofas, tables, chairs, closets, shelves and dressers."
+        },
+        {
+          "title": "Outdoor furniture",
+          "text": "Include tables, chairs, loungers, vases and other items on the balcony, terrace or garden."
+        },
+        {
+          "title": "Household Appliances",
+          "text": "Identify refrigerator, machinery, television and other equipment, including dimensions where relevant."
+        },
+        {
+          "title": "Special boxes and items",
+          "text": "Indicate approximate quantities and highlight fragile, heavy or irregularly shaped pieces."
+        }
+      ]
+    },
+    {
+      "id": "parking-loading-and-access-to-the-property",
+      "heading": "Parking, loading and access to the property",
+      "paragraphs": [
+        "Do not assume that the vehicle will be able to stop at the entrance. Confirm in advance the possible loading or unloading location and indicate the distance to the building, house or apartment.",
+        "In condominiums, developments and buildings with reception, confirm opening times, entry of providers, use of the elevator and any need to protect common areas."
+      ],
+      "checklist": [
+        "Possible place to stop the vehicle.",
+        "Distance between the vehicle and the entrance.",
+        "Floor in collection and delivery.",
+        "Existence and approximate dimensions of the elevator.",
+        "Number of flights of stairs.",
+        "Tight doors, corridors or curves.",
+        "Gates, reception or entry control.",
+        "Schedules or rules communicated by the condominium."
+      ]
+    },
+    {
+      "id": "services-that-must-be-defined",
+      "heading": "Services that must be defined",
+      "paragraphs": [
+        "The quote must distinguish transportation, loading, unloading, number of helpers and protection of items. Do not assume that disassembly, assembly or packing is included.",
+        "When there are long entrances, stairs, heavy items or large furniture, send photographs so that the team and equipment can be assessed in advance."
+      ],
+      "items": [
+        {
+          "title": "Helpers",
+          "text": "Confirm how many people will be present at loading and unloading."
+        },
+        {
+          "title": "Disassembly and assembly",
+          "text": "Identify exactly what furniture is covered and who will perform each task."
+        },
+        {
+          "title": "Packing and protection",
+          "text": "Confirm materials for furniture, appliances, glass and fragile items."
+        },
+        {
+          "title": "Additional equipment",
+          "text": "Inform in advance about heavy parts, stairs or other access that may require specific means."
+        }
+      ]
+    },
+    {
+      "id": "how-to-compare-proposals-for-portimao",
+      "heading": "How to compare quotes for Portimão",
+      "paragraphs": [
+        "All quotes must consider the same area, the same inventory, the same access conditions and the same services.",
+        "Compare not only the price, but also the vehicle, the number of helpers, the expected time, the tasks included and the conditions for changes in load or schedule."
+      ],
+      "checklist": [
+        "The concrete locations are the same in all quotes.",
+        "The distance from the vehicle to the entrances was considered.",
+        "The floors, lifts and stairs are described.",
+        "The inventory and special items are the same.",
+        "The number of helpers is indicated.",
+        "Additional services are detailed."
+      ]
+    },
+    {
+      "id": "how-to-request-proposals-through-cargopt",
+      "heading": "How to request quotes through CargoPT",
+      "paragraphs": [
+        "At CargoPT, you can describe a move in Portimão once, indicating the area, locations, load, access and necessary tasks.",
+        "Carriers submit their own quotes and the customer can compare responses prepared from the same description."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Describe your move to Portimão",
+    "text": "Indicate the area, route, load, possible parking, access and necessary services.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Should I just indicate Portimão or the specific area of change?",
+      "answer": "Indicate the specific area or location, such as the center of Portimão, Praia da Rocha, Alvor or Mexilhoeira Grande, in addition to the location of collection and delivery."
+    },
+    {
+      "question": "How to confirm parking for the vehicle?",
+      "answer": "Check in advance where the vehicle can stop and inform the distance between that location and the entrance. Specific rules must be confirmed with the condominium or responsible entity."
+    },
+    {
+      "question": "What information should I provide about an apartment?",
+      "answer": "Indicate the floor, elevator, stairs, width of passages, building rules and distance between the entrance and the loading area."
+    },
+    {
+      "question": "What items should I photograph before asking for quotes?",
+      "answer": "Photograph large furniture, appliances, fragile or heavy parts and access points that are difficult to explain by text alone."
+    },
+    {
+      "question": "Is a move within Portimão the same as moving to another city?",
+      "answer": "No. An intercity route requires consideration of distance, loading and delivery window, vehicle capacity and necessary protection during a longer route."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Mudanças em Portimão — Portuguese version",
+      "href": "/guias/cidades/mudancas-portimao/",
+      "type": "guide"
+    },
+    {
+      "title": "Переезды в Портимане",
+      "href": "/ru/guides/pereezdy-portiman/",
+      "type": "guide"
+    },
+    {
+      "title": "How much does a move cost in Portugal?",
+      "href": "/en/guides/how-much-does-a-move-cost/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Get quotes for your move in Portimão",
+    "text": "Describe the locations, the area, the items, the access conditions and the tasks. Then compare quotes for the same service.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "moving-services-portimao",
+  "alternates": {
+    "pt-PT": "/guias/cidades/mudancas-portimao/",
+    "en": "/en/guides/moving-services-portimao/",
+    "ru": "/ru/guides/pereezdy-portiman/"
+  }
+}

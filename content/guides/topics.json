@@ -2520,6 +2520,938 @@
         "furniture-transport-insurance-en",
         "kak-upakovat-televizor-ru"
       ]
+    },
+    {
+      "id": "moving-services-albufeira-en",
+      "cluster": "cities",
+      "title": "Moving services in Albufeira",
+      "slug": "moving-services-albufeira-en",
+      "path": "/en/guides/moving-services-albufeira/",
+      "primary_query": "moving services in albufeira",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-albufeira",
+        "pereezdy-albufeira-ru",
+        "how-much-does-a-move-cost-en"
+      ]
+    },
+    {
+      "id": "pereezdy-albufeira-ru",
+      "cluster": "cities",
+      "title": "Переезды в Албуфейре",
+      "slug": "pereezdy-albufeira-ru",
+      "path": "/ru/guides/pereezdy-albufeira/",
+      "primary_query": "переезды в албуфейре",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-albufeira",
+        "moving-services-albufeira-en",
+        "skolko-stoit-pereezd-ru"
+      ]
+    },
+    {
+      "id": "moving-services-almada-en",
+      "cluster": "cities",
+      "title": "Moving services in Almada",
+      "slug": "moving-services-almada-en",
+      "path": "/en/guides/moving-services-almada/",
+      "primary_query": "moving services in almada",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-almada",
+        "pereezdy-almada-ru",
+        "moving-cost-lisbon-en"
+      ]
+    },
+    {
+      "id": "pereezdy-almada-ru",
+      "cluster": "cities",
+      "title": "Переезды в Алмаде",
+      "slug": "pereezdy-almada-ru",
+      "path": "/ru/guides/pereezdy-almada/",
+      "primary_query": "переезды в алмаде",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-almada",
+        "moving-services-almada-en",
+        "stoimost-pereezda-lissabon-ru"
+      ]
+    },
+    {
+      "id": "moving-services-amadora-en",
+      "cluster": "cities",
+      "title": "Moving services in Amadora",
+      "slug": "moving-services-amadora-en",
+      "path": "/en/guides/moving-services-amadora/",
+      "primary_query": "moving services in amadora",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-amadora",
+        "pereezdy-amadora-ru",
+        "moving-cost-lisbon-en"
+      ]
+    },
+    {
+      "id": "pereezdy-amadora-ru",
+      "cluster": "cities",
+      "title": "Переезды в Амадоре",
+      "slug": "pereezdy-amadora-ru",
+      "path": "/ru/guides/pereezdy-amadora/",
+      "primary_query": "переезды в амадоре",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-amadora",
+        "moving-services-amadora-en",
+        "stoimost-pereezda-lissabon-ru"
+      ]
+    },
+    {
+      "id": "moving-services-aveiro-en",
+      "cluster": "cities",
+      "title": "Moving services in Aveiro",
+      "slug": "moving-services-aveiro-en",
+      "path": "/en/guides/moving-services-aveiro/",
+      "primary_query": "moving services in aveiro",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-aveiro",
+        "pereezdy-aveiro-ru",
+        "moving-cost-porto-en"
+      ]
+    },
+    {
+      "id": "pereezdy-aveiro-ru",
+      "cluster": "cities",
+      "title": "Переезды в Авейру",
+      "slug": "pereezdy-aveiro-ru",
+      "path": "/ru/guides/pereezdy-aveiro/",
+      "primary_query": "переезды в авейру",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-aveiro",
+        "moving-services-aveiro-en",
+        "stoimost-pereezda-portu-ru"
+      ]
+    },
+    {
+      "id": "moving-services-braga-en",
+      "cluster": "cities",
+      "title": "Moving services in Braga",
+      "slug": "moving-services-braga-en",
+      "path": "/en/guides/moving-services-braga/",
+      "primary_query": "moving services in braga",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-braga",
+        "pereezdy-braga-ru",
+        "how-much-does-a-move-cost-en"
+      ]
+    },
+    {
+      "id": "pereezdy-braga-ru",
+      "cluster": "cities",
+      "title": "Переезды в Браге",
+      "slug": "pereezdy-braga-ru",
+      "path": "/ru/guides/pereezdy-braga/",
+      "primary_query": "переезды в браге",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-braga",
+        "moving-services-braga-en",
+        "skolko-stoit-pereezd-ru"
+      ]
+    },
+    {
+      "id": "moving-services-cascais-en",
+      "cluster": "cities",
+      "title": "Moving services in Cascais",
+      "slug": "moving-services-cascais-en",
+      "path": "/en/guides/moving-services-cascais/",
+      "primary_query": "moving services in cascais",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-cascais",
+        "pereezdy-kashkaysh-ru",
+        "moving-cost-lisbon-en"
+      ]
+    },
+    {
+      "id": "pereezdy-kashkaysh-ru",
+      "cluster": "cities",
+      "title": "Переезды в Кашкайше",
+      "slug": "pereezdy-kashkaysh-ru",
+      "path": "/ru/guides/pereezdy-kashkaysh/",
+      "primary_query": "переезды в кашкайше",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-cascais",
+        "moving-services-cascais-en",
+        "stoimost-pereezda-lissabon-ru"
+      ]
+    },
+    {
+      "id": "moving-services-coimbra-en",
+      "cluster": "cities",
+      "title": "Moving services in Coimbra",
+      "slug": "moving-services-coimbra-en",
+      "path": "/en/guides/moving-services-coimbra/",
+      "primary_query": "moving services in coimbra",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-coimbra",
+        "pereezdy-koimbra-ru",
+        "how-to-prepare-for-a-move-en"
+      ]
+    },
+    {
+      "id": "pereezdy-koimbra-ru",
+      "cluster": "cities",
+      "title": "Переезды в Коимбре",
+      "slug": "pereezdy-koimbra-ru",
+      "path": "/ru/guides/pereezdy-koimbra/",
+      "primary_query": "переезды в коимбре",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-coimbra",
+        "moving-services-coimbra-en",
+        "kak-podgotovitsya-k-pereezdu-ru"
+      ]
+    },
+    {
+      "id": "moving-services-evora-en",
+      "cluster": "cities",
+      "title": "Moving services in Évora",
+      "slug": "moving-services-evora-en",
+      "path": "/en/guides/moving-services-evora/",
+      "primary_query": "moving services in évora",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-evora",
+        "pereezdy-evora-ru",
+        "how-much-does-a-move-cost-en"
+      ]
+    },
+    {
+      "id": "pereezdy-evora-ru",
+      "cluster": "cities",
+      "title": "Переезды в Эворе",
+      "slug": "pereezdy-evora-ru",
+      "path": "/ru/guides/pereezdy-evora/",
+      "primary_query": "переезды в эворе",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-evora",
+        "moving-services-evora-en",
+        "skolko-stoit-pereezd-ru"
+      ]
+    },
+    {
+      "id": "moving-services-faro-en",
+      "cluster": "cities",
+      "title": "Moving services in Faro",
+      "slug": "moving-services-faro-en",
+      "path": "/en/guides/moving-services-faro/",
+      "primary_query": "moving services in faro",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-faro",
+        "pereezdy-faru-ru",
+        "how-much-does-a-move-cost-en"
+      ]
+    },
+    {
+      "id": "pereezdy-faru-ru",
+      "cluster": "cities",
+      "title": "Переезды в Фару",
+      "slug": "pereezdy-faru-ru",
+      "path": "/ru/guides/pereezdy-faru/",
+      "primary_query": "переезды в фару",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-faro",
+        "moving-services-faro-en",
+        "skolko-stoit-pereezd-ru"
+      ]
+    },
+    {
+      "id": "moving-services-leiria-en",
+      "cluster": "cities",
+      "title": "Moving services in Leiria",
+      "slug": "moving-services-leiria-en",
+      "path": "/en/guides/moving-services-leiria/",
+      "primary_query": "moving services in leiria",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-leiria",
+        "pereezdy-leyriya-ru",
+        "how-much-does-a-move-cost-en"
+      ]
+    },
+    {
+      "id": "pereezdy-leyriya-ru",
+      "cluster": "cities",
+      "title": "Переезды в Лейрии",
+      "slug": "pereezdy-leyriya-ru",
+      "path": "/ru/guides/pereezdy-leyriya/",
+      "primary_query": "переезды в лейрии",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-leiria",
+        "moving-services-leiria-en",
+        "skolko-stoit-pereezd-ru"
+      ]
+    },
+    {
+      "id": "moving-services-loures-en",
+      "cluster": "cities",
+      "title": "Moving services in Loures",
+      "slug": "moving-services-loures-en",
+      "path": "/en/guides/moving-services-loures/",
+      "primary_query": "moving services in loures",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-loures",
+        "pereezdy-lourish-ru",
+        "moving-cost-lisbon-en"
+      ]
+    },
+    {
+      "id": "pereezdy-lourish-ru",
+      "cluster": "cities",
+      "title": "Переезды в Лорише",
+      "slug": "pereezdy-lourish-ru",
+      "path": "/ru/guides/pereezdy-lourish/",
+      "primary_query": "переезды в лорише",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-loures",
+        "moving-services-loures-en",
+        "stoimost-pereezda-lissabon-ru"
+      ]
+    },
+    {
+      "id": "moving-services-matosinhos-en",
+      "cluster": "cities",
+      "title": "Moving services in Matosinhos",
+      "slug": "moving-services-matosinhos-en",
+      "path": "/en/guides/moving-services-matosinhos/",
+      "primary_query": "moving services in matosinhos",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-matosinhos",
+        "pereezdy-matozinyush-ru",
+        "moving-cost-porto-en"
+      ]
+    },
+    {
+      "id": "pereezdy-matozinyush-ru",
+      "cluster": "cities",
+      "title": "Переезды в Матозиньюшееее",
+      "slug": "pereezdy-matozinyush-ru",
+      "path": "/ru/guides/pereezdy-matozinyush/",
+      "primary_query": "переезды в матозиньюшееее",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-matosinhos",
+        "moving-services-matosinhos-en",
+        "stoimost-pereezda-portu-ru"
+      ]
+    },
+    {
+      "id": "moving-services-odivelas-en",
+      "cluster": "cities",
+      "title": "Moving services in Odivelas",
+      "slug": "moving-services-odivelas-en",
+      "path": "/en/guides/moving-services-odivelas/",
+      "primary_query": "moving services in odivelas",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-odivelas",
+        "pereezdy-odivelash-ru",
+        "moving-cost-lisbon-en"
+      ]
+    },
+    {
+      "id": "pereezdy-odivelash-ru",
+      "cluster": "cities",
+      "title": "Переезды в Одивелашееее",
+      "slug": "pereezdy-odivelash-ru",
+      "path": "/ru/guides/pereezdy-odivelash/",
+      "primary_query": "переезды в одивелашееее",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-odivelas",
+        "moving-services-odivelas-en",
+        "stoimost-pereezda-lissabon-ru"
+      ]
+    },
+    {
+      "id": "moving-services-oeiras-en",
+      "cluster": "cities",
+      "title": "Moving services in Oeiras",
+      "slug": "moving-services-oeiras-en",
+      "path": "/en/guides/moving-services-oeiras/",
+      "primary_query": "moving services in oeiras",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-oeiras",
+        "pereezdy-oeirash-ru",
+        "moving-cost-lisbon-en"
+      ]
+    },
+    {
+      "id": "pereezdy-oeirash-ru",
+      "cluster": "cities",
+      "title": "Переезды в Оейраше",
+      "slug": "pereezdy-oeirash-ru",
+      "path": "/ru/guides/pereezdy-oeirash/",
+      "primary_query": "переезды в оейраше",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-oeiras",
+        "moving-services-oeiras-en",
+        "stoimost-pereezda-lissabon-ru"
+      ]
+    },
+    {
+      "id": "moving-services-portimao-en",
+      "cluster": "cities",
+      "title": "Moving services in Portimão",
+      "slug": "moving-services-portimao-en",
+      "path": "/en/guides/moving-services-portimao/",
+      "primary_query": "moving services in portimão",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-portimao",
+        "pereezdy-portiman-ru",
+        "how-much-does-a-move-cost-en"
+      ]
+    },
+    {
+      "id": "pereezdy-portiman-ru",
+      "cluster": "cities",
+      "title": "Переезды в Портимане",
+      "slug": "pereezdy-portiman-ru",
+      "path": "/ru/guides/pereezdy-portiman/",
+      "primary_query": "переезды в портимане",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-portimao",
+        "moving-services-portimao-en",
+        "skolko-stoit-pereezd-ru"
+      ]
+    },
+    {
+      "id": "moving-services-porto-en",
+      "cluster": "cities",
+      "title": "Moving services in Porto",
+      "slug": "moving-services-porto-en",
+      "path": "/en/guides/moving-services-porto/",
+      "primary_query": "moving services in porto",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-porto",
+        "pereezdy-portu-ru",
+        "moving-cost-porto-en"
+      ]
+    },
+    {
+      "id": "pereezdy-portu-ru",
+      "cluster": "cities",
+      "title": "Переезды в Порту",
+      "slug": "pereezdy-portu-ru",
+      "path": "/ru/guides/pereezdy-portu/",
+      "primary_query": "переезды в порту",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-porto",
+        "moving-services-porto-en",
+        "stoimost-pereezda-portu-ru"
+      ]
+    },
+    {
+      "id": "moving-services-setubal-en",
+      "cluster": "cities",
+      "title": "Moving services in Setúbal",
+      "slug": "moving-services-setubal-en",
+      "path": "/en/guides/moving-services-setubal/",
+      "primary_query": "moving services in setúbal",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-setubal",
+        "pereezdy-setubal-ru",
+        "moving-cost-lisbon-en"
+      ]
+    },
+    {
+      "id": "pereezdy-setubal-ru",
+      "cluster": "cities",
+      "title": "Переезды в Сетубале",
+      "slug": "pereezdy-setubal-ru",
+      "path": "/ru/guides/pereezdy-setubal/",
+      "primary_query": "переезды в сетубале",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-setubal",
+        "moving-services-setubal-en",
+        "stoimost-pereezda-lissabon-ru"
+      ]
+    },
+    {
+      "id": "moving-services-sintra-en",
+      "cluster": "cities",
+      "title": "Moving services in Sintra",
+      "slug": "moving-services-sintra-en",
+      "path": "/en/guides/moving-services-sintra/",
+      "primary_query": "moving services in sintra",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-sintra",
+        "pereezdy-sintra-ru",
+        "how-to-prepare-for-a-move-en"
+      ]
+    },
+    {
+      "id": "pereezdy-sintra-ru",
+      "cluster": "cities",
+      "title": "Переезды в Синтре",
+      "slug": "pereezdy-sintra-ru",
+      "path": "/ru/guides/pereezdy-sintra/",
+      "primary_query": "переезды в синтре",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-sintra",
+        "moving-services-sintra-en",
+        "kak-podgotovitsya-k-pereezdu-ru"
+      ]
+    },
+    {
+      "id": "moving-services-vila-nova-gaia-en",
+      "cluster": "cities",
+      "title": "Moving services in Vila Nova de Gaia",
+      "slug": "moving-services-vila-nova-gaia-en",
+      "path": "/en/guides/moving-services-vila-nova-de-gaia/",
+      "primary_query": "moving services in vila nova de gaia",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-vila-nova-gaia",
+        "pereezdy-vila-nova-di-gaya-ru",
+        "moving-cost-porto-en"
+      ]
+    },
+    {
+      "id": "pereezdy-vila-nova-di-gaya-ru",
+      "cluster": "cities",
+      "title": "Переезды в Вила-Нова-ди-Гая",
+      "slug": "pereezdy-vila-nova-di-gaya-ru",
+      "path": "/ru/guides/pereezdy-vila-nova-di-gaya/",
+      "primary_query": "переезды в вила-нова-ди-гая",
+      "intent": [
+        "local",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-vila-nova-gaia",
+        "moving-services-vila-nova-gaia-en",
+        "stoimost-pereezda-portu-ru"
+      ]
+    },
+    {
+      "id": "moving-lisbon-to-algarve-en",
+      "cluster": "cities",
+      "title": "Moving from Lisbon to the Algarve",
+      "slug": "moving-lisbon-to-algarve-en",
+      "path": "/en/guides/moving-lisbon-to-algarve/",
+      "primary_query": "moving from lisbon to the algarve",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-lisboa-algarve",
+        "pereezd-lissabon-algarve-ru",
+        "how-much-does-a-move-cost-en"
+      ]
+    },
+    {
+      "id": "pereezd-lissabon-algarve-ru",
+      "cluster": "cities",
+      "title": "Переезд из Лиссабона в Алгарве",
+      "slug": "pereezd-lissabon-algarve-ru",
+      "path": "/ru/guides/pereezd-lissabon-algarve/",
+      "primary_query": "переезд из лиссабона в алгарве",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-lisboa-algarve",
+        "moving-lisbon-to-algarve-en",
+        "skolko-stoit-pereezd-ru"
+      ]
+    },
+    {
+      "id": "moving-lisbon-to-cascais-en",
+      "cluster": "cities",
+      "title": "Moving from Lisbon to Cascais",
+      "slug": "moving-lisbon-to-cascais-en",
+      "path": "/en/guides/moving-lisbon-to-cascais/",
+      "primary_query": "moving from lisbon to cascais",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-lisboa-cascais",
+        "pereezd-lissabon-kashkaysh-ru",
+        "moving-cost-lisbon-en"
+      ]
+    },
+    {
+      "id": "pereezd-lissabon-kashkaysh-ru",
+      "cluster": "cities",
+      "title": "Переезд из Лиссабона в Кашкайш",
+      "slug": "pereezd-lissabon-kashkaysh-ru",
+      "path": "/ru/guides/pereezd-lissabon-kashkaysh/",
+      "primary_query": "переезд из лиссабона в кашкайш",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-lisboa-cascais",
+        "moving-lisbon-to-cascais-en",
+        "stoimost-pereezda-lissabon-ru"
+      ]
+    },
+    {
+      "id": "moving-lisbon-to-porto-en",
+      "cluster": "cities",
+      "title": "Moving from Lisbon to Porto",
+      "slug": "moving-lisbon-to-porto-en",
+      "path": "/en/guides/moving-lisbon-to-porto/",
+      "primary_query": "moving from lisbon to porto",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-lisboa-porto",
+        "pereezd-lissabon-portu-ru",
+        "how-much-does-a-move-cost-en"
+      ]
+    },
+    {
+      "id": "pereezd-lissabon-portu-ru",
+      "cluster": "cities",
+      "title": "Переезд из Лиссабона в Порту",
+      "slug": "pereezd-lissabon-portu-ru",
+      "path": "/ru/guides/pereezd-lissabon-portu/",
+      "primary_query": "переезд из лиссабона в порту",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-lisboa-porto",
+        "moving-lisbon-to-porto-en",
+        "skolko-stoit-pereezd-ru"
+      ]
+    },
+    {
+      "id": "moving-company-lisbon-en",
+      "cluster": "cities",
+      "title": "Moving company in Lisbon",
+      "slug": "moving-company-lisbon-en",
+      "path": "/en/guides/moving-company-lisbon/",
+      "primary_query": "moving company in lisbon",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "transportadora-lisboa",
+        "transportnaya-kompaniya-lissabon-ru",
+        "how-to-choose-moving-company-en"
+      ]
+    },
+    {
+      "id": "transportnaya-kompaniya-lissabon-ru",
+      "cluster": "cities",
+      "title": "Транспортная компания в Лиссабоне",
+      "slug": "transportnaya-kompaniya-lissabon-ru",
+      "path": "/ru/guides/transportnaya-kompaniya-lissabon/",
+      "primary_query": "транспортная компания в лиссабоне",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "transportadora-lisboa",
+        "moving-company-lisbon-en",
+        "kak-vybrat-kompaniyu-dlya-pereezda-ru"
+      ]
     }
   ]
 }

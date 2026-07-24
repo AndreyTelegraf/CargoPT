@@ -183,14 +183,14 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças em Braga",
-      "href": "/mudancas-braga/",
-      "type": "landing"
+      "title": "Moving services in Porto — versão em inglês",
+      "href": "/en/guides/moving-services-porto/",
+      "type": "guide"
     },
     {
-      "title": "Mudanças em Coimbra",
-      "href": "/mudancas-coimbra/",
-      "type": "landing"
+      "title": "Переезды в Порту — versão em russo",
+      "href": "/ru/guides/pereezdy-portu/",
+      "type": "guide"
     },
     {
       "title": "Quanto custa uma mudança no Porto?",
@@ -208,5 +208,11 @@
     "text": "Descreva a zona, a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-services-porto",
+  "alternates": {
+    "pt-PT": "/mudancas-porto/",
+    "en": "/en/guides/moving-services-porto/",
+    "ru": "/ru/guides/pereezdy-portu/"
   }
 }

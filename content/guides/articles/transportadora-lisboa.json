@@ -201,13 +201,13 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças em Lisboa",
-      "href": "/mudancas-lisboa/",
-      "type": "landing"
+      "title": "Moving company in Lisbon — versão em inglês",
+      "href": "/en/guides/moving-company-lisbon/",
+      "type": "guide"
     },
     {
-      "title": "Como pedir um orçamento de mudança",
-      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "title": "Транспортная компания в Лиссабоне — versão em russo",
+      "href": "/ru/guides/transportnaya-kompaniya-lissabon/",
       "type": "guide"
     },
     {
@@ -226,5 +226,11 @@
     "text": "Envie uma descrição completa para que as respostas considerem a mesma carga, os mesmos acessos e as mesmas tarefas.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-company-lisbon",
+  "alternates": {
+    "pt-PT": "/transportadora-lisboa/",
+    "en": "/en/guides/moving-company-lisbon/",
+    "ru": "/ru/guides/transportnaya-kompaniya-lissabon/"
   }
 }

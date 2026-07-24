@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "id": "moving-services-faro-en",
+  "locale": "en",
+  "cluster": "cities",
+  "path": "/en/guides/moving-services-faro/",
+  "title": "Moving services in Faro",
+  "meta_title": "Moving services in Faro — CargoPT",
+  "meta_description": "Prepare a move in Faro: cargo, access, parking, helpers, protection and additional services.",
+  "primary_query": "moving services in faro",
+  "intent": [
+    "local",
+    "transactional"
+  ],
+  "article_section": "Moving services by city",
+  "eyebrow": "Moving services in Faro",
+  "hero_description": "A move in Faro must consider the specific collection and delivery conditions. In Faro, the historic center, urban areas, condominiums and areas close to the airport may present different circulation and parking conditions.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "What to confirm before moving to Faro",
+  "key_points_heading": "Information needed to receive useful quotes",
+  "faq_heading": "Questions about moving services in faro",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "Indicate the specific collection and delivery locations, the date, inventory, floors, lifts, stairs and where the vehicle can stop. Also inform the manual carrying distance, the necessary services and the items that require special protection. In Faro, the historic center, urban areas, condominiums and areas close to the airport may present different circulation and parking conditions.",
+  "key_points": [
+    "Identify specific collection and delivery locations.",
+    "Confirm where the vehicle can stop at both ends.",
+    "Describe floors, lifts, stairs, gates, and garages.",
+    "Send photographs of the largest items and difficult access.",
+    "Compare quotes based on the same load and the same tasks."
+  ],
+  "sections": [
+    {
+      "id": "areas-and-access-conditions-in-faro",
+      "heading": "Areas and access conditions in Faro",
+      "paragraphs": [
+        "The generic indication of “Faro” may not be enough. The specific area influences the vehicle's approach and manual route.",
+        "Indicate the location at both ends and separately describe the collection and delivery access points."
+      ],
+      "items": [
+        {
+          "title": "Historic center and Vila Adentro",
+          "text": "Confirm circulation, narrow streets, parking and distance between the vehicle and the entrance."
+        },
+        {
+          "title": "Downtown Faro",
+          "text": "Indicate floors, lifts, access to the building and the possible point for loading and unloading."
+        },
+        {
+          "title": "Montenegro",
+          "text": "Describe houses, condominiums, gates, garages and interior paths."
+        },
+        {
+          "title": "Gambelas",
+          "text": "Provide the concrete location and confirm residential, university or hospital access."
+        }
+      ]
+    },
+    {
+      "id": "how-to-prepare-inventory",
+      "heading": "How to prepare inventory",
+      "paragraphs": [
+        "Organize the load by rooms or categories and separate furniture, appliances, boxes and special items.",
+        "Indicate approximate measurements and send photographs when there are doubts about doors, stairs, lifts or protection."
+      ],
+      "items": [
+        {
+          "title": "Furniture",
+          "text": "List sofas, beds, tables, cabinets, bookshelves and other large furniture."
+        },
+        {
+          "title": "Household Appliances",
+          "text": "Identify refrigerators, machines, televisions and other equipment."
+        },
+        {
+          "title": "Boxes",
+          "text": "Indicate an approximate quantity and highlight fragile or heavy boxes."
+        },
+        {
+          "title": "Special items",
+          "text": "Mark fragile, valuable, heavy or difficult-to-move items."
+        }
+      ]
+    },
+    {
+      "id": "access-parking-and-route",
+      "heading": "Access, parking and route",
+      "paragraphs": [
+        "In Faro, the historic center, urban areas, condominiums and areas close to the airport may present different circulation and parking conditions.",
+        "When the vehicle cannot approach the entrance, indicate the distance, slope, steps and type of flooring."
+      ],
+      "checklist": [
+        "Floor in collection and delivery.",
+        "Existence and approximate dimensions of lifts.",
+        "Stairs, doors, corridors and tight turns.",
+        "Possible place to stop the vehicle.",
+        "Distance between the vehicle and each entrance.",
+        "Gates, garages or access control.",
+        "Rules of condominiums or buildings.",
+        "Allowed times for loading and unloading."
+      ]
+    },
+    {
+      "id": "services-that-must-be-defined",
+      "heading": "Services that must be defined",
+      "paragraphs": [
+        "The quote must indicate the vehicle, the number of helpers, loading, unloading and protection of items.",
+        "Disassembly, assembly, packing, materials and additional equipment must be agreed in advance."
+      ],
+      "items": [
+        {
+          "title": "Helpers",
+          "text": "Confirm how many people will participate in loading and unloading."
+        },
+        {
+          "title": "Disassembly and assembly",
+          "text": "Identify the furniture covered and who will perform each task."
+        },
+        {
+          "title": "Packing and protection",
+          "text": "Confirm the materials planned for furniture, appliances and fragile items."
+        },
+        {
+          "title": "Additional equipment",
+          "text": "Inform about heavy parts or access that may require specific means."
+        }
+      ]
+    },
+    {
+      "id": "how-to-compare-proposals-for-moving-in-faro",
+      "heading": "How to compare quotes for moving in Faro",
+      "paragraphs": [
+        "Send the same description to all carriers, including locations, inventory, access and tasks.",
+        "Compare the price together with the vehicle, the team, the protection, the services included and the conditions presented."
+      ],
+      "checklist": [
+        "The origin and destination are the same.",
+        "The inventory considered is identical.",
+        "The access conditions to both locations were described.",
+        "The number of helpers is indicated.",
+        "Additional services are detailed.",
+        "The price and conditions are recorded in writing."
+      ]
+    },
+    {
+      "id": "how-to-request-proposals-through-cargopt",
+      "heading": "How to request quotes through CargoPT",
+      "paragraphs": [
+        "At CargoPT, you can describe a move in Faro once, including the load, access and tasks.",
+        "Carriers submit their own quotes and the customer can compare responses based on the same description."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Describe your move to Faro",
+    "text": "Indicate the locations, items, access, possible parking and necessary services.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "What locations should I indicate?",
+      "answer": "Indicate the street or specific area of collection and delivery, not just the municipality or region."
+    },
+    {
+      "question": "What details should I confirm about the properties?",
+      "answer": "Check floors, stairs, doors, corridors, lifts, gates, garages and distance to the vehicle."
+    },
+    {
+      "question": "Does the distance to the vehicle influence the service?",
+      "answer": "Yes. A long, inclined route or with steps can increase the time and number of helpers needed."
+    },
+    {
+      "question": "When should I send photos?",
+      "answer": "Send photographs of large furniture, special items and access points that are difficult to describe."
+    },
+    {
+      "question": "How to compare different quotes?",
+      "answer": "Confirm that they all consider the same load, the same access, helpers, protection and additional services."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Mudanças em Faro — Portuguese version",
+      "href": "/guias/cidades/mudancas-faro/",
+      "type": "guide"
+    },
+    {
+      "title": "Переезды в Фару",
+      "href": "/ru/guides/pereezdy-faru/",
+      "type": "guide"
+    },
+    {
+      "title": "How much does a move cost in Portugal?",
+      "href": "/en/guides/how-much-does-a-move-cost/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare quotes for your move in Faro",
+    "text": "Describe the load, access and tasks to receive quotes for the same service.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "moving-services-faro",
+  "alternates": {
+    "pt-PT": "/guias/cidades/mudancas-faro/",
+    "en": "/en/guides/moving-services-faro/",
+    "ru": "/ru/guides/pereezdy-faru/"
+  }
+}

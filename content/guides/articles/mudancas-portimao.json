@@ -182,14 +182,14 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças em Faro",
-      "href": "/guias/cidades/mudancas-faro/",
+      "title": "Moving services in Portimão — versão em inglês",
+      "href": "/en/guides/moving-services-portimao/",
       "type": "guide"
     },
     {
-      "title": "Mudanças de Lisboa para o Algarve",
-      "href": "/mudancas-lisboa-algarve/",
-      "type": "landing"
+      "title": "Переезды в Портимане — versão em russo",
+      "href": "/ru/guides/pereezdy-portiman/",
+      "type": "guide"
     },
     {
       "title": "Quanto custa uma mudança em Portugal?",
@@ -207,5 +207,11 @@
     "text": "Descreva os locais, a zona, os objetos, os acessos e as tarefas. Depois compare propostas para o mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-services-portimao",
+  "alternates": {
+    "pt-PT": "/guias/cidades/mudancas-portimao/",
+    "en": "/en/guides/moving-services-portimao/",
+    "ru": "/ru/guides/pereezdy-portiman/"
   }
 }

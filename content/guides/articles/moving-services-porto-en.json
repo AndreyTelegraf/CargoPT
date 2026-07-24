@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "id": "moving-services-porto-en",
+  "locale": "en",
+  "cluster": "cities",
+  "path": "/en/guides/moving-services-porto/",
+  "title": "Moving services in Porto",
+  "meta_title": "Moving services in Porto — CargoPT",
+  "meta_description": "Prepare a move in Porto considering the area, access, parking, cargo and services such as helpers or dismantling.",
+  "primary_query": "moving services in porto",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Moving services by city",
+  "eyebrow": "Moving services in Porto",
+  "hero_description": "A change in Porto must consider the specific area, the slope of the streets, access to the building, the where the vehicle can stop and the differences between central, residential and peripheral areas.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "What you should confirm before moving to Porto",
+  "key_points_heading": "Information needed to request quotes",
+  "faq_heading": "Questions about moving services in porto",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "Indicate the specific collection and delivery area, inventory, floors, lifts, stairs and the point where the vehicle can stop. In Porto, inclined streets, narrow access conditions, old buildings and greater distances between the entrance and the loading area can change the time, team and equipment required.",
+  "key_points": [
+    "Identify the specific collection and delivery area.",
+    "Confirm where the vehicle can stop at each location.",
+    "Describe floors, lifts, stairs, and narrow passages.",
+    "Send photos of large furniture and difficult access.",
+    "Compare quotes based on the same load and the same tasks."
+  ],
+  "sections": [
+    {
+      "id": "porto-areas-and-access-conditions",
+      "heading": "Porto areas and access conditions",
+      "paragraphs": [
+        "The generic indication of “Porto” does not sufficiently describe the service. A move to Baixa, Cedofeita, Bonfim, Campanhã or the Foz area may involve different access conditions and distances.",
+        "Indicate the street or specific area at both ends. Also inform if the property is in an area with inclined streets, narrow passages, gates, garage or conditioned access."
+      ],
+      "items": [
+        {
+          "title": "Downtown and historic center",
+          "text": "Confirm the width of the street, the possible proximity of the vehicle and the building's interior access."
+        },
+        {
+          "title": "Cedofeita and Bonfim",
+          "text": "Indicate the floor, the existence of an elevator and the distance between the entrance and the loading point."
+        },
+        {
+          "title": "Campaign",
+          "text": "Provide the concrete location and describe additional gates, garages, patios or access points."
+        },
+        {
+          "title": "Foz and western zone",
+          "text": "Confirm condominium entrances, floors, lifts and any routes from the street to the property."
+        }
+      ]
+    },
+    {
+      "id": "how-to-prepare-inventory",
+      "heading": "How to prepare inventory",
+      "paragraphs": [
+        "Organize items into divisions and separate furniture, appliances, boxes and parts that require disassembly, protection or special handling.",
+        "Indicate approximate measurements of sofas, closets, beds and appliances when there are doubts about doors, stairs or lifts."
+      ],
+      "items": [
+        {
+          "title": "Furniture",
+          "text": "List sofas, beds, mattresses, tables, cabinets, bookshelves and other large furniture."
+        },
+        {
+          "title": "Household Appliances",
+          "text": "Identify refrigerator, machines, television and other relevant equipment."
+        },
+        {
+          "title": "Boxes",
+          "text": "Provide an estimate and highlight fragile or especially heavy boxes."
+        },
+        {
+          "title": "Special items",
+          "text": "Mark items that are heavy, fragile, valuable or difficult to transport through existing passages."
+        }
+      ]
+    },
+    {
+      "id": "access-slope-and-parking",
+      "heading": "Access, slope and parking",
+      "paragraphs": [
+        "Confirm the actual point where the vehicle can stop. When it is not possible to bring it closer to the entrance, indicate the distance and whether the route includes an incline, steps or uneven pavement.",
+        "In older buildings, check the width of doors, flights of stairs, curves and elevator dimensions. Photographs help to anticipate difficulties."
+      ],
+      "checklist": [
+        "Floor in collection and delivery.",
+        "Existence and approximate dimensions of the elevator.",
+        "Number of flights of stairs.",
+        "Tight doors, corridors and curves.",
+        "Possible place to stop the vehicle.",
+        "Distance between the vehicle and the entrance.",
+        "Slope or steps on the route.",
+        "Rules communicated by the condominium or building."
+      ]
+    },
+    {
+      "id": "services-that-must-be-defined",
+      "heading": "Services that must be defined",
+      "paragraphs": [
+        "The quote must clearly indicate the vehicle, the number of helpers, loading, unloading and protection of items.",
+        "Disassembly, assembly, packing, materials and additional equipment must be agreed before the move date."
+      ],
+      "items": [
+        {
+          "title": "Helpers",
+          "text": "Confirm how many people will participate in loading and unloading."
+        },
+        {
+          "title": "Disassembly and assembly",
+          "text": "Identify the furniture covered and who will perform each task."
+        },
+        {
+          "title": "Packing and protection",
+          "text": "Confirm materials for furniture, appliances and fragile items."
+        },
+        {
+          "title": "Additional equipment",
+          "text": "Inform about heavy parts or access that may require specific means."
+        }
+      ]
+    },
+    {
+      "id": "how-to-compare-proposals-for-a-change-in-porto",
+      "heading": "How to compare quotes for a move in Porto",
+      "paragraphs": [
+        "Send the same description to all carriers, including area, inventory, access, distance to the vehicle and tasks.",
+        "Compare the price together with the vehicle, the team, the services included, the schedule and the conditions applicable to changes to the order."
+      ],
+      "checklist": [
+        "The origin and destination are the same.",
+        "The inventory considered is identical.",
+        "Access and parking were described.",
+        "The number of helpers is indicated.",
+        "Additional services are detailed.",
+        "The price and conditions are recorded in writing."
+      ]
+    },
+    {
+      "id": "how-to-request-proposals-through-cargopt",
+      "heading": "How to request quotes through CargoPT",
+      "paragraphs": [
+        "At CargoPT, you can describe a move in Porto just once, including the area, the load, access and tasks.",
+        "Carriers submit their own quotes and the customer can compare responses based on the same description."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Describe your move to Porto",
+    "text": "Indicate the area, items, access, possible parking and necessary services.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Is it enough to just indicate that the change is in Porto?",
+      "answer": "No. Indicate the specific area or street when collecting and delivering, as access and distance to the vehicle may vary."
+    },
+    {
+      "question": "What details should I confirm in an old building?",
+      "answer": "Check floors, stairs, width of doors and corridors, curves and elevator dimensions, if applicable."
+    },
+    {
+      "question": "Does the distance to the vehicle influence the service?",
+      "answer": "Yes. A long, inclined or stepped route increases manual handling and may require more time or helpers."
+    },
+    {
+      "question": "When should I send photos?",
+      "answer": "Send photographs of large furniture, special items, stairs, narrow doorways and other difficult-to-describe access points."
+    },
+    {
+      "question": "How to compare different quotes?",
+      "answer": "Confirm that they all consider the same load, the same access, the same number of helpers and the same additional services."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Mudanças no Porto — Portuguese version",
+      "href": "/mudancas-porto/",
+      "type": "guide"
+    },
+    {
+      "title": "Переезды в Порту",
+      "href": "/ru/guides/pereezdy-portu/",
+      "type": "guide"
+    },
+    {
+      "title": "How much does a move cost in Porto?",
+      "href": "/en/guides/moving-cost-porto/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare quotes for your move to Porto",
+    "text": "Describe the area, load, access and tasks to receive quotes for the same service.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "moving-services-porto",
+  "alternates": {
+    "pt-PT": "/mudancas-porto/",
+    "en": "/en/guides/moving-services-porto/",
+    "ru": "/ru/guides/pereezdy-portu/"
+  }
+}

@@ -183,14 +183,14 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças em Lisboa",
-      "href": "/mudancas-lisboa/",
-      "type": "landing"
+      "title": "Moving services in Cascais — versão em inglês",
+      "href": "/en/guides/moving-services-cascais/",
+      "type": "guide"
     },
     {
-      "title": "Mudanças no Porto",
-      "href": "/mudancas-porto/",
-      "type": "landing"
+      "title": "Переезды в Кашкайше — versão em russo",
+      "href": "/ru/guides/pereezdy-kashkaysh/",
+      "type": "guide"
     },
     {
       "title": "Quanto custa uma mudança em Lisboa?",
@@ -208,5 +208,11 @@
     "text": "Descreva a zona, a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-services-cascais",
+  "alternates": {
+    "pt-PT": "/mudancas-cascais/",
+    "en": "/en/guides/moving-services-cascais/",
+    "ru": "/ru/guides/pereezdy-kashkaysh/"
   }
 }

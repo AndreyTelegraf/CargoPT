@@ -182,14 +182,14 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças em Cascais",
-      "href": "/mudancas-cascais/",
-      "type": "landing"
+      "title": "Moving services in Coimbra — versão em inglês",
+      "href": "/en/guides/moving-services-coimbra/",
+      "type": "guide"
     },
     {
-      "title": "Mudanças em Lisboa",
-      "href": "/mudancas-lisboa/",
-      "type": "landing"
+      "title": "Переезды в Коимбре — versão em russo",
+      "href": "/ru/guides/pereezdy-koimbra/",
+      "type": "guide"
     },
     {
       "title": "Como preparar uma mudança",
@@ -207,5 +207,11 @@
     "text": "Descreva a localização, a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-services-coimbra",
+  "alternates": {
+    "pt-PT": "/mudancas-coimbra/",
+    "en": "/en/guides/moving-services-coimbra/",
+    "ru": "/ru/guides/pereezdy-koimbra/"
   }
 }

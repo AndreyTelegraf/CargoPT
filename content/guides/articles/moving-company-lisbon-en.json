@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "id": "moving-company-lisbon-en",
+  "locale": "en",
+  "cluster": "cities",
+  "path": "/en/guides/moving-company-lisbon/",
+  "title": "Moving company in Lisbon",
+  "meta_title": "Moving company in Lisbon — CargoPT",
+  "meta_description": "Look for a carrier in Lisbon for moving, furniture, boxes or cargo. Know what to recommend and how to compare quotes.",
+  "primary_query": "moving company in lisbon",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Moving companies by city",
+  "eyebrow": "Moving company in Lisbon",
+  "hero_description": "Look for a transport company in Lisbon based on the specific service, and not just an isolated price. A complete description of the load, addresses, access and tasks allows you to receive comparable quotes for moving, furniture, household appliances, boxes, small loads or office services.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "How to find a carrier in Lisbon",
+  "key_points_heading": "Information needed to compare carriers",
+  "faq_heading": "Questions about moving company in lisbon",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To find a carrier in Lisbon, describe the service in a comparable way: addresses or collection and delivery areas, date, inventory, floors, lifts, stairs, possible parking and additional tasks. Indicate whether you only need a vehicle, helpers, disassembly, assembly, packing or protection. A useful quote should identify the vehicle, the team, what is included, the price and the applicable conditions. Compare quotes based on exactly the same information and confirm the service details in writing before choosing.",
+  "key_points": [
+    "Describe the load and both locations before asking for quotes.",
+    "Enter floors, lifts, stairs, parking and distance to the entrance.",
+    "Define whether you need a vehicle, helpers, disassembly, assembly or packing.",
+    "Ask that each quote clearly identifies the service included.",
+    "Compare price, team, vehicle, schedule and conditions based on the same order."
+  ],
+  "sections": [
+    {
+      "id": "services-you-can-request-from-a-transport-company-in-lisbon",
+      "heading": "Services you can request from a transport company in Lisbon",
+      "paragraphs": [
+        "A search for carrier in Lisbon may match different services. Before asking for quotes, decide whether you want a complete move, the transport of some furniture, a small load, a commercial collection or a service with disassembly and assembly.",
+        "Separating the type of service avoids quotes based on different assumptions. Transporting a sofa between two addresses does not require the same preparation as moving an apartment or office."
+      ],
+      "items": [
+        {
+          "title": "Changing housing",
+          "text": "Include furniture, appliances, boxes, fragile items and necessary tasks during collection and delivery."
+        },
+        {
+          "title": "Furniture transport",
+          "text": "Indicate quantity, approximate dimensions, weight when known and photographs of the volumes."
+        },
+        {
+          "title": "Small changes",
+          "text": "Specify boxes, suitcases, loose parts and especially heavy or fragile items."
+        },
+        {
+          "title": "Office or professional charge",
+          "text": "Identify furniture, equipment, permitted times and building access rules."
+        }
+      ]
+    },
+    {
+      "id": "information-required-to-receive-comparable-proposals",
+      "heading": "Information required to receive comparable quotes",
+      "paragraphs": [
+        "A vague description, such as “I need a van in Lisbon”, does not allow you to correctly evaluate the vehicle, the team, the duration or the loading conditions.",
+        "Prepare a single complete order and use the same information for all comparisons."
+      ],
+      "checklist": [
+        "Area, street or postal code of collection and delivery.",
+        "Desired date and possible flexibility.",
+        "List of furniture, appliances, boxes and special items.",
+        "Dimensions or photographs of larger volumes.",
+        "Floors, lifts, stairs, doors and corridors.",
+        "Possible place to park and distance to the entrance.",
+        "Number of helpers required.",
+        "Disassembly, assembly, packing or additional materials."
+      ]
+    },
+    {
+      "id": "access-and-parking-that-you-should-describe-in-lisbon",
+      "heading": "Access and parking that you should describe in Lisbon",
+      "paragraphs": [
+        "In Lisbon, two nearby addresses may require very different operations. The approach of the vehicle, the width of the street, the slope, the steps and the manual carrying distance influence the time and the team.",
+        "Describe collection and delivery separately. Confirm the stopping point, access to the building, the floor and the route between the vehicle and each property."
+      ],
+      "items": [
+        {
+          "title": "Baixa, Alfama and Mouraria",
+          "text": "Please inform narrow streets, stairs, slope and any additional distance for manual transport."
+        },
+        {
+          "title": "Avenidas Novas and Alvalade",
+          "text": "Confirm floor, elevator, service entrance, parking and building rules."
+        },
+        {
+          "title": "Benfica and residential areas",
+          "text": "Indicate garages, gates, patios and interior routes between the street and the entrance."
+        },
+        {
+          "title": "Parque das Nações and condominiums",
+          "text": "Confirm access to the garage, use of lifts and permitted times."
+        }
+      ]
+    },
+    {
+      "id": "what-a-transport-proposal-should-clarify",
+      "heading": "What a transport quote should clarify",
+      "paragraphs": [
+        "A useful quote should not be limited to a total amount. It should allow you to understand who will do the service, with what means and what tasks are included.",
+        "Ask for written confirmation when the quote depends on photographs, provisional inventory or access conditions that may change."
+      ],
+      "checklist": [
+        "Type and capacity of the anticipated vehicle.",
+        "Number of people on the team.",
+        "Loading, unloading and manual transport included.",
+        "Items and number of volumes considered.",
+        "Disassembly, assembly, packing and materials included or excluded.",
+        "Date and time range.",
+        "Price and payment method.",
+        "Conditions for changes, cancellation, delays or access difficulties."
+      ]
+    },
+    {
+      "id": "how-to-compare-carriers-and-moving-companies",
+      "heading": "How to Compare Carriers and Moving Companies",
+      "paragraphs": [
+        "Compare quotes only after confirming that they all consider the same inventory, the same addresses, the same access conditions and the same tasks.",
+        "A seemingly cheaper quote might include fewer helpers, a different vehicle, or exclude assembly, materials, or ladder transportation."
+      ],
+      "items": [
+        {
+          "title": "Equal scope",
+          "text": "Check that everyone received the same list of items, photographs and access conditions."
+        },
+        {
+          "title": "Suitable means",
+          "text": "Compare vehicle, equipment and equipment planned for the indicated load."
+        },
+        {
+          "title": "Services included",
+          "text": "Confirm loading, unloading, disassembly, assembly, packing and protection."
+        },
+        {
+          "title": "Registered conditions",
+          "text": "Keep in writing the price, date, exclusions and any accepted changes."
+        }
+      ]
+    },
+    {
+      "id": "what-to-check-before-choosing-a-transporter",
+      "heading": "What to check before choosing a carrier",
+      "paragraphs": [
+        "Before accepting a quote, confirm the provider's identification and contact details, the scope of the service and how to communicate changes.",
+        "For fragile, heavy or high-value loads, ask how they will be protected and what conditions apply in the event of damage."
+      ],
+      "checklist": [
+        "Identification of the provider and usable contact.",
+        "Final description of the load and tasks.",
+        "Addresses, date and time confirmed.",
+        "Updated access conditions.",
+        "Price and payment method registered.",
+        "Agreed procedure for changes, delays or damage."
+      ]
+    },
+    {
+      "id": "how-ordering-through-cargopt-works",
+      "heading": "How ordering through CargoPT works",
+      "paragraphs": [
+        "At CargoPT, you describe the transport once and the information is forwarded to carriers suitable for the request. Each carrier presents its own quote.",
+        "CargoPT organizes the order and initial communication; Transport is carried out by the professional chosen by the customer."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Describe transport in Lisbon",
+    "text": "Indicate the load, addresses, access, date and tasks necessary to receive comparable quotes.",
+    "label": "Describe transportation",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Are a transport company and a moving company the same thing?",
+      "answer": "A carrier can carry out complete moves or just transport loads and items. Always confirm which tasks and materials are included."
+    },
+    {
+      "question": "What information is needed to know the price?",
+      "answer": "Indicate addresses, date, inventory, floors, lifts, stairs, parking and additional services."
+    },
+    {
+      "question": "Can I only request the transport of some furniture or boxes?",
+      "answer": "Yes. List each box, send photographs when necessary and inform the collection and delivery conditions."
+    },
+    {
+      "question": "Can parking change the quote?",
+      "answer": "Yes. When the vehicle cannot stop close to the entrance, the manual carrying distance may require more time or helpers."
+    },
+    {
+      "question": "Does CargoPT choose the carrier for the customer?",
+      "answer": "No. CargoPT forwards the request and allows you to compare quotes. The choice belongs to the customer."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Transportadora em Lisboa — Portuguese version",
+      "href": "/transportadora-lisboa/",
+      "type": "guide"
+    },
+    {
+      "title": "Транспортная компания в Лиссабоне",
+      "href": "/ru/guides/transportnaya-kompaniya-lissabon/",
+      "type": "guide"
+    },
+    {
+      "title": "How to choose a moving company",
+      "href": "/en/guides/how-to-choose-a-moving-company/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare transport company offers in Lisbon",
+    "text": "Send a complete description so that the responses consider the same load, the same access conditions and the same tasks.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "moving-company-lisbon",
+  "alternates": {
+    "pt-PT": "/transportadora-lisboa/",
+    "en": "/en/guides/moving-company-lisbon/",
+    "ru": "/ru/guides/transportnaya-kompaniya-lissabon/"
+  }
+}

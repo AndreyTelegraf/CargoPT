@@ -296,12 +296,12 @@
     ],
     "mudancas-albufeira": [
       {
-        "target": "mudancas-portimao",
+        "target": "moving-services-albufeira-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-evora",
+        "target": "pereezdy-albufeira-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -318,12 +318,12 @@
     ],
     "mudancas-almada": [
       {
-        "target": "mudancas-oeiras",
+        "target": "moving-services-almada-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-sintra",
+        "target": "pereezdy-almada-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -340,12 +340,12 @@
     ],
     "mudancas-amadora": [
       {
-        "target": "mudancas-loures",
+        "target": "moving-services-amadora-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-odivelas",
+        "target": "pereezdy-amadora-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -384,12 +384,12 @@
     ],
     "mudancas-aveiro": [
       {
-        "target": "mudancas-leiria",
+        "target": "moving-services-aveiro-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-vila-nova-gaia",
+        "target": "pereezdy-aveiro-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -406,12 +406,12 @@
     ],
     "mudancas-braga": [
       {
-        "target": "mudancas-coimbra",
+        "target": "moving-services-braga-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-cascais",
+        "target": "pereezdy-braga-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -428,12 +428,12 @@
     ],
     "mudancas-cascais": [
       {
-        "target": "mudancas-lisboa",
+        "target": "moving-services-cascais-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-porto",
+        "target": "pereezdy-kashkaysh-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -450,12 +450,12 @@
     ],
     "mudancas-coimbra": [
       {
-        "target": "mudancas-cascais",
+        "target": "moving-services-coimbra-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-lisboa",
+        "target": "pereezdy-koimbra-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -472,12 +472,12 @@
     ],
     "mudancas-evora": [
       {
-        "target": "mudancas-portimao",
+        "target": "moving-services-evora-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-albufeira",
+        "target": "pereezdy-evora-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -494,12 +494,12 @@
     ],
     "mudancas-faro": [
       {
-        "target": "mudancas-albufeira",
+        "target": "moving-services-faro-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-evora",
+        "target": "pereezdy-faru-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -516,12 +516,12 @@
     ],
     "mudancas-leiria": [
       {
-        "target": "mudancas-aveiro",
+        "target": "moving-services-leiria-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-matosinhos",
+        "target": "pereezdy-leyriya-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -560,12 +560,12 @@
     ],
     "mudancas-lisboa-algarve": [
       {
-        "target": "mudancas-almada",
+        "target": "moving-lisbon-to-algarve-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-lisboa-cascais",
+        "target": "pereezd-lissabon-algarve-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -582,12 +582,12 @@
     ],
     "mudancas-lisboa-cascais": [
       {
-        "target": "mudancas-lisboa-porto",
+        "target": "moving-lisbon-to-cascais-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-faro",
+        "target": "pereezd-lissabon-kashkaysh-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -604,12 +604,12 @@
     ],
     "mudancas-lisboa-porto": [
       {
-        "target": "mudancas-lisboa-algarve",
+        "target": "moving-lisbon-to-porto-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-oeiras",
+        "target": "pereezd-lissabon-portu-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -626,12 +626,12 @@
     ],
     "mudancas-loures": [
       {
-        "target": "mudancas-amadora",
+        "target": "moving-services-loures-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-setubal",
+        "target": "pereezdy-lourish-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -648,12 +648,12 @@
     ],
     "mudancas-matosinhos": [
       {
-        "target": "mudancas-leiria",
+        "target": "moving-services-matosinhos-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-vila-nova-gaia",
+        "target": "pereezdy-matozinyush-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -670,12 +670,12 @@
     ],
     "mudancas-odivelas": [
       {
-        "target": "mudancas-loures",
+        "target": "moving-services-odivelas-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-setubal",
+        "target": "pereezdy-odivelash-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -692,12 +692,12 @@
     ],
     "mudancas-oeiras": [
       {
-        "target": "mudancas-sintra",
+        "target": "moving-services-oeiras-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-almada",
+        "target": "pereezdy-oeirash-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -714,12 +714,12 @@
     ],
     "mudancas-portimao": [
       {
-        "target": "mudancas-faro",
+        "target": "moving-services-portimao-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-lisboa-algarve",
+        "target": "pereezdy-portiman-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -736,12 +736,12 @@
     ],
     "mudancas-porto": [
       {
-        "target": "mudancas-braga",
+        "target": "moving-services-porto-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-coimbra",
+        "target": "pereezdy-portu-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -758,12 +758,12 @@
     ],
     "mudancas-setubal": [
       {
-        "target": "mudancas-odivelas",
+        "target": "moving-services-setubal-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-amadora",
+        "target": "pereezdy-setubal-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -780,12 +780,12 @@
     ],
     "mudancas-sintra": [
       {
-        "target": "mudancas-lisboa-cascais",
+        "target": "moving-services-sintra-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-lisboa-porto",
+        "target": "pereezdy-sintra-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -802,12 +802,12 @@
     ],
     "mudancas-vila-nova-gaia": [
       {
-        "target": "mudancas-matosinhos",
+        "target": "moving-services-vila-nova-gaia-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-aveiro",
+        "target": "pereezdy-vila-nova-di-gaya-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -1220,12 +1220,12 @@
     ],
     "transportadora-lisboa": [
       {
-        "target": "mudancas-lisboa",
+        "target": "moving-company-lisbon-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "como-pedir-orcamento-mudanca",
+        "target": "transportnaya-kompaniya-lissabon-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -2749,6 +2749,1018 @@
       },
       {
         "target": "kak-upakovat-televizor-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-albufeira-en": [
+      {
+        "target": "mudancas-albufeira",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-albufeira-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-much-does-a-move-cost-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-albufeira-ru": [
+      {
+        "target": "mudancas-albufeira",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-albufeira-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "skolko-stoit-pereezd-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-almada-en": [
+      {
+        "target": "mudancas-almada",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-almada-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-cost-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-almada-ru": [
+      {
+        "target": "mudancas-almada",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-almada-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "stoimost-pereezda-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-amadora-en": [
+      {
+        "target": "mudancas-amadora",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-amadora-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-cost-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-amadora-ru": [
+      {
+        "target": "mudancas-amadora",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-amadora-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "stoimost-pereezda-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-aveiro-en": [
+      {
+        "target": "mudancas-aveiro",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-aveiro-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-cost-porto-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-aveiro-ru": [
+      {
+        "target": "mudancas-aveiro",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-aveiro-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "stoimost-pereezda-portu-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-braga-en": [
+      {
+        "target": "mudancas-braga",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-braga-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-much-does-a-move-cost-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-braga-ru": [
+      {
+        "target": "mudancas-braga",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-braga-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "skolko-stoit-pereezd-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-cascais-en": [
+      {
+        "target": "mudancas-cascais",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-kashkaysh-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-cost-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-kashkaysh-ru": [
+      {
+        "target": "mudancas-cascais",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-cascais-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "stoimost-pereezda-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-coimbra-en": [
+      {
+        "target": "mudancas-coimbra",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-koimbra-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-to-prepare-for-a-move-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-koimbra-ru": [
+      {
+        "target": "mudancas-coimbra",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-coimbra-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-podgotovitsya-k-pereezdu-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-evora-en": [
+      {
+        "target": "mudancas-evora",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-evora-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-much-does-a-move-cost-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-evora-ru": [
+      {
+        "target": "mudancas-evora",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-evora-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "skolko-stoit-pereezd-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-faro-en": [
+      {
+        "target": "mudancas-faro",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-faru-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-much-does-a-move-cost-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-faru-ru": [
+      {
+        "target": "mudancas-faro",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-faro-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "skolko-stoit-pereezd-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-leiria-en": [
+      {
+        "target": "mudancas-leiria",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-leyriya-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-much-does-a-move-cost-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-leyriya-ru": [
+      {
+        "target": "mudancas-leiria",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-leiria-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "skolko-stoit-pereezd-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-loures-en": [
+      {
+        "target": "mudancas-loures",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-lourish-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-cost-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-lourish-ru": [
+      {
+        "target": "mudancas-loures",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-loures-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "stoimost-pereezda-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-matosinhos-en": [
+      {
+        "target": "mudancas-matosinhos",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-matozinyush-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-cost-porto-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-matozinyush-ru": [
+      {
+        "target": "mudancas-matosinhos",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-matosinhos-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "stoimost-pereezda-portu-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-odivelas-en": [
+      {
+        "target": "mudancas-odivelas",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-odivelash-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-cost-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-odivelash-ru": [
+      {
+        "target": "mudancas-odivelas",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-odivelas-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "stoimost-pereezda-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-oeiras-en": [
+      {
+        "target": "mudancas-oeiras",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-oeirash-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-cost-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-oeirash-ru": [
+      {
+        "target": "mudancas-oeiras",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-oeiras-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "stoimost-pereezda-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-portimao-en": [
+      {
+        "target": "mudancas-portimao",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-portiman-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-much-does-a-move-cost-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-portiman-ru": [
+      {
+        "target": "mudancas-portimao",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-portimao-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "skolko-stoit-pereezd-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-porto-en": [
+      {
+        "target": "mudancas-porto",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-portu-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-cost-porto-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-portu-ru": [
+      {
+        "target": "mudancas-porto",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-porto-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "stoimost-pereezda-portu-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-setubal-en": [
+      {
+        "target": "mudancas-setubal",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-setubal-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-cost-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-setubal-ru": [
+      {
+        "target": "mudancas-setubal",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-setubal-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "stoimost-pereezda-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-sintra-en": [
+      {
+        "target": "mudancas-sintra",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-sintra-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-to-prepare-for-a-move-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-sintra-ru": [
+      {
+        "target": "mudancas-sintra",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-sintra-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-podgotovitsya-k-pereezdu-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-vila-nova-gaia-en": [
+      {
+        "target": "mudancas-vila-nova-gaia",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezdy-vila-nova-di-gaya-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-cost-porto-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezdy-vila-nova-di-gaya-ru": [
+      {
+        "target": "mudancas-vila-nova-gaia",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-vila-nova-gaia-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "stoimost-pereezda-portu-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-lisbon-to-algarve-en": [
+      {
+        "target": "mudancas-lisboa-algarve",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezd-lissabon-algarve-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-much-does-a-move-cost-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezd-lissabon-algarve-ru": [
+      {
+        "target": "mudancas-lisboa-algarve",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-lisbon-to-algarve-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "skolko-stoit-pereezd-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-lisbon-to-cascais-en": [
+      {
+        "target": "mudancas-lisboa-cascais",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezd-lissabon-kashkaysh-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-cost-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezd-lissabon-kashkaysh-ru": [
+      {
+        "target": "mudancas-lisboa-cascais",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-lisbon-to-cascais-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "stoimost-pereezda-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-lisbon-to-porto-en": [
+      {
+        "target": "mudancas-lisboa-porto",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezd-lissabon-portu-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-much-does-a-move-cost-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezd-lissabon-portu-ru": [
+      {
+        "target": "mudancas-lisboa-porto",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-lisbon-to-porto-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "skolko-stoit-pereezd-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-company-lisbon-en": [
+      {
+        "target": "transportadora-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "transportnaya-kompaniya-lissabon-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-to-choose-moving-company-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "transportnaya-kompaniya-lissabon-ru": [
+      {
+        "target": "transportadora-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-company-lisbon-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-vybrat-kompaniyu-dlya-pereezda-ru",
         "reason": "authority",
         "priority": 3
       },

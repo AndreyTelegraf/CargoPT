@@ -183,14 +183,14 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças de Lisboa para o Algarve",
-      "href": "/mudancas-lisboa-algarve/",
-      "type": "landing"
+      "title": "Moving from Lisbon to Porto — versão em inglês",
+      "href": "/en/guides/moving-lisbon-to-porto/",
+      "type": "guide"
     },
     {
-      "title": "Mudanças em Oeiras",
-      "href": "/mudancas-oeiras/",
-      "type": "landing"
+      "title": "Переезд из Лиссабона в Порту — versão em russo",
+      "href": "/ru/guides/pereezd-lissabon-portu/",
+      "type": "guide"
     },
     {
       "title": "Quanto custa uma mudança em Portugal?",
@@ -208,5 +208,11 @@
     "text": "Descreva a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-lisbon-porto",
+  "alternates": {
+    "pt-PT": "/mudancas-lisboa-porto/",
+    "en": "/en/guides/moving-lisbon-to-porto/",
+    "ru": "/ru/guides/pereezd-lissabon-portu/"
   }
 }

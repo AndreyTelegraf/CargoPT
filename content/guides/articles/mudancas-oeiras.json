@@ -182,14 +182,14 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças em Sintra",
-      "href": "/mudancas-sintra/",
-      "type": "landing"
+      "title": "Moving services in Oeiras — versão em inglês",
+      "href": "/en/guides/moving-services-oeiras/",
+      "type": "guide"
     },
     {
-      "title": "Mudanças em Almada",
-      "href": "/mudancas-almada/",
-      "type": "landing"
+      "title": "Переезды в Оейраше — versão em russo",
+      "href": "/ru/guides/pereezdy-oeirash/",
+      "type": "guide"
     },
     {
       "title": "Quanto custa uma mudança em Lisboa?",
@@ -207,5 +207,11 @@
     "text": "Descreva a zona, a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-services-oeiras",
+  "alternates": {
+    "pt-PT": "/mudancas-oeiras/",
+    "en": "/en/guides/moving-services-oeiras/",
+    "ru": "/ru/guides/pereezdy-oeirash/"
   }
 }

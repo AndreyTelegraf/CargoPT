@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "id": "moving-lisbon-to-cascais-en",
+  "locale": "en",
+  "cluster": "cities",
+  "path": "/en/guides/moving-lisbon-to-cascais/",
+  "title": "Moving from Lisbon to Cascais",
+  "meta_title": "Moving from Lisbon to Cascais — CargoPT",
+  "meta_description": "Prepare a move between Lisbon and Cascais: cargo, access, parking, helpers, protection and additional services.",
+  "primary_query": "moving from lisbon to cascais",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Moving services by city",
+  "eyebrow": "Moving from Lisbon to Cascais",
+  "hero_description": "A move between Lisbon and Cascais must consider the specific collection and delivery conditions. Although it is a relatively short route, a move between Lisbon and Cascais can involve heavy traffic, limited parking and very different access at both ends.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "What you should confirm before moving between Lisbon and Cascais",
+  "key_points_heading": "Essential information for the route",
+  "faq_heading": "Questions about moving from lisbon to cascais",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "Indicate the specific collection and delivery locations, the date, inventory, floors, lifts, stairs and where the vehicle can stop. Also inform the manual carrying distance, the necessary services and the items that require special protection. Although it is a relatively short route, a move between Lisbon and Cascais can involve heavy traffic, limited parking and very different access at both ends.",
+  "key_points": [
+    "Identify specific collection and delivery locations.",
+    "Confirm where the vehicle can stop at both ends.",
+    "Describe floors, lifts, stairs, gates, and garages.",
+    "Send photographs of the largest items and difficult access.",
+    "Compare quotes based on the same load and the same tasks."
+  ],
+  "sections": [
+    {
+      "id": "how-to-prepare-the-route-between-lisbon-and-cascais",
+      "heading": "How to prepare the route between Lisbon and Cascais",
+      "paragraphs": [
+        "Collection in Lisbon and delivery in Cascais must be described separately.",
+        "The quote must consider the access conditions to the two properties, the full load, the travel time and the necessary protection."
+      ],
+      "items": [
+        {
+          "title": "Collection in Lisbon",
+          "text": "Indicate the area, floors, lifts, parking and distance to the vehicle."
+        },
+        {
+          "title": "Delivery in Cascais",
+          "text": "Confirm the specific location, type of property, gates, garage and interior route."
+        },
+        {
+          "title": "Traffic conditions",
+          "text": "Set a realistic window and report any time limitations in buildings."
+        },
+        {
+          "title": "Cargo and services",
+          "text": "List the items and confirm helpers, disassembly, assembly, packing and protection."
+        }
+      ]
+    },
+    {
+      "id": "how-to-prepare-inventory",
+      "heading": "How to prepare inventory",
+      "paragraphs": [
+        "Organize the load by rooms or categories and separate furniture, appliances, boxes and special items.",
+        "Indicate approximate measurements and send photographs when there are doubts about doors, stairs, lifts or protection."
+      ],
+      "items": [
+        {
+          "title": "Furniture",
+          "text": "List sofas, beds, tables, cabinets, bookshelves and other large furniture."
+        },
+        {
+          "title": "Household Appliances",
+          "text": "Identify refrigerators, machines, televisions and other equipment."
+        },
+        {
+          "title": "Boxes",
+          "text": "Indicate an approximate quantity and highlight fragile or heavy boxes."
+        },
+        {
+          "title": "Special items",
+          "text": "Mark fragile, valuable, heavy or difficult-to-move items."
+        }
+      ]
+    },
+    {
+      "id": "access-parking-and-route",
+      "heading": "Access, parking and route",
+      "paragraphs": [
+        "Although it is a relatively short route, a move between Lisbon and Cascais can involve heavy traffic, limited parking and very different access at both ends.",
+        "When the vehicle cannot approach the entrance, indicate the distance, slope, steps and type of flooring."
+      ],
+      "checklist": [
+        "Floor in collection and delivery.",
+        "Existence and approximate dimensions of lifts.",
+        "Stairs, doors, corridors and tight turns.",
+        "Possible place to stop the vehicle.",
+        "Distance between the vehicle and each entrance.",
+        "Gates, garages or access control.",
+        "Rules of condominiums or buildings.",
+        "Allowed times for loading and unloading."
+      ]
+    },
+    {
+      "id": "services-that-must-be-defined",
+      "heading": "Services that must be defined",
+      "paragraphs": [
+        "The quote must indicate the vehicle, the number of helpers, loading, unloading and protection of items.",
+        "Disassembly, assembly, packing, materials and additional equipment must be agreed in advance."
+      ],
+      "items": [
+        {
+          "title": "Helpers",
+          "text": "Confirm how many people will participate in loading and unloading."
+        },
+        {
+          "title": "Disassembly and assembly",
+          "text": "Identify the furniture covered and who will perform each task."
+        },
+        {
+          "title": "Packing and protection",
+          "text": "Confirm the materials planned for furniture, appliances and fragile items."
+        },
+        {
+          "title": "Additional equipment",
+          "text": "Inform about heavy parts or access that may require specific means."
+        }
+      ]
+    },
+    {
+      "id": "how-to-compare-proposals-for-moving-between-lisbon-and-cascais",
+      "heading": "How to compare quotes for moving between Lisbon and Cascais",
+      "paragraphs": [
+        "Send the same description to all carriers, including locations, inventory, access and tasks.",
+        "Compare the price together with the vehicle, the team, the protection, the services included and the conditions presented."
+      ],
+      "checklist": [
+        "The origin and destination are the same.",
+        "The inventory considered is identical.",
+        "The access conditions to both locations were described.",
+        "The number of helpers is indicated.",
+        "Additional services are detailed.",
+        "The price and conditions are recorded in writing."
+      ]
+    },
+    {
+      "id": "how-to-request-proposals-through-cargopt",
+      "heading": "How to request quotes through CargoPT",
+      "paragraphs": [
+        "At CargoPT, you can describe a move between Lisbon and Cascais once, including the load, access and tasks.",
+        "Carriers submit their own quotes and the customer can compare responses based on the same description."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Describe your move between Lisbon and Cascais",
+    "text": "Indicate the locations, items, access, possible parking and necessary services.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "What locations should I indicate?",
+      "answer": "Indicate the street or specific area of collection and delivery, not just the municipality or region."
+    },
+    {
+      "question": "What details should I confirm about the properties?",
+      "answer": "Check floors, stairs, doors, corridors, lifts, gates, garages and distance to the vehicle."
+    },
+    {
+      "question": "Does the distance to the vehicle influence the service?",
+      "answer": "Yes. A long, inclined route or with steps can increase the time and number of helpers needed."
+    },
+    {
+      "question": "When should I send photos?",
+      "answer": "Send photographs of large furniture, special items and access points that are difficult to describe."
+    },
+    {
+      "question": "How to compare different quotes?",
+      "answer": "Confirm that they all consider the same load, the same access, helpers, protection and additional services."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Mudanças de Lisboa para Cascais — Portuguese version",
+      "href": "/mudancas-lisboa-cascais/",
+      "type": "guide"
+    },
+    {
+      "title": "Переезд из Лиссабона в Кашкайш",
+      "href": "/ru/guides/pereezd-lissabon-kashkaysh/",
+      "type": "guide"
+    },
+    {
+      "title": "How much does a move cost in Lisbon?",
+      "href": "/en/guides/moving-cost-lisbon/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare quotes for your move between Lisbon and Cascais",
+    "text": "Describe the load, access and tasks to receive quotes for the same service.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "moving-lisbon-cascais",
+  "alternates": {
+    "pt-PT": "/mudancas-lisboa-cascais/",
+    "en": "/en/guides/moving-lisbon-to-cascais/",
+    "ru": "/ru/guides/pereezd-lissabon-kashkaysh/"
+  }
+}

@@ -182,13 +182,13 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças em Leiria",
-      "href": "/guias/cidades/mudancas-leiria/",
+      "title": "Moving services in Aveiro — versão em inglês",
+      "href": "/en/guides/moving-services-aveiro/",
       "type": "guide"
     },
     {
-      "title": "Mudanças em Vila Nova de Gaia",
-      "href": "/guias/cidades/mudancas-vila-nova-gaia/",
+      "title": "Переезды в Авейру — versão em russo",
+      "href": "/ru/guides/pereezdy-aveiro/",
       "type": "guide"
     },
     {
@@ -207,5 +207,11 @@
     "text": "Descreva a localização, a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-services-aveiro",
+  "alternates": {
+    "pt-PT": "/guias/cidades/mudancas-aveiro/",
+    "en": "/en/guides/moving-services-aveiro/",
+    "ru": "/ru/guides/pereezdy-aveiro/"
   }
 }

@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "id": "moving-services-matosinhos-en",
+  "locale": "en",
+  "cluster": "cities",
+  "path": "/en/guides/moving-services-matosinhos/",
+  "title": "Moving services in Matosinhos",
+  "meta_title": "Moving services in Matosinhos — CargoPT",
+  "meta_description": "Prepare a move in Matosinhos: specific area, inventory, access, parking, helpers and additional services.",
+  "primary_query": "moving services in matosinhos",
+  "intent": [
+    "local",
+    "transactional"
+  ],
+  "article_section": "Moving services by city",
+  "eyebrow": "Moving services in Matosinhos",
+  "hero_description": "A move in Matosinhos must consider the specific location, the type of property, the access and the where the vehicle can stop. In the municipality of Matosinhos, recent buildings, coastal areas, residential areas and garage access may require different loading conditions.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "What to confirm before moving to Matosinhos",
+  "key_points_heading": "Information needed to receive useful quotes",
+  "faq_heading": "Questions about moving services in matosinhos",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "Indicate the specific collection and delivery area, the date, inventory, floors, lifts, stairs and the point where the vehicle can stop. Also inform the manual carrying distance and whether you need helpers, disassembly, assembly or packing. In the municipality of Matosinhos, recent buildings, coastal areas, residential areas and garage access may require different loading conditions.",
+  "key_points": [
+    "Identify the specific collection and delivery area.",
+    "Confirm where the vehicle can stop at each location.",
+    "Describe floors, lifts, stairs, gates, and garages.",
+    "Send photos of large furniture and difficult access.",
+    "Compare quotes based on the same load and the same tasks."
+  ],
+  "sections": [
+    {
+      "id": "areas-and-access-conditions-in-matosinhos",
+      "heading": "Areas and access conditions in Matosinhos",
+      "paragraphs": [
+        "The generic indication of “Matosinhos” may not be enough to evaluate the change. The specific area influences the vehicle's approach, the manual route and the time required.",
+        "Indicate the location at both ends and separately describe the collection and delivery access points."
+      ],
+      "items": [
+        {
+          "title": "Matosinhos South",
+          "text": "Confirm condominium rules, garage, elevator and authorized loading location."
+        },
+        {
+          "title": "Lady of the Hour",
+          "text": "Indicate the block, entrance, floor and distance between the vehicle and the building."
+        },
+        {
+          "title": "Leça da Palmeira",
+          "text": "Describe access to buildings or houses, gates and parking conditions."
+        },
+        {
+          "title": "São Mamede de Infesta",
+          "text": "Confirm streets, garages, floors, stairs and space available for the vehicle."
+        }
+      ]
+    },
+    {
+      "id": "how-to-prepare-inventory-for-moving-in-matosinhos",
+      "heading": "How to prepare inventory for moving in Matosinhos",
+      "paragraphs": [
+        "Organize the load by rooms or categories and separate furniture, appliances, boxes and special items.",
+        "Indicate approximate measurements and send photographs when there are doubts about doors, stairs or lifts."
+      ],
+      "items": [
+        {
+          "title": "Furniture",
+          "text": "List beds, mattresses, sofas, tables, cabinets, bookshelves and other large furniture."
+        },
+        {
+          "title": "Household Appliances",
+          "text": "Identify refrigerator, machines, television and other relevant equipment."
+        },
+        {
+          "title": "Boxes",
+          "text": "Indicate an approximate quantity and highlight fragile or especially heavy boxes."
+        },
+        {
+          "title": "Special items",
+          "text": "Mark heavy, fragile, valuable or difficult-to-move items."
+        }
+      ]
+    },
+    {
+      "id": "access-and-parking-in-matosinhos",
+      "heading": "Access and parking in Matosinhos",
+      "paragraphs": [
+        "In the municipality of Matosinhos, recent buildings, coastal areas, residential areas and garage access may require different loading conditions.",
+        "When the vehicle cannot approach the entrance, indicate the distance, slope, steps and type of pavement of the route."
+      ],
+      "checklist": [
+        "Floor in collection and delivery.",
+        "Existence and approximate dimensions of the elevator.",
+        "Number of flights of stairs.",
+        "Tight doors, corridors and curves.",
+        "Possible place to stop the vehicle.",
+        "Distance between the vehicle and the entrance.",
+        "Gates, garages or access control.",
+        "Condominium or building rules."
+      ]
+    },
+    {
+      "id": "services-that-must-be-defined",
+      "heading": "Services that must be defined",
+      "paragraphs": [
+        "The quote must indicate the vehicle, the number of helpers, loading, unloading and protection of items.",
+        "Disassembly, assembly, packing, materials and additional equipment must be agreed in advance."
+      ],
+      "items": [
+        {
+          "title": "Helpers",
+          "text": "Confirm how many people will participate in loading and unloading."
+        },
+        {
+          "title": "Disassembly and assembly",
+          "text": "Identify the furniture covered and who will perform each task."
+        },
+        {
+          "title": "Packing and protection",
+          "text": "Confirm the materials planned for furniture, appliances and fragile items."
+        },
+        {
+          "title": "Additional equipment",
+          "text": "Inform about heavy parts or access that may require specific means."
+        }
+      ]
+    },
+    {
+      "id": "how-to-compare-proposals-for-a-change-in-matosinhos",
+      "heading": "How to compare quotes for a move in Matosinhos",
+      "paragraphs": [
+        "Send the same description to all carriers, including location, inventory, access and tasks.",
+        "Compare the price together with the vehicle, the team, the services included and the conditions presented."
+      ],
+      "checklist": [
+        "The origin and destination are the same.",
+        "The inventory considered is identical.",
+        "Access and parking were described.",
+        "The number of helpers is indicated.",
+        "Additional services are detailed.",
+        "The price and conditions are recorded in writing."
+      ]
+    },
+    {
+      "id": "how-to-request-proposals-through-cargopt",
+      "heading": "How to request quotes through CargoPT",
+      "paragraphs": [
+        "At CargoPT, you can describe a move in Matosinhos once, including the location, load, access and necessary tasks.",
+        "Carriers submit their own quotes and the customer can compare responses based on the same description."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Describe your move to Matosinhos",
+    "text": "Indicate the area, items, access, possible parking and necessary services.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Is it enough to just indicate that the change is in Matosinhos?",
+      "answer": "No. Please indicate the specific area or street when collecting and delivering, as access may vary."
+    },
+    {
+      "question": "What details should I confirm about the property?",
+      "answer": "Check floors, stairs, doors, hallways, lifts, gates and garage access."
+    },
+    {
+      "question": "Does the distance to the vehicle influence the service?",
+      "answer": "Yes. A long, inclined route or with steps can increase the time and number of helpers needed."
+    },
+    {
+      "question": "When should I send photos?",
+      "answer": "Send photographs of large furniture, special items and access points that are difficult to describe."
+    },
+    {
+      "question": "How to compare different quotes?",
+      "answer": "Confirm that they all consider the same load, the same access, helpers and additional services."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Mudanças em Matosinhos — Portuguese version",
+      "href": "/guias/cidades/mudancas-matosinhos/",
+      "type": "guide"
+    },
+    {
+      "title": "Переезды в Матозиньюшееее",
+      "href": "/ru/guides/pereezdy-matozinyush/",
+      "type": "guide"
+    },
+    {
+      "title": "How much does a move cost in Porto?",
+      "href": "/en/guides/moving-cost-porto/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare quotes for your move in Matosinhos",
+    "text": "Describe the location, load, access and tasks to receive quotes for the same service.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "moving-services-matosinhos",
+  "alternates": {
+    "pt-PT": "/guias/cidades/mudancas-matosinhos/",
+    "en": "/en/guides/moving-services-matosinhos/",
+    "ru": "/ru/guides/pereezdy-matozinyush/"
+  }
+}

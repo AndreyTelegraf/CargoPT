@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "id": "moving-services-oeiras-en",
+  "locale": "en",
+  "cluster": "cities",
+  "path": "/en/guides/moving-services-oeiras/",
+  "title": "Moving services in Oeiras",
+  "meta_title": "Moving services in Oeiras — CargoPT",
+  "meta_description": "Prepare a move in Oeiras: specific area, cargo, access, parking, helpers and additional services.",
+  "primary_query": "moving services in oeiras",
+  "intent": [
+    "local",
+    "transactional"
+  ],
+  "article_section": "Moving services by city",
+  "eyebrow": "Moving services in Oeiras",
+  "hero_description": "A move in Oeiras must consider the specific area, the type of property, the access and the point where the vehicle can stop. In Oeiras, buildings, condominiums, houses and business areas may have different rules and entry routes.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "What to confirm before moving to Oeiras",
+  "key_points_heading": "Information required to receive comparable quotes",
+  "faq_heading": "Questions about moving services in oeiras",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To receive suitable quotes for a move in Oeiras, indicate the specific collection and delivery area, the date, inventory, floors, lifts, stairs and the place where the vehicle can stop. State the manual carrying distance and confirm whether you need helpers, disassembly, assembly, packing or additional protection. In Oeiras, buildings, condominiums, houses and business areas may have different rules and entry routes.",
+  "key_points": [
+    "Identify the specific collection and delivery area.",
+    "Confirm where the vehicle can stop at each location.",
+    "Describe floors, lifts, stairs, doors, and hallways.",
+    "Send photos of large furniture and difficult access.",
+    "Compare quotes based on the same load and the same tasks."
+  ],
+  "sections": [
+    {
+      "id": "areas-and-access-conditions-in-oeiras",
+      "heading": "Areas and access conditions in Oeiras",
+      "paragraphs": [
+        "The generic indication of “Oeiras” may not be sufficient to evaluate the service. The specific area influences the route, the approach of the vehicle and the movement between the street and the property.",
+        "Indicate the location at both ends of the move and separately describe the collection and delivery conditions."
+      ],
+      "items": [
+        {
+          "title": "Oeiras and São Julião da Barra",
+          "text": "Confirm parking, floors, lifts and distance between the street and the entrance."
+        },
+        {
+          "title": "Algés and Miraflores",
+          "text": "Indicate access conditions to buildings, garages, service entrances and condominium rules."
+        },
+        {
+          "title": "Carnaxide and Queijas",
+          "text": "Describe gates, interior parks and additional routes to the property."
+        },
+        {
+          "title": "Porto Salvo",
+          "text": "Provide the concrete location and confirm residential, business or condominium access."
+        }
+      ]
+    },
+    {
+      "id": "how-to-prepare-inventory-for-moving-in-oeiras",
+      "heading": "How to prepare inventory for moving in Oeiras",
+      "paragraphs": [
+        "Organize cargo by rooms or categories and separate furniture, appliances, boxes and items that require special care.",
+        "Indicate approximate dimensions and send photographs of larger volumes when there are questions about doors, stairs or lifts."
+      ],
+      "items": [
+        {
+          "title": "Furniture",
+          "text": "List beds, mattresses, sofas, tables, cabinets, shelves and other large furniture."
+        },
+        {
+          "title": "Household Appliances",
+          "text": "Identify refrigerator, machines, television and other relevant equipment."
+        },
+        {
+          "title": "Boxes",
+          "text": "Indicate an approximate quantity and highlight fragile or especially heavy boxes."
+        },
+        {
+          "title": "Special items",
+          "text": "Mark heavy, fragile, valuable or difficult-to-move items."
+        }
+      ]
+    },
+    {
+      "id": "access-and-parking-in-oeiras",
+      "heading": "Access and parking in Oeiras",
+      "paragraphs": [
+        "In Oeiras, buildings, condominiums, houses and business areas may have different rules and entry routes.",
+        "When it is not possible to bring the vehicle closer to the entrance, indicate the distance, the slope, the steps and the type of route that the team will have to take."
+      ],
+      "checklist": [
+        "Floor in collection and delivery.",
+        "Existence and approximate dimensions of the elevator.",
+        "Number of flights of stairs.",
+        "Tight doors, corridors and curves.",
+        "Possible place to stop the vehicle.",
+        "Distance between the vehicle and the entrance.",
+        "Gates, garages or entry control.",
+        "Rules communicated by the condominium or building."
+      ]
+    },
+    {
+      "id": "services-that-must-be-defined",
+      "heading": "Services that must be defined",
+      "paragraphs": [
+        "The quote must clearly indicate the vehicle, the number of helpers, loading, unloading and protection of items.",
+        "Disassembly, assembly, packing, materials and additional equipment must be agreed before the move date."
+      ],
+      "items": [
+        {
+          "title": "Helpers",
+          "text": "Confirm how many people will participate in loading and unloading."
+        },
+        {
+          "title": "Disassembly and assembly",
+          "text": "Identify the furniture covered and who will perform each task."
+        },
+        {
+          "title": "Packing and protection",
+          "text": "Confirm materials for furniture, appliances and fragile items."
+        },
+        {
+          "title": "Additional equipment",
+          "text": "Inform about heavy parts or access that may require specific means."
+        }
+      ]
+    },
+    {
+      "id": "how-to-compare-proposals-for-a-change-in-oeiras",
+      "heading": "How to compare quotes for a move in Oeiras",
+      "paragraphs": [
+        "Send the same description to all carriers, including area, inventory, access, distance to the vehicle and necessary tasks.",
+        "Compare the price together with the vehicle, the team, the services included, the schedule and the conditions for changing the order."
+      ],
+      "checklist": [
+        "The origin and destination are the same.",
+        "The inventory considered is identical.",
+        "Access and parking were described.",
+        "The number of helpers is indicated.",
+        "Additional services are detailed.",
+        "The price and conditions are recorded in writing."
+      ]
+    },
+    {
+      "id": "how-to-request-proposals-through-cargopt",
+      "heading": "How to request quotes through CargoPT",
+      "paragraphs": [
+        "At CargoPT, you can describe a move in Oeiras once, including the area, load, access and necessary tasks.",
+        "Carriers submit their own quotes and the customer can compare responses based on the same description."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Describe your move to Oeiras",
+    "text": "Indicate the area, items, access, possible parking and necessary services.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Is it enough to just indicate that the move is in Oeiras?",
+      "answer": "No. Indicate the specific area or street when collecting and delivering, as access and distance to the vehicle may vary."
+    },
+    {
+      "question": "What details should I confirm about the property?",
+      "answer": "Check floors, stairs, width of doors and corridors, curves, lifts, gates and access to the garage."
+    },
+    {
+      "question": "Does the distance to the vehicle influence the service?",
+      "answer": "Yes. A long, inclined or stepped route increases manual handling and may require more time or helpers."
+    },
+    {
+      "question": "When should I send photos?",
+      "answer": "Send photographs of large furniture, special items, stairs, narrow doors and other difficult access."
+    },
+    {
+      "question": "How to compare different quotes?",
+      "answer": "Confirm that they all consider the same load, the same access, the same number of helpers and the same services."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Mudanças em Oeiras — Portuguese version",
+      "href": "/mudancas-oeiras/",
+      "type": "guide"
+    },
+    {
+      "title": "Переезды в Оейраше",
+      "href": "/ru/guides/pereezdy-oeirash/",
+      "type": "guide"
+    },
+    {
+      "title": "How much does a move cost in Lisbon?",
+      "href": "/en/guides/moving-cost-lisbon/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare quotes for your move in Oeiras",
+    "text": "Describe the area, load, access and tasks to receive quotes for the same service.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "moving-services-oeiras",
+  "alternates": {
+    "pt-PT": "/mudancas-oeiras/",
+    "en": "/en/guides/moving-services-oeiras/",
+    "ru": "/ru/guides/pereezdy-oeirash/"
+  }
+}

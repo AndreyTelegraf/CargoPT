@@ -183,13 +183,13 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças de Lisboa para o Porto",
-      "href": "/mudancas-lisboa-porto/",
-      "type": "landing"
+      "title": "Moving from Lisbon to Cascais — versão em inglês",
+      "href": "/en/guides/moving-lisbon-to-cascais/",
+      "type": "guide"
     },
     {
-      "title": "Mudanças em Faro",
-      "href": "/guias/cidades/mudancas-faro/",
+      "title": "Переезд из Лиссабона в Кашкайш — versão em russo",
+      "href": "/ru/guides/pereezd-lissabon-kashkaysh/",
       "type": "guide"
     },
     {
@@ -208,5 +208,11 @@
     "text": "Descreva a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-lisbon-cascais",
+  "alternates": {
+    "pt-PT": "/mudancas-lisboa-cascais/",
+    "en": "/en/guides/moving-lisbon-to-cascais/",
+    "ru": "/ru/guides/pereezd-lissabon-kashkaysh/"
   }
 }

@@ -182,14 +182,14 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças de Lisboa para Cascais",
-      "href": "/mudancas-lisboa-cascais/",
-      "type": "landing"
+      "title": "Moving services in Sintra — versão em inglês",
+      "href": "/en/guides/moving-services-sintra/",
+      "type": "guide"
     },
     {
-      "title": "Mudanças de Lisboa para o Porto",
-      "href": "/mudancas-lisboa-porto/",
-      "type": "landing"
+      "title": "Переезды в Синтре — versão em russo",
+      "href": "/ru/guides/pereezdy-sintra/",
+      "type": "guide"
     },
     {
       "title": "Como preparar uma mudança",
@@ -207,5 +207,11 @@
     "text": "Descreva a zona, a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-services-sintra",
+  "alternates": {
+    "pt-PT": "/mudancas-sintra/",
+    "en": "/en/guides/moving-services-sintra/",
+    "ru": "/ru/guides/pereezdy-sintra/"
   }
 }
