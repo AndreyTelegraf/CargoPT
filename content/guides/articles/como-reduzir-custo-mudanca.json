@@ -116,13 +116,13 @@
   ],
   "related_links": [
     {
-      "title": "Como pedir um orçamento de mudança",
-      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "title": "How to reduce the cost of a move — versão em inglês",
+      "href": "/en/guides/how-to-reduce-moving-cost/",
       "type": "guide"
     },
     {
-      "title": "Quanto custa uma mudança em Portugal?",
-      "href": "/guias/precos/quanto-custa-uma-mudanca/",
+      "title": "Как снизить стоимость переезда — versão em russo",
+      "href": "/ru/guides/kak-snizit-stoimost-pereezda/",
       "type": "guide"
     },
     {
@@ -141,5 +141,11 @@
     "text": "Descreva a carga, os acessos e as tarefas necessárias para comparar propostas sem omissões.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "reduce-moving-cost",
+  "alternates": {
+    "pt-PT": "/guias/precos/como-reduzir-custo-mudanca/",
+    "en": "/en/guides/how-to-reduce-moving-cost/",
+    "ru": "/ru/guides/kak-snizit-stoimost-pereezda/"
   }
 }

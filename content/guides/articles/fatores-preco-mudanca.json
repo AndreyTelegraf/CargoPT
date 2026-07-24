@@ -191,13 +191,13 @@
   ],
   "related_links": [
     {
-      "title": "Quanto custa uma mudança no Porto?",
-      "href": "/guias/precos/quanto-custa-mudanca-porto/",
+      "title": "What affects the cost of a move? — versão em inglês",
+      "href": "/en/guides/moving-price-factors/",
       "type": "guide"
     },
     {
-      "title": "Como pedir um orçamento de mudança",
-      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "title": "Что влияет на стоимость переезда? — versão em russo",
+      "href": "/ru/guides/faktory-stoimosti-pereezda/",
       "type": "guide"
     },
     {
@@ -216,5 +216,11 @@
     "text": "Descreva a carga, os acessos e os serviços necessários uma vez e compare as propostas disponíveis.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-price-factors",
+  "alternates": {
+    "pt-PT": "/guias/precos/fatores-preco-mudanca/",
+    "en": "/en/guides/moving-price-factors/",
+    "ru": "/ru/guides/faktory-stoimosti-pereezda/"
   }
 }

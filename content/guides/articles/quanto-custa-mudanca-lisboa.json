@@ -136,13 +136,13 @@
   ],
   "related_links": [
     {
-      "title": "Quanto custa uma mudança em Portugal?",
-      "href": "/guias/precos/quanto-custa-uma-mudanca/",
+      "title": "How much does a move cost in Lisbon? — versão em inglês",
+      "href": "/en/guides/moving-cost-lisbon/",
       "type": "guide"
     },
     {
-      "title": "Quanto custa uma mudança no Porto?",
-      "href": "/guias/precos/quanto-custa-mudanca-porto/",
+      "title": "Сколько стоит переезд в Лиссабоне? — versão em russo",
+      "href": "/ru/guides/stoimost-pereezda-lissabon/",
       "type": "guide"
     },
     {
@@ -161,5 +161,11 @@
     "text": "Descreva uma vez a carga, os acessos e os serviços necessários e compare as propostas disponíveis.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "moving-cost-lisbon",
+  "alternates": {
+    "pt-PT": "/guias/precos/quanto-custa-mudanca-lisboa/",
+    "en": "/en/guides/moving-cost-lisbon/",
+    "ru": "/ru/guides/stoimost-pereezda-lissabon/"
   }
 }

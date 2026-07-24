@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "id": "request-moving-quote-en",
+  "locale": "en",
+  "cluster": "prices",
+  "path": "/en/guides/how-to-request-a-moving-quote/",
+  "title": "How to request a moving quote",
+  "meta_title": "How to request a moving quote — CargoPT",
+  "meta_description": "Learn what information to provide to receive clear, complete and comparable moving quotes.",
+  "primary_query": "moving quote",
+  "intent": [
+    "informational",
+    "commercial",
+    "transactional"
+  ],
+  "article_section": "Prices and costs",
+  "eyebrow": "Moving quotes",
+  "hero_description": "A complete request helps the carrier understand the work required and reduces questions, omissions and differences between your description and the actual service.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "translation_group": "request-moving-quote",
+  "alternates": {
+    "pt-PT": "/guias/precos/como-pedir-orcamento-mudanca/",
+    "en": "/en/guides/how-to-request-a-moving-quote/",
+    "ru": "/ru/guides/kak-zaprosit-predlozhenie-na-pereezd/"
+  },
+  "direct_answer_heading": "Describe the same service to every carrier",
+  "key_points_heading": "Essential information for receiving useful quotes",
+  "faq_heading": "Questions about requesting moving quotes",
+  "related_links_heading": "Related guides and services",
+  "direct_answer": "To request a moving quote, provide the collection and delivery address or location, preferred date, list of items, floors, lift availability, distance to where the vehicle can stop and any additional services required. Include photographs when there is large furniture, heavy objects, narrow access or other conditions that are difficult to explain in text alone. Send the same description to every carrier so that their quotes cover the same work and can be compared.",
+  "key_points": [
+    "Clearly identify the collection and delivery locations.",
+    "Send a specific list of items, including large, heavy or fragile pieces.",
+    "State the floors, lifts, stairs and distance to the loading area.",
+    "Say whether you need helpers, dismantling, assembly or packing.",
+    "Compare the scope of service, not only the final price."
+  ],
+  "sections": [
+    {
+      "id": "initial-information",
+      "heading": "What information should the first request include?",
+      "paragraphs": [
+        "The first contact should allow the carrier to understand where the service will take place, when it should happen and what load will be moved. A request such as “I need a move in Lisbon” does not contain enough information for a specific quote.",
+        "You do not need to know the exact weight or total volume in advance. However, provide enough detail for the carrier to estimate the vehicle, number of people and working time."
+      ],
+      "checklist": [
+        "Exact or approximate collection location.",
+        "Exact or approximate delivery location.",
+        "Preferred date and any alternative dates.",
+        "Type of service: full move or partial transport.",
+        "List of the main items.",
+        "Approximate number of boxes and small packages.",
+        "Large, heavy, fragile or dismantled objects.",
+        "Floor and access conditions at both locations.",
+        "Availability and approximate size of lifts.",
+        "Additional services required."
+      ]
+    },
+    {
+      "id": "inventory",
+      "heading": "How to describe the items in your move",
+      "paragraphs": [
+        "A room-by-room description is usually clearer than a generic sentence. You can separate the living room, bedrooms, kitchen, office, storage area and boxes.",
+        "For larger items, state the type and approximate dimensions when relevant. Photographs help show the shape, whether the item is dismantled and how difficult it may be to move."
+      ],
+      "items": [
+        {
+          "title": "Furniture",
+          "text": "List sofas, beds, mattresses, tables, wardrobes, shelving units and other large furniture."
+        },
+        {
+          "title": "Appliances",
+          "text": "List the refrigerator, washing machine, oven, television and other relevant equipment."
+        },
+        {
+          "title": "Boxes and small packages",
+          "text": "Provide an approximate quantity even if not all of them have been packed yet."
+        },
+        {
+          "title": "Special items",
+          "text": "Identify pianos, safes, fragile pieces, artwork or objects that require extra care."
+        }
+      ]
+    },
+    {
+      "id": "access",
+      "heading": "Which access details change the service?",
+      "paragraphs": [
+        "Access affects how items will be moved. The carrier needs to know whether a lift can be used, how many flights of stairs there are and whether large furniture fits through doors and corridors.",
+        "Also state where the vehicle can stop. When there is a considerable distance between the entrance and loading area, helpers must carry items farther."
+      ],
+      "items": [
+        {
+          "title": "Floors",
+          "text": "State the floor at collection and delivery, including ground floor, basement or intermediate levels."
+        },
+        {
+          "title": "Lifts",
+          "text": "Confirm whether they are available, working and large enough for the main items."
+        },
+        {
+          "title": "Stairs and corridors",
+          "text": "Mention narrow stairs, tight turns, small doors or other obstacles."
+        },
+        {
+          "title": "Parking",
+          "text": "Explain whether the vehicle can stop by the entrance or whether items must be carried farther."
+        }
+      ]
+    },
+    {
+      "id": "included-services",
+      "heading": "Which services should you confirm in the quote?",
+      "paragraphs": [
+        "Not every quote includes the same tasks. One may cover only a vehicle and driver, while another includes helpers, loading, unloading, dismantling and protective materials.",
+        "Before comparing prices, confirm in writing what each carrier will do and which tasks remain your responsibility."
+      ],
+      "items": [
+        {
+          "title": "Loading and unloading",
+          "text": "Confirm the number of helpers and who will move items between the property and vehicle."
+        },
+        {
+          "title": "Dismantling and assembly",
+          "text": "Identify in advance which furniture needs to be dismantled or assembled."
+        },
+        {
+          "title": "Packing",
+          "text": "Confirm whether the team packs belongings and whether boxes, blankets, film or other materials are included."
+        },
+        {
+          "title": "Additional equipment",
+          "text": "Platforms, external lifts or other equipment should be identified before the service."
+        }
+      ]
+    },
+    {
+      "id": "compare",
+      "heading": "How to compare the quotes you receive",
+      "paragraphs": [
+        "Two quotes are directly comparable only when based on the same information. If one carrier does not know about a floor without a lift or a heavy item, the price may not represent the complete service.",
+        "Review the proposed vehicle, number of helpers, included tasks, date, payment terms and how changes to the inventory or schedule are handled."
+      ],
+      "checklist": [
+        "The same inventory was considered.",
+        "Access conditions were described in the same way.",
+        "The number of helpers is specified.",
+        "Loading and unloading responsibilities are clear.",
+        "Dismantling, assembly and packing are specified.",
+        "Materials and additional equipment are identified.",
+        "The price and agreed conditions are recorded in writing."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "How to request quotes through CargoPT",
+      "paragraphs": [
+        "With CargoPT, you describe the move once. The request can then be sent to independent carriers suited to the stated requirements.",
+        "Each carrier sets its own quote. You can compare the available responses before choosing while keeping one common description of the service."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare a complete request",
+    "text": "Provide the route, items, access and required services to receive quotes for the same work.",
+    "label": "Describe your move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Do I need to know the exact volume of the move?",
+      "answer": "No. You can provide a list of items, an estimated number of boxes and photographs. The more specific the description, the more useful the quote."
+    },
+    {
+      "question": "Should I send photographs when requesting a quote?",
+      "answer": "They are especially useful for large furniture, heavy objects, fragile pieces and difficult access. Photographs supplement but do not replace the service description."
+    },
+    {
+      "question": "Should the quote state the number of helpers?",
+      "answer": "It is advisable to confirm how many people will take part in loading and unloading and which tasks the team will perform."
+    },
+    {
+      "question": "How do I compare quotes with different prices?",
+      "answer": "First confirm that all of them include the same inventory, access conditions, number of helpers and additional services."
+    },
+    {
+      "question": "Can the price change if I add items?",
+      "answer": "Items or conditions not included in the original request can change the work required. Report any change before the service date and confirm the new scope in writing."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "How to request a moving quote — Portuguese version",
+      "href": "/guias/precos/como-pedir-orcamento-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "How to request a moving quote — Russian version",
+      "href": "/ru/guides/kak-zaprosit-predlozhenie-na-pereezd/",
+      "type": "guide"
+    },
+    {
+      "title": "How to reduce moving costs",
+      "href": "/en/guides/how-to-reduce-moving-cost/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Request quotes for your move",
+    "text": "Describe the locations, items, access and required services once. Then compare the available quotes.",
+    "label": "Receive quotes",
+    "href": "/#request"
+  }
+}

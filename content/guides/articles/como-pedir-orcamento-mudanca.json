@@ -186,13 +186,13 @@
   ],
   "related_links": [
     {
-      "title": "O que influencia o preço de uma mudança?",
-      "href": "/guias/precos/fatores-preco-mudanca/",
+      "title": "How to request a moving quote — versão em inglês",
+      "href": "/en/guides/how-to-request-a-moving-quote/",
       "type": "guide"
     },
     {
-      "title": "Como reduzir o custo de uma mudança",
-      "href": "/guias/precos/como-reduzir-custo-mudanca/",
+      "title": "Как запросить расчёт стоимости переезда — versão em russo",
+      "href": "/ru/guides/kak-zaprosit-predlozhenie-na-pereezd/",
       "type": "guide"
     },
     {
@@ -211,5 +211,11 @@
     "text": "Descreva uma vez os locais, os objetos, os acessos e os serviços necessários. Depois compare as propostas disponíveis.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "request-moving-quote",
+  "alternates": {
+    "pt-PT": "/guias/precos/como-pedir-orcamento-mudanca/",
+    "en": "/en/guides/how-to-request-a-moving-quote/",
+    "ru": "/ru/guides/kak-zaprosit-predlozhenie-na-pereezd/"
   }
 }

@@ -142,12 +142,12 @@
     ],
     "como-pedir-orcamento-mudanca": [
       {
-        "target": "fatores-preco-mudanca",
+        "target": "request-moving-quote-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "como-reduzir-custo-mudanca",
+        "target": "kak-zaprosit-predlozhenie-na-pereezd-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -186,12 +186,12 @@
     ],
     "como-reduzir-custo-mudanca": [
       {
-        "target": "como-pedir-orcamento-mudanca",
+        "target": "how-to-reduce-moving-cost-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "quanto-custa-uma-mudanca",
+        "target": "kak-snizit-stoimost-pereezda-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -252,12 +252,12 @@
     ],
     "fatores-preco-mudanca": [
       {
-        "target": "quanto-custa-mudanca-porto",
+        "target": "moving-price-factors-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "como-pedir-orcamento-mudanca",
+        "target": "faktory-stoimosti-pereezda-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -890,12 +890,12 @@
     ],
     "quanto-custa-mudanca-lisboa": [
       {
-        "target": "quanto-custa-uma-mudanca",
+        "target": "moving-cost-lisbon-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "quanto-custa-mudanca-porto",
+        "target": "stoimost-pereezda-lissabon-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -912,12 +912,12 @@
     ],
     "quanto-custa-mudanca-porto": [
       {
-        "target": "quanto-custa-mudanca-lisboa",
+        "target": "moving-cost-porto-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "fatores-preco-mudanca",
+        "target": "stoimost-pereezda-portu-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -1473,6 +1473,226 @@
       },
       {
         "target": "gruzoperevozki-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "request-moving-quote-en": [
+      {
+        "target": "como-pedir-orcamento-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-zaprosit-predlozhenie-na-pereezd-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-to-reduce-moving-cost-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-zaprosit-predlozhenie-na-pereezd-ru": [
+      {
+        "target": "como-pedir-orcamento-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "request-moving-quote-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-snizit-stoimost-pereezda-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "how-to-reduce-moving-cost-en": [
+      {
+        "target": "como-reduzir-custo-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-snizit-stoimost-pereezda-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-much-does-a-move-cost-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-snizit-stoimost-pereezda-ru": [
+      {
+        "target": "como-reduzir-custo-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "how-to-reduce-moving-cost-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "skolko-stoit-pereezd-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-price-factors-en": [
+      {
+        "target": "fatores-preco-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "faktory-stoimosti-pereezda-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-cost-porto-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "faktory-stoimosti-pereezda-ru": [
+      {
+        "target": "fatores-preco-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-price-factors-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "stoimost-pereezda-portu-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-cost-lisbon-en": [
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "stoimost-pereezda-lissabon-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-services-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "stoimost-pereezda-lissabon-ru": [
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-cost-lisbon-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "gruzoperevozki-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-cost-porto-en": [
+      {
+        "target": "quanto-custa-mudanca-porto",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "stoimost-pereezda-portu-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "mudancas-porto",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "stoimost-pereezda-portu-ru": [
+      {
+        "target": "quanto-custa-mudanca-porto",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-cost-porto-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "mudancas-porto",
         "reason": "authority",
         "priority": 3
       },

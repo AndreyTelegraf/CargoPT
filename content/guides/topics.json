@@ -1362,6 +1362,210 @@
         "how-much-does-a-move-cost-en",
         "gruzoperevozki-lissabon-ru"
       ]
+    },
+    {
+      "id": "request-moving-quote-en",
+      "cluster": "prices",
+      "title": "How to request a moving quote",
+      "slug": "request-moving-quote-en",
+      "path": "/en/guides/how-to-request-a-moving-quote/",
+      "primary_query": "moving quote",
+      "intent": [
+        "informational",
+        "commercial",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "como-pedir-orcamento-mudanca",
+        "kak-zaprosit-predlozhenie-na-pereezd-ru",
+        "how-to-reduce-moving-cost-en"
+      ]
+    },
+    {
+      "id": "kak-zaprosit-predlozhenie-na-pereezd-ru",
+      "cluster": "prices",
+      "title": "Как запросить расчёт стоимости переезда",
+      "slug": "kak-zaprosit-predlozhenie-na-pereezd-ru",
+      "path": "/ru/guides/kak-zaprosit-predlozhenie-na-pereezd/",
+      "primary_query": "расчёт стоимости переезда",
+      "intent": [
+        "informational",
+        "commercial",
+        "transactional"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "como-pedir-orcamento-mudanca",
+        "request-moving-quote-en",
+        "kak-snizit-stoimost-pereezda-ru"
+      ]
+    },
+    {
+      "id": "how-to-reduce-moving-cost-en",
+      "cluster": "prices",
+      "title": "How to reduce the cost of a move",
+      "slug": "how-to-reduce-moving-cost-en",
+      "path": "/en/guides/how-to-reduce-moving-cost/",
+      "primary_query": "how to save money on a move",
+      "intent": [
+        "informational"
+      ],
+      "priority": 2,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "como-reduzir-custo-mudanca",
+        "kak-snizit-stoimost-pereezda-ru",
+        "how-much-does-a-move-cost-en"
+      ]
+    },
+    {
+      "id": "kak-snizit-stoimost-pereezda-ru",
+      "cluster": "prices",
+      "title": "Как снизить стоимость переезда",
+      "slug": "kak-snizit-stoimost-pereezda-ru",
+      "path": "/ru/guides/kak-snizit-stoimost-pereezda/",
+      "primary_query": "как сэкономить на переезде",
+      "intent": [
+        "informational"
+      ],
+      "priority": 2,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "como-reduzir-custo-mudanca",
+        "how-to-reduce-moving-cost-en",
+        "skolko-stoit-pereezd-ru"
+      ]
+    },
+    {
+      "id": "moving-price-factors-en",
+      "cluster": "prices",
+      "title": "What affects the cost of a move?",
+      "slug": "moving-price-factors-en",
+      "path": "/en/guides/moving-price-factors/",
+      "primary_query": "what affects moving cost",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "fatores-preco-mudanca",
+        "faktory-stoimosti-pereezda-ru",
+        "moving-cost-porto-en"
+      ]
+    },
+    {
+      "id": "faktory-stoimosti-pereezda-ru",
+      "cluster": "prices",
+      "title": "Что влияет на стоимость переезда?",
+      "slug": "faktory-stoimosti-pereezda-ru",
+      "path": "/ru/guides/faktory-stoimosti-pereezda/",
+      "primary_query": "что влияет на стоимость переезда",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "fatores-preco-mudanca",
+        "moving-price-factors-en",
+        "stoimost-pereezda-portu-ru"
+      ]
+    },
+    {
+      "id": "moving-cost-lisbon-en",
+      "cluster": "prices",
+      "title": "How much does a move cost in Lisbon?",
+      "slug": "moving-cost-lisbon-en",
+      "path": "/en/guides/moving-cost-lisbon/",
+      "primary_query": "moving cost Lisbon",
+      "intent": [
+        "local",
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "quanto-custa-mudanca-lisboa",
+        "stoimost-pereezda-lissabon-ru",
+        "moving-services-lisbon-en"
+      ]
+    },
+    {
+      "id": "stoimost-pereezda-lissabon-ru",
+      "cluster": "prices",
+      "title": "Сколько стоит переезд в Лиссабоне?",
+      "slug": "stoimost-pereezda-lissabon-ru",
+      "path": "/ru/guides/stoimost-pereezda-lissabon/",
+      "primary_query": "стоимость переезда Лиссабон",
+      "intent": [
+        "local",
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "quanto-custa-mudanca-lisboa",
+        "moving-cost-lisbon-en",
+        "gruzoperevozki-lissabon-ru"
+      ]
+    },
+    {
+      "id": "moving-cost-porto-en",
+      "cluster": "prices",
+      "title": "How much does a move cost in Porto?",
+      "slug": "moving-cost-porto-en",
+      "path": "/en/guides/moving-cost-porto/",
+      "primary_query": "moving cost Porto",
+      "intent": [
+        "local",
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "quanto-custa-mudanca-porto",
+        "stoimost-pereezda-portu-ru",
+        "mudancas-porto"
+      ]
+    },
+    {
+      "id": "stoimost-pereezda-portu-ru",
+      "cluster": "prices",
+      "title": "Сколько стоит переезд в Порту?",
+      "slug": "stoimost-pereezda-portu-ru",
+      "path": "/ru/guides/stoimost-pereezda-portu/",
+      "primary_query": "стоимость переезда Порту",
+      "intent": [
+        "local",
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "quanto-custa-mudanca-porto",
+        "moving-cost-porto-en",
+        "mudancas-porto"
+      ]
     }
   ]
 }

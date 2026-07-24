@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "id": "moving-cost-lisbon-en",
+  "locale": "en",
+  "cluster": "prices",
+  "path": "/en/guides/moving-cost-lisbon/",
+  "title": "How much does a move cost in Lisbon?",
+  "meta_title": "How Much Does a Move Cost in Lisbon? — CargoPT",
+  "meta_description": "Understand what affects the cost of a move in Lisbon and which information you should provide to compare offers.",
+  "primary_query": "moving cost Lisbon",
+  "intent": [
+    "local",
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Moving prices and costs",
+  "eyebrow": "Moving costs in Lisbon",
+  "hero_description": "The cost depends on the load, access conditions, distance, required team and included services. A complete description allows you to compare offers for the same work.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "There is no single price for a move in Lisbon",
+  "key_points_heading": "Key points",
+  "faq_heading": "Frequently asked questions",
+  "related_links_heading": "Related guides and services",
+  "direct_answer": "The cost of a move in Lisbon varies according to the volume and type of items, pickup and delivery locations, floors, lifts, whether the vehicle can park near the properties, the number of movers and services such as dismantling, assembly or packing. To receive comparable offers, send every carrier the same description of the service.",
+  "key_points": [
+    "The quantity and type of items determine the vehicle and team.",
+    "Floors, lifts and stairs change the work required.",
+    "The carrying distance between the vehicle and entrance must be stated.",
+    "Dismantling, assembly and packing should be specified.",
+    "Always compare the scope of the offer, not only the price."
+  ],
+  "translation_group": "moving-cost-lisbon",
+  "alternates": {
+    "pt-PT": "/guias/precos/quanto-custa-mudanca-lisboa/",
+    "en": "/en/guides/moving-cost-lisbon/",
+    "ru": "/ru/guides/stoimost-pereezda-lissabon/"
+  },
+  "sections": [
+    {
+      "id": "main-factors",
+      "heading": "What determines the cost of a move?",
+      "paragraphs": [
+        "The carrier estimates the service from the load, access, route, number of people and expected working time.",
+        "An incomplete description may lead to an offer that does not cover all the work required."
+      ],
+      "items": [
+        {
+          "title": "Load",
+          "text": "Furniture, appliances, boxes and special items affect the vehicle and duration."
+        },
+        {
+          "title": "Access",
+          "text": "Upper floors without a lift, narrow stairs and long carrying routes increase manual work."
+        },
+        {
+          "title": "Team",
+          "text": "The number of movers should match the weight, volume and conditions at the properties."
+        },
+        {
+          "title": "Services",
+          "text": "Packing, dismantling, assembly and materials should be confirmed separately."
+        }
+      ]
+    },
+    {
+      "id": "parking",
+      "heading": "Why is parking information important?",
+      "paragraphs": [
+        "Where the vehicle can stop affects the distance the team must carry the items.",
+        "State whether there is direct access, reserved parking or a longer carrying distance."
+      ]
+    },
+    {
+      "id": "inventory",
+      "heading": "How to prepare the inventory",
+      "paragraphs": [
+        "Organise the list by room and identify the main furniture and appliances.",
+        "Add an estimate of the number of boxes and photographs of large, heavy or fragile items."
+      ],
+      "checklist": [
+        "Sofas, beds, mattresses, tables and wardrobes.",
+        "Refrigerator, machines, television and other equipment.",
+        "Approximate number of boxes.",
+        "Heavy, fragile or irregularly shaped items.",
+        "Furniture that needs dismantling."
+      ]
+    },
+    {
+      "id": "compare-offers",
+      "heading": "How to compare offers for Lisbon",
+      "paragraphs": [
+        "Confirm that every offer was calculated using the same inventory, route and access conditions.",
+        "Also check the number of movers, included tasks, materials and conditions for changes."
+      ]
+    },
+    {
+      "id": "reduce-cost",
+      "heading": "How to avoid unnecessary costs",
+      "paragraphs": [
+        "Prepare boxes and small items in advance and remove anything you do not intend to move.",
+        "Make access easier, confirm parking and report changes before the service date."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "Requesting offers through CargoPT",
+      "paragraphs": [
+        "With CargoPT, you describe the move once and the request can be sent to suitable carriers.",
+        "Each carrier provides its own offer and you compare the available responses."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Describe your move in Lisbon",
+    "text": "Provide the locations, items, access and required services to receive offers for the same work.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Can I get a price without listing the items?",
+      "answer": "A generic description rarely allows the complete service to be estimated. Provide at least the main furniture, appliances and an estimate of the boxes."
+    },
+    {
+      "question": "Does an upper floor without a lift affect the offer?",
+      "answer": "Yes. Carrying items on stairs may require more time or more people and should be reported in advance."
+    },
+    {
+      "question": "Should parking be confirmed beforehand?",
+      "answer": "It is advisable to explain where the vehicle can stop and the distance to the property entrances."
+    },
+    {
+      "question": "Is furniture dismantling always included?",
+      "answer": "No. Confirm exactly which furniture will be dismantled or assembled and whether that work is included."
+    },
+    {
+      "question": "How should I compare different offers?",
+      "answer": "Check that they include the same inventory, access conditions, team, materials and additional services."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Quanto custa uma mudança em Lisboa?",
+      "href": "/guias/precos/quanto-custa-mudanca-lisboa/",
+      "type": "guide"
+    },
+    {
+      "title": "Сколько стоит переезд в Лиссабоне?",
+      "href": "/ru/guides/stoimost-pereezda-lissabon/",
+      "type": "guide"
+    },
+    {
+      "title": "Moving services in Lisbon",
+      "href": "/en/guides/moving-services-lisbon/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving offers",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare offers for your move in Lisbon",
+    "text": "Describe the load, access and required services once, then compare the available offers.",
+    "label": "Get offers",
+    "href": "/#request"
+  }
+}

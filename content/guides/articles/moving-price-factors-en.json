@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "id": "moving-price-factors-en",
+  "locale": "en",
+  "cluster": "prices",
+  "path": "/en/guides/moving-price-factors/",
+  "title": "What affects the cost of a move?",
+  "meta_title": "What affects the cost of a move? — CargoPT",
+  "meta_description": "Learn which factors affect moving costs, from load volume and property access to helpers and additional services.",
+  "primary_query": "what affects moving cost",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Prices and costs",
+  "eyebrow": "Price factors",
+  "hero_description": "The cost of a move depends on the work required to transport your belongings, conditions at both properties and the services included in the quote.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "translation_group": "moving-price-factors",
+  "alternates": {
+    "pt-PT": "/guias/precos/fatores-preco-mudanca/",
+    "en": "/en/guides/moving-price-factors/",
+    "ru": "/ru/guides/faktory-stoimosti-pereezda/"
+  },
+  "direct_answer_heading": "The price reflects the load, access and service combined",
+  "key_points_heading": "The factors that change a moving quote the most",
+  "faq_heading": "Questions about moving price factors",
+  "related_links_heading": "Related guides and services",
+  "direct_answer": "The cost of a move is affected by the volume and type of items, the distance between collection and delivery, the number of helpers, the time required and access conditions at the properties. Floors without a lift, narrow corridors, distant parking, furniture that must be dismantled and heavy objects can increase the workload. Services such as packing, assembly, protective materials and additional equipment should also be considered. To compare quotes, give every carrier the same details and confirm in writing what is included.",
+  "key_points": [
+    "The volume and type of items determine the vehicle and space required.",
+    "Distance and estimated duration affect use of the vehicle and team.",
+    "Floors, lifts, stairs and parking change the difficulty of the service.",
+    "Helpers, dismantling, assembly and packing should be identified in the quote.",
+    "Quotes are comparable only when they describe the same work."
+  ],
+  "sections": [
+    {
+      "id": "load-volume-type",
+      "heading": "How do load volume and type affect the price?",
+      "paragraphs": [
+        "The approximate volume helps determine the type of vehicle and number of trips required. A move with only a few items may need a different solution from moving an entire home.",
+        "The type of items also matters. Large, fragile, heavy or difficult-to-stack pieces can occupy more space and require extra care during loading and transport."
+      ],
+      "items": [
+        {
+          "title": "Quantity of belongings",
+          "text": "More boxes, furniture and appliances generally require more space and working time."
+        },
+        {
+          "title": "Dimensions",
+          "text": "Bulky furniture can limit how the load is arranged and require a larger vehicle."
+        },
+        {
+          "title": "Weight",
+          "text": "Heavy objects may require more people or specific equipment to move them."
+        },
+        {
+          "title": "Fragility",
+          "text": "Fragile pieces may need protection, securing and more careful handling."
+        }
+      ]
+    },
+    {
+      "id": "distance-time",
+      "heading": "What effect do distance and working time have?",
+      "paragraphs": [
+        "The route between the two locations affects vehicle time, fuel and team availability. Travel should be considered together with the time needed for loading and unloading.",
+        "A short journey can still take many hours when there are numerous items or difficult access. Conversely, a simple service may cover a longer distance but involve less manual work."
+      ],
+      "items": [
+        {
+          "title": "Route distance",
+          "text": "The journey between collection and delivery affects time and vehicle use."
+        },
+        {
+          "title": "Loading time",
+          "text": "The quantity of items and how well they are prepared affect time at the collection point."
+        },
+        {
+          "title": "Unloading time",
+          "text": "Distributing items at the destination can also extend the service."
+        }
+      ]
+    },
+    {
+      "id": "property-access",
+      "heading": "Why is access to the properties important?",
+      "paragraphs": [
+        "Access conditions determine how much manual work is required. State the floor, whether there is a lift and any obstacles at both locations.",
+        "Also describe the distance between the entrance and the place where the vehicle can stop. A long route on foot can increase loading and unloading time."
+      ],
+      "checklist": [
+        "Floor at collection and delivery.",
+        "Availability and size of lifts.",
+        "Number of flights of stairs.",
+        "Narrow doors, corridors or turns.",
+        "Distance between the entrance and vehicle.",
+        "Parking or access restrictions."
+      ]
+    },
+    {
+      "id": "team-services",
+      "heading": "How do the team and additional services change a quote?",
+      "paragraphs": [
+        "A quote may cover transport only or also include loading, unloading and other work. The number of people should match the volume, item weight and conditions at the properties.",
+        "Additional services should be agreed before the move. If they are not clearly described, two differently priced quotes may represent very different scopes of work."
+      ],
+      "items": [
+        {
+          "title": "Helpers",
+          "text": "The number of people affects handling capacity and the duration of the service."
+        },
+        {
+          "title": "Dismantling and assembly",
+          "text": "Furniture that requires intervention adds tasks before and after transport."
+        },
+        {
+          "title": "Packing",
+          "text": "Boxes can be prepared and belongings protected either by the customer or the team."
+        },
+        {
+          "title": "Equipment",
+          "text": "Platforms, external lifts and other equipment should be planned in advance."
+        }
+      ]
+    },
+    {
+      "id": "date-availability",
+      "heading": "Can the date and flexibility affect the service?",
+      "paragraphs": [
+        "Carrier availability varies according to the day, time, estimated duration and how far in advance the request is made. A fixed date reduces the available alternatives.",
+        "If you have flexibility, provide alternative dates or times. This allows each carrier to assess actual availability before submitting a quote."
+      ],
+      "checklist": [
+        "Preferred moving date.",
+        "Required start time.",
+        "Possible alternative dates.",
+        "Building access restrictions.",
+        "Time available to complete the service."
+      ]
+    },
+    {
+      "id": "compare-quotes",
+      "heading": "How can you compare quotes with different factors?",
+      "paragraphs": [
+        "Before comparing the final price, check that all carriers received the same description of the load, access and required services.",
+        "Check the proposed vehicle, number of helpers, included tasks, materials, equipment and conditions that apply if the request changes."
+      ],
+      "checklist": [
+        "The same list of items was considered.",
+        "Access was described at both locations.",
+        "The number of helpers is specified.",
+        "Loading and unloading are included or excluded.",
+        "Additional services are specified.",
+        "The agreed conditions are recorded in writing."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "How CargoPT helps you receive comparable quotes",
+      "paragraphs": [
+        "With CargoPT, you describe the move once, including the route, items, access and required services.",
+        "Independent carriers can submit their own quotes based on that common description, allowing you to compare the scope of each service before choosing."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Describe every factor in your move",
+    "text": "Provide the items, access, route and required services to receive quotes for the same scope of work.",
+    "label": "Describe your move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Is volume the main factor in the cost of a move?",
+      "answer": "It is one of the main factors, but it should be considered together with distance, access, number of helpers and included services."
+    },
+    {
+      "question": "Can a floor without a lift change the quote?",
+      "answer": "Yes. Stairs and other difficult access can increase the manual work and time needed for loading or unloading."
+    },
+    {
+      "question": "Is furniture dismantling always included?",
+      "answer": "No. Identify in advance which furniture must be dismantled and confirm whether that work is included in the quote."
+    },
+    {
+      "question": "Does parking close to the property matter?",
+      "answer": "Yes. If the vehicle cannot stop near the entrance, items must be carried manually over a longer distance."
+    },
+    {
+      "question": "How can I avoid quotes based on different scopes of work?",
+      "answer": "Send the same description to every carrier and confirm the inventory, access, helpers and included services."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "What affects the cost of a move? — Portuguese version",
+      "href": "/guias/precos/fatores-preco-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "What affects the cost of a move? — Russian version",
+      "href": "/ru/guides/faktory-stoimosti-pereezda/",
+      "type": "guide"
+    },
+    {
+      "title": "Moving cost in Porto",
+      "href": "/en/guides/moving-cost-porto/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Receive quotes for your move",
+    "text": "Describe the load, access and required services once, then compare the available quotes.",
+    "label": "Receive quotes",
+    "href": "/#request"
+  }
+}

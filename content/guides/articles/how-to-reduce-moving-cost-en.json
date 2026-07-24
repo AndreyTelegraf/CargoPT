@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "id": "how-to-reduce-moving-cost-en",
+  "locale": "en",
+  "cluster": "prices",
+  "path": "/en/guides/how-to-reduce-moving-cost/",
+  "title": "How to reduce the cost of a move",
+  "meta_title": "How to Reduce the Cost of a Move — CargoPT",
+  "meta_description": "Learn how to reduce unnecessary work, prepare your belongings and compare moving offers correctly.",
+  "primary_query": "how to save money on a move",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Moving prices and costs",
+  "eyebrow": "Saving on a move",
+  "hero_description": "Reducing the cost does not mean choosing only the lowest price. The aim is to reduce the work required without omitting important service conditions.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Save by reducing volume, time and additional tasks",
+  "key_points_heading": "Key points",
+  "faq_heading": "Frequently asked questions",
+  "related_links_heading": "Related guides and services",
+  "direct_answer": "To reduce the cost of a move, remove items you no longer want to transport, prepare boxes and small items in advance, dismantle only furniture you can safely reassemble, make access easier and provide a complete inventory. Compare offers with the same scope and confirm everything in writing.",
+  "key_points": [
+    "Move only the items you intend to keep.",
+    "Prepare boxes and small items before the team arrives.",
+    "Make parking and property access easier.",
+    "Avoid last-minute changes to the inventory.",
+    "Compare tasks, team and conditions as well as price."
+  ],
+  "translation_group": "reduce-moving-cost",
+  "alternates": {
+    "pt-PT": "/guias/precos/como-reduzir-custo-mudanca/",
+    "en": "/en/guides/how-to-reduce-moving-cost/",
+    "ru": "/ru/guides/kak-snizit-stoimost-pereezda/"
+  },
+  "sections": [
+    {
+      "id": "reduce-volume",
+      "heading": "Reduce the volume before requesting offers",
+      "paragraphs": [
+        "Items you no longer need increase the space required and the time spent loading and unloading.",
+        "Separate in advance everything that will be sold, donated, recycled or discarded."
+      ]
+    },
+    {
+      "id": "prepare-boxes",
+      "heading": "Prepare boxes and small items",
+      "paragraphs": [
+        "Packed, closed and labelled boxes are easier to handle.",
+        "Avoid boxes that are excessively heavy or do not provide adequate protection."
+      ],
+      "checklist": [
+        "Use sturdy boxes.",
+        "Distribute the weight between several boxes.",
+        "Protect fragile items.",
+        "Label the contents and destination room.",
+        "Close the boxes before the team arrives."
+      ]
+    },
+    {
+      "id": "dismantling",
+      "heading": "Consider dismantling furniture",
+      "paragraphs": [
+        "Dismantling some furniture in advance may reduce working time, but only when you can do it without damaging the parts.",
+        "Keep screws, fittings and instructions organised."
+      ]
+    },
+    {
+      "id": "access",
+      "heading": "Make access and parking easier",
+      "paragraphs": [
+        "Clear corridors, available lifts and a nearby loading area reduce unnecessary carrying.",
+        "Report restrictions, stairs and distances to the vehicle in advance."
+      ]
+    },
+    {
+      "id": "compare",
+      "heading": "Compare equivalent offers",
+      "paragraphs": [
+        "An offer is more economical only when it includes the work you actually need.",
+        "Check the number of movers, vehicle, materials, tasks and conditions that apply to changes."
+      ]
+    },
+    {
+      "id": "mistakes",
+      "heading": "Avoid savings that create additional costs",
+      "paragraphs": [
+        "Omitting items, floors or access difficulties may require the service to be changed on moving day.",
+        "A complete description protects both the customer and the carrier."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare a more efficient move",
+    "text": "Reduce the volume, organise the items and describe the work accurately before comparing offers.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Is moving on a weekday always cheaper?",
+      "answer": "There is no universal rule. Availability and price depend on each carrier, date and service."
+    },
+    {
+      "question": "Can I dismantle all the furniture myself?",
+      "answer": "Only dismantle furniture you can safely take apart and reassemble without losing fittings or damaging the parts."
+    },
+    {
+      "question": "Do fewer movers mean a lower cost?",
+      "answer": "Not always. An insufficient team may increase the time required or make handling heavy items unsuitable."
+    },
+    {
+      "question": "Should I automatically choose the lowest offer?",
+      "answer": "No. First confirm that it includes the same vehicle, team, tasks, materials and conditions."
+    },
+    {
+      "question": "Can last-minute changes increase the price?",
+      "answer": "They can change the work required. Report any change before the date and confirm the new conditions."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como reduzir o custo de uma mudança",
+      "href": "/guias/precos/como-reduzir-custo-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Как снизить стоимость переезда",
+      "href": "/ru/guides/kak-snizit-stoimost-pereezda/",
+      "type": "guide"
+    },
+    {
+      "title": "How much does a move cost in Portugal?",
+      "href": "/en/guides/how-much-does-a-move-cost/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving offers",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Receive offers for a well-prepared move",
+    "text": "Describe the load, access and required tasks to compare offers without omissions.",
+    "label": "Get offers",
+    "href": "/#request"
+  }
+}

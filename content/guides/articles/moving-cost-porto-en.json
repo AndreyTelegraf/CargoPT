@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "id": "moving-cost-porto-en",
+  "locale": "en",
+  "cluster": "prices",
+  "path": "/en/guides/moving-cost-porto/",
+  "title": "How much does a move cost in Porto?",
+  "meta_title": "How Much Does a Move Cost in Porto? — CargoPT",
+  "meta_description": "Learn what affects the cost of a move in Porto and prepare a complete request to compare offers.",
+  "primary_query": "moving cost Porto",
+  "intent": [
+    "local",
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Moving prices and costs",
+  "eyebrow": "Moving costs in Porto",
+  "hero_description": "The load, access, route, team and additional services determine the work required and should be described before an offer is prepared.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "The cost depends on the specific service conditions",
+  "key_points_heading": "Key points",
+  "faq_heading": "Frequently asked questions",
+  "related_links_heading": "Related guides and services",
+  "direct_answer": "A move in Porto does not have a single price. The cost depends on the inventory, distance, floors, lifts, stairs, loading area, number of movers and tasks such as packing, dismantling or assembly. The best way to compare offers is to provide the same information to every carrier.",
+  "key_points": [
+    "List the main furniture, appliances and boxes.",
+    "Describe access at pickup and delivery.",
+    "Explain where the vehicle can stop.",
+    "Confirm the number of movers and included services.",
+    "Record the scope and conditions of the offer in writing."
+  ],
+  "translation_group": "moving-cost-porto",
+  "alternates": {
+    "pt-PT": "/guias/precos/quanto-custa-mudanca-porto/",
+    "en": "/en/guides/moving-cost-porto/",
+    "ru": "/ru/guides/stoimost-pereezda-portu/"
+  },
+  "sections": [
+    {
+      "id": "estimate",
+      "heading": "How the service is estimated",
+      "paragraphs": [
+        "The offer should reflect the vehicle, team, time and equipment required to carry out the move.",
+        "The more specific the description, the lower the risk of differences between the request and the actual service."
+      ],
+      "items": [
+        {
+          "title": "Volume",
+          "text": "The number and size of the items help determine the vehicle."
+        },
+        {
+          "title": "Weight",
+          "text": "Heavy items may require more movers or specific equipment."
+        },
+        {
+          "title": "Access",
+          "text": "Stairs, lifts and corridors affect how the items can be moved."
+        },
+        {
+          "title": "Route",
+          "text": "Pickup and delivery locations should be clearly identified."
+        }
+      ]
+    },
+    {
+      "id": "access",
+      "heading": "Which access conditions should you describe?",
+      "paragraphs": [
+        "State the floor, availability and size of the lift, approximate number of stairs and any obstacles.",
+        "Also explain the distance between the entrance and the possible parking location."
+      ]
+    },
+    {
+      "id": "services",
+      "heading": "Services that may change the offer",
+      "paragraphs": [
+        "Loading, unloading, dismantling, assembly, packing and materials should not be assumed to be included.",
+        "Confirm in writing which tasks are included and which remain your responsibility."
+      ],
+      "checklist": [
+        "Number of movers.",
+        "Loading and unloading.",
+        "Dismantling and assembly.",
+        "Packing and materials.",
+        "Equipment for heavy items."
+      ]
+    },
+    {
+      "id": "comparison",
+      "heading": "How to compare the prices received",
+      "paragraphs": [
+        "A lower offer may include fewer tasks, fewer movers or different conditions.",
+        "Compare the complete service, availability, planned vehicle and how changes will be handled."
+      ]
+    },
+    {
+      "id": "preparation",
+      "heading": "How to prepare the move",
+      "paragraphs": [
+        "Finalise the inventory, prepare the boxes and identify fragile items before the agreed date.",
+        "Report any change in volume, access or timing in advance."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "Receiving offers through CargoPT",
+      "paragraphs": [
+        "CargoPT lets you describe the request once and send it to suitable carriers.",
+        "You keep one common description and compare the available offers."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare your moving request in Porto",
+    "text": "Include the inventory, access, route and required services so that the offers refer to the same work.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Do I need to know the total weight?",
+      "answer": "No. A detailed list of items, quantities and photographs is usually enough for an initial estimate."
+    },
+    {
+      "question": "Should I provide the size of the lift?",
+      "answer": "When possible, state whether the largest items fit in the lift and whether there are restrictions on its use."
+    },
+    {
+      "question": "How many movers are required?",
+      "answer": "It depends on the load, access and heavy items. The number should be confirmed in the offer."
+    },
+    {
+      "question": "Are packing materials included?",
+      "answer": "Not necessarily. Confirm whether boxes, blankets, film or other materials are included in the price."
+    },
+    {
+      "question": "What should I do if the inventory changes?",
+      "answer": "Report the change before the service and request confirmation of the new scope and price."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Quanto custa uma mudança no Porto?",
+      "href": "/guias/precos/quanto-custa-mudanca-porto/",
+      "type": "guide"
+    },
+    {
+      "title": "Сколько стоит переезд в Порту?",
+      "href": "/ru/guides/stoimost-pereezda-portu/",
+      "type": "guide"
+    },
+    {
+      "title": "Moving services in Porto",
+      "href": "/mudancas-porto/",
+      "type": "landing"
+    },
+    {
+      "title": "Request moving offers",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare offers for your move in Porto",
+    "text": "Send a complete description and compare offers prepared for the same inventory and conditions.",
+    "label": "Get offers",
+    "href": "/#request"
+  }
+}
