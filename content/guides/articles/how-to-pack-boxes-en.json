@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "id": "how-to-pack-boxes-en",
+  "locale": "en",
+  "cluster": "packing",
+  "path": "/en/guides/how-to-pack-boxes-for-moving/",
+  "title": "How to pack boxes for a move",
+  "meta_title": "How to pack boxes for a move — CargoPT",
+  "meta_description": "Learn how to choose boxes, distribute weight, protect items and label boxes for a move.",
+  "primary_query": "how to pack moving boxes",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Packaging",
+  "eyebrow": "Moving boxes",
+  "hero_description": "Sturdy boxes, with controlled weight and well-identified contents, make loading, transport and organization at the destination safer.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Use suitable boxes and distribute the weight",
+  "key_points_heading": "Essential rules for packing boxes",
+  "faq_heading": "Moving Box Questions",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To pack boxes for a move, choose sturdy boxes suited to their contents, reinforce the bottom, place heavier items underneath and fill empty spaces. Avoid boxes that are difficult to lift, wrap fragile items individually and label every box with its destination room, general contents and handling instructions.",
+  "key_points": [
+    "Choose sturdy, appropriately sized boxes.",
+    "Reinforce the bottom before placing items.",
+    "Distribute the weight and avoid difficult-to-lift volumes.",
+    "Fill empty spaces to limit movement.",
+    "Identify division, content and fragility."
+  ],
+  "sections": [
+    {
+      "id": "how-to-choose-boxes",
+      "heading": "How to choose boxes",
+      "paragraphs": [
+        "Use clean, dry and deformed boxes. The card must support the expected weight without opening or losing its shape.",
+        "Small boxes are best suited for books, dishes and other heavy items. Larger boxes should be reserved for light and bulky items."
+      ],
+      "items": [
+        {
+          "title": "Small boxes",
+          "text": "Suitable for books, tools and dense items."
+        },
+        {
+          "title": "Medium boxes",
+          "text": "Useful for utensils, folded clothes and various items."
+        },
+        {
+          "title": "Large boxes",
+          "text": "Recommended for bedding, cushions and light items."
+        },
+        {
+          "title": "Special boxes",
+          "text": "They can make it easier to transport hanging clothes, bottles or fragile items."
+        }
+      ]
+    },
+    {
+      "id": "prepare-and-reinforce-the-bottom",
+      "heading": "Prepare and reinforce the bottom",
+      "paragraphs": [
+        "Close the flaps without leaving gaps and apply strong tape to the joints. When the contents are heavy, reinforce the bottom before starting.",
+        "Don't just depend on the fit of the tabs. An opening during movement could cause contents to fall and damage."
+      ]
+    },
+    {
+      "id": "correctly-distribute-the-weight",
+      "heading": "Correctly distribute the weight",
+      "paragraphs": [
+        "Place the heaviest items at the bottom and the lightest ones on top. Distribute the weight evenly so the box does not tilt.",
+        "If a box cannot be lifted and transported under control, divide the contents into more boxes."
+      ],
+      "checklist": [
+        "Heavy items in the background.",
+        "Light items at the top.",
+        "Weight distributed over four sides.",
+        "No loose or protruding items.",
+        "Box that can be lifted safely."
+      ]
+    },
+    {
+      "id": "protect-items-and-fill-spaces",
+      "heading": "Protect items and fill spaces",
+      "paragraphs": [
+        "Wrap fragile items individually and separate surfaces that could be scratched. Use clean and suitable materials.",
+        "Fill gaps to prevent contents from shifting. The box should not be bulged or compressed when closed."
+      ]
+    },
+    {
+      "id": "close-and-label-each-box",
+      "heading": "Close and label each box",
+      "paragraphs": [
+        "Close all flaps and apply tape to the main joints. Do not let items stick out the top.",
+        "Identify the destination room, general content and indications such as fragile, heavy or keep upright."
+      ],
+      "checklist": [
+        "Target division.",
+        "General description of the content.",
+        "Indication of fragility.",
+        "Guidance when necessary.",
+        "Box number or inventory reference."
+      ]
+    },
+    {
+      "id": "common-mistakes-when-packing-boxes",
+      "heading": "Common mistakes when packing boxes",
+      "paragraphs": [
+        "Mixing heavy and fragile items without separation increases the risk of breakage. Boxes that are too full may open or deform.",
+        "Open bags, damp boxes and unmarked packaging delay cargo and make it difficult to organize at destination."
+      ],
+      "items": [
+        {
+          "title": "Excessive weight",
+          "text": "Increases the risk of falling, opening and injury."
+        },
+        {
+          "title": "Empty spaces",
+          "text": "They allow items to gain movement during transport."
+        },
+        {
+          "title": "Reused boxes in poor condition",
+          "text": "They can lose resistance even when they appear closed."
+        },
+        {
+          "title": "Lack of identification",
+          "text": "It makes it difficult to unload and correctly place boxes."
+        }
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Do you already know how many boxes you will transport?",
+    "text": "Include the approximate quantity, larger items and access points in the moving request.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "What is the maximum weight of a box?",
+      "answer": "There is no universal value. The box must maintain its shape and be able to be lifted and transported with control, without excessive effort."
+    },
+    {
+      "question": "Can I use large boxes for books?",
+      "answer": "It is preferable to use small boxes, as books quickly make a large box too heavy."
+    },
+    {
+      "question": "Is it necessary to fill in all the empty spaces?",
+      "answer": "Yes, especially in boxes with fragile items. Padding limits internal movements and impacts."
+    },
+    {
+      "question": "Where should I write content?",
+      "answer": "Identify at least the top and one side, so the information remains visible when the boxes are stacked."
+    },
+    {
+      "question": "Can I transport open boxes?",
+      "answer": "It is not recommended. Closed boxes better protect the contents and can be moved and organized more safely."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como embalar caixas para uma mudança — Portuguese version",
+      "href": "/guias/embalamento/como-embalar-caixas/",
+      "type": "guide"
+    },
+    {
+      "title": "Как упаковать коробки для переезда",
+      "href": "/ru/guides/kak-upakovat-korobki-dlya-pereezda/",
+      "type": "guide"
+    },
+    {
+      "title": "Complete moving checklist",
+      "href": "/en/guides/complete-moving-checklist/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Get quotes to transport your boxes",
+    "text": "Indicate the quantity, locations and access to compare quotes suitable for the service.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "pack-moving-boxes",
+  "alternates": {
+    "pt-PT": "/guias/embalamento/como-embalar-caixas/",
+    "en": "/en/guides/how-to-pack-boxes-for-moving/",
+    "ru": "/ru/guides/kak-upakovat-korobki-dlya-pereezda/"
+  }
+}

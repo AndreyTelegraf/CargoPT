@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "id": "complete-moving-checklist-en",
+  "locale": "en",
+  "cluster": "planning",
+  "path": "/en/guides/complete-moving-checklist/",
+  "title": "Complete moving checklist",
+  "meta_title": "Complete moving checklist — CargoPT",
+  "meta_description": "Use this checklist to organize dates, inventory, packing, movers, access and tasks before and after the move.",
+  "primary_query": "moving checklist",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Moving planning",
+  "eyebrow": "Moving checklist",
+  "hero_description": "A checklist reduces forgetfulness and allows you to distribute tasks into stages, instead of concentrating all the preparation in the last few days.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Break down the move into preparation, hiring, packing and installation",
+  "key_points_heading": "What can't be missed",
+  "faq_heading": "Moving Checklist Questions",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "A complete moving checklist should cover the inventory, dates, property access, carrier booking, packing materials, dismantling, box labels, documents, essentials and a final check of both properties. Assign an owner and deadline to each task so you can track progress.",
+  "key_points": [
+    "Set the date and confirm access to both properties.",
+    "Create inventory before asking for quotes.",
+    "Book the carrier and confirm the service in writing.",
+    "Pack and label items by room.",
+    "Make a final check before handing over the keys."
+  ],
+  "sections": [
+    {
+      "id": "initial-planning",
+      "heading": "Initial planning",
+      "paragraphs": [
+        "Start by defining the date, locations and approximate volume. Separate what will be transported from what will be sold, donated or disposed of.",
+        "Record all tasks in a single document and assign a date to each one."
+      ],
+      "checklist": [
+        "Confirm the possible moving date.",
+        "Check access to the new property.",
+        "Create inventory by room.",
+        "Separate goods that will not be transported.",
+        "Identify heavy, fragile or valuable items.",
+        "Measure tight furniture and access."
+      ]
+    },
+    {
+      "id": "choose-and-confirm-the-carrier",
+      "heading": "Choose and confirm the carrier",
+      "paragraphs": [
+        "Submit a complete request and compare equivalent quotes. Confirm the vehicle, team, tasks, date and price.",
+        "Keep in writing the chosen quote and the necessary contact details for the day of the move."
+      ],
+      "checklist": [
+        "Send inventory and photographs.",
+        "Inform floors, elevators and stairs.",
+        "Confirm number of helpers.",
+        "Confirm packaging, disassembly and assembly.",
+        "Record date, time and payment conditions.",
+        "Confirm liability for damages."
+      ]
+    },
+    {
+      "id": "prepare-materials-and-packaging",
+      "heading": "Prepare materials and packaging",
+      "paragraphs": [
+        "Gather boxes, tape, labels, and protective materials before you begin. Pack the least used items first.",
+        "Do not mix fragile items with heavy items and avoid boxes that are difficult to lift."
+      ],
+      "checklist": [
+        "Boxes of various sizes.",
+        "Ribbon and labels.",
+        "Protection for fragile items.",
+        "Hardware bags.",
+        "Marker to identify boxes.",
+        "Protection of mattresses and furniture."
+      ]
+    },
+    {
+      "id": "in-the-previous-week",
+      "heading": "In the previous week",
+      "paragraphs": [
+        "Confirm that most of the packaging is complete and review the inventory sent to the carrier.",
+        "Prepare documents, medicines, keys, chargers and essential items to go with you."
+      ],
+      "checklist": [
+        "Confirm time with the carrier.",
+        "Update inventory changes.",
+        "Defrost and prepare appliances.",
+        "Separate documents and valuables.",
+        "Prepare a suitcase or box for essentials.",
+        "Reserve elevator or access when applicable."
+      ]
+    },
+    {
+      "id": "on-moving-day",
+      "heading": "On moving day",
+      "paragraphs": [
+        "Keep corridors clear and indicate items that require greater care. Confirm inventory as you load.",
+        "Before leaving, check all rooms, closets, storage rooms, balconies and common areas."
+      ],
+      "checklist": [
+        "Protect floors and passage areas.",
+        "Ensure access to keys.",
+        "Keep children and animals away from movement.",
+        "Confirm fragile and priority items.",
+        "Check meters and installations when necessary.",
+        "Carry out a final inspection of the property."
+      ]
+    },
+    {
+      "id": "after-arrival",
+      "heading": "After arrival",
+      "paragraphs": [
+        "Confirm that packages have reached their destination and place essential furniture first.",
+        "Check for visible damage and report any problems immediately. Do not turn on household appliances before following the precautions applicable to the model."
+      ],
+      "checklist": [
+        "Check boxes and main items.",
+        "Check for visible damage.",
+        "Assemble essential beds and furniture.",
+        "Confirm water and electricity connections.",
+        "Save service documents.",
+        "Update the address for the necessary services."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Do you already have the moving inventory?",
+    "text": "Use the information from the checklist to prepare a clear request and compare quotes.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "When should I start the checklist?",
+      "answer": "As soon as you have a probable date. You can add details as you confirm inventory and services."
+    },
+    {
+      "question": "Do I need to list all items?",
+      "answer": "List the main furniture, appliances, special items and approximate number of boxes."
+    },
+    {
+      "question": "What should follow with me?",
+      "answer": "Documents, medicines, valuables, keys, essential equipment and essential items."
+    },
+    {
+      "question": "How to avoid forgetting items?",
+      "answer": "Carry out the final check by room, including closets, storage rooms, balconies and common spaces."
+    },
+    {
+      "question": "Should I save the carrier's quote?",
+      "answer": "Yes. Keep the service, value, team, tasks and agreed conditions in writing."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Checklist completa para uma mudança — Portuguese version",
+      "href": "/guias/planeamento/checklist-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Полный чек-лист переезда",
+      "href": "/ru/guides/polnyy-cheklist-pereezda/",
+      "type": "guide"
+    },
+    {
+      "title": "How to pack dishes and glasses for a move",
+      "href": "/en/guides/how-to-pack-dishes-and-glasses/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Transform the checklist into a transport request",
+    "text": "Describe the load, access and tasks to receive quotes based on the same information.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "complete-moving-checklist",
+  "alternates": {
+    "pt-PT": "/guias/planeamento/checklist-mudanca/",
+    "en": "/en/guides/complete-moving-checklist/",
+    "ru": "/ru/guides/polnyy-cheklist-pereezda/"
+  }
+}

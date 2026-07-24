@@ -10,12 +10,12 @@
   "links": {
     "checklist-mudanca": [
       {
-        "target": "mudancas-apartamento-lisboa",
+        "target": "complete-moving-checklist-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "quando-reservar-transportador",
+        "target": "polnyy-cheklist-pereezda-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -32,12 +32,12 @@
     ],
     "como-embalar-caixas": [
       {
-        "target": "transporte-caixas-lisboa",
+        "target": "how-to-pack-boxes-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "como-embalar-televisao",
+        "target": "kak-upakovat-korobki-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -54,12 +54,12 @@
     ],
     "como-embalar-eletrodomesticos": [
       {
-        "target": "como-embalar-televisao",
+        "target": "how-to-pack-appliances-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "como-embalar-louca",
+        "target": "kak-upakovat-bytovuyu-tehniku-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -76,12 +76,12 @@
     ],
     "como-embalar-louca": [
       {
-        "target": "como-embalar-caixas",
+        "target": "how-to-pack-dishes-glasses-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "como-embalar-eletrodomesticos",
+        "target": "kak-upakovat-posudu-i-bokaly-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -98,12 +98,12 @@
     ],
     "como-embalar-televisao": [
       {
-        "target": "como-embalar-eletrodomesticos",
+        "target": "how-to-pack-a-tv-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "como-embalar-caixas",
+        "target": "kak-upakovat-televizor-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -120,12 +120,12 @@
     ],
     "como-escolher-empresa-mudancas": [
       {
-        "target": "quando-e-mais-barato-mudar",
+        "target": "how-to-choose-moving-company-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "elevador-na-mudanca",
+        "target": "kak-vybrat-kompaniyu-dlya-pereezda-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -164,12 +164,12 @@
     ],
     "como-preparar-uma-mudanca": [
       {
-        "target": "elevador-na-mudanca",
+        "target": "how-to-prepare-for-a-move-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "checklist-mudanca",
+        "target": "kak-podgotovitsya-k-pereezdu-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -230,12 +230,12 @@
     ],
     "elevador-na-mudanca": [
       {
-        "target": "como-escolher-empresa-mudancas",
+        "target": "lifts-and-floors-moving-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "como-preparar-uma-mudanca",
+        "target": "lift-i-etazhi-pri-pereezde-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -846,12 +846,12 @@
     ],
     "quando-e-mais-barato-mudar": [
       {
-        "target": "quando-reservar-transportador",
+        "target": "cheapest-time-to-move-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "como-escolher-empresa-mudancas",
+        "target": "kogda-deshevle-pereezzhat-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -868,12 +868,12 @@
     ],
     "quando-reservar-transportador": [
       {
-        "target": "checklist-mudanca",
+        "target": "book-carrier-in-advance-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "quando-e-mais-barato-mudar",
+        "target": "kogda-bronirovat-perevozchika-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -1693,6 +1693,446 @@
       },
       {
         "target": "mudancas-porto",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "complete-moving-checklist-en": [
+      {
+        "target": "checklist-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "polnyy-cheklist-pereezda-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-to-pack-dishes-glasses-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "polnyy-cheklist-pereezda-ru": [
+      {
+        "target": "checklist-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "complete-moving-checklist-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-upakovat-posudu-i-bokaly-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "how-to-pack-boxes-en": [
+      {
+        "target": "como-embalar-caixas",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-upakovat-korobki-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "complete-moving-checklist-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-upakovat-korobki-ru": [
+      {
+        "target": "como-embalar-caixas",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "how-to-pack-boxes-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "polnyy-cheklist-pereezda-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "how-to-pack-appliances-en": [
+      {
+        "target": "como-embalar-eletrodomesticos",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-upakovat-bytovuyu-tehniku-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "transportar-maquina-lavar",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-upakovat-bytovuyu-tehniku-ru": [
+      {
+        "target": "como-embalar-eletrodomesticos",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "how-to-pack-appliances-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "transportar-maquina-lavar",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "how-to-pack-dishes-glasses-en": [
+      {
+        "target": "como-embalar-louca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-upakovat-posudu-i-bokaly-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-to-prepare-for-a-move-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-upakovat-posudu-i-bokaly-ru": [
+      {
+        "target": "como-embalar-louca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "how-to-pack-dishes-glasses-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-podgotovitsya-k-pereezdu-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "how-to-pack-a-tv-en": [
+      {
+        "target": "como-embalar-televisao",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-upakovat-televizor-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "seguro-transporte-moveis",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-upakovat-televizor-ru": [
+      {
+        "target": "como-embalar-televisao",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "how-to-pack-a-tv-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "seguro-transporte-moveis",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "how-to-choose-moving-company-en": [
+      {
+        "target": "como-escolher-empresa-mudancas",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-vybrat-kompaniyu-dlya-pereezda-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-verificar-transportador",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-vybrat-kompaniyu-dlya-pereezda-ru": [
+      {
+        "target": "como-escolher-empresa-mudancas",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "how-to-choose-moving-company-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "como-verificar-transportador",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "how-to-prepare-for-a-move-en": [
+      {
+        "target": "como-preparar-uma-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-podgotovitsya-k-pereezdu-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-to-pack-boxes-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-podgotovitsya-k-pereezdu-ru": [
+      {
+        "target": "como-preparar-uma-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "how-to-prepare-for-a-move-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-upakovat-korobki-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "lifts-and-floors-moving-en": [
+      {
+        "target": "elevador-na-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "lift-i-etazhi-pri-pereezde-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "medir-moveis-antes-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "lift-i-etazhi-pri-pereezde-ru": [
+      {
+        "target": "elevador-na-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "lifts-and-floors-moving-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "medir-moveis-antes-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "cheapest-time-to-move-en": [
+      {
+        "target": "quando-e-mais-barato-mudar",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kogda-deshevle-pereezzhat-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-to-reduce-moving-cost-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kogda-deshevle-pereezzhat-ru": [
+      {
+        "target": "quando-e-mais-barato-mudar",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "cheapest-time-to-move-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-snizit-stoimost-pereezda-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "book-carrier-in-advance-en": [
+      {
+        "target": "quando-reservar-transportador",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kogda-bronirovat-perevozchika-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "request-moving-quote-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kogda-bronirovat-perevozchika-ru": [
+      {
+        "target": "quando-reservar-transportador",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "book-carrier-in-advance-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-zaprosit-predlozhenie-na-pereezd-ru",
         "reason": "authority",
         "priority": 3
       },

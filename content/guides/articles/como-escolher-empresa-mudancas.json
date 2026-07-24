@@ -144,13 +144,13 @@
   ],
   "related_links": [
     {
-      "title": "Quando é mais barato fazer uma mudança?",
-      "href": "/guias/planeamento/quando-e-mais-barato-mudar/",
+      "title": "How to choose a moving company — versão em inglês",
+      "href": "/en/guides/how-to-choose-a-moving-company/",
       "type": "guide"
     },
     {
-      "title": "Como o elevador e os andares afetam uma mudança",
-      "href": "/guias/planeamento/elevador-andares-mudanca/",
+      "title": "Как выбрать компанию для переезда — versão em russo",
+      "href": "/ru/guides/kak-vybrat-kompaniyu-dlya-pereezda/",
       "type": "guide"
     },
     {
@@ -169,5 +169,11 @@
     "text": "Descreva a mudança uma única vez e avalie preço, equipa, tarefas e condições de cada resposta.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "choose-moving-company",
+  "alternates": {
+    "pt-PT": "/guias/planeamento/como-escolher-empresa-mudancas/",
+    "en": "/en/guides/how-to-choose-a-moving-company/",
+    "ru": "/ru/guides/kak-vybrat-kompaniyu-dlya-pereezda/"
   }
 }

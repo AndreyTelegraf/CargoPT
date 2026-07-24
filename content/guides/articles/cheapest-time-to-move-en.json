@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "id": "cheapest-time-to-move-en",
+  "locale": "en",
+  "cluster": "planning",
+  "path": "/en/guides/when-is-it-cheaper-to-move/",
+  "title": "When is it cheaper to move?",
+  "meta_title": "When is it cheaper to move? — CargoPT",
+  "meta_description": "Understand how date, flexibility, demand, volume, access and preparation can influence the cost of a move.",
+  "primary_query": "When is it cheaper to move?",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Moving planning",
+  "eyebrow": "Moving date and cost",
+  "hero_description": "There is no universally cheapest day: the cost depends on the availability of the carrier and the specific characteristics of the service.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Flexibility helps, but is not a substitute for a complete description",
+  "key_points_heading": "How to reduce the risk of paying more",
+  "faq_heading": "Questions about dates and prices",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "A move can be more economical when there is flexibility in date and time, the request is made in advance and the volume and access are clearly described. There is, however, no universal rule for days of the week or months. Compare quotes for the same service and evaluate what each one includes.",
+  "key_points": [
+    "Flexible dates can increase available options.",
+    "Urgent orders may limit the comparison of quotes.",
+    "Volume, distance and access weigh more than the calendar alone.",
+    "Efficient preparation can reduce time and tasks.",
+    "Always compare quotes with the same scope."
+  ],
+  "sections": [
+    {
+      "id": "there-is-no-always-cheapest-date",
+      "heading": "There is no always cheapest date",
+      "paragraphs": [
+        "Each carrier manages its own schedule, team, vehicles and routes. A free date for one company may be fully occupied for another.",
+        "Therefore, absolute statements about days or months should be treated only as hypotheses, not as price guarantees."
+      ]
+    },
+    {
+      "id": "why-flexibility-can-help",
+      "heading": "Why flexibility can help",
+      "paragraphs": [
+        "By indicating alternative days or times, it allows the carrier to propose an option compatible with their availability.",
+        "Flexibility also facilitates comparison between quotes, especially when the starting date is not yet definitive."
+      ]
+    },
+    {
+      "id": "avoid-relying-solely-on-urgent-orders",
+      "heading": "Avoid relying solely on urgent orders",
+      "paragraphs": [
+        "An order placed too close to the date may find fewer carriers available.",
+        "Starting early allows you to answer questions, update inventory, and confirm service in writing."
+      ]
+    },
+    {
+      "id": "the-main-cost-factors-continue-to-be-operational",
+      "heading": "The main cost factors continue to be operational",
+      "paragraphs": [
+        "Volume, distance, floors, stairs, parking, number of helpers and additional services determine much of the work.",
+        "Choosing a different date does not eliminate these needs."
+      ],
+      "items": [
+        {
+          "title": "Volume",
+          "text": "It influences the vehicle, the team and the charging time."
+        },
+        {
+          "title": "Distance",
+          "text": "It affects the route and time of vehicle use."
+        },
+        {
+          "title": "Access conditions",
+          "text": "Stairs and long distances to the vehicle increase movement."
+        },
+        {
+          "title": "Services",
+          "text": "Packaging, disassembly and assembly add tasks."
+        }
+      ]
+    },
+    {
+      "id": "how-preparation-can-reduce-work",
+      "heading": "How preparation can reduce the workload",
+      "paragraphs": [
+        "Separating unnecessary items, closing and identifying boxes and freeing up aisles makes movement more efficient.",
+        "Don't omit difficulties to obtain a lower initial value. Incomplete information may require changes to the service."
+      ],
+      "checklist": [
+        "Reduce volume before ordering.",
+        "Prepare boxes in advance.",
+        "Only disassemble what you can put back together again.",
+        "Facilitate parking and access.",
+        "Report changes to inventory."
+      ]
+    },
+    {
+      "id": "compare-equivalent-quotes",
+      "heading": "Compare equivalent quotes",
+      "paragraphs": [
+        "Confirm that all quotes consider the same inventory, date, route, access, team and tasks.",
+        "A lower value does not necessarily represent a lower cost if it excludes services you will need."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Do you have date flexibility?",
+    "text": "Indicate alternatives in the order to compare availability, tasks and conditions.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Is moving during the week always cheaper?",
+      "answer": "No. The price depends on the availability of each carrier and the specific characteristics of the service."
+    },
+    {
+      "question": "Is the end of the month always more expensive?",
+      "answer": "It is not possible to guarantee a universal rule. Compare quotes for the specific dates you have."
+    },
+    {
+      "question": "Does a flexible date reduce the price?",
+      "answer": "It may increase the available options, but does not guarantee a lower value."
+    },
+    {
+      "question": "Does ordering in advance guarantee a better price?",
+      "answer": "It doesn't guarantee, but it allows you to compare more options and reduce the risk of relying solely on last-minute availability."
+    },
+    {
+      "question": "What should I compare besides the price?",
+      "answer": "Compare vehicle, team, tasks, materials, access considered and conditions for changes."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Quando é mais barato fazer uma mudança? — Portuguese version",
+      "href": "/guias/planeamento/quando-e-mais-barato-mudar/",
+      "type": "guide"
+    },
+    {
+      "title": "Когда дешевле переезжать?",
+      "href": "/ru/guides/kogda-deshevle-pereezzhat/",
+      "type": "guide"
+    },
+    {
+      "title": "How to reduce the cost of a move",
+      "href": "/en/guides/how-to-reduce-moving-cost/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare quotes for available dates",
+    "text": "Indicate your flexibility, load and access and check the conditions presented by each carrier.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "cheapest-time-to-move",
+  "alternates": {
+    "pt-PT": "/guias/planeamento/quando-e-mais-barato-mudar/",
+    "en": "/en/guides/when-is-it-cheaper-to-move/",
+    "ru": "/ru/guides/kogda-deshevle-pereezzhat/"
+  }
+}

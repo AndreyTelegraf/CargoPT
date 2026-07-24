@@ -144,13 +144,13 @@
   ],
   "related_links": [
     {
-      "title": "Como escolher uma empresa de mudanças",
-      "href": "/guias/planeamento/como-escolher-empresa-mudancas/",
+      "title": "How lifts and floors affect a move — versão em inglês",
+      "href": "/en/guides/lifts-and-floors-when-moving/",
       "type": "guide"
     },
     {
-      "title": "Como preparar uma mudança",
-      "href": "/guias/planeamento/como-preparar-uma-mudanca/",
+      "title": "Как лифт и этажи влияют на переезд — versão em russo",
+      "href": "/ru/guides/lift-i-etazhi-pri-pereezde/",
       "type": "guide"
     },
     {
@@ -169,5 +169,11 @@
     "text": "Descreva os andares, o elevador e o percurso dos objetos para comparar respostas adequadas ao serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "lifts-floors-moving",
+  "alternates": {
+    "pt-PT": "/guias/planeamento/elevador-andares-mudanca/",
+    "en": "/en/guides/lifts-and-floors-when-moving/",
+    "ru": "/ru/guides/lift-i-etazhi-pri-pereezde/"
   }
 }

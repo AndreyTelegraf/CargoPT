@@ -1566,6 +1566,394 @@
         "moving-cost-porto-en",
         "mudancas-porto"
       ]
+    },
+    {
+      "id": "complete-moving-checklist-en",
+      "cluster": "planning",
+      "title": "Complete moving checklist",
+      "slug": "complete-moving-checklist-en",
+      "path": "/en/guides/complete-moving-checklist/",
+      "primary_query": "moving checklist",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "checklist-mudanca",
+        "polnyy-cheklist-pereezda-ru",
+        "how-to-pack-dishes-glasses-en"
+      ]
+    },
+    {
+      "id": "polnyy-cheklist-pereezda-ru",
+      "cluster": "planning",
+      "title": "Полный чек-лист переезда",
+      "slug": "polnyy-cheklist-pereezda-ru",
+      "path": "/ru/guides/polnyy-cheklist-pereezda/",
+      "primary_query": "изменить чек-лист",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "checklist-mudanca",
+        "complete-moving-checklist-en",
+        "kak-upakovat-posudu-i-bokaly-ru"
+      ]
+    },
+    {
+      "id": "how-to-pack-boxes-en",
+      "cluster": "packing",
+      "title": "How to pack boxes for a move",
+      "slug": "how-to-pack-boxes-en",
+      "path": "/en/guides/how-to-pack-boxes-for-moving/",
+      "primary_query": "how to pack moving boxes",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "como-embalar-caixas",
+        "kak-upakovat-korobki-ru",
+        "complete-moving-checklist-en"
+      ]
+    },
+    {
+      "id": "kak-upakovat-korobki-ru",
+      "cluster": "packing",
+      "title": "Как упаковать коробки для переезда",
+      "slug": "kak-upakovat-korobki-ru",
+      "path": "/ru/guides/kak-upakovat-korobki-dlya-pereezda/",
+      "primary_query": "как упаковать коробки для переезда",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "como-embalar-caixas",
+        "how-to-pack-boxes-en",
+        "polnyy-cheklist-pereezda-ru"
+      ]
+    },
+    {
+      "id": "how-to-pack-appliances-en",
+      "cluster": "packing",
+      "title": "How to pack appliances for transport",
+      "slug": "how-to-pack-appliances-en",
+      "path": "/en/guides/how-to-pack-appliances/",
+      "primary_query": "how to pack moving appliances",
+      "intent": [
+        "informational"
+      ],
+      "priority": 2,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "como-embalar-eletrodomesticos",
+        "kak-upakovat-bytovuyu-tehniku-ru",
+        "transportar-maquina-lavar"
+      ]
+    },
+    {
+      "id": "kak-upakovat-bytovuyu-tehniku-ru",
+      "cluster": "packing",
+      "title": "Как упаковать бытовую технику для перевозки",
+      "slug": "kak-upakovat-bytovuyu-tehniku-ru",
+      "path": "/ru/guides/kak-upakovat-bytovuyu-tehniku/",
+      "primary_query": "как упаковать бытовую технику",
+      "intent": [
+        "informational"
+      ],
+      "priority": 2,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "como-embalar-eletrodomesticos",
+        "how-to-pack-appliances-en",
+        "transportar-maquina-lavar"
+      ]
+    },
+    {
+      "id": "how-to-pack-dishes-glasses-en",
+      "cluster": "packing",
+      "title": "How to pack dishes and glasses for a move",
+      "slug": "how-to-pack-dishes-glasses-en",
+      "path": "/en/guides/how-to-pack-dishes-and-glasses/",
+      "primary_query": "how to pack dishes for moving",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "como-embalar-louca",
+        "kak-upakovat-posudu-i-bokaly-ru",
+        "how-to-prepare-for-a-move-en"
+      ]
+    },
+    {
+      "id": "kak-upakovat-posudu-i-bokaly-ru",
+      "cluster": "packing",
+      "title": "Как упаковать посуду и бокалы для переезда",
+      "slug": "kak-upakovat-posudu-i-bokaly-ru",
+      "path": "/ru/guides/kak-upakovat-posudu-i-bokaly/",
+      "primary_query": "как упаковать посуду для переезда",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "como-embalar-louca",
+        "how-to-pack-dishes-glasses-en",
+        "kak-podgotovitsya-k-pereezdu-ru"
+      ]
+    },
+    {
+      "id": "how-to-pack-a-tv-en",
+      "cluster": "packing",
+      "title": "How to pack a television for transport",
+      "slug": "how-to-pack-a-tv-en",
+      "path": "/en/guides/how-to-pack-a-tv/",
+      "primary_query": "how to pack television for transport",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "como-embalar-televisao",
+        "kak-upakovat-televizor-ru",
+        "seguro-transporte-moveis"
+      ]
+    },
+    {
+      "id": "kak-upakovat-televizor-ru",
+      "cluster": "packing",
+      "title": "Как упаковать телевизор для перевозки",
+      "slug": "kak-upakovat-televizor-ru",
+      "path": "/ru/guides/kak-upakovat-televizor/",
+      "primary_query": "как упаковать телевизор для перевозки",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "como-embalar-televisao",
+        "how-to-pack-a-tv-en",
+        "seguro-transporte-moveis"
+      ]
+    },
+    {
+      "id": "how-to-choose-moving-company-en",
+      "cluster": "planning",
+      "title": "How to choose a moving company",
+      "slug": "how-to-choose-moving-company-en",
+      "path": "/en/guides/how-to-choose-a-moving-company/",
+      "primary_query": "how to choose moving company",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "como-escolher-empresa-mudancas",
+        "kak-vybrat-kompaniyu-dlya-pereezda-ru",
+        "como-verificar-transportador"
+      ]
+    },
+    {
+      "id": "kak-vybrat-kompaniyu-dlya-pereezda-ru",
+      "cluster": "planning",
+      "title": "Как выбрать компанию для переезда",
+      "slug": "kak-vybrat-kompaniyu-dlya-pereezda-ru",
+      "path": "/ru/guides/kak-vybrat-kompaniyu-dlya-pereezda/",
+      "primary_query": "как выбрать транспортную компанию",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "como-escolher-empresa-mudancas",
+        "how-to-choose-moving-company-en",
+        "como-verificar-transportador"
+      ]
+    },
+    {
+      "id": "how-to-prepare-for-a-move-en",
+      "cluster": "planning",
+      "title": "How to prepare for a move",
+      "slug": "how-to-prepare-for-a-move-en",
+      "path": "/en/guides/how-to-prepare-for-a-move/",
+      "primary_query": "how to prepare for a move",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "como-preparar-uma-mudanca",
+        "kak-podgotovitsya-k-pereezdu-ru",
+        "how-to-pack-boxes-en"
+      ]
+    },
+    {
+      "id": "kak-podgotovitsya-k-pereezdu-ru",
+      "cluster": "planning",
+      "title": "Как подготовиться к переезду",
+      "slug": "kak-podgotovitsya-k-pereezdu-ru",
+      "path": "/ru/guides/kak-podgotovitsya-k-pereezdu/",
+      "primary_query": "как подготовиться к переезду",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "como-preparar-uma-mudanca",
+        "how-to-prepare-for-a-move-en",
+        "kak-upakovat-korobki-ru"
+      ]
+    },
+    {
+      "id": "lifts-and-floors-moving-en",
+      "cluster": "planning",
+      "title": "How lifts and floors affect a move",
+      "slug": "lifts-and-floors-moving-en",
+      "path": "/en/guides/lifts-and-floors-when-moving/",
+      "primary_query": "lift and moving cost",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "elevador-na-mudanca",
+        "lift-i-etazhi-pri-pereezde-ru",
+        "medir-moveis-antes-mudanca"
+      ]
+    },
+    {
+      "id": "lift-i-etazhi-pri-pereezde-ru",
+      "cluster": "planning",
+      "title": "Как лифт и этажи влияют на переезд",
+      "slug": "lift-i-etazhi-pri-pereezde-ru",
+      "path": "/ru/guides/lift-i-etazhi-pri-pereezde/",
+      "primary_query": "цена смены лифта",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "elevador-na-mudanca",
+        "lifts-and-floors-moving-en",
+        "medir-moveis-antes-mudanca"
+      ]
+    },
+    {
+      "id": "cheapest-time-to-move-en",
+      "cluster": "planning",
+      "title": "When is it cheaper to move?",
+      "slug": "cheapest-time-to-move-en",
+      "path": "/en/guides/when-is-it-cheaper-to-move/",
+      "primary_query": "When is it cheaper to move?",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "quando-e-mais-barato-mudar",
+        "kogda-deshevle-pereezzhat-ru",
+        "how-to-reduce-moving-cost-en"
+      ]
+    },
+    {
+      "id": "kogda-deshevle-pereezzhat-ru",
+      "cluster": "planning",
+      "title": "Когда дешевле переезжать?",
+      "slug": "kogda-deshevle-pereezzhat-ru",
+      "path": "/ru/guides/kogda-deshevle-pereezzhat/",
+      "primary_query": "Когда дешевле переехать?",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "quando-e-mais-barato-mudar",
+        "cheapest-time-to-move-en",
+        "kak-snizit-stoimost-pereezda-ru"
+      ]
+    },
+    {
+      "id": "book-carrier-in-advance-en",
+      "cluster": "planning",
+      "title": "How far in advance should you book a carrier?",
+      "slug": "book-carrier-in-advance-en",
+      "path": "/en/guides/how-far-in-advance-to-book-a-carrier/",
+      "primary_query": "when to book moving carrier",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "quando-reservar-transportador",
+        "kogda-bronirovat-perevozchika-ru",
+        "request-moving-quote-en"
+      ]
+    },
+    {
+      "id": "kogda-bronirovat-perevozchika-ru",
+      "cluster": "planning",
+      "title": "За сколько времени бронировать перевозчика?",
+      "slug": "kogda-bronirovat-perevozchika-ru",
+      "path": "/ru/guides/kogda-bronirovat-perevozchika/",
+      "primary_query": "когда заказать переезд",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "quando-reservar-transportador",
+        "book-carrier-in-advance-en",
+        "kak-zaprosit-predlozhenie-na-pereezd-ru"
+      ]
     }
   ]
 }

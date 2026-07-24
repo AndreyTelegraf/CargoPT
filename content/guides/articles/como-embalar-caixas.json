@@ -159,13 +159,13 @@
   ],
   "related_links": [
     {
-      "title": "Transporte de caixas em Lisboa",
-      "href": "/transporte-caixas-lisboa/",
-      "type": "landing"
+      "title": "How to pack boxes for a move — versão em inglês",
+      "href": "/en/guides/how-to-pack-boxes-for-moving/",
+      "type": "guide"
     },
     {
-      "title": "Como embalar uma televisão para transporte",
-      "href": "/guias/embalamento/como-embalar-televisao/",
+      "title": "Как упаковать коробки для переезда — versão em russo",
+      "href": "/ru/guides/kak-upakovat-korobki-dlya-pereezda/",
       "type": "guide"
     },
     {
@@ -184,5 +184,11 @@
     "text": "Indique a quantidade, os locais e os acessos para comparar propostas adequadas ao serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "pack-moving-boxes",
+  "alternates": {
+    "pt-PT": "/guias/embalamento/como-embalar-caixas/",
+    "en": "/en/guides/how-to-pack-boxes-for-moving/",
+    "ru": "/ru/guides/kak-upakovat-korobki-dlya-pereezda/"
   }
 }

@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "id": "lifts-and-floors-moving-en",
+  "locale": "en",
+  "cluster": "planning",
+  "path": "/en/guides/lifts-and-floors-when-moving/",
+  "title": "How lifts and floors affect a move",
+  "meta_title": "How lifts and floors affect a move — CargoPT",
+  "meta_description": "Learn how lifts, stairs, distance to the vehicle and furniture dimensions can affect a moving quote.",
+  "primary_query": "lift and moving cost",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Moving planning",
+  "eyebrow": "Access to the property",
+  "hero_description": "Floors, lifts and distance to the vehicle affect the working method, team and time required.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Access conditions can change the work required",
+  "key_points_heading": "Information affecting the quote",
+  "faq_heading": "Questions about elevators, stairs and floors",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "The lift and number of floors can affect a move because they determine how far items must be carried manually, what will fit along the access route and which staff or equipment may be needed. To receive comparable quotes, state the floors at collection and delivery, whether a lift is available and its dimensions, the stairs and the distance to parking.",
+  "key_points": [
+    "Indicate the collection and delivery floors.",
+    "Confirm that the elevator can be used during the move.",
+    "Measure the door and inside of the elevator for large items.",
+    "Describe stairs, corridors and distance to the vehicle.",
+    "Advise when it may be necessary to disassemble an item."
+  ],
+  "sections": [
+    {
+      "id": "how-access-affects-a-move",
+      "heading": "How access affects a move",
+      "paragraphs": [
+        "A move does not just depend on the distance between addresses. The journey between each division and the vehicle also requires time and effort.",
+        "Multiple floors, narrow stairs or a long route to the parking lot may require adjustments to the team, method or anticipated duration."
+      ]
+    },
+    {
+      "id": "what-information-to-give-about-the-elevator",
+      "heading": "What information to give about the elevator",
+      "paragraphs": [
+        "It is not enough to indicate that the building has an elevator. Confirm that it is operational, that it can be used during the move and that there is a mandatory reservation.",
+        "For large furniture and appliances, measure the door and usable interior space."
+      ],
+      "checklist": [
+        "Door width and height.",
+        "Approximate interior dimensions.",
+        "Capacity indicated on the elevator.",
+        "Availability on the scheduled day.",
+        "Condominium rules.",
+        "Distance between the elevator and the entrance."
+      ]
+    },
+    {
+      "id": "describe-stairs-landings-and-corridors",
+      "heading": "Describe stairs, landings and corridors",
+      "paragraphs": [
+        "Narrow stairs, sharp turns, low ceilings and small landings can impede the passage of a mounted item.",
+        "Photographs and measurements help to assess whether it will be necessary to disassemble the furniture or use another method."
+      ]
+    },
+    {
+      "id": "include-the-distance-between-the-door-and-the-vehicle",
+      "heading": "Include the distance between the door and the vehicle",
+      "paragraphs": [
+        "Even on the ground floor, a distant parking lot, pedestrian street or steps can increase manual travel.",
+        "Inform where the vehicle can stop and whether there are restrictions, gates, ramps or schedules."
+      ]
+    },
+    {
+      "id": "how-access-is-included-in-the-quote",
+      "heading": "How access is included in the quote",
+      "paragraphs": [
+        "Each carrier defines the quote according to the service described. Access conditions can influence the team, equipment and duration.",
+        "There is no universal rule that each floor always adds the same value."
+      ],
+      "items": [
+        {
+          "title": "Team",
+          "text": "It may be necessary to distribute the effort among more helpers."
+        },
+        {
+          "title": "Time",
+          "text": "Long manual strokes can prolong loading and unloading."
+        },
+        {
+          "title": "Equipment",
+          "text": "Some access conditions may require adequate protection or equipment."
+        },
+        {
+          "title": "Disassembly",
+          "text": "Items that do not fit may have to be dismantled when possible."
+        }
+      ]
+    },
+    {
+      "id": "check-access-before-moving-day",
+      "heading": "Check access before moving day",
+      "paragraphs": [
+        "Go through the entire path of larger items: doors, corridors, stairs or elevator, building entrance and parking lot.",
+        "Record measurements and photographs and communicate changes before service."
+      ],
+      "checklist": [
+        "Measure critical doors and passages.",
+        "Confirm elevator operation.",
+        "Check condominium rules and schedules.",
+        "Identify steps and tight curves.",
+        "Confirm parking location.",
+        "Send photos of difficult access."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Describe the access conditions together with the items",
+    "text": "Indicate floors, elevators, stairs and parking to receive quotes based on actual work.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Does having an elevator always make moving cheaper?",
+      "answer": "Not necessarily. It depends on the dimensions, availability and items that fit in the elevator."
+    },
+    {
+      "question": "How to measure the lift for a piece of furniture?",
+      "answer": "Measure the door and the usable interior space and compare with the furniture and the required rotation."
+    },
+    {
+      "question": "Should I indicate the floor when there is an elevator?",
+      "answer": "Yes. Some items may not fit and the carrier needs to know the alternative route."
+    },
+    {
+      "question": "Is the distance to parking important?",
+      "answer": "Yes. A long route or one with obstacles increases the manual part of loading and unloading."
+    },
+    {
+      "question": "What to do if a piece of furniture doesn't fit?",
+      "answer": "Send measurements and photographs to evaluate disassembly or other method before service."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como o elevador e os andares afetam uma mudança — Portuguese version",
+      "href": "/guias/planeamento/elevador-andares-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Как лифт и этажи влияют на переезд",
+      "href": "/ru/guides/lift-i-etazhi-pri-pereezde/",
+      "type": "guide"
+    },
+    {
+      "title": "Como medir móveis antes de uma mudança",
+      "href": "/guias/objetos/medir-moveis-antes-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Get quotes with access included",
+    "text": "Describe the floors, the elevator and the path of the items to compare appropriate responses to the service.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "lifts-floors-moving",
+  "alternates": {
+    "pt-PT": "/guias/planeamento/elevador-andares-mudanca/",
+    "en": "/en/guides/lifts-and-floors-when-moving/",
+    "ru": "/ru/guides/lift-i-etazhi-pri-pereezde/"
+  }
+}

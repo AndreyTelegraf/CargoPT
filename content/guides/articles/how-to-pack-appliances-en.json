@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "id": "how-to-pack-appliances-en",
+  "locale": "en",
+  "cluster": "packing",
+  "path": "/en/guides/how-to-pack-appliances/",
+  "title": "How to pack appliances for transport",
+  "meta_title": "How to pack appliances for transport — CargoPT",
+  "meta_description": "Prepare refrigerators, machines and small appliances: cleaning, drainage, moving parts, protection and identification.",
+  "primary_query": "how to pack moving appliances",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Packaging",
+  "eyebrow": "Home appliance packaging",
+  "hero_description": "Each appliance needs to be turned off, cleaned, dried and prepared according to its manual before exterior protection.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Prepare the equipment first and then the packaging",
+  "key_points_heading": "Essential steps",
+  "faq_heading": "Home Appliance Packaging Questions",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To pack household appliances, safely disconnect electrical, water or gas connections, remove food and liquids, clean and dry the equipment and immobilize moving parts according to the manual. Protect cables, ports, panels and corners, use the original packaging when available and keep the correct orientation visible.",
+  "key_points": [
+    "Consult the manual before disconnecting or disassembling.",
+    "Empty, clean, drain and dry completely.",
+    "Remove or immobilize moving parts.",
+    "Protect cables, ports, panels and corners.",
+    "Identify transportation guidance and precautions."
+  ],
+  "sections": [
+    {
+      "id": "organize-appliances-by-type",
+      "heading": "Organize appliances by type",
+      "paragraphs": [
+        "List large and small equipment and identify which require specialized shutdown.",
+        "Record approximate dimensions, existing connections and parts that will be transported separately."
+      ],
+      "items": [
+        {
+          "title": "Refrigerators",
+          "text": "They need to be emptied, thawed and dried."
+        },
+        {
+          "title": "Washing machines",
+          "text": "They need to drain and immobilize the drum."
+        },
+        {
+          "title": "Ovens and hobs",
+          "text": "They may require termination by an appropriate professional."
+        },
+        {
+          "title": "Small equipment",
+          "text": "They must remain clean, empty and without loose parts."
+        }
+      ]
+    },
+    {
+      "id": "safely-disconnect-calls",
+      "heading": "Disconnect connections safely",
+      "paragraphs": [
+        "Remove plugs without pulling the cable and turn off the water supply before disconnecting hoses.",
+        "Equipment connected to gas, fixed installations or specific circuits must be treated by a qualified person."
+      ]
+    },
+    {
+      "id": "empty-clean-and-dry",
+      "heading": "Empty, clean and dry",
+      "paragraphs": [
+        "Remove food, water, detergents, loose filters and residue. Moisture can cause spills, odors and damage.",
+        "Let the equipment air out before closing doors and applying protection."
+      ],
+      "checklist": [
+        "Remove food and liquids.",
+        "Empty deposits and drawers.",
+        "Drain hoses and filters.",
+        "Clean up waste.",
+        "Dry surfaces and components."
+      ]
+    },
+    {
+      "id": "remove-or-immobilize-moving-parts",
+      "heading": "Remove or immobilize moving parts",
+      "paragraphs": [
+        "Shelves, trays, drawers and accessories may move during transport. Remove and pack fragile parts separately.",
+        "Only use the transport systems provided by the manufacturer, such as drum immobilization screws."
+      ]
+    },
+    {
+      "id": "protect-the-outside",
+      "heading": "Protect the outside",
+      "paragraphs": [
+        "Protect doors, controls, corners and panels with blankets or suitable materials. Avoid tape directly on delicate finishes.",
+        "Secure cables and hoses without bending them excessively. The protection must not impede points necessary for grasping or moving."
+      ]
+    },
+    {
+      "id": "identify-and-respect-the-transport-position",
+      "heading": "Identify and respect the transport position",
+      "paragraphs": [
+        "Mark orientation, fragility and any separate parts. Consult the manual regarding inclination and permitted position.",
+        "In the vehicle, equipment must be stable, fixed and without heavy items on doors or panels."
+      ],
+      "checklist": [
+        "Guidance indicated.",
+        "Cables and hoses secured.",
+        "Separate parts identified.",
+        "Protected and immobilized equipment.",
+        "Manual available for installation at the destination."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Describe the moving appliances",
+    "text": "Indicate types, dimensions, connections, floors and access to receive suitable quotes.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Can I pack an appliance that is still damp?",
+      "answer": "It is not recommended. Wastewater can spill, cause odors, and damage equipment or other property."
+    },
+    {
+      "question": "Should I remove all the shelves and drawers?",
+      "answer": "Remove fragile parts or those that cannot be safely immobilized, following the manufacturer's instructions."
+    },
+    {
+      "question": "Can I turn off gas-connected equipment by myself?",
+      "answer": "The intervention must be carried out by a qualified person and in accordance with the rules applicable to the installation."
+    },
+    {
+      "question": "Is original packaging necessary?",
+      "answer": "It is not mandatory, but can provide adequate protection and fit when it is complete and in good condition."
+    },
+    {
+      "question": "Can I connect the equipment immediately after delivery?",
+      "answer": "Depends on equipment and transport position. Consult the manual before installation and use."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como embalar eletrodomésticos para transporte — Portuguese version",
+      "href": "/guias/embalamento/como-embalar-eletrodomesticos/",
+      "type": "guide"
+    },
+    {
+      "title": "Как упаковать бытовую технику для перевозки",
+      "href": "/ru/guides/kak-upakovat-bytovuyu-tehniku/",
+      "type": "guide"
+    },
+    {
+      "title": "Como transportar uma máquina de lavar",
+      "href": "/guias/objetos/como-transportar-maquina-lavar/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare quotes for transporting household appliances",
+    "text": "Indicate equipment, dimensions and access to find suitable conveyors.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "pack-appliances",
+  "alternates": {
+    "pt-PT": "/guias/embalamento/como-embalar-eletrodomesticos/",
+    "en": "/en/guides/how-to-pack-appliances/",
+    "ru": "/ru/guides/kak-upakovat-bytovuyu-tehniku/"
+  }
+}

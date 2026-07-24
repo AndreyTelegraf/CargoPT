@@ -142,13 +142,13 @@
   ],
   "related_links": [
     {
-      "title": "Como embalar caixas para uma mudança",
-      "href": "/guias/embalamento/como-embalar-caixas/",
+      "title": "How to pack dishes and glasses for a move — versão em inglês",
+      "href": "/en/guides/how-to-pack-dishes-and-glasses/",
       "type": "guide"
     },
     {
-      "title": "Como embalar eletrodomésticos para transporte",
-      "href": "/guias/embalamento/como-embalar-eletrodomesticos/",
+      "title": "Как упаковать посуду и бокалы для переезда — versão em russo",
+      "href": "/ru/guides/kak-upakovat-posudu-i-bokaly/",
       "type": "guide"
     },
     {
@@ -167,5 +167,11 @@
     "text": "Descreva as caixas, a carga e os acessos para receber propostas adequadas à mudança.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "pack-dishes-glasses",
+  "alternates": {
+    "pt-PT": "/guias/embalamento/como-embalar-louca/",
+    "en": "/en/guides/how-to-pack-dishes-and-glasses/",
+    "ru": "/ru/guides/kak-upakovat-posudu-i-bokaly/"
   }
 }

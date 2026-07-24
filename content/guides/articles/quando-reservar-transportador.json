@@ -137,13 +137,13 @@
   ],
   "related_links": [
     {
-      "title": "Checklist completa para uma mudança",
-      "href": "/guias/planeamento/checklist-mudanca/",
+      "title": "How far in advance should you book a carrier? — versão em inglês",
+      "href": "/en/guides/how-far-in-advance-to-book-a-carrier/",
       "type": "guide"
     },
     {
-      "title": "Quando é mais barato fazer uma mudança?",
-      "href": "/guias/planeamento/quando-e-mais-barato-mudar/",
+      "title": "За сколько времени бронировать перевозчика? — versão em russo",
+      "href": "/ru/guides/kogda-bronirovat-perevozchika/",
       "type": "guide"
     },
     {
@@ -162,5 +162,11 @@
     "text": "Descreva a mudança uma única vez e receba propostas de transportadores adequados ao serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "book-carrier-in-advance",
+  "alternates": {
+    "pt-PT": "/guias/planeamento/quando-reservar-transportador/",
+    "en": "/en/guides/how-far-in-advance-to-book-a-carrier/",
+    "ru": "/ru/guides/kogda-bronirovat-perevozchika/"
   }
 }

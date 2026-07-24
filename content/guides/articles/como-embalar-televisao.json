@@ -141,13 +141,13 @@
   ],
   "related_links": [
     {
-      "title": "Como embalar eletrodomésticos para transporte",
-      "href": "/guias/embalamento/como-embalar-eletrodomesticos/",
+      "title": "How to pack a television for transport — versão em inglês",
+      "href": "/en/guides/how-to-pack-a-tv/",
       "type": "guide"
     },
     {
-      "title": "Como embalar caixas para uma mudança",
-      "href": "/guias/embalamento/como-embalar-caixas/",
+      "title": "Как упаковать телевизор для перевозки — versão em russo",
+      "href": "/ru/guides/kak-upakovat-televizor/",
       "type": "guide"
     },
     {
@@ -166,5 +166,11 @@
     "text": "Descreva o equipamento, a embalagem e os acessos antes de escolher o serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "pack-television",
+  "alternates": {
+    "pt-PT": "/guias/embalamento/como-embalar-televisao/",
+    "en": "/en/guides/how-to-pack-a-tv/",
+    "ru": "/ru/guides/kak-upakovat-televizor/"
   }
 }

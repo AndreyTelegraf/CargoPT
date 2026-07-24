@@ -160,13 +160,13 @@
   ],
   "related_links": [
     {
-      "title": "Como o elevador e os andares afetam uma mudança",
-      "href": "/guias/planeamento/elevador-andares-mudanca/",
+      "title": "How to prepare for a move — versão em inglês",
+      "href": "/en/guides/how-to-prepare-for-a-move/",
       "type": "guide"
     },
     {
-      "title": "Checklist completa para uma mudança",
-      "href": "/guias/planeamento/checklist-mudanca/",
+      "title": "Как подготовиться к переезду — versão em russo",
+      "href": "/ru/guides/kak-podgotovitsya-k-pereezdu/",
       "type": "guide"
     },
     {
@@ -185,5 +185,11 @@
     "text": "Indique uma única vez os locais, os objetos, os acessos e as tarefas e compare as respostas recebidas.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "prepare-for-a-move",
+  "alternates": {
+    "pt-PT": "/guias/planeamento/como-preparar-uma-mudanca/",
+    "en": "/en/guides/how-to-prepare-for-a-move/",
+    "ru": "/ru/guides/kak-podgotovitsya-k-pereezdu/"
   }
 }

@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "id": "how-to-pack-a-tv-en",
+  "locale": "en",
+  "cluster": "packing",
+  "path": "/en/guides/how-to-pack-a-tv/",
+  "title": "How to pack a television for transport",
+  "meta_title": "How to pack a television for transport — CargoPT",
+  "meta_description": "Learn how to turn off, secure, pack and transport a television in the correct position during a move.",
+  "primary_query": "how to pack television for transport",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Packaging",
+  "eyebrow": "Television protection",
+  "hero_description": "The screen needs protection from pressure, impact, moisture and contact with other items during moving.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Protect the screen without applying pressure",
+  "key_points_heading": "Essential care",
+  "faq_heading": "Television Packaging Questions",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To pack a television, disconnect and identify the cables, remove the support only when the procedure is safe and protect the screen with clean materials that do not exert pressure. Preferably use the original packaging or a dedicated box, eliminate gaps and keep the television vertical during movement and transport.",
+  "key_points": [
+    "Hang up, photograph and identify all connections.",
+    "Protect the screen from pressure and friction.",
+    "Use the original box or compatible packaging.",
+    "Fill gaps without compressing the panel.",
+    "Transport the television upright and securely secured."
+  ],
+  "sections": [
+    {
+      "id": "unplug-and-organize-cables",
+      "heading": "Unplug and organize cables",
+      "paragraphs": [
+        "Turn off the television and wait before starting packaging. Remove the cables without pulling on the connectors.",
+        "Photograph the connections and identify each cable. Controls, transformers and accessories must remain protected and associated with the equipment."
+      ],
+      "checklist": [
+        "Photograph the calls.",
+        "Identify cables.",
+        "Remove batteries from the remote when necessary.",
+        "Store screws in an identified bag.",
+        "Separate fragile accessories."
+      ]
+    },
+    {
+      "id": "remove-the-base-or-stand-when-necessary",
+      "heading": "Remove the base or stand when necessary",
+      "paragraphs": [
+        "Some televisions take up less space and are more stable in the box without the base. Consult model instructions before disassembling.",
+        "Do not place the screen directly on the floor. Store screws and components in a labeled bag."
+      ]
+    },
+    {
+      "id": "protect-the-screen",
+      "heading": "Protect the screen",
+      "paragraphs": [
+        "Use a clean, soft layer that will not scratch the surface. Avoid tape directly on the screen or bezel.",
+        "The protection must cover the panel without creating pressure points. Corners and edges also need protection."
+      ]
+    },
+    {
+      "id": "use-a-suitable-box",
+      "heading": "Use a suitable box",
+      "paragraphs": [
+        "The original packaging, with the respective internal supports, is normally the best option for the model.",
+        "When not available, use your own box or a rigid solution compatible with the dimensions. Fill gaps without putting pressure on the panel."
+      ],
+      "items": [
+        {
+          "title": "Original box",
+          "text": "Use the internal supports in the position intended by the manufacturer."
+        },
+        {
+          "title": "Own box",
+          "text": "Choose a format compatible with the dimension and thickness."
+        },
+        {
+          "title": "Corner protection",
+          "text": "Helps absorb impacts without directly touching the screen."
+        },
+        {
+          "title": "Padding",
+          "text": "It must prevent movement without compressing the equipment."
+        }
+      ]
+    },
+    {
+      "id": "keep-the-television-upright",
+      "heading": "Keep the television upright",
+      "paragraphs": [
+        "The television must remain in the recommended position for the model, generally vertical. Do not place it flat under other volumes.",
+        "Clearly mark orientation and fragility on packaging."
+      ]
+    },
+    {
+      "id": "how-to-place-it-in-the-vehicle",
+      "heading": "How to place it in the vehicle",
+      "paragraphs": [
+        "Position the box in a stable area, protected from movement and without heavy items touching the screen.",
+        "Secure the packaging without tightening excessively. Avoid humidity, temperature extremes and uneven surfaces."
+      ],
+      "checklist": [
+        "Vertical television.",
+        "Screen without side pressure.",
+        "Fixed cash.",
+        "No heavy items on top.",
+        "Protection against humidity."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Include television in the moving request",
+    "text": "Indicate the size, available packaging and access to receive suitable quotes.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Can I transport the television lying down?",
+      "answer": "It is recommended to follow the orientation indicated by the manufacturer, normally vertically, without weight on the panel."
+    },
+    {
+      "question": "Can I apply tape directly to the screen?",
+      "answer": "No. The tape may leave residue or damage the surface and should not be applied directly to the panel."
+    },
+    {
+      "question": "Is the original box necessary?",
+      "answer": "It is not mandatory, but usually offers an adequate fit. Without it, use compatible rigid packaging."
+    },
+    {
+      "question": "How to transport the cables and control?",
+      "answer": "Identify and protect accessories separately, keeping them associated with the television."
+    },
+    {
+      "question": "Can I place other boxes next to the television?",
+      "answer": "They can be placed stably, but should never press on the screen or move against the packaging."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como embalar uma televisão para transporte — Portuguese version",
+      "href": "/guias/embalamento/como-embalar-televisao/",
+      "type": "guide"
+    },
+    {
+      "title": "Как упаковать телевизор для перевозки",
+      "href": "/ru/guides/kak-upakovat-televizor/",
+      "type": "guide"
+    },
+    {
+      "title": "É necessário seguro para transportar móveis?",
+      "href": "/guias/seguranca/seguro-transporte-moveis/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare quotes for transporting the television",
+    "text": "Describe the equipment, packaging and access before choosing the service.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "pack-television",
+  "alternates": {
+    "pt-PT": "/guias/embalamento/como-embalar-televisao/",
+    "en": "/en/guides/how-to-pack-a-tv/",
+    "ru": "/ru/guides/kak-upakovat-televizor/"
+  }
+}

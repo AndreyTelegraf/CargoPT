@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "id": "book-carrier-in-advance-en",
+  "locale": "en",
+  "cluster": "planning",
+  "path": "/en/guides/how-far-in-advance-to-book-a-carrier/",
+  "title": "How far in advance should you book a carrier?",
+  "meta_title": "How far in advance should you book a carrier? — CargoPT",
+  "meta_description": "Learn when to start requesting quotes and how the date, route, volume and access affect how far in advance you should book.",
+  "primary_query": "when to book moving carrier",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Moving planning",
+  "eyebrow": "Carrier reservation",
+  "hero_description": "The amount of advance notice required depends on the flexibility of the date, the size of the load, the distance and the difficulty of access.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Ask for quotes when the date and inventory are clear enough",
+  "key_points_heading": "Factors that determine advance",
+  "faq_heading": "Carrier Booking Questions",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "Book the carrier as soon as you know the likely date, route, volume and main access points. Larger jobs, strict dates, long routes, stairs, special items or the need for packaging and assembly justify more advance notice. Even when details are still missing, you can start asking for quotes with a clearly identified provisional inventory.",
+  "key_points": [
+    "Fixed dates require more advance notice than flexible dates.",
+    "Large moves require more team and vehicle planning.",
+    "Stairs and special items may require their own equipment.",
+    "Clearly indicate what can still change in the inventory.",
+    "Please double-check details before the day of service."
+  ],
+  "sections": [
+    {
+      "id": "when-to-start-asking-for-quotes",
+      "heading": "When to start asking for quotes",
+      "paragraphs": [
+        "Start when you can at least indicate the locations, the likely date, the main items and access conditions.",
+        "It is not necessary for all boxes to be ready, but the carrier needs to understand the size and demands of the service."
+      ]
+    },
+    {
+      "id": "hard-dates-need-more-margin",
+      "heading": "Fixed dates require more lead time",
+      "paragraphs": [
+        "When the move can only happen on a specific day or time, availability becomes a central factor.",
+        "If you can indicate alternatives, you increase the possibility of finding a compatible team and vehicle."
+      ]
+    },
+    {
+      "id": "size-and-distance-influence-planning",
+      "heading": "Size and distance influence planning",
+      "paragraphs": [
+        "A small, local load can be simpler to fit in than a full move between cities.",
+        "Long routes, multiple collection or delivery points and large volumes require route planning, time and capacity."
+      ],
+      "items": [
+        {
+          "title": "Small load",
+          "text": "It may require less staff and a smaller vehicle."
+        },
+        {
+          "title": "Full move",
+          "text": "Requires more detailed assessment of inventory and volume."
+        },
+        {
+          "title": "Long distance",
+          "text": "Needs coordination of schedules and vehicle availability."
+        },
+        {
+          "title": "Multiple locations",
+          "text": "They increase the complexity of the route and the expected time."
+        }
+      ]
+    },
+    {
+      "id": "special-services-must-be-communicated-early",
+      "heading": "Special services must be communicated early",
+      "paragraphs": [
+        "Pianos, large appliances, bulky furniture, difficult stairs, and no elevator may require additional helpers or equipment.",
+        "Packaging, disassembly and assembly also need to be considered in the duration and composition of the team."
+      ]
+    },
+    {
+      "id": "can-you-request-quotes-with-a-provisional-inventory",
+      "heading": "Can you request quotes with a provisional inventory?",
+      "paragraphs": [
+        "You can, as long as you clearly identify the estimates and points yet to be confirmed.",
+        "Update the carrier when relevant changes arise. Additional items, new access conditions or tasks may modify the required service."
+      ]
+    },
+    {
+      "id": "what-to-confirm-before-moving",
+      "heading": "What to confirm before moving day",
+      "paragraphs": [
+        "Review in writing the date, time, addresses, inventory, access, team and services included.",
+        "Also confirm the contact details for the day, parking, payment conditions and the procedure for changes."
+      ],
+      "checklist": [
+        "Date and time window.",
+        "Addresses and contacts.",
+        "Updated inventory.",
+        "Floors, elevators and stairs.",
+        "Team and vehicle.",
+        "Tasks included.",
+        "Value and conditions."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Do you already know the likely moving date?",
+    "text": "Submit inventory and access to start comparing carrier availability.",
+    "label": "Request quotes",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Can I book without having all the boxes ready?",
+      "answer": "Yes, as long as you provide a realistic estimate and update relevant changes prior to service."
+    },
+    {
+      "question": "Can a small move be scheduled at the last minute?",
+      "answer": "Availability may exist, but is not guaranteed. The stricter the date, the greater the risk of having few options."
+    },
+    {
+      "question": "When should I confirm the final inventory?",
+      "answer": "As soon as the main preparation is completed and always before the date, so that the team, vehicle and price can be confirmed."
+    },
+    {
+      "question": "Do stairs require advance reservation?",
+      "answer": "They may require more helpers, time or equipment, so they must be communicated from the first request."
+    },
+    {
+      "question": "Is it better to indicate multiple dates?",
+      "answer": "When possible, yes. Flexibility can increase available conveyor options."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Com quanta antecedência reservar um transportador? — Portuguese version",
+      "href": "/guias/planeamento/quando-reservar-transportador/",
+      "type": "guide"
+    },
+    {
+      "title": "За сколько времени бронировать перевозчика?",
+      "href": "/ru/guides/kogda-bronirovat-perevozchika/",
+      "type": "guide"
+    },
+    {
+      "title": "How to request a moving quote",
+      "href": "/en/guides/how-to-request-a-moving-quote/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare availability and conditions",
+    "text": "Describe the move once and receive quotes from carriers suitable for the service.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "book-carrier-in-advance",
+  "alternates": {
+    "pt-PT": "/guias/planeamento/quando-reservar-transportador/",
+    "en": "/en/guides/how-far-in-advance-to-book-a-carrier/",
+    "ru": "/ru/guides/kogda-bronirovat-perevozchika/"
+  }
+}

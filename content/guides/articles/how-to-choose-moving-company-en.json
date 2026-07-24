@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "id": "how-to-choose-moving-company-en",
+  "locale": "en",
+  "cluster": "planning",
+  "path": "/en/guides/how-to-choose-a-moving-company/",
+  "title": "How to choose a moving company",
+  "meta_title": "How to choose a moving company — CargoPT",
+  "meta_description": "Compare moving companies based on service included, experience, team, vehicle, conditions and responsibility, not just price.",
+  "primary_query": "how to choose moving company",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Moving planning",
+  "eyebrow": "Choice of carrier",
+  "hero_description": "A good choice starts by comparing quotes based on the same inventory, access conditions and tasks.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Compare capacity, clarity and service conditions",
+  "key_points_heading": "Comparison criteria",
+  "faq_heading": "Questions about choosing moving companies",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To choose a moving company, send the same complete description to several movers and compare the vehicle, team, tasks, price and conditions. Check contacts, identification, relevant experience, liability for damages and what happens in case of changes. Avoid deciding just on the lowest price.",
+  "key_points": [
+    "Compare quotes based on the same inventory.",
+    "Confirm vehicle, team and experience for the service.",
+    "Ask for a written description of the tasks included.",
+    "Check liability, payments and changes.",
+    "Be wary of vague answers or contradictory conditions."
+  ],
+  "sections": [
+    {
+      "id": "start-with-the-same-order-for-everyone",
+      "heading": "Send the same request to every company",
+      "paragraphs": [
+        "Send the same route, date, list of items, photographs, access points and tasks to all companies.",
+        "Without a common basis, different values may correspond to different services."
+      ]
+    },
+    {
+      "id": "confirm-service-capability",
+      "heading": "Confirm service capability",
+      "paragraphs": [
+        "The vehicle, number of helpers and equipment must be suitable for the volume and access.",
+        "When there are pianos, heavy appliances, stairs or large furniture, ask about their experience in similar situations."
+      ],
+      "checklist": [
+        "Vehicle type and capacity.",
+        "Number of helpers.",
+        "Handling equipment.",
+        "Experience with special items.",
+        "Capacity for disassembly and assembly.",
+        "Availability on the required date."
+      ]
+    },
+    {
+      "id": "ask-for-a-clear-written-quote",
+      "heading": "Ask for a clear written quote",
+      "paragraphs": [
+        "The quote must indicate the service included, the price, date, locations and main conditions.",
+        "Confirm whether packaging, materials, disassembly, loading, unloading and assembly are part of the price or charged separately."
+      ]
+    },
+    {
+      "id": "check-identity-and-contacts",
+      "heading": "Check identity and contacts",
+      "paragraphs": [
+        "Confirm the identification used in the quote, the available contacts and who will be responsible for the service.",
+        "Reviews and references can be helpful, but should be considered alongside the clarity of the quote and suitability for the job."
+      ]
+    },
+    {
+      "id": "confirm-responsibility-and-conditions",
+      "heading": "Confirm responsibility and conditions",
+      "paragraphs": [
+        "Ask how damages, delays, cancellations and changes to inventory or access are handled.",
+        "Record agreements in writing and clarify in advance when and how payment will be made."
+      ],
+      "items": [
+        {
+          "title": "Damage",
+          "text": "Confirm the registration and liability procedure."
+        },
+        {
+          "title": "Changes",
+          "text": "Ask how additional items or tasks affect the service."
+        },
+        {
+          "title": "Cancellation",
+          "text": "Check applicable deadlines and conditions."
+        },
+        {
+          "title": "Payment",
+          "text": "Confirm agreed value, time and method."
+        }
+      ]
+    },
+    {
+      "id": "warning-signs-before-choosing",
+      "heading": "Warning signs before choosing",
+      "paragraphs": [
+        "Answers that ignore inventory and hits may not reflect actual work.",
+        "Be careful with conditions that change repeatedly, lack of identification, pressure to decide immediately or payment requests without a clear record."
+      ],
+      "checklist": [
+        "Value presented without questions about the service.",
+        "Refusal to confirm tasks in writing.",
+        "Contradictory information about team or vehicle.",
+        "Unclear payment terms.",
+        "Lack of verifiable contacts.",
+        "Pressure to decide without clarifying doubts."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Compare companies with the same description",
+    "text": "Indicate inventory, access conditions and tasks to receive quotes that are easier to compare.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Should I choose the cheapest quote?",
+      "answer": "Not automatically. Confirm that it includes the same vehicle, team, tasks, materials and conditions."
+    },
+    {
+      "question": "Is it important to have a written quote?",
+      "answer": "Yes. Registration helps confirm the service, value, date and responsibilities."
+    },
+    {
+      "question": "How to evaluate experience with special items?",
+      "answer": "Ask for similar services, team, equipment and procedure planned for the item and access conditions."
+    },
+    {
+      "question": "Should I pay in advance?",
+      "answer": "Confirm in writing the amount, timing and terms of payment before accepting."
+    },
+    {
+      "question": "What changes could modify the quote?",
+      "answer": "Additional items, different access, new tasks, date changes or the need for more helpers may change the service."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como escolher uma empresa de mudanças — Portuguese version",
+      "href": "/guias/planeamento/como-escolher-empresa-mudancas/",
+      "type": "guide"
+    },
+    {
+      "title": "Как выбрать компанию для переезда",
+      "href": "/ru/guides/kak-vybrat-kompaniyu-dlya-pereezda/",
+      "type": "guide"
+    },
+    {
+      "title": "Como verificar um transportador antes da mudança",
+      "href": "/guias/seguranca/como-verificar-transportador/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare quotes before choosing",
+    "text": "Describe the move once and evaluate the price, team, tasks and conditions of each response.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "choose-moving-company",
+  "alternates": {
+    "pt-PT": "/guias/planeamento/como-escolher-empresa-mudancas/",
+    "en": "/en/guides/how-to-choose-a-moving-company/",
+    "ru": "/ru/guides/kak-vybrat-kompaniyu-dlya-pereezda/"
+  }
+}

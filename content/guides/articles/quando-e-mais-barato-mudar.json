@@ -135,13 +135,13 @@
   ],
   "related_links": [
     {
-      "title": "Com quanta antecedência reservar um transportador?",
-      "href": "/guias/planeamento/quando-reservar-transportador/",
+      "title": "When is it cheaper to move? — versão em inglês",
+      "href": "/en/guides/when-is-it-cheaper-to-move/",
       "type": "guide"
     },
     {
-      "title": "Como escolher uma empresa de mudanças",
-      "href": "/guias/planeamento/como-escolher-empresa-mudancas/",
+      "title": "Когда дешевле переезжать? — versão em russo",
+      "href": "/ru/guides/kogda-deshevle-pereezzhat/",
       "type": "guide"
     },
     {
@@ -160,5 +160,11 @@
     "text": "Indique a sua flexibilidade, a carga e os acessos e verifique as condições apresentadas por cada transportador.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "cheapest-time-to-move",
+  "alternates": {
+    "pt-PT": "/guias/planeamento/quando-e-mais-barato-mudar/",
+    "en": "/en/guides/when-is-it-cheaper-to-move/",
+    "ru": "/ru/guides/kogda-deshevle-pereezzhat/"
   }
 }

@@ -157,13 +157,13 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças de apartamento em Lisboa",
-      "href": "/mudancas-apartamento-lisboa/",
-      "type": "landing"
+      "title": "Complete moving checklist — versão em inglês",
+      "href": "/en/guides/complete-moving-checklist/",
+      "type": "guide"
     },
     {
-      "title": "Com quanta antecedência reservar um transportador?",
-      "href": "/guias/planeamento/quando-reservar-transportador/",
+      "title": "Полный чек-лист переезда — versão em russo",
+      "href": "/ru/guides/polnyy-cheklist-pereezda/",
       "type": "guide"
     },
     {
@@ -182,5 +182,11 @@
     "text": "Descreva a carga, os acessos e as tarefas para receber propostas baseadas na mesma informação.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "complete-moving-checklist",
+  "alternates": {
+    "pt-PT": "/guias/planeamento/checklist-mudanca/",
+    "en": "/en/guides/complete-moving-checklist/",
+    "ru": "/ru/guides/polnyy-cheklist-pereezda/"
   }
 }

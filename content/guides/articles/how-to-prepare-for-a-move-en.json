@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "id": "how-to-prepare-for-a-move-en",
+  "locale": "en",
+  "cluster": "planning",
+  "path": "/en/guides/how-to-prepare-for-a-move/",
+  "title": "How to prepare for a move",
+  "meta_title": "How to prepare for a move — CargoPT",
+  "meta_description": "Organize your move: inventory, dates, packaging, access, services and information needed to request quotes.",
+  "primary_query": "how to prepare for a move",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Moving planning",
+  "eyebrow": "Preparing for a move",
+  "hero_description": "A well-prepared move starts with a realistic inventory, a possible date, verified access and tasks distributed before the day of transport.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Start with inventory, access conditions and date",
+  "key_points_heading": "Essential steps",
+  "faq_heading": "Questions about preparing for a move",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To prepare for a move, decide what will be transported, confirm both locations and access conditions, choose a date and separate the tasks you will handle from those you want to hire. Pack by category, label boxes, protect fragile items and report large furniture, appliances, floors, lifts, stairs and dismantling or assembly needs in advance.",
+  "key_points": [
+    "Decide what will be transported, sold, donated or disposed of.",
+    "Make an inventory of furniture, appliances, boxes and special items.",
+    "Confirm dates, addresses, floors, elevators and parking.",
+    "Distribute packing, disassembly, loading and assembly.",
+    "Send the same complete description to the carriers."
+  ],
+  "sections": [
+    {
+      "id": "define-what-you-will-transport",
+      "heading": "Define what you will transport",
+      "paragraphs": [
+        "Go through each room and separate the items that will go to the new location from those that will be sold, donated, recycled or disposed of.",
+        "Reducing volume before asking for quotes makes it easier to estimate the vehicle, number of helpers and time needed."
+      ],
+      "checklist": [
+        "Furniture and its approximate dimensions.",
+        "Household appliances.",
+        "Estimated quantity of boxes.",
+        "Heavy or fragile items.",
+        "Parts that require disassembly.",
+        "Goods that will not be transported."
+      ]
+    },
+    {
+      "id": "confirm-date-and-route",
+      "heading": "Confirm date and route",
+      "paragraphs": [
+        "Set a preferred date and, when possible, alternatives. Confirm when you can enter the new property and how long you will have access to the original location.",
+        "Register the full addresses and check if there are any movement restrictions, opening hours or parking at both points."
+      ]
+    },
+    {
+      "id": "check-access-to-both-properties",
+      "heading": "Check access to both properties",
+      "paragraphs": [
+        "Floors, elevators, stairs and distance to the vehicle influence the organization of the team and equipment.",
+        "Measure tight spots when there is large furniture. Photographs of doors, hallways and stairs help the carrier evaluate the service."
+      ],
+      "items": [
+        {
+          "title": "Floors",
+          "text": "Indicate the floor for collection and delivery."
+        },
+        {
+          "title": "Elevators",
+          "text": "Confirm dimensions, function and capacity."
+        },
+        {
+          "title": "Stairs",
+          "text": "Mention curves, narrow landings and unevenness."
+        },
+        {
+          "title": "Parking",
+          "text": "Explain where the vehicle can stop and the distance to the entrance."
+        }
+      ]
+    },
+    {
+      "id": "organize-packaging-by-categories",
+      "heading": "Organize packaging by categories",
+      "paragraphs": [
+        "Pack the least used items first and leave the items you need for everyday life until last.",
+        "Use sturdy boxes, distribute the weight and identify the contents and destination room. Fragile items need individual protection and space without gaps."
+      ],
+      "checklist": [
+        "Identify boxes by room.",
+        "Do not create excessively heavy boxes.",
+        "Separate documents and valuables.",
+        "Protect dishes, glass and electronics.",
+        "Prepare a box for the first night."
+      ]
+    },
+    {
+      "id": "separate-your-own-tasks-from-contracted-services",
+      "heading": "Separate your own tasks from contracted services",
+      "paragraphs": [
+        "Define who will do the packaging, disassembly, loading, transportation, unloading and assembly.",
+        "A quote must clearly state what is included. Changes to the day itself may require more time, people or equipment."
+      ],
+      "items": [
+        {
+          "title": "Packaging",
+          "text": "Confirm that materials and preparation are included."
+        },
+        {
+          "title": "Disassembly",
+          "text": "Identify furniture that cannot be assembled."
+        },
+        {
+          "title": "Helpers",
+          "text": "Define who participates in loading and unloading."
+        },
+        {
+          "title": "Equipment",
+          "text": "Inform if there are heavy items or special access."
+        }
+      ]
+    },
+    {
+      "id": "prepare-a-complete-order",
+      "heading": "Prepare a complete request",
+      "paragraphs": [
+        "Send the same information to all carriers: route, date, inventory, access points, photographs and intended tasks.",
+        "Thus, the quotes correspond to the same service and can be compared with less ambiguity."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Turn planning into a complete order",
+    "text": "Describe the load, access, date and tasks required to receive comparable quotes.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "How soon should I start preparing for the move?",
+      "answer": "Start as soon as the date is predictable. The greater the volume, distance or difficulty of access, the sooner inventory, packaging and transport must be organized."
+    },
+    {
+      "question": "Do I need to know the total weight of the move?",
+      "answer": "Not necessarily. An organized list, dimensions of larger items, approximate number of boxes and photographs allow for a first assessment."
+    },
+    {
+      "question": "What should I pack first?",
+      "answer": "Start with seasonal items, decor, books and little-used goods. Leave medicines, documents and essential items with you."
+    },
+    {
+      "question": "Should I dismantle the furniture myself?",
+      "answer": "Only when you know the procedure and can store parts and hardware without damaging the furniture."
+    },
+    {
+      "question": "What information should I send to the carrier?",
+      "answer": "Indicate addresses, date, inventory, floors, elevators, stairs, parking, helpers and additional services."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como preparar uma mudança — Portuguese version",
+      "href": "/guias/planeamento/como-preparar-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Как подготовиться к переезду",
+      "href": "/ru/guides/kak-podgotovitsya-k-pereezdu/",
+      "type": "guide"
+    },
+    {
+      "title": "How to pack boxes for a move",
+      "href": "/en/guides/how-to-pack-boxes-for-moving/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Get quotes for a well-prepared move",
+    "text": "Indicate the locations, items, access conditions and tasks once and compare the answers received.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "prepare-for-a-move",
+  "alternates": {
+    "pt-PT": "/guias/planeamento/como-preparar-uma-mudanca/",
+    "en": "/en/guides/how-to-prepare-for-a-move/",
+    "ru": "/ru/guides/kak-podgotovitsya-k-pereezdu/"
+  }
+}

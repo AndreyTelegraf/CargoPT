@@ -141,13 +141,13 @@
   ],
   "related_links": [
     {
-      "title": "Como embalar uma televisão para transporte",
-      "href": "/guias/embalamento/como-embalar-televisao/",
+      "title": "How to pack appliances for transport — versão em inglês",
+      "href": "/en/guides/how-to-pack-appliances/",
       "type": "guide"
     },
     {
-      "title": "Como embalar loiça e copos para uma mudança",
-      "href": "/guias/embalamento/como-embalar-louca/",
+      "title": "Как упаковать бытовую технику для перевозки — versão em russo",
+      "href": "/ru/guides/kak-upakovat-bytovuyu-tehniku/",
       "type": "guide"
     },
     {
@@ -166,5 +166,11 @@
     "text": "Indique os equipamentos, as dimensões e os acessos para encontrar transportadores adequados.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "pack-appliances",
+  "alternates": {
+    "pt-PT": "/guias/embalamento/como-embalar-eletrodomesticos/",
+    "en": "/en/guides/how-to-pack-appliances/",
+    "ru": "/ru/guides/kak-upakovat-bytovuyu-tehniku/"
   }
 }

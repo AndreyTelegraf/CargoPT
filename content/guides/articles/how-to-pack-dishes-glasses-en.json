@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "id": "how-to-pack-dishes-glasses-en",
+  "locale": "en",
+  "cluster": "packing",
+  "path": "/en/guides/how-to-pack-dishes-and-glasses/",
+  "title": "How to pack dishes and glasses for a move",
+  "meta_title": "How to pack dishes and glasses for a move — CargoPT",
+  "meta_description": "Protect plates, glasses, bowls and other fragile pieces with sturdy boxes, individual separation and filled spaces.",
+  "primary_query": "how to pack dishes for moving",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Packaging",
+  "eyebrow": "Dishes packaging",
+  "hero_description": "The dishes must be packed in small groups, with individual protection and without space to move around inside the box.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Protect each piece and avoid movement inside the box",
+  "key_points_heading": "Essential care",
+  "faq_heading": "Questions about dish packaging",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To pack dishes and glasses, use small or medium-sized boxes, reinforce the bottom and create a layer of protection. Wrap each piece individually, place plates vertically, fill the inside of the cups when appropriate and separate layers. Eliminate empty spaces, close the box without compressing it and identify it as fragile.",
+  "key_points": [
+    "Use sturdy and not too large boxes.",
+    "Wrap plates, glasses and bowls individually.",
+    "Place the plates vertically, well adjusted.",
+    "Separate layers and fill in any gaps.",
+    "Identify the box as fragile and indicate the orientation."
+  ],
+  "sections": [
+    {
+      "id": "required-materials",
+      "heading": "Required materials",
+      "paragraphs": [
+        "Prepare sturdy boxes, tape, labels, and clean protective materials. Avoid materials that are damp or that could stain the pieces.",
+        "Dividers can help with glasses and bottles, as long as they are adjusted and don't let the pieces hit each other."
+      ],
+      "checklist": [
+        "Small or medium boxes.",
+        "Personal protective material.",
+        "Separators or additional card.",
+        "Material to fill spaces.",
+        "Resistant tape.",
+        "Fragility labels."
+      ]
+    },
+    {
+      "id": "prepare-the-box-before-loading-the-dishes",
+      "heading": "Prepare the box before loading the dishes",
+      "paragraphs": [
+        "Reinforce the bottom and add a protective layer that absorbs small vibrations.",
+        "The box must be stable and without deformation. Do not use large packages that allow excessive weight to accumulate."
+      ]
+    },
+    {
+      "id": "how-to-pack-dishes",
+      "heading": "How to pack dishes",
+      "paragraphs": [
+        "Wrap each plate and protect the edges. Only add a quantity that can be handled without excessive pressure.",
+        "Place plates upright, like records, rather than creating a tall horizontal stack. Fill gaps to prevent tilting and shock."
+      ]
+    },
+    {
+      "id": "how-to-pack-glasses-and-glasses",
+      "heading": "How to pack glasses and stemware",
+      "paragraphs": [
+        "Wrap each piece separately. When appropriate, place a small amount of protection inside without applying pressure.",
+        "Cups and bowls must be straight, separate and without contact with each other. The rods need additional protection, but they should not be weight-bearing."
+      ],
+      "items": [
+        {
+          "title": "Simple glasses",
+          "text": "Wrap individually and place in well-adjusted dividers or rows."
+        },
+        {
+          "title": "Bowls with foot",
+          "text": "Protect the rod and avoid placing weight on the top."
+        },
+        {
+          "title": "Mugs",
+          "text": "Especially protect the wings and do not use them as a support point."
+        },
+        {
+          "title": "Bottles",
+          "text": "Transport closed, separated and in the appropriate orientation."
+        }
+      ]
+    },
+    {
+      "id": "separate-layers-and-fill-gaps",
+      "heading": "Separate layers and fill gaps",
+      "paragraphs": [
+        "Create separation between groups of pieces and place the most resistant items at the bottom.",
+        "Before closing, check for movement by gently moving the box. Add filling without compressing the dishes."
+      ]
+    },
+    {
+      "id": "close-and-identify-correctly",
+      "heading": "Seal and label the box correctly",
+      "paragraphs": [
+        "The box must close without bulging. Reinforce the unions and identify it on more than one side.",
+        "Indicate fragile, crockery, keep upright and the destination room. Do not place heavy boxes on these items."
+      ],
+      "checklist": [
+        "Closed box without pressure on the contents.",
+        "No sound or significant internal movement.",
+        "Identification of fragility.",
+        "Visible guidance.",
+        "Destination division indicated."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Include fragile items in inventory",
+    "text": "Indicate the number of boxes of dishes and other delicate items when asking for quotes.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Should dishes be placed upright?",
+      "answer": "Yes. Well protected and adjusted vertically, they are less subject to the accumulated pressure of a high pile."
+    },
+    {
+      "question": "Can I add glasses and plates in the same box?",
+      "answer": "It may be possible with adequate separation, but it is preferable to organize similar groups and avoid weighing down delicate pieces."
+    },
+    {
+      "question": "Should I fill the inside of the cups?",
+      "answer": "You can apply light protection when appropriate, without exerting pressure that could break the glass."
+    },
+    {
+      "question": "How to check if the box is secure?",
+      "answer": "Before closing, move it gently. There must be no significant displacement or contact between the parts."
+    },
+    {
+      "question": "Can I stack other boxes on top?",
+      "answer": "Avoid heavy items on dish boxes. Clearly identify them to be placed in a protected position."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como embalar loiça e copos para uma mudança — Portuguese version",
+      "href": "/guias/embalamento/como-embalar-louca/",
+      "type": "guide"
+    },
+    {
+      "title": "Как упаковать посуду и бокалы для переезда",
+      "href": "/ru/guides/kak-upakovat-posudu-i-bokaly/",
+      "type": "guide"
+    },
+    {
+      "title": "How to prepare for a move",
+      "href": "/en/guides/how-to-prepare-for-a-move/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Prepare the transport of fragile items",
+    "text": "Describe the boxes, cargo and access to receive suitable quotes for the move.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "pack-dishes-glasses",
+  "alternates": {
+    "pt-PT": "/guias/embalamento/como-embalar-louca/",
+    "en": "/en/guides/how-to-pack-dishes-and-glasses/",
+    "ru": "/ru/guides/kak-upakovat-posudu-i-bokaly/"
+  }
+}
