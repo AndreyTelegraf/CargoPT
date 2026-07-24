@@ -14,6 +14,7 @@ DEFAULT_STATIC_ROOT = PROJECT_ROOT / "app/static"
 GUIDE_RENDER_LABELS = {
     "pt-PT": {
         "body_locale": "pt",
+        "home_href": "/",
         "guides": "Guias",
         "guides_href": "/guias/",
         "published": "Publicado em",
@@ -36,6 +37,7 @@ GUIDE_RENDER_LABELS = {
     },
     "en": {
         "body_locale": "en",
+        "home_href": "/en/",
         "guides": "Guides",
         "guides_href": "/en/guides/",
         "published": "Published on",
@@ -58,6 +60,7 @@ GUIDE_RENDER_LABELS = {
     },
     "ru": {
         "body_locale": "ru",
+        "home_href": "/ru/",
         "guides": "Статьи",
         "guides_href": "/ru/guides/",
         "published": "Опубликовано",
@@ -80,6 +83,7 @@ GUIDE_RENDER_LABELS = {
     },
     "pt-BR": {
         "body_locale": "pt-br",
+        "home_href": "/pt-br/",
         "guides": "Guias",
         "guides_href": "/pt-br/guias/",
         "published": "Publicado em",
@@ -483,6 +487,7 @@ def build_structured_data(
     article: dict[str, Any],
     registry: dict[str, Any],
 ) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    labels = guide_render_labels(article["locale"])
     url = public_url(
         registry["base_url"],
         article["path"],
@@ -533,7 +538,10 @@ def build_structured_data(
                 "@type": "ListItem",
                 "position": 1,
                 "name": "CargoPT",
-                "item": registry["base_url"].rstrip("/") + "/",
+                "item": (
+                    registry["base_url"].rstrip("/")
+                    + labels["home_href"]
+                ),
             },
             {
                 "@type": "ListItem",
@@ -710,7 +718,7 @@ def render_guide(
 </head>
 <body data-locale="{escape_text(labels["body_locale"])}" class="guide-page">
   <header class="site-header">
-    <a class="logo" href="/" aria-label="CargoPT"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></a>
+    <a class="logo" href="{escape_text(labels["home_href"])}" aria-label="CargoPT"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></a>
     <nav class="header-actions" aria-label="Navigation">
 {locale_switcher}
       <a class="button button-small button-carrier" href="/#request">{escape_text(labels["request"])}</a>
@@ -719,7 +727,7 @@ def render_guide(
 
   <main id="top">
     <nav class="section guide-breadcrumb" aria-label="Breadcrumb">
-      <a href="/">CargoPT</a>
+      <a href="{escape_text(labels["home_href"])}">CargoPT</a>
       <span aria-hidden="true">→</span>
       <a href="{escape_text(labels["guides_href"])}">{escape_text(labels["guides"])}</a>
       <span aria-hidden="true">→</span>
