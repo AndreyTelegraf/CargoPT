@@ -5,6 +5,8 @@ from datetime import timedelta
 
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
+from app.services.email.models import EmailEventType
+from app.services.email.notification_service import EmailNotificationService
 from app.services.request_creation import RequestCreationService
 from app.services.request_creation import WebDraftInput
 from app.services.request_population import RequestPopulationAddress
@@ -62,10 +64,12 @@ class RequestIntakeService:
         job_repository: JobRepository,
         carrier_repository: CarrierRepository,
         bot,
+        email_notification_service: EmailNotificationService | None = None,
     ) -> None:
         self.job_repository = job_repository
         self.carrier_repository = carrier_repository
         self.bot = bot
+        self.email_notification_service = email_notification_service
 
     @staticmethod
     def _normalized_text(value: str | None) -> str:
@@ -210,8 +214,14 @@ class RequestIntakeService:
             carrier_repository=self.carrier_repository,
             bot=self.bot,
         )
-        return await submission_service.submit_existing_job(
+        result = await submission_service.submit_existing_job(
             job_id=job.id,
             comment=request.comment,
             enforce_telegram_client_limits=False,
         )
+        if self.email_notification_service is not None:
+            await self.email_notification_service.enqueue_for_job(
+                job=result.job,
+                event_type=EmailEventType.REQUEST_RECEIVED,
+            )
+        return result

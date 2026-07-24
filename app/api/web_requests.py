@@ -20,10 +20,14 @@ from app.db.session import async_session_maker
 from app.domain.job_status import JobStatus
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
+from app.repositories.job_email_notification import (
+    JobEmailNotificationRepository,
+)
 from app.services.assignment_confirmation import build_assignment_status_from_action
 from app.services.assignment_confirmation import process_assignment_failure_redispatch
 from app.services.assignment_confirmation import record_assignment_confirmation
 from app.services.client_offer_presentation import ClientOfferPresentationService
+from app.services.email.notification_service import EmailNotificationService
 from app.services.job_lifecycle import InvalidJobStatusTransitionError
 from app.services.job_offer import ClientOfferSelectionError
 from app.services.job_offer import JobOfferService
@@ -31,6 +35,7 @@ from app.services.request_intake import RequestIntakeAddress
 from app.services.request_intake import RequestIntakeInput
 from app.services.request_intake import RequestIntakeItem
 from app.services.request_intake import RequestIntakeService
+from app.services.tracking_url import build_tracking_path
 
 
 router = APIRouter()
@@ -90,6 +95,10 @@ async def submit_web_request(
         job_repository=JobRepository(session),
         carrier_repository=CarrierRepository(session),
         bot=bot,
+        email_notification_service=EmailNotificationService(
+            JobEmailNotificationRepository(session),
+            enabled=settings.email_enabled,
+        ),
     )
     result = await service.submit_web_intake(
         RequestIntakeInput(
@@ -139,16 +148,14 @@ async def submit_web_request(
     if result.job.tracking_token is None:
         raise RuntimeError("web request tracking token missing")
 
-    tracking_prefix = {
-        "en": "/en/track",
-        "ru": "/ru/track",
-    }.get(result.job.source_locale, "/track")
-
     return WebRequestResponse(
         job_id=result.job.id,
         status=str(result.job.status),
         tracking_token=result.job.tracking_token,
-        tracking_url=f"{tracking_prefix}/{result.job.tracking_token}",
+        tracking_url=build_tracking_path(
+            result.job.source_locale,
+            result.job.tracking_token,
+        ),
         offers_count=result.offers_count,
         sent_count=result.sent_count,
     )
