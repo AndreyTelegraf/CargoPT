@@ -10,8 +10,8 @@ STATIC = ROOT / "app/static"
 CSS_VERSION = "locale-switcher-v1"
 COMPONENTS_CSS_PATH = "/assets/css/components.css"
 RENDERER_CSS_REFERENCE = (
-    COMPONENTS_CSS_PATH
-    + f"?v={CSS_VERSION}"
+    '<link rel="stylesheet" '
+    'href="/assets/css/guides.css?v=guides-v4">'
 )
 
 pages = sorted(STATIC.rglob("index.html"))

@@ -35,7 +35,8 @@ assert 'form.addEventListener("input", clearEditedFieldValidity)' in js
 assert 'form.addEventListener("change", clearEditedFieldValidity)' in js
 
 assert "let firstInvalidField = null;" in js
-assert "const isValid = validateRequiredField(field);" in js
+assert "function validateField(field, focusField = false)" in js
+assert "const isValid = validateField(field);" in js
 assert "if (!isValid && firstInvalidField === null) {" in js
 assert "firstInvalidField = field;" in js
 assert "if (firstInvalidField) {" in js

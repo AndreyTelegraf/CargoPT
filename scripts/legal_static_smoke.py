@@ -68,11 +68,38 @@ for path in sorted(STATIC.rglob("*.html")):
 
     relative = str(path.relative_to(STATIC))
 
-    if not relative.startswith(("en/", "ru/")):
+    if not relative.startswith(("en/", "ru/", "pt-br/")):
         assert (
             '<a href="/transportadores/">'
             'Para transportadores</a>'
         ) in footer, path
+
+# PT-BR guides use the neutral legal footer because there is
+# currently no dedicated PT-BR carrier landing route.
+ptbr_guide = (
+    STATIC
+    / "pt-br/guias/como-sair-de-portugal/index.html"
+).read_text(encoding="utf-8")
+
+ptbr_footer = footer_pattern.search(ptbr_guide)
+
+assert ptbr_footer is not None
+
+for required_link in (
+    'href="/privacy/"',
+    'href="/terms/"',
+    'href="/cookies/"',
+):
+    assert required_link in ptbr_footer.group(0)
+
+assert not (
+    STATIC / "pt-br/transportadores/index.html"
+).exists()
+
+assert not (
+    STATIC / "pt-br/carriers/index.html"
+).exists()
+
 
 for relative in (
     "privacy/index.html",
