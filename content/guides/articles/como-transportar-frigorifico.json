@@ -136,13 +136,13 @@
   ],
   "related_links": [
     {
-      "title": "Como transportar um piano",
-      "href": "/guias/objetos/como-transportar-piano/",
+      "title": "How to transport a refrigerator — versão em inglês",
+      "href": "/en/guides/how-to-transport-a-refrigerator/",
       "type": "guide"
     },
     {
-      "title": "Como preparar um frigorífico para transporte",
-      "href": "/guias/objetos/preparar-frigorifico-transporte/",
+      "title": "Как перевезти холодильник — versão em russo",
+      "href": "/ru/guides/kak-perevezti-holodilnik/",
       "type": "guide"
     },
     {
@@ -161,5 +161,11 @@
     "text": "Descreva o equipamento e os acessos para encontrar transportadores adequados ao serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "transport-refrigerator",
+  "alternates": {
+    "pt-PT": "/guias/objetos/como-transportar-frigorifico/",
+    "en": "/en/guides/how-to-transport-a-refrigerator/",
+    "ru": "/ru/guides/kak-perevezti-holodilnik/"
   }
 }

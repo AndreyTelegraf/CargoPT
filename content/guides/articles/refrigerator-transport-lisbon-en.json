@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "id": "refrigerator-transport-lisbon-en",
+  "locale": "en",
+  "cluster": "objects",
+  "path": "/en/guides/refrigerator-transport-lisbon/",
+  "title": "Refrigerator transport in Lisbon",
+  "meta_title": "Refrigerator transport in Lisbon — CargoPT",
+  "meta_description": "Ask for quotes for refrigerator transport in Lisbon: preparation, access, equipment and protection.",
+  "primary_query": "refrigerator transport Lisbon",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Furniture and items",
+  "eyebrow": "Refrigerator transport in Lisbon",
+  "hero_description": "Transporting refrigerators in Lisbon requires advance preparation, correct measurements, access checks, sufficient equipment, surface protection and stable fixation in the vehicle.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "How to request refrigerator transport in Lisbon",
+  "key_points_heading": "Information required for the service",
+  "faq_heading": "Questions about refrigerator transport in Lisbon",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To request refrigerator transport in Lisbon, indicate the type of appliance, dimensions, photographs and collection and delivery locations. Confirm that it will be empty, switched off, defrosted and dry, following the manufacturer's instructions for preparation and subsequent connection. Describe floors, elevators, stairs, doors, parking and distance to the vehicle. Inform if it will be necessary to remove doors, shelves or other components and who will do this work. Compare quotes that identify the team, equipment, protection, transport position, placement at destination and conditions of responsibility.",
+  "key_points": [
+    "Indicate dimensions and photographs of the refrigerator.",
+    "Describe floors, elevators, stairs, and parking.",
+    "Confirm necessary preparation before collection.",
+    "Define team, equipment, protection and fixation.",
+    "Compare quotes based on the same information."
+  ],
+  "sections": [
+    {
+      "id": "what-information-to-send",
+      "heading": "What information to send",
+      "paragraphs": [
+        "Identify the type of refrigerator, dimensions and any characteristics that affect movement.",
+        "Include complete photographs, collection and delivery location, desired date and access details.",
+        "Indicate whether it is a simple, combined, American or built-in refrigerator and enter the width, height and depth without rounding off critical measurements. Photograph the front, sides, back and the area where it is installed. If the weight is not known, provide the make and model when this information is available."
+      ],
+      "checklist": [
+        "Type and dimensions of refrigerator.",
+        "Photographs of the item.",
+        "Collection and delivery location.",
+        "Floors, elevators and stairs.",
+        "Parking and distance to the vehicle.",
+        "Additional services required."
+      ]
+    },
+    {
+      "id": "preparation-before-collection",
+      "heading": "Preparation before collection",
+      "paragraphs": [
+        "The refrigerator must be empty, switched off, defrosted and dry. Shelves, drawers and moving components must be removed or immobilized.",
+        "Inform in advance what will already be prepared and what should be carried out by the team.",
+        "Plan preparation as far in advance as recommended by the manufacturer. Remove food, water, ice and loose accessories, protect shelves and drawers and dry the interior. Cables and hoses must be secured. If you want the team to perform any of these tasks, expressly include it in the request."
+      ]
+    },
+    {
+      "id": "measure-and-photograph-access",
+      "heading": "Measure and photograph access",
+      "paragraphs": [
+        "Confirm doors, corridors, elevators, stairs, landings and exterior route in both locations.",
+        "Measurements and photographs help define orientation, helpers and equipment.",
+        "Measure the useful opening of the doors and confirm the space to rotate the appliance in kitchens, corridors and landings. Check collection and delivery separately, including elevators, stair turns and differences in level. If it is necessary to remove a door from the refrigerator or property, this possibility must be assessed before the date."
+      ],
+      "items": [
+        {
+          "title": "Ports",
+          "text": "Record the useful opening and space for rotation."
+        },
+        {
+          "title": "Elevators",
+          "text": "Confirm door, internal dimensions and capacity."
+        },
+        {
+          "title": "Stairs",
+          "text": "Indicate sections, curves, width and unevenness."
+        },
+        {
+          "title": "Parking",
+          "text": "Enter the distance between the entrance and the vehicle."
+        }
+      ]
+    },
+    {
+      "id": "team-and-equipment",
+      "heading": "Team and equipment",
+      "paragraphs": [
+        "The device is heavy and difficult to hold. It must be moved with suitable means and kept as vertical as possible.",
+        "The quote must indicate the number of helpers and the means planned to move the item.",
+        "Define the number of helpers and the resources provided for each part of the route. Stairs, raised floors and remote parking may require more people or specific equipment. Also confirm the protection of the floor, walls, elevator and common areas, especially when the device passes very close to surfaces."
+      ],
+      "checklist": [
+        "Number of helpers.",
+        "Applicable cart, straps or equipment.",
+        "Protection of the floor, walls and elevator.",
+        "Loading and unloading.",
+        "Placement at the destination location.",
+        "Additional tasks agreed."
+      ]
+    },
+    {
+      "id": "protection-and-transportation-in-the-vehicle",
+      "heading": "Protection and transportation in the vehicle",
+      "paragraphs": [
+        "Doors, surfaces and internal components need protection. Follow the manufacturer's instructions before turning the device back on.",
+        "Confirm how the item will be protected and immobilized to avoid impacts and displacements during the journey.",
+        "The refrigerator must be protected against impacts and immobilized so that it cannot move in the vehicle. Confirm the intended orientation and prevent other volumes from exerting pressure on doors or components. At destination, follow the manufacturer's instructions before turning the appliance back on and check that final placement is included."
+      ]
+    },
+    {
+      "id": "how-to-compare-quotes",
+      "heading": "How to compare quotes",
+      "paragraphs": [
+        "Send the same description to all carriers and confirm that each quote considers the same item, the same access conditions and the same tasks.",
+        "Compare team, equipment, protection, schedule, value and conditions of responsibility.",
+        "Compare quotes that consider the same device, the same access and the same state of preparation. Check helpers, equipment, loading, unloading, placement, possible dismantling, schedule and price. Ask for the applicable conditions to be recorded if the measures, access or tasks are different from what is described."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare refrigerator transport",
+    "text": "Send dimensions, photographs and access to receive suitable quotes.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "What photos should I send?",
+      "answer": "Send the refrigerator front, sides and back, the label with brand and model when accessible and the entire route. Include doors, corridors, elevators, stairs, landings and the place where the vehicle can stop."
+    },
+    {
+      "question": "How many people are needed?",
+      "answer": "It depends on the dimensions, weight, ability to hold the device and access. Stairs, tight turns and long distances to the vehicle may require additional helpers or equipment."
+    },
+    {
+      "question": "Is preparation included in transportation?",
+      "answer": "Not automatically. Confirm who empties, disconnects, defrosts, dries, removes accessories and replaces components. The tasks included must be described in the quote."
+    },
+    {
+      "question": "How to avoid damage during the journey?",
+      "answer": "Prepare the device according to the manufacturer, protect surfaces and components, use sufficient equipment and keep the load stable in the vehicle. Doors and accessories must not be left loose."
+    },
+    {
+      "question": "What can change the price of the quote?",
+      "answer": "The actual dimensions, the need to remove doors, floors without an elevator, distant parking, more helpers, additional preparation, schedule changes or special placement at the destination may change the price."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Transporte de frigorífico em Lisboa — Portuguese version",
+      "href": "/transporte-frigorifico-lisboa/",
+      "type": "guide"
+    },
+    {
+      "title": "Перевозка холодильника в Лиссабоне",
+      "href": "/ru/guides/perevozka-holodilnika-lissabon/",
+      "type": "guide"
+    },
+    {
+      "title": "How to prepare a refrigerator for transport",
+      "href": "/en/guides/how-to-prepare-a-refrigerator-for-transport/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare quotes to transport a refrigerator",
+    "text": "Describe the item, locations and access before choosing the carrier.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "refrigerator-transport-lisbon",
+  "alternates": {
+    "pt-PT": "/transporte-frigorifico-lisboa/",
+    "en": "/en/guides/refrigerator-transport-lisbon/",
+    "ru": "/ru/guides/perevozka-holodilnika-lissabon/"
+  }
+}

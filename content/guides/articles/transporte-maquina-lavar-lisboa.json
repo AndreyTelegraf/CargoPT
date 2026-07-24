@@ -151,14 +151,14 @@
   ],
   "related_links": [
     {
-      "title": "Transporte de sofá em Lisboa",
-      "href": "/transporte-sofa-lisboa/",
-      "type": "landing"
+      "title": "Washing machine transport in Lisbon — versão em inglês",
+      "href": "/en/guides/washing-machine-transport-lisbon/",
+      "type": "guide"
     },
     {
-      "title": "Transporte de frigorífico em Lisboa",
-      "href": "/transporte-frigorifico-lisboa/",
-      "type": "landing"
+      "title": "Перевозка стиральной машины в Лиссабоне — versão em russo",
+      "href": "/ru/guides/perevozka-stiralnoy-mashiny-lissabon/",
+      "type": "guide"
     },
     {
       "title": "Como embalar eletrodomésticos para transporte",
@@ -176,5 +176,11 @@
     "text": "Descreva o objeto, os locais e os acessos antes de escolher o transportador.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "washing-machine-transport-lisbon",
+  "alternates": {
+    "pt-PT": "/transporte-maquina-lavar-lisboa/",
+    "en": "/en/guides/washing-machine-transport-lisbon/",
+    "ru": "/ru/guides/perevozka-stiralnoy-mashiny-lissabon/"
   }
 }

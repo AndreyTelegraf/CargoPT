@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "id": "sofa-transport-lisbon-en",
+  "locale": "en",
+  "cluster": "objects",
+  "path": "/en/guides/sofa-transport-lisbon/",
+  "title": "Sofa transport in Lisbon",
+  "meta_title": "Sofa transport in Lisbon — CargoPT",
+  "meta_description": "Ask for quotes for sofa transport in Lisbon: preparation, access, equipment and protection.",
+  "primary_query": "sofa transport Lisbon",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Furniture and items",
+  "eyebrow": "Sofa transport in Lisbon",
+  "hero_description": "Sofa transport in Lisbon requires complete measurements, route verification, disassembly when applicable, sufficient equipment, protection of the covering and safe immobilization in the vehicle.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "How to order sofa transport in Lisbon",
+  "key_points_heading": "Information required for the service",
+  "faq_heading": "Questions about sofa transport in Lisbon",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To request sofa transport in Lisbon, indicate the type of sofa, maximum dimensions, photographs and collection and delivery locations. Confirm whether it is modular, sofa bed or chaise longue and which components can be removed. Measure doorways, hallways, elevators, stairs and turnaround space, including the exterior path and parking lot. Define who will do disassembly, protection, loading, unloading and assembly. Compare quotes that indicate the number of helpers, equipment, protective materials, vehicle, placement at the destination and the conditions applicable if the sofa does not pass through the described access points.",
+  "key_points": [
+    "Indicate sofa dimensions and photographs.",
+    "Describe floors, elevators, stairs, and parking.",
+    "Confirm necessary preparation before collection.",
+    "Define team, equipment, protection and fixation.",
+    "Compare quotes based on the same information."
+  ],
+  "sections": [
+    {
+      "id": "what-information-to-send",
+      "heading": "What information to send",
+      "paragraphs": [
+        "Identify the type of sofa, dimensions and any features that affect movement.",
+        "Include complete photographs, collection and delivery location, desired date and access details.",
+        "Indicate whether the sofa is a two- or three-seater, modular, sofa bed, chaise longue or reclining. Measure the width, height and depth in the transport configuration and photograph arms, feet, back and mechanisms. Also inform if there are loose cushions, interior storage or modules that will be transported separately."
+      ],
+      "checklist": [
+        "Sofa type and dimensions.",
+        "Photographs of the item.",
+        "Collection and delivery location.",
+        "Floors, elevators and stairs.",
+        "Parking and distance to the vehicle.",
+        "Additional services required."
+      ]
+    },
+    {
+      "id": "preparation-before-collection",
+      "heading": "Preparation before collection",
+      "paragraphs": [
+        "Measure width, height and depth, including arms, feet and modules. Remove detachable components when permitted.",
+        "Inform in advance what will already be prepared and what should be carried out by the team.",
+        "Remove stored items, cushions and loose components before collection. Feet, arms or modules should only be dismantled when the procedure is known and safe. If disassembly depends on the team, send photographs of the joints and confirm that the quote includes disassembly, identification of parts and assembly at the destination."
+      ]
+    },
+    {
+      "id": "measure-and-photograph-access",
+      "heading": "Measure and photograph access",
+      "paragraphs": [
+        "Confirm doors, corridors, elevators, stairs, landings and exterior route in both locations.",
+        "Measurements and photographs help define orientation, helpers and equipment.",
+        "Compare the measurements of the sofa with the useful opening of the doors, not just the nominal width. Check the space to tilt and rotate the piece in corridors, elevators, landings and stair turns. Photograph the narrowest points and indicate handrails, gaps or doors that limit movement."
+      ],
+      "items": [
+        {
+          "title": "Ports",
+          "text": "Record the useful opening and space for rotation."
+        },
+        {
+          "title": "Elevators",
+          "text": "Confirm door, internal dimensions and capacity."
+        },
+        {
+          "title": "Stairs",
+          "text": "Indicate sections, curves, width and unevenness."
+        },
+        {
+          "title": "Parking",
+          "text": "Enter the distance between the entrance and the vehicle."
+        }
+      ]
+    },
+    {
+      "id": "team-and-equipment",
+      "heading": "Team and equipment",
+      "paragraphs": [
+        "The team must plan the orientation of the sofa in doorways, corridors, elevators and stairs without dragging it.",
+        "The quote must indicate the number of helpers and the means planned to move the item.",
+        "The team must plan the route before lifting the sofa and avoid dragging it across the floor. Confirm how many helpers will be present and what resources will be used on stairs or long routes. Protections for the floor, walls, elevator and furniture corners must be agreed when space is reduced."
+      ],
+      "checklist": [
+        "Number of helpers.",
+        "Applicable cart, straps or equipment.",
+        "Protection of the floor, walls and elevator.",
+        "Loading and unloading.",
+        "Placement at the destination location.",
+        "Additional tasks agreed."
+      ]
+    },
+    {
+      "id": "protection-and-transportation-in-the-vehicle",
+      "heading": "Protection and transportation in the vehicle",
+      "paragraphs": [
+        "Fabric, leather, corners, arms and mechanisms need protection. Do not place heavy items on the structure.",
+        "Confirm how the item will be protected and immobilized to avoid impacts and displacements during the journey.",
+        "The casing, arms, corners and mechanisms need protection compatible with the material. The sofa must be stable in the vehicle and not receive weight from other volumes on the structure. Also confirm how cushions, modules and hardware will be transported so that nothing is lost."
+      ]
+    },
+    {
+      "id": "how-to-compare-quotes",
+      "heading": "How to compare quotes",
+      "paragraphs": [
+        "Send the same description to all carriers and confirm that each quote considers the same item, the same access conditions and the same tasks.",
+        "Compare team, equipment, protection, schedule, value and conditions of responsibility.",
+        "Compare quotes based on the same measurements, photographs, access and tasks. Check that they include disassembly, protection, helpers, loading, unloading, assembly and placement in the desired room. Ask what happens if an opening is narrower than stated or if it is necessary to change the route on the day."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare sofa transport",
+    "text": "Send dimensions, photographs and access to receive suitable quotes.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "What photos should I send?",
+      "answer": "Ship the sofa front, sides and back, as well as arms, feet, modules and mechanisms. Also photograph doors, corridors, elevators, stairs, landings and the area where the vehicle may stop."
+    },
+    {
+      "question": "How many people are needed?",
+      "answer": "It depends on the size, weight, the possibility of separating modules and the difficulty of access. Sofa beds, stairs and long routes may require more helpers or equipment."
+    },
+    {
+      "question": "Is preparation included in transportation?",
+      "answer": "Not automatically. Confirm whether the team will remove legs, arms or modules and reassemble everything at the destination. The parts covered and the materials must be described."
+    },
+    {
+      "question": "How to avoid damage during the journey?",
+      "answer": "Protect the covering, corners and mechanisms, avoid dragging the part and keep it immobilized in the vehicle. Do not place heavy items on armrests, seats or fragile structures."
+    },
+    {
+      "question": "What can change the price of the quote?",
+      "answer": "The actual measurements, the need for disassembly, floors without an elevator, distant parking, more helpers, additional protection or the impossibility of using the route initially described may change the price."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Transporte de sofá em Lisboa — Portuguese version",
+      "href": "/transporte-sofa-lisboa/",
+      "type": "guide"
+    },
+    {
+      "title": "Перевозка дивана в Лиссабоне",
+      "href": "/ru/guides/perevozka-divana-lissabon/",
+      "type": "guide"
+    },
+    {
+      "title": "Furniture transport in Lisbon",
+      "href": "/en/guides/furniture-transport-lisbon/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare offers for transporting a sofa",
+    "text": "Describe the item, locations and access before choosing the carrier.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "sofa-transport-lisbon",
+  "alternates": {
+    "pt-PT": "/transporte-sofa-lisboa/",
+    "en": "/en/guides/sofa-transport-lisbon/",
+    "ru": "/ru/guides/perevozka-divana-lissabon/"
+  }
+}

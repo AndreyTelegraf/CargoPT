@@ -141,13 +141,13 @@
   ],
   "related_links": [
     {
-      "title": "Como medir móveis antes de uma mudança",
-      "href": "/guias/objetos/medir-moveis-antes-mudanca/",
+      "title": "How to transport a piano — versão em inglês",
+      "href": "/en/guides/how-to-transport-a-piano/",
       "type": "guide"
     },
     {
-      "title": "Como transportar um frigorífico",
-      "href": "/guias/objetos/como-transportar-frigorifico/",
+      "title": "Как перевезти пианино — versão em russo",
+      "href": "/ru/guides/kak-perevezti-pianino/",
       "type": "guide"
     },
     {
@@ -166,5 +166,11 @@
     "text": "Descreva o instrumento e os acessos para encontrar uma equipa adequada ao serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "transport-piano",
+  "alternates": {
+    "pt-PT": "/guias/objetos/como-transportar-piano/",
+    "en": "/en/guides/how-to-transport-a-piano/",
+    "ru": "/ru/guides/kak-perevezti-pianino/"
   }
 }

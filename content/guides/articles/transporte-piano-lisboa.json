@@ -151,14 +151,14 @@
   ],
   "related_links": [
     {
-      "title": "Transporte de frigorífico em Lisboa",
-      "href": "/transporte-frigorifico-lisboa/",
-      "type": "landing"
+      "title": "Piano transport in Lisbon — versão em inglês",
+      "href": "/en/guides/piano-transport-lisbon/",
+      "type": "guide"
     },
     {
-      "title": "Transporte de sofá em Lisboa",
-      "href": "/transporte-sofa-lisboa/",
-      "type": "landing"
+      "title": "Перевозка пианино в Лиссабоне — versão em russo",
+      "href": "/ru/guides/perevozka-pianino-lissabon/",
+      "type": "guide"
     },
     {
       "title": "É necessário seguro para transportar móveis?",
@@ -176,5 +176,11 @@
     "text": "Descreva o objeto, os locais e os acessos antes de escolher o transportador.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "piano-transport-lisbon",
+  "alternates": {
+    "pt-PT": "/transporte-piano-lisboa/",
+    "en": "/en/guides/piano-transport-lisbon/",
+    "ru": "/ru/guides/perevozka-pianino-lissabon/"
   }
 }

@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "id": "measure-furniture-before-moving-en",
+  "locale": "en",
+  "cluster": "objects",
+  "path": "/en/guides/how-to-measure-furniture-before-moving/",
+  "title": "How to measure furniture before moving",
+  "meta_title": "How to measure furniture before moving — CargoPT",
+  "meta_description": "Measure furniture, doors, hallways, elevators and stairs to confirm the route and avoid problems during the move.",
+  "primary_query": "how to measure furniture for moving",
+  "intent": [
+    "informational"
+  ],
+  "article_section": "Furniture and items",
+  "eyebrow": "Furniture measurement",
+  "hero_description": "The dimensions of the furniture are only useful when compared to each door, corridor, elevator, staircase and curve on the route.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Measure the furniture and the entire route",
+  "key_points_heading": "Necessary measures",
+  "faq_heading": "Furniture Measurement Questions",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To measure a piece of furniture before moving, record the maximum width, height and depth, including legs, handles, arms and protruding components. Also measure doors, hallways, elevators, stairs, landings and rotation space. Repeat the check at collection and delivery and confirm which parts can be dismantled.",
+  "key_points": [
+    "Measure the maximum points of the furniture.",
+    "Include handles, feet, arms and protruding elements.",
+    "Record the useful opening of the doors.",
+    "Confirm curves, landings and room for rotation.",
+    "Repeat all measurements at the delivery location."
+  ],
+  "sections": [
+    {
+      "id": "how-to-measure-furniture",
+      "heading": "How to measure furniture",
+      "paragraphs": [
+        "Record width, height and depth at maximum points. Do not just use the dimensions indicated in the catalog when the furniture has accessories or has been altered.",
+        "Measure feet, handles, arms, backrests, cornices and other elements that increase exterior volume."
+      ],
+      "checklist": [
+        "Maximum width.",
+        "Maximum height.",
+        "Maximum depth.",
+        "Protruding components.",
+        "Dimensions without removable parts.",
+        "Approximate weight when known."
+      ]
+    },
+    {
+      "id": "identify-removable-parts",
+      "heading": "Identify removable parts",
+      "paragraphs": [
+        "Feet, doors, shelves, drawers and modules can reduce dimensions when removed correctly.",
+        "Confirm the procedure before disassembling. Photograph the assembly and store hardware in identified bags."
+      ]
+    },
+    {
+      "id": "measure-the-useful-opening-of-the-doors",
+      "heading": "Measure the useful opening of the doors",
+      "paragraphs": [
+        "The size of the sheet does not necessarily correspond to the available space. Consider hinges, handles, stops and the maximum opening angle.",
+        "Measure the useful width and height and confirm the space before and after the door to orient the furniture."
+      ]
+    },
+    {
+      "id": "check-corridors-and-curves",
+      "heading": "Check corridors and curves",
+      "paragraphs": [
+        "A piece of furniture can fit in a hallway and still not be able to turn a corner or enter a room.",
+        "Measure the width, height and available length at the change of direction points."
+      ],
+      "items": [
+        {
+          "title": "Hallways",
+          "text": "Measure the narrowest points and identify obstacles."
+        },
+        {
+          "title": "Curves",
+          "text": "Confirm the diagonal space required to rotate."
+        },
+        {
+          "title": "Ceilings",
+          "text": "Check reduced heights on stairs and entrances."
+        },
+        {
+          "title": "Skirting boards and handrails",
+          "text": "They can reduce the useful width of the route."
+        }
+      ]
+    },
+    {
+      "id": "measure-elevators-and-stairs",
+      "heading": "Measure elevators and stairs",
+      "paragraphs": [
+        "In the elevator, record the door, interior, diagonal and maximum capacity. Also confirm the route between the elevator and the property.",
+        "On stairs, measure width, landings, curves, handrails, inclination and available height."
+      ],
+      "checklist": [
+        "Elevator door.",
+        "Internal width, depth and height.",
+        "Diagonal available.",
+        "Width of flights of stairs.",
+        "Size of the landings.",
+        "Height in curves."
+      ]
+    },
+    {
+      "id": "how-to-record-and-send-measurements",
+      "heading": "How to record and send measurements",
+      "paragraphs": [
+        "Create a simple file per piece of furniture and associate photos. Clearly indicate which measurements belong to the item and which belong to the access conditions.",
+        "Also send photographs of the route and explain where the vehicle may stop. The carrier can then assess guidance, staffing and eventual dismantling."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Have you measured the furniture and access?",
+    "text": "Include dimensions and photographs in the order to reduce doubts before moving.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Just measure the width of the door?",
+      "answer": "No. It is necessary to confirm the height, useful opening and sufficient space to orient and rotate the furniture."
+    },
+    {
+      "question": "How do you know if a sofa goes around a curve?",
+      "answer": "Compare width, height and depth with the hallway, curve, ceiling and available diagonal space."
+    },
+    {
+      "question": "Should I measure the furniture with the feet?",
+      "answer": "Record the complete dimensions and also the dimensions without the feet when they are removable."
+    },
+    {
+      "question": "Are the dimensions of the elevator sufficient?",
+      "answer": "Also check the door, the diagonal, the maximum capacity and the route between the elevator and the property."
+    },
+    {
+      "question": "Is it useful to send photographs?",
+      "answer": "Yes. Photographs of the furniture and access points help to interpret measurements and identify obstacles."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como medir móveis antes de uma mudança — Portuguese version",
+      "href": "/guias/objetos/medir-moveis-antes-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Как измерить мебель перед переездом",
+      "href": "/ru/guides/kak-izmerit-mebel-pered-pereezdom/",
+      "type": "guide"
+    },
+    {
+      "title": "Furniture transport in Lisbon",
+      "href": "/en/guides/furniture-transport-lisbon/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Get quotes based on real measurements",
+    "text": "Describe the furniture, access and route to find a suitable team for the service.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "measure-furniture-before-moving",
+  "alternates": {
+    "pt-PT": "/guias/objetos/medir-moveis-antes-mudanca/",
+    "en": "/en/guides/how-to-measure-furniture-before-moving/",
+    "ru": "/ru/guides/kak-izmerit-mebel-pered-pereezdom/"
+  }
+}

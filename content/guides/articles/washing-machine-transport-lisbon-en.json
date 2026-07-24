@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "id": "washing-machine-transport-lisbon-en",
+  "locale": "en",
+  "cluster": "objects",
+  "path": "/en/guides/washing-machine-transport-lisbon/",
+  "title": "Washing machine transport in Lisbon",
+  "meta_title": "Washing machine transport in Lisbon — CargoPT",
+  "meta_description": "Ask for quotes for transporting a washing machine in Lisbon: preparation, access, equipment and protection.",
+  "primary_query": "washing machine transportation Lisbon",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Furniture and items",
+  "eyebrow": "Washing machine transport in Lisbon",
+  "hero_description": "Transporting a washing machine in Lisbon requires complete drainage, immobilization of the drum according to the manufacturer, verification of access, sufficient equipment and vertical fixing in the vehicle.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "How to order washing machine transport in Lisbon",
+  "key_points_heading": "Information required for the service",
+  "faq_heading": "Questions about washing machine transport in Lisbon",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To request transportation of a washing machine in Lisbon, indicate the type of appliance, dimensions, photographs and collection and delivery locations. Confirm that it is disconnected, drained, dry and prepared with the elements recommended by the manufacturer to immobilize the drum. Describe floors, elevators, stairs, doors, parking and distance to the vehicle. Inform who will do the disconnection, preparation, loading, unloading and placement at the destination. Compare quotes that identify helpers, equipment, protection, transport position and applicable conditions if access or tasks are different.",
+  "key_points": [
+    "Indicate dimensions and photographs of washing machine.",
+    "Describe floors, elevators, stairs, and parking.",
+    "Confirm necessary preparation before collection.",
+    "Define team, equipment, protection and fixation.",
+    "Compare quotes based on the same information."
+  ],
+  "sections": [
+    {
+      "id": "what-information-to-send",
+      "heading": "What information to send",
+      "paragraphs": [
+        "Identify the type of washing machine, dimensions and any features that affect movement.",
+        "Include complete photographs, collection and delivery location, desired date and access details.",
+        "Indicate whether the machine is front load, top load or washer and dryer and provide width, height and depth. Photograph the front, sides, back, connections and the location where it is installed. If it is built-in or under a countertop, describe the space available to remove it."
+      ],
+      "checklist": [
+        "Type and dimensions of washing machine.",
+        "Photographs of the item.",
+        "Collection and delivery location.",
+        "Floors, elevators and stairs.",
+        "Parking and distance to the vehicle.",
+        "Additional services required."
+      ]
+    },
+    {
+      "id": "preparation-before-collection",
+      "heading": "Preparation before collection",
+      "paragraphs": [
+        "The machine must be turned off, drained and prepared with the elements indicated by the manufacturer to immobilize the drum.",
+        "Inform in advance what will already be prepared and what should be carried out by the team.",
+        "Turn off power and water supply, drain machine and protect hoses and cable. Use the screws or transport elements indicated by the manufacturer when applicable. If you do not have them or if you want the team to take care of the preparation, communicate this before accepting the quote."
+      ]
+    },
+    {
+      "id": "measure-and-photograph-access",
+      "heading": "Measure and photograph access",
+      "paragraphs": [
+        "Confirm doors, corridors, elevators, stairs, landings and exterior route in both locations.",
+        "Measurements and photographs help define orientation, helpers and equipment.",
+        "Measure doors, hallways, elevators, stairs and landings in both locations. Consider that bathrooms, kitchens and laundry rooms may have little space to run the appliance. Report steps, differences in level, entrances, parking and any obstacle between the machine and the vehicle."
+      ],
+      "items": [
+        {
+          "title": "Ports",
+          "text": "Record the useful opening and space for rotation."
+        },
+        {
+          "title": "Elevators",
+          "text": "Confirm door, internal dimensions and capacity."
+        },
+        {
+          "title": "Stairs",
+          "text": "Indicate sections, curves, width and unevenness."
+        },
+        {
+          "title": "Parking",
+          "text": "Enter the distance between the entrance and the vehicle."
+        }
+      ]
+    },
+    {
+      "id": "team-and-equipment",
+      "heading": "Team and equipment",
+      "paragraphs": [
+        "Despite being compact, the machine is heavy and difficult to hold. It must be carried out vertically, with suitable helpers and equipment.",
+        "The quote must indicate the number of helpers and the means planned to move the item.",
+        "The machine is compact, but heavy and difficult to hold. Confirm the number of helpers and the use of a cart, straps or other suitable means. The route must avoid impacts on doors, walls and furniture, and the protection of common areas must be combined when space is tight."
+      ],
+      "checklist": [
+        "Number of helpers.",
+        "Applicable cart, straps or equipment.",
+        "Protection of the floor, walls and elevator.",
+        "Loading and unloading.",
+        "Placement at the destination location.",
+        "Additional tasks agreed."
+      ]
+    },
+    {
+      "id": "protection-and-transportation-in-the-vehicle",
+      "heading": "Protection and transportation in the vehicle",
+      "paragraphs": [
+        "Hoses, cable, port, controls and surfaces must be protected. The machine needs to be stable on the vehicle.",
+        "Confirm how the item will be protected and immobilized to avoid impacts and displacements during the journey.",
+        "Hoses, cable, port, controls and surfaces need protection. The machine must remain stable and as vertical as possible, without heavy items on the structure. Confirm whether the team will just place it at the destination or whether any connection and leveling are part of the agreed service."
+      ]
+    },
+    {
+      "id": "how-to-compare-quotes",
+      "heading": "How to compare quotes",
+      "paragraphs": [
+        "Send the same description to all carriers and confirm that each quote considers the same item, the same access conditions and the same tasks.",
+        "Compare team, equipment, protection, schedule, value and conditions of responsibility.",
+        "Compare quotes that consider the same device, the same access and the same tasks. Check preparation, helpers, equipment, loading, unloading, placement, schedule and price. Clearly distinguish between transport and technical disconnection or installation services, as these may not be included and require specific conditions."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare washing machine transport",
+    "text": "Send dimensions, photographs and access to receive suitable quotes.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "What photos should I send?",
+      "answer": "Ship the machine front, sides and rear, including connections, hoses and installation space. Also photograph doors, corridors, elevators, stairs, landings and parking lots."
+    },
+    {
+      "question": "How many people are needed?",
+      "answer": "It depends on the weight, dimensions and access. Stairs, floors without elevators, narrow corridors or long distances to the vehicle may require more help."
+    },
+    {
+      "question": "Is preparation included in transportation?",
+      "answer": "Not automatically. Confirm who will turn off water and power, do drainage, place transportation elements, and secure hoses and cable before collection."
+    },
+    {
+      "question": "How to avoid damage during the journey?",
+      "answer": "Prepare the drum according to the manufacturer, protect the door, controls, hoses and surfaces and keep the machine stable in the vehicle. Avoid transporting it with residual water."
+    },
+    {
+      "question": "What can change the price of the quote?",
+      "answer": "Lack of preparation, floors without elevator, distant parking, more helpers, removal from a built-in position, schedule changes or requests for a connection at the destination may change the price."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Transporte de máquina de lavar em Lisboa — Portuguese version",
+      "href": "/transporte-maquina-lavar-lisboa/",
+      "type": "guide"
+    },
+    {
+      "title": "Перевозка стиральной машины в Лиссабоне",
+      "href": "/ru/guides/perevozka-stiralnoy-mashiny-lissabon/",
+      "type": "guide"
+    },
+    {
+      "title": "How to pack appliances for transport",
+      "href": "/en/guides/how-to-pack-appliances/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare offers for transporting a washing machine",
+    "text": "Describe the item, locations and access before choosing the carrier.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "washing-machine-transport-lisbon",
+  "alternates": {
+    "pt-PT": "/transporte-maquina-lavar-lisboa/",
+    "en": "/en/guides/washing-machine-transport-lisbon/",
+    "ru": "/ru/guides/perevozka-stiralnoy-mashiny-lissabon/"
+  }
+}

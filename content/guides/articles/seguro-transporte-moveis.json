@@ -144,13 +144,13 @@
   ],
   "related_links": [
     {
-      "title": "Como verificar um transportador antes da mudança",
-      "href": "/guias/seguranca/como-verificar-transportador/",
+      "title": "Do you need insurance to transport furniture? — versão em inglês",
+      "href": "/en/guides/do-you-need-insurance-to-transport-furniture/",
       "type": "guide"
     },
     {
-      "title": "Quem é responsável por danos durante uma mudança?",
-      "href": "/guias/seguranca/responsabilidade-danos-mudanca/",
+      "title": "Нужна ли страховка при перевозке мебели? — versão em russo",
+      "href": "/ru/guides/strahovka-pri-perevozke-mebeli/",
       "type": "guide"
     },
     {
@@ -169,5 +169,11 @@
     "text": "Descreva os bens uma vez e confirme com cada transportador o serviço e a cobertura aplicável.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "furniture-transport-insurance",
+  "alternates": {
+    "pt-PT": "/guias/seguranca/seguro-transporte-moveis/",
+    "en": "/en/guides/do-you-need-insurance-to-transport-furniture/",
+    "ru": "/ru/guides/strahovka-pri-perevozke-mebeli/"
   }
 }

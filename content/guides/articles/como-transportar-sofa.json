@@ -136,13 +136,13 @@
   ],
   "related_links": [
     {
-      "title": "Como transportar uma máquina de lavar",
-      "href": "/guias/objetos/como-transportar-maquina-lavar/",
+      "title": "How to transport a sofa — versão em inglês",
+      "href": "/en/guides/how-to-transport-a-sofa/",
       "type": "guide"
     },
     {
-      "title": "Como medir móveis antes de uma mudança",
-      "href": "/guias/objetos/medir-moveis-antes-mudanca/",
+      "title": "Как перевезти диван — versão em russo",
+      "href": "/ru/guides/kak-perevezti-divan/",
       "type": "guide"
     },
     {
@@ -161,5 +161,11 @@
     "text": "Descreva o sofá, os acessos e a rota para encontrar transportadores adequados.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "transport-sofa",
+  "alternates": {
+    "pt-PT": "/guias/objetos/como-transportar-sofa/",
+    "en": "/en/guides/how-to-transport-a-sofa/",
+    "ru": "/ru/guides/kak-perevezti-divan/"
   }
 }

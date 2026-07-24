@@ -152,13 +152,13 @@
   ],
   "related_links": [
     {
-      "title": "Quem é responsável por danos durante uma mudança?",
-      "href": "/guias/seguranca/responsabilidade-danos-mudanca/",
+      "title": "How to verify a carrier before moving — versão em inglês",
+      "href": "/en/guides/how-to-verify-a-carrier-before-moving/",
       "type": "guide"
     },
     {
-      "title": "É necessário seguro para transportar móveis?",
-      "href": "/guias/seguranca/seguro-transporte-moveis/",
+      "title": "Как проверить перевозчика перед переездом — versão em russo",
+      "href": "/ru/guides/kak-proverit-perevozchika/",
       "type": "guide"
     },
     {
@@ -177,5 +177,11 @@
     "text": "Descreva a mudança uma vez e compare preço, equipa, tarefas e condições de cada proposta.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "verify-carrier-before-moving",
+  "alternates": {
+    "pt-PT": "/guias/seguranca/como-verificar-transportador/",
+    "en": "/en/guides/how-to-verify-a-carrier-before-moving/",
+    "ru": "/ru/guides/kak-proverit-perevozchika/"
   }
 }

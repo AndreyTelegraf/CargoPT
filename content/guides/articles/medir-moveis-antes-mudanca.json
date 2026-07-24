@@ -143,13 +143,13 @@
   ],
   "related_links": [
     {
-      "title": "Como transportar um sofá",
-      "href": "/guias/objetos/como-transportar-sofa/",
+      "title": "How to measure furniture before moving — versão em inglês",
+      "href": "/en/guides/how-to-measure-furniture-before-moving/",
       "type": "guide"
     },
     {
-      "title": "Como transportar um piano",
-      "href": "/guias/objetos/como-transportar-piano/",
+      "title": "Как измерить мебель перед переездом — versão em russo",
+      "href": "/ru/guides/kak-izmerit-mebel-pered-pereezdom/",
       "type": "guide"
     },
     {
@@ -168,5 +168,11 @@
     "text": "Descreva os móveis, os acessos e a rota para encontrar uma equipa adequada ao serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "measure-furniture-before-moving",
+  "alternates": {
+    "pt-PT": "/guias/objetos/medir-moveis-antes-mudanca/",
+    "en": "/en/guides/how-to-measure-furniture-before-moving/",
+    "ru": "/ru/guides/kak-izmerit-mebel-pered-pereezdom/"
   }
 }

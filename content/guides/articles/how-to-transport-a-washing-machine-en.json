@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "id": "how-to-transport-a-washing-machine-en",
+  "locale": "en",
+  "cluster": "objects",
+  "path": "/en/guides/how-to-transport-a-washing-machine/",
+  "title": "How to transport a washing machine",
+  "meta_title": "How to transport a washing machine — CargoPT",
+  "meta_description": "Learn how to disconnect, drain, protect and transport a washing machine without damaging the equipment or access.",
+  "primary_query": "how to transport washing machine",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Furniture and items",
+  "eyebrow": "Washing machine transport",
+  "hero_description": "The machine must remain empty, drained, protected and with the drum immobilized in accordance with the manufacturer's instructions.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Drain the water and protect the drum before transport",
+  "key_points_heading": "Essential steps",
+  "faq_heading": "Washing Machine Transport Questions",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To transport a washing machine, turn off electricity and water, completely drain the equipment and secure hoses and cable. Install the screws or transport systems indicated by the manufacturer to immobilize the drum. Keep the machine upright, protect surfaces and secure it to the vehicle.",
+  "key_points": [
+    "Turn off electricity, water inlet and sewage.",
+    "Drain residual water before moving the machine.",
+    "Immobilize the drum according to the manufacturer's manual.",
+    "Transport the machine upright and well protected.",
+    "Save transport systems for future use."
+  ],
+  "sections": [
+    {
+      "id": "turn-off-the-washing-machine-correctly",
+      "heading": "Turn off the washing machine correctly",
+      "paragraphs": [
+        "Remove the plug from the socket, close the supply tap and disconnect the inlet and discharge hoses. Have containers and cloths prepared to collect residual water.",
+        "Do not pull the machine by the cable or hoses. Confirm that all connections are clear before moving the equipment away."
+      ]
+    },
+    {
+      "id": "remove-residual-water",
+      "heading": "Remove residual water",
+      "paragraphs": [
+        "Even after a completed cycle, water may remain in the pump, filter and hoses. Consult the manual to safely drain and clean the filter.",
+        "After emptying, keep hoses elevated or protected to prevent further spills."
+      ],
+      "checklist": [
+        "Close the water supply.",
+        "Disconnect the hoses.",
+        "Drain the pump and filter.",
+        "Dry the detergent drawer.",
+        "Attach hoses and cable to the equipment."
+      ]
+    },
+    {
+      "id": "immobilize-the-drum",
+      "heading": "Immobilize the drum",
+      "paragraphs": [
+        "Many machines use screws or transport elements to prevent excessive movement of the drum. The absence of these components may increase the risk of internal damage.",
+        "Consult the manual to identify the correct parts and installation method. Do not improvise systems that press or puncture machine components."
+      ]
+    },
+    {
+      "id": "prepare-access",
+      "heading": "Prepare access",
+      "paragraphs": [
+        "Measure the machine, doors, hallways, elevators and stairs. Remove obstacles and protect the floor before moving.",
+        "The machine is compact, but heavy and difficult to hold. Use a suitable cart and sufficient helpers for access."
+      ],
+      "items": [
+        {
+          "title": "Ports",
+          "text": "Confirm the usable width and consider hinges, handles and baseboards."
+        },
+        {
+          "title": "Stairs",
+          "text": "Indicate the number of flights, curves, width and condition of the steps."
+        },
+        {
+          "title": "Elevator",
+          "text": "Check internal dimensions, maximum load and route to the entrance."
+        },
+        {
+          "title": "Parking",
+          "text": "Enter the distance between the property and the place where the vehicle can stop."
+        }
+      ]
+    },
+    {
+      "id": "how-to-transport-in-the-vehicle",
+      "heading": "How to transport in the vehicle",
+      "paragraphs": [
+        "Keep the machine upright. Protect panels, doors, controls and corners with blankets or suitable materials.",
+        "Secure the equipment to safe points in the vehicle to prevent movement. Do not place heavy items on the machine."
+      ]
+    },
+    {
+      "id": "care-before-using-again",
+      "heading": "Care before using again",
+      "paragraphs": [
+        "At destination, remove the shipping bolts before using the machine. Save them for a future move.",
+        "Confirm the leveling, the condition of the hoses and the absence of leaks. The electrical and hydraulic installation must comply with the manufacturer's manual."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare washing machine transportation",
+    "text": "Indicate dimensions, access, floors and the need for helpers to receive suitable quotes.",
+    "label": "Describe transportation",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Is it mandatory to use transport bolts?",
+      "answer": "Follow the manufacturer's manual. Many models require screws or special elements to immobilize the drum during transport."
+    },
+    {
+      "question": "Can I transport the machine lying down?",
+      "answer": "It is recommended to transport it vertically. Always confirm the manufacturer's specific instructions."
+    },
+    {
+      "question": "How to remove all the water?",
+      "answer": "Use the drainage procedure indicated in the manual, including pump, filter and hoses, and have containers prepared for waste water."
+    },
+    {
+      "question": "Can I start the machine immediately after delivery?",
+      "answer": "First remove the transport elements, level the machine, connect the hoses correctly and check that there are no leaks."
+    },
+    {
+      "question": "What information should I give the carrier?",
+      "answer": "Indicate dimensions, floors, elevators, stairs, parking, distance to the vehicle and whether it requires disconnection or installation."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como transportar uma máquina de lavar — Portuguese version",
+      "href": "/guias/objetos/como-transportar-maquina-lavar/",
+      "type": "guide"
+    },
+    {
+      "title": "Как перевезти стиральную машину",
+      "href": "/ru/guides/kak-perevezti-stiralnuyu-mashinu/",
+      "type": "guide"
+    },
+    {
+      "title": "Washing machine transport in Lisbon",
+      "href": "/en/guides/washing-machine-transport-lisbon/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare offers for transporting your washing machine",
+    "text": "Describe the equipment, locations and access before choosing the carrier.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "transport-washing-machine",
+  "alternates": {
+    "pt-PT": "/guias/objetos/como-transportar-maquina-lavar/",
+    "en": "/en/guides/how-to-transport-a-washing-machine/",
+    "ru": "/ru/guides/kak-perevezti-stiralnuyu-mashinu/"
+  }
+}

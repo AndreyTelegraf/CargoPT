@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "id": "how-to-transport-a-sofa-en",
+  "locale": "en",
+  "cluster": "objects",
+  "path": "/en/guides/how-to-transport-a-sofa/",
+  "title": "How to transport a sofa",
+  "meta_title": "How to transport a sofa — CargoPT",
+  "meta_description": "Learn how to measure, disassemble, protect and transport a sofa through doors, elevators and stairs.",
+  "primary_query": "how to transport sofa",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Furniture and items",
+  "eyebrow": "Sofa transport",
+  "hero_description": "Before moving a sofa, it is necessary to confirm that it passes through doors, corridors, elevators and stairs in both properties.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Measure the sofa and the route before starting transport",
+  "key_points_heading": "Essential steps",
+  "faq_heading": "Sofa Shipping Questions",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To transport a sofa, measure its width, height and depth, including arms, feet and modules. Compare these measurements to doors, hallways, elevators and stairs. Remove cushions and detachable components, protect fabric, leather, corners and structure and use sufficient helpers. In the vehicle, keep the sofa protected and secured.",
+  "key_points": [
+    "Measure the sofa and all points along the route.",
+    "Confirm which parts can be disassembled.",
+    "Protect fabric, leather, corners and structure.",
+    "Plan your way around doors, elevators, and stairs.",
+    "Secure the sofa in the vehicle without placing excessive weight on it."
+  ],
+  "sections": [
+    {
+      "id": "how-to-measure-the-sofa",
+      "heading": "How to measure the sofa",
+      "paragraphs": [
+        "Measure the total width, depth and height. Include arms, backrests, feet, modules, reclining mechanisms and other protruding elements.",
+        "On a modular sofa, also record the dimensions of each module. Photographs help you understand the shape and separation points."
+      ],
+      "checklist": [
+        "Full width.",
+        "Maximum height.",
+        "Maximum depth.",
+        "Height and width without removable feet.",
+        "Dimensions of each module.",
+        "Approximate weight when known."
+      ]
+    },
+    {
+      "id": "measure-doors-hallways-and-stairs",
+      "heading": "Measure doors, hallways and stairs",
+      "paragraphs": [
+        "The width of a door is not the only relevant measurement. The sofa needs space to rotate before and after passing.",
+        "Measure the useful width and height, curves, landings, handrails, low ceilings and the interior of the elevator. Repeat the check at the delivery location."
+      ],
+      "items": [
+        {
+          "title": "Ports",
+          "text": "Consider the actual opening, hinges, handles, and room for rotation."
+        },
+        {
+          "title": "Hallways",
+          "text": "Check width, length and changes in direction."
+        },
+        {
+          "title": "Stairs",
+          "text": "Measure width, landings, curves, handrails and available height."
+        },
+        {
+          "title": "Elevator",
+          "text": "Confirm door, internal dimensions and maximum capacity."
+        }
+      ]
+    },
+    {
+      "id": "what-can-be-dismantled",
+      "heading": "What can be dismantled",
+      "paragraphs": [
+        "Remove cushions, feet and modules when the model allows. Some arms, backrests or mechanisms may also be detachable, but the procedure varies.",
+        "Do not force joints or cut coverings. Photograph the assembly, identify the parts and store hardware in a closed bag."
+      ]
+    },
+    {
+      "id": "how-to-protect-the-sofa",
+      "heading": "How to protect the sofa",
+      "paragraphs": [
+        "Vacuum and dry the sofa before wrapping it. Protect corners, feet, arms and mechanisms, which are vulnerable areas when passing through narrow entrances.",
+        "Use suitable materials for the coating. The protection must prevent dirt and friction without retaining moisture or applying adhesives directly to the fabric or leather."
+      ]
+    },
+    {
+      "id": "how-to-move-the-sofa",
+      "heading": "How to move the sofa",
+      "paragraphs": [
+        "Plan your orientation before getting up. A sofa can move sideways, vertically or by rotation, but the maneuver must respect the structure and the available space.",
+        "Use enough helpers and protect floors, walls and handrails. Do not drag the sofa directly or lift it by cushions or fragile parts."
+      ]
+    },
+    {
+      "id": "how-to-place-the-sofa-in-the-vehicle",
+      "heading": "How to place the sofa in the vehicle",
+      "paragraphs": [
+        "The sofa must remain protected and immobilized, without contact with sharp, dirty or damp items.",
+        "Avoid supporting heavy items on arms, backrests or mechanisms. Secure modules separately when this provides greater stability."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Confirm that the sofa passes through the access points",
+    "text": "Send measurements and photographs of the sofa, doors, elevator and stairs to receive suitable quotes.",
+    "label": "Describe transportation",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "How do you know if the sofa fits through the door?",
+      "answer": "Compare the dimensions of the sofa with the useful opening and confirm that there is enough space to rotate before and after the door."
+    },
+    {
+      "question": "Is it possible to disassemble all sofas?",
+      "answer": "No. Feet, modules and cushions are often removable, but arms, backrests and mechanisms depend on the model."
+    },
+    {
+      "question": "Can I transport the sofa upright?",
+      "answer": "It may be a possible maneuver in some access conditions, as long as the structure is supported correctly and there is sufficient height."
+    },
+    {
+      "question": "How to protect a leather sofa?",
+      "answer": "Use clean protection suitable for the material, avoiding adhesives directly on the leather, excessive pressure and contact with abrasive surfaces."
+    },
+    {
+      "question": "What photos should I send?",
+      "answer": "Ship the sofa from various angles, modules and legs, doors, corridors, stairs, elevators and the route to the vehicle."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como transportar um sofá — Portuguese version",
+      "href": "/guias/objetos/como-transportar-sofa/",
+      "type": "guide"
+    },
+    {
+      "title": "Как перевезти диван",
+      "href": "/ru/guides/kak-perevezti-divan/",
+      "type": "guide"
+    },
+    {
+      "title": "Sofa transport in Lisbon",
+      "href": "/en/guides/sofa-transport-lisbon/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare offers for transporting your sofa",
+    "text": "Describe the sofa, access and route to find suitable carriers.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "transport-sofa",
+  "alternates": {
+    "pt-PT": "/guias/objetos/como-transportar-sofa/",
+    "en": "/en/guides/how-to-transport-a-sofa/",
+    "ru": "/ru/guides/kak-perevezti-divan/"
+  }
+}

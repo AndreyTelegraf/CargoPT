@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "id": "box-transport-lisbon-en",
+  "locale": "en",
+  "cluster": "packing",
+  "path": "/en/guides/box-transport-lisbon/",
+  "title": "Box transport in Lisbon",
+  "meta_title": "Box transport in Lisbon — CargoPT",
+  "meta_description": "Ask for quotes for transporting boxes in Lisbon: quantity, weight, access, loading and unloading.",
+  "primary_query": "transport boxes Lisbon",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Packaging",
+  "eyebrow": "Box transport in Lisbon",
+  "hero_description": "The transport of boxes in Lisbon must consider quantity, dimensions, weight, fragility, preparation, access in both locations, number of helpers and safe organization of the load in the vehicle.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "How to request box transportation in Lisbon",
+  "key_points_heading": "Information required for the order",
+  "faq_heading": "Questions about box transport in Lisbon",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To request transportation of boxes in Lisbon, indicate the approximate quantity, sizes, estimated weight and contents that require care. Separate small, medium and large boxes, identify fragile or very heavy packages and confirm that they will be closed and ready on the date. Describe collection and delivery locations, floors, elevators, stairs, parking and distance to the vehicle. Define who will load, unload and place it at the destination. Compare quotes calculated for the same number of boxes, the same access conditions and the same tasks.",
+  "key_points": [
+    "Indicate approximate quantity and sizes.",
+    "Highlight fragile, heavy or special boxes.",
+    "Describe access and distance to the vehicle.",
+    "Confirm loading, unloading and number of helpers.",
+    "Compare quotes for the same number of volumes."
+  ],
+  "sections": [
+    {
+      "id": "count-and-organize-the-boxes",
+      "heading": "Count and organize the boxes",
+      "paragraphs": [
+        "Provide an approximate quantity even when packaging is not yet complete.",
+        "Separate small, medium and large boxes and indicate volumes outside the usual format.",
+        "When you are still packing, count the boxes already ready and estimate the remaining boxes per room. Also include suitcases, bags, plastic boxes and loose items, as they all take up space in the vehicle. Update the quantity before collection to avoid the expected team and capacity falling short of what is necessary."
+      ]
+    },
+    {
+      "id": "weight-and-type-of-content",
+      "heading": "Weight and type of content",
+      "paragraphs": [
+        "An excessively heavy box increases the risk of opening, falling and injury.",
+        "Highlight books, dishes, tools, equipment and other content that requires care.",
+        "Distribute books, dishes, tools and other dense contents among several smaller boxes, rather than concentrating too much weight in a single volume. A box that is deformed or difficult to lift is more likely to open. Mark fragile content and indicate when a volume cannot be tilted or stacked."
+      ],
+      "checklist": [
+        "Light, medium and heavy boxes.",
+        "Fragile content.",
+        "Boxes that must remain vertical.",
+        "Volumes with documents or value.",
+        "Boxes not the usual size."
+      ]
+    },
+    {
+      "id": "confirm-that-the-boxes-are-ready",
+      "heading": "Confirm that the boxes are ready",
+      "paragraphs": [
+        "Boxes must be closed, resistant, dry and identified before collection.",
+        "If you need materials or help with packaging, please include that task in the order.",
+        "Use boxes suitable for the contents, close the bottom and lid and avoid internal gaps that allow movement. Identify the destination room and any handling instructions. If some boxes are not ready yet, clarify whether you intend to hire materials, partial packaging or complete preparation before loading."
+      ]
+    },
+    {
+      "id": "loading-and-unloading-access",
+      "heading": "Loading and unloading access",
+      "paragraphs": [
+        "Indicate floors, elevators, stairs and distance between the entrance and the vehicle in both locations.",
+        "Long journeys or the absence of an elevator may require more help and time.",
+        "Describe the complete route from each box to the vehicle. Floors without elevators, long corridors, narrow stairs, entrances and remote parking alter the time and number of helpers. Also inform if there are schedules, elevator reservations or condominium rules for loading and unloading."
+      ]
+    },
+    {
+      "id": "space-and-organization-in-the-vehicle",
+      "heading": "Space and organization in the vehicle",
+      "paragraphs": [
+        "The quantity, sizes and weight help define the space needed in the vehicle.",
+        "Fragile boxes must not be placed under heavy loads and all cargo must remain stable.",
+        "A size estimate helps to evaluate the total volume, but heavy boxes and irregular shapes also influence the organization. Confirm whether the transport will be exclusive or combined with other furniture. In the vehicle, the strongest volumes must form a stable base and fragile boxes need to be protected from pressure and movement."
+      ]
+    },
+    {
+      "id": "how-to-compare-quotes",
+      "heading": "How to compare quotes",
+      "paragraphs": [
+        "Confirm that all quotes consider the same number of boxes, access conditions and tasks.",
+        "Compare vehicle, helpers, loading, unloading, time and final price.",
+        "Compare quotes that use the same volume estimate and clearly include helpers, loading, unloading, ladder transport and placement at destination. Confirm the type of vehicle, time slot, payment method and conditions for updating the quantity. A lower price may assume fewer boxes or less manual labor."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare the order to transport the boxes",
+    "text": "Indicate quantity, weight, locations and access to receive comparable quotes.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Do I need to know the exact number of boxes?",
+      "answer": "An estimate is sufficient to start the order, as long as it indicates special sizes and contents. Update the total before the date and let us know if there are suitcases, bags or other items that will also take up space."
+    },
+    {
+      "question": "Is there a maximum weight per box?",
+      "answer": "There is no universal value. The box must maintain its shape, close correctly and be able to be moved with control. Books, tools and other dense content should be distributed in smaller volumes."
+    },
+    {
+      "question": "Can the boxes remain open?",
+      "answer": "It is not recommended. Boxes must be closed, dry, resistant and identified before loading. Open volumes make stacking difficult and increase the risk of loss or damage."
+    },
+    {
+      "question": "Is loading and unloading included?",
+      "answer": "It depends on the quote. Confirm how many helpers will be present, where they will take the boxes and whether the price includes stairs, elevators, long journeys and placement in the destination rooms."
+    },
+    {
+      "question": "How to indicate fragile boxes?",
+      "answer": "Identify them visibly on more than one side, describe the general content and indicate whether they must remain vertical or cannot be stacked. Use enough internal protection to limit movement."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Transporte de caixas em Lisboa — Portuguese version",
+      "href": "/transporte-caixas-lisboa/",
+      "type": "guide"
+    },
+    {
+      "title": "Перевозка коробок в Лиссабоне",
+      "href": "/ru/guides/perevozka-korobok-lissabon/",
+      "type": "guide"
+    },
+    {
+      "title": "Complete moving checklist",
+      "href": "/en/guides/complete-moving-checklist/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare offers for transporting your boxes",
+    "text": "Describe the volumes, locations and access before choosing the service.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "box-transport-lisbon",
+  "alternates": {
+    "pt-PT": "/transporte-caixas-lisboa/",
+    "en": "/en/guides/box-transport-lisbon/",
+    "ru": "/ru/guides/perevozka-korobok-lissabon/"
+  }
+}

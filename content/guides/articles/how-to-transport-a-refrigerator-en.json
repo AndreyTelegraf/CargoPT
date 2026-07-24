@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "id": "how-to-transport-a-refrigerator-en",
+  "locale": "en",
+  "cluster": "objects",
+  "path": "/en/guides/how-to-transport-a-refrigerator/",
+  "title": "How to transport a refrigerator",
+  "meta_title": "How to transport a refrigerator — CargoPT",
+  "meta_description": "See how to prepare, protect and transport a refrigerator, including access, position and care after delivery.",
+  "primary_query": "how to transport refrigerator",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Furniture and items",
+  "eyebrow": "Refrigerator transport",
+  "hero_description": "Transport requires preparation, adequate protection, tilt control and a route compatible with the dimensions of the refrigerator.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Transport the refrigerator empty, protected and as vertical as possible",
+  "key_points_heading": "Main care",
+  "faq_heading": "Refrigerator Transport Questions",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To transport a refrigerator, empty, defrost and dry the equipment. Remove or secure moving components, protect doors and surfaces, and plan the route to the vehicle. The device must remain as vertical as possible and be immobilized in the vehicle. After a significant tilt, follow the manufacturer's instructions before turning it back on.",
+  "key_points": [
+    "Prepare and completely dry equipment.",
+    "Measure the refrigerator and all points along the route.",
+    "Use helpers and means appropriate to the weight.",
+    "Keep the device as vertical as possible.",
+    "Attach it to the vehicle and follow the manual before starting it."
+  ],
+  "sections": [
+    {
+      "id": "what-to-do-before-transport",
+      "heading": "What to do before transport",
+      "paragraphs": [
+        "The refrigerator must be empty, switched off, defrosted and dry. Shelves, drawers, cables and pipes need to be removed or immobilized.",
+        "Also check if there is water accumulated in the tray, dispenser or connections. Incomplete preparation may cause spills during movement."
+      ]
+    },
+    {
+      "id": "measure-equipment-and-route",
+      "heading": "Measure equipment and route",
+      "paragraphs": [
+        "Record height, width and depth, including handles and other protruding elements. Measure doors, elevators, hallways, landings and stair turns.",
+        "Confirm where the vehicle can stop and the distance to the entrance. If the refrigerator does not fit at any point, it may be necessary to dismantle the property's doors or components authorized by the manufacturer."
+      ],
+      "checklist": [
+        "External dimensions of the refrigerator.",
+        "Width of doors in both properties.",
+        "Space inside the elevator.",
+        "Curves and width of stairs.",
+        "Distance to the vehicle.",
+        "Obstacles and level differences."
+      ]
+    },
+    {
+      "id": "how-to-move-a-refrigerator",
+      "heading": "How to move a refrigerator",
+      "paragraphs": [
+        "A refrigerator is bulky, heavy and difficult to hold. It must not be dragged directly over the floor or moved only by doors or handles.",
+        "Use a suitable cart, straps and protection. The number of helpers must correspond to the weight, dimensions and access."
+      ],
+      "items": [
+        {
+          "title": "Protected floor",
+          "text": "Use adequate protection to avoid risks and damage during exit and entry."
+        },
+        {
+          "title": "Transport cart",
+          "text": "Choose equipment compatible with the weight and secure the refrigerator before moving it."
+        },
+        {
+          "title": "Straps",
+          "text": "They must stabilize the device without crushing doors, panels or pipes."
+        },
+        {
+          "title": "Helpers",
+          "text": "Stairs, gaps and large models may require a reinforced team."
+        }
+      ]
+    },
+    {
+      "id": "in-what-position-should-you-follow",
+      "heading": "In what position should it travel",
+      "paragraphs": [
+        "The refrigerator must be transported as vertically as possible. The slope must be limited to what is necessary to overcome access points and use handling equipment.",
+        "When transport in a different position is unavoidable, consult the manual or manufacturer first. Allowed orientation and waiting time before connection vary between models."
+      ]
+    },
+    {
+      "id": "how-to-protect-the-refrigerator-in-the-vehicle",
+      "heading": "How to protect the refrigerator in the vehicle",
+      "paragraphs": [
+        "Place the equipment in a stable area, protected by blankets and without direct contact with hard or sharp items.",
+        "Attach it to suitable points on the vehicle to prevent movement, falls and impacts during braking and cornering. Do not place heavy items on the refrigerator."
+      ]
+    },
+    {
+      "id": "what-to-do-after-delivery",
+      "heading": "What to do after delivery",
+      "paragraphs": [
+        "Place the refrigerator in its final location, check that it is stable and confirm that cables and tubes have not been trapped or damaged.",
+        "Do not automatically turn it on right after arrival if it has been tilted. Consult the manufacturer's instructions and respect the period indicated for the model."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Plan the transport of the refrigerator",
+    "text": "Send dimensions, photographs, route and access to receive quotes prepared for the service.",
+    "label": "Describe transportation",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Can the refrigerator be transported lying down?",
+      "answer": "It is recommended to keep it as vertical as possible. If another position is unavoidable, confirm in advance in the manual or with the manufacturer which orientation is permitted."
+    },
+    {
+      "question": "Can I turn on the refrigerator immediately?",
+      "answer": "It depends on the position and model. If there was a tilt, follow the waiting period indicated by the manufacturer before turning on."
+    },
+    {
+      "question": "How many people are needed?",
+      "answer": "It depends on the weight, dimensions and access. Large models, stairs and lack of elevator may require more helpers."
+    },
+    {
+      "question": "Is it necessary to remove the refrigerator doors?",
+      "answer": "Only when access requires it and the procedure is permitted by the manufacturer. It must be done by someone with adequate knowledge."
+    },
+    {
+      "question": "What information should I include in the order?",
+      "answer": "Indicate dimensions, type of refrigerator, floors, elevators, stairs, parking, route and photographs of access."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como transportar um frigorífico — Portuguese version",
+      "href": "/guias/objetos/como-transportar-frigorifico/",
+      "type": "guide"
+    },
+    {
+      "title": "Как перевезти холодильник",
+      "href": "/ru/guides/kak-perevezti-holodilnik/",
+      "type": "guide"
+    },
+    {
+      "title": "Refrigerator transport in Lisbon",
+      "href": "/en/guides/refrigerator-transport-lisbon/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare offers for transporting the refrigerator",
+    "text": "Describe the equipment and access to find conveyors suitable for the job.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "transport-refrigerator",
+  "alternates": {
+    "pt-PT": "/guias/objetos/como-transportar-frigorifico/",
+    "en": "/en/guides/how-to-transport-a-refrigerator/",
+    "ru": "/ru/guides/kak-perevezti-holodilnik/"
+  }
+}

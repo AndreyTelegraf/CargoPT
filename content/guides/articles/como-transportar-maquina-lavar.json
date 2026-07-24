@@ -135,13 +135,13 @@
   ],
   "related_links": [
     {
-      "title": "Como preparar um frigorífico para transporte",
-      "href": "/guias/objetos/preparar-frigorifico-transporte/",
+      "title": "How to transport a washing machine — versão em inglês",
+      "href": "/en/guides/how-to-transport-a-washing-machine/",
       "type": "guide"
     },
     {
-      "title": "Como transportar um sofá",
-      "href": "/guias/objetos/como-transportar-sofa/",
+      "title": "Как перевезти стиральную машину — versão em russo",
+      "href": "/ru/guides/kak-perevezti-stiralnuyu-mashinu/",
       "type": "guide"
     },
     {
@@ -160,5 +160,11 @@
     "text": "Descreva o equipamento, os locais e os acessos antes de escolher o transportador.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "transport-washing-machine",
+  "alternates": {
+    "pt-PT": "/guias/objetos/como-transportar-maquina-lavar/",
+    "en": "/en/guides/how-to-transport-a-washing-machine/",
+    "ru": "/ru/guides/kak-perevezti-stiralnuyu-mashinu/"
   }
 }

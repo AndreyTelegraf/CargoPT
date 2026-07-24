@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "id": "how-to-transport-a-piano-en",
+  "locale": "en",
+  "cluster": "objects",
+  "path": "/en/guides/how-to-transport-a-piano/",
+  "title": "How to transport a piano",
+  "meta_title": "How to transport a piano — CargoPT",
+  "meta_description": "See how to plan the transport of a piano: type, dimensions, access, protection, equipment and service conditions.",
+  "primary_query": "how to transport piano",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Furniture and items",
+  "eyebrow": "Piano transport",
+  "hero_description": "A piano combines heavy weight, delicate parts and uneven load distribution, requiring adequate planning and equipment.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Transporting a piano should be planned as a special service",
+  "key_points_heading": "Indispensable information",
+  "faq_heading": "Questions about transporting pianos",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To transport a piano, identify the type and dimensions, photograph the instrument and all access points, and confirm floors, stairs, elevators, and parking. The service must use an experienced team, adequate protection, equipment compatible with the weight and secure attachment to the vehicle. After delivery, it may be necessary to allow the instrument to stabilize before tuning.",
+  "key_points": [
+    "Identify type, dimensions and weight when known.",
+    "Photograph the piano and the entire route in both locations.",
+    "Confirm stairs, elevators, turns and parking.",
+    "Choose a team that is used to heavy and delicate items.",
+    "Confirm protection, fastening, liability and insurance."
+  ],
+  "sections": [
+    {
+      "id": "correctly-identify-the-piano",
+      "heading": "Correctly identify the piano",
+      "paragraphs": [
+        "An upright piano, a grand piano and a digital piano have different dimensions, weight distribution and needs.",
+        "Indicate brand, model, height, width and depth when possible. If you do not know the weight, provide complete photographs for a first assessment."
+      ],
+      "items": [
+        {
+          "title": "Upright piano",
+          "text": "Indicate the height and whether there are wheels, handles or protruding elements."
+        },
+        {
+          "title": "Grand piano",
+          "text": "Enter the length and confirm whether partial disassembly will be necessary."
+        },
+        {
+          "title": "digital piano",
+          "text": "Clarify whether it has a structure, pedalboard, columns or detachable components."
+        }
+      ]
+    },
+    {
+      "id": "evaluate-the-entire-route",
+      "heading": "Evaluate the entire route",
+      "paragraphs": [
+        "The main challenge may not be the distance between properties, but the route between the piano and the vehicle. Narrow doors, corridors, steps, curves and floors without an elevator alter the service.",
+        "Measure the tightest spots and send photos of each section. Also include exterior entrances, ramps, uneven pavement and parking space."
+      ],
+      "checklist": [
+        "Floor in collection and delivery.",
+        "Number and configuration of stairs.",
+        "Dimensions and maximum load of the elevator.",
+        "Width of doors and corridors.",
+        "Curves, plateaus and gaps.",
+        "Distance to the vehicle.",
+        "Parking restrictions."
+      ]
+    },
+    {
+      "id": "why-a-suitable-team-is-important",
+      "heading": "Why a suitable team is important",
+      "paragraphs": [
+        "The heavy weight and shape of the instrument make improvised movement unsuitable. An insufficient team increases the risk to people, the piano and property.",
+        "Confirm that the carrier has experience, number of helpers and equipment compatible with the type of piano and access."
+      ]
+    },
+    {
+      "id": "how-to-protect-the-instrument",
+      "heading": "How to protect the instrument",
+      "paragraphs": [
+        "Keyboard, cover, pedals, corners and trim need protection from opening, impacts and friction. Materials must be applied without pressing on fragile components.",
+        "On a grand piano, any partial disassembly must be carried out by people who know the procedure and can put the instrument back together correctly."
+      ]
+    },
+    {
+      "id": "transport-and-fixing-to-the-vehicle",
+      "heading": "Transport and fixing to the vehicle",
+      "paragraphs": [
+        "The piano must be supported and immobilized in a stable manner, without direct contact with other volumes that may move.",
+        "Confirm that the vehicle has adequate space, load capacity and mounting points. Ramps, platforms or other means may be necessary."
+      ]
+    },
+    {
+      "id": "what-to-confirm-in-a-quote",
+      "heading": "What to confirm in a quote",
+      "paragraphs": [
+        "The quote must consider the type of piano, access, number of helpers, protection, equipment and tasks included.",
+        "Record in writing the conditions of responsibility for damages, possible insurance, disassembly, assembly and changes to the service."
+      ],
+      "checklist": [
+        "Expected team and equipment.",
+        "Protection of the piano and the property.",
+        "Loading, transport and placement at destination.",
+        "Disassembly and assembly when necessary.",
+        "Liability and insurance conditions.",
+        "Final price and situations that can change it."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare a complete request for the piano",
+    "text": "Send the type, dimensions, photographs and access to receive suitable quotes for the service.",
+    "label": "Describe transportation",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Can I move a piano with a regular moving company?",
+      "answer": "Confirm that the team has experience, helpers and equipment suitable for the type of piano and access."
+    },
+    {
+      "question": "How many people are needed?",
+      "answer": "It depends on the type, weight, dimensions and route. Ladders and larger pianos may require a reinforced team."
+    },
+    {
+      "question": "Does a grand piano need to be disassembled?",
+      "answer": "Partial disassembly may be necessary, depending on the model and access. The procedure must be carried out by experienced people."
+    },
+    {
+      "question": "Is it necessary to tune the piano after transport?",
+      "answer": "Transportation and change of environment may affect tuning. A technician can indicate when it is appropriate to check the instrument after stabilization."
+    },
+    {
+      "question": "Should I take out insurance?",
+      "answer": "Confirm in writing the carrier's liability and applicable coverage, especially for high-value instruments."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como transportar um piano — Portuguese version",
+      "href": "/guias/objetos/como-transportar-piano/",
+      "type": "guide"
+    },
+    {
+      "title": "Как перевезти пианино",
+      "href": "/ru/guides/kak-perevezti-pianino/",
+      "type": "guide"
+    },
+    {
+      "title": "Piano transport in Lisbon",
+      "href": "/en/guides/piano-transport-lisbon/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare offers for transporting the piano",
+    "text": "Describe the instrument and access to find a suitable team for the service.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "transport-piano",
+  "alternates": {
+    "pt-PT": "/guias/objetos/como-transportar-piano/",
+    "en": "/en/guides/how-to-transport-a-piano/",
+    "ru": "/ru/guides/kak-perevezti-pianino/"
+  }
+}

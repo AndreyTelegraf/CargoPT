@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "id": "verify-carrier-before-moving-en",
+  "locale": "en",
+  "cluster": "rights",
+  "path": "/en/guides/how-to-verify-a-carrier-before-moving/",
+  "title": "How to verify a carrier before moving",
+  "meta_title": "How to verify a carrier before moving — CargoPT",
+  "meta_description": "Confirm identity, contact details, applicable qualification, quote, payments and damage procedure.",
+  "primary_query": "how to check carrier",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Security and responsibility",
+  "eyebrow": "Provider verification",
+  "hero_description": "Verification must combine identity, capacity, written conditions and clear answers.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Check who provides the service and what was agreed",
+  "key_points_heading": "Checks before accepting",
+  "faq_heading": "Conveyor Verification Questions",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "Before hiring a carrier, confirm the identity of the person or company, contact details, ability and authorization to perform the work and the conditions of the quote. When applicable to the type of activity, consult the records made available by IMT. Request in writing the service, price, date, payment and expected procedure for damages or changes.",
+  "key_points": [
+    "Confirm name, identification and verifiable contact details.",
+    "Check the framework applicable to transport.",
+    "Compare vehicle, team and experience with the service.",
+    "Ask for a quote and conditions in writing.",
+    "Clarify payments, damages and cancellation."
+  ],
+  "sections": [
+    {
+      "id": "start-with-identity-and-contacts",
+      "heading": "Start with identity and contacts",
+      "paragraphs": [
+        "Confirm the name used in the quote, the identification of the company or professional and the contact details.",
+        "The data of those who accept the service, receive payment and issue documents must be consistent."
+      ],
+      "checklist": [
+        "Name of the company or professional.",
+        "Tax identification number when applicable.",
+        "Telephone and email address.",
+        "Address or other professional contact.",
+        "Identity of who will perform the service.",
+        "Data associated with payment."
+      ]
+    },
+    {
+      "id": "consult-applicable-records",
+      "heading": "Consult applicable records",
+      "paragraphs": [
+        "The road transport of goods for third parties may be subject to its own requirements.",
+        "Use the official IMT channels to check the information available about companies and vehicles, considering the type of service and vehicle."
+      ]
+    },
+    {
+      "id": "confirm-ability-to-work",
+      "heading": "Confirm ability and authorization to perform the work",
+      "paragraphs": [
+        "The existence of contacts or assessments does not replace the verification of the necessary vehicle, team and equipment.",
+        "Ask for relevant experience when there are stairs, pianos, appliances or fragile items."
+      ]
+    },
+    {
+      "id": "ask-for-a-clear-written-quote",
+      "heading": "Ask for a clear written quote",
+      "paragraphs": [
+        "The quote must identify the date, locations, inventory, tasks and agreed value.",
+        "Confirm that materials, packaging, disassembly, helpers and assembly are included."
+      ],
+      "checklist": [
+        "Date and time range.",
+        "Collection and delivery addresses.",
+        "Inventory or volume description.",
+        "Number of helpers.",
+        "Tasks and materials included.",
+        "Price and conditions for changes."
+      ]
+    },
+    {
+      "id": "ask-how-damages-and-unforeseen-events-are-handled",
+      "heading": "Ask how damages and unforeseen events are handled",
+      "paragraphs": [
+        "Ask for a written explanation about the record of damages, complaints, delays, cancellations and changes.",
+        "Do not assume that any vehicle insurance automatically covers transported items."
+      ],
+      "items": [
+        {
+          "title": "Damage",
+          "text": "Confirm how they should be documented."
+        },
+        {
+          "title": "Coverage",
+          "text": "Ask which risks and limits are actually covered."
+        },
+        {
+          "title": "Changes",
+          "text": "Record how additional items or tasks affect the quote."
+        },
+        {
+          "title": "Cancellation",
+          "text": "Confirm applicable deadlines and conditions."
+        }
+      ]
+    },
+    {
+      "id": "recognize-warning-signs",
+      "heading": "Recognize warning signs",
+      "paragraphs": [
+        "Be careful with answers that ignore inventory, access, and tasks.",
+        "Lack of identification, contradictory conditions or pressure to pay without registration justify additional verification."
+      ],
+      "checklist": [
+        "Value presented without questions about the service.",
+        "Refusal to confirm tasks in writing.",
+        "Inconsistent contacts or identity.",
+        "Unclear payment terms.",
+        "Contradictory information about team or vehicle.",
+        "Pressure to decide immediately."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Compare quotes based on the same order",
+    "text": "Describe the inventory, access conditions, and tasks to evaluate responses with a common basis.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Where can I check a shipping company?",
+      "answer": "Consult the official IMT channels and confirm the framework applicable to the proposed service."
+    },
+    {
+      "question": "Are online reviews enough?",
+      "answer": "No. Use them only as an additional element to the verified identity, quote and capacity."
+    },
+    {
+      "question": "Is it important to receive a written quote?",
+      "answer": "Yes. Registration helps confirm tasks, value, date and conditions."
+    },
+    {
+      "question": "Should I pay everything in advance?",
+      "answer": "Confirm the amount, timing and conditions in writing before making payment."
+    },
+    {
+      "question": "What data should I save?",
+      "answer": "Save quote, messages, proof, contacts, inventory and relevant photos."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Como verificar um transportador antes da mudança — Portuguese version",
+      "href": "/guias/seguranca/como-verificar-transportador/",
+      "type": "guide"
+    },
+    {
+      "title": "Как проверить перевозчика перед переездом",
+      "href": "/ru/guides/kak-proverit-perevozchika/",
+      "type": "guide"
+    },
+    {
+      "title": "How to choose a moving company",
+      "href": "/en/guides/how-to-choose-a-moving-company/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare before choosing the carrier",
+    "text": "Describe the move once and compare the price, team, tasks and conditions of each quote.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "verify-carrier-before-moving",
+  "alternates": {
+    "pt-PT": "/guias/seguranca/como-verificar-transportador/",
+    "en": "/en/guides/how-to-verify-a-carrier-before-moving/",
+    "ru": "/ru/guides/kak-proverit-perevozchika/"
+  }
+}

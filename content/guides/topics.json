@@ -1954,6 +1954,572 @@
         "book-carrier-in-advance-en",
         "kak-zaprosit-predlozhenie-na-pereezd-ru"
       ]
+    },
+    {
+      "id": "how-to-transport-a-refrigerator-en",
+      "cluster": "objects",
+      "title": "How to transport a refrigerator",
+      "slug": "how-to-transport-a-refrigerator-en",
+      "path": "/en/guides/how-to-transport-a-refrigerator/",
+      "primary_query": "how to transport refrigerator",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "transportar-frigorifico",
+        "kak-perevezti-holodilnik-ru",
+        "refrigerator-transport-lisbon-en"
+      ]
+    },
+    {
+      "id": "kak-perevezti-holodilnik-ru",
+      "cluster": "objects",
+      "title": "Как перевезти холодильник",
+      "slug": "kak-perevezti-holodilnik-ru",
+      "path": "/ru/guides/kak-perevezti-holodilnik/",
+      "primary_query": "как перевезти холодильник",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "transportar-frigorifico",
+        "how-to-transport-a-refrigerator-en",
+        "perevozka-holodilnika-lissabon-ru"
+      ]
+    },
+    {
+      "id": "how-to-transport-a-washing-machine-en",
+      "cluster": "objects",
+      "title": "How to transport a washing machine",
+      "slug": "how-to-transport-a-washing-machine-en",
+      "path": "/en/guides/how-to-transport-a-washing-machine/",
+      "primary_query": "how to transport washing machine",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "transportar-maquina-lavar",
+        "kak-perevezti-stiralnuyu-mashinu-ru",
+        "washing-machine-transport-lisbon-en"
+      ]
+    },
+    {
+      "id": "kak-perevezti-stiralnuyu-mashinu-ru",
+      "cluster": "objects",
+      "title": "Как перевезти стиральную машину",
+      "slug": "kak-perevezti-stiralnuyu-mashinu-ru",
+      "path": "/ru/guides/kak-perevezti-stiralnuyu-mashinu/",
+      "primary_query": "как перевезти стиральную машину",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "transportar-maquina-lavar",
+        "how-to-transport-a-washing-machine-en",
+        "perevozka-stiralnoy-mashiny-lissabon-ru"
+      ]
+    },
+    {
+      "id": "how-to-transport-a-piano-en",
+      "cluster": "objects",
+      "title": "How to transport a piano",
+      "slug": "how-to-transport-a-piano-en",
+      "path": "/en/guides/how-to-transport-a-piano/",
+      "primary_query": "how to transport piano",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "transportar-piano",
+        "kak-perevezti-pianino-ru",
+        "piano-transport-lisbon-en"
+      ]
+    },
+    {
+      "id": "kak-perevezti-pianino-ru",
+      "cluster": "objects",
+      "title": "Как перевезти пианино",
+      "slug": "kak-perevezti-pianino-ru",
+      "path": "/ru/guides/kak-perevezti-pianino/",
+      "primary_query": "как перевезти пианино",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "transportar-piano",
+        "how-to-transport-a-piano-en",
+        "perevozka-pianino-lissabon-ru"
+      ]
+    },
+    {
+      "id": "how-to-transport-a-sofa-en",
+      "cluster": "objects",
+      "title": "How to transport a sofa",
+      "slug": "how-to-transport-a-sofa-en",
+      "path": "/en/guides/how-to-transport-a-sofa/",
+      "primary_query": "how to transport sofa",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "transportar-sofa",
+        "kak-perevezti-divan-ru",
+        "sofa-transport-lisbon-en"
+      ]
+    },
+    {
+      "id": "kak-perevezti-divan-ru",
+      "cluster": "objects",
+      "title": "Как перевезти диван",
+      "slug": "kak-perevezti-divan-ru",
+      "path": "/ru/guides/kak-perevezti-divan/",
+      "primary_query": "как перевезти диван",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "transportar-sofa",
+        "how-to-transport-a-sofa-en",
+        "perevozka-divana-lissabon-ru"
+      ]
+    },
+    {
+      "id": "measure-furniture-before-moving-en",
+      "cluster": "objects",
+      "title": "How to measure furniture before moving",
+      "slug": "measure-furniture-before-moving-en",
+      "path": "/en/guides/how-to-measure-furniture-before-moving/",
+      "primary_query": "how to measure furniture for moving",
+      "intent": [
+        "informational"
+      ],
+      "priority": 2,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "medir-moveis-antes-mudanca",
+        "kak-izmerit-mebel-pered-pereezdom-ru",
+        "furniture-transport-lisbon-en"
+      ]
+    },
+    {
+      "id": "kak-izmerit-mebel-pered-pereezdom-ru",
+      "cluster": "objects",
+      "title": "Как измерить мебель перед переездом",
+      "slug": "kak-izmerit-mebel-pered-pereezdom-ru",
+      "path": "/ru/guides/kak-izmerit-mebel-pered-pereezdom/",
+      "primary_query": "как измерить мебель для переезда",
+      "intent": [
+        "informational"
+      ],
+      "priority": 2,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "medir-moveis-antes-mudanca",
+        "measure-furniture-before-moving-en",
+        "perevozka-mebeli-lissabon-ru"
+      ]
+    },
+    {
+      "id": "prepare-refrigerator-for-transport-en",
+      "cluster": "objects",
+      "title": "How to prepare a refrigerator for transport",
+      "slug": "prepare-refrigerator-for-transport-en",
+      "path": "/en/guides/how-to-prepare-a-refrigerator-for-transport/",
+      "primary_query": "prepare refrigerator for transport",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "preparar-frigorifico-transporte",
+        "kak-podgotovit-holodilnik-k-perevozke-ru",
+        "refrigerator-transport-lisbon-en"
+      ]
+    },
+    {
+      "id": "kak-podgotovit-holodilnik-k-perevozke-ru",
+      "cluster": "objects",
+      "title": "Как подготовить холодильник к перевозке",
+      "slug": "kak-podgotovit-holodilnik-k-perevozke-ru",
+      "path": "/ru/guides/kak-podgotovit-holodilnik-k-perevozke/",
+      "primary_query": "подготовить холодильник к транспортировке",
+      "intent": [
+        "informational"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "preparar-frigorifico-transporte",
+        "prepare-refrigerator-for-transport-en",
+        "perevozka-holodilnika-lissabon-ru"
+      ]
+    },
+    {
+      "id": "refrigerator-transport-lisbon-en",
+      "cluster": "objects",
+      "title": "Refrigerator transport in Lisbon",
+      "slug": "refrigerator-transport-lisbon-en",
+      "path": "/en/guides/refrigerator-transport-lisbon/",
+      "primary_query": "refrigerator transport Lisbon",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "transporte-frigorifico-lisboa",
+        "perevozka-holodilnika-lissabon-ru",
+        "prepare-refrigerator-for-transport-en"
+      ]
+    },
+    {
+      "id": "perevozka-holodilnika-lissabon-ru",
+      "cluster": "objects",
+      "title": "Перевозка холодильника в Лиссабоне",
+      "slug": "perevozka-holodilnika-lissabon-ru",
+      "path": "/ru/guides/perevozka-holodilnika-lissabon/",
+      "primary_query": "перевозку холодильника Лиссабон",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "transporte-frigorifico-lisboa",
+        "refrigerator-transport-lisbon-en",
+        "kak-podgotovit-holodilnik-k-perevozke-ru"
+      ]
+    },
+    {
+      "id": "washing-machine-transport-lisbon-en",
+      "cluster": "objects",
+      "title": "Washing machine transport in Lisbon",
+      "slug": "washing-machine-transport-lisbon-en",
+      "path": "/en/guides/washing-machine-transport-lisbon/",
+      "primary_query": "washing machine transportation Lisbon",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "transporte-maquina-lavar-lisboa",
+        "perevozka-stiralnoy-mashiny-lissabon-ru",
+        "how-to-pack-appliances-en"
+      ]
+    },
+    {
+      "id": "perevozka-stiralnoy-mashiny-lissabon-ru",
+      "cluster": "objects",
+      "title": "Перевозка стиральной машины в Лиссабоне",
+      "slug": "perevozka-stiralnoy-mashiny-lissabon-ru",
+      "path": "/ru/guides/perevozka-stiralnoy-mashiny-lissabon/",
+      "primary_query": "Перевозка стиральной машины Лиссабон",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "transporte-maquina-lavar-lisboa",
+        "washing-machine-transport-lisbon-en",
+        "kak-upakovat-bytovuyu-tehniku-ru"
+      ]
+    },
+    {
+      "id": "piano-transport-lisbon-en",
+      "cluster": "objects",
+      "title": "Piano transport in Lisbon",
+      "slug": "piano-transport-lisbon-en",
+      "path": "/en/guides/piano-transport-lisbon/",
+      "primary_query": "piano transport Lisbon",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "transporte-piano-lisboa",
+        "perevozka-pianino-lissabon-ru",
+        "furniture-transport-insurance-en"
+      ]
+    },
+    {
+      "id": "perevozka-pianino-lissabon-ru",
+      "cluster": "objects",
+      "title": "Перевозка пианино в Лиссабоне",
+      "slug": "perevozka-pianino-lissabon-ru",
+      "path": "/ru/guides/perevozka-pianino-lissabon/",
+      "primary_query": "транспорт пианино Лиссабон",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "transporte-piano-lisboa",
+        "piano-transport-lisbon-en",
+        "strahovka-pri-perevozke-mebeli-ru"
+      ]
+    },
+    {
+      "id": "sofa-transport-lisbon-en",
+      "cluster": "objects",
+      "title": "Sofa transport in Lisbon",
+      "slug": "sofa-transport-lisbon-en",
+      "path": "/en/guides/sofa-transport-lisbon/",
+      "primary_query": "sofa transport Lisbon",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "transporte-sofa-lisboa",
+        "perevozka-divana-lissabon-ru",
+        "furniture-transport-lisbon-en"
+      ]
+    },
+    {
+      "id": "perevozka-divana-lissabon-ru",
+      "cluster": "objects",
+      "title": "Перевозка дивана в Лиссабоне",
+      "slug": "perevozka-divana-lissabon-ru",
+      "path": "/ru/guides/perevozka-divana-lissabon/",
+      "primary_query": "диван транспорт Лиссабон",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "transporte-sofa-lisboa",
+        "sofa-transport-lisbon-en",
+        "perevozka-mebeli-lissabon-ru"
+      ]
+    },
+    {
+      "id": "box-transport-lisbon-en",
+      "cluster": "packing",
+      "title": "Box transport in Lisbon",
+      "slug": "box-transport-lisbon-en",
+      "path": "/en/guides/box-transport-lisbon/",
+      "primary_query": "transport boxes Lisbon",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "transporte-caixas-lisboa",
+        "perevozka-korobok-lissabon-ru",
+        "complete-moving-checklist-en"
+      ]
+    },
+    {
+      "id": "perevozka-korobok-lissabon-ru",
+      "cluster": "packing",
+      "title": "Перевозка коробок в Лиссабоне",
+      "slug": "perevozka-korobok-lissabon-ru",
+      "path": "/ru/guides/perevozka-korobok-lissabon/",
+      "primary_query": "транспортные коробки Лиссабон",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "transporte-caixas-lisboa",
+        "box-transport-lisbon-en",
+        "polnyy-cheklist-pereezda-ru"
+      ]
+    },
+    {
+      "id": "verify-carrier-before-moving-en",
+      "cluster": "rights",
+      "title": "How to verify a carrier before moving",
+      "slug": "verify-carrier-before-moving-en",
+      "path": "/en/guides/how-to-verify-a-carrier-before-moving/",
+      "primary_query": "how to check carrier",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "como-verificar-transportador",
+        "kak-proverit-perevozchika-ru",
+        "how-to-choose-moving-company-en"
+      ]
+    },
+    {
+      "id": "kak-proverit-perevozchika-ru",
+      "cluster": "rights",
+      "title": "Как проверить перевозчика перед переездом",
+      "slug": "kak-proverit-perevozchika-ru",
+      "path": "/ru/guides/kak-proverit-perevozchika/",
+      "primary_query": "как проверить перевозчика",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "como-verificar-transportador",
+        "verify-carrier-before-moving-en",
+        "kak-vybrat-kompaniyu-dlya-pereezda-ru"
+      ]
+    },
+    {
+      "id": "liability-for-moving-damage-en",
+      "cluster": "rights",
+      "title": "Who is liable for damage during a move?",
+      "slug": "liability-for-moving-damage-en",
+      "path": "/en/guides/who-is-liable-for-damage-during-a-move/",
+      "primary_query": "who pays for damage during a move",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "responsabilidade-danos-mudanca",
+        "otvetstvennost-za-usherb-pri-pereezde-ru",
+        "how-to-transport-a-piano-en"
+      ]
+    },
+    {
+      "id": "otvetstvennost-za-usherb-pri-pereezde-ru",
+      "cluster": "rights",
+      "title": "Кто отвечает за ущерб во время переезда?",
+      "slug": "otvetstvennost-za-usherb-pri-pereezde-ru",
+      "path": "/ru/guides/otvetstvennost-za-usherb-pri-pereezde/",
+      "primary_query": "кто отвечает за ущерб при переезде",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "responsabilidade-danos-mudanca",
+        "liability-for-moving-damage-en",
+        "kak-perevezti-pianino-ru"
+      ]
+    },
+    {
+      "id": "furniture-transport-insurance-en",
+      "cluster": "rights",
+      "title": "Do you need insurance to transport furniture?",
+      "slug": "furniture-transport-insurance-en",
+      "path": "/en/guides/do-you-need-insurance-to-transport-furniture/",
+      "primary_query": "furniture transport insurance",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "seguro-transporte-moveis",
+        "strahovka-pri-perevozke-mebeli-ru",
+        "how-to-pack-a-tv-en"
+      ]
+    },
+    {
+      "id": "strahovka-pri-perevozke-mebeli-ru",
+      "cluster": "rights",
+      "title": "Нужна ли страховка при перевозке мебели?",
+      "slug": "strahovka-pri-perevozke-mebeli-ru",
+      "path": "/ru/guides/strahovka-pri-perevozke-mebeli/",
+      "primary_query": "страхование перевозки мебели",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "seguro-transporte-moveis",
+        "furniture-transport-insurance-en",
+        "kak-upakovat-televizor-ru"
+      ]
     }
   ]
 }

@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "id": "piano-transport-lisbon-en",
+  "locale": "en",
+  "cluster": "objects",
+  "path": "/en/guides/piano-transport-lisbon/",
+  "title": "Piano transport in Lisbon",
+  "meta_title": "Piano transport in Lisbon — CargoPT",
+  "meta_description": "Ask for quotes for piano transport in Lisbon: preparation, access, equipment and protection.",
+  "primary_query": "piano transport Lisbon",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Furniture and items",
+  "eyebrow": "Piano transport in Lisbon",
+  "hero_description": "Piano transport in Lisbon requires correct identification of the instrument, assessment of access, an experienced team, adequate equipment, full protection and clear conditions of responsibility.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "How to order piano transport in Lisbon",
+  "key_points_heading": "Information required for the service",
+  "faq_heading": "Questions about piano transport in Lisbon",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "To request piano transport in Lisbon, indicate whether it is upright, grand or another type, provide dimensions, weight when known and complete photographs. Describe the collection and delivery locations, floors, elevators, stairs, landings, parking and distance to the vehicle. Confirm whether partial disassembly will be necessary and who will perform it. The quote must identify the team's experience, number of helpers, equipment, protection, attachment to the vehicle, placement at the destination and conditions of responsibility. Only compare answers based on the same instrument, route, and task set.",
+  "key_points": [
+    "Indicate dimensions and photographs of piano.",
+    "Describe floors, elevators, stairs, and parking.",
+    "Confirm necessary preparation before collection.",
+    "Define team, equipment, protection and fixation.",
+    "Compare quotes based on the same information."
+  ],
+  "sections": [
+    {
+      "id": "what-information-to-send",
+      "heading": "What information to send",
+      "paragraphs": [
+        "Identify the type of piano, dimensions and any features that affect movement.",
+        "Include complete photographs, collection and delivery location, desired date and access details.",
+        "Identify the type of piano and measure the width, height and depth at their maximum points. When possible, provide the brand, model and weight indicated by the manufacturer. Photograph the keyboard, lid, pedals, feet, sides and back. On a grand piano, also indicate the length and confirm whether the team provides specialized partial disassembly."
+      ],
+      "checklist": [
+        "Piano type and dimensions.",
+        "Photographs of the item.",
+        "Collection and delivery location.",
+        "Floors, elevators and stairs.",
+        "Parking and distance to the vehicle.",
+        "Additional services required."
+      ]
+    },
+    {
+      "id": "preparation-before-collection",
+      "heading": "Preparation before collection",
+      "paragraphs": [
+        "Identify the type of piano, dimensions and weight when known. Photograph the instrument and confirm whether any partial disassembly will be necessary.",
+        "Inform in advance what will already be prepared and what should be carried out by the team.",
+        "Do not remove structural components without knowing the procedure. Close and protect the lid and keyboard, remove only expected loose parts and report any existing damage. If disassembly of legs, pedals, or other parts is necessary, confirm who will do it, how the parts will be identified, and whether reassembly is included."
+      ]
+    },
+    {
+      "id": "measure-and-photograph-access",
+      "heading": "Measure and photograph access",
+      "paragraphs": [
+        "Confirm doors, corridors, elevators, stairs, landings and exterior route in both locations.",
+        "Measurements and photographs help define orientation, helpers and equipment.",
+        "Measure doors, elevators, corridors, landings and staircase curves in both properties. Record the number of steps, the width of the flights, the differences in level and the outside distance. Continuous photographs of the route help to assess support points, changes in direction and the possible need for additional equipment."
+      ],
+      "items": [
+        {
+          "title": "Ports",
+          "text": "Record the useful opening and space for rotation."
+        },
+        {
+          "title": "Elevators",
+          "text": "Confirm door, internal dimensions and capacity."
+        },
+        {
+          "title": "Stairs",
+          "text": "Indicate sections, curves, width and unevenness."
+        },
+        {
+          "title": "Parking",
+          "text": "Enter the distance between the entrance and the vehicle."
+        }
+      ]
+    },
+    {
+      "id": "team-and-equipment",
+      "heading": "Team and equipment",
+      "paragraphs": [
+        "The heavy weight and delicate components require an experienced team and equipment compatible with access.",
+        "The quote must indicate the number of helpers and the means planned to move the item.",
+        "A piano requires a team compatible with the weight and the route, not just the distance between addresses. Confirm experience, number of helpers, carts, straps, blankets, ramps or other means provided. For complex stairs or access, ask for a sufficiently detailed assessment before accepting the quote."
+      ],
+      "checklist": [
+        "Number of helpers.",
+        "Applicable cart, straps or equipment.",
+        "Protection of the floor, walls and elevator.",
+        "Loading and unloading.",
+        "Placement at the destination location.",
+        "Additional tasks agreed."
+      ]
+    },
+    {
+      "id": "protection-and-transportation-in-the-vehicle",
+      "heading": "Protection and transportation in the vehicle",
+      "paragraphs": [
+        "Keyboard, cover, pedals, corners and finish must be protected. Also confirm the conditions of responsibility.",
+        "Confirm how the item will be protected and immobilized to avoid impacts and displacements during the journey.",
+        "Keyboard, trim, corners, pedals and disassembled components need individual protection. The instrument must be stable and properly secured in the vehicle, without contact with volumes that could exert pressure. At destination, confirm the division and final position to avoid unnecessary movement after unloading."
+      ]
+    },
+    {
+      "id": "how-to-compare-quotes",
+      "heading": "How to compare quotes",
+      "paragraphs": [
+        "Send the same description to all carriers and confirm that each quote considers the same item, the same access conditions and the same tasks.",
+        "Compare team, equipment, protection, schedule, value and conditions of responsibility.",
+        "Compare quotes that consider the same type of piano, the same route and the same tasks. Check disassembly, protection, helpers, equipment, loading, unloading, placement and conditions of responsibility. Also ask how access changes will be handled and whether it might be advisable to check the tuning after installation."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare piano transport",
+    "text": "Send dimensions, photographs and access to receive suitable quotes.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "What photos should I send?",
+      "answer": "Ship the instrument front, sides and back, including keyboard, cover, pedals, feet and special components. Photograph the entire route, with doors, elevators, stairs, landings and parking."
+    },
+    {
+      "question": "How many people are needed?",
+      "answer": "It depends on the type, weight, dimensions and access. A grand piano, walk-up floors or tight curves may require a larger team, partial disassembly or specific equipment."
+    },
+    {
+      "question": "Is preparation included in transportation?",
+      "answer": "Not automatically. Confirm that the team will carry out partial disassembly, protection, parts identification and reassembly. On a grand piano, these tasks must be evaluated by appropriate professionals."
+    },
+    {
+      "question": "How to avoid damage during the journey?",
+      "answer": "Use full protection, experienced staff, compatible equipment and stable attachment to the vehicle. The instrument must not be dragged or receive pressure from other volumes during travel."
+    },
+    {
+      "question": "What can change the price of the quote?",
+      "answer": "The actual type and weight, stairs, distant parking, need for disassembly, more helpers, additional equipment, schedule changes or a final placement different from that described may change the price."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Transporte de piano em Lisboa — Portuguese version",
+      "href": "/transporte-piano-lisboa/",
+      "type": "guide"
+    },
+    {
+      "title": "Перевозка пианино в Лиссабоне",
+      "href": "/ru/guides/perevozka-pianino-lissabon/",
+      "type": "guide"
+    },
+    {
+      "title": "Do you need insurance to transport furniture?",
+      "href": "/en/guides/do-you-need-insurance-to-transport-furniture/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare offers for transporting a piano",
+    "text": "Describe the item, locations and access before choosing the carrier.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "piano-transport-lisbon",
+  "alternates": {
+    "pt-PT": "/transporte-piano-lisboa/",
+    "en": "/en/guides/piano-transport-lisbon/",
+    "ru": "/ru/guides/perevozka-pianino-lissabon/"
+  }
+}

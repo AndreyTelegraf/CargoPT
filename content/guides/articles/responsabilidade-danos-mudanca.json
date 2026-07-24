@@ -144,13 +144,13 @@
   ],
   "related_links": [
     {
-      "title": "Como verificar um transportador antes da mudança",
-      "href": "/guias/seguranca/como-verificar-transportador/",
+      "title": "Who is liable for damage during a move? — versão em inglês",
+      "href": "/en/guides/who-is-liable-for-damage-during-a-move/",
       "type": "guide"
     },
     {
-      "title": "É necessário seguro para transportar móveis?",
-      "href": "/guias/seguranca/seguro-transporte-moveis/",
+      "title": "Кто отвечает за ущерб во время переезда? — versão em russo",
+      "href": "/ru/guides/otvetstvennost-za-usherb-pri-pereezde/",
       "type": "guide"
     },
     {
@@ -169,5 +169,11 @@
     "text": "Peça propostas claras e confirme como cada transportador trata bens frágeis, danos e alterações.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "liability-for-moving-damage",
+  "alternates": {
+    "pt-PT": "/guias/seguranca/responsabilidade-danos-mudanca/",
+    "en": "/en/guides/who-is-liable-for-damage-during-a-move/",
+    "ru": "/ru/guides/otvetstvennost-za-usherb-pri-pereezde/"
   }
 }

@@ -208,12 +208,12 @@
     ],
     "como-verificar-transportador": [
       {
-        "target": "responsabilidade-danos-mudanca",
+        "target": "verify-carrier-before-moving-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "seguro-transporte-moveis",
+        "target": "kak-proverit-perevozchika-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -274,12 +274,12 @@
     ],
     "medir-moveis-antes-mudanca": [
       {
-        "target": "transportar-sofa",
+        "target": "measure-furniture-before-moving-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "transportar-piano",
+        "target": "kak-izmerit-mebel-pered-pereezdom-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -824,12 +824,12 @@
     ],
     "preparar-frigorifico-transporte": [
       {
-        "target": "transportar-frigorifico",
+        "target": "prepare-refrigerator-for-transport-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "transportar-maquina-lavar",
+        "target": "kak-podgotovit-holodilnik-k-perevozke-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -956,12 +956,12 @@
     ],
     "responsabilidade-danos-mudanca": [
       {
-        "target": "como-verificar-transportador",
+        "target": "liability-for-moving-damage-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "seguro-transporte-moveis",
+        "target": "otvetstvennost-za-usherb-pri-pereezde-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -978,12 +978,12 @@
     ],
     "seguro-transporte-moveis": [
       {
-        "target": "como-verificar-transportador",
+        "target": "furniture-transport-insurance-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "responsabilidade-danos-mudanca",
+        "target": "strahovka-pri-perevozke-mebeli-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -1000,12 +1000,12 @@
     ],
     "transportar-frigorifico": [
       {
-        "target": "transportar-piano",
+        "target": "how-to-transport-a-refrigerator-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "preparar-frigorifico-transporte",
+        "target": "kak-perevezti-holodilnik-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -1022,12 +1022,12 @@
     ],
     "transportar-maquina-lavar": [
       {
-        "target": "preparar-frigorifico-transporte",
+        "target": "how-to-transport-a-washing-machine-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "transportar-sofa",
+        "target": "kak-perevezti-stiralnuyu-mashinu-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -1044,12 +1044,12 @@
     ],
     "transportar-piano": [
       {
-        "target": "medir-moveis-antes-mudanca",
+        "target": "how-to-transport-a-piano-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "transportar-frigorifico",
+        "target": "kak-perevezti-pianino-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -1066,12 +1066,12 @@
     ],
     "transportar-sofa": [
       {
-        "target": "transportar-maquina-lavar",
+        "target": "how-to-transport-a-sofa-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "medir-moveis-antes-mudanca",
+        "target": "kak-perevezti-divan-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -1088,12 +1088,12 @@
     ],
     "transporte-caixas-lisboa": [
       {
-        "target": "como-embalar-caixas",
+        "target": "box-transport-lisbon-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-apartamento-lisboa",
+        "target": "perevozka-korobok-lissabon-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -1110,12 +1110,12 @@
     ],
     "transporte-frigorifico-lisboa": [
       {
-        "target": "transporte-maquina-lavar-lisboa",
+        "target": "refrigerator-transport-lisbon-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "transporte-piano-lisboa",
+        "target": "perevozka-holodilnika-lissabon-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -1132,12 +1132,12 @@
     ],
     "transporte-maquina-lavar-lisboa": [
       {
-        "target": "transporte-sofa-lisboa",
+        "target": "washing-machine-transport-lisbon-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "transporte-frigorifico-lisboa",
+        "target": "perevozka-stiralnoy-mashiny-lissabon-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -1176,12 +1176,12 @@
     ],
     "transporte-piano-lisboa": [
       {
-        "target": "transporte-frigorifico-lisboa",
+        "target": "piano-transport-lisbon-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "transporte-sofa-lisboa",
+        "target": "perevozka-pianino-lissabon-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -1198,12 +1198,12 @@
     ],
     "transporte-sofa-lisboa": [
       {
-        "target": "transporte-piano-lisboa",
+        "target": "sofa-transport-lisbon-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "transporte-maquina-lavar-lisboa",
+        "target": "perevozka-divana-lissabon-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -2133,6 +2133,622 @@
       },
       {
         "target": "kak-zaprosit-predlozhenie-na-pereezd-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "how-to-transport-a-refrigerator-en": [
+      {
+        "target": "transportar-frigorifico",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-perevezti-holodilnik-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "refrigerator-transport-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-perevezti-holodilnik-ru": [
+      {
+        "target": "transportar-frigorifico",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "how-to-transport-a-refrigerator-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "perevozka-holodilnika-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "how-to-transport-a-washing-machine-en": [
+      {
+        "target": "transportar-maquina-lavar",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-perevezti-stiralnuyu-mashinu-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "washing-machine-transport-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-perevezti-stiralnuyu-mashinu-ru": [
+      {
+        "target": "transportar-maquina-lavar",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "how-to-transport-a-washing-machine-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "perevozka-stiralnoy-mashiny-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "how-to-transport-a-piano-en": [
+      {
+        "target": "transportar-piano",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-perevezti-pianino-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "piano-transport-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-perevezti-pianino-ru": [
+      {
+        "target": "transportar-piano",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "how-to-transport-a-piano-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "perevozka-pianino-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "how-to-transport-a-sofa-en": [
+      {
+        "target": "transportar-sofa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-perevezti-divan-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "sofa-transport-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-perevezti-divan-ru": [
+      {
+        "target": "transportar-sofa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "how-to-transport-a-sofa-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "perevozka-divana-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "measure-furniture-before-moving-en": [
+      {
+        "target": "medir-moveis-antes-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-izmerit-mebel-pered-pereezdom-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "furniture-transport-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-izmerit-mebel-pered-pereezdom-ru": [
+      {
+        "target": "medir-moveis-antes-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "measure-furniture-before-moving-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "perevozka-mebeli-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "prepare-refrigerator-for-transport-en": [
+      {
+        "target": "preparar-frigorifico-transporte",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-podgotovit-holodilnik-k-perevozke-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "refrigerator-transport-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-podgotovit-holodilnik-k-perevozke-ru": [
+      {
+        "target": "preparar-frigorifico-transporte",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "prepare-refrigerator-for-transport-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "perevozka-holodilnika-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "refrigerator-transport-lisbon-en": [
+      {
+        "target": "transporte-frigorifico-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "perevozka-holodilnika-lissabon-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "prepare-refrigerator-for-transport-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "perevozka-holodilnika-lissabon-ru": [
+      {
+        "target": "transporte-frigorifico-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "refrigerator-transport-lisbon-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-podgotovit-holodilnik-k-perevozke-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "washing-machine-transport-lisbon-en": [
+      {
+        "target": "transporte-maquina-lavar-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "perevozka-stiralnoy-mashiny-lissabon-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-to-pack-appliances-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "perevozka-stiralnoy-mashiny-lissabon-ru": [
+      {
+        "target": "transporte-maquina-lavar-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "washing-machine-transport-lisbon-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-upakovat-bytovuyu-tehniku-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "piano-transport-lisbon-en": [
+      {
+        "target": "transporte-piano-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "perevozka-pianino-lissabon-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "furniture-transport-insurance-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "perevozka-pianino-lissabon-ru": [
+      {
+        "target": "transporte-piano-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "piano-transport-lisbon-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "strahovka-pri-perevozke-mebeli-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "sofa-transport-lisbon-en": [
+      {
+        "target": "transporte-sofa-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "perevozka-divana-lissabon-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "furniture-transport-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "perevozka-divana-lissabon-ru": [
+      {
+        "target": "transporte-sofa-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "sofa-transport-lisbon-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "perevozka-mebeli-lissabon-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "box-transport-lisbon-en": [
+      {
+        "target": "transporte-caixas-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "perevozka-korobok-lissabon-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "complete-moving-checklist-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "perevozka-korobok-lissabon-ru": [
+      {
+        "target": "transporte-caixas-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "box-transport-lisbon-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "polnyy-cheklist-pereezda-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "verify-carrier-before-moving-en": [
+      {
+        "target": "como-verificar-transportador",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "kak-proverit-perevozchika-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-to-choose-moving-company-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "kak-proverit-perevozchika-ru": [
+      {
+        "target": "como-verificar-transportador",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "verify-carrier-before-moving-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-vybrat-kompaniyu-dlya-pereezda-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "liability-for-moving-damage-en": [
+      {
+        "target": "responsabilidade-danos-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "otvetstvennost-za-usherb-pri-pereezde-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-to-transport-a-piano-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "otvetstvennost-za-usherb-pri-pereezde-ru": [
+      {
+        "target": "responsabilidade-danos-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "liability-for-moving-damage-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-perevezti-pianino-ru",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "furniture-transport-insurance-en": [
+      {
+        "target": "seguro-transporte-moveis",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "strahovka-pri-perevozke-mebeli-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "how-to-pack-a-tv-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "strahovka-pri-perevozke-mebeli-ru": [
+      {
+        "target": "seguro-transporte-moveis",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "furniture-transport-insurance-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "kak-upakovat-televizor-ru",
         "reason": "authority",
         "priority": 3
       },

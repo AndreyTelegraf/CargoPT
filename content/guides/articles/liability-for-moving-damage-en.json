@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "id": "liability-for-moving-damage-en",
+  "locale": "en",
+  "cluster": "rights",
+  "path": "/en/guides/who-is-liable-for-damage-during-a-move/",
+  "title": "Who is liable for damage during a move?",
+  "meta_title": "Who is liable for damage during a move? — CargoPT",
+  "meta_description": "Learn how to document damage during a move, verify the agreement, and present the problem to the mover.",
+  "primary_query": "who pays for damage during a move",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Security and responsibility",
+  "eyebrow": "Damage during service",
+  "hero_description": "The answer depends on what happened, the agreement, the evidence and the conditions applicable to the service.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Liability depends on the case and must be documented",
+  "key_points_heading": "What to do in the event of damage",
+  "faq_heading": "Questions about damage during moves",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "It is not possible to automatically determine who pays for a damage without analyzing how it occurred, who had the item under control, the agreed service and the applicable conditions. Record the condition of the goods before the move, report the damage as soon as it is detected and keep photographs, messages, quote and proof. Ask the carrier for a written response and check possible coverage before accepting a solution.",
+  "key_points": [
+    "Photograph valuable and fragile possessions before service.",
+    "Record the damage as soon as it is detected.",
+    "Save quote, messages and proof.",
+    "Ask the carrier for a written response.",
+    "Check conditions, limits and possible coverage."
+  ],
+  "sections": [
+    {
+      "id": "document-the-condition-of-assets-before-moving",
+      "heading": "Document the condition of belongings before moving",
+      "paragraphs": [
+        "Dated photographs help distinguish past damage from occurrences during service.",
+        "Especially note fragile furniture, corners, appliances, glass, works and valuable items."
+      ],
+      "checklist": [
+        "Photograph multiple faces of the item.",
+        "Register existing risks and defects.",
+        "Save serial numbers when relevant.",
+        "Confirm transported inventory.",
+        "Photograph the packaging of fragile items.",
+        "Save the description sent to the carrier."
+      ]
+    },
+    {
+      "id": "what-to-do-when-you-detect-damage",
+      "heading": "What to do when you detect damage",
+      "paragraphs": [
+        "Do not alter or immediately discard the packaging or parts related to the damage.",
+        "Photograph the item, packaging and location, record the date and communicate the problem in writing."
+      ]
+    },
+    {
+      "id": "compare-the-damage-with-the-agreed-service",
+      "heading": "Compare the damage with the agreed service",
+      "paragraphs": [
+        "Check who was responsible for packaging, disassembly, loading, transportation, unloading and assembly.",
+        "The analysis may be different when the item was packaged by the customer or when there were unreported defects or weaknesses."
+      ]
+    },
+    {
+      "id": "gather-relevant-information",
+      "heading": "Gather relevant information",
+      "paragraphs": [
+        "Organize the quote, messages, photographs, proof and chronological description.",
+        "Avoid vague statements. Identify the item, the damage observed, when it was detected and the solution requested."
+      ],
+      "checklist": [
+        "Service quote or agreement.",
+        "Inventory shipped.",
+        "Before and after photographs.",
+        "Messages exchanged.",
+        "Proof of payment.",
+        "Repair quote when available."
+      ]
+    },
+    {
+      "id": "check-if-there-is-applicable-coverage",
+      "heading": "Check if there is applicable coverage",
+      "paragraphs": [
+        "Ask the carrier if there is coverage for the goods and ask for information about risks, limits, exclusions and procedures.",
+        "Compulsory car insurance should not automatically be confused with furniture coverage."
+      ],
+      "items": [
+        {
+          "title": "Covered risk",
+          "text": "Confirm which incident is covered."
+        },
+        {
+          "title": "Limit",
+          "text": "Check the applicable maximum value."
+        },
+        {
+          "title": "Exclusions",
+          "text": "Ask about non-covered assets or circumstances."
+        },
+        {
+          "title": "Participation",
+          "text": "Confirm documents and deadlines indicated for the case."
+        }
+      ]
+    },
+    {
+      "id": "ask-for-a-written-response-and-solution",
+      "heading": "Ask for a written response and solution",
+      "paragraphs": [
+        "Present the problem itemively and ask for a written response within a reasonable time.",
+        "When there is no agreement, seek information from a consumer support entity or legal advice appropriate to the case."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Register the service before moving",
+    "text": "A full description and written quotes make it clearer what each party has agreed to do.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Does the carrier always pay for any damage?",
+      "answer": "It is not possible to say this without analyzing the cause, the agreement, the evidence and the applicable conditions."
+    },
+    {
+      "question": "Should I photograph the furniture before moving?",
+      "answer": "Yes, especially fragile, valuable or previously damaged items."
+    },
+    {
+      "question": "Can I report damage after delivery?",
+      "answer": "Report it as soon as it is detected and keep proof of the item's condition and date."
+    },
+    {
+      "question": "Does car insurance cover furniture?",
+      "answer": "Don't assume so. Confirm specifically what coverage exists for the goods being transported."
+    },
+    {
+      "question": "What to keep when filing a complaint?",
+      "answer": "Keep the quote, messages, photographs, inventory, proof and any repair quote."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Quem é responsável por danos durante uma mudança? — Portuguese version",
+      "href": "/guias/seguranca/responsabilidade-danos-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Кто отвечает за ущерб во время переезда?",
+      "href": "/ru/guides/otvetstvennost-za-usherb-pri-pereezde/",
+      "type": "guide"
+    },
+    {
+      "title": "How to transport a piano",
+      "href": "/en/guides/how-to-transport-a-piano/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare conditions before moving",
+    "text": "Ask for clear quotes and confirm how each carrier handles fragile goods, damage and alterations.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "liability-for-moving-damage",
+  "alternates": {
+    "pt-PT": "/guias/seguranca/responsabilidade-danos-mudanca/",
+    "en": "/en/guides/who-is-liable-for-damage-during-a-move/",
+    "ru": "/ru/guides/otvetstvennost-za-usherb-pri-pereezde/"
+  }
+}

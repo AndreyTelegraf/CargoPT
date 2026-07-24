@@ -141,13 +141,13 @@
   ],
   "related_links": [
     {
-      "title": "Como transportar um frigorífico",
-      "href": "/guias/objetos/como-transportar-frigorifico/",
+      "title": "How to prepare a refrigerator for transport — versão em inglês",
+      "href": "/en/guides/how-to-prepare-a-refrigerator-for-transport/",
       "type": "guide"
     },
     {
-      "title": "Como transportar uma máquina de lavar",
-      "href": "/guias/objetos/como-transportar-maquina-lavar/",
+      "title": "Как подготовить холодильник к перевозке — versão em russo",
+      "href": "/ru/guides/kak-podgotovit-holodilnik-k-perevozke/",
       "type": "guide"
     },
     {
@@ -166,5 +166,11 @@
     "text": "Descreva o equipamento, os acessos e a rota uma única vez e compare as propostas recebidas.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "prepare-refrigerator-for-transport",
+  "alternates": {
+    "pt-PT": "/guias/objetos/preparar-frigorifico-transporte/",
+    "en": "/en/guides/how-to-prepare-a-refrigerator-for-transport/",
+    "ru": "/ru/guides/kak-podgotovit-holodilnik-k-perevozke/"
   }
 }

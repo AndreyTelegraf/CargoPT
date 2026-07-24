@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "id": "furniture-transport-insurance-en",
+  "locale": "en",
+  "cluster": "rights",
+  "path": "/en/guides/do-you-need-insurance-to-transport-furniture/",
+  "title": "Do you need insurance to transport furniture?",
+  "meta_title": "Do you need insurance to transport furniture? — CargoPT",
+  "meta_description": "Understand what coverage may exist when transporting furniture and what questions to ask before hiring.",
+  "primary_query": "furniture transport insurance",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Security and responsibility",
+  "eyebrow": "Coverage of assets",
+  "hero_description": "The existence of insurance does not mean that all furniture and all incidents are automatically covered.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Confirm coverage rather than assuming it exists",
+  "key_points_heading": "Essential Coverage Questions",
+  "faq_heading": "Furniture Insurance Questions",
+  "related_links_heading": "Guides and related services",
+  "direct_answer": "There is no single answer for every move. The need to purchase additional coverage depends on the price and fragility of the belongings, the agreed service and the existing protection. Ask the carrier what insurance or coverage applies to the items, what risks are covered, the limits, exclusions and the procedure in case of damage. Do not confuse mandatory vehicle insurance with automatic furniture coverage.",
+  "key_points": [
+    "Ask what goods and events are covered.",
+    "Confirm limits, exclusions and possible deductibles.",
+    "Declare valuable or especially fragile items.",
+    "Keep coverage information in writing.",
+    "Document the goods before collection."
+  ],
+  "sections": [
+    {
+      "id": "differentiate-vehicle-liability-and-assets",
+      "heading": "Differentiate vehicle, liability and assets",
+      "paragraphs": [
+        "There may be different protections for the vehicle, for liability towards third parties and for the items transported.",
+        "The name of an insurance policy, in itself, does not demonstrate that a specific piece of furniture or a specific event is covered."
+      ]
+    },
+    {
+      "id": "questions-to-ask-the-carrier",
+      "heading": "Questions to ask the carrier",
+      "paragraphs": [
+        "Ask for a clear explanation of coverage before accepting the offer.",
+        "When protection is important to the decision, request written confirmation."
+      ],
+      "checklist": [
+        "What goods are covered?",
+        "What types of damage are covered?",
+        "What is the maximum limit?",
+        "Are there exclusions?",
+        "Is there a deductible or amount payable by the customer?",
+        "How and when should damage be reported?"
+      ]
+    },
+    {
+      "id": "consider-the-value-and-fragility-of-items",
+      "heading": "Consider the price and fragility of items",
+      "paragraphs": [
+        "Common furniture, antiques, works, instruments and equipment may justify different levels of precaution.",
+        "Inform items of high value or with special characteristics in advance and ask if they require declaration, packaging or specific conditions."
+      ]
+    },
+    {
+      "id": "read-limits-and-exclusions",
+      "heading": "Read limits and exclusions",
+      "paragraphs": [
+        "Coverage may exclude improper packaging, previous defects, certain materials or undeclared goods.",
+        "There may also be limits per item, per occurrence or for the entire service."
+      ],
+      "items": [
+        {
+          "title": "Global limit",
+          "text": "Maximum value for the occurrence or service."
+        },
+        {
+          "title": "Limit per item",
+          "text": "Maximum value attributed to each asset."
+        },
+        {
+          "title": "Deletion",
+          "text": "Situation or good that is not covered."
+        },
+        {
+          "title": "Franchise",
+          "text": "Part of the loss that may be borne by the insured."
+        }
+      ]
+    },
+    {
+      "id": "document-the-assets-and-the-agreement",
+      "heading": "Document the belongings and the agreement",
+      "paragraphs": [
+        "Photograph items before collection and record previous damage.",
+        "Save quote, inventory, messages, coverage information and proof."
+      ],
+      "checklist": [
+        "Photographs before collection.",
+        "Inventory of goods.",
+        "Description of fragile items.",
+        "Declared value when applicable.",
+        "Conditions received in writing.",
+        "Proof of service."
+      ]
+    },
+    {
+      "id": "when-to-evaluate-additional-protection",
+      "heading": "When to evaluate additional protection",
+      "paragraphs": [
+        "Consider obtaining specific advice when transporting high-value goods, antiques, works or special instruments.",
+        "Compare the risk, limits of existing protection and the cost of additional coverage before deciding."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Include fragile items in the description",
+    "text": "Inform carriers about value, fragility and special needs before comparing bids.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Is it mandatory to take out separate insurance for furniture?",
+      "answer": "There is no universal answer. Confirm the service, existing coverage and the risk of the goods."
+    },
+    {
+      "question": "Does vehicle insurance cover the load?",
+      "answer": "Don't assume it covers it. Ask for specific confirmation about the items transported."
+    },
+    {
+      "question": "Should valuable items be declared?",
+      "answer": "Inform them in advance and ask if there are any special conditions or limits."
+    },
+    {
+      "question": "What does a deletion mean?",
+      "answer": "It is a situation, occurrence or type of asset that is not covered by coverage."
+    },
+    {
+      "question": "What evidence should I keep?",
+      "answer": "Keep photographs, inventory, quote, messages, conditions and proof."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "É necessário seguro para transportar móveis? — Portuguese version",
+      "href": "/guias/seguranca/seguro-transporte-moveis/",
+      "type": "guide"
+    },
+    {
+      "title": "Нужна ли страховка при перевозке мебели?",
+      "href": "/ru/guides/strahovka-pri-perevozke-mebeli/",
+      "type": "guide"
+    },
+    {
+      "title": "How to pack a television for transport",
+      "href": "/en/guides/how-to-pack-a-tv/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving quotes",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare quotes and protection conditions",
+    "text": "Describe the goods once and confirm with each carrier the applicable service and coverage.",
+    "label": "Get quotes",
+    "href": "/#request"
+  },
+  "translation_group": "furniture-transport-insurance",
+  "alternates": {
+    "pt-PT": "/guias/seguranca/seguro-transporte-moveis/",
+    "en": "/en/guides/do-you-need-insurance-to-transport-furniture/",
+    "ru": "/ru/guides/strahovka-pri-perevozke-mebeli/"
+  }
+}

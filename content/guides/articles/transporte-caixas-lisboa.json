@@ -124,14 +124,14 @@
   ],
   "related_links": [
     {
-      "title": "Como embalar caixas para uma mudança",
-      "href": "/guias/embalamento/como-embalar-caixas/",
+      "title": "Box transport in Lisbon — versão em inglês",
+      "href": "/en/guides/box-transport-lisbon/",
       "type": "guide"
     },
     {
-      "title": "Mudanças de apartamento em Lisboa",
-      "href": "/mudancas-apartamento-lisboa/",
-      "type": "landing"
+      "title": "Перевозка коробок в Лиссабоне — versão em russo",
+      "href": "/ru/guides/perevozka-korobok-lissabon/",
+      "type": "guide"
     },
     {
       "title": "Checklist completa para uma mudança",
@@ -149,5 +149,11 @@
     "text": "Descreva os volumes, os locais e os acessos antes de escolher o serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "box-transport-lisbon",
+  "alternates": {
+    "pt-PT": "/transporte-caixas-lisboa/",
+    "en": "/en/guides/box-transport-lisbon/",
+    "ru": "/ru/guides/perevozka-korobok-lissabon/"
   }
 }
