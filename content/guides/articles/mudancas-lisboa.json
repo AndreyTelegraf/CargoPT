@@ -183,19 +183,19 @@
   ],
   "related_links": [
     {
-      "title": "Mudanças no Porto",
-      "href": "/mudancas-porto/",
-      "type": "landing"
+      "title": "Moving services in Lisbon",
+      "href": "/en/guides/moving-services-lisbon/",
+      "type": "guide"
+    },
+    {
+      "title": "Грузоперевозки и переезды в Лиссабоне",
+      "href": "/ru/guides/gruzoperevozki-lissabon/",
+      "type": "guide"
     },
     {
       "title": "Mudanças em Braga",
       "href": "/mudancas-braga/",
       "type": "landing"
-    },
-    {
-      "title": "Quanto custa uma mudança em Lisboa?",
-      "href": "/guias/precos/quanto-custa-mudanca-lisboa/",
-      "type": "guide"
     },
     {
       "title": "Pedir propostas para uma mudança",
@@ -208,5 +208,11 @@
     "text": "Descreva a zona, a carga, os acessos e as tarefas para receber propostas referentes ao mesmo serviço.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "mudancas-lisboa",
+  "alternates": {
+    "pt-PT": "/mudancas-lisboa/",
+    "en": "/en/guides/moving-services-lisbon/",
+    "ru": "/ru/guides/gruzoperevozki-lissabon/"
   }
 }

@@ -76,6 +76,48 @@
       ]
     },
     {
+      "id": "moving-services-lisbon-en",
+      "cluster": "cities",
+      "title": "Moving services in Lisbon",
+      "slug": "moving-services-lisbon-en",
+      "path": "/en/guides/moving-services-lisbon/",
+      "primary_query": "moving services Lisbon",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-lisboa",
+        "gruzoperevozki-lissabon-ru",
+        "quanto-custa-mudanca-lisboa"
+      ]
+    },
+    {
+      "id": "gruzoperevozki-lissabon-ru",
+      "cluster": "cities",
+      "title": "Грузоперевозки и переезды в Лиссабоне",
+      "slug": "gruzoperevozki-lissabon-ru",
+      "path": "/ru/guides/gruzoperevozki-lissabon/",
+      "primary_query": "грузоперевозки Лиссабон",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-lisboa",
+        "moving-services-lisbon-en",
+        "quanto-custa-mudanca-lisboa"
+      ]
+    },
+    {
       "id": "transportadora-lisboa",
       "cluster": "cities",
       "title": "Transportadora em Lisboa",

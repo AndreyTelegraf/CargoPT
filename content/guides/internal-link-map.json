@@ -538,18 +538,18 @@
     ],
     "mudancas-lisboa": [
       {
-        "target": "mudancas-porto",
+        "target": "moving-services-lisbon-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "mudancas-braga",
+        "target": "gruzoperevozki-lissabon-ru",
         "reason": "next_step",
         "priority": 2
       },
       {
-        "target": "quanto-custa-mudanca-lisboa",
-        "reason": "authority",
+        "target": "mudancas-braga",
+        "reason": "commercial",
         "priority": 3
       },
       {
@@ -1275,6 +1275,50 @@
       },
       {
         "target": "como-preparar-uma-mudanca",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "moving-services-lisbon-en": [
+      {
+        "target": "mudancas-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "gruzoperevozki-lissabon-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "gruzoperevozki-lissabon-ru": [
+      {
+        "target": "mudancas-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "moving-services-lisbon-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "quanto-custa-mudanca-lisboa",
         "reason": "authority",
         "priority": 3
       },

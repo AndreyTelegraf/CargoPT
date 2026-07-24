@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "id": "moving-services-lisbon-en",
+  "locale": "en",
+  "cluster": "cities",
+  "path": "/en/guides/moving-services-lisbon/",
+  "title": "Moving services in Lisbon",
+  "meta_title": "Moving Services in Lisbon: Access, Parking and Planning — CargoPT",
+  "meta_description": "Plan a move in Lisbon: locations, inventory, access, parking, movers and additional services.",
+  "primary_query": "moving services Lisbon",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Moving services by city",
+  "eyebrow": "Moving services in Lisbon",
+  "hero_description": "A move in Lisbon should account for the exact neighbourhood, the type of property, access conditions and where the vehicle can stop. Narrow streets, slopes, parking restrictions and long carrying distances can significantly affect the service.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "What to confirm before arranging a move in Lisbon",
+  "key_points_heading": "Information needed to request comparable offers",
+  "faq_heading": "Frequently asked questions about moving in Lisbon",
+  "related_links_heading": "Related guides and services",
+  "direct_answer": "To receive suitable offers for a move in Lisbon, provide the exact pickup and delivery areas, the preferred date, a clear inventory, floor numbers, lifts, stairs and the place where the vehicle can stop. State the carrying distance and whether you need movers, dismantling, assembly, packing or additional protection. Street width, slopes, restricted-access areas and parking conditions can substantially affect the work required.",
+  "key_points": [
+    "Provide the exact pickup and delivery locations.",
+    "Confirm where the vehicle can stop at each address.",
+    "Describe floors, lifts, stairs, doors and corridors.",
+    "Send photographs of large items and difficult access.",
+    "Compare offers based on the same inventory and the same tasks."
+  ],
+  "translation_group": "mudancas-lisboa",
+  "alternates": {
+    "pt-PT": "/mudancas-lisboa/",
+    "en": "/en/guides/moving-services-lisbon/",
+    "ru": "/ru/guides/gruzoperevozki-lissabon/"
+  },
+  "sections": [
+    {
+      "id": "lisbon-areas",
+      "heading": "Lisbon areas and access conditions",
+      "paragraphs": [
+        "Simply stating “Lisbon” may not provide enough information to assess the service. The exact area affects the route, vehicle access and the distance between the property and the loading point.",
+        "Provide the location at both ends of the move and describe the pickup and delivery access conditions separately."
+      ],
+      "items": [
+        {
+          "title": "Baixa, Alfama and Mouraria",
+          "text": "Describe narrow streets, slopes, stairs and the distance between the entrance and the nearest possible loading point."
+        },
+        {
+          "title": "Avenidas Novas and Alvalade",
+          "text": "Confirm the floor, lift, service entrance and whether the vehicle can approach the building."
+        },
+        {
+          "title": "Benfica and western Lisbon",
+          "text": "Describe access through garages, gates, courtyards or internal routes."
+        },
+        {
+          "title": "Parque das Nações",
+          "text": "Confirm condominium rules, garage access, lift use and permitted time windows."
+        }
+      ]
+    },
+    {
+      "id": "lisbon-inventory",
+      "heading": "How to prepare the moving inventory",
+      "paragraphs": [
+        "Organise the load by room or category and separate furniture, appliances, boxes and items requiring special handling.",
+        "Provide approximate dimensions and photographs of larger items when doors, stairs or lifts may be restrictive."
+      ],
+      "items": [
+        {
+          "title": "Furniture",
+          "text": "List beds, mattresses, sofas, tables, wardrobes, shelves and other large items."
+        },
+        {
+          "title": "Appliances",
+          "text": "Identify refrigerators, washing machines, televisions and other relevant equipment."
+        },
+        {
+          "title": "Boxes",
+          "text": "Give an approximate quantity and identify fragile or especially heavy boxes."
+        },
+        {
+          "title": "Special items",
+          "text": "Identify heavy, fragile, valuable or difficult-to-move objects."
+        }
+      ]
+    },
+    {
+      "id": "lisbon-access-parking",
+      "heading": "Access and parking in Lisbon",
+      "paragraphs": [
+        "Street width, slopes, parking restrictions, restricted-access areas and carrying distance can significantly affect a move in Lisbon.",
+        "When the vehicle cannot stop near the entrance, state the distance, slope, steps and the type of route the team must use."
+      ],
+      "checklist": [
+        "Floor at the pickup and delivery properties.",
+        "Availability and approximate size of each lift.",
+        "Number of flights of stairs.",
+        "Narrow doors, corridors and turns.",
+        "Possible vehicle stopping point.",
+        "Distance between the vehicle and the entrance.",
+        "Gates, garages or controlled entry points.",
+        "Rules communicated by the building or condominium."
+      ]
+    },
+    {
+      "id": "lisbon-services",
+      "heading": "Services that should be agreed in advance",
+      "paragraphs": [
+        "The offer should clearly state the vehicle, number of movers, loading, unloading and item protection.",
+        "Dismantling, assembly, packing, materials and additional equipment should be agreed before the moving date."
+      ],
+      "items": [
+        {
+          "title": "Movers",
+          "text": "Confirm how many people will take part in loading and unloading."
+        },
+        {
+          "title": "Dismantling and assembly",
+          "text": "Identify the furniture involved and who will perform each task."
+        },
+        {
+          "title": "Packing and protection",
+          "text": "Confirm materials for furniture, appliances and fragile objects."
+        },
+        {
+          "title": "Additional equipment",
+          "text": "Mention heavy items or access conditions that may require specific equipment."
+        }
+      ]
+    },
+    {
+      "id": "compare-lisbon-offers",
+      "heading": "How to compare moving offers in Lisbon",
+      "paragraphs": [
+        "Send the same description to every carrier, including locations, inventory, access, carrying distance and required tasks.",
+        "Compare the price together with the vehicle, team, included services, timing and conditions for changes to the request."
+      ],
+      "checklist": [
+        "The pickup and delivery locations are the same.",
+        "The inventory is identical.",
+        "Access and parking have been described.",
+        "The number of movers is stated.",
+        "Additional services are itemised.",
+        "The price and conditions are recorded in writing."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "How to request offers through CargoPT",
+      "paragraphs": [
+        "With CargoPT, you can describe your Lisbon move once, including the locations, load, access and required tasks.",
+        "Independent carriers submit their own offers, allowing you to compare responses based on the same description."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Describe your move in Lisbon",
+    "text": "Provide the locations, items, access, parking conditions and required services.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Is it enough to say that the move is in Lisbon?",
+      "answer": "No. Provide the exact area or street at pickup and delivery because access and carrying distance can vary significantly."
+    },
+    {
+      "question": "Which property details should I confirm?",
+      "answer": "Check floors, stairs, door and corridor widths, tight turns, lifts, gates and garage access."
+    },
+    {
+      "question": "Does the distance to the vehicle affect the service?",
+      "answer": "Yes. A long, steep or stepped route increases manual carrying and may require more time or movers."
+    },
+    {
+      "question": "When should I send photographs?",
+      "answer": "Send photographs of large furniture, special items, stairs, narrow doors and other difficult access."
+    },
+    {
+      "question": "How should I compare different offers?",
+      "answer": "Confirm that each offer covers the same inventory, access conditions, number of movers and services."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Mudanças em Lisboa",
+      "href": "/mudancas-lisboa/",
+      "type": "guide"
+    },
+    {
+      "title": "Грузоперевозки и переезды в Лиссабоне",
+      "href": "/ru/guides/gruzoperevozki-lissabon/",
+      "type": "guide"
+    },
+    {
+      "title": "How much does a move in Lisbon cost?",
+      "href": "/guias/precos/quanto-custa-mudanca-lisboa/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving offers",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare offers for your Lisbon move",
+    "text": "Describe the locations, load, access and tasks so that the offers refer to the same service.",
+    "label": "Get offers",
+    "href": "/#request"
+  }
+}
