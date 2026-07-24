@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "id": "how-much-does-a-move-cost-en",
+  "locale": "en",
+  "cluster": "prices",
+  "path": "/en/guides/how-much-does-a-move-cost/",
+  "title": "How much does a move cost in Portugal?",
+  "meta_title": "How Much Does a Move Cost in Portugal? — CargoPT",
+  "meta_description": "Learn which factors affect moving costs in Portugal, what may be included and how to request comparable offers.",
+  "primary_query": "how much does a move cost in Portugal",
+  "intent": [
+    "informational",
+    "commercial"
+  ],
+  "article_section": "Moving prices and costs",
+  "eyebrow": "Moving costs",
+  "hero_description": "There is no single price for every move. The cost depends on the route, volume, access conditions, work required and services included.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "The price depends on the specific service",
+  "key_points_heading": "What to know before requesting offers",
+  "faq_heading": "Frequently asked questions about moving costs",
+  "related_links_heading": "Related guides and services",
+  "direct_answer": "There is no fixed price for a move in Portugal. Two moves between the same locations may cost different amounts because the offer depends on the volume, weight and type of items, floors, lifts, carrying distance between the property and the vehicle, number of movers and additional services. Dismantling, assembly, packing, materials and special equipment can also affect the price. To compare offers properly, every carrier should receive the same description of the service, including origin, destination, inventory, access conditions, date and any additional requirements.",
+  "key_points": [
+    "There is no universal price that applies to every move.",
+    "Volume, route, access conditions and labour are key cost factors.",
+    "Additional services should be identified before comparing offers.",
+    "Offers are comparable only when they describe exactly the same service.",
+    "Photographs and complete information reduce uncertainty in an estimate."
+  ],
+  "translation_group": "moving-cost-portugal",
+  "alternates": {
+    "pt-PT": "/guias/precos/quanto-custa-uma-mudanca/",
+    "en": "/en/guides/how-much-does-a-move-cost/",
+    "ru": "/ru/guides/skolko-stoit-pereezd/"
+  },
+  "sections": [
+    {
+      "id": "price-factors",
+      "heading": "What affects the cost of a move?",
+      "paragraphs": [
+        "An estimate combines travel, required vehicle capacity, working time and access difficulty. A short list of light items on the ground floor does not require the same resources as a complete household move from an upper floor without a lift.",
+        "The place where the vehicle can stop also matters. A long distance between the property and the loading area increases the carrying required from the movers and may extend the service."
+      ],
+      "items": [
+        {
+          "title": "Route and distance",
+          "text": "The origin, destination and required route affect travel time and use of the vehicle."
+        },
+        {
+          "title": "Quantity and volume",
+          "text": "More items may require a larger vehicle, additional trips or more loading and unloading time."
+        },
+        {
+          "title": "Weight and complexity",
+          "text": "Pianos, appliances, large furniture and fragile objects may require more people, protection or equipment."
+        },
+        {
+          "title": "Floors and access",
+          "text": "Stairs, small lifts, narrow corridors and carrying distance to the vehicle change the difficulty of the work."
+        },
+        {
+          "title": "Number of movers",
+          "text": "The team size depends on the volume, weight of the items and access conditions."
+        },
+        {
+          "title": "Date and flexibility",
+          "text": "Being able to adjust the day or time may make the transport easier to organise, but does not guarantee a specific price."
+        }
+      ]
+    },
+    {
+      "id": "included-separately",
+      "heading": "What may be included or charged separately?",
+      "paragraphs": [
+        "An offer should clearly state the scope of the service. Transport may include only the vehicle and driver, or it may also include loading, unloading and movers. Do not assume that dismantling, packing or materials are included."
+      ],
+      "items": [
+        {
+          "title": "Loading and unloading",
+          "text": "Confirm who will carry the items between the property and the vehicle."
+        },
+        {
+          "title": "Dismantling and assembly",
+          "text": "Identify in advance which furniture requires this service."
+        },
+        {
+          "title": "Packing and protection",
+          "text": "Confirm whether the carrier provides boxes, blankets, stretch film or other materials."
+        },
+        {
+          "title": "Special equipment",
+          "text": "External lifts, platforms, cranes and other equipment should be explicitly included in the offer."
+        },
+        {
+          "title": "Waiting and changes",
+          "text": "Ask how waiting time, schedule changes or items added after the estimate will be handled."
+        }
+      ]
+    },
+    {
+      "id": "compare-offers",
+      "heading": "How to compare moving offers",
+      "paragraphs": [
+        "The price alone does not show whether two offers cover the same work. Before choosing, compare the planned vehicle, number of movers, included services, access conditions considered and any additional charges.",
+        "The comparison is more reliable when every carrier receives the same description. If an offer was calculated without information about floors, lifts or heavy objects, its price may not represent the complete service."
+      ],
+      "items": [
+        {
+          "title": "Same inventory",
+          "text": "Send the same list of items to every carrier."
+        },
+        {
+          "title": "Same access conditions",
+          "text": "State the floors, lifts, stairs and carrying distance to the loading area."
+        },
+        {
+          "title": "Same scope",
+          "text": "Confirm whether packing, dismantling, assembly and movers are included."
+        },
+        {
+          "title": "Written conditions",
+          "text": "Keep the offer and confirm the agreed services in writing."
+        }
+      ]
+    },
+    {
+      "id": "reduce-cost",
+      "heading": "How to reduce avoidable costs",
+      "paragraphs": [
+        "Reducing the cost does not mean withholding important information. An incomplete description can lead to offers that are difficult to compare or changes when the carrier finds different conditions on site."
+      ],
+      "items": [
+        {
+          "title": "Remove items that will not be moved",
+          "text": "Do not include objects that will be sold, donated or discarded."
+        },
+        {
+          "title": "Prepare boxes in advance",
+          "text": "When packing is not part of the service, have the items ready to reduce delays."
+        },
+        {
+          "title": "Describe access accurately",
+          "text": "Accurate information allows the right resources to be selected before the move."
+        },
+        {
+          "title": "Keep some flexibility",
+          "text": "Provide alternative dates when possible, without assuming that flexibility guarantees a lower price."
+        }
+      ]
+    },
+    {
+      "id": "estimate-information",
+      "heading": "What information should you provide to receive offers?",
+      "paragraphs": [
+        "The more specific the description, the less need there will be for follow-up questions. Photographs are particularly useful for large furniture, special items and difficult access."
+      ],
+      "checklist": [
+        "Exact pickup and delivery address or location.",
+        "Preferred date and any flexibility.",
+        "List of items or description of the move.",
+        "Dimensions of large items when relevant.",
+        "Estimated volume, when available.",
+        "Floor at pickup and delivery.",
+        "Availability and approximate size of lifts.",
+        "Stairs, narrow corridors or other obstacles.",
+        "Expected distance between the entrance and the vehicle.",
+        "Whether movers are required.",
+        "Whether dismantling, assembly or packing is required.",
+        "Photographs of items and access conditions when useful."
+      ]
+    },
+    {
+      "id": "cargopt",
+      "heading": "How CargoPT helps you compare offers",
+      "paragraphs": [
+        "CargoPT is a request and comparison service for moving and transport in Portugal. You describe the service once, and the request can be sent to independent carriers suited to the stated requirements.",
+        "Each carrier sets its own offer. You can compare the available responses before deciding; CargoPT is not the company that physically performs the move."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare a comparable description",
+    "text": "Provide the same route, items and access conditions so that every offer refers to the same service.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Can I know the price without listing the items?",
+      "answer": "An estimate without an inventory is unlikely to be precise. For a useful offer, describe at least the main items, approximate volume and access conditions."
+    },
+    {
+      "question": "Does the price always include movers?",
+      "answer": "Do not assume that it does. The offer should state how many people will take part in loading and unloading and which tasks remain your responsibility."
+    },
+    {
+      "question": "Is furniture dismantling included?",
+      "answer": "It depends on the scope proposed by the carrier. Identify the furniture that needs dismantling in advance and confirm this service in writing."
+    },
+    {
+      "question": "Can a lift affect the offer?",
+      "answer": "Yes. The availability, size and permitted use of a lift affect how the items can be moved."
+    },
+    {
+      "question": "How can I avoid price changes on moving day?",
+      "answer": "Provide complete information, send relevant photographs and confirm the inventory, access conditions and included services in writing."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Quanto custa uma mudança em Portugal?",
+      "href": "/guias/precos/quanto-custa-uma-mudanca/",
+      "type": "guide"
+    },
+    {
+      "title": "Сколько стоит переезд в Португалии?",
+      "href": "/ru/guides/skolko-stoit-pereezd/",
+      "type": "guide"
+    },
+    {
+      "title": "Moving services in Lisbon",
+      "href": "/en/guides/moving-services-lisbon/",
+      "type": "guide"
+    },
+    {
+      "title": "Request moving offers",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Receive offers for your move",
+    "text": "Describe the route, items, access conditions and required services once. Then compare the available offers before deciding.",
+    "label": "Get offers",
+    "href": "/#request"
+  }
+}

@@ -934,12 +934,12 @@
     ],
     "quanto-custa-uma-mudanca": [
       {
-        "target": "como-reduzir-custo-mudanca",
+        "target": "how-much-does-a-move-cost-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "quanto-custa-mudanca-lisboa",
+        "target": "skolko-stoit-pereezd-ru",
         "reason": "next_step",
         "priority": 2
       },
@@ -1429,6 +1429,50 @@
       },
       {
         "target": "transporte-caixas-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "how-much-does-a-move-cost-en": [
+      {
+        "target": "quanto-custa-uma-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "skolko-stoit-pereezd-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "moving-services-lisbon-en",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "skolko-stoit-pereezd-ru": [
+      {
+        "target": "quanto-custa-uma-mudanca",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "how-much-does-a-move-cost-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "gruzoperevozki-lissabon-ru",
         "reason": "authority",
         "priority": 3
       },

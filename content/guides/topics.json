@@ -1322,6 +1322,46 @@
         "apartment-moving-lisbon-en",
         "perevozka-mebeli-lissabon-ru"
       ]
+    },
+    {
+      "id": "how-much-does-a-move-cost-en",
+      "cluster": "prices",
+      "title": "How much does a move cost in Portugal?",
+      "slug": "how-much-does-a-move-cost-en",
+      "path": "/en/guides/how-much-does-a-move-cost/",
+      "primary_query": "how much does a move cost in Portugal",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "quanto-custa-uma-mudanca",
+        "skolko-stoit-pereezd-ru",
+        "moving-services-lisbon-en"
+      ]
+    },
+    {
+      "id": "skolko-stoit-pereezd-ru",
+      "cluster": "prices",
+      "title": "Сколько стоит переезд в Португалии?",
+      "slug": "skolko-stoit-pereezd-ru",
+      "path": "/ru/guides/skolko-stoit-pereezd/",
+      "primary_query": "сколько стоит переезд в Португалии",
+      "intent": [
+        "informational",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "quanto-custa-uma-mudanca",
+        "how-much-does-a-move-cost-en",
+        "gruzoperevozki-lissabon-ru"
+      ]
     }
   ]
 }

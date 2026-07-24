@@ -30,6 +30,12 @@
     "Propostas só são comparáveis quando descrevem exatamente o mesmo serviço.",
     "Fotografias e informações completas reduzem dúvidas no orçamento."
   ],
+  "translation_group": "moving-cost-portugal",
+  "alternates": {
+    "pt-PT": "/guias/precos/quanto-custa-uma-mudanca/",
+    "en": "/en/guides/how-much-does-a-move-cost/",
+    "ru": "/ru/guides/skolko-stoit-pereezd/"
+  },
   "sections": [
     {
       "id": "fatores-preco",
@@ -205,13 +211,13 @@
   ],
   "related_links": [
     {
-      "title": "Como reduzir o custo de uma mudança",
-      "href": "/guias/precos/como-reduzir-custo-mudanca/",
+      "title": "How much does a move cost in Portugal?",
+      "href": "/en/guides/how-much-does-a-move-cost/",
       "type": "guide"
     },
     {
-      "title": "Quanto custa uma mudança em Lisboa?",
-      "href": "/guias/precos/quanto-custa-mudanca-lisboa/",
+      "title": "Сколько стоит переезд в Португалии?",
+      "href": "/ru/guides/skolko-stoit-pereezd/",
       "type": "guide"
     },
     {
