@@ -56,6 +56,7 @@ def main() -> None:
 
     from app.api.main import app
     from app.api.web_requests import get_api_bot
+    from app.db.session import engine as app_engine
 
     fake_bot = FakeBot()
 
@@ -99,6 +100,9 @@ def main() -> None:
             raise SystemExit(f"health failed: {health.status_code} {health.text}")
 
         response = client.post("/api/v1/requests", json=payload)
+
+    app.dependency_overrides.clear()
+    asyncio.run(app_engine.dispose())
 
     if response.status_code != 200:
         raise SystemExit(f"unexpected response: {response.status_code} {response.text}")

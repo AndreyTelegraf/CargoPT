@@ -1,6 +1,20 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
+STRICT_WARNINGS=0
+
+case "${1:-}" in
+  "")
+    ;;
+  --strict-warnings)
+    STRICT_WARNINGS=1
+    ;;
+  *)
+    echo "usage: $0 [--strict-warnings]" >&2
+    exit 2
+    ;;
+esac
+
 ROOT="$(
   cd "$(dirname "${BASH_SOURCE[0]}")/.." &&
   pwd
@@ -10,6 +24,14 @@ cd "$ROOT"
 
 export PYTHONPATH="$ROOT"
 export PYTHONDONTWRITEBYTECODE=1
+
+if [ "$STRICT_WARNINGS" -eq 1 ]; then
+  WARNING_FILTER="error::ResourceWarning,error::DeprecationWarning"
+  echo "STRICT_WARNINGS=enabled"
+else
+  WARNING_FILTER="default"
+  echo "STRICT_WARNINGS=disabled"
+fi
 
 TMP_ROOT="$(
   mktemp -d /tmp/cargopt_regression_XXXXXXXX
@@ -108,6 +130,7 @@ for script in "${TESTS[@]}"; do
   env \
     PYTHONPATH="$ROOT" \
     PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONWARNINGS="$WARNING_FILTER" \
     TMPDIR="$isolated_tmp" \
     TEMP="$isolated_tmp" \
     TMP="$isolated_tmp" \
