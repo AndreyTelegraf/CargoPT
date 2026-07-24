@@ -8,6 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
+from app.config import settings
 from app.models.job import ClientBan
 from app.models.job import Job
 from app.models.job import JobAddress
@@ -15,11 +16,50 @@ from app.models.job import JobItem
 from app.models.job import JobMedia
 from app.models.job import JobOffer
 from app.models.job import JobStatusEvent
+from app.repositories.job_email_notification import (
+    JobEmailNotificationRepository,
+)
+from app.services.email.models import EmailEventType
+from app.services.email.notification_service import EmailNotificationService
+
+
+_STATUS_EMAIL_EVENTS = {
+    "assigned_pending_confirmation": EmailEventType.CARRIER_SELECTED,
+    "assigned": EmailEventType.ASSIGNMENT_CONFIRMED,
+    "cancelled": EmailEventType.REQUEST_CANCELLED,
+}
 
 
 class JobRepository:
-    def __init__(self, session: AsyncSession) -> None:
+    def __init__(
+        self,
+        session: AsyncSession,
+        *,
+        email_enabled: bool | None = None,
+    ) -> None:
         self.session = session
+        self.email_enabled = (
+            settings.email_enabled
+            if email_enabled is None
+            else email_enabled
+        )
+
+    async def enqueue_email_notification(
+        self,
+        *,
+        job: Job,
+        event_type: EmailEventType,
+        now,
+    ):
+        service = EmailNotificationService(
+            JobEmailNotificationRepository(self.session),
+            enabled=self.email_enabled,
+        )
+        return await service.enqueue_for_job(
+            job=job,
+            event_type=event_type,
+            now=now,
+        )
 
     async def get_active_client_ban(
         self,
@@ -737,6 +777,13 @@ class JobRepository:
                     occurred_at=updated_at,
                 )
             )
+            email_event = _STATUS_EMAIL_EVENTS.get(status_value)
+            if email_event is not None:
+                await self.enqueue_email_notification(
+                    job=job,
+                    event_type=email_event,
+                    now=updated_at,
+                )
 
         await self.session.flush()
 

@@ -7,6 +7,7 @@ from app.domain.job_status import JobStatus
 from app.models.carrier import CarrierVehicle
 from app.models.job import JobOffer
 from app.repositories.job import JobRepository
+from app.services.email.models import EmailEventType
 
 
 class OfferAlreadyResolvedError(ValueError):
@@ -106,6 +107,12 @@ class JobOfferService:
         offer.status = JobOfferStatus.ACCEPTED
         offer.responded_at = now
         offer.updated_at = now
+
+        await self.repository.enqueue_email_notification(
+            job=job,
+            event_type=EmailEventType.OFFER_AVAILABLE,
+            now=now,
+        )
 
         await self.repository.update_job_status(
             job_id=offer.job_id,
