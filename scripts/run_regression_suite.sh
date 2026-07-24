@@ -68,6 +68,16 @@ TESTS=(
   scripts/guides_article_content_smoke.py
   scripts/guides_multilingual_registry_smoke.py
   scripts/corpus_multilingual_article_contract_smoke.py
+  scripts/email_config_smoke.py
+  scripts/email_template_locale_smoke.py
+  scripts/email_smtp_transport_smoke.py
+  scripts/email_notification_outbox_smoke.py
+  scripts/email_dispatch_retry_smoke.py
+  scripts/email_outbox_migration_smoke.py
+  scripts/email_tracking_url_locale_smoke.py
+  scripts/email_request_received_smoke.py
+  scripts/email_duplicate_guard_smoke.py
+  scripts/email_status_events_smoke.py
   scripts/web_request_api_smoke.py
   scripts/web_request_duplicate_guard_smoke.py
   scripts/web_intake_service_smoke.py
