@@ -83,9 +83,9 @@ GUIDE_RENDER_LABELS = {
     },
     "pt-BR": {
         "body_locale": "pt-br",
-        "home_href": "/pt-br/",
+        "home_href": "/",
         "guides": "Guias",
-        "guides_href": "/pt-br/guias/",
+        "guides_href": "/guias/",
         "published": "Publicado em",
         "reviewed": "Revisado por",
         "direct_answer": "Resposta direta",

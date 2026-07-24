@@ -29,6 +29,7 @@ ALTERNATES = {
 EXPECTED_LABELS = {
     "en": {
         "body_locale": "en",
+        "home_href": "/en/",
         "guides": "Guides",
         "guides_href": "/en/guides/",
         "published": "Published on",
@@ -41,6 +42,7 @@ EXPECTED_LABELS = {
     },
     "ru": {
         "body_locale": "ru",
+        "home_href": "/ru/",
         "guides": "Статьи",
         "guides_href": "/ru/guides/",
         "published": "Опубликовано",
@@ -53,6 +55,7 @@ EXPECTED_LABELS = {
     },
     "pt-BR": {
         "body_locale": "pt-br",
+        "home_href": "/",
         "guides": "Guias",
         "guides_href": "/guias/",
         "published": "Publicado em",
@@ -132,6 +135,27 @@ def inspect_render_contract(
 
     if expected_body not in rendered:
         failures.append(f"BODY_LOCALE_MISMATCH:{locale}")
+
+    expected_logo = (
+        f'<a class="logo" href="{labels["home_href"]}" '
+        'aria-label="CargoPT">'
+    )
+
+    if expected_logo not in rendered:
+        failures.append(
+            f"HOME_LINK_MISMATCH:{locale}:{expected_logo}"
+        )
+
+    expected_guides_link = (
+        f'<a href="{labels["guides_href"]}">'
+        f'{labels["guides"]}</a>'
+    )
+
+    if expected_guides_link not in rendered:
+        failures.append(
+            "VISIBLE_BREADCRUMB_GUIDES_MISMATCH:"
+            f"{locale}:{expected_guides_link}"
+        )
 
     expected_alternates = [
         (
