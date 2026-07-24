@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "id": "apartment-moving-lisbon-en",
+  "locale": "en",
+  "cluster": "planning",
+  "path": "/en/guides/apartment-moving-lisbon/",
+  "title": "Apartment moving in Lisbon",
+  "meta_title": "Apartment Moving in Lisbon — CargoPT",
+  "meta_description": "Plan an apartment move in Lisbon: inventory, access, lifts, parking, packing, dismantling and required services.",
+  "primary_query": "apartment moving Lisbon",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Moving planning",
+  "eyebrow": "Apartment moving in Lisbon",
+  "hero_description": "An apartment move in Lisbon requires a realistic inventory, checks of access at both buildings, parking planning and a clear definition of packing, dismantling, loading, transport, unloading and assembly.",
+  "date_published": "2026-07-24",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "How to prepare an apartment move in Lisbon",
+  "key_points_heading": "Essential preparation steps",
+  "faq_heading": "Frequently asked questions about apartment moving in Lisbon",
+  "related_links_heading": "Related guides and services",
+  "direct_answer": "To prepare an apartment move in Lisbon, create an inventory by room and confirm the date, floors, lifts, stairs, doors, corridors and parking at both buildings. Measure the largest furniture, identify items requiring dismantling and provide an approximate number of boxes and fragile objects. Define who handles packing, materials, loading, unloading and assembly. Send the same description to every carrier and confirm in writing what each offer includes.",
+  "key_points": [
+    "Prepare the inventory before requesting offers.",
+    "Confirm floors, lifts, stairs and door dimensions.",
+    "Check parking and the carrying distance.",
+    "Define packing, dismantling, loading and assembly.",
+    "Record the selected service in writing."
+  ],
+  "sections": [
+    {
+      "id": "inventory",
+      "heading": "Create an inventory of the apartment",
+      "paragraphs": [
+        "Go through each room and list furniture, appliances, boxes and special items.",
+        "Separate transported items from those that will be sold, donated or discarded.",
+        "A useful inventory should distinguish furniture, appliances, boxes and special objects. Photographs of each room help reveal overlooked volumes in storage areas, balconies, garages or basements. Update the list when items are added, sold or donated."
+      ],
+      "checklist": [
+        "Furniture in each room.",
+        "Household appliances.",
+        "Approximate number of boxes.",
+        "Fragile or heavy objects.",
+        "Furniture requiring dismantling.",
+        "Items that will not be transported."
+      ]
+    },
+    {
+      "id": "measurements",
+      "heading": "Measure furniture and passageways",
+      "paragraphs": [
+        "Measure the main furniture and compare the dimensions with doors, corridors, lifts and stairs.",
+        "Photograph narrow areas and identify pieces that must be dismantled.",
+        "For each large item, record width, height and depth. Compare them with usable door openings and allow enough space to turn the item in corridors, landings and stairs. When access is uncertain, send photographs and state which components can be removed."
+      ]
+    },
+    {
+      "id": "lift",
+      "heading": "Confirm lifts and building rules",
+      "paragraphs": [
+        "Check lift dimensions, capacity, permitted hours and whether reservation or protection is required.",
+        "When no suitable lift is available, provide the floors and describe the staircase.",
+        "Check pickup and delivery lifts separately. Some buildings require advance reservation, wall protection or use of a service entrance. Communicate those rules before accepting an offer."
+      ]
+    },
+    {
+      "id": "parking",
+      "heading": "Plan the loading area",
+      "paragraphs": [
+        "State where the vehicle can stop at each address and the distance to the entrance.",
+        "Reception areas, garages, restricted access and internal routes should be included in the request.",
+        "On narrow streets or where parking is limited, carrying distance may increase loading time. Mention any reserved bay, garage, gate or access restriction. When the stopping point is unknown, state that uncertainty."
+      ]
+    },
+    {
+      "id": "tasks",
+      "heading": "Assign the moving tasks",
+      "paragraphs": [
+        "Define who handles packing, dismantling, loading, transport, unloading and assembly.",
+        "The offer should clearly identify included materials, movers and equipment.",
+        "Separate the tasks you will perform from those you intend to hire. Confirm packing scope, dismantling and assembly by item, appliance handling and whether final placement in each room is included."
+      ]
+    },
+    {
+      "id": "compare",
+      "heading": "Compare equivalent offers",
+      "paragraphs": [
+        "Send the same description to every carrier and confirm the inventory, access conditions and required tasks.",
+        "Compare the team, vehicle, timing, price, payment and responsibility for damage.",
+        "Only compare offers based on the same inventory, access conditions and tasks. A price difference may result from excluded services rather than greater efficiency."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare your apartment moving request",
+    "text": "Provide the inventory, building details, access conditions and required tasks to receive comparable offers.",
+    "label": "Describe the move",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Do I need to reserve the lift?",
+      "answer": "It depends on the building rules. Ask whether advance reservation, protective covering, a service entrance or restricted hours apply."
+    },
+    {
+      "question": "How can I check whether furniture will fit?",
+      "answer": "Compare furniture dimensions with door openings, corridors, lifts and turning space on stairs and landings."
+    },
+    {
+      "question": "Should I dismantle furniture beforehand?",
+      "answer": "Only when you know the procedure and can label all components. Otherwise include dismantling and assembly in the request."
+    },
+    {
+      "question": "Which photographs should I send?",
+      "answer": "Send photographs of each room, large furniture, fragile objects, doors, lifts, stairs, corridors and parking."
+    },
+    {
+      "question": "How can I avoid price changes?",
+      "answer": "Provide an updated inventory, describe all access conditions and confirm the included tasks in writing."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Mudanças de apartamento em Lisboa",
+      "href": "/mudancas-apartamento-lisboa/",
+      "type": "guide"
+    },
+    {
+      "title": "Переезд квартиры в Лиссабоне",
+      "href": "/ru/guides/pereezd-kvartiry-lissabon/",
+      "type": "guide"
+    },
+    {
+      "title": "Box transport in Lisbon",
+      "href": "/transporte-caixas-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "Request apartment moving offers",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare offers for your apartment move",
+    "text": "Describe the load, both buildings and the required tasks before selecting a carrier.",
+    "label": "Get offers",
+    "href": "/#request"
+  },
+  "translation_group": "apartment-moving-lisbon",
+  "alternates": {
+    "pt-PT": "/mudancas-apartamento-lisboa/",
+    "en": "/en/guides/apartment-moving-lisbon/",
+    "ru": "/ru/guides/pereezd-kvartiry-lissabon/"
+  }
+}

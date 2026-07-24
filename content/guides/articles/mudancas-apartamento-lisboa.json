@@ -125,19 +125,19 @@
   ],
   "related_links": [
     {
-      "title": "Como preparar uma mudança",
-      "href": "/guias/planeamento/como-preparar-uma-mudanca/",
+      "title": "Apartment moving in Lisbon",
+      "href": "/en/guides/apartment-moving-lisbon/",
+      "type": "guide"
+    },
+    {
+      "title": "Переезд квартиры в Лиссабоне",
+      "href": "/ru/guides/pereezd-kvartiry-lissabon/",
       "type": "guide"
     },
     {
       "title": "Transporte de caixas em Lisboa",
       "href": "/transporte-caixas-lisboa/",
       "type": "landing"
-    },
-    {
-      "title": "Quanto custa uma mudança em Lisboa?",
-      "href": "/guias/precos/quanto-custa-mudanca-lisboa/",
-      "type": "guide"
     },
     {
       "title": "Pedir propostas para uma mudança",
@@ -150,5 +150,11 @@
     "text": "Descreva a carga, os dois edifícios e as tarefas antes de escolher o transportador.",
     "label": "Receber propostas",
     "href": "/#request"
+  },
+  "translation_group": "apartment-moving-lisbon",
+  "alternates": {
+    "pt-PT": "/mudancas-apartamento-lisboa/",
+    "en": "/en/guides/apartment-moving-lisbon/",
+    "ru": "/ru/guides/pereezd-kvartiry-lissabon/"
   }
 }

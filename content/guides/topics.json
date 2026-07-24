@@ -1123,6 +1123,27 @@
       ]
     },
     {
+      "id": "transporte-moveis-lisboa",
+      "cluster": "objects",
+      "title": "Transporte de móveis em Lisboa",
+      "slug": "transporte-moveis-lisboa",
+      "path": "/transporte-moveis-lisboa/",
+      "primary_query": "transporte de móveis Lisboa",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "existing_landing",
+      "parent": "/guias/",
+      "related": [
+        "transporte-sofa-lisboa",
+        "medir-moveis-antes-mudanca",
+        "mudancas-apartamento-lisboa"
+      ]
+    },
+    {
       "id": "transporte-piano-lisboa",
       "cluster": "objects",
       "title": "Transporte de piano em Lisboa",
@@ -1176,7 +1197,7 @@
       ],
       "priority": 1,
       "status": "published",
-      "parent": "/guias/",
+      "parent": "/ru/guides/",
       "related": [
         "leave-portugal-en",
         "leave-portugal-pt-br"
@@ -1194,7 +1215,7 @@
       ],
       "priority": 1,
       "status": "published",
-      "parent": "/guias/",
+      "parent": "/en/guides/",
       "related": [
         "leave-portugal-ru",
         "leave-portugal-pt-br"
@@ -1212,10 +1233,94 @@
       ],
       "priority": 1,
       "status": "published",
-      "parent": "/guias/",
+      "parent": "/pt-br/guias/",
       "related": [
         "leave-portugal-ru",
         "leave-portugal-en"
+      ]
+    },
+    {
+      "id": "furniture-transport-lisbon-en",
+      "cluster": "objects",
+      "title": "Furniture transport in Lisbon",
+      "slug": "furniture-transport-lisbon-en",
+      "path": "/en/guides/furniture-transport-lisbon/",
+      "primary_query": "furniture transport Lisbon",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "transporte-moveis-lisboa",
+        "perevozka-mebeli-lissabon-ru",
+        "apartment-moving-lisbon-en"
+      ]
+    },
+    {
+      "id": "perevozka-mebeli-lissabon-ru",
+      "cluster": "objects",
+      "title": "Перевозка мебели в Лиссабоне",
+      "slug": "perevozka-mebeli-lissabon-ru",
+      "path": "/ru/guides/perevozka-mebeli-lissabon/",
+      "primary_query": "перевозка мебели Лиссабон",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "transporte-moveis-lisboa",
+        "furniture-transport-lisbon-en",
+        "pereezd-kvartiry-lissabon-ru"
+      ]
+    },
+    {
+      "id": "apartment-moving-lisbon-en",
+      "cluster": "planning",
+      "title": "Apartment moving in Lisbon",
+      "slug": "apartment-moving-lisbon-en",
+      "path": "/en/guides/apartment-moving-lisbon/",
+      "primary_query": "apartment moving Lisbon",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/en/guides/",
+      "related": [
+        "mudancas-apartamento-lisboa",
+        "pereezd-kvartiry-lissabon-ru",
+        "furniture-transport-lisbon-en"
+      ]
+    },
+    {
+      "id": "pereezd-kvartiry-lissabon-ru",
+      "cluster": "planning",
+      "title": "Переезд квартиры в Лиссабоне",
+      "slug": "pereezd-kvartiry-lissabon-ru",
+      "path": "/ru/guides/pereezd-kvartiry-lissabon/",
+      "primary_query": "переезд квартиры Лиссабон",
+      "intent": [
+        "local",
+        "transactional",
+        "commercial"
+      ],
+      "priority": 1,
+      "status": "published",
+      "parent": "/ru/guides/",
+      "related": [
+        "mudancas-apartamento-lisboa",
+        "apartment-moving-lisbon-en",
+        "perevozka-mebeli-lissabon-ru"
       ]
     }
   ]

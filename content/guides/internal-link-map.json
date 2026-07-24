@@ -284,7 +284,7 @@
         "priority": 2
       },
       {
-        "target": "como-preparar-uma-mudanca",
+        "target": "transporte-moveis-lisboa",
         "reason": "authority",
         "priority": 3
       },
@@ -362,17 +362,17 @@
     ],
     "mudancas-apartamento-lisboa": [
       {
-        "target": "como-preparar-uma-mudanca",
+        "target": "apartment-moving-lisbon-en",
         "reason": "same_cluster",
         "priority": 1
       },
       {
-        "target": "transporte-caixas-lisboa",
+        "target": "pereezd-kvartiry-lissabon-ru",
         "reason": "next_step",
         "priority": 2
       },
       {
-        "target": "quanto-custa-mudanca-lisboa",
+        "target": "transporte-caixas-lisboa",
         "reason": "authority",
         "priority": 3
       },
@@ -1152,6 +1152,28 @@
         "priority": 4
       }
     ],
+    "transporte-moveis-lisboa": [
+      {
+        "target": "furniture-transport-lisbon-en",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "perevozka-mebeli-lissabon-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "mudancas-apartamento-lisboa",
+        "reason": "commercial",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
     "transporte-piano-lisboa": [
       {
         "target": "transporte-frigorifico-lisboa",
@@ -1186,7 +1208,7 @@
         "priority": 2
       },
       {
-        "target": "medir-moveis-antes-mudanca",
+        "target": "transporte-moveis-lisboa",
         "reason": "authority",
         "priority": 3
       },
@@ -1319,6 +1341,94 @@
       },
       {
         "target": "quanto-custa-mudanca-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "furniture-transport-lisbon-en": [
+      {
+        "target": "transporte-moveis-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "perevozka-mebeli-lissabon-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "mudancas-apartamento-lisboa",
+        "reason": "commercial",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "perevozka-mebeli-lissabon-ru": [
+      {
+        "target": "transporte-moveis-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "furniture-transport-lisbon-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "mudancas-apartamento-lisboa",
+        "reason": "commercial",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "apartment-moving-lisbon-en": [
+      {
+        "target": "mudancas-apartamento-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "pereezd-kvartiry-lissabon-ru",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "transporte-caixas-lisboa",
+        "reason": "authority",
+        "priority": 3
+      },
+      {
+        "target": "@request",
+        "reason": "conversion",
+        "priority": 4
+      }
+    ],
+    "pereezd-kvartiry-lissabon-ru": [
+      {
+        "target": "mudancas-apartamento-lisboa",
+        "reason": "same_cluster",
+        "priority": 1
+      },
+      {
+        "target": "apartment-moving-lisbon-en",
+        "reason": "next_step",
+        "priority": 2
+      },
+      {
+        "target": "transporte-caixas-lisboa",
         "reason": "authority",
         "priority": 3
       },

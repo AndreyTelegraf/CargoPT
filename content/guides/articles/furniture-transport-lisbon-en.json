@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "id": "furniture-transport-lisbon-en",
+  "locale": "en",
+  "cluster": "objects",
+  "path": "/en/guides/furniture-transport-lisbon/",
+  "title": "Furniture transport in Lisbon",
+  "meta_title": "Furniture Transport in Lisbon — CargoPT",
+  "meta_description": "Request offers for furniture transport in Lisbon: inventory, measurements, access, movers, protection and required services.",
+  "primary_query": "furniture transport Lisbon",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Furniture and objects",
+  "eyebrow": "Furniture transport in Lisbon",
+  "hero_description": "To arrange furniture transport in Lisbon, describe the items, dimensions, addresses, floors, lifts, stairs and where the vehicle can stop. State whether you need movers, dismantling, assembly or additional protection.",
+  "date_published": "2026-06-30",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "How to request furniture transport in Lisbon",
+  "key_points_heading": "Information needed to receive comparable offers",
+  "faq_heading": "Frequently asked questions about furniture transport in Lisbon",
+  "related_links_heading": "Related guides and services",
+  "direct_answer": "To request furniture transport in Lisbon, prepare a list of the items and provide approximate dimensions for the largest pieces. Send photographs of sofas, beds, tables, wardrobes, shelving units and other furniture that may be difficult to move. Describe pickup and delivery access separately, including floors, lifts, stairs, doors, corridors, parking and the distance to the vehicle. Confirm whether you need transport only or also movers, dismantling, assembly, protection or placement at the destination. Compare offers calculated from the same information.",
+  "key_points": [
+    "List the furniture and send photographs of large items.",
+    "Provide dimensions and identify dismantlable pieces.",
+    "Describe floors, lifts, stairs, doors and corridors.",
+    "State where the vehicle can stop at each address.",
+    "Define movers, protection, dismantling and assembly."
+  ],
+  "sections": [
+    {
+      "id": "inventory",
+      "heading": "Prepare a furniture inventory",
+      "paragraphs": [
+        "Identify every item to be transported and separate large, heavy, fragile or difficult-to-handle pieces.",
+        "Include general photographs and mention modular furniture, glass doors, mechanisms, drawers and loose components."
+      ],
+      "items": [
+        {
+          "title": "Sofas and armchairs",
+          "text": "State the number of seats, modules, chaise longue, sofa-bed mechanism and removable components."
+        },
+        {
+          "title": "Beds and mattresses",
+          "text": "Provide dimensions and describe the frame, headboard, base and dismantling requirements."
+        },
+        {
+          "title": "Tables and chairs",
+          "text": "Describe materials, removable tops, glass parts and the number of chairs."
+        },
+        {
+          "title": "Wardrobes and shelving units",
+          "text": "Provide dimensions, doors, shelves, modules and dismantling conditions."
+        }
+      ]
+    },
+    {
+      "id": "measurements",
+      "heading": "Measure the furniture and passageways",
+      "paragraphs": [
+        "Record the width, height and depth of the largest items in the configuration in which they will be transported.",
+        "Compare those measurements with doors, corridors, lifts, stairs, landings and the space available to turn each piece."
+      ],
+      "checklist": [
+        "Width, height and depth of the largest items.",
+        "Usable door openings.",
+        "Lift interior and door dimensions.",
+        "Stair width and turns.",
+        "Corridors and turning space.",
+        "Gates, entrances and the external route."
+      ]
+    },
+    {
+      "id": "access",
+      "heading": "Describe access at both addresses",
+      "paragraphs": [
+        "Pickup and delivery conditions should be described separately. Two nearby buildings may require very different teams and working times.",
+        "State floors, lifts, stairs, the distance between the entrance and the vehicle, and any condominium rules or time restrictions."
+      ],
+      "items": [
+        {
+          "title": "Lifts",
+          "text": "Confirm dimensions, capacity, permitted hours and any reservation or protection requirements."
+        },
+        {
+          "title": "Stairs",
+          "text": "State the number of flights, width, turns, landings and handrails."
+        },
+        {
+          "title": "Parking",
+          "text": "Explain where the vehicle can stop and the distance to the entrance."
+        },
+        {
+          "title": "Internal route",
+          "text": "Describe reception areas, garages, courtyards, ramps, steps and corridors."
+        }
+      ]
+    },
+    {
+      "id": "preparation",
+      "heading": "Define how the furniture will be prepared",
+      "paragraphs": [
+        "Remove stored items, loose shelves, drawers and components that could move during handling.",
+        "Furniture should only be dismantled by someone who knows the procedure. Include dismantling and reassembly in the request when the team should perform those tasks."
+      ],
+      "checklist": [
+        "Empty wardrobes, chests and shelving units.",
+        "Remove or secure loose components.",
+        "Label screws, fittings and dismantled pieces.",
+        "Confirm who dismantles and who assembles.",
+        "Identify fragile parts and sensitive surfaces.",
+        "Define the required placement at the destination."
+      ]
+    },
+    {
+      "id": "team-protection",
+      "heading": "Confirm the team, equipment and protection",
+      "paragraphs": [
+        "The number of movers should reflect the weight, furniture dimensions and access difficulty.",
+        "Confirm how corners, surfaces, glass, fabric, leather, floors, walls and lifts will be protected and how the furniture will be secured in the vehicle."
+      ],
+      "items": [
+        {
+          "title": "Movers",
+          "text": "Confirm how many people will load, unload and carry items on stairs."
+        },
+        {
+          "title": "Equipment",
+          "text": "Ask what equipment is planned for heavy items, long routes or restricted access."
+        },
+        {
+          "title": "Protection",
+          "text": "Define materials for furniture, property surfaces and shared building areas."
+        },
+        {
+          "title": "Securing inside the vehicle",
+          "text": "Furniture should remain stable and protected against impacts and movement."
+        }
+      ]
+    },
+    {
+      "id": "compare-offers",
+      "heading": "How to compare offers",
+      "paragraphs": [
+        "Send every carrier the same furniture list, photographs, measurements, addresses, access conditions and required tasks.",
+        "Compare the price together with the number of movers, vehicle, materials, dismantling, assembly, placement and conditions for changes."
+      ],
+      "checklist": [
+        "The same inventory is being considered.",
+        "Both addresses and access conditions are described.",
+        "The number of movers is stated.",
+        "Dismantling and assembly are itemised.",
+        "Protection, loading and unloading are included.",
+        "Price, date and conditions are recorded."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare your furniture transport request",
+    "text": "Provide the furniture list, measurements, photographs, addresses and access conditions to receive comparable offers.",
+    "label": "Describe the transport",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "What information should I provide about the furniture?",
+      "answer": "Send a list, photographs and approximate dimensions of the largest items. Identify fragile, heavy or modular pieces and furniture requiring dismantling."
+    },
+    {
+      "question": "How many movers are required?",
+      "answer": "It depends on weight, dimensions, stairs, lifts, the carrying distance and whether the furniture can be dismantled."
+    },
+    {
+      "question": "Are dismantling and assembly automatically included?",
+      "answer": "No. Confirm which pieces will be dismantled, who will perform the work, which materials will be used and whether assembly at the destination is included."
+    },
+    {
+      "question": "Can parking conditions affect the service?",
+      "answer": "Yes. When the vehicle cannot stop near the entrance, the manual carrying distance increases and more time or movers may be required."
+    },
+    {
+      "question": "Does CargoPT perform the transport?",
+      "answer": "No. CargoPT forwards the request to independent carriers. The selected professional performs the transport service."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Transporte de móveis em Lisboa",
+      "href": "/transporte-moveis-lisboa/",
+      "type": "guide"
+    },
+    {
+      "title": "Перевозка мебели в Лиссабоне",
+      "href": "/ru/guides/perevozka-mebeli-lissabon/",
+      "type": "guide"
+    },
+    {
+      "title": "Apartment moving in Lisbon",
+      "href": "/mudancas-apartamento-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "Request furniture transport offers",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare furniture transport offers in Lisbon",
+    "text": "Describe the furniture, addresses, access and required tasks before selecting a carrier.",
+    "label": "Get offers",
+    "href": "/#request"
+  },
+  "translation_group": "furniture-transport-lisbon",
+  "alternates": {
+    "pt-PT": "/transporte-moveis-lisboa/",
+    "en": "/en/guides/furniture-transport-lisbon/",
+    "ru": "/ru/guides/perevozka-mebeli-lissabon/"
+  }
+}

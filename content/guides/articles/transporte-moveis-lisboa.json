@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "id": "transporte-moveis-lisboa",
+  "locale": "pt-PT",
+  "cluster": "objects",
+  "path": "/transporte-moveis-lisboa/",
+  "title": "Transporte de móveis em Lisboa",
+  "meta_title": "Transporte de móveis em Lisboa — CargoPT",
+  "meta_description": "Peça propostas para transporte de móveis em Lisboa: inventário, medidas, acessos, ajudantes, proteção e serviços necessários.",
+  "primary_query": "transporte de móveis Lisboa",
+  "intent": [
+    "local",
+    "transactional",
+    "commercial"
+  ],
+  "article_section": "Móveis e objetos",
+  "eyebrow": "Transporte de móveis em Lisboa",
+  "hero_description": "Para organizar transporte de móveis em Lisboa, descreva os objetos, as dimensões, as moradas, os pisos, os elevadores, as escadas e o local onde a viatura poderá parar. Indique também se precisa de ajudantes, desmontagem, montagem ou proteção adicional.",
+  "date_published": "2026-06-30",
+  "date_modified": "2026-07-24",
+  "review_owner": "CargoPT",
+  "direct_answer_heading": "Como pedir transporte de móveis em Lisboa",
+  "key_points_heading": "Informação necessária para receber propostas",
+  "faq_heading": "Perguntas sobre transporte de móveis em Lisboa",
+  "related_links_heading": "Guias e serviços relacionados",
+  "direct_answer": "Para pedir transporte de móveis em Lisboa, prepare uma lista dos objetos e indique as dimensões aproximadas dos volumes maiores. Envie fotografias quando existirem sofás, camas, mesas, armários, estantes ou outras peças difíceis de movimentar. Descreva separadamente os acessos na recolha e na entrega, incluindo pisos, elevadores, escadas, portas, corredores, estacionamento e distância até à viatura. Confirme também se precisa apenas do transporte ou se pretende ajudantes, desmontagem, montagem, proteção ou colocação dos móveis no destino. Compare propostas calculadas com base na mesma informação.",
+  "key_points": [
+    "Liste os móveis e envie fotografias dos volumes maiores.",
+    "Indique dimensões e peças que podem ser desmontadas.",
+    "Descreva pisos, elevadores, escadas, portas e corredores.",
+    "Informe onde a viatura poderá parar em cada morada.",
+    "Defina ajudantes, proteção, desmontagem e montagem."
+  ],
+  "sections": [
+    {
+      "id": "inventario",
+      "heading": "Prepare uma lista dos móveis",
+      "paragraphs": [
+        "Identifique todos os móveis que serão transportados e separe as peças grandes, pesadas, frágeis ou difíceis de agarrar.",
+        "Inclua fotografias gerais e indique quando um móvel é modular, tem portas de vidro, mecanismos, gavetas ou componentes soltos."
+      ],
+      "items": [
+        {
+          "title": "Sofás e poltronas",
+          "text": "Indique número de lugares, módulos, chaise longue, mecanismo de sofá-cama e componentes desmontáveis."
+        },
+        {
+          "title": "Camas e colchões",
+          "text": "Informe dimensões, estrutura, cabeceira, estrado e necessidade de desmontagem."
+        },
+        {
+          "title": "Mesas e cadeiras",
+          "text": "Descreva materiais, tampos removíveis, peças de vidro e quantidade de cadeiras."
+        },
+        {
+          "title": "Armários e estantes",
+          "text": "Indique dimensões, portas, prateleiras, módulos e condições de desmontagem."
+        }
+      ]
+    },
+    {
+      "id": "medidas",
+      "heading": "Meça os móveis e as passagens",
+      "paragraphs": [
+        "Registe largura, altura e profundidade dos móveis maiores na configuração em que serão transportados.",
+        "Compare essas medidas com portas, corredores, elevadores, escadas, patamares e espaço disponível para rodar cada peça."
+      ],
+      "checklist": [
+        "Largura, altura e profundidade dos móveis maiores.",
+        "Abertura útil das portas.",
+        "Dimensões internas e porta do elevador.",
+        "Largura e curvas das escadas.",
+        "Corredores e espaço para rotação.",
+        "Portões, entradas e percurso exterior."
+      ]
+    },
+    {
+      "id": "acessos",
+      "heading": "Descreva os acessos nas duas moradas",
+      "paragraphs": [
+        "As condições de recolha e entrega devem ser descritas separadamente. Dois edifícios próximos podem exigir equipas e tempos muito diferentes.",
+        "Informe pisos, elevadores, escadas, distância entre a entrada e a viatura e qualquer regra de condomínio ou limitação de horário."
+      ],
+      "items": [
+        {
+          "title": "Elevadores",
+          "text": "Confirme dimensões, capacidade, horário e eventual necessidade de reserva ou proteção."
+        },
+        {
+          "title": "Escadas",
+          "text": "Indique número de lanços, largura, curvas, patamares e corrimãos."
+        },
+        {
+          "title": "Estacionamento",
+          "text": "Explique onde a viatura poderá parar e a distância até à entrada."
+        },
+        {
+          "title": "Percurso interior",
+          "text": "Descreva portarias, garagens, pátios, rampas, degraus e corredores."
+        }
+      ]
+    },
+    {
+      "id": "preparacao",
+      "heading": "Defina a preparação dos móveis",
+      "paragraphs": [
+        "Retire objetos guardados, prateleiras soltas, gavetas e componentes que possam deslocar-se durante a movimentação.",
+        "A desmontagem só deve ser feita por quem conhece o procedimento. Caso pretenda que a equipa desmonte e volte a montar os móveis, inclua cada tarefa no pedido."
+      ],
+      "checklist": [
+        "Esvaziar armários, cómodas e estantes.",
+        "Retirar ou imobilizar componentes soltos.",
+        "Identificar parafusos, ferragens e peças desmontadas.",
+        "Confirmar quem desmonta e quem monta.",
+        "Indicar peças frágeis ou superfícies sensíveis.",
+        "Definir a colocação pretendida no destino."
+      ]
+    },
+    {
+      "id": "equipa-protecao",
+      "heading": "Confirme equipa, equipamento e proteção",
+      "paragraphs": [
+        "O número de ajudantes deve corresponder ao peso, às dimensões dos móveis e à dificuldade dos acessos.",
+        "Confirme como serão protegidos cantos, superfícies, vidro, tecido, couro, chão, paredes e elevadores, e como os móveis ficarão imobilizados na viatura."
+      ],
+      "items": [
+        {
+          "title": "Ajudantes",
+          "text": "Confirme quantas pessoas participarão na carga, descarga e transporte por escadas."
+        },
+        {
+          "title": "Equipamento",
+          "text": "Pergunte pelos meios previstos para peças pesadas, percursos longos ou acessos reduzidos."
+        },
+        {
+          "title": "Proteção",
+          "text": "Defina materiais para móveis, superfícies do imóvel e zonas comuns."
+        },
+        {
+          "title": "Fixação no veículo",
+          "text": "Os móveis devem ficar estáveis e protegidos contra impactos e deslocações."
+        }
+      ]
+    },
+    {
+      "id": "comparar-propostas",
+      "heading": "Como comparar propostas",
+      "paragraphs": [
+        "Envie a mesma lista de móveis, fotografias, medidas, moradas, acessos e tarefas a todos os transportadores.",
+        "Compare o preço juntamente com o número de ajudantes, o veículo, os materiais, a desmontagem, a montagem, a colocação no destino e as condições aplicáveis a alterações."
+      ],
+      "checklist": [
+        "O inventário considerado é o mesmo.",
+        "As duas moradas e os acessos estão descritos.",
+        "O número de ajudantes está indicado.",
+        "Desmontagem e montagem estão discriminadas.",
+        "Proteção, carga e descarga estão incluídas.",
+        "Preço, data e condições estão registados."
+      ]
+    }
+  ],
+  "mid_cta": {
+    "heading": "Prepare o pedido de transporte de móveis",
+    "text": "Indique os móveis, as medidas, as fotografias, as moradas e os acessos para receber propostas comparáveis.",
+    "label": "Descrever o transporte",
+    "href": "/#request"
+  },
+  "faq": [
+    {
+      "question": "Que informação devo enviar sobre os móveis?",
+      "answer": "Envie uma lista, fotografias e as dimensões aproximadas dos volumes maiores. Indique também peças frágeis, pesadas, modulares ou que precisem de desmontagem."
+    },
+    {
+      "question": "Quantos ajudantes são necessários?",
+      "answer": "Depende do peso, das dimensões, das escadas, dos elevadores, da distância até à viatura e da possibilidade de desmontar os móveis."
+    },
+    {
+      "question": "A desmontagem e a montagem estão incluídas?",
+      "answer": "Não automaticamente. Confirme quais móveis serão desmontados, quem fará o trabalho, que materiais serão utilizados e se a montagem no destino está incluída."
+    },
+    {
+      "question": "O estacionamento pode alterar o serviço?",
+      "answer": "Sim. Quando a viatura não consegue parar perto da entrada, aumenta a distância de transporte manual e podem ser necessários mais tempo ou ajudantes."
+    },
+    {
+      "question": "A CargoPT realiza o transporte?",
+      "answer": "Não. A CargoPT encaminha o pedido para transportadores independentes. O serviço é realizado pelo profissional escolhido pelo cliente."
+    }
+  ],
+  "related_links": [
+    {
+      "title": "Furniture transport in Lisbon",
+      "href": "/en/guides/furniture-transport-lisbon/",
+      "type": "guide"
+    },
+    {
+      "title": "Перевозка мебели в Лиссабоне",
+      "href": "/ru/guides/perevozka-mebeli-lissabon/",
+      "type": "guide"
+    },
+    {
+      "title": "Mudanças de apartamento em Lisboa",
+      "href": "/mudancas-apartamento-lisboa/",
+      "type": "landing"
+    },
+    {
+      "title": "Pedir propostas para uma mudança",
+      "href": "/#request",
+      "type": "service"
+    }
+  ],
+  "final_cta": {
+    "heading": "Compare propostas para transportar móveis em Lisboa",
+    "text": "Descreva os móveis, as moradas, os acessos e as tarefas antes de escolher o transportador.",
+    "label": "Receber propostas",
+    "href": "/#request"
+  },
+  "translation_group": "furniture-transport-lisbon",
+  "alternates": {
+    "pt-PT": "/transporte-moveis-lisboa/",
+    "en": "/en/guides/furniture-transport-lisbon/",
+    "ru": "/ru/guides/perevozka-mebeli-lissabon/"
+  }
+}
