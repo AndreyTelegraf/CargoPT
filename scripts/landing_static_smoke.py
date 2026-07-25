@@ -77,6 +77,21 @@ def main() -> None:
             ("/ru/", 'value="завтра"'),
             ("/ru/", 'value="в ближайшие дни"'),
             ("/ru/", 'value="любой день"'),
+            (
+                "/",
+                "Indique o seu email para receber a ligação de acompanhamento, "
+                "através da qual poderá acompanhar o estado do seu pedido.",
+            ),
+            (
+                "/en/",
+                "Enter your email to receive a tracking link where you can "
+                "follow the status of your request.",
+            ),
+            (
+                "/ru/",
+                "Укажите email для получения трек-ссылки, по которой вы сможете "
+                "следить за состоянием вашей заявки.",
+            ),
             ("/assets/css/components.css", "locale-switcher"),
             ("/assets/js/landing.js", "markFieldInvalid"),
             ("/assets/js/landing.js", "normalizeRequestedDate"),
