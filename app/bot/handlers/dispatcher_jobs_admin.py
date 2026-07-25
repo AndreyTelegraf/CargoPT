@@ -1095,7 +1095,7 @@ async def dispatcher_jobs_report(message: Message) -> None:
             )
         ).mappings().all()
 
-    report = (
+    report_header = (
         "<b>CargoPT jobs report</b>\n"
         f"Период: с {_safe(since_text)} UTC"
         + (f" по {_safe(until_text)} UTC" if until_text else "")
@@ -1105,7 +1105,29 @@ async def dispatcher_jobs_report(message: Message) -> None:
         "<b>Офферы</b>\n"
         f"{_format_offer_counts(offer_rows)}\n\n"
         "<b>По заявкам</b>\n"
-        f"{_format_report_job_rows(job_detail_rows)}"
     )
 
-    await message.answer(report, parse_mode="HTML")
+    job_blocks = [
+        _format_report_job_rows([row])
+        for row in job_detail_rows
+    ] or ["—"]
+
+    message_parts = []
+    current_part = report_header
+
+    for job_block in job_blocks:
+        separator = "" if current_part.endswith("\n") else "\n\n"
+        candidate = current_part + separator + job_block
+
+        if len(candidate) <= 4096:
+            current_part = candidate
+            continue
+
+        message_parts.append(current_part)
+        current_part = job_block
+
+    if current_part:
+        message_parts.append(current_part)
+
+    for message_part in message_parts:
+        await message.answer(message_part, parse_mode="HTML")
