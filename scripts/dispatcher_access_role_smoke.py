@@ -37,7 +37,7 @@ assert (
     handler_source.count(
         "not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS"
     )
-    == 6
+    == 10
 )
 
 restricted_sources = (

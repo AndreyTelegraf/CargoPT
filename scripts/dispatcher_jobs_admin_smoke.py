@@ -153,12 +153,16 @@ assert (
     handler_source.count(
         "not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS"
     )
-    == 6
+    == 10
 )
 assert "list_recent_jobs(limit=20)" in handler_source
 assert "list_attention_jobs(limit=20)" in handler_source
 assert 'Command("jobs_report")' in handler_source
 assert 'Command("jobs_acquisition")' in handler_source
+assert 'Command("leads")' in handler_source
+assert 'Command("leads_campaign")' in handler_source
+assert 'Command("leads_missing")' in handler_source
+assert 'Command("utm_link")' in handler_source
 assert "CargoPT acquisition snapshot" in handler_source
 assert "ACQUISITION_INTERNAL_TRAFFIC_SQL" in handler_source
 assert "excluded_internal" in handler_source

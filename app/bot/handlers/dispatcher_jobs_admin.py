@@ -1,6 +1,8 @@
 import html
 from datetime import UTC
 from datetime import datetime
+from datetime import timedelta
+from urllib.parse import urlencode
 
 from aiogram import F
 from aiogram import Router
@@ -1131,3 +1133,846 @@ async def dispatcher_jobs_report(message: Message) -> None:
 
     for message_part in message_parts:
         await message.answer(message_part, parse_mode="HTML")
+
+LEADS_PUBLIC_BASE_URL = "https://cargopt.pt"
+
+LEADS_PERIOD_HELP = (
+    "Период: 7d, 30d или две даты YYYY-MM-DD.\n"
+    "Пример: /leads 30d\n"
+    "Пример: /leads 2026-07-01 2026-07-31"
+)
+
+
+def _parse_leads_date(value: str) -> datetime:
+    try:
+        return datetime.strptime(
+            value,
+            "%Y-%m-%d",
+        ).replace(tzinfo=UTC)
+    except ValueError as exc:
+        raise ValueError(
+            "invalid leads report date"
+        ) from exc
+
+
+def _format_leads_sql_datetime(value: datetime) -> str:
+    return value.astimezone(UTC).strftime(
+        "%Y-%m-%d %H:%M:%S"
+    )
+
+
+def _parse_leads_period_args(
+    args: list[str],
+    *,
+    now: datetime | None = None,
+) -> tuple[str, str, str]:
+    current = now or datetime.now(UTC)
+
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=UTC)
+    else:
+        current = current.astimezone(UTC)
+
+    if not args:
+        days = 7
+        since = current - timedelta(days=days)
+        return (
+            f"последние {days} дней",
+            _format_leads_sql_datetime(since),
+            _format_leads_sql_datetime(current),
+        )
+
+    if len(args) == 1:
+        token = args[0].strip().lower()
+
+        if token.endswith("d") and token[:-1].isdigit():
+            days = int(token[:-1])
+
+            if days < 1 or days > 365:
+                raise ValueError(
+                    "leads report window must be "
+                    "between 1 and 365 days"
+                )
+
+            since = current - timedelta(days=days)
+
+            return (
+                f"последние {days} дней",
+                _format_leads_sql_datetime(since),
+                _format_leads_sql_datetime(current),
+            )
+
+        since = _parse_leads_date(token)
+
+        if since > current:
+            raise ValueError(
+                "leads report start is in the future"
+            )
+
+        return (
+            f"с {token} по текущий момент",
+            _format_leads_sql_datetime(since),
+            _format_leads_sql_datetime(current),
+        )
+
+    if len(args) == 2:
+        since = _parse_leads_date(args[0])
+        until_date = _parse_leads_date(args[1])
+
+        if since > until_date:
+            raise ValueError(
+                "leads report start is after end"
+            )
+
+        until = until_date.replace(
+            hour=23,
+            minute=59,
+            second=59,
+        )
+
+        return (
+            f"с {args[0]} по {args[1]}",
+            _format_leads_sql_datetime(since),
+            _format_leads_sql_datetime(until),
+        )
+
+    raise ValueError("invalid leads report period")
+
+
+def _parse_leads_period(
+    text_value: str,
+    *,
+    now: datetime | None = None,
+) -> tuple[str, str, str]:
+    return _parse_leads_period_args(
+        text_value.split()[1:],
+        now=now,
+    )
+
+
+def _format_leads_summary(summary) -> str:
+    submitted = int(summary["submitted"] or 0)
+
+    lines = (
+        f"Веб-записи: {_safe(summary['records'] or 0)}",
+        f"Черновики: {_safe(summary['drafts'] or 0)}",
+        f"Отправленные заявки: {_safe(submitted)}",
+        (
+            f"Получили офферы: "
+            f"{_safe(summary['has_offers'] or 0)} "
+            f"({_safe(_format_acquisition_rate(summary['has_offers'] or 0, submitted))})"
+        ),
+        (
+            f"Есть accepted-оффер сейчас: "
+            f"{_safe(summary['accepted_now'] or 0)} "
+            f"({_safe(_format_acquisition_rate(summary['accepted_now'] or 0, submitted))})"
+        ),
+        (
+            f"Было назначение: "
+            f"{_safe(summary['assignment_signal'] or 0)} "
+            f"({_safe(_format_acquisition_rate(summary['assignment_signal'] or 0, submitted))})"
+        ),
+        (
+            f"Завершены: "
+            f"{_safe(summary['completed_signal'] or 0)} "
+            f"({_safe(_format_acquisition_rate(summary['completed_signal'] or 0, submitted))})"
+        ),
+        f"Отменены сейчас: {_safe(summary['cancelled_now'] or 0)}",
+    )
+
+    return "\n".join(lines)
+
+
+def _format_leads_group(row) -> str:
+    return (
+        f"<b>{_safe(row['source_locale'])} · "
+        f"{_safe(row['utm_source'])} / "
+        f"{_safe(row['utm_medium'])} / "
+        f"{_safe(row['utm_campaign'])}</b>\n"
+        f"submitted={_safe(row['submitted'])} | "
+        f"offers={_safe(row['has_offers'])} | "
+        f"accepted={_safe(row['accepted_now'])} | "
+        f"assigned={_safe(row['assignment_signal'])} | "
+        f"completed={_safe(row['completed_signal'])}"
+    )
+
+
+def _format_campaign_job(row) -> str:
+    content = row["utm_content"] or "—"
+
+    return (
+        f"<b>/job_{_safe(row['id'])}</b> — "
+        f"{_safe(_format_status(row['status']))}\n"
+        f"{_safe(row['created_at'])} UTC · "
+        f"{_safe(row['source_locale'] or '—')} · "
+        f"content={_safe(content)}\n"
+        f"offers={_safe(row['offers'])} | "
+        f"accepted={_safe(row['accepted'])} | "
+        f"assigned={'да' if row['assigned_at'] else 'нет'} | "
+        f"completed={'да' if row['completed_at'] else 'нет'}"
+    )
+
+
+def _format_missing_job(row) -> str:
+    missing = []
+
+    if not row["utm_source"]:
+        missing.append("source")
+    if not row["utm_medium"]:
+        missing.append("medium")
+    if not row["utm_campaign"]:
+        missing.append("campaign")
+    if not row["utm_content"]:
+        missing.append("content")
+
+    return (
+        f"<b>/job_{_safe(row['id'])}</b> — "
+        f"{_safe(_format_status(row['status']))}\n"
+        f"{_safe(row['created_at'])} UTC · "
+        f"{_safe(row['source_locale'] or '—')} · "
+        f"нет: {_safe(', '.join(missing))}"
+    )
+
+
+async def _send_html_blocks(
+    *,
+    message: Message,
+    header: str,
+    blocks: list[str],
+) -> None:
+    current = header
+
+    for block in blocks:
+        separator = (
+            ""
+            if not current
+            else "\n\n"
+        )
+        candidate = current + separator + block
+
+        if len(candidate) <= 4096:
+            current = candidate
+            continue
+
+        if current:
+            await message.answer(
+                current,
+                parse_mode="HTML",
+                disable_web_page_preview=True,
+            )
+
+        current = block
+
+    if current:
+        await message.answer(
+            current,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+        )
+
+
+def _build_utm_link(
+    *,
+    locale: str,
+    source: str,
+    medium: str,
+    campaign: str,
+    content: str | None = None,
+) -> str:
+    normalized_locale = locale.strip().lower()
+
+    locale_paths = {
+        "pt": "/",
+        "pt-pt": "/",
+        "en": "/en/",
+        "ru": "/ru/",
+    }
+
+    if normalized_locale not in locale_paths:
+        raise ValueError(
+            "locale must be pt, en or ru"
+        )
+
+    required_values = {
+        "utm_source": source.strip(),
+        "utm_medium": medium.strip(),
+        "utm_campaign": campaign.strip(),
+    }
+
+    if not all(required_values.values()):
+        raise ValueError(
+            "source, medium and campaign are required"
+        )
+
+    for value in required_values.values():
+        if len(value) > 255:
+            raise ValueError(
+                "UTM value is too long"
+            )
+
+    normalized_content = (
+        content.strip()
+        if content is not None
+        else ""
+    )
+
+    if len(normalized_content) > 255:
+        raise ValueError(
+            "UTM content is too long"
+        )
+
+    params = dict(required_values)
+
+    if normalized_content:
+        params["utm_content"] = normalized_content
+
+    return (
+        LEADS_PUBLIC_BASE_URL
+        + locale_paths[normalized_locale]
+        + "?"
+        + urlencode(params)
+    )
+
+
+@router.message(Command("leads"))
+async def dispatcher_leads(message: Message) -> None:
+    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
+        await message.answer(
+            "Команда доступна только диспетчеру CargoPT."
+        )
+        return
+
+    try:
+        period_label, since_text, until_text = (
+            _parse_leads_period(message.text or "")
+        )
+    except ValueError:
+        await message.answer(LEADS_PERIOD_HELP)
+        return
+
+    params = {
+        "since": since_text,
+        "until": until_text,
+    }
+
+    production_filter = (
+        "j.source = 'web_form' "
+        "AND j.created_at >= :since "
+        "AND j.created_at <= :until "
+        f"AND NOT {ACQUISITION_INTERNAL_TRAFFIC_SQL}"
+    )
+
+    async with async_session_maker() as session:
+        summary = (
+            await session.execute(
+                text(f"""
+                    SELECT
+                        COUNT(*) AS records,
+                        COALESCE(SUM(CASE
+                            WHEN j.status = 'draft'
+                            THEN 1 ELSE 0
+                        END), 0) AS drafts,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                            THEN 1 ELSE 0
+                        END), 0) AS submitted,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                             AND EXISTS (
+                                SELECT 1
+                                FROM job_offer offer_exists
+                                WHERE offer_exists.job_id = j.id
+                             )
+                            THEN 1 ELSE 0
+                        END), 0) AS has_offers,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                             AND EXISTS (
+                                SELECT 1
+                                FROM job_offer accepted_offer
+                                WHERE accepted_offer.job_id = j.id
+                                  AND accepted_offer.status = 'accepted'
+                             )
+                            THEN 1 ELSE 0
+                        END), 0) AS accepted_now,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                             AND j.assigned_at IS NOT NULL
+                            THEN 1 ELSE 0
+                        END), 0) AS assignment_signal,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                             AND (
+                                j.completed_at IS NOT NULL
+                                OR j.status = 'completed'
+                             )
+                            THEN 1 ELSE 0
+                        END), 0) AS completed_signal,
+                        COALESCE(SUM(CASE
+                            WHEN j.status = 'cancelled'
+                            THEN 1 ELSE 0
+                        END), 0) AS cancelled_now
+                    FROM job j
+                    WHERE {production_filter}
+                """),
+                params,
+            )
+        ).mappings().one()
+
+        groups = (
+            await session.execute(
+                text(f"""
+                    SELECT
+                        COALESCE(
+                            NULLIF(j.source_locale, ''),
+                            '—'
+                        ) AS source_locale,
+                        COALESCE(
+                            NULLIF(j.utm_source, ''),
+                            '—'
+                        ) AS utm_source,
+                        COALESCE(
+                            NULLIF(j.utm_medium, ''),
+                            '—'
+                        ) AS utm_medium,
+                        COALESCE(
+                            NULLIF(j.utm_campaign, ''),
+                            '—'
+                        ) AS utm_campaign,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                            THEN 1 ELSE 0
+                        END), 0) AS submitted,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                             AND EXISTS (
+                                SELECT 1
+                                FROM job_offer offer_exists
+                                WHERE offer_exists.job_id = j.id
+                             )
+                            THEN 1 ELSE 0
+                        END), 0) AS has_offers,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                             AND EXISTS (
+                                SELECT 1
+                                FROM job_offer accepted_offer
+                                WHERE accepted_offer.job_id = j.id
+                                  AND accepted_offer.status = 'accepted'
+                             )
+                            THEN 1 ELSE 0
+                        END), 0) AS accepted_now,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                             AND j.assigned_at IS NOT NULL
+                            THEN 1 ELSE 0
+                        END), 0) AS assignment_signal,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                             AND (
+                                j.completed_at IS NOT NULL
+                                OR j.status = 'completed'
+                             )
+                            THEN 1 ELSE 0
+                        END), 0) AS completed_signal
+                    FROM job j
+                    WHERE {production_filter}
+                    GROUP BY 1, 2, 3, 4
+                    HAVING submitted > 0
+                    ORDER BY
+                        submitted DESC,
+                        has_offers DESC,
+                        source_locale,
+                        utm_source,
+                        utm_campaign
+                    LIMIT 20
+                """),
+                params,
+            )
+        ).mappings().all()
+
+    header = (
+        "<b>CargoPT — лиды</b>\n"
+        f"Период: {_safe(period_label)}\n"
+        f"{_safe(since_text)} — "
+        f"{_safe(until_text)} UTC\n\n"
+        + _format_leads_summary(summary)
+        + "\n\n<b>Источники</b>"
+    )
+
+    blocks = [
+        _format_leads_group(row)
+        for row in groups
+    ] or ["—"]
+
+    await _send_html_blocks(
+        message=message,
+        header=header,
+        blocks=blocks,
+    )
+
+
+@router.message(Command("leads_campaign"))
+async def dispatcher_leads_campaign(
+    message: Message,
+) -> None:
+    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
+        await message.answer(
+            "Команда доступна только диспетчеру CargoPT."
+        )
+        return
+
+    parts = (message.text or "").split()
+
+    if len(parts) < 2:
+        await message.answer(
+            "Формат: /leads_campaign "
+            "<utm_campaign> [7d|30d|дата дата]"
+        )
+        return
+
+    campaign = parts[1].strip()
+
+    if not campaign or len(campaign) > 255:
+        await message.answer(
+            "Некорректное имя UTM campaign."
+        )
+        return
+
+    try:
+        period_label, since_text, until_text = (
+            _parse_leads_period_args(parts[2:])
+        )
+    except ValueError:
+        await message.answer(
+            "Формат: /leads_campaign "
+            "<utm_campaign> [7d|30d|дата дата]"
+        )
+        return
+
+    params = {
+        "campaign": campaign,
+        "since": since_text,
+        "until": until_text,
+    }
+
+    production_filter = (
+        "j.source = 'web_form' "
+        "AND j.utm_campaign = :campaign "
+        "AND j.created_at >= :since "
+        "AND j.created_at <= :until "
+        f"AND NOT {ACQUISITION_INTERNAL_TRAFFIC_SQL}"
+    )
+
+    async with async_session_maker() as session:
+        summary = (
+            await session.execute(
+                text(f"""
+                    SELECT
+                        COUNT(*) AS records,
+                        COALESCE(SUM(CASE
+                            WHEN j.status = 'draft'
+                            THEN 1 ELSE 0
+                        END), 0) AS drafts,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                            THEN 1 ELSE 0
+                        END), 0) AS submitted,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                             AND EXISTS (
+                                SELECT 1
+                                FROM job_offer offer_exists
+                                WHERE offer_exists.job_id = j.id
+                             )
+                            THEN 1 ELSE 0
+                        END), 0) AS has_offers,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                             AND EXISTS (
+                                SELECT 1
+                                FROM job_offer accepted_offer
+                                WHERE accepted_offer.job_id = j.id
+                                  AND accepted_offer.status = 'accepted'
+                             )
+                            THEN 1 ELSE 0
+                        END), 0) AS accepted_now,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                             AND j.assigned_at IS NOT NULL
+                            THEN 1 ELSE 0
+                        END), 0) AS assignment_signal,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                             AND (
+                                j.completed_at IS NOT NULL
+                                OR j.status = 'completed'
+                             )
+                            THEN 1 ELSE 0
+                        END), 0) AS completed_signal,
+                        COALESCE(SUM(CASE
+                            WHEN j.status = 'cancelled'
+                            THEN 1 ELSE 0
+                        END), 0) AS cancelled_now
+                    FROM job j
+                    WHERE {production_filter}
+                """),
+                params,
+            )
+        ).mappings().one()
+
+        content_rows = (
+            await session.execute(
+                text(f"""
+                    SELECT
+                        COALESCE(
+                            NULLIF(j.source_locale, ''),
+                            '—'
+                        ) AS source_locale,
+                        COALESCE(
+                            NULLIF(j.utm_content, ''),
+                            '—'
+                        ) AS utm_content,
+                        COUNT(*) AS records,
+                        COALESCE(SUM(CASE
+                            WHEN j.status <> 'draft'
+                            THEN 1 ELSE 0
+                        END), 0) AS submitted
+                    FROM job j
+                    WHERE {production_filter}
+                    GROUP BY 1, 2
+                    ORDER BY
+                        submitted DESC,
+                        records DESC,
+                        source_locale,
+                        utm_content
+                    LIMIT 20
+                """),
+                params,
+            )
+        ).mappings().all()
+
+        job_rows = (
+            await session.execute(
+                text(f"""
+                    SELECT
+                        j.id,
+                        j.status,
+                        j.created_at,
+                        j.source_locale,
+                        j.utm_content,
+                        j.assigned_at,
+                        j.completed_at,
+                        COUNT(o.id) AS offers,
+                        COALESCE(SUM(CASE
+                            WHEN o.status = 'accepted'
+                            THEN 1 ELSE 0
+                        END), 0) AS accepted
+                    FROM job j
+                    LEFT JOIN job_offer o
+                      ON o.job_id = j.id
+                    WHERE {production_filter}
+                    GROUP BY j.id
+                    ORDER BY j.created_at DESC
+                    LIMIT 50
+                """),
+                params,
+            )
+        ).mappings().all()
+
+    content_text = "\n".join(
+        (
+            f"{_safe(row['source_locale'])} · "
+            f"{_safe(row['utm_content'])}: "
+            f"records={_safe(row['records'])}, "
+            f"submitted={_safe(row['submitted'])}"
+        )
+        for row in content_rows
+    ) or "—"
+
+    header = (
+        "<b>CargoPT — кампания</b>\n"
+        f"Campaign: <code>{_safe(campaign)}</code>\n"
+        f"Период: {_safe(period_label)}\n\n"
+        + _format_leads_summary(summary)
+        + "\n\n<b>Locale / content</b>\n"
+        + content_text
+        + "\n\n<b>Заявки</b>"
+    )
+
+    blocks = [
+        _format_campaign_job(row)
+        for row in job_rows
+    ] or ["—"]
+
+    await _send_html_blocks(
+        message=message,
+        header=header,
+        blocks=blocks,
+    )
+
+
+@router.message(Command("leads_missing"))
+async def dispatcher_leads_missing(
+    message: Message,
+) -> None:
+    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
+        await message.answer(
+            "Команда доступна только диспетчеру CargoPT."
+        )
+        return
+
+    try:
+        period_label, since_text, until_text = (
+            _parse_leads_period(message.text or "")
+        )
+    except ValueError:
+        await message.answer(LEADS_PERIOD_HELP)
+        return
+
+    params = {
+        "since": since_text,
+        "until": until_text,
+    }
+
+    production_filter = (
+        "j.source = 'web_form' "
+        "AND j.created_at >= :since "
+        "AND j.created_at <= :until "
+        f"AND NOT {ACQUISITION_INTERNAL_TRAFFIC_SQL}"
+    )
+
+    missing_filter = """
+    (
+        COALESCE(j.utm_source, '') = ''
+        OR COALESCE(j.utm_medium, '') = ''
+        OR COALESCE(j.utm_campaign, '') = ''
+        OR COALESCE(j.utm_content, '') = ''
+    )
+    """
+
+    async with async_session_maker() as session:
+        summary = (
+            await session.execute(
+                text(f"""
+                    SELECT
+                        COUNT(*) AS records,
+                        COALESCE(SUM(CASE
+                            WHEN COALESCE(j.utm_source, '') = ''
+                            THEN 1 ELSE 0
+                        END), 0) AS missing_source,
+                        COALESCE(SUM(CASE
+                            WHEN COALESCE(j.utm_medium, '') = ''
+                            THEN 1 ELSE 0
+                        END), 0) AS missing_medium,
+                        COALESCE(SUM(CASE
+                            WHEN COALESCE(j.utm_campaign, '') = ''
+                            THEN 1 ELSE 0
+                        END), 0) AS missing_campaign,
+                        COALESCE(SUM(CASE
+                            WHEN COALESCE(j.utm_content, '') = ''
+                            THEN 1 ELSE 0
+                        END), 0) AS missing_content
+                    FROM job j
+                    WHERE {production_filter}
+                      AND {missing_filter}
+                """),
+                params,
+            )
+        ).mappings().one()
+
+        job_rows = (
+            await session.execute(
+                text(f"""
+                    SELECT
+                        j.id,
+                        j.status,
+                        j.created_at,
+                        j.source_locale,
+                        j.utm_source,
+                        j.utm_medium,
+                        j.utm_campaign,
+                        j.utm_content
+                    FROM job j
+                    WHERE {production_filter}
+                      AND {missing_filter}
+                    ORDER BY j.created_at DESC
+                    LIMIT 50
+                """),
+                params,
+            )
+        ).mappings().all()
+
+    header = (
+        "<b>CargoPT — неполная атрибуция</b>\n"
+        f"Период: {_safe(period_label)}\n\n"
+        f"Заявок с пропусками: "
+        f"{_safe(summary['records'] or 0)}\n"
+        f"Без source: "
+        f"{_safe(summary['missing_source'] or 0)}\n"
+        f"Без medium: "
+        f"{_safe(summary['missing_medium'] or 0)}\n"
+        f"Без campaign: "
+        f"{_safe(summary['missing_campaign'] or 0)}\n"
+        f"Без content: "
+        f"{_safe(summary['missing_content'] or 0)}\n\n"
+        "<b>Последние заявки</b>"
+    )
+
+    blocks = [
+        _format_missing_job(row)
+        for row in job_rows
+    ] or ["—"]
+
+    await _send_html_blocks(
+        message=message,
+        header=header,
+        blocks=blocks,
+    )
+
+
+@router.message(Command("utm_link"))
+async def dispatcher_utm_link(
+    message: Message,
+) -> None:
+    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
+        await message.answer(
+            "Команда доступна только диспетчеру CargoPT."
+        )
+        return
+
+    parts = (message.text or "").split()
+
+    if len(parts) not in {5, 6}:
+        await message.answer(
+            "Формат: /utm_link "
+            "<pt|en|ru> <source> <medium> "
+            "<campaign> [content]"
+        )
+        return
+
+    try:
+        link = _build_utm_link(
+            locale=parts[1],
+            source=parts[2],
+            medium=parts[3],
+            campaign=parts[4],
+            content=(
+                parts[5]
+                if len(parts) == 6
+                else None
+            ),
+        )
+    except ValueError as exc:
+        await message.answer(
+            f"Не удалось создать ссылку: {_safe(exc)}",
+            parse_mode="HTML",
+        )
+        return
+
+    await message.answer(
+        "<b>UTM-ссылка CargoPT</b>\n"
+        f"<code>{_safe(link)}</code>",
+        parse_mode="HTML",
+        disable_web_page_preview=True,
+    )
