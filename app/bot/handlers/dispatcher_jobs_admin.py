@@ -13,7 +13,10 @@ from aiogram.types import InlineKeyboardMarkup
 from aiogram.types import Message
 from sqlalchemy import text
 
-from app.domain.admin_access import CARGOPT_OPERATOR_TELEGRAM_USER_IDS
+from app.domain.admin_access import (
+    CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS,
+    CARGOPT_OPERATOR_TELEGRAM_USER_IDS,
+)
 from app.db.session import async_session_maker
 from app.domain.job_decline_reason import get_decline_reason_label
 from app.repositories.carrier import CarrierRepository
@@ -1436,7 +1439,7 @@ def _build_utm_link(
 
 @router.message(Command("leads"))
 async def dispatcher_leads(message: Message) -> None:
-    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
+    if message.from_user.id not in CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS:
         await message.answer(
             "Команда доступна только диспетчеру CargoPT."
         )
@@ -1616,7 +1619,7 @@ async def dispatcher_leads(message: Message) -> None:
 async def dispatcher_leads_campaign(
     message: Message,
 ) -> None:
-    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
+    if message.from_user.id not in CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS:
         await message.answer(
             "Команда доступна только диспетчеру CargoPT."
         )
@@ -1816,7 +1819,7 @@ async def dispatcher_leads_campaign(
 async def dispatcher_leads_missing(
     message: Message,
 ) -> None:
-    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
+    if message.from_user.id not in CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS:
         await message.answer(
             "Команда доступна только диспетчеру CargoPT."
         )
@@ -1935,7 +1938,7 @@ async def dispatcher_leads_missing(
 async def dispatcher_utm_link(
     message: Message,
 ) -> None:
-    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
+    if message.from_user.id not in CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS:
         await message.answer(
             "Команда доступна только диспетчеру CargoPT."
         )

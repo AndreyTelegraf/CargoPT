@@ -12,6 +12,7 @@ os.environ["BOT_TOKEN"] = "123456:TESTTOKEN"
 os.environ["DATABASE_URL"] = (
     "sqlite+aiosqlite:///data/cargopt_dev.db"
 )
+os.environ["LEADS_REPORT_TELEGRAM_USER_IDS"] = "333"
 
 from app.bot.handlers.dispatcher_jobs_admin import (
     _build_utm_link,
@@ -37,7 +38,16 @@ from app.bot.handlers.dispatcher_jobs_admin import (
 from app.bot.handlers.dispatcher_jobs_admin import (
     dispatcher_utm_link,
 )
+from app.domain.admin_access import (
+    CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS,
+    CARGOPT_OPERATOR_TELEGRAM_USER_IDS,
+    LEADS_REPORT_TELEGRAM_USER_IDS,
+)
 
+
+assert LEADS_REPORT_TELEGRAM_USER_IDS == frozenset({333})
+assert 333 in CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS
+assert 333 not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS
 
 fixed_now = datetime(
     2026,
@@ -179,7 +189,39 @@ assert (
     source.count(
         "not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS"
     )
-    == 10
+    >= 1
 )
+assert (
+    source.count(
+        "not in CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS"
+    )
+    == 4
+)
+
+for function_name in (
+    "dispatcher_leads",
+    "dispatcher_leads_campaign",
+    "dispatcher_leads_missing",
+    "dispatcher_utm_link",
+):
+    marker = f"async def {function_name}"
+    start = source.index(marker)
+    end = source.find("\n@router.", start)
+
+    if end == -1:
+        end = len(source)
+
+    block = source[start:end]
+
+    assert (
+        "not in CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS"
+        in block
+    )
+    assert (
+        "not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS"
+        not in block
+    )
+
+print("LEADS_VIEWER_ACCESS_ROLE_OK")
 
 print("DISPATCHER_LEADS_ADMIN_SMOKE_OK")

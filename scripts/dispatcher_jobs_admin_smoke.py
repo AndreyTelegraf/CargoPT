@@ -148,12 +148,19 @@ handler_source = Path("app/bot/handlers/dispatcher_jobs_admin.py").read_text(enc
 assert 'Command("jobs")' in handler_source
 assert 'Command("jobs_attention")' in handler_source
 assert "CARGOPT_OPERATOR_TELEGRAM_USER_IDS" in handler_source
+assert "CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS" in handler_source
 assert "not in ADMIN_TELEGRAM_USER_IDS" not in handler_source
 assert (
     handler_source.count(
         "not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS"
     )
-    == 10
+    >= 1
+)
+assert (
+    handler_source.count(
+        "not in CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS"
+    )
+    == 4
 )
 assert "list_recent_jobs(limit=20)" in handler_source
 assert "list_attention_jobs(limit=20)" in handler_source

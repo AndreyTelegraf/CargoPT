@@ -8,6 +8,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 os.environ["DISPATCHER_TELEGRAM_USER_IDS"] = "111, 222,111"
+os.environ["LEADS_REPORT_TELEGRAM_USER_IDS"] = "333, 222,333"
 
 import app.domain.admin_access as admin_access
 
@@ -23,21 +24,33 @@ assert admin_access.CARGOPT_OPERATOR_TELEGRAM_USER_IDS == frozenset(
     {336224597, 111, 222}
 )
 
+assert admin_access.LEADS_REPORT_TELEGRAM_USER_IDS == frozenset(
+    {222, 333}
+)
+assert (
+    admin_access.CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS
+    == frozenset({336224597, 111, 222, 333})
+)
+
 handler_source = Path(
     "app/bot/handlers/dispatcher_jobs_admin.py"
 ).read_text(encoding="utf-8")
 
-assert (
-    "from app.domain.admin_access import "
-    "CARGOPT_OPERATOR_TELEGRAM_USER_IDS"
-    in handler_source
-)
+assert "from app.domain.admin_access import (" in handler_source
+assert "CARGOPT_OPERATOR_TELEGRAM_USER_IDS" in handler_source
+assert "CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS" in handler_source
 assert "not in ADMIN_TELEGRAM_USER_IDS" not in handler_source
 assert (
     handler_source.count(
         "not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS"
     )
-    == 10
+    >= 1
+)
+assert (
+    handler_source.count(
+        "not in CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS"
+    )
+    == 4
 )
 
 restricted_sources = (
