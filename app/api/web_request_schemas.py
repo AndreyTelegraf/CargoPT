@@ -112,6 +112,9 @@ class WebRequestResponse(BaseModel):
 class TrackingOfferResponse(BaseModel):
     offer_id: int
     company_name: str
+    operating_regions: str | None = None
+    experience_since_year: int | None = None
+    logo_url: str | None = None
     contact_name: str | None
     phone: str | None
     telegram_username: str | None

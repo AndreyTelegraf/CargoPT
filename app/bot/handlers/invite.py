@@ -5,13 +5,12 @@ from aiogram.types import KeyboardButton
 from aiogram.types import ReplyKeyboardMarkup
 from aiogram.fsm.context import FSMContext
 
-from app.bot.handlers.regions import regions_keyboard
 from app.db.session import async_session_maker
 from app.repositories.carrier import CarrierRepository
 from app.services.carrier_onboarding import CarrierOnboardingService
-from app.domain.carrier_profile_step import CarrierProfileStep
 from app.domain.carrier_status import CarrierStatus
 from app.bot.states.carrier_onboarding import CarrierOnboardingStates
+from app.bot.handlers.carrier_public_profile import start_public_profile_flow
 
 router = Router()
 
@@ -51,26 +50,33 @@ async def invite_start(message: Message, state: FSMContext) -> None:
         existing_carrier = await repository.get_carrier_by_telegram_user_id(
             message.from_user.id
         )
+        if token == "profile":
+            if existing_carrier is None or existing_carrier.status == CarrierStatus.REJECTED:
+                await message.answer("Профиль перевозчика не найден.")
+                return
+            if message.from_user.username:
+                await repository.update_carrier_telegram_username(
+                    existing_carrier.id,
+                    message.from_user.username,
+                )
+            await session.commit()
+            await start_public_profile_flow(
+                message,
+                state,
+                existing_carrier,
+                update_only=True,
+            )
+            return
         if (
             existing_carrier is not None
             and existing_carrier.status == CarrierStatus.INVITED
         ):
             await session.commit()
-            await state.clear()
-            await state.update_data(
-                carrier_id=existing_carrier.id,
-                company_name=existing_carrier.company_name,
-                contact_name=existing_carrier.contact_name,
-                selected_regions=[],
-            )
-            await state.set_state(CarrierOnboardingStates.operating_regions)
-            await message.answer(
-                "Вы уже начали анкету перевозчика CargoPT.\n\n"
-                "Продолжим с шага выбора регионов.\n\n"
-                "Шаг 1 из 6. Регионы работы.\n\n"
-                "В каких регионах Португалии вы работаете?\n\n"
-                "Можно выбрать несколько регионов. Когда закончите, нажмите «Готово».",
-                reply_markup=regions_keyboard(),
+            await start_public_profile_flow(
+                message,
+                state,
+                existing_carrier,
+                update_only=False,
             )
             return
 
@@ -120,11 +126,13 @@ async def invite_start(message: Message, state: FSMContext) -> None:
         f"Компания:\n{carrier.company_name}\n\n"
         "Сейчас нужно заполнить анкету перевозчика.\n\n"
         "Что потребуется:\n"
+        "- название для публичной карточки\n"
+        "- год начала работы и логотип\n"
         "- регионы работы\n"
         "- автомобили и их характеристики\n"
         "- услуги сборки и упаковки\n"
         "- контактные данные\n\n"
-        "Анкета состоит из 6 шагов и обычно занимает 2–3 минуты.\n\n"
+        "Анкета состоит из 10 шагов и обычно занимает 4–5 минут.\n\n"
         "Нажмите «Начать».",
         reply_markup=carrier_welcome_keyboard(),
     )
@@ -136,23 +144,15 @@ async def carrier_welcome_start(message: Message, state: FSMContext) -> None:
     carrier_id = data["carrier_id"]
 
     async with async_session_maker() as session:
-        repository = CarrierRepository(session)
-        service = CarrierOnboardingService(repository)
+        carrier = await CarrierRepository(session).get_carrier_by_id(carrier_id)
 
-        await service.advance_profile_step(
-            carrier_id=carrier_id,
-            step=CarrierProfileStep.OPERATING_REGIONS,
-        )
+    if carrier is None:
+        await message.answer("Анкета перевозчика не найдена.")
+        return
 
-        await session.commit()
-
-    await state.update_data(selected_regions=[])
-
-    await state.set_state(CarrierOnboardingStates.operating_regions)
-
-    await message.answer(
-        "Шаг 1 из 6. Регионы работы.\n\n"
-        "В каких регионах Португалии вы работаете?\n\n"
-        "Можно выбрать несколько регионов. Когда закончите, нажмите «Готово».",
-        reply_markup=regions_keyboard(),
+    await start_public_profile_flow(
+        message,
+        state,
+        carrier,
+        update_only=False,
     )

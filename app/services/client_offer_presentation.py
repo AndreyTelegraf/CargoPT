@@ -24,6 +24,9 @@ class ClientOfferView:
     has_mobile_lift: bool
     carrier_note: str | None
     price_cents: int | None
+    operating_regions: str | None = None
+    experience_since_year: int | None = None
+    logo_file_name: str | None = None
 
 
 class ClientOfferPresentationService:
@@ -58,7 +61,26 @@ class ClientOfferPresentationService:
                     job_id=offer.job_id,
                     carrier_id=offer.carrier_id,
                     vehicle_id=offer.vehicle_id,
-                    company_name=carrier.company_name,
+                    company_name=(
+                        carrier.public_name
+                        if carrier.publication_consent_at and carrier.public_name
+                        else carrier.company_name
+                    ),
+                    operating_regions=(
+                        carrier.operating_regions
+                        if carrier.publication_consent_at
+                        else None
+                    ),
+                    experience_since_year=(
+                        carrier.experience_since_year
+                        if carrier.publication_consent_at
+                        else None
+                    ),
+                    logo_file_name=(
+                        carrier.logo_file_name
+                        if carrier.publication_consent_at
+                        else None
+                    ),
                     contact_name=carrier.contact_name,
                     phone=carrier.phone,
                     telegram_username=carrier.telegram_username,

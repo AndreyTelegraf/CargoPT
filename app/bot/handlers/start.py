@@ -8,8 +8,8 @@ from app.bot.handlers.job_start import start_job_request
 from app.db.session import async_session_maker
 from app.domain.carrier_status import CarrierStatus
 from app.repositories.carrier import CarrierRepository
-from app.bot.handlers.regions import regions_keyboard
-from app.bot.states.carrier_onboarding import CarrierOnboardingStates
+from app.bot.handlers.carrier_public_profile import start_public_profile_flow
+from app.services.carrier_public_profile import missing_public_profile_fields
 
 router = Router()
 
@@ -57,25 +57,23 @@ async def start_handler(message: Message, state: FSMContext) -> None:
             await session.commit()
 
     if carrier is not None and carrier.status == CarrierStatus.INVITED:
-        await state.clear()
-        await state.update_data(
-            carrier_id=carrier.id,
-            company_name=carrier.company_name,
-            contact_name=carrier.contact_name,
-            selected_regions=[],
-        )
-        await state.set_state(CarrierOnboardingStates.operating_regions)
-        await message.answer(
-            "Вы уже начали анкету перевозчика CargoPT.\n\n"
-            "После перезапуска бота временный прогресс мог сброситься, поэтому продолжим с шага выбора регионов.\n\n"
-            "Шаг 1 из 6. Регионы работы.\n\n"
-            "В каких регионах Португалии вы работаете?\n\n"
-            "Можно выбрать несколько регионов. Когда закончите, нажмите «Готово».",
-            reply_markup=regions_keyboard(),
+        await start_public_profile_flow(
+            message,
+            state,
+            carrier,
+            update_only=False,
         )
         return
 
     if carrier is not None and carrier.status != CarrierStatus.REJECTED:
+        if missing_public_profile_fields(carrier):
+            await start_public_profile_flow(
+                message,
+                state,
+                carrier,
+                update_only=True,
+            )
+            return
         await state.clear()
         await message.answer(build_existing_carrier_start_text(carrier))
         return

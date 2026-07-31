@@ -115,12 +115,62 @@
     const identity = document.createElement("div");
     identity.className = "tracking-offer-identity";
 
+    const companyName = offer.company_name || messages.defaultCarrier;
+
+    const avatar = document.createElement("div");
+    avatar.className = "tracking-offer-avatar";
+
+    if (offer.logo_url) {
+      const image = document.createElement("img");
+      image.className = "tracking-offer-logo";
+      image.src = offer.logo_url;
+      image.alt = "";
+      image.loading = "lazy";
+      avatar.appendChild(image);
+    } else {
+      const initials = companyName
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((part) => part.charAt(0).toUpperCase())
+        .join("") || "C";
+      avatar.textContent = initials;
+      avatar.setAttribute("aria-hidden", "true");
+    }
+
+    const identityText = document.createElement("div");
+    identityText.className = "tracking-offer-identity-text";
+
     const company = document.createElement("strong");
     company.className = "tracking-offer-company";
-    company.textContent =
-      offer.company_name || messages.defaultCarrier;
+    company.textContent = companyName;
 
-    identity.appendChild(company);
+    identityText.appendChild(company);
+
+    const profileMeta = [];
+    if (offer.operating_regions) {
+      const regionText = offer.operating_regions === "all_portugal"
+        ? messages.allPortugalLabel
+        : offer.operating_regions.split(",").join(", ");
+      profileMeta.push(regionText);
+    }
+    if (offer.experience_since_year) {
+      profileMeta.push(
+        messages.experienceSinceLabel.replace(
+          "{year}",
+          String(offer.experience_since_year)
+        )
+      );
+    }
+
+    if (profileMeta.length) {
+      const meta = document.createElement("span");
+      meta.className = "tracking-offer-profile-meta";
+      meta.textContent = profileMeta.join(" · ");
+      identityText.appendChild(meta);
+    }
+
+    identity.append(avatar, identityText);
 
     const priceBlock = document.createElement("div");
     priceBlock.className = "tracking-offer-price-block";

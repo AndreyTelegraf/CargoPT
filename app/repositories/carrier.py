@@ -1,6 +1,7 @@
 from datetime import UTC
 from datetime import datetime
 
+from sqlalchemy import or_
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -91,10 +92,80 @@ class CarrierRepository:
         carrier.assembly_required = False
         carrier.packing_required = False
         carrier.operating_regions = None
+        carrier.public_name = None
+        carrier.experience_since_year = None
+        carrier.logo_file_name = None
+        carrier.publication_consent_at = None
+        carrier.public_profile_requested_at = None
         carrier.profile_completed_at = None
         carrier.current_profile_step = None
         carrier.updated_at = updated_at
 
+        await self.session.flush()
+        return carrier
+
+    async def update_public_name(
+        self,
+        carrier_id: int,
+        public_name: str,
+    ) -> CarrierCompany:
+        carrier = await self.get_carrier_by_id(carrier_id)
+        if carrier is None:
+            raise ValueError("carrier not found")
+        carrier.public_name = public_name
+        carrier.updated_at = datetime.now(UTC)
+        await self.session.flush()
+        return carrier
+
+    async def update_experience_since_year(
+        self,
+        carrier_id: int,
+        experience_since_year: int,
+    ) -> CarrierCompany:
+        carrier = await self.get_carrier_by_id(carrier_id)
+        if carrier is None:
+            raise ValueError("carrier not found")
+        carrier.experience_since_year = experience_since_year
+        carrier.updated_at = datetime.now(UTC)
+        await self.session.flush()
+        return carrier
+
+    async def update_logo_file_name(
+        self,
+        carrier_id: int,
+        logo_file_name: str,
+    ) -> CarrierCompany:
+        carrier = await self.get_carrier_by_id(carrier_id)
+        if carrier is None:
+            raise ValueError("carrier not found")
+        carrier.logo_file_name = logo_file_name
+        carrier.updated_at = datetime.now(UTC)
+        await self.session.flush()
+        return carrier
+
+    async def record_publication_consent(
+        self,
+        carrier_id: int,
+        consented_at,
+    ) -> CarrierCompany:
+        carrier = await self.get_carrier_by_id(carrier_id)
+        if carrier is None:
+            raise ValueError("carrier not found")
+        carrier.publication_consent_at = consented_at
+        carrier.updated_at = datetime.now(UTC)
+        await self.session.flush()
+        return carrier
+
+    async def update_operating_regions(
+        self,
+        carrier_id: int,
+        operating_regions: str,
+    ) -> CarrierCompany:
+        carrier = await self.get_carrier_by_id(carrier_id)
+        if carrier is None:
+            raise ValueError("carrier not found")
+        carrier.operating_regions = operating_regions
+        carrier.updated_at = datetime.now(UTC)
         await self.session.flush()
         return carrier
 
@@ -139,6 +210,40 @@ class CarrierRepository:
         )
         result = await self.session.execute(stmt)
         return list(result.scalars().all())
+
+    async def list_public_profile_request_candidates(self) -> list[CarrierCompany]:
+        stmt = (
+            select(CarrierCompany)
+            .where(CarrierCompany.status == CarrierStatus.ACTIVE)
+            .where(CarrierCompany.telegram_user_id.is_not(None))
+            .where(CarrierCompany.public_profile_requested_at.is_(None))
+            .where(~CarrierCompany.company_name.ilike("TEST %"))
+            .where(
+                or_(
+                    CarrierCompany.public_name.is_(None),
+                    CarrierCompany.experience_since_year.is_(None),
+                    CarrierCompany.logo_file_name.is_(None),
+                    CarrierCompany.publication_consent_at.is_(None),
+                    CarrierCompany.operating_regions.is_(None),
+                )
+            )
+            .order_by(CarrierCompany.id)
+        )
+        result = await self.session.execute(stmt)
+        return list(result.scalars().all())
+
+    async def mark_public_profile_requested(
+        self,
+        carrier_id: int,
+        requested_at,
+    ) -> CarrierCompany:
+        carrier = await self.get_carrier_by_id(carrier_id)
+        if carrier is None:
+            raise ValueError("carrier not found")
+        carrier.public_profile_requested_at = requested_at
+        carrier.updated_at = requested_at
+        await self.session.flush()
+        return carrier
 
     async def mark_subscription_reminder_sent(
         self,

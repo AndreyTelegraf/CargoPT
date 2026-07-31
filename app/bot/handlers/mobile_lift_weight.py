@@ -29,6 +29,6 @@ async def mobile_lift_weight(
     await state.set_state(CarrierOnboardingStates.max_loaders)
 
     await message.answer(
-        "Шаг 4 из 6. Команда.\n\n"
+        "Шаг 8 из 10. Команда.\n\n"
         "Сколько грузчиков одновременно вы можете предоставить на один заказ?"
     )

@@ -995,7 +995,36 @@ textarea:focus {
 }
 
 .tracking-offer-identity {
+  display: flex;
+  align-items: center;
   min-width: 0;
+  gap: var(--space-3);
+}
+
+.tracking-offer-avatar {
+  display: grid;
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--brand-blue);
+  font-weight: var(--font-weight-title);
+}
+
+.tracking-offer-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tracking-offer-identity-text {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
 }
 
 .tracking-offer-company {
@@ -1005,6 +1034,13 @@ textarea:focus {
   font-size: var(--font-size-offer-company);
   font-weight: var(--font-weight-offer-company);
   line-height: var(--line-height-card-title);
+}
+
+.tracking-offer-profile-meta {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  font-size: var(--font-size-form-note);
+  line-height: var(--line-height-copy);
 }
 
 .tracking-offer-price-block {

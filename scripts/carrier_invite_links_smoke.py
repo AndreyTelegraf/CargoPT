@@ -20,11 +20,9 @@ invite_source = Path("app/bot/handlers/invite.py").read_text(encoding="utf-8")
 welcome_handler_source = invite_source[
     invite_source.index("async def carrier_welcome_start"):
 ]
-assert "await service.advance_profile_step(" in welcome_handler_source
-assert (
-    welcome_handler_source.index("await service.advance_profile_step(")
-    < welcome_handler_source.index("await session.commit()")
-)
+assert "await start_public_profile_flow(" in welcome_handler_source
+assert "update_only=False" in welcome_handler_source
+assert 'token == "profile"' in invite_source
 
 router_source = Path("app/bot/routers.py").read_text(encoding="utf-8")
 assert "carrier_invite_admin_router" in router_source

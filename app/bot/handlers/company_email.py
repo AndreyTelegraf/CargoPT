@@ -78,6 +78,10 @@ def build_carrier_preview_text(data: dict) -> str:
     return (
         "Проверьте анкету перевозчика перед отправкой на модерацию.\n\n"
         f"Компания: {data.get('company_name', 'не указано')}\n"
+        f"Название в карточке: {data.get('public_name', 'не указано')}\n"
+        f"В перевозках с: {data.get('experience_since_year', 'не указано')} года\n"
+        f"Логотип: {'загружен' if data.get('logo_file_name') else 'не загружен'}\n"
+        f"Публикация: {'разрешена' if data.get('publication_consent') else 'не подтверждена'}\n"
         f"Контакт: {data.get('contact_name') or 'не указан'}\n\n"
         f"Сборка/разборка мебели: {_format_bool(data.get('assembly_required'))}\n"
         f"Упаковка груза: {_format_bool(data.get('packing_required'))}\n"
@@ -164,6 +168,10 @@ async def restart_carrier_onboarding(
         "carrier_id": carrier_id,
         "company_name": company_name,
         "contact_name": contact_name,
+        "public_name": data.get("public_name"),
+        "experience_since_year": data.get("experience_since_year"),
+        "logo_file_name": data.get("logo_file_name"),
+        "publication_consent": data.get("publication_consent"),
     })
 
     await state.update_data(selected_regions=[])
@@ -173,7 +181,7 @@ async def restart_carrier_onboarding(
     await message.answer(
         f"Компания:\n{company_name}\n\n"
         "Заполним анкету заново.\n\n"
-        "Шаг 1 из 6. Регионы работы.\n\n"
+        "Шаг 5 из 10. Регионы работы.\n\n"
         "В каких регионах Португалии вы работаете?\n\n"
         "Можно выбрать несколько регионов. Когда закончите, нажмите «Готово».",
         reply_markup=regions_keyboard(),

@@ -27,6 +27,7 @@ class CarrierCompany(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
 
     company_name: Mapped[str] = mapped_column(String, nullable=False)
+    public_name: Mapped[str | None] = mapped_column(String)
     contact_name: Mapped[str | None] = mapped_column(String)
     phone: Mapped[str | None] = mapped_column(String)
 
@@ -53,6 +54,14 @@ class CarrierCompany(Base):
     )
 
     operating_regions: Mapped[str | None] = mapped_column(Text)
+    experience_since_year: Mapped[int | None] = mapped_column(Integer)
+    logo_file_name: Mapped[str | None] = mapped_column(String)
+    publication_consent_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True)
+    )
+    public_profile_requested_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True)
+    )
 
     profile_completed_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True)

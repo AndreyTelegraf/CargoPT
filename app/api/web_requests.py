@@ -5,6 +5,7 @@ from datetime import datetime
 from fastapi import APIRouter
 from fastapi import Depends
 from fastapi import HTTPException
+from fastapi.responses import FileResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.web_request_schemas import WebRequestPayload
@@ -18,6 +19,7 @@ from app.services.assignment_notifications import send_assignment_final_notifica
 from app.config import settings
 from app.db.session import async_session_maker
 from app.domain.job_status import JobStatus
+from app.domain.carrier_status import CarrierStatus
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
 from app.repositories.job_email_notification import (
@@ -27,6 +29,7 @@ from app.services.assignment_confirmation import build_assignment_status_from_ac
 from app.services.assignment_confirmation import process_assignment_failure_redispatch
 from app.services.assignment_confirmation import record_assignment_confirmation
 from app.services.client_offer_presentation import ClientOfferPresentationService
+from app.services.carrier_public_profile import carrier_logo_path
 from app.services.email.notification_service import EmailNotificationService
 from app.services.job_lifecycle import InvalidJobStatusTransitionError
 from app.services.job_offer import ClientOfferSelectionError
@@ -49,6 +52,31 @@ async def get_session() -> AsyncIterator[AsyncSession]:
         except Exception:
             await session.rollback()
             raise
+
+
+@router.get(
+    "/carriers/{carrier_id}/logo",
+    response_class=FileResponse,
+    include_in_schema=False,
+)
+async def get_carrier_logo(
+    carrier_id: int,
+    session: AsyncSession = Depends(get_session),
+) -> FileResponse:
+    carrier = await CarrierRepository(session).get_carrier_by_id(carrier_id)
+    if (
+        carrier is None
+        or carrier.status != CarrierStatus.ACTIVE
+        or carrier.publication_consent_at is None
+    ):
+        raise HTTPException(status_code=404, detail="carrier logo not found")
+    path = carrier_logo_path(carrier.logo_file_name)
+    if path is None:
+        raise HTTPException(status_code=404, detail="carrier logo not found")
+    return FileResponse(
+        path,
+        headers={"Cache-Control": "public, max-age=3600"},
+    )
 
 
 
@@ -200,6 +228,13 @@ async def get_tracking_job(
             TrackingOfferResponse(
                 offer_id=view.offer_id,
                 company_name=view.company_name,
+                operating_regions=view.operating_regions,
+                experience_since_year=view.experience_since_year,
+                logo_url=(
+                    f"/api/v1/carriers/{view.carrier_id}/logo"
+                    if view.logo_file_name
+                    else None
+                ),
                 contact_name=view.contact_name,
                 phone=view.phone,
                 telegram_username=view.telegram_username,

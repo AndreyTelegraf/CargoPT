@@ -110,6 +110,23 @@ async def operating_regions(
         repository = CarrierRepository(session)
         service = CarrierOnboardingService(repository)
 
+        carrier = await repository.update_operating_regions(
+            carrier_id,
+            regions,
+        )
+
+        if data.get("profile_update_only"):
+            await session.commit()
+            from app.bot.handlers.carrier_public_profile import start_public_profile_flow
+
+            await start_public_profile_flow(
+                message,
+                state,
+                carrier,
+                update_only=True,
+            )
+            return
+
         await service.advance_profile_step(
             carrier_id=carrier_id,
             step=CarrierProfileStep.VEHICLES,
@@ -124,7 +141,7 @@ async def operating_regions(
     await state.set_state(CarrierOnboardingStates.vehicle_count)
 
     await message.answer(
-        "Шаг 2 из 6. Автомобили.\n\n"
+        "Шаг 6 из 10. Автомобили.\n\n"
         "Сколько автомобилей у вашей компании?",
         reply_markup=ReplyKeyboardRemove(),
     )

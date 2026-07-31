@@ -107,7 +107,7 @@ async def exercise_client_offer_presentation() -> None:
             carrier_repository=carrier_repo,
         )
 
-        _, first_vehicle = await create_carrier_with_vehicle(
+        first_carrier, first_vehicle = await create_carrier_with_vehicle(
             carrier_repo,
             company_name="First Accepted Carrier",
             telegram_user_id=8001,
@@ -117,7 +117,12 @@ async def exercise_client_offer_presentation() -> None:
             max_loaders=2,
             now=now,
         )
-        _, second_vehicle = await create_carrier_with_vehicle(
+        first_carrier.public_name = "First Public Carrier"
+        first_carrier.experience_since_year = 2018
+        first_carrier.logo_file_name = "carrier_1.jpg"
+        first_carrier.publication_consent_at = now
+
+        second_carrier, second_vehicle = await create_carrier_with_vehicle(
             carrier_repo,
             company_name="Second Accepted Carrier",
             telegram_user_id=8002,
@@ -127,6 +132,9 @@ async def exercise_client_offer_presentation() -> None:
             max_loaders=3,
             now=now,
         )
+        second_carrier.public_name = "Hidden Without Consent"
+        second_carrier.experience_since_year = 2020
+        second_carrier.logo_file_name = "carrier_2.jpg"
         _, pending_vehicle = await create_carrier_with_vehicle(
             carrier_repo,
             company_name="Pending Carrier",
@@ -191,8 +199,17 @@ async def exercise_client_offer_presentation() -> None:
         first_view = next(view for view in views if view.offer_id == first_offer.id)
         second_view = next(view for view in views if view.offer_id == second_offer.id)
 
-        if first_view.company_name != "First Accepted Carrier":
+        if first_view.company_name != "First Public Carrier":
             raise SystemExit(f"bad first company: {first_view.company_name}")
+
+        if first_view.operating_regions != "Lisboa":
+            raise SystemExit("public operating regions missing")
+
+        if first_view.experience_since_year != 2018:
+            raise SystemExit("public experience year missing")
+
+        if first_view.logo_file_name != "carrier_1.jpg":
+            raise SystemExit("public logo missing")
 
         if first_view.telegram_username != "first_carrier":
             raise SystemExit(f"bad first username: {first_view.telegram_username}")
@@ -205,6 +222,12 @@ async def exercise_client_offer_presentation() -> None:
 
         if second_view.company_name != "Second Accepted Carrier":
             raise SystemExit(f"bad second company: {second_view.company_name}")
+
+        if second_view.experience_since_year is not None:
+            raise SystemExit("unconsented experience leaked")
+
+        if second_view.logo_file_name is not None:
+            raise SystemExit("unconsented logo leaked")
 
     await engine.dispose()
 

@@ -75,7 +75,7 @@ async def max_loaders(
 
         await message.answer(
             f"Автомобиль {current_index} сохранён.\n\n"
-            f"Шаг 3 из 6. Автомобиль {next_index} из {vehicle_count}.\n\n"
+            f"Шаг 7 из 10. Автомобиль {next_index} из {vehicle_count}.\n\n"
             "Выберите тип автомобиля.",
             reply_markup=vehicle_type_keyboard(),
         )
@@ -89,6 +89,6 @@ async def max_loaders(
     await state.set_state(CarrierOnboardingStates.company_phone)
 
     await message.answer(
-        "Шаг 5 из 6. Контакты.\n\n"
+        "Шаг 9 из 10. Контакты.\n\n"
         "Какой номер телефона для связи с вашей компанией?"
     )

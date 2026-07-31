@@ -194,3 +194,18 @@ class CarrierOnboardingService:
             carrier_id=carrier_id,
             value=value,
         )
+
+    async def save_public_name(self, carrier_id: int, value: str):
+        return await self.repository.update_public_name(carrier_id, value)
+
+    async def save_experience_since_year(self, carrier_id: int, value: int):
+        return await self.repository.update_experience_since_year(carrier_id, value)
+
+    async def save_logo_file_name(self, carrier_id: int, value: str):
+        return await self.repository.update_logo_file_name(carrier_id, value)
+
+    async def record_publication_consent(self, carrier_id: int):
+        return await self.repository.record_publication_consent(
+            carrier_id,
+            datetime.now(UTC),
+        )

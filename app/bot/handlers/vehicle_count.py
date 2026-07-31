@@ -36,7 +36,7 @@ async def vehicle_count(
     await state.set_state(CarrierOnboardingStates.vehicle_type)
 
     await message.answer(
-        f"Шаг 3 из 6. Автомобиль 1 из {count}.\n\n"
+        f"Шаг 7 из 10. Автомобиль 1 из {count}.\n\n"
         "Выберите тип автомобиля.",
         reply_markup=vehicle_type_keyboard(),
     )

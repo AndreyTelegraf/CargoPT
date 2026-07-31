@@ -79,6 +79,10 @@ def build_admin_moderation_text(*, carrier, vehicles, data: dict, telegram_user)
     return (
         f"<b>🚚 Новая анкета перевозчика</b>\n\n"
         f"<b>Компания</b>\n{_safe(carrier.company_name)}\n\n"
+        f"<b>Название в карточке</b>\n{_safe(carrier.public_name or 'не указано')}\n\n"
+        f"<b>В перевозках с</b>\n{_safe(carrier.experience_since_year or 'не указано')}\n\n"
+        f"<b>Логотип</b>\n{'загружен' if carrier.logo_file_name else 'не загружен'}\n\n"
+        f"<b>Публикация</b>\n{'разрешена' if carrier.publication_consent_at else 'не подтверждена'}\n\n"
         f"<b>Контакт</b>\n{_safe(carrier.contact_name or 'не указан')}\n\n"
         f"<b>Телефон</b>\n{_safe(data.get('company_phone') or carrier.phone or 'не указан')}\n\n"
         f"<b>Email</b>\n{_safe(data.get('company_email') or 'не указан')}\n\n"

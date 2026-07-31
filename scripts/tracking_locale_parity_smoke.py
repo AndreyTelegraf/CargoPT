@@ -247,7 +247,7 @@ for locale, path in FILES.items():
     for asset in (
         (
             "/assets/css/components.css"
-            "?v=reduced-motion-v2"
+            "?v=carrier-profile-v1"
         ),
         (
             "/assets/css/track.css"
@@ -263,11 +263,11 @@ for locale, path in FILES.items():
         ),
         (
             "/assets/js/tracking-workspace.js"
-            "?v=no-offers-visual-state-v2"
+            "?v=carrier-profile-v1"
         ),
         (
             "/assets/js/track.js"
-            "?v=tracking-return-copy-v1"
+            "?v=carrier-profile-v1"
         ),
     ):
         assert asset in source, (
