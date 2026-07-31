@@ -725,7 +725,7 @@ def render_guide(
     <a class="logo" href="{escape_text(labels["home_href"])}" aria-label="CargoPT"><span class="logo-cargo">Cargo</span><span class="logo-pt">PT</span></a>
     <nav class="header-actions" aria-label="Navigation">
 {locale_switcher}
-      <a class="button button-small button-carrier" href="/#request">{escape_text(labels["request"])}</a>
+      <a class="button button-small button-carrier" href="{escape_text(labels["home_href"] + "#request")}">{escape_text(labels["request"])}</a>
     </nav>
   </header>
 
