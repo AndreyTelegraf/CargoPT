@@ -51,6 +51,20 @@ async def invite_start(message: Message, state: FSMContext) -> None:
             message.from_user.id
         )
         if token == "profile":
+            if existing_carrier is None and message.from_user.username:
+                username_carrier = await repository.get_carrier_by_username(
+                    message.from_user.username
+                )
+                if (
+                    username_carrier is not None
+                    and username_carrier.telegram_user_id is None
+                    and username_carrier.status != CarrierStatus.REJECTED
+                ):
+                    existing_carrier = await repository.bind_carrier_telegram_identity(
+                        username_carrier.id,
+                        telegram_user_id=message.from_user.id,
+                        telegram_username=message.from_user.username,
+                    )
             if existing_carrier is None or existing_carrier.status == CarrierStatus.REJECTED:
                 await message.answer("Профиль перевозчика не найден.")
                 return

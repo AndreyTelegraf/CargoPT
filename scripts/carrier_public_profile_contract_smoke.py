@@ -65,6 +65,8 @@ for state_name in (
 assert 'Command("profile")' in handler
 assert "Разрешаю публикацию" in handler
 assert 'token == "profile"' in invite
+assert "bind_carrier_telegram_identity(" in invite
+assert "username_carrier.telegram_user_id is None" in invite
 assert 'data.get("profile_update_only")' in regions
 assert '"/carriers/{carrier_id}/logo"' in api
 assert "logo_url" in schema

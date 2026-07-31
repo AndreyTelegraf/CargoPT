@@ -194,6 +194,24 @@ class CarrierRepository:
 
         return carrier
 
+    async def bind_carrier_telegram_identity(
+        self,
+        carrier_id: int,
+        *,
+        telegram_user_id: int,
+        telegram_username: str,
+    ) -> CarrierCompany:
+        carrier = await self.get_carrier_by_id(carrier_id)
+        if carrier is None:
+            raise ValueError("carrier not found")
+        if carrier.telegram_user_id not in (None, telegram_user_id):
+            raise ValueError("carrier already bound to another telegram user")
+        carrier.telegram_user_id = telegram_user_id
+        carrier.telegram_username = telegram_username
+        carrier.updated_at = datetime.now(UTC)
+        await self.session.flush()
+        return carrier
+
     async def list_subscription_reminder_candidates(
         self,
         *,
