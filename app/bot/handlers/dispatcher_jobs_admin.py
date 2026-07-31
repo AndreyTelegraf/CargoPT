@@ -11,7 +11,7 @@ from aiogram.types import InlineKeyboardMarkup
 from aiogram.types import Message
 from sqlalchemy import text
 
-from app.domain.admin_access import ADMIN_TELEGRAM_USER_IDS
+from app.domain.admin_access import CARGOPT_OPERATOR_TELEGRAM_USER_IDS
 from app.db.session import async_session_maker
 from app.domain.job_decline_reason import get_decline_reason_label
 from app.repositories.carrier import CarrierRepository
@@ -406,7 +406,7 @@ def _parse_jobs_report_period(text: str) -> tuple[str, str | None]:
 
 @router.message(Command("jobs"))
 async def dispatcher_jobs(message: Message) -> None:
-    if message.from_user.id not in ADMIN_TELEGRAM_USER_IDS:
+    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
         await message.answer("Команда доступна только диспетчеру CargoPT.")
         return
 
@@ -424,7 +424,7 @@ async def dispatcher_jobs(message: Message) -> None:
 
 @router.message(Command("jobs_attention"))
 async def dispatcher_jobs_attention(message: Message) -> None:
-    if message.from_user.id not in ADMIN_TELEGRAM_USER_IDS:
+    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
         await message.answer("Команда доступна только диспетчеру CargoPT.")
         return
 
@@ -543,7 +543,7 @@ async def _build_manual_dispatch_keyboard(
 @router.message(Command("job"))
 @router.message(lambda message: bool((message.text or "").strip().startswith("/job_")))
 async def dispatcher_job_detail(message: Message) -> None:
-    if message.from_user.id not in ADMIN_TELEGRAM_USER_IDS:
+    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
         await message.answer("Команда доступна только диспетчеру CargoPT.")
         return
 
@@ -579,7 +579,7 @@ async def dispatcher_job_detail(message: Message) -> None:
 
 @router.callback_query(F.data.startswith("job:"))
 async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
-    if callback.from_user.id not in ADMIN_TELEGRAM_USER_IDS:
+    if callback.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
         await callback.answer("Недостаточно прав.", show_alert=True)
         return
 
@@ -851,7 +851,7 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
 
 @router.message(Command("jobs_acquisition"))
 async def dispatcher_jobs_acquisition(message: Message) -> None:
-    if message.from_user.id not in ADMIN_TELEGRAM_USER_IDS:
+    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
         await message.answer("Команда доступна только диспетчеру CargoPT.")
         return
 
@@ -1023,7 +1023,7 @@ async def dispatcher_jobs_acquisition(message: Message) -> None:
 
 @router.message(Command("jobs_report"))
 async def dispatcher_jobs_report(message: Message) -> None:
-    if message.from_user.id not in ADMIN_TELEGRAM_USER_IDS:
+    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
         await message.answer("Команда доступна только диспетчеру CargoPT.")
         return
 
