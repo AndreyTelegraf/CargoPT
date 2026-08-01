@@ -46,6 +46,9 @@ TESTS=(
   scripts/manual_offer_redispatch_smoke.py
   scripts/dispatcher_leads_admin_smoke.py
   scripts/landing_static_smoke.py
+  scripts/requested_date_validation_smoke.py
+  scripts/job_requested_datetime_handler_smoke.py
+  scripts/request_update_service_smoke.py
   scripts/landing_custom_validation_smoke.py
   scripts/landing_tracking_workspace_dependency_smoke.py
   scripts/job_tracking_page_static_smoke.py

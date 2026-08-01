@@ -5,6 +5,7 @@ from datetime import timedelta
 
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
+from app.domain.requested_date import validate_requested_date_not_in_past
 from app.services.email.models import EmailEventType
 from app.services.email.notification_service import EmailNotificationService
 from app.services.request_creation import RequestCreationService
@@ -132,6 +133,7 @@ class RequestIntakeService:
         self,
         request: RequestIntakeInput,
     ) -> RequestSubmissionResult:
+        validate_requested_date_not_in_past(request.requested_date)
         duplicate_cutoff = datetime.now(UTC) - timedelta(minutes=15)
         recent_jobs = await self.job_repository.list_recent_web_jobs_for_contact(
             since=duplicate_cutoff,

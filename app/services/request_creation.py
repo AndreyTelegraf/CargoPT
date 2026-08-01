@@ -3,6 +3,7 @@ from datetime import UTC
 from datetime import datetime
 
 from app.domain.job_status import JobStatus
+from app.domain.requested_date import validate_requested_date_not_in_past
 from app.models.job import Job
 from app.repositories.job import JobRepository
 
@@ -81,6 +82,7 @@ class RequestCreationService:
         return await self.job_repository.create_job(job)
 
     async def create_web_draft(self, payload: WebDraftInput) -> Job:
+        validate_requested_date_not_in_past(payload.requested_date)
         now = datetime.now(UTC)
         job = Job(
             client_telegram_user_id=None,

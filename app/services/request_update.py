@@ -5,6 +5,7 @@ from app.models.job import Job
 from app.models.job import JobAddress
 from app.models.job import JobItem
 from app.models.job import JobMedia
+from app.domain.requested_date import validate_requested_date_not_in_past
 from app.repositories.job import JobRepository
 from app.services.location_normalization import build_google_maps_coordinate_url
 from app.services.location_normalization import normalize_text_location_resolved
@@ -187,6 +188,7 @@ class RequestUpdateService:
         job_id: int,
         requested_date,
     ) -> Job:
+        validate_requested_date_not_in_past(requested_date)
         return await self.job_repository.update_requested_date(
             job_id=job_id,
             requested_date=requested_date,

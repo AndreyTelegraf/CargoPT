@@ -2,6 +2,9 @@ import os
 import shutil
 import subprocess
 import sys
+from datetime import UTC
+from datetime import datetime
+from datetime import timedelta
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -77,7 +80,7 @@ def main() -> None:
         "utm_campaign": "lisbon_launch",
         "utm_content": "hero_form",
         "landing_version": "v1",
-        "requested_date": "2026-07-01T10:00:00+00:00",
+        "requested_date": (datetime.now(UTC) + timedelta(days=30)).isoformat(),
         "addresses": [
             {"kind": "pickup", "raw_text": "Lisboa", "floor": 2, "has_elevator": True},
             {"kind": "dropoff", "raw_text": "Porto", "floor": 0, "has_elevator": False},
@@ -98,6 +101,15 @@ def main() -> None:
         health = client.get("/health")
         if health.status_code != 200:
             raise SystemExit(f"health failed: {health.status_code} {health.text}")
+
+        past_payload = dict(payload)
+        past_payload["requested_date"] = "2000-01-01T12:00:00+00:00"
+        past_response = client.post("/api/v1/requests", json=past_payload)
+        if past_response.status_code != 422:
+            raise SystemExit(
+                "past date was not rejected: "
+                f"{past_response.status_code} {past_response.text}"
+            )
 
         response = client.post("/api/v1/requests", json=payload)
 

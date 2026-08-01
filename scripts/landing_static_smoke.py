@@ -95,6 +95,19 @@ def main() -> None:
             ("/assets/css/components.css", "locale-switcher"),
             ("/assets/js/landing.js", "markFieldInvalid"),
             ("/assets/js/landing.js", "normalizeRequestedDate"),
+            ("/assets/js/landing.js", "isRequestedDateInPast"),
+            (
+                "/assets/js/landing.js",
+                "A data do transporte não pode estar no passado.",
+            ),
+            (
+                "/assets/js/landing.js",
+                "The moving date cannot be in the past.",
+            ),
+            (
+                "/assets/js/landing.js",
+                "Дата перевозки не может быть в прошлом.",
+            ),
             ("/favicon.ico", ""),
             ("/site.webmanifest", "CargoPT"),
             ("/assets/brand/cargopt-icon.svg", "<svg"),

@@ -5,6 +5,8 @@ from pydantic import BaseModel
 from pydantic import Field
 from pydantic import model_validator
 
+from app.domain.requested_date import RequestedDateInPastError
+from app.domain.requested_date import validate_requested_date_not_in_past
 from app.services.web_intake import WebIntakeAddress
 from app.services.web_intake import WebIntakeItem
 from app.services.web_intake import WebIntakeRequest
@@ -69,6 +71,11 @@ class WebRequestPayload(BaseModel):
         address_kinds = {address.kind for address in self.addresses}
         if "pickup" not in address_kinds or "dropoff" not in address_kinds:
             raise ValueError("pickup and dropoff addresses are required")
+
+        try:
+            validate_requested_date_not_in_past(self.requested_date)
+        except RequestedDateInPastError as error:
+            raise ValueError("requested_date must not be in the past") from error
 
         return self
 

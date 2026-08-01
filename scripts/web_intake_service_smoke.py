@@ -3,8 +3,10 @@ import os
 import shutil
 import subprocess
 import sys
+from dataclasses import replace
 from datetime import UTC
 from datetime import datetime
+from datetime import timedelta
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -14,6 +16,7 @@ from sqlalchemy.ext.asyncio import async_sessionmaker
 from sqlalchemy.ext.asyncio import create_async_engine
 
 from app.domain.job_status import JobStatus
+from app.domain.requested_date import RequestedDateInPastError
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
 from app.services.request_intake import RequestIntakeAddress
@@ -59,31 +62,52 @@ async def exercise_web_intake() -> None:
             bot=bot,
         )
 
-        result = await service.submit_web_intake(
-            RequestIntakeInput(
-                source_locale="ru",
-                customer_name="Web Client",
-                customer_email="client@example.test",
-                preferred_contact="whatsapp",
-                client_phone="+351900000000",
-                client_whatsapp="+351900000000",
-                utm_source="landing",
-                utm_medium="organic",
-                utm_campaign="lisbon_launch",
-                utm_content="hero_form",
-                landing_version="v1",
-                requested_date=datetime(2026, 7, 1, 10, 0, tzinfo=UTC),
-                addresses=(
-                    RequestIntakeAddress(kind="pickup", raw_text="Lisboa", floor=2, has_elevator=True),
-                    RequestIntakeAddress(kind="dropoff", raw_text="Porto", floor=0, has_elevator=False),
+        request = RequestIntakeInput(
+            source_locale="ru",
+            customer_name="Web Client",
+            customer_email="client@example.test",
+            preferred_contact="whatsapp",
+            client_phone="+351900000000",
+            client_whatsapp="+351900000000",
+            utm_source="landing",
+            utm_medium="organic",
+            utm_campaign="lisbon_launch",
+            utm_content="hero_form",
+            landing_version="v1",
+            requested_date=datetime.now(UTC) + timedelta(days=30),
+            addresses=(
+                RequestIntakeAddress(
+                    kind="pickup",
+                    raw_text="Lisboa",
+                    floor=2,
+                    has_elevator=True,
                 ),
-                items=(RequestIntakeItem(description="Boxes", quantity=10),),
-                needs_tail_lift=False,
-                estimated_payload_kg=500,
-                estimated_volume_m3=3.0,
-                comment="Submitted from web form",
-            )
+                RequestIntakeAddress(
+                    kind="dropoff",
+                    raw_text="Porto",
+                    floor=0,
+                    has_elevator=False,
+                ),
+            ),
+            items=(RequestIntakeItem(description="Boxes", quantity=10),),
+            needs_tail_lift=False,
+            estimated_payload_kg=500,
+            estimated_volume_m3=3.0,
+            comment="Submitted from web form",
         )
+
+        past_request = replace(
+            request,
+            requested_date=datetime.now(UTC) - timedelta(days=2),
+        )
+        try:
+            await service.submit_web_intake(past_request)
+        except RequestedDateInPastError:
+            pass
+        else:
+            raise AssertionError("past requested date must be rejected")
+
+        result = await service.submit_web_intake(request)
 
         if result.job.id is None:
             raise SystemExit("web job id missing")

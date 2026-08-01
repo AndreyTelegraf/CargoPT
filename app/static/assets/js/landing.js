@@ -16,6 +16,7 @@ const MESSAGES = {
     submitting: "A enviar o pedido...",
     success: "Pedido enviado. Vamos encaminhá-lo para transportadores.",
     validationFailure: "Alguns dados do pedido não são válidos. Verifique os campos e tente novamente.",
+    requestedDatePast: "A data do transporte não pode estar no passado.",
     conflictFailure: "Este pedido já foi alterado ou enviado. Atualize a página antes de tentar novamente.",
     rateLimitFailure: "Foram enviados demasiados pedidos. Aguarde um pouco e tente novamente.",
     serverFailure: "Ocorreu um erro no servidor. Os dados introduzidos foram mantidos; tente novamente.",
@@ -43,6 +44,7 @@ const MESSAGES = {
     submitting: "Sending request...",
     success: "Request sent. We will forward it to carriers.",
     validationFailure: "Some request details are invalid. Check the fields and try again.",
+    requestedDatePast: "The moving date cannot be in the past.",
     conflictFailure: "This request has already been changed or submitted. Refresh the page before trying again.",
     rateLimitFailure: "Too many requests were submitted. Wait a moment and try again.",
     serverFailure: "A server error occurred. Your entered data was kept; try again.",
@@ -70,6 +72,7 @@ const MESSAGES = {
     submitting: "Отправляем заявку...",
     success: "Заявка отправлена. Мы передадим её перевозчикам.",
     validationFailure: "Некоторые данные заявки заполнены неверно. Проверьте поля и отправьте ещё раз.",
+    requestedDatePast: "Дата перевозки не может быть в прошлом.",
     conflictFailure: "Эта заявка уже была изменена или отправлена. Обновите страницу перед повторной попыткой.",
     rateLimitFailure: "Отправлено слишком много заявок. Подождите немного и попробуйте снова.",
     serverFailure: "На сервере произошла ошибка. Введённые данные сохранены; попробуйте отправить ещё раз.",
@@ -371,6 +374,25 @@ function isValidPhone(value) {
   return digitCount >= 7 && digitCount <= 15;
 }
 
+function isRequestedDateInPast(value) {
+  const normalized = normalizeRequestedDate(value);
+  if (!normalized) return false;
+
+  const [year, month, day] = normalized
+    .slice(0, 10)
+    .split("-")
+    .map(Number);
+  const requestedDate = new Date(year, month - 1, day);
+  const now = new Date();
+  const today = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+
+  return requestedDate < today;
+}
+
 function validateField(field, focusField = false) {
   clearFieldValidity(field);
 
@@ -393,6 +415,19 @@ function validateField(field, focusField = false) {
     markFieldInvalid(
       field,
       messages.validationFailure,
+      focusField
+    );
+    return false;
+  }
+
+  if (
+    field.name === "requested_date"
+    && value
+    && isRequestedDateInPast(value)
+  ) {
+    markFieldInvalid(
+      field,
+      messages.requestedDatePast,
       focusField
     );
     return false;
@@ -453,7 +488,10 @@ function validateStep(step) {
 }
 
 function formatDateForPayload(date) {
-  return date.toISOString().slice(0, 10);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
 function normalizeRequestedDate(value) {

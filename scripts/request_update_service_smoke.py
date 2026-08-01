@@ -3,6 +3,7 @@ import os
 import sys
 from datetime import UTC
 from datetime import datetime
+from datetime import timedelta
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -12,6 +13,7 @@ os.environ["BOT_TOKEN"] = "123456:TESTTOKEN"
 os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///data/cargopt_dev.db"
 
 from app.domain.job_status import JobStatus
+from app.domain.requested_date import RequestedDateInPastError
 from app.models.job import Job
 from app.models.job import JobAddress
 from app.models.job import JobItem
@@ -184,7 +186,26 @@ async def main():
     await service.update_needs_tail_lift(job_id=1, needs_tail_lift=False)
     await service.update_needs_crane(job_id=1, needs_crane=False)
     await service.update_needs_mobile_lift(job_id=1, needs_mobile_lift=False)
-    await service.update_requested_date(job_id=1, requested_date=datetime.now(UTC))
+    await service.update_requested_date(
+        job_id=1,
+        requested_date=datetime.now(UTC) + timedelta(days=1),
+    )
+
+    date_update_count = sum(
+        call[0] == "update_requested_date" for call in repo.calls
+    )
+    try:
+        await service.update_requested_date(
+            job_id=1,
+            requested_date=datetime.now(UTC) - timedelta(days=2),
+        )
+    except RequestedDateInPastError:
+        pass
+    else:
+        raise AssertionError("past requested date must be rejected")
+    assert sum(
+        call[0] == "update_requested_date" for call in repo.calls
+    ) == date_update_count
     await service.update_client_phone(job_id=1, client_phone="+351")
     await service.update_client_whatsapp(job_id=1, client_whatsapp="+351")
     await service.add_media(
