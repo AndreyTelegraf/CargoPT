@@ -239,7 +239,7 @@ def main() -> None:
         ) in en_home
         assert (
             'class="form-note guide-language-note">'
-            'In Portuguese</p>'
+            'In English</p>'
         ) in en_home
 
         assert (
@@ -247,7 +247,7 @@ def main() -> None:
         ) in ru_home
         assert (
             'class="form-note guide-language-note">'
-            'На португальском</p>'
+            'На русском</p>'
         ) in ru_home
 
         assert en_home.count(
