@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "mode": "applied",
+  "static_root": "/opt/bots/cargoPT_bot/app/static",
+  "static_files": [
+    "/opt/bots/cargoPT_bot/app/static/assets/js/track.js",
+    "/opt/bots/cargoPT_bot/app/static/assets/js/tracking-workspace.js",
+    "/opt/bots/cargoPT_bot/app/static/track/index.html",
+    "/opt/bots/cargoPT_bot/app/static/en/track/index.html",
+    "/opt/bots/cargoPT_bot/app/static/ru/track/index.html"
+  ]
+}
