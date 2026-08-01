@@ -525,6 +525,15 @@ class JobRepository:
         result = await self.session.execute(stmt)
         return set(result.scalars().all())
 
+    async def list_active_offer_carrier_ids_by_job(self, job_id: int) -> set[int]:
+        stmt = (
+            select(JobOffer.carrier_id)
+            .where(JobOffer.job_id == job_id)
+            .where(JobOffer.status.in_(("pending", "accepted")))
+        )
+        result = await self.session.execute(stmt)
+        return set(result.scalars().all())
+
     async def list_expired_pending_offers(
         self,
         *,

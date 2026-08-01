@@ -496,7 +496,9 @@ async def _build_manual_dispatch_keyboard(
     job_repository: JobRepository,
     carrier_repository: CarrierRepository,
 ) -> InlineKeyboardMarkup:
-    existing_carrier_ids = await job_repository.list_offer_carrier_ids_by_job(job.id)
+    active_offer_carrier_ids = (
+        await job_repository.list_active_offer_carrier_ids_by_job(job.id)
+    )
     addresses = await job_repository.list_addresses_by_job(job.id)
 
     vehicles = await JobMatchingService(
@@ -510,7 +512,7 @@ async def _build_manual_dispatch_keyboard(
     seen_carrier_ids = set()
 
     for vehicle in vehicles:
-        if vehicle.carrier_id in existing_carrier_ids:
+        if vehicle.carrier_id in active_offer_carrier_ids:
             continue
         if vehicle.carrier_id in seen_carrier_ids:
             continue
@@ -798,10 +800,12 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
                 )
                 return
 
-            existing_carrier_ids = await job_repository.list_offer_carrier_ids_by_job(job.id)
-            if vehicle.carrier_id in existing_carrier_ids:
+            active_offer_carrier_ids = (
+                await job_repository.list_active_offer_carrier_ids_by_job(job.id)
+            )
+            if vehicle.carrier_id in active_offer_carrier_ids:
                 await callback.answer(
-                    f"Заявка #{job.id} уже отправлялась этому перевозчику.",
+                    f"Заявка #{job.id}: у перевозчика уже есть активный оффер.",
                     show_alert=True,
                 )
                 return

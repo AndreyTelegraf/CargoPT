@@ -43,6 +43,7 @@ TESTS=(
   scripts/bot_bootstrap_smoke.py
   scripts/dispatcher_access_role_smoke.py
   scripts/dispatcher_jobs_admin_smoke.py
+  scripts/manual_offer_redispatch_smoke.py
   scripts/dispatcher_leads_admin_smoke.py
   scripts/landing_static_smoke.py
   scripts/landing_custom_validation_smoke.py

@@ -205,7 +205,7 @@ assert "sent_count = await send_job_offers_to_carriers" in handler_source
 assert "новых перевозчиков для рассылки не найдено" in handler_source
 assert "_build_manual_dispatch_keyboard" in handler_source
 assert "find_matching_vehicles_for_job" in handler_source
-assert "list_offer_carrier_ids_by_job" in handler_source
+assert handler_source.count("list_active_offer_carrier_ids_by_job") == 2
 assert 'callback_data=f"job:{job.id}:send:{vehicle.id}"' in handler_source
 assert 'callback_data=f"job:{job.id}:back"' in handler_source
 assert "Выберите перевозчика для ручной отправки заявки" in handler_source
@@ -215,7 +215,7 @@ assert "vehicle = await carrier_repository.get_vehicle_by_id(vehicle_id)" in han
 assert "JobOfferService(job_repository).create_offer" in handler_source
 assert "offers=[offer]" in handler_source
 assert 'status="offered"' in handler_source
-assert "уже отправлялась этому перевозчику" in handler_source
+assert "у перевозчика уже есть активный оффер" in handler_source
 assert "вручную отправлена перевозчику" in handler_source
 assert 'status="cancelled"' in handler_source
 assert "now = datetime.now(UTC)" in handler_source
