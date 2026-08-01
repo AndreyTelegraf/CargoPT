@@ -205,17 +205,27 @@ assert "sent_count = await send_job_offers_to_carriers" in handler_source
 assert "новых перевозчиков для рассылки не найдено" in handler_source
 assert "_build_manual_dispatch_keyboard" in handler_source
 assert "find_matching_vehicles_for_job" in handler_source
-assert handler_source.count("list_active_offer_carrier_ids_by_job") == 2
-assert 'callback_data=f"job:{job.id}:send:{vehicle.id}"' in handler_source
+assert "list_all_carriers" in handler_source
+assert "list_all_vehicles" in handler_source
+assert "MANUAL_DISPATCH_PAGE_SIZE = 10" in handler_source
+assert 'prefix = "[вне фильтра] "' in handler_source
+assert 'prefix = "[оффер принят] "' in handler_source
+assert 'prefix = "[нет машины] "' in handler_source
+assert 'callback_data=f"job:{job.id}:manual:{safe_page + 1}"' in handler_source
+assert 'action not in {"retry", "manual", "close", "back", "send", "noop"}' in handler_source
+assert "_manual_dispatch_page_text" in handler_source
+assert 'f"job:{job.id}:send:{vehicle.id}"' in handler_source
 assert 'callback_data=f"job:{job.id}:back"' in handler_source
-assert "Выберите перевозчика для ручной отправки заявки" in handler_source
-assert "подходящих новых перевозчиков не найдено" in handler_source
-assert 'action not in {"retry", "manual", "close", "back", "send"}' in handler_source
+assert "Перевозчики для ручной отправки заявки" in handler_source
+assert "реестр перевозчиков пуст" in handler_source
 assert "vehicle = await carrier_repository.get_vehicle_by_id(vehicle_id)" in handler_source
 assert "JobOfferService(job_repository).create_offer" in handler_source
 assert "offers=[offer]" in handler_source
 assert 'status="offered"' in handler_source
 assert "у перевозчика уже есть активный оффер" in handler_source
+assert "Перевозчик сейчас не активен" in handler_source
+assert "У перевозчика нет действующей подписки" in handler_source
+assert "Автомобиль перевозчика не активен" in handler_source
 assert "вручную отправлена перевозчику" in handler_source
 assert 'status="cancelled"' in handler_source
 assert "now = datetime.now(UTC)" in handler_source

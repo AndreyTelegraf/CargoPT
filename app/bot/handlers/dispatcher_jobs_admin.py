@@ -30,6 +30,9 @@ from app.services.offer_notification import send_job_offers_to_carriers
 router = Router()
 
 
+MANUAL_DISPATCH_PAGE_SIZE = 10
+
+
 ACQUISITION_INTERNAL_TRAFFIC_SQL = """
 (
     COALESCE(j.source, '') IN (
@@ -495,45 +498,131 @@ async def _build_manual_dispatch_keyboard(
     job,
     job_repository: JobRepository,
     carrier_repository: CarrierRepository,
-) -> InlineKeyboardMarkup:
-    active_offer_carrier_ids = (
-        await job_repository.list_active_offer_carrier_ids_by_job(job.id)
-    )
-    addresses = await job_repository.list_addresses_by_job(job.id)
+    page: int = 0,
+) -> tuple[InlineKeyboardMarkup, int, int, int]:
+    offers = await job_repository.list_offers_by_job(job.id)
+    active_offer_statuses = {}
+    for offer in offers:
+        if offer.status == "accepted":
+            active_offer_statuses[offer.carrier_id] = "accepted"
+        elif offer.status == "pending" and offer.carrier_id not in active_offer_statuses:
+            active_offer_statuses[offer.carrier_id] = "pending"
 
-    vehicles = await JobMatchingService(
+    addresses = await job_repository.list_addresses_by_job(job.id)
+    matching_vehicles = await JobMatchingService(
         CarrierSearchService(carrier_repository)
     ).find_matching_vehicles_for_job(
         job,
         addresses=addresses,
     )
 
-    rows = []
-    seen_carrier_ids = set()
+    carriers = await carrier_repository.list_all_carriers()
+    all_vehicles = await carrier_repository.list_all_vehicles()
+    active_vehicles_by_carrier = {}
+    for vehicle in all_vehicles:
+        if vehicle.is_active:
+            active_vehicles_by_carrier.setdefault(vehicle.carrier_id, []).append(vehicle)
 
-    for vehicle in vehicles:
-        if vehicle.carrier_id in active_offer_carrier_ids:
-            continue
-        if vehicle.carrier_id in seen_carrier_ids:
-            continue
+    matching_vehicle_by_carrier = {}
+    for vehicle in matching_vehicles:
+        matching_vehicle_by_carrier.setdefault(vehicle.carrier_id, vehicle)
 
-        carrier = await carrier_repository.get_carrier_by_id(vehicle.carrier_id)
-        if carrier is None:
-            continue
+    now = datetime.now(UTC)
+    entries = []
+    status_labels = {
+        "draft": "черновик",
+        "invited": "invited",
+        "pending_moderation": "на модерации",
+        "suspended": "приостановлен",
+        "rejected": "отклонён",
+        "profile_completed": "профиль не активирован",
+    }
 
-        seen_carrier_ids.add(vehicle.carrier_id)
-        label = f"{carrier.company_name} · {vehicle.vehicle_type}"
-        rows.append(
-            [
-                InlineKeyboardButton(
-                    text=label[:64],
-                    callback_data=f"job:{job.id}:send:{vehicle.id}",
-                )
-            ]
+    for carrier in carriers:
+        matching_vehicle = matching_vehicle_by_carrier.get(carrier.id)
+        active_vehicles = active_vehicles_by_carrier.get(carrier.id, [])
+        vehicle = matching_vehicle or (active_vehicles[0] if active_vehicles else None)
+        active_offer_status = active_offer_statuses.get(carrier.id)
+        paid_until = carrier.paid_until
+        if paid_until is not None and paid_until.tzinfo is None:
+            paid_until = paid_until.replace(tzinfo=UTC)
+
+        group = 3
+        sendable = False
+        prefix = ""
+
+        if active_offer_status == "accepted":
+            group = 2
+            prefix = "[оффер принят] "
+        elif active_offer_status == "pending":
+            group = 2
+            prefix = "[оффер ожидает] "
+        elif carrier.status != "active":
+            prefix = f"[{status_labels.get(carrier.status, carrier.status)}] "
+        elif paid_until is None:
+            prefix = "[нет подписки] "
+        elif paid_until < now:
+            prefix = "[подписка истекла] "
+        elif carrier.telegram_user_id is None:
+            prefix = "[нет Telegram] "
+        elif vehicle is None:
+            prefix = "[нет машины] "
+        else:
+            sendable = True
+            if matching_vehicle is not None:
+                group = 0
+            else:
+                group = 1
+                prefix = "[вне фильтра] "
+
+        vehicle_label = f" · {vehicle.vehicle_type}" if vehicle is not None else ""
+        label = f"{prefix}{carrier.company_name}{vehicle_label}"
+        callback_data = (
+            f"job:{job.id}:send:{vehicle.id}"
+            if sendable and vehicle is not None
+            else f"job:{job.id}:noop"
         )
+        entries.append((group, carrier.company_name.casefold(), label, callback_data))
 
-        if len(rows) >= 20:
-            break
+    entries.sort(key=lambda item: (item[0], item[1]))
+    total_entries = len(entries)
+    total_pages = max(1, (total_entries + MANUAL_DISPATCH_PAGE_SIZE - 1) // MANUAL_DISPATCH_PAGE_SIZE)
+    safe_page = min(max(page, 0), total_pages - 1)
+    start = safe_page * MANUAL_DISPATCH_PAGE_SIZE
+    page_entries = entries[start : start + MANUAL_DISPATCH_PAGE_SIZE]
+
+    rows = [
+        [
+            InlineKeyboardButton(
+                text=label[:64],
+                callback_data=callback_data,
+            )
+        ]
+        for _, _, label, callback_data in page_entries
+    ]
+
+    navigation = []
+    if safe_page > 0:
+        navigation.append(
+            InlineKeyboardButton(
+                text="←",
+                callback_data=f"job:{job.id}:manual:{safe_page - 1}",
+            )
+        )
+    navigation.append(
+        InlineKeyboardButton(
+            text=f"{safe_page + 1}/{total_pages}",
+            callback_data=f"job:{job.id}:noop",
+        )
+    )
+    if safe_page + 1 < total_pages:
+        navigation.append(
+            InlineKeyboardButton(
+                text="→",
+                callback_data=f"job:{job.id}:manual:{safe_page + 1}",
+            )
+        )
+    rows.append(navigation)
 
     rows.append(
         [
@@ -544,7 +633,22 @@ async def _build_manual_dispatch_keyboard(
         ]
     )
 
-    return InlineKeyboardMarkup(inline_keyboard=rows)
+    return InlineKeyboardMarkup(inline_keyboard=rows), safe_page, total_pages, total_entries
+
+
+def _manual_dispatch_page_text(
+    *,
+    job_id: int,
+    page: int,
+    total_pages: int,
+    total_entries: int,
+) -> str:
+    return (
+        f"Перевозчики для ручной отправки заявки #{job_id}\n"
+        f"Страница {page + 1}/{total_pages} · всего {total_entries}\n\n"
+        "[вне фильтра] — можно отправить вручную; "
+        "остальные статусы — информационные."
+    )
 
 
 @router.message(Command("job"))
@@ -596,8 +700,15 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
         return
 
     _, raw_job_id, action, *extra = parts
-    if not raw_job_id.isdigit() or action not in {"retry", "manual", "close", "back", "send"}:
+    if not raw_job_id.isdigit() or action not in {"retry", "manual", "close", "back", "send", "noop"}:
         await callback.answer("Некорректное действие.", show_alert=True)
+        return
+
+    if action == "noop":
+        await callback.answer(
+            "Информационная строка: отправка этому перевозчику сейчас недоступна.",
+            show_alert=True,
+        )
         return
 
     if action == "retry":
@@ -731,6 +842,11 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
         return
 
     if action == "manual":
+        if len(extra) > 1 or (extra and not extra[0].isdigit()):
+            await callback.answer("Некорректная страница.", show_alert=True)
+            return
+        requested_page = int(extra[0]) if extra else 0
+
         async with async_session_maker() as session:
             job_repository = JobRepository(session)
             carrier_repository = CarrierRepository(session)
@@ -743,24 +859,31 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
                 )
                 return
 
-            keyboard = await _build_manual_dispatch_keyboard(
+            keyboard, page, total_pages, total_entries = await _build_manual_dispatch_keyboard(
                 job=job,
                 job_repository=job_repository,
                 carrier_repository=carrier_repository,
+                page=requested_page,
             )
 
-        if len(keyboard.inline_keyboard) <= 1:
+        if total_entries == 0:
             await callback.answer(
-                f"Заявка #{raw_job_id}: подходящих новых перевозчиков не найдено.",
+                f"Заявка #{raw_job_id}: реестр перевозчиков пуст.",
                 show_alert=True,
             )
             return
 
         if callback.message:
-            await callback.message.answer(
-                f"Выберите перевозчика для ручной отправки заявки #{raw_job_id}:",
-                reply_markup=keyboard,
+            page_text = _manual_dispatch_page_text(
+                job_id=int(raw_job_id),
+                page=page,
+                total_pages=total_pages,
+                total_entries=total_entries,
             )
+            if extra:
+                await callback.message.edit_text(page_text, reply_markup=keyboard)
+            else:
+                await callback.message.answer(page_text, reply_markup=keyboard)
 
         await callback.answer("Список перевозчиков сформирован.")
         return
@@ -796,6 +919,29 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
             if carrier is None or carrier.telegram_user_id is None:
                 await callback.answer(
                     "У перевозчика нет Telegram ID для отправки.",
+                    show_alert=True,
+                )
+                return
+
+            now = datetime.now(UTC)
+            paid_until = carrier.paid_until
+            if paid_until is not None and paid_until.tzinfo is None:
+                paid_until = paid_until.replace(tzinfo=UTC)
+            if carrier.status != "active":
+                await callback.answer(
+                    "Перевозчик сейчас не активен.",
+                    show_alert=True,
+                )
+                return
+            if paid_until is None or paid_until < now:
+                await callback.answer(
+                    "У перевозчика нет действующей подписки.",
+                    show_alert=True,
+                )
+                return
+            if not vehicle.is_active:
+                await callback.answer(
+                    "Автомобиль перевозчика не активен.",
                     show_alert=True,
                 )
                 return

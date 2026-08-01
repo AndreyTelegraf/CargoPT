@@ -25,6 +25,16 @@ class CarrierRepository:
         result = await self.session.execute(stmt)
         return result.scalar_one_or_none()
 
+    async def list_all_carriers(self) -> list[CarrierCompany]:
+        stmt = select(CarrierCompany).order_by(CarrierCompany.id)
+        result = await self.session.execute(stmt)
+        return list(result.scalars().all())
+
+    async def list_all_vehicles(self) -> list[CarrierVehicle]:
+        stmt = select(CarrierVehicle).order_by(CarrierVehicle.id)
+        result = await self.session.execute(stmt)
+        return list(result.scalars().all())
+
 
     async def get_carrier_by_username(
         self,
