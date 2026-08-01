@@ -40,9 +40,15 @@ assert _parse_job_command_id('/job 26') == 26
 assert _parse_job_command_id('/job_26') == 26
 assert _parse_job_command_id('/job abc') is None
 assert _parse_job_command_id('/jobs') is None
-keyboard = _job_admin_keyboard(26)
+keyboard = _job_admin_keyboard(SimpleNamespace(id=26, status="offered"))
 callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
 assert callbacks == ['job:26:retry', 'job:26:manual', 'job:26:close']
+assigned_keyboard = _job_admin_keyboard(SimpleNamespace(id=26, status="assigned"))
+assert any(
+    button.callback_data == "job:26:complete"
+    for row in assigned_keyboard.inline_keyboard
+    for button in row
+)
 assert _parse_jobs_report_period("/jobs_report") == ("2026-06-25 00:00:00", None)
 assert _parse_jobs_report_period("/jobs_report 2026-06-27") == ("2026-06-27 00:00:00", None)
 assert _parse_jobs_report_period("/jobs_report 2026-06-25 2026-06-28") == ("2026-06-25 00:00:00", "2026-06-28 23:59:59")
@@ -185,10 +191,10 @@ assert 'dispatcher_job_detail' in handler_source
 assert '_build_job_card_text' in handler_source
 assert '_job_admin_keyboard' in handler_source
 assert 'dispatcher_job_admin_action' in handler_source
-assert 'callback_data=f"job:{job_id}:retry"' in handler_source
-assert 'callback_data=f"job:{job_id}:manual"' in handler_source
-assert 'callback_data=f"job:{job_id}:close"' in handler_source
-assert 'reply_markup=_job_admin_keyboard(job.id)' in handler_source
+assert 'callback_data=f"job:{job.id}:retry"' in handler_source
+assert 'callback_data=f"job:{job.id}:manual"' in handler_source
+assert 'callback_data=f"job:{job.id}:close"' in handler_source
+assert 'reply_markup=_job_admin_keyboard(job)' in handler_source
 assert "CargoPT jobs report" in handler_source
 assert "2026-06-25 00:00:00" in handler_source
 assert "_parse_jobs_report_period" in handler_source
@@ -212,7 +218,8 @@ assert 'prefix = "[вне фильтра] "' in handler_source
 assert 'prefix = "[оффер принят] "' in handler_source
 assert 'prefix = "[нет машины] "' in handler_source
 assert 'callback_data=f"job:{job.id}:manual:{safe_page + 1}"' in handler_source
-assert 'action not in {"retry", "manual", "close", "back", "send", "noop"}' in handler_source
+assert '"complete_confirm"' in handler_source
+assert 'Command("job_carriers")' in handler_source
 assert "_manual_dispatch_page_text" in handler_source
 assert 'f"job:{job.id}:send:{vehicle.id}"' in handler_source
 assert 'callback_data=f"job:{job.id}:back"' in handler_source

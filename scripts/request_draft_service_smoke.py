@@ -44,8 +44,8 @@ class FakeJobRepository:
         return job
 
 
-def make_job(*, job_id=1, comment=None, client_phone=None):
-    now = datetime.now(UTC)
+def make_job(*, job_id=1, comment=None, client_phone=None, updated_at=None, draft_step=None):
+    now = updated_at or datetime.now(UTC)
     return Job(
         id=job_id,
         client_telegram_user_id=123,
@@ -63,6 +63,7 @@ def make_job(*, job_id=1, comment=None, client_phone=None):
         utm_content=None,
         landing_version=None,
         status=JobStatus.DRAFT,
+        draft_step=draft_step,
         requested_date=None,
         assigned_at=None,
         started_at=None,
@@ -94,10 +95,31 @@ async def main():
     )
     assert result.job.id == 10
     assert result.reused_existing_draft is True
+    assert result.resume_step == "pickup_address"
     assert repo.created is False
 
-    progressed_draft = make_job(job_id=11, client_phone="+351")
+    progressed_draft = make_job(
+        job_id=11,
+        client_phone="+351",
+        draft_step="contact_whatsapp",
+    )
     repo = FakeJobRepository(latest_draft=progressed_draft)
+    service = RequestDraftService(job_repository=repo)
+    result = await service.create_or_reuse_telegram_draft(
+        client_telegram_user_id=123,
+        client_telegram_username="client",
+    )
+    assert result.job.id == 11
+    assert result.reused_existing_draft is True
+    assert result.resume_step == "contact_whatsapp"
+    assert repo.created is False
+
+    old_draft = make_job(
+        job_id=12,
+        updated_at=datetime(2026, 1, 1, tzinfo=UTC),
+        draft_step="media",
+    )
+    repo = FakeJobRepository(latest_draft=old_draft)
     service = RequestDraftService(job_repository=repo)
     result = await service.create_or_reuse_telegram_draft(
         client_telegram_user_id=123,

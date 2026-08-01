@@ -49,6 +49,11 @@ TESTS=(
   scripts/requested_date_validation_smoke.py
   scripts/job_requested_datetime_handler_smoke.py
   scripts/request_update_service_smoke.py
+  scripts/request_draft_service_smoke.py
+  scripts/stale_draft_archive_smoke.py
+  scripts/backup_sqlite_smoke.py
+  scripts/rate_limit_smoke.py
+  scripts/web_request_contact_rate_limit_smoke.py
   scripts/landing_custom_validation_smoke.py
   scripts/landing_tracking_workspace_dependency_smoke.py
   scripts/job_tracking_page_static_smoke.py
@@ -100,6 +105,8 @@ TESTS=(
   scripts/client_offer_dedupe_smoke.py
   scripts/job_assignment_smoke.py
   scripts/job_assignment_confirmation_smoke.py
+  scripts/job_completion_smoke.py
+  scripts/job_lifecycle_notifications_smoke.py
   scripts/assignment_timeout_smoke.py
   scripts/final_status_action_regression.py
   scripts/carrier_onboarding_service_smoke.py

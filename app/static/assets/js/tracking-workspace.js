@@ -21,6 +21,11 @@
     failDeal: "Não chegámos a acordo com o transportador",
     confirmationRecorded: "A sua confirmação foi registada. Aguardamos a confirmação do transportador.",
     confirmationCompleted: "A confirmação de ambas as partes foi registada. O transporte está confirmado.",
+    completionPrompt: "O transporte foi concluído?",
+    completionConfirm: "Transporte concluído",
+    completionProblem: "Existe um problema",
+    completionRecorded: "A sua resposta foi guardada. Aguardamos a confirmação do transportador.",
+    completionProblemRecorded: "O problema foi registado. A CargoPT irá verificar a situação.",
     offersAvailable: "{count} oferta(s) disponível(eis)",
     defaultRoute: "Pedido CargoPT",
     waitingOffers: "A aguardar ofertas",
@@ -391,6 +396,56 @@
     return actions;
   }
 
+  function renderCompletionActions(entry, options, messages) {
+    const snapshot = entry.tracking_snapshot || {};
+    if (
+      !["assigned", "in_progress"].includes(snapshot.status)
+      || !snapshot.completion_prompted_at
+    ) return null;
+
+    const actions = document.createElement("div");
+    actions.className = "tracking-assignment-actions";
+
+    const note = document.createElement("p");
+    note.className = "tracking-assignment-note";
+
+    if (snapshot.client_completion_status === "problem") {
+      note.textContent = messages.completionProblemRecorded;
+      actions.appendChild(note);
+      return actions;
+    }
+    if (snapshot.client_completion_status === "confirmed") {
+      note.textContent = messages.completionRecorded;
+      actions.appendChild(note);
+      return actions;
+    }
+    if (!options.onCompletionAction) return null;
+
+    note.textContent = messages.completionPrompt;
+    actions.appendChild(note);
+
+    const completionConfirmButton = document.createElement("button");
+    completionConfirmButton.type = "button";
+    completionConfirmButton.className = "button button-small tracking-select-button";
+    completionConfirmButton.textContent = messages.completionConfirm;
+    completionConfirmButton.addEventListener(
+      "click",
+      () => options.onCompletionAction("confirm", completionConfirmButton)
+    );
+
+    const problemButton = document.createElement("button");
+    problemButton.type = "button";
+    problemButton.className = "button button-small button-secondary tracking-select-button";
+    problemButton.textContent = messages.completionProblem;
+    problemButton.addEventListener(
+      "click",
+      () => options.onCompletionAction("problem", problemButton)
+    );
+
+    actions.append(completionConfirmButton, problemButton);
+    return actions;
+  }
+
   function getEmptyStateCopy(entry, messages) {
     const status = String(
       entry.tracking_snapshot?.status || ""
@@ -511,6 +566,16 @@
 
     if (assignmentActions) {
       workspace.appendChild(assignmentActions);
+    }
+
+    const completionActions = renderCompletionActions(
+      entry,
+      options,
+      messages
+    );
+
+    if (completionActions) {
+      workspace.appendChild(completionActions);
     }
 
     container.appendChild(workspace);

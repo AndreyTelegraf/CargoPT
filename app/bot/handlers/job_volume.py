@@ -9,6 +9,7 @@ from app.db.session import async_session_maker
 from app.repositories.job import JobRepository
 from app.services.request_update import RequestUpdateService
 from app.services.input_normalization import parse_first_float
+from app.bot.handlers.job_request_persistence import persist_draft_step
 
 router = Router()
 
@@ -57,6 +58,7 @@ async def job_estimated_volume(
 
         await session.commit()
 
+    await persist_draft_step(job_id=job_id, draft_step="required_loaders")
     await state.set_state(JobRequestStates.required_loaders)
 
     await message.answer(

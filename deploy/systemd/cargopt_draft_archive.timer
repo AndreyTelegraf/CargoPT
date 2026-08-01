@@ -1,0 +1,11 @@
+[Unit]
+Description=Weekly stale CargoPT draft archive
+
+[Timer]
+OnCalendar=Sun *-*-* 03:15:00 UTC
+Persistent=true
+RandomizedDelaySec=300
+Unit=cargopt_draft_archive.service
+
+[Install]
+WantedBy=timers.target

@@ -14,6 +14,14 @@ EXPECTED_SUBJECTS = {
             "CargoPT — transportador confirmado",
         EmailEventType.REQUEST_CANCELLED:
             "CargoPT — pedido cancelado",
+        EmailEventType.MOVE_REMINDER_24H:
+            "CargoPT — transporte previsto para as próximas 24 horas",
+        EmailEventType.MOVE_REMINDER_2H:
+            "CargoPT — transporte previsto para breve",
+        EmailEventType.COMPLETION_REQUESTED:
+            "CargoPT — confirme o resultado do transporte",
+        EmailEventType.REQUEST_COMPLETED:
+            "CargoPT — transporte concluído",
     },
     "en": {
         EmailEventType.REQUEST_RECEIVED:
@@ -26,6 +34,14 @@ EXPECTED_SUBJECTS = {
             "CargoPT — carrier confirmed",
         EmailEventType.REQUEST_CANCELLED:
             "CargoPT — request cancelled",
+        EmailEventType.MOVE_REMINDER_24H:
+            "CargoPT — transport scheduled within 24 hours",
+        EmailEventType.MOVE_REMINDER_2H:
+            "CargoPT — transport scheduled soon",
+        EmailEventType.COMPLETION_REQUESTED:
+            "CargoPT — confirm the transport result",
+        EmailEventType.REQUEST_COMPLETED:
+            "CargoPT — transport completed",
     },
     "ru": {
         EmailEventType.REQUEST_RECEIVED:
@@ -38,6 +54,14 @@ EXPECTED_SUBJECTS = {
             "CargoPT — перевозчик подтверждён",
         EmailEventType.REQUEST_CANCELLED:
             "CargoPT — заявка отменена",
+        EmailEventType.MOVE_REMINDER_24H:
+            "CargoPT — перевозка запланирована в ближайшие сутки",
+        EmailEventType.MOVE_REMINDER_2H:
+            "CargoPT — перевозка начнётся в ближайшее время",
+        EmailEventType.COMPLETION_REQUESTED:
+            "CargoPT — подтвердите результат перевозки",
+        EmailEventType.REQUEST_COMPLETED:
+            "CargoPT — перевозка завершена",
     },
 }
 

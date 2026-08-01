@@ -13,6 +13,7 @@ from app.domain.requested_date import PORTUGAL_TIMEZONE
 from app.domain.requested_date import is_requested_date_in_past
 from app.repositories.job import JobRepository
 from app.services.request_update import RequestUpdateService
+from app.bot.handlers.job_request_persistence import persist_draft_step
 
 router = Router()
 
@@ -110,6 +111,7 @@ async def job_requested_datetime(
 
         await session.commit()
 
+    await persist_draft_step(job_id=job_id, draft_step="item_description")
     await state.set_state(JobRequestStates.item_description)
 
     await message.answer(

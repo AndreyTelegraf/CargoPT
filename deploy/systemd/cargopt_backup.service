@@ -1,0 +1,20 @@
+[Unit]
+Description=CargoPT verified SQLite backup
+After=local-fs.target
+
+[Service]
+Type=oneshot
+User=andrey
+Group=andrey
+WorkingDirectory=/opt/bots/cargoPT_bot
+StateDirectory=cargopt-backups
+StateDirectoryMode=0700
+UMask=0077
+ExecStart=/opt/bots/cargoPT_bot/.venv/bin/python scripts/backup_sqlite.py --database data/cargopt_prod.db --output-dir /var/lib/cargopt-backups --retention-days 30
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/cargopt-backups
+

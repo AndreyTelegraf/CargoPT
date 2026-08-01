@@ -14,6 +14,7 @@ from app.api.web_request_schemas import TrackingOfferSelectResponse
 from app.api.web_request_schemas import TrackingOfferResponse
 from app.api.web_request_schemas import TrackingJobResponse
 from app.api.web_request_schemas import TrackingAssignmentActionResponse
+from app.api.web_request_schemas import TrackingCompletionActionResponse
 from app.services.assignment_notifications import send_assignment_confirmation_requests
 from app.services.assignment_notifications import send_assignment_final_notifications
 from app.config import settings
@@ -32,12 +33,18 @@ from app.services.client_offer_presentation import ClientOfferPresentationServic
 from app.services.carrier_public_profile import carrier_logo_path
 from app.services.email.notification_service import EmailNotificationService
 from app.services.job_lifecycle import InvalidJobStatusTransitionError
+from app.services.job_completion import COMPLETION_CONFIRMED
+from app.services.job_completion import COMPLETION_PROBLEM
+from app.services.job_completion import notify_admins_about_completion_problem
+from app.services.job_completion import record_completion_response
+from app.services.job_completion import send_completion_result_notifications
 from app.services.job_offer import ClientOfferSelectionError
 from app.services.job_offer import JobOfferService
 from app.services.request_intake import RequestIntakeAddress
 from app.services.request_intake import RequestIntakeInput
 from app.services.request_intake import RequestIntakeItem
 from app.services.request_intake import RequestIntakeService
+from app.services.request_intake import WebRequestRateLimitError
 from app.services.tracking_url import build_tracking_path
 
 
@@ -128,47 +135,54 @@ async def submit_web_request(
             enabled=settings.email_enabled,
         ),
     )
-    result = await service.submit_web_intake(
-        RequestIntakeInput(
-            source_locale=service_request.source_locale,
-            customer_name=service_request.customer_name,
-            customer_email=service_request.customer_email,
-            preferred_contact=service_request.preferred_contact,
-            client_phone=service_request.client_phone,
-            client_whatsapp=service_request.client_whatsapp,
-            utm_source=service_request.utm_source,
-            utm_medium=service_request.utm_medium,
-            utm_campaign=service_request.utm_campaign,
-            utm_content=service_request.utm_content,
-            landing_version=service_request.landing_version,
-            requested_date=service_request.requested_date,
-            addresses=tuple(
-                RequestIntakeAddress(
-                    kind=address.kind,
-                    raw_text=address.raw_text,
-                    floor=address.floor,
-                    has_elevator=address.has_elevator,
-                )
-                for address in service_request.addresses
-            ),
-            items=tuple(
-                RequestIntakeItem(
-                    description=item.description,
-                    quantity=item.quantity,
-                )
-                for item in service_request.items
-            ),
-            needs_assembly=service_request.needs_assembly,
-            needs_packing=service_request.needs_packing,
-            needs_tail_lift=service_request.needs_tail_lift,
-            needs_crane=service_request.needs_crane,
-            needs_mobile_lift=service_request.needs_mobile_lift,
-            required_loaders=service_request.required_loaders,
-            estimated_payload_kg=service_request.estimated_payload_kg,
-            estimated_volume_m3=service_request.estimated_volume_m3,
-            comment=service_request.comment,
+    try:
+        result = await service.submit_web_intake(
+            RequestIntakeInput(
+                source_locale=service_request.source_locale,
+                customer_name=service_request.customer_name,
+                customer_email=service_request.customer_email,
+                preferred_contact=service_request.preferred_contact,
+                client_phone=service_request.client_phone,
+                client_whatsapp=service_request.client_whatsapp,
+                utm_source=service_request.utm_source,
+                utm_medium=service_request.utm_medium,
+                utm_campaign=service_request.utm_campaign,
+                utm_content=service_request.utm_content,
+                landing_version=service_request.landing_version,
+                requested_date=service_request.requested_date,
+                addresses=tuple(
+                    RequestIntakeAddress(
+                        kind=address.kind,
+                        raw_text=address.raw_text,
+                        floor=address.floor,
+                        has_elevator=address.has_elevator,
+                    )
+                    for address in service_request.addresses
+                ),
+                items=tuple(
+                    RequestIntakeItem(
+                        description=item.description,
+                        quantity=item.quantity,
+                    )
+                    for item in service_request.items
+                ),
+                needs_assembly=service_request.needs_assembly,
+                needs_packing=service_request.needs_packing,
+                needs_tail_lift=service_request.needs_tail_lift,
+                needs_crane=service_request.needs_crane,
+                needs_mobile_lift=service_request.needs_mobile_lift,
+                required_loaders=service_request.required_loaders,
+                estimated_payload_kg=service_request.estimated_payload_kg,
+                estimated_volume_m3=service_request.estimated_volume_m3,
+                comment=service_request.comment,
+            )
         )
-    )
+    except WebRequestRateLimitError as exc:
+        raise HTTPException(
+            status_code=429,
+            detail="too many requests for this contact",
+            headers={"Retry-After": "86400"},
+        ) from exc
 
     if result.job.id is None:
         raise RuntimeError("web request job id missing")
@@ -224,6 +238,9 @@ async def get_tracking_job(
         route_summary=_format_tracking_route_summary(job),
         client_confirmation_status=job.client_confirmation_status,
         carrier_confirmation_status=job.carrier_confirmation_status,
+        completion_prompted_at=job.completion_prompted_at,
+        client_completion_status=job.client_completion_status,
+        carrier_completion_status=job.carrier_completion_status,
         accepted_offers=[
             TrackingOfferResponse(
                 offer_id=view.offer_id,
@@ -377,4 +394,59 @@ async def confirm_tracking_assignment(
         status=str(updated_job.status),
         client_confirmation_status=updated_job.client_confirmation_status,
         carrier_confirmation_status=updated_job.carrier_confirmation_status,
+    )
+
+
+@router.post(
+    "/track/{tracking_token}/completion/{action}",
+    response_model=TrackingCompletionActionResponse,
+)
+async def confirm_tracking_completion(
+    tracking_token: str,
+    action: str,
+    session: AsyncSession = Depends(get_session),
+    bot=Depends(get_api_bot),
+) -> TrackingCompletionActionResponse:
+    if action not in {"confirm", "problem"}:
+        raise HTTPException(status_code=400, detail="invalid completion action")
+
+    job_repository = JobRepository(session)
+    carrier_repository = CarrierRepository(session)
+    job = await job_repository.get_job_by_tracking_token(tracking_token)
+    if job is None:
+        raise HTTPException(status_code=404, detail="tracking job not found")
+
+    accepted_offer = await job_repository.get_accepted_offer_by_job_id(job.id)
+    completion_status = (
+        COMPLETION_CONFIRMED if action == "confirm" else COMPLETION_PROBLEM
+    )
+    try:
+        updated_job = await record_completion_response(
+            job_repository,
+            job_id=job.id,
+            actor="client",
+            status=completion_status,
+        )
+    except InvalidJobStatusTransitionError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+
+    if completion_status == COMPLETION_PROBLEM:
+        await notify_admins_about_completion_problem(
+            bot=bot,
+            job=updated_job,
+            actor="client",
+        )
+
+    await send_completion_result_notifications(
+        bot=bot,
+        job=updated_job,
+        accepted_offer=accepted_offer,
+        carrier_repository=carrier_repository,
+    )
+
+    return TrackingCompletionActionResponse(
+        job_id=updated_job.id,
+        status=str(updated_job.status),
+        client_completion_status=updated_job.client_completion_status,
+        carrier_completion_status=updated_job.carrier_completion_status,
     )

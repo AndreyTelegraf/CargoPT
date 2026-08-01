@@ -12,6 +12,7 @@ from app.bot.states.job_request import JobRequestStates
 from app.db.session import async_session_maker
 from app.repositories.job import JobRepository
 from app.services.request_update import RequestUpdateService
+from app.bot.handlers.job_request_persistence import persist_draft_step
 
 router = Router()
 
@@ -52,6 +53,10 @@ async def job_media(
             media_type = "video"
             telegram_file_id = message.video.file_id
         elif (message.text or "").strip() in {"-", "Следующий шаг"}:
+            await persist_draft_step(
+                job_id=job_id,
+                draft_step="estimated_volume_m3",
+            )
             await state.set_state(JobRequestStates.estimated_volume_m3)
             await message.answer(
                 "Оцените примерный объём груза.\n\n"

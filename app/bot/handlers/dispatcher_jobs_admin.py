@@ -26,6 +26,7 @@ from app.services.job_matching import JobMatchingService
 from app.services.job_offer import JobOfferService
 from app.services.offer_distribution import OfferDistributionService
 from app.services.offer_notification import send_job_offers_to_carriers
+from app.services.job_completion import send_completion_result_notifications
 
 router = Router()
 
@@ -75,6 +76,7 @@ def _format_dt(value) -> str:
 
 STATUS_LABELS = {
     "draft": "черновик",
+    "draft_expired": "архивный черновик",
     "ready_for_matching": "готова к поиску",
     "matching": "поиск перевозчика",
     "offered": "отправлена перевозчикам",
@@ -468,28 +470,56 @@ def _parse_job_command_id(text: str | None) -> int | None:
     return int(value)
 
 
-def _job_admin_keyboard(job_id: int) -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
+def _job_admin_keyboard(job) -> InlineKeyboardMarkup:
+    rows = [
             [
                 InlineKeyboardButton(
                     text="🔁 Повторить рассылку",
-                    callback_data=f"job:{job_id}:retry",
+                    callback_data=f"job:{job.id}:retry",
                 ),
             ],
             [
                 InlineKeyboardButton(
                     text="🚚 Отправить вручную",
-                    callback_data=f"job:{job_id}:manual",
+                    callback_data=f"job:{job.id}:manual",
                 ),
             ],
             [
                 InlineKeyboardButton(
                     text="✅ Закрыть вручную",
-                    callback_data=f"job:{job_id}:close",
+                    callback_data=f"job:{job.id}:close",
                 ),
             ],
-        ],
+        ]
+    if job.status in {"assigned", "in_progress"}:
+        rows.insert(
+            2,
+            [
+                InlineKeyboardButton(
+                    text="Завершить заявку",
+                    callback_data=f"job:{job.id}:complete",
+                )
+            ],
+        )
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def _job_completion_confirmation_keyboard(job_id: int) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="Подтвердить завершение",
+                    callback_data=f"job:{job_id}:complete_confirm",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text="Отмена",
+                    callback_data=f"job:{job_id}:complete_cancel",
+                )
+            ],
+        ]
     )
 
 
@@ -499,6 +529,7 @@ async def _build_manual_dispatch_keyboard(
     job_repository: JobRepository,
     carrier_repository: CarrierRepository,
     page: int = 0,
+    carrier_query: str | None = None,
 ) -> tuple[InlineKeyboardMarkup, int, int, int]:
     offers = await job_repository.list_offers_by_job(job.id)
     active_offer_statuses = {}
@@ -517,6 +548,15 @@ async def _build_manual_dispatch_keyboard(
     )
 
     carriers = await carrier_repository.list_all_carriers()
+    normalized_query = (carrier_query or "").strip().lstrip("@").casefold()
+    if normalized_query:
+        carriers = [
+            carrier
+            for carrier in carriers
+            if normalized_query in carrier.company_name.casefold().lstrip("@")
+            or normalized_query
+            in (carrier.telegram_username or "").casefold().lstrip("@")
+        ]
     all_vehicles = await carrier_repository.list_all_vehicles()
     active_vehicles_by_carrier = {}
     for vehicle in all_vehicles:
@@ -586,10 +626,11 @@ async def _build_manual_dispatch_keyboard(
 
     entries.sort(key=lambda item: (item[0], item[1]))
     total_entries = len(entries)
-    total_pages = max(1, (total_entries + MANUAL_DISPATCH_PAGE_SIZE - 1) // MANUAL_DISPATCH_PAGE_SIZE)
+    page_size = (total_entries or 1) if normalized_query else MANUAL_DISPATCH_PAGE_SIZE
+    total_pages = max(1, (total_entries + page_size - 1) // page_size)
     safe_page = min(max(page, 0), total_pages - 1)
-    start = safe_page * MANUAL_DISPATCH_PAGE_SIZE
-    page_entries = entries[start : start + MANUAL_DISPATCH_PAGE_SIZE]
+    start = safe_page * page_size
+    page_entries = entries[start : start + page_size]
 
     rows = [
         [
@@ -642,12 +683,18 @@ def _manual_dispatch_page_text(
     page: int,
     total_pages: int,
     total_entries: int,
+    carrier_query: str | None = None,
 ) -> str:
+    search_line = (
+        f"Поиск: {carrier_query}\n" if (carrier_query or "").strip() else ""
+    )
     return (
         f"Перевозчики для ручной отправки заявки #{job_id}\n"
         f"Страница {page + 1}/{total_pages} · всего {total_entries}\n\n"
+        f"{search_line}"
         "[вне фильтра] — можно отправить вручную; "
-        "остальные статусы — информационные."
+        "остальные статусы — информационные.\n\n"
+        f"Поиск: /job_carriers {job_id} @username или название"
     )
 
 
@@ -684,7 +731,57 @@ async def dispatcher_job_detail(message: Message) -> None:
         ),
         parse_mode="HTML",
         disable_web_page_preview=True,
-        reply_markup=_job_admin_keyboard(job.id),
+        reply_markup=_job_admin_keyboard(job),
+    )
+
+
+@router.message(Command("job_carriers"))
+async def dispatcher_job_carrier_search(message: Message) -> None:
+    if message.from_user.id not in CARGOPT_OPERATOR_TELEGRAM_USER_IDS:
+        await message.answer("Команда доступна только диспетчеру CargoPT.")
+        return
+
+    parts = (message.text or "").strip().split(maxsplit=2)
+    if len(parts) != 3 or not parts[1].isdigit() or not parts[2].strip():
+        await message.answer(
+            "Формат: /job_carriers 138 @username или название перевозчика"
+        )
+        return
+
+    job_id = int(parts[1])
+    carrier_query = parts[2].strip()
+    async with async_session_maker() as session:
+        job_repository = JobRepository(session)
+        carrier_repository = CarrierRepository(session)
+        job = await job_repository.get_job_by_id(job_id)
+        if job is None:
+            await message.answer(f"Заявка #{job_id} не найдена.")
+            return
+        keyboard, page, total_pages, total_entries = (
+            await _build_manual_dispatch_keyboard(
+                job=job,
+                job_repository=job_repository,
+                carrier_repository=carrier_repository,
+                carrier_query=carrier_query,
+            )
+        )
+
+    if total_entries == 0:
+        await message.answer(
+            f"По запросу «{_safe(carrier_query)}» перевозчики не найдены.",
+            parse_mode="HTML",
+        )
+        return
+
+    await message.answer(
+        _manual_dispatch_page_text(
+            job_id=job_id,
+            page=page,
+            total_pages=total_pages,
+            total_entries=total_entries,
+            carrier_query=carrier_query,
+        ),
+        reply_markup=keyboard,
     )
 
 
@@ -700,7 +797,17 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
         return
 
     _, raw_job_id, action, *extra = parts
-    if not raw_job_id.isdigit() or action not in {"retry", "manual", "close", "back", "send", "noop"}:
+    if not raw_job_id.isdigit() or action not in {
+        "retry",
+        "manual",
+        "close",
+        "back",
+        "send",
+        "noop",
+        "complete",
+        "complete_confirm",
+        "complete_cancel",
+    }:
         await callback.answer("Некорректное действие.", show_alert=True)
         return
 
@@ -709,6 +816,66 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
             "Информационная строка: отправка этому перевозчику сейчас недоступна.",
             show_alert=True,
         )
+        return
+
+    if action in {"complete", "complete_cancel"}:
+        async with async_session_maker() as session:
+            job = await JobRepository(session).get_job_by_id(int(raw_job_id))
+        if job is None:
+            await callback.answer("Заявка не найдена.", show_alert=True)
+            return
+        if job.status not in {"assigned", "in_progress"}:
+            await callback.answer(
+                f"Заявку в статусе {job.status} нельзя завершить вручную.",
+                show_alert=True,
+            )
+            return
+        if callback.message:
+            keyboard = (
+                _job_completion_confirmation_keyboard(job.id)
+                if action == "complete"
+                else _job_admin_keyboard(job)
+            )
+            await callback.message.edit_reply_markup(reply_markup=keyboard)
+        await callback.answer(
+            "Подтвердите завершение." if action == "complete" else "Действие отменено."
+        )
+        return
+
+    if action == "complete_confirm":
+        async with async_session_maker() as session:
+            job_repository = JobRepository(session)
+            carrier_repository = CarrierRepository(session)
+            job = await job_repository.get_job_by_id(int(raw_job_id))
+            if job is None:
+                await callback.answer("Заявка не найдена.", show_alert=True)
+                return
+            if job.status not in {"assigned", "in_progress"}:
+                await callback.answer(
+                    f"Заявку в статусе {job.status} нельзя завершить вручную.",
+                    show_alert=True,
+                )
+                return
+            job = await job_repository.update_job_status(
+                job_id=job.id,
+                status="completed",
+                updated_at=datetime.now(UTC),
+            )
+            accepted_offer = await job_repository.get_accepted_offer_by_job_id(job.id)
+            await session.commit()
+            await send_completion_result_notifications(
+                bot=callback.bot,
+                job=job,
+                accepted_offer=accepted_offer,
+                carrier_repository=carrier_repository,
+                completed_by_dispatcher=True,
+            )
+        if callback.message:
+            await callback.message.edit_reply_markup(reply_markup=None)
+            await callback.message.answer(
+                f"Заявка #{job.id} вручную переведена в статус completed."
+            )
+        await callback.answer("Заявка завершена.", show_alert=True)
         return
 
     if action == "retry":

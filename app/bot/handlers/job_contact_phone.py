@@ -5,6 +5,7 @@ from aiogram.types import Message
 from app.bot.job_request_keyboards import whatsapp_keyboard
 from app.bot.states.job_request import JobRequestStates
 from app.bot.handlers.job_request_persistence import run_request_update
+from app.bot.handlers.job_request_persistence import persist_draft_step
 
 router = Router()
 
@@ -27,6 +28,7 @@ async def job_contact_phone(
         )
     )
 
+    await persist_draft_step(job_id=job_id, draft_step="contact_whatsapp")
     await state.update_data(client_phone=phone)
     await state.set_state(JobRequestStates.contact_whatsapp)
 

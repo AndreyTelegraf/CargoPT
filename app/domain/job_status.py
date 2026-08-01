@@ -3,6 +3,7 @@ from enum import StrEnum
 
 class JobStatus(StrEnum):
     DRAFT = "draft"
+    DRAFT_EXPIRED = "draft_expired"
     READY_FOR_MATCHING = "ready_for_matching"
     MATCHING = "matching"
     OFFERED = "offered"

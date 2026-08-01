@@ -196,6 +196,17 @@ async def main() -> None:
             )
             assert callback == "job:138:noop"
 
+        search_keyboard, page, total_pages, total_entries = (
+            await _build_manual_dispatch_keyboard(
+                job=job,
+                job_repository=jobs,
+                carrier_repository=carriers,
+                carrier_query="@carrier13",
+            )
+        )
+        assert (page, total_pages, total_entries) == (0, 1, 1)
+        assert "@carrier13" in search_keyboard.inline_keyboard[0][0].text
+
     await engine.dispose()
     print("MANUAL_OFFER_REDISPATCH_SMOKE_OK")
 

@@ -4,6 +4,7 @@ from contextlib import suppress
 from app.bot.dispatcher import build_dispatcher
 from app.scheduler.assignment_timeout import run_assignment_timeout_loop
 from app.scheduler.offer_expiry import run_offer_expiry_loop
+from app.scheduler.job_lifecycle import run_job_lifecycle_loop
 from app.scheduler.subscription_reminder import run_subscription_reminder_loop
 
 
@@ -18,11 +19,15 @@ async def run() -> None:
     assignment_timeout_task = asyncio.create_task(
         run_assignment_timeout_loop(bot=bot)
     )
+    job_lifecycle_task = asyncio.create_task(
+        run_job_lifecycle_loop(bot=bot)
+    )
 
     tasks = (
         offer_expiry_task,
         subscription_reminder_task,
         assignment_timeout_task,
+        job_lifecycle_task,
     )
 
     try:

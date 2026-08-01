@@ -5,6 +5,7 @@ from datetime import timedelta
 
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
+from app.config import settings
 from app.domain.requested_date import validate_requested_date_not_in_past
 from app.services.email.models import EmailEventType
 from app.services.email.notification_service import EmailNotificationService
@@ -56,6 +57,10 @@ class RequestIntakeInput:
     estimated_payload_kg: int | None = None
     estimated_volume_m3: float | None = None
     comment: str | None = None
+
+
+class WebRequestRateLimitError(ValueError):
+    pass
 
 
 class RequestIntakeService:
@@ -163,6 +168,17 @@ class RequestIntakeService:
                     for offer in existing_offers
                 ),
             )
+
+        recent_contact_jobs = (
+            await self.job_repository.count_recent_web_jobs_for_contact(
+                since=datetime.now(UTC) - timedelta(hours=24),
+                customer_email=request.customer_email,
+                client_phone=request.client_phone,
+                client_whatsapp=request.client_whatsapp,
+            )
+        )
+        if recent_contact_jobs >= settings.web_request_contact_daily_limit:
+            raise WebRequestRateLimitError("web contact daily limit reached")
 
         creation = RequestCreationService(job_repository=self.job_repository)
         job = await creation.create_web_draft(

@@ -9,6 +9,7 @@ from app.db.session import async_session_maker
 from app.repositories.job import JobRepository
 from app.services.request_update import RequestUpdateService
 from app.services.input_normalization import parse_first_int
+from app.bot.handlers.job_request_persistence import persist_draft_step
 
 router = Router()
 
@@ -54,6 +55,7 @@ async def job_required_loaders(
 
         await session.commit()
 
+    await persist_draft_step(job_id=job_id, draft_step="contact_phone")
     await state.set_state(JobRequestStates.contact_phone)
 
     await message.answer(

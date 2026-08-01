@@ -263,11 +263,11 @@ for locale, path in FILES.items():
         ),
         (
             "/assets/js/tracking-workspace.js"
-            "?v=carrier-profile-v1"
+            "?v=job-lifecycle-v1"
         ),
         (
             "/assets/js/track.js"
-            "?v=carrier-profile-v1"
+            "?v=job-lifecycle-v1"
         ),
     ):
         assert asset in source, (

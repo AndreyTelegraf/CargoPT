@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import UTC
 from datetime import datetime
+from datetime import timedelta
 
 from app.domain.job_status import JobStatus
 from app.models.job import Job
@@ -17,6 +18,7 @@ class ClientBannedError(ValueError):
 class RequestDraftResult:
     job: Job
     reused_existing_draft: bool
+    resume_step: str
 
 
 def draft_has_no_progress(job, addresses, items) -> bool:
@@ -31,6 +33,42 @@ def draft_has_no_progress(job, addresses, items) -> bool:
         and job.client_whatsapp is None
         and job.comment is None
     )
+
+
+def infer_draft_step(job, addresses, items) -> str:
+    if job.draft_step:
+        return job.draft_step
+
+    pickup = next((address for address in addresses if address.kind == "pickup"), None)
+    dropoff = next(
+        (
+            address
+            for address in addresses
+            if address.kind in {"dropoff", "delivery"}
+        ),
+        None,
+    )
+    if pickup is None:
+        return "pickup_address"
+    if pickup.floor is None or pickup.has_elevator is None:
+        return "pickup_details"
+    if dropoff is None:
+        return "dropoff_address"
+    if dropoff.floor is None or dropoff.has_elevator is None:
+        return "dropoff_details"
+    if job.requested_date is None:
+        return "requested_datetime"
+    if not items:
+        return "item_description"
+    if job.estimated_volume_m3 is None:
+        return "media"
+    if job.required_loaders is None:
+        return "required_loaders"
+    if job.client_phone is None and job.client_whatsapp is None:
+        return "contact_phone"
+    if job.client_whatsapp is None:
+        return "contact_whatsapp"
+    return "comment"
 
 
 class RequestDraftService:
@@ -58,10 +96,19 @@ class RequestDraftService:
             addresses = []
             items = []
 
-        if latest_draft is not None and draft_has_no_progress(latest_draft, addresses, items):
+        recent_cutoff = datetime.now(UTC) - timedelta(days=30)
+        latest_updated_at = (
+            latest_draft.updated_at if latest_draft is not None else None
+        )
+        if latest_updated_at is not None and latest_updated_at.tzinfo is None:
+            latest_updated_at = latest_updated_at.replace(tzinfo=UTC)
+
+        if latest_draft is not None and latest_updated_at >= recent_cutoff:
+            resume_step = infer_draft_step(latest_draft, addresses, items)
             return RequestDraftResult(
                 job=latest_draft,
                 reused_existing_draft=True,
+                resume_step=resume_step,
             )
 
         creation = RequestCreationService(job_repository=self.job_repository)
@@ -75,4 +122,5 @@ class RequestDraftService:
         return RequestDraftResult(
             job=job,
             reused_existing_draft=False,
+            resume_step="pickup_address",
         )

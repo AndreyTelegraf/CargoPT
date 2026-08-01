@@ -7,6 +7,7 @@ from app.bot.job_request_keyboards import floor_keyboard
 from app.bot.states.job_request import JobRequestStates
 from app.db.session import async_session_maker
 from app.repositories.job import JobRepository
+from app.bot.handlers.job_request_persistence import persist_draft_step
 from app.services.request_update import RequestUpdateService
 
 router = Router()
@@ -47,6 +48,7 @@ async def job_dropoff_address(
 
         await session.commit()
 
+    await persist_draft_step(job_id=job_id, draft_step="dropoff_details")
     await state.update_data(dropoff_address_id=address.id)
     await state.set_state(JobRequestStates.dropoff_details)
 

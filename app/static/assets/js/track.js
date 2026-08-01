@@ -381,6 +381,7 @@ let isRefreshingSavedTrackingEntries = false;
 let activeSidebarOfferId = null;
 let isSelectingOffer = false;
 let isSendingAssignmentAction = false;
+let isSendingCompletionAction = false;
 
 const MESSAGE_SETS = {
   pt: {
@@ -430,6 +431,11 @@ const MESSAGE_SETS = {
     failDealShort: "Não chegámos a acordo",
     confirmationRecorded: "A sua confirmação foi registada. Aguardamos a confirmação do transportador.",
     confirmationCompleted: "A confirmação de ambas as partes foi registada. O transporte está confirmado.",
+    completionPrompt: "O transporte foi concluído?",
+    completionConfirm: "Transporte concluído",
+    completionProblem: "Existe um problema",
+    completionRecorded: "A sua resposta foi guardada. Aguardamos a confirmação do transportador.",
+    completionProblemRecorded: "O problema foi registado. A CargoPT irá verificar a situação.",
     detailsTitle: "Detalhes do pedido",
     itemsLabel: "Itens",
     commentLabel: "Comentário",
@@ -498,6 +504,11 @@ const MESSAGE_SETS = {
     failDealShort: "No agreement reached",
     confirmationRecorded: "Your confirmation has been recorded. We are waiting for the carrier's confirmation.",
     confirmationCompleted: "Both confirmations have been recorded. The transport is confirmed.",
+    completionPrompt: "Was the transport completed?",
+    completionConfirm: "Transport completed",
+    completionProblem: "There is a problem",
+    completionRecorded: "Your response was saved. We are waiting for the carrier's confirmation.",
+    completionProblemRecorded: "The problem was recorded. CargoPT will review the situation.",
     detailsTitle: "Request details",
     itemsLabel: "Items",
     commentLabel: "Comment",
@@ -566,6 +577,11 @@ const MESSAGE_SETS = {
     failDealShort: "Не удалось договориться",
     confirmationRecorded: "Ваше подтверждение сохранено. Ожидаем подтверждения перевозчика.",
     confirmationCompleted: "Обе стороны подтвердили заказ. Перевозка подтверждена.",
+    completionPrompt: "Перевозка завершена?",
+    completionConfirm: "Перевозка завершена",
+    completionProblem: "Возникла проблема",
+    completionRecorded: "Ваш ответ сохранён. Ожидаем подтверждение перевозчика.",
+    completionProblemRecorded: "Проблема зафиксирована. CargoPT проверит ситуацию.",
     detailsTitle: "Детали заявки",
     itemsLabel: "Что перевезти",
     commentLabel: "Комментарий",
@@ -644,7 +660,8 @@ function renderTrackingWorkspace(entry) {
     hideStatusAction: true,
     hideShareActions: true,
     onSelectOffer: selectOffer,
-    onAssignmentAction: sendAssignmentAction
+    onAssignmentAction: sendAssignmentAction,
+    onCompletionAction: sendCompletionAction
   });
 }
 
@@ -874,6 +891,38 @@ async function sendAssignmentAction(action, button) {
     }, 2200);
   } finally {
     isSendingAssignmentAction = false;
+  }
+}
+
+async function sendCompletionAction(action, button) {
+  const activeEntry = getActiveTrackingEntry();
+  if (isSendingCompletionAction || !activeEntry) return;
+
+  isSendingCompletionAction = true;
+  const originalText = button.textContent;
+  button.disabled = true;
+  button.textContent = messages.sendingAction;
+
+  try {
+    const response = await fetch(
+      `/api/v1/track/${encodeURIComponent(activeEntry.token)}/completion/${encodeURIComponent(action)}`,
+      {
+        method: "POST",
+        headers: {"Accept": "application/json"}
+      }
+    );
+
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    await refreshActiveTrackingEntry();
+  } catch (error) {
+    console.error(error);
+    button.disabled = false;
+    button.textContent = messages.retryOffer;
+    window.setTimeout(() => {
+      if (!button.disabled) button.textContent = originalText;
+    }, 2200);
+  } finally {
+    isSendingCompletionAction = false;
   }
 }
 

@@ -7,6 +7,7 @@ from app.bot.states.job_request import JobRequestStates
 from app.db.session import async_session_maker
 from app.repositories.job import JobRepository
 from app.services.request_update import RequestUpdateService
+from app.bot.handlers.job_request_persistence import persist_draft_step
 
 router = Router()
 
@@ -40,6 +41,7 @@ async def job_contact_whatsapp(
 
         await session.commit()
 
+    await persist_draft_step(job_id=job_id, draft_step="comment")
     await state.set_state(JobRequestStates.comment)
 
     await message.answer(

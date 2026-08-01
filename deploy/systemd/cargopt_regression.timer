@@ -1,0 +1,11 @@
+[Unit]
+Description=Nightly CargoPT regression suite
+
+[Timer]
+OnCalendar=*-*-* 04:00:00 UTC
+Persistent=true
+RandomizedDelaySec=300
+Unit=cargopt_regression.service
+
+[Install]
+WantedBy=timers.target

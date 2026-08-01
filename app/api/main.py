@@ -5,9 +5,17 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.api.web_requests import router as web_requests_router
+from app.api.rate_limit import WebRequestRateLimitMiddleware
+from app.config import settings
 
 
 app = FastAPI(title="CargoPT API")
+app.add_middleware(
+    WebRequestRateLimitMiddleware,
+    max_requests=settings.web_request_rate_limit_count,
+    window_seconds=settings.web_request_rate_limit_window_seconds,
+    max_body_bytes=settings.web_request_max_body_bytes,
+)
 app.include_router(web_requests_router, prefix="/api/v1")
 
 

@@ -1,0 +1,24 @@
+name: CargoPT critical checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  critical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run critical suite
+        env:
+          PYTHON_BIN: python
+          BOT_TOKEN: 123456:TESTTOKEN
+          DATABASE_URL: sqlite+aiosqlite:///data/cargopt_dev.db
+        run: scripts/run_critical_suite.sh

@@ -27,6 +27,7 @@ _STATUS_EMAIL_EVENTS = {
     "assigned_pending_confirmation": EmailEventType.CARRIER_SELECTED,
     "assigned": EmailEventType.ASSIGNMENT_CONFIRMED,
     "cancelled": EmailEventType.REQUEST_CANCELLED,
+    "completed": EmailEventType.REQUEST_COMPLETED,
 }
 
 
@@ -227,6 +228,34 @@ class JobRepository:
         result = await self.session.execute(stmt)
         return list(result.scalars().unique().all())
 
+    async def count_recent_web_jobs_for_contact(
+        self,
+        *,
+        since,
+        customer_email: str | None,
+        client_phone: str | None,
+        client_whatsapp: str | None,
+    ) -> int:
+        contact_filters = []
+        if customer_email:
+            contact_filters.append(
+                func.lower(Job.customer_email) == customer_email.strip().lower()
+            )
+        if client_phone:
+            contact_filters.append(Job.client_phone == client_phone.strip())
+        if client_whatsapp:
+            contact_filters.append(Job.client_whatsapp == client_whatsapp.strip())
+        if not contact_filters:
+            return 0
+
+        result = await self.session.execute(
+            select(func.count(Job.id))
+            .where(Job.source == "web_form")
+            .where(Job.created_at >= since)
+            .where(or_(*contact_filters))
+        )
+        return int(result.scalar_one())
+
     async def get_cancelled_from_status(
         self,
         job_id: int,
@@ -372,13 +401,22 @@ class JobRepository:
         stmt = (
             select(Job)
             .where(
-                Job.status.in_(
+                or_(
+                    Job.status.in_(
+                        (
+                            "manual_review_required",
+                            "no_carriers_found",
+                            "offers_exhausted",
+                            "expired_without_response",
+                        )
+                    ),
                     (
-                        "manual_review_required",
-                        "no_carriers_found",
-                        "offers_exhausted",
-                        "expired_without_response",
-                    )
+                        Job.status.in_(("offered", "assigned", "in_progress"))
+                        & Job.requested_date.is_not(None)
+                        & (Job.requested_date < datetime.now(UTC))
+                    ),
+                    Job.client_completion_status == "problem",
+                    Job.carrier_completion_status == "problem",
                 )
             )
             .order_by(
@@ -425,6 +463,117 @@ class JobRepository:
             job.offers_count = counts_by_job_id.get(job.id, 0)
 
         return jobs
+
+    async def list_jobs_for_24h_reminder(
+        self,
+        *,
+        now,
+        cutoff,
+        limit: int = 100,
+    ) -> list[Job]:
+        stmt = (
+            select(Job)
+            .where(Job.status.in_(("assigned", "in_progress")))
+            .where(Job.requested_date.is_not(None))
+            .where(Job.requested_date > now)
+            .where(Job.requested_date <= cutoff)
+            .where(Job.reminder_24h_sent_at.is_(None))
+            .order_by(Job.requested_date, Job.id)
+            .limit(limit)
+        )
+        result = await self.session.execute(stmt)
+        return list(result.scalars().all())
+
+    async def list_jobs_for_2h_reminder(
+        self,
+        *,
+        now,
+        cutoff,
+        limit: int = 100,
+    ) -> list[Job]:
+        stmt = (
+            select(Job)
+            .where(Job.status.in_(("assigned", "in_progress")))
+            .where(Job.requested_date.is_not(None))
+            .where(Job.requested_date > now)
+            .where(Job.requested_date <= cutoff)
+            .where(Job.reminder_2h_sent_at.is_(None))
+            .order_by(Job.requested_date, Job.id)
+            .limit(limit)
+        )
+        result = await self.session.execute(stmt)
+        return list(result.scalars().all())
+
+    async def list_jobs_for_completion_prompt(
+        self,
+        *,
+        cutoff,
+        not_before,
+        limit: int = 100,
+    ) -> list[Job]:
+        stmt = (
+            select(Job)
+            .where(Job.status.in_(("assigned", "in_progress")))
+            .where(Job.requested_date.is_not(None))
+            .where(Job.requested_date <= cutoff)
+            .where(Job.requested_date >= not_before)
+            .where(Job.completion_prompted_at.is_(None))
+            .order_by(Job.requested_date, Job.id)
+            .limit(limit)
+        )
+        result = await self.session.execute(stmt)
+        return list(result.scalars().all())
+
+    async def mark_lifecycle_notification_sent(
+        self,
+        *,
+        job_id: int,
+        notification: str,
+        sent_at,
+    ) -> Job:
+        fields = {
+            "reminder_24h": "reminder_24h_sent_at",
+            "reminder_2h": "reminder_2h_sent_at",
+            "completion_prompt": "completion_prompted_at",
+        }
+        field = fields.get(notification)
+        if field is None:
+            raise ValueError("invalid lifecycle notification")
+
+        job = await self.get_job_by_id(job_id)
+        if job is None:
+            raise ValueError("job not found")
+        if getattr(job, field) is None:
+            setattr(job, field, sent_at)
+            job.updated_at = sent_at
+            await self.session.flush()
+        return job
+
+    async def record_completion_status(
+        self,
+        *,
+        job_id: int,
+        actor: str,
+        status: str,
+        updated_at,
+    ) -> Job:
+        fields = {
+            "client": "client_completion_status",
+            "carrier": "carrier_completion_status",
+        }
+        field = fields.get(actor)
+        if field is None:
+            raise ValueError("invalid completion actor")
+        if status not in {"confirmed", "problem"}:
+            raise ValueError("invalid completion status")
+
+        job = await self.get_job_by_id(job_id)
+        if job is None:
+            raise ValueError("job not found")
+        setattr(job, field, status)
+        job.updated_at = updated_at
+        await self.session.flush()
+        return job
 
     async def add_address(self, address: JobAddress) -> JobAddress:
         self.session.add(address)
@@ -1046,4 +1195,40 @@ class JobRepository:
 
         await self.session.flush()
 
+        return job
+
+    async def update_draft_step(
+        self,
+        *,
+        job_id: int,
+        draft_step: str,
+        updated_at,
+    ) -> Job:
+        job = await self.get_job_by_id(job_id)
+        if job is None:
+            raise ValueError("job not found")
+        if job.status != "draft":
+            raise ValueError("job is not a draft")
+        job.draft_step = draft_step
+        job.updated_at = updated_at
+        await self.session.flush()
+        return job
+
+    async def archive_draft(self, *, job_id: int, updated_at) -> Job:
+        job = await self.get_job_by_id(job_id)
+        if job is None:
+            raise ValueError("job not found")
+        if job.status != "draft":
+            raise ValueError("job is not a draft")
+        job.status = "draft_expired"
+        job.updated_at = updated_at
+        self.session.add(
+            JobStatusEvent(
+                job_id=job.id,
+                from_status="draft",
+                to_status="draft_expired",
+                occurred_at=updated_at,
+            )
+        )
+        await self.session.flush()
         return job

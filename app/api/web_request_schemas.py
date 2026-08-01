@@ -144,6 +144,9 @@ class TrackingJobResponse(BaseModel):
     route_summary: str | None
     client_confirmation_status: str | None
     carrier_confirmation_status: str | None
+    completion_prompted_at: datetime | None
+    client_completion_status: str | None
+    carrier_completion_status: str | None
     accepted_offers: list[TrackingOfferResponse]
 
 
@@ -158,3 +161,10 @@ class TrackingAssignmentActionResponse(BaseModel):
     status: str
     client_confirmation_status: str | None
     carrier_confirmation_status: str | None
+
+
+class TrackingCompletionActionResponse(BaseModel):
+    job_id: int
+    status: str
+    client_completion_status: str | None
+    carrier_completion_status: str | None

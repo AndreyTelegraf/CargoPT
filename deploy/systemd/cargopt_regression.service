@@ -1,0 +1,14 @@
+[Unit]
+Description=Run CargoPT regression suite
+After=network.target
+
+[Service]
+Type=oneshot
+User=andrey
+Group=andrey
+WorkingDirectory=/opt/bots/cargoPT_bot
+ExecStart=/opt/bots/cargoPT_bot/scripts/run_regression_suite.sh
+TimeoutStartSec=30min
+NoNewPrivileges=true
+PrivateTmp=true
+

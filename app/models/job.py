@@ -49,6 +49,7 @@ class Job(Base):
     landing_version: Mapped[str | None] = mapped_column(String)
 
     status: Mapped[str] = mapped_column(String, nullable=False)
+    draft_step: Mapped[str | None] = mapped_column(String)
 
     requested_date: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
@@ -59,6 +60,18 @@ class Job(Base):
 
     client_confirmation_status: Mapped[str | None] = mapped_column(String)
     carrier_confirmation_status: Mapped[str | None] = mapped_column(String)
+
+    reminder_24h_sent_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True)
+    )
+    reminder_2h_sent_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True)
+    )
+    completion_prompted_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True)
+    )
+    client_completion_status: Mapped[str | None] = mapped_column(String)
+    carrier_completion_status: Mapped[str | None] = mapped_column(String)
 
     needs_assembly: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     needs_packing: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)

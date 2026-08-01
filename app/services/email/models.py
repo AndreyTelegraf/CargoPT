@@ -8,6 +8,10 @@ class EmailEventType(StrEnum):
     CARRIER_SELECTED = "carrier_selected"
     ASSIGNMENT_CONFIRMED = "assignment_confirmed"
     REQUEST_CANCELLED = "request_cancelled"
+    MOVE_REMINDER_24H = "move_reminder_24h"
+    MOVE_REMINDER_2H = "move_reminder_2h"
+    COMPLETION_REQUESTED = "completion_requested"
+    REQUEST_COMPLETED = "request_completed"
 
 
 class EmailDeliveryStatus(StrEnum):

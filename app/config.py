@@ -15,6 +15,11 @@ class Settings(BaseSettings):
     self_ad_every_n: int = 9
     self_ad_state_path: str = "data/self_ad_counter.json"
 
+    web_request_rate_limit_count: int = Field(default=20, gt=0)
+    web_request_rate_limit_window_seconds: int = Field(default=3600, gt=0)
+    web_request_max_body_bytes: int = Field(default=65536, gt=0)
+    web_request_contact_daily_limit: int = Field(default=3, gt=0)
+
     email_enabled: bool = False
     email_transport: str = "smtp"
     email_public_base_url: str = "https://cargopt.pt"

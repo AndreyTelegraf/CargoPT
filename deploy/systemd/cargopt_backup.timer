@@ -1,0 +1,11 @@
+[Unit]
+Description=Run CargoPT SQLite backup daily
+
+[Timer]
+OnCalendar=*-*-* 02:15:00 UTC
+Persistent=true
+RandomizedDelaySec=300
+Unit=cargopt_backup.service
+
+[Install]
+WantedBy=timers.target

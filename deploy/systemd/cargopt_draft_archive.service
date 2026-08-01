@@ -1,0 +1,16 @@
+[Unit]
+Description=Archive stale CargoPT request drafts
+After=cargopt-backup.service
+
+[Service]
+Type=oneshot
+User=andrey
+Group=andrey
+WorkingDirectory=/opt/bots/cargoPT_bot
+ExecStart=/opt/bots/cargoPT_bot/.venv/bin/python /opt/bots/cargoPT_bot/scripts/cleanup_empty_old_drafts.py --days 30 --apply
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/bots/cargoPT_bot/data
+
