@@ -235,7 +235,7 @@ def main() -> None:
         ) in ru_home
 
         assert (
-            'href="/guias/">See guides</a>'
+            'href="/en/guides/">See guides</a>'
         ) in en_home
         assert (
             'class="form-note guide-language-note">'
@@ -243,7 +243,7 @@ def main() -> None:
         ) in en_home
 
         assert (
-            'href="/guias/">Смотреть гайды</a>'
+            'href="/ru/guides/">Смотреть гайды</a>'
         ) in ru_home
         assert (
             'class="form-note guide-language-note">'
