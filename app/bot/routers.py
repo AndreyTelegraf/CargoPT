@@ -45,9 +45,11 @@ from app.bot.handlers.company_phone import router as company_phone_router
 from app.bot.handlers.company_email import router as company_email_router
 from app.bot.handlers.carrier_moderation_submit import router as carrier_moderation_submit_router
 from app.bot.handlers.carrier_public_profile import router as carrier_public_profile_router
+from app.bot.handlers.meta_operations import router as meta_operations_router
 
 
 def setup_routers(dp: Dispatcher) -> None:
+    dp.include_router(meta_operations_router)
     dp.include_router(invite_router)
     dp.include_router(start_router)
     dp.include_router(carrier_invite_admin_router)

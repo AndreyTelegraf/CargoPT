@@ -5,6 +5,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.api.web_requests import router as web_requests_router
+from app.api.meta_operations import router as meta_operations_router
 from app.api.rate_limit import WebRequestRateLimitMiddleware
 from app.config import settings
 
@@ -17,6 +18,7 @@ app.add_middleware(
     max_body_bytes=settings.web_request_max_body_bytes,
 )
 app.include_router(web_requests_router, prefix="/api/v1")
+app.include_router(meta_operations_router)
 
 
 @app.get("/health")

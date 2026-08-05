@@ -36,6 +36,13 @@ class Settings(BaseSettings):
     email_max_attempts: int = Field(default=5, gt=0)
     email_retry_base_seconds: int = Field(default=60, gt=0)
 
+    meta_operations_enabled: bool = False
+    meta_operations_inbound_token: SecretStr = SecretStr("")
+    meta_operations_admin_username: str = ""
+    meta_operations_admin_password: SecretStr = SecretStr("")
+    meta_operations_telegram_chat_ids: str = ""
+    meta_operations_alert_threshold: float = Field(default=0.6, ge=0, le=1)
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
@@ -72,6 +79,20 @@ class Settings(BaseSettings):
             )
 
         return self
+
+    @property
+    def meta_operations_chat_ids(self) -> tuple[int, ...]:
+        result: list[int] = []
+        for raw_item in self.meta_operations_telegram_chat_ids.split(","):
+            item = raw_item.strip()
+            if not item:
+                continue
+            if not item.lstrip("-").isdigit():
+                raise ValueError(
+                    "META_OPERATIONS_TELEGRAM_CHAT_IDS must contain integers"
+                )
+            result.append(int(item))
+        return tuple(dict.fromkeys(result))
 
 
 settings = Settings()
