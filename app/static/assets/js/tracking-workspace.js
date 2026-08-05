@@ -51,7 +51,8 @@
     volumeLabel: "Volume",
     equipmentLabel: "Equipamento",
     carrierContactLabel: "Contacto do transportador",
-    carrierNoteLabel: "Nota do transportador"
+    carrierNoteLabel: "Nota do transportador",
+    shortLeadTimeWarning: "Faltam menos de três dias para o transporte. O tempo para encontrar um transportador pode não ser suficiente. Considere alterar a data do transporte ou esteja preparado para poucas respostas dos transportadores."
   };
 
   function absoluteUrl(path) {
@@ -547,6 +548,14 @@
 
     const workspace = document.createElement("div");
     workspace.className = "tracking-workspace-content";
+
+    if (entry.tracking_snapshot?.short_lead_time_warning) {
+      const warning = document.createElement("aside");
+      warning.className = "tracking-short-lead-warning";
+      warning.setAttribute("role", "status");
+      warning.textContent = messages.shortLeadTimeWarning;
+      workspace.appendChild(warning);
+    }
 
     if (offers.length > 0 && !options.hideOffers) {
       workspace.appendChild(

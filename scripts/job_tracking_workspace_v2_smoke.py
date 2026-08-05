@@ -33,10 +33,10 @@ def main() -> None:
     assert "Os seus pedidos" not in html
     assert "track-new-request" not in html
 
-    assert "/assets/css/track.css?v=tracking-header-wrap-v1" in html
+    assert "/assets/css/track.css?v=short-lead-v1" in html
     assert "/assets/js/progress-header.js?v=progress-stage-v5" in html
-    assert "/assets/js/tracking-workspace.js?v=job-lifecycle-v1" in html
-    assert "/assets/js/track.js?v=job-lifecycle-v1" in html
+    assert "/assets/js/tracking-workspace.js?v=short-lead-v1" in html
+    assert "/assets/js/track.js?v=short-lead-v1" in html
 
     assert (
         'document.querySelector("#otherRequestsPanel")'

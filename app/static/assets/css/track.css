@@ -73,6 +73,16 @@
   min-height: 0;
 }
 
+.track-workspace-shell .tracking-short-lead-warning {
+  padding: var(--space-4);
+  border: 1px solid var(--warning-border);
+  border-radius: var(--surface-radius-card);
+  background: var(--warning-fill);
+  color: var(--text);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-copy);
+}
+
 .track-workspace-shell .tracking-waiting-state {
   display: grid;
   align-content: center;

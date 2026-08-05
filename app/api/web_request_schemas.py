@@ -140,6 +140,7 @@ class TrackingJobResponse(BaseModel):
     job_id: int
     status: str
     cancelled_from_status: str | None = None
+    short_lead_time_warning: bool = False
     tracking_token: str
     route_summary: str | None
     client_confirmation_status: str | None

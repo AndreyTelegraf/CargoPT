@@ -454,7 +454,8 @@ const MESSAGE_SETS = {
     volumeLabel: "Volume",
     equipmentLabel: "Equipamento",
     carrierContactLabel: "Contacto do transportador",
-    carrierNoteLabel: "Nota do transportador"
+    carrierNoteLabel: "Nota do transportador",
+    shortLeadTimeWarning: "Faltam menos de três dias para o transporte. O tempo para encontrar um transportador pode não ser suficiente. Considere alterar a data do transporte ou esteja preparado para poucas respostas dos transportadores."
   },
 
   en: {
@@ -527,7 +528,8 @@ const MESSAGE_SETS = {
     volumeLabel: "Volume",
     equipmentLabel: "Equipment",
     carrierContactLabel: "Carrier contact",
-    carrierNoteLabel: "Carrier note"
+    carrierNoteLabel: "Carrier note",
+    shortLeadTimeWarning: "There are fewer than three days before the transport. There may not be enough time to find a carrier. Consider changing the transport date or be prepared for a low response from carriers."
   },
 
   ru: {
@@ -600,7 +602,8 @@ const MESSAGE_SETS = {
     volumeLabel: "Объём",
     equipmentLabel: "Оборудование",
     carrierContactLabel: "Контакт перевозчика",
-    carrierNoteLabel: "Комментарий перевозчика"
+    carrierNoteLabel: "Комментарий перевозчика",
+    shortLeadTimeWarning: "До перевозки осталось меньше трёх суток. Времени на поиск перевозчика может быть недостаточно. Рассмотрите возможность изменить дату перевозки или будьте готовы к низкому отклику со стороны перевозчиков."
   }
 };
 
