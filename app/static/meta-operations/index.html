@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Meta Operations · CargoPT</title>
+  <style>
+    :root { --navy:#172338; --blue:#2458d3; --line:#dfe5ee; --muted:#667085; --bg:#f5f7fa; --green:#117a4b; --red:#b42318; --amber:#a15c00; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:#182230; font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    header { background:var(--navy); color:#fff; padding:20px max(22px,calc((100vw - 1280px)/2)); display:flex; align-items:center; justify-content:space-between; }
+    header h1 { margin:0; font-size:21px; letter-spacing:.1px; }
+    header small { color:#b9c5d6; }
+    main { max-width:1280px; margin:0 auto; padding:24px 22px 50px; }
+    .metrics { display:grid; grid-template-columns:repeat(6,minmax(120px,1fr)); gap:12px; margin-bottom:18px; }
+    .metric,.panel { background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 1px 2px rgba(16,24,40,.04); }
+    .metric { padding:14px 16px; }
+    .metric span { display:block; color:var(--muted); font-size:12px; }
+    .metric strong { font-size:25px; }
+    .toolbar { display:flex; gap:10px; align-items:center; margin:14px 0; flex-wrap:wrap; }
+    button,select,input,textarea { font:inherit; }
+    button,select { min-height:38px; border:1px solid var(--line); background:#fff; border-radius:8px; padding:7px 12px; }
+    button { cursor:pointer; }
+    button.primary { color:#fff; background:var(--blue); border-color:var(--blue); }
+    button.active { color:#fff; background:var(--navy); border-color:var(--navy); }
+    .panel { overflow:hidden; }
+    .empty,.loading,.error { padding:32px; text-align:center; color:var(--muted); }
+    .error { color:var(--red); }
+    table { width:100%; border-collapse:collapse; }
+    th { padding:11px 12px; background:#f8fafc; text-align:left; color:#475467; font-size:12px; border-bottom:1px solid var(--line); }
+    td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; }
+    tr:last-child td { border-bottom:0; }
+    .excerpt { max-width:560px; white-space:pre-wrap; }
+    .meta { color:var(--muted); font-size:12px; margin-top:5px; }
+    .pill { display:inline-block; border-radius:999px; padding:3px 8px; font-size:12px; font-weight:600; background:#eef2f6; }
+    .pill.target { color:var(--green); background:#eaf7f0; }
+    .pill.review,.pill.new { color:var(--amber); background:#fff3dd; }
+    .pill.noise { color:var(--muted); }
+    .pill.handled { color:var(--blue); background:#edf2ff; }
+    a { color:var(--blue); text-decoration:none; }
+    .actions { display:flex; flex-wrap:wrap; gap:6px; min-width:190px; }
+    .actions button { min-height:30px; padding:4px 8px; font-size:12px; }
+    .switch { width:44px; min-height:26px; padding:0; border-radius:20px; background:#d0d5dd; position:relative; }
+    .switch::after { content:""; position:absolute; width:20px; height:20px; border-radius:50%; background:#fff; left:3px; top:2px; transition:.15s; }
+    .switch.on { background:var(--green); }
+    .switch.on::after { left:19px; }
+    .testbox { display:grid; grid-template-columns:1fr 300px; gap:16px; padding:18px; }
+    textarea { width:100%; min-height:150px; resize:vertical; border:1px solid var(--line); border-radius:8px; padding:12px; }
+    .result { background:#f8fafc; border:1px solid var(--line); border-radius:8px; padding:14px; white-space:pre-wrap; }
+    [hidden] { display:none !important; }
+    @media(max-width:850px) { .metrics{grid-template-columns:repeat(2,1fr)} .testbox{grid-template-columns:1fr} table{min-width:900px}.panel{overflow:auto} }
+  </style>
+</head>
+<body>
+  <header><h1>CargoPT · Meta Operations</h1><small id="updated">Загрузка…</small></header>
+  <main>
+    <section class="metrics" id="metrics"></section>
+    <nav class="toolbar">
+      <button class="active" data-view="events">Запросы</button>
+      <button data-view="groups">Группы</button>
+      <button data-view="test">Проверка классификатора</button>
+      <span style="flex:1"></span>
+      <select id="statusFilter" aria-label="Фильтр статуса">
+        <option value="">Все статусы</option><option value="new">Новые</option><option value="target">Целевые</option><option value="noise">Мусор</option><option value="handled">Обработано</option>
+      </select>
+      <button id="refresh">Обновить</button>
+    </nav>
+    <section class="panel" id="eventsView"><div class="loading">Загрузка запросов…</div></section>
+    <section class="panel" id="groupsView" hidden><div class="loading">Загрузка групп…</div></section>
+    <section class="panel" id="testView" hidden>
+      <div class="testbox">
+        <div><textarea id="testText" placeholder="Вставьте пример поста или комментария"></textarea><div class="toolbar"><button class="primary" id="classify">Проверить</button></div></div>
+        <div class="result" id="testResult">Результат появится здесь.</div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const api='/api/v1/meta-operations/admin';
+    const esc=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    async function call(path,opts={}){const r=await fetch(api+path,{headers:{'Content-Type':'application/json',...(opts.headers||{})},...opts});if(!r.ok)throw new Error((await r.json().catch(()=>({}))).detail||`HTTP ${r.status}`);return r.json()}
+    function metric(label,value){return `<div class="metric"><span>${label}</span><strong>${value}</strong></div>`}
+    async function loadSummary(){const s=await call('/summary');document.querySelector('#metrics').innerHTML=metric('Новые',s.new)+metric('Целевые',s.target)+metric('Обработано',s.handled)+metric('Мусор',s.noise)+metric('Активные группы',s.groups_enabled)+metric('Всего групп',s.groups_total);document.querySelector('#updated').textContent='Обновлено '+new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})}
+    async function loadEvents(){const box=document.querySelector('#eventsView');box.innerHTML='<div class="loading">Загрузка запросов…</div>';try{const status=document.querySelector('#statusFilter').value;const rows=await call('/events?limit=200'+(status?'&status='+encodeURIComponent(status):''));if(!rows.length){box.innerHTML='<div class="empty">Подходящих запросов пока нет.</div>';return}box.innerHTML=`<table><thead><tr><th>Оценка</th><th>Запрос</th><th>Источник</th><th>Статус</th><th>Действия</th></tr></thead><tbody>${rows.map(e=>`<tr><td><span class="pill ${esc(e.classification)}">${esc(e.classification)} · ${e.score}</span><div class="meta">${esc(e.language||'—')}</div></td><td><div class="excerpt">${esc(e.text.slice(0,900))}</div><div class="meta">${new Date(e.received_at).toLocaleString('ru-RU')}</div></td><td>${e.group?`<a href="${esc(e.group.canonical_url)}" target="_blank" rel="noopener">${esc(e.group.name)}</a><div class="meta">${esc(e.group.region||'')}</div>`:'Не сопоставлено'}${e.source_url?`<div><a href="${esc(e.source_url)}" target="_blank" rel="noopener">Открыть пост</a></div>`:''}</td><td><span class="pill ${esc(e.status)}">${esc(e.status)}</span></td><td><div class="actions"><button onclick="setStatus(${e.id},'target')">Целевой</button><button onclick="setStatus(${e.id},'noise')">Мусор</button><button onclick="setStatus(${e.id},'handled')">Обработано</button>${e.draft_reply?`<button onclick='copyReply(${JSON.stringify(e.draft_reply)})'>Скопировать ответ</button>`:''}</div></td></tr>`).join('')}</tbody></table>`}catch(e){box.innerHTML='<div class="error">'+esc(e.message)+'</div>'}}
+    async function setStatus(id,status){await call(`/events/${id}/status`,{method:'PATCH',body:JSON.stringify({status})});await Promise.all([loadSummary(),loadEvents()])}
+    async function copyReply(text){await navigator.clipboard.writeText(text)}
+    async function loadGroups(){const box=document.querySelector('#groupsView');box.innerHTML='<div class="loading">Загрузка групп…</div>';try{const rows=await call('/groups');box.innerHTML=`<table><thead><tr><th>Включена</th><th>Группа</th><th>Регион</th><th>Категория</th><th>Приоритет</th><th>Проверка</th></tr></thead><tbody>${rows.map(g=>`<tr><td><button class="switch ${g.enabled?'on':''}" aria-label="Изменить состояние" onclick="toggleGroup(${g.id},${!g.enabled})"></button></td><td><a href="${esc(g.canonical_url)}" target="_blank" rel="noopener">${esc(g.name)}</a></td><td>${esc(g.region||'—')}</td><td>${esc(g.category||'—')}</td><td>${g.priority}</td><td>${esc(g.review_status)}<div class="meta">Правила: ${esc(g.rules_checked||'—')} · Реклама: ${esc(g.ads_allowed||'—')}</div></td></tr>`).join('')}</tbody></table>`}catch(e){box.innerHTML='<div class="error">'+esc(e.message)+'</div>'}}
+    async function toggleGroup(id,enabled){await call(`/groups/${id}/enabled`,{method:'PATCH',body:JSON.stringify({enabled})});await Promise.all([loadSummary(),loadGroups()])}
+    document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('active',x===b));['events','groups','test'].forEach(v=>document.querySelector('#'+v+'View').hidden=v!==b.dataset.view);document.querySelector('#statusFilter').hidden=b.dataset.view!=='events';if(b.dataset.view==='groups')loadGroups()}));
+    document.querySelector('#refresh').onclick=()=>Promise.all([loadSummary(),loadEvents()]);document.querySelector('#statusFilter').onchange=loadEvents;
+    document.querySelector('#classify').onclick=async()=>{const result=document.querySelector('#testResult');try{const r=await call('/classify',{method:'POST',body:JSON.stringify({text:document.querySelector('#testText').value})});result.textContent=`${r.classification} · ${r.score}/100 · ${r.language}\n\n${r.draft_reply}\n\nПризнаки: ${r.matched_terms.join(', ')||'нет'}`}catch(e){result.textContent=e.message}};
+    Promise.all([loadSummary(),loadEvents()]).catch(e=>document.querySelector('#eventsView').innerHTML='<div class="error">'+esc(e.message)+'</div>');
+  </script>
+</body>
+</html>
