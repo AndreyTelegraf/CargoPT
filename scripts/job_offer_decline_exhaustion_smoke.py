@@ -19,7 +19,7 @@ assert "has_open_offer = any(" in source
 assert "OfferDistributionService(" in source
 assert "send_job_offers_to_carriers(" in source
 assert "escalate_job_to_manual_review" in source
-assert "notify_admins_about_unassigned_job" not in source
+assert "notify_job_control_about_unassigned_job" not in source
 assert "job = None" in inspect.getsource(job_offer_response)
 
 print("JOB_OFFER_DECLINE_EXHAUSTION_SMOKE_OK")

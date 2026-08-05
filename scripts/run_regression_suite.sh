@@ -42,6 +42,7 @@ trap 'rm -rf "$TMP_ROOT"' EXIT
 TESTS=(
   scripts/bot_bootstrap_smoke.py
   scripts/dispatcher_access_role_smoke.py
+  scripts/job_control_routing_smoke.py
   scripts/dispatcher_jobs_admin_smoke.py
   scripts/manual_offer_redispatch_smoke.py
   scripts/dispatcher_leads_admin_smoke.py

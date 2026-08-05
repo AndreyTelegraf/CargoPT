@@ -1,4 +1,4 @@
-from app.domain.admin_access import ADMIN_TELEGRAM_USER_IDS
+from app.domain.admin_access import JOB_CONTROL_TELEGRAM_USER_IDS
 from app.domain.job_status import JobStatus
 from app.services.job_matching import MatchingReason
 
@@ -70,7 +70,7 @@ def build_offer_escalation_text(
     )
 
 
-async def notify_admins_about_unassigned_job(
+async def notify_job_control_about_unassigned_job(
     *,
     bot,
     job,
@@ -85,8 +85,8 @@ async def notify_admins_about_unassigned_job(
         matching_regions=matching_regions,
     )
 
-    for admin_id in ADMIN_TELEGRAM_USER_IDS:
-        await bot.send_message(chat_id=admin_id, text=text)
+    for recipient_id in JOB_CONTROL_TELEGRAM_USER_IDS:
+        await bot.send_message(chat_id=recipient_id, text=text)
 
 
 async def escalate_job_to_manual_review(
@@ -113,7 +113,7 @@ async def escalate_job_to_manual_review(
         status=JobStatus.MANUAL_REVIEW_REQUIRED,
         updated_at=job.updated_at,
     )
-    await notify_admins_about_unassigned_job(
+    await notify_job_control_about_unassigned_job(
         bot=bot,
         job=job,
         offers=offers,

@@ -1,7 +1,7 @@
 from datetime import UTC
 from datetime import datetime
 
-from app.domain.admin_access import ADMIN_TELEGRAM_USER_IDS
+from app.domain.admin_access import JOB_CONTROL_TELEGRAM_USER_IDS
 from app.domain.job_status import JobStatus
 from app.services.job_lifecycle import InvalidJobStatusTransitionError
 
@@ -76,15 +76,15 @@ async def record_completion_response(
     return job
 
 
-async def notify_admins_about_completion_problem(*, bot, job, actor: str) -> None:
+async def notify_job_control_about_completion_problem(*, bot, job, actor: str) -> None:
     actor_label = "клиент" if actor == "client" else "перевозчик"
     text = (
         f"По заявке #{job.id} отмечена проблема после перевозки.\n\n"
         f"Сообщил: {actor_label}.\n"
         "Статус заявки автоматически не изменён. Требуется связаться с обеими сторонами."
     )
-    for admin_id in ADMIN_TELEGRAM_USER_IDS:
-        await bot.send_message(chat_id=admin_id, text=text)
+    for recipient_id in JOB_CONTROL_TELEGRAM_USER_IDS:
+        await bot.send_message(chat_id=recipient_id, text=text)
 
 
 async def send_completion_result_notifications(

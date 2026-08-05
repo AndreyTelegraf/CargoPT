@@ -8,7 +8,7 @@ from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
 from app.services.job_completion import COMPLETION_CONFIRMED
 from app.services.job_completion import COMPLETION_PROBLEM
-from app.services.job_completion import notify_admins_about_completion_problem
+from app.services.job_completion import notify_job_control_about_completion_problem
 from app.services.job_completion import record_completion_response
 from app.services.job_completion import resolve_completion_actor
 from app.services.job_completion import send_completion_result_notifications
@@ -66,7 +66,7 @@ async def handle_job_completion(callback: CallbackQuery) -> None:
             return
 
         if completion_status == COMPLETION_PROBLEM:
-            await notify_admins_about_completion_problem(
+            await notify_job_control_about_completion_problem(
                 bot=callback.bot,
                 job=updated_job,
                 actor=actor,

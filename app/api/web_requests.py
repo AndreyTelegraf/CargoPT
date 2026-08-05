@@ -35,7 +35,7 @@ from app.services.email.notification_service import EmailNotificationService
 from app.services.job_lifecycle import InvalidJobStatusTransitionError
 from app.services.job_completion import COMPLETION_CONFIRMED
 from app.services.job_completion import COMPLETION_PROBLEM
-from app.services.job_completion import notify_admins_about_completion_problem
+from app.services.job_completion import notify_job_control_about_completion_problem
 from app.services.job_completion import record_completion_response
 from app.services.job_completion import send_completion_result_notifications
 from app.services.job_offer import ClientOfferSelectionError
@@ -431,7 +431,7 @@ async def confirm_tracking_completion(
         raise HTTPException(status_code=409, detail=str(exc)) from exc
 
     if completion_status == COMPLETION_PROBLEM:
-        await notify_admins_about_completion_problem(
+        await notify_job_control_about_completion_problem(
             bot=bot,
             job=updated_job,
             actor="client",

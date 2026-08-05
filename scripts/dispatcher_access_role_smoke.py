@@ -20,6 +20,9 @@ assert admin_access.ADMIN_TELEGRAM_USER_IDS == frozenset(
 assert admin_access.DISPATCHER_TELEGRAM_USER_IDS == frozenset(
     {111, 222}
 )
+assert admin_access.JOB_CONTROL_TELEGRAM_USER_IDS == frozenset(
+    {111, 222}
+)
 assert admin_access.CARGOPT_OPERATOR_TELEGRAM_USER_IDS == frozenset(
     {336224597, 111, 222}
 )
@@ -30,6 +33,13 @@ assert admin_access.LEADS_REPORT_TELEGRAM_USER_IDS == frozenset(
 assert (
     admin_access.CARGOPT_LEADS_VIEWER_TELEGRAM_USER_IDS
     == frozenset({336224597, 111, 222, 333})
+)
+
+os.environ.pop("DISPATCHER_TELEGRAM_USER_IDS")
+admin_access = importlib.reload(admin_access)
+assert (
+    admin_access.JOB_CONTROL_TELEGRAM_USER_IDS
+    == admin_access.ADMIN_TELEGRAM_USER_IDS
 )
 
 handler_source = Path(
