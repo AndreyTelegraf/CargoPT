@@ -24,6 +24,7 @@ TESTS=(
   scripts/requested_date_validation_smoke.py
   scripts/job_requested_datetime_handler_smoke.py
   scripts/request_draft_service_smoke.py
+  scripts/carrier_approval_targeted_redispatch_smoke.py
   scripts/manual_offer_redispatch_smoke.py
   scripts/job_control_routing_smoke.py
   scripts/job_completion_smoke.py

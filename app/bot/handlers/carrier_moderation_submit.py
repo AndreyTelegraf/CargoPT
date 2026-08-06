@@ -1,4 +1,6 @@
 import html
+from datetime import UTC
+from datetime import datetime
 
 from aiogram import F
 from aiogram import Router
@@ -21,7 +23,6 @@ from app.services.carrier_onboarding import CarrierOnboardingService
 from app.services.carrier_search import CarrierSearchService
 from app.services.job_matching import JobMatchingService
 from app.services.job_offer import JobOfferService
-from app.services.offer_distribution import OfferDistributionService
 from app.services.offer_notification import send_job_offers_to_carriers
 
 router = Router()
@@ -149,17 +150,15 @@ async def redispatch_open_jobs_to_new_carrier(
     *,
     bot,
     session,
+    carrier_id: int,
 ) -> tuple[int, int]:
     job_repository = JobRepository(session)
     carrier_repository = CarrierRepository(session)
-
-    distribution = OfferDistributionService(
-        matching_service=JobMatchingService(
-            CarrierSearchService(carrier_repository)
-        ),
-        offer_service=JobOfferService(job_repository),
-        job_repository=job_repository,
+    matching_service = JobMatchingService(
+        CarrierSearchService(carrier_repository)
     )
+    offer_service = JobOfferService(job_repository)
+    now = datetime.now(UTC)
 
     stmt = (
         select(Job)
@@ -176,6 +175,8 @@ async def redispatch_open_jobs_to_new_carrier(
                 )
             )
         )
+        .where(Job.requested_date.is_not(None))
+        .where(Job.requested_date >= now)
         .order_by(Job.requested_date.is_(None), Job.requested_date, Job.id)
     )
     result = await session.execute(stmt)
@@ -185,28 +186,45 @@ async def redispatch_open_jobs_to_new_carrier(
     sent_total = 0
 
     for job in jobs:
-        previous_status = job.status
-
-        offers = await distribution.create_offers_for_job(
-            job,
-            limit=None,
-            expires_in_minutes=60,
+        existing_carrier_ids = (
+            await job_repository.list_offer_carrier_ids_by_job(job.id)
         )
-
-        if not offers:
-            await job_repository.update_job_status(
-                job_id=job.id,
-                status=previous_status,
-                updated_at=job.updated_at,
-            )
+        if carrier_id in existing_carrier_ids:
             continue
 
-        created_total += len(offers)
+        addresses = await job_repository.list_addresses_by_job(job.id)
+        matching_vehicles = await matching_service.find_matching_vehicles_for_job(
+            job,
+            addresses=addresses,
+        )
+        vehicle = next(
+            (
+                candidate
+                for candidate in matching_vehicles
+                if candidate.carrier_id == carrier_id
+            ),
+            None,
+        )
+        if vehicle is None:
+            continue
+
+        offer = await offer_service.create_offer(
+            job_id=job.id,
+            vehicle=vehicle,
+            expires_in_minutes=60,
+        )
+        await job_repository.update_job_status(
+            job_id=job.id,
+            status="offered",
+            updated_at=datetime.now(UTC),
+        )
+
+        created_total += 1
 
         sent_total += await send_job_offers_to_carriers(
             bot=bot,
             job=job,
-            offers=offers,
+            offers=[offer],
             job_repository=job_repository,
             carrier_repository=carrier_repository,
         )
@@ -304,6 +322,7 @@ async def carrier_moderation_action(callback: CallbackQuery) -> None:
             redispatch_created, redispatch_sent = await redispatch_open_jobs_to_new_carrier(
                 bot=callback.bot,
                 session=session,
+                carrier_id=carrier.id,
             )
         else:
             carrier = await service.reject_carrier(carrier_id)
