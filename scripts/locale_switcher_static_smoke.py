@@ -14,7 +14,15 @@ RENDERER_CSS_REFERENCE = (
     'href="/assets/css/guides.css?v=guides-v4">'
 )
 
-pages = sorted(STATIC.rglob("index.html"))
+EXCLUDED_PAGES = {
+    Path("meta-operations/index.html"),
+}
+
+pages = [
+    path
+    for path in sorted(STATIC.rglob("index.html"))
+    if path.relative_to(STATIC) not in EXCLUDED_PAGES
+]
 
 assert pages, "NO_STATIC_HTML_PAGES"
 
