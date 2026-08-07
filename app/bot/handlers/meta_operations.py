@@ -13,6 +13,10 @@ router = Router()
 
 @router.callback_query(F.data.startswith("metaevt:"))
 async def handle_meta_event_status(callback: CallbackQuery) -> None:
+    if not settings.meta_operations_enabled:
+        await callback.answer("Функция отключена.", show_alert=True)
+        return
+
     if callback.from_user.id not in (
         CARGOPT_OPERATOR_TELEGRAM_USER_IDS | frozenset(settings.meta_operations_chat_ids)
     ):

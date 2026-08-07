@@ -29,6 +29,16 @@ from app.services.meta_operations.email_parser import parse_rfc822
 
 
 async def main() -> None:
+    bot_handler_source = Path(
+        "app/bot/handlers/meta_operations.py"
+    ).read_text(encoding="utf-8")
+    enabled_guard = "if not settings.meta_operations_enabled:"
+    access_guard = "if callback.from_user.id not in ("
+    assert enabled_guard in bot_handler_source
+    assert bot_handler_source.index(enabled_guard) < bot_handler_source.index(
+        access_guard
+    )
+
     target = classify_lead(
         "Olá, preciso de uma transportadora para levar um sofá de Lisboa para Porto. Recomendações?"
     )
