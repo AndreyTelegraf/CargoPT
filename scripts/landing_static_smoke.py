@@ -33,9 +33,9 @@ def main() -> None:
                 'name="client_whatsapp" autocomplete="tel" '
                 'placeholder="+351..."',
             ),
-            ("/", "/assets/css/landing.css?v="),
-            ("/en/", "/assets/css/landing.css?v="),
-            ("/ru/", "/assets/css/landing.css?v="),
+            ("/", "/assets/css/landing-designer-review-v1.css"),
+            ("/en/", "/assets/css/landing-designer-review-v1.css"),
+            ("/ru/", "/assets/css/landing-designer-review-v1.css"),
             ("/", 'id="openPedidosCta"'),
             ("/en/", 'id="openPedidosCta"'),
             ("/ru/", 'id="openPedidosCta"'),
@@ -146,6 +146,8 @@ def main() -> None:
             "/ru/",
         ]
 
+        home_by_route = {}
+
         mobile_svg = "/assets/hero/process-cards/card_03_varias_propostas_mobile.svg"
 
         for route in carousel_routes:
@@ -157,6 +159,22 @@ def main() -> None:
                 )
 
             html = response.text
+            home_by_route[route] = html
+
+            if html.count('id="request"') != 1:
+                raise SystemExit(
+                    f"{route} must expose exactly one request anchor"
+                )
+
+            if 'class="section final-cta"' not in html or 'href="#request"' not in html:
+                raise SystemExit(
+                    f"{route} final CTA must link to the request form"
+                )
+
+            if "designer-review-v1" not in html:
+                raise SystemExit(
+                    f"{route} must load the designer review asset version"
+                )
 
             if html.count('class="process-carousel"') != 1:
                 raise SystemExit(
@@ -177,6 +195,11 @@ def main() -> None:
                     f"{route} process carousel must contain the mobile third-card SVG"
                 )
 
+            if "<br>" in carousel_html:
+                raise SystemExit(
+                    f"{route} mobile carousel copy must use one line per phrase"
+                )
+
             if "process-carousel-prev" in carousel_html:
                 raise SystemExit(
                     f"{route} process carousel must not contain a previous arrow"
@@ -186,6 +209,39 @@ def main() -> None:
                 raise SystemExit(
                     f"{route} process carousel must not contain a next arrow"
                 )
+
+        pt_home = home_by_route["/"]
+        if "trust-marketplace" in pt_home or "offer-preview" in pt_home:
+            raise SystemExit("Portuguese home must not contain the locale-only offer preview")
+
+        if '<p class="eyebrow">Vantagens</p>' not in pt_home:
+            raise SystemExit("Portuguese home must use the shared benefits section")
+
+        landing_css = client.get("/assets/css/landing.css").text
+        design_css = client.get("/assets/css/design-system.css").text
+
+        for expected in (
+            "flex: 0 0 100%;",
+            "box-shadow: none;",
+            "transform: none;",
+            "white-space: nowrap;",
+            "scroll-margin-top: 88px;",
+        ):
+            if expected not in landing_css:
+                raise SystemExit(
+                    f"landing CSS missing designer review rule: {expected}"
+                )
+
+        if "--letter-spacing-hero-title: -0.04em;" not in design_css:
+            raise SystemExit("hero title letter spacing must remain readable")
+
+        for asset_path in (
+            "/assets/css/design-system-designer-review-v1.css",
+            "/assets/css/landing-designer-review-v1.css",
+        ):
+            response = client.get(asset_path)
+            if response.status_code != 200:
+                raise SystemExit(f"versioned designer asset missing: {asset_path}")
 
         js_response = client.get("/assets/js/landing.js")
         if js_response.status_code != 200:

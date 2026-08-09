@@ -71,7 +71,7 @@ for relative in (
     html = (STATIC / relative).read_text(encoding="utf-8")
 
     assert (
-        "/assets/css/landing.css?v="
+        "/assets/css/landing-designer-review-v1.css"
         in html
     )
     assert (

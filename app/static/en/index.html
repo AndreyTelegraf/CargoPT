@@ -38,9 +38,9 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://cargopt.pt/en/#webpage","url":"https://cargopt.pt/en/","name":"CargoPT — moving and transport services in Portugal","inLanguage":"en","isPartOf":{"@id":"https://cargopt.pt/en/#website"},"about":{"@id":"https://cargopt.pt/#organization"},"primaryImageOfPage":"https://cargopt.pt/assets/brand/og-image-v8.jpg"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"CargoPT — moving and transport services in Portugal","serviceType":"Moving and transport request service","areaServed":{"@type":"Country","name":"Portugal"},"provider":{"@id":"https://cargopt.pt/#organization"},"url":"https://cargopt.pt/en/","description":"Submit one moving or transport request in Portugal and receive several offers from carriers."}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does transport cost?","acceptedAnswer":{"@type":"Answer","text":"The price depends on the distance, cargo volume, floors, elevator access, the chosen date and whether movers are needed. Each carrier sends their own offer, so you can compare prices and conditions before deciding."}},{"@type":"Question","name":"Do I pay to submit a request?","acceptedAnswer":{"@type":"Answer","text":"No. The service is free for anyone looking for transport. You can describe the move, receive offers and compare options without paying for the request."}},{"@type":"Question","name":"Can I move one item only?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can request transport for furniture, appliances, a piano, boxes or other individual items. Just specify what needs to be moved, the locations, access conditions and preferred date."}},{"@type":"Question","name":"Can I move between cities?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can receive offers for local transport and moves between cities in Portugal, including Lisbon, Porto, Cascais, Sintra, Oeiras and other locations."}}]}</script>
-  <link rel="stylesheet" href="/assets/css/design-system.css?v=tokens-v1">
+  <link rel="stylesheet" href="/assets/css/design-system-designer-review-v1.css">
   <link rel="stylesheet" href="/assets/css/components.css?v=reduced-motion-v2">
-  <link rel="stylesheet" href="/assets/css/landing.css?v=reduced-motion-v2">
+  <link rel="stylesheet" href="/assets/css/landing-designer-review-v1.css">
 </head>
 <body data-locale="en">
   <header class="site-header">
@@ -86,13 +86,13 @@
           <div class="process-carousel-track">
             <article class="process-card process-card-svg">
               <div class="process-visual" aria-hidden="true"><img src="/assets/hero/process-cards/card_01_pedido_unico.svg" alt=""></div>
-              <h2>One free<br>request</h2>
-              <p>Just fill in<br>one form</p>
+              <h2>One free request</h2>
+              <p>Just fill in one form</p>
             </article>
             <article class="process-card process-card-svg">
               <div class="process-visual" aria-hidden="true"><img src="/assets/hero/process-cards/card_02_processo_simples.svg" alt=""></div>
-              <h2>Simple and<br>fast process</h2>
-              <p>No repeated<br>calls</p>
+              <h2>Simple and fast process</h2>
+              <p>No repeated calls</p>
             </article>
             <article class="process-card process-card-svg process-card-wide">
               <div class="process-visual" aria-hidden="true">
@@ -101,13 +101,13 @@
                   <img src="/assets/hero/process-cards/card_03_varias_propostas.svg" alt="">
                 </picture>
               </div>
-              <h2>Several offers<br>to compare</h2>
-              <p>Prices<br>and availability</p>
+              <h2>Several offers to compare</h2>
+              <p>Prices and availability</p>
             </article>
             <article class="process-card process-card-svg">
               <div class="process-visual" aria-hidden="true"><img src="/assets/hero/process-cards/card_04_contacta.svg" alt=""></div>
-              <h2>Contact<br>the best option</h2>
-              <p>The final decision<br>is yours</p>
+              <h2>Contact the best option</h2>
+              <p>The final decision is yours</p>
             </article>
           </div>
 
@@ -116,7 +116,7 @@
       </div>
 
       <form id="requestForm" class="request-form request-card" novalidate data-step-template="Step {current} of {total}">
-        <div class="progress">
+        <div id="request" class="progress">
           <span id="stepLabel">Step 1 of 2</span>
           <div class="progress-bar"><span id="progressFill"></span></div>
         </div>

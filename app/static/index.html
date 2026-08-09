@@ -43,9 +43,9 @@
     {"@type":"Question","name":"Posso transportar apenas um objeto?","acceptedAnswer":{"@type":"Answer","text":"Sim. Pode pedir transporte de móveis, eletrodomésticos, piano, caixas ou outros objetos individuais. Basta indicar o que precisa de transportar, os locais, os acessos e a data pretendida."}},
     {"@type":"Question","name":"É possível fazer transporte entre cidades?","acceptedAnswer":{"@type":"Answer","text":"Sim. Pode receber propostas para transportes locais e também para mudanças entre cidades em Portugal, como Lisboa, Porto, Cascais, Sintra, Oeiras ou outras localidades."}}
   ]}</script>
-  <link rel="stylesheet" href="/assets/css/design-system.css?v=tokens-v1">
+  <link rel="stylesheet" href="/assets/css/design-system-designer-review-v1.css">
   <link rel="stylesheet" href="/assets/css/components.css?v=reduced-motion-v2">
-  <link rel="stylesheet" href="/assets/css/landing.css?v=reduced-motion-v2">
+  <link rel="stylesheet" href="/assets/css/landing-designer-review-v1.css">
 </head>
 <body data-locale="pt">
   <header class="site-header">
@@ -91,14 +91,14 @@
           <div class="process-carousel-track">
             <article class="process-card process-card-svg">
               <div class="process-visual" aria-hidden="true"><img src="/assets/hero/process-cards/card_01_pedido_unico.svg" alt=""></div>
-              <h2>Pedido único<br>e gratuito</h2>
-              <p>É só preencher<br>um formulário</p>
+              <h2>Pedido único e gratuito</h2>
+              <p>É só preencher um formulário</p>
             </article>
 
             <article class="process-card process-card-svg">
               <div class="process-visual" aria-hidden="true"><img src="/assets/hero/process-cards/card_02_processo_simples.svg" alt=""></div>
-              <h2>Processo simples<br>e rápido</h2>
-              <p>Sem chamadas<br>repetidas</p>
+              <h2>Processo simples e rápido</h2>
+              <p>Sem chamadas repetidas</p>
             </article>
 
             <article class="process-card process-card-svg process-card-wide">
@@ -108,14 +108,14 @@
                   <img src="/assets/hero/process-cards/card_03_varias_propostas.svg" alt="">
                 </picture>
               </div>
-              <h2>Várias propostas<br>para comparar</h2>
-              <p>Preços e<br>disponibilidade</p>
+              <h2>Várias propostas para comparar</h2>
+              <p>Preços e disponibilidade</p>
             </article>
 
             <article class="process-card process-card-svg">
               <div class="process-visual" aria-hidden="true"><img src="/assets/hero/process-cards/card_04_contacta.svg" alt=""></div>
-              <h2>Contacta<br>a melhor opção</h2>
-              <p>A decisão final<br>é sua</p>
+              <h2>Contacta a melhor opção</h2>
+              <p>A decisão final é sua</p>
             </article>
           </div>
 
@@ -124,7 +124,7 @@
       </div>
 
       <form id="requestForm" class="request-form request-card" novalidate data-step-template="Passo {current} de {total}">
-        <div class="progress">
+        <div id="request" class="progress">
           <span id="stepLabel">Passo 1 de 2</span>
           <div class="progress-bar"><span id="progressFill"></span></div>
         </div>
@@ -292,93 +292,19 @@
         </article></div></section>
     <section class="section problem"><div class="section-heading"><p class="eyebrow">Desafio</p><h2>Encontrar um transportador não devia levar horas</h2></div><p class="wide-text">É comum fazer várias chamadas, enviar mensagens diferentes e repetir a mesma informação. Descreva o transporte uma única vez e receba propostas de vários transportadores.</p></section>
     <section class="section cargo-types"><div class="section-heading"><p class="eyebrow">A transportar</p><h2>Para pequenas e grandes mudanças</h2></div><p class="wide-text">Apartamentos, casas, escritórios, móveis, eletrodomésticos, pianos, materiais de construção ou até cargas comerciais e industriais — se precisa de transportar algo em Portugal, basta descrevê-lo uma única vez e receber ofertas de vários transportadores.</p></section>
-    <section class="section trust-marketplace" aria-labelledby="trustMarketplaceTitle">
-      <div class="trust-marketplace-shell">
-        <div class="section-heading">
-          <p class="eyebrow">Depois do envio</p>
-          <h2 id="trustMarketplaceTitle">Sabe sempre o que acontece a seguir</h2>
-          <p class="wide-text">O pedido é organizado, encaminhado para transportadores adequados e apresentado de forma que possa comparar as propostas recebidas antes de decidir.</p>
-        </div>
-
-        <div class="trust-marketplace-grid">
-          <ol class="trust-steps">
-            <li class="trust-step">
-              <span class="trust-step-number" aria-hidden="true">1</span>
-              <div>
-                <h3>Organizamos a informação</h3>
-                <p>Rota, data, carga, acessos, ajudantes e equipamento ficam reunidos no mesmo pedido.</p>
-              </div>
-            </li>
-            <li class="trust-step">
-              <span class="trust-step-number" aria-hidden="true">2</span>
-              <div>
-                <h3>Encaminhamos o pedido</h3>
-                <p>O pedido pode ser partilhado com transportadores independentes adequados ao serviço.</p>
-              </div>
-            </li>
-            <li class="trust-step">
-              <span class="trust-step-number" aria-hidden="true">3</span>
-              <div>
-                <h3>Recebe propostas claras</h3>
-                <p>Cada transportador apresenta o seu preço, disponibilidade e condições para realizar o transporte.</p>
-              </div>
-            </li>
-            <li class="trust-step">
-              <span class="trust-step-number" aria-hidden="true">4</span>
-              <div>
-                <h3>A decisão continua a ser sua</h3>
-                <p>Compare as opções recebidas e escolha apenas a que fizer sentido para si.</p>
-              </div>
-            </li>
-          </ol>
-
-          <aside class="offer-preview" aria-label="Exemplo da informação apresentada numa proposta">
-            <div class="offer-preview-header">
-              <div>
-                <p class="offer-preview-kicker">Proposta de transporte</p>
-                <h3>Informação para comparar</h3>
-              </div>
-              <span class="offer-preview-badge">Exemplo</span>
-            </div>
-
-            <div class="offer-preview-route" aria-label="Da recolha até à entrega">
-              <span>
-                <small>Recolha</small>
-                <strong>Local de origem</strong>
-              </span>
-              <span class="offer-preview-route-line" aria-hidden="true"></span>
-              <span>
-                <small>Entrega</small>
-                <strong>Local de destino</strong>
-              </span>
-            </div>
-
-            <dl class="offer-preview-details">
-              <div>
-                <dt>Preço</dt>
-                <dd>Valor total proposto</dd>
-              </div>
-              <div>
-                <dt>Disponibilidade</dt>
-                <dd>Data e horário indicados</dd>
-              </div>
-              <div>
-                <dt>Equipa</dt>
-                <dd>Veículo e ajudantes incluídos</dd>
-              </div>
-              <div>
-                <dt>Condições</dt>
-                <dd>Equipamento e notas do serviço</dd>
-              </div>
-            </dl>
-
-            <p class="offer-preview-note">Compare a informação recebida antes de selecionar um transportador.</p>
-          </aside>
-        </div>
-
-        <p class="trust-privacy">Os dados enviados são utilizados para gerir o pedido e podem ser partilhados com transportadores independentes adequados, nos termos da <a href="/privacy/">Política de Privacidade</a>.</p>
-      </div>
-    </section>
+    <section class="section"><div class="section-heading"><p class="eyebrow">Vantagens</p><h2>Poupe tempo e compare antes de decidir</h2></div><div class="cards three">
+        <article class="card">
+          <h3>Um pedido</h3>
+          <p>Descreva a carga apenas uma vez. Todos os transportadores recebem exatamente a mesma informação.</p>
+        </article>
+        <article class="card">
+          <h3>Sem surpresas</h3>
+          <p>Andares, elevadores e outros detalhes são considerados desde o início.</p>
+        </article>
+        <article class="card">
+          <h3>Compare antes de decidir</h3>
+          <p>Compare preços e condições antes de escolher. O serviço é gratuito e funciona para mudanças locais e transportes entre cidades.</p>
+        </article></div></section>
 
     <section class="section faq"><div class="section-heading"><p class="eyebrow">FAQ</p><h2>Perguntas frequentes</h2></div>      <details>
         <summary>Quanto custa o transporte?</summary>

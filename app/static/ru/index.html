@@ -38,9 +38,9 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://cargopt.pt/ru/#webpage","url":"https://cargopt.pt/ru/","name":"CargoPT — перевозки и переезды по Португалии","inLanguage":"ru","isPartOf":{"@id":"https://cargopt.pt/ru/#website"},"about":{"@id":"https://cargopt.pt/#organization"},"primaryImageOfPage":"https://cargopt.pt/assets/brand/og-image-v8.jpg"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"CargoPT — перевозки и переезды по Португалии","serviceType":"Moving and transport request service","areaServed":{"@type":"Country","name":"Portugal"},"provider":{"@id":"https://cargopt.pt/#organization"},"url":"https://cargopt.pt/ru/","description":"Одна заявка на перевозку или переезд по Португалии — несколько предложений от перевозчиков."}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Сколько стоит перевозка?","acceptedAnswer":{"@type":"Answer","text":"Цена зависит от расстояния, объёма груза, этажей, наличия лифта, выбранной даты и необходимости грузчиков. Каждый перевозчик присылает собственное предложение, поэтому перед выбором можно сравнить цены и условия."}},{"@type":"Question","name":"Нужно ли платить за заявку?","acceptedAnswer":{"@type":"Answer","text":"Нет. Сервис бесплатен для тех, кто ищет перевозчика. Можно описать переезд, получить предложения и сравнить варианты без оплаты заявки."}},{"@type":"Question","name":"Можно ли заказать перевозку одной вещи?","acceptedAnswer":{"@type":"Answer","text":"Да. Можно заказать перевозку мебели, бытовой техники, пианино, коробок или других отдельных предметов. Достаточно указать, что нужно перевезти, адреса, условия доступа и желаемую дату."}},{"@type":"Question","name":"Можно ли перевозить между городами?","acceptedAnswer":{"@type":"Answer","text":"Да. Можно получать предложения как для местных перевозок, так и для переездов между городами Португалии, включая Лиссабон, Порту, Кашкайш, Синтру, Оэйраш и другие населённые пункты."}}]}</script>
-  <link rel="stylesheet" href="/assets/css/design-system.css?v=tokens-v1">
+  <link rel="stylesheet" href="/assets/css/design-system-designer-review-v1.css">
   <link rel="stylesheet" href="/assets/css/components.css?v=reduced-motion-v2">
-  <link rel="stylesheet" href="/assets/css/landing.css?v=reduced-motion-v2">
+  <link rel="stylesheet" href="/assets/css/landing-designer-review-v1.css">
 </head>
 <body data-locale="ru">
   <header class="site-header">
@@ -86,13 +86,13 @@
           <div class="process-carousel-track">
             <article class="process-card process-card-svg">
               <div class="process-visual" aria-hidden="true"><img src="/assets/hero/process-cards/card_01_pedido_unico.svg" alt=""></div>
-              <h2>Одна бесплатная<br>заявка</h2>
-              <p>Просто заполните<br>одну форму</p>
+              <h2>Одна бесплатная заявка</h2>
+              <p>Просто заполните одну форму</p>
             </article>
             <article class="process-card process-card-svg">
               <div class="process-visual" aria-hidden="true"><img src="/assets/hero/process-cards/card_02_processo_simples.svg" alt=""></div>
-              <h2>Простой и быстрый<br>процесс</h2>
-              <p>Без повторных<br>звонков</p>
+              <h2>Простой и быстрый процесс</h2>
+              <p>Без повторных звонков</p>
             </article>
             <article class="process-card process-card-svg process-card-wide">
               <div class="process-visual" aria-hidden="true">
@@ -101,13 +101,13 @@
                   <img src="/assets/hero/process-cards/card_03_varias_propostas.svg" alt="">
                 </picture>
               </div>
-              <h2>Несколько предложений<br>для сравнения</h2>
-              <p>Цены<br>и доступность</p>
+              <h2>Несколько предложений для сравнения</h2>
+              <p>Цены и доступность</p>
             </article>
             <article class="process-card process-card-svg">
               <div class="process-visual" aria-hidden="true"><img src="/assets/hero/process-cards/card_04_contacta.svg" alt=""></div>
-              <h2>Свяжитесь<br>с лучшим вариантом</h2>
-              <p>Финальное решение<br>за вами</p>
+              <h2>Свяжитесь с лучшим вариантом</h2>
+              <p>Финальное решение за вами</p>
             </article>
           </div>
 
@@ -116,7 +116,7 @@
       </div>
 
       <form id="requestForm" class="request-form request-card" novalidate data-step-template="Шаг {current} из {total}">
-        <div class="progress">
+        <div id="request" class="progress">
           <span id="stepLabel">Шаг 1 из 2</span>
           <div class="progress-bar"><span id="progressFill"></span></div>
         </div>
