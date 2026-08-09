@@ -210,12 +210,40 @@ def main() -> None:
                     f"{route} process carousel must not contain a next arrow"
                 )
 
-        pt_home = home_by_route["/"]
-        if "trust-marketplace" in pt_home or "offer-preview" in pt_home:
-            raise SystemExit("Portuguese home must not contain the locale-only offer preview")
+        offer_preview_markers = {
+            "/": (
+                "Sabe sempre o que acontece a seguir",
+                "Informação para comparar",
+            ),
+            "/en/": (
+                "Always know what happens next",
+                "Information to compare",
+            ),
+            "/ru/": (
+                "Вы всегда знаете, что будет дальше",
+                "Информация для сравнения",
+            ),
+        }
 
-        if '<p class="eyebrow">Vantagens</p>' not in pt_home:
-            raise SystemExit("Portuguese home must use the shared benefits section")
+        for route, markers in offer_preview_markers.items():
+            html = home_by_route[route]
+            if html.count('class="section trust-marketplace"') != 1:
+                raise SystemExit(
+                    f"{route} must contain exactly one trust marketplace section"
+                )
+            if html.count('class="offer-preview"') != 1:
+                raise SystemExit(
+                    f"{route} must contain exactly one offer preview"
+                )
+            if html.count('class="trust-step"') != 4:
+                raise SystemExit(
+                    f"{route} trust marketplace must contain four steps"
+                )
+            for marker in markers:
+                if marker not in html:
+                    raise SystemExit(
+                        f"{route} missing localized offer preview copy: {marker}"
+                    )
 
         landing_css = client.get("/assets/css/landing.css").text
         design_css = client.get("/assets/css/design-system.css").text
