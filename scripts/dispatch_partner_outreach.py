@@ -37,6 +37,7 @@ async def run(*, dry_run: bool) -> None:
         compliance_max_age_days=(
             settings.partner_outreach_compliance_max_age_days
         ),
+        source_max_age_days=settings.partner_outreach_source_max_age_days,
         max_attempts=settings.email_max_attempts,
         retry_base_seconds=settings.email_retry_base_seconds,
     )

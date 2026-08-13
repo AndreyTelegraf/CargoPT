@@ -1,6 +1,7 @@
 import asyncio
 from datetime import UTC
 from datetime import datetime
+from datetime import timedelta
 
 from sqlalchemy.ext.asyncio import async_sessionmaker
 from sqlalchemy.ext.asyncio import create_async_engine
@@ -9,6 +10,7 @@ from app.db.base import Base
 import app.models
 from app.models.partner_outreach import PartnerOutreachComplianceSnapshot
 from app.models.partner_outreach import PartnerProspect
+from app.models.partner_outreach import PartnerOutreachSuppression
 from app.repositories.partner_outreach import PartnerOutreachRepository
 from app.services.email.models import EmailSendResult
 from app.services.partner_outreach.dispatcher import DGC_SOURCE
@@ -98,6 +100,7 @@ async def main() -> None:
         daily_limit=5,
         min_interval_minutes=20,
         compliance_max_age_days=35,
+        source_max_age_days=90,
         max_attempts=3,
         retry_base_seconds=1,
     )
@@ -122,6 +125,84 @@ async def main() -> None:
     processed, reason = await dispatcher.dispatch_due(now=NOW, dry_run=False)
     assert processed == 0
     assert reason == "minimum interval since previous outreach not reached"
+
+    async with sessions() as session:
+        blocked_prospect = PartnerProspect(
+            company_name="Blocked Relocation",
+            legal_entity_name="Blocked Relocation Lda",
+            nif="509000002",
+            company_domain="blockedrelocation.test",
+            website_url="https://blockedrelocation.test",
+            contact_email="info@blockedrelocation.test",
+            contact_kind="role",
+            category="relocation",
+            municipality="cascais",
+            region="lisbon_metro",
+            language="en",
+            source_url="https://blockedrelocation.test/contact",
+            source_checked_at=NOW,
+            qualification_note="relocation provider",
+            status=ProspectStatus.CANDIDATE.value,
+            approved_at=None,
+            approved_by=None,
+            do_not_contact=False,
+            do_not_contact_reason=None,
+            created_at=NOW,
+            updated_at=NOW,
+        )
+        session.add(blocked_prospect)
+        session.add(
+            PartnerOutreachSuppression(
+                kind="domain",
+                normalized_value="blockedrelocation.test",
+                source=DGC_SOURCE,
+                reason="DGC opposition list",
+                created_at=NOW,
+                updated_at=NOW,
+            )
+        )
+        await session.flush()
+        service = PartnerOutreachService(
+            PartnerOutreachRepository(session),
+            public_base_url="https://cargopt.pt",
+            sender_signature="Equipa CargoPT",
+        )
+        blocked_draft = await service.create_draft(
+            prospect_id=blocked_prospect.id,
+            now=NOW,
+        )
+        await service.approve_draft(
+            message_id=blocked_draft.id,
+            actor="smoke-reviewer",
+            now=NOW,
+        )
+        blocked_prospect_id = blocked_prospect.id
+        blocked_message_id = blocked_draft.id
+        await session.commit()
+
+    later = NOW + timedelta(minutes=21)
+    processed, reason = await dispatcher.dispatch_due(now=later, dry_run=False)
+    assert processed == 0
+    assert reason == "blocked: DGC opposition list"
+    assert len(transport.messages) == 1
+    async with sessions() as session:
+        blocked_prospect = await session.get(
+            PartnerProspect,
+            blocked_prospect_id,
+        )
+        blocked_message = await session.get(
+            app.models.PartnerOutreachMessage,
+            blocked_message_id,
+        )
+        assert blocked_prospect.do_not_contact is True
+        assert blocked_message.status == OutreachMessageStatus.BLOCKED.value
+
+    processed, reason = await dispatcher.dispatch_due(
+        now=later,
+        dry_run=False,
+    )
+    assert processed == 0
+    assert reason == "no approved message is due"
 
     await engine.dispose()
     print("PARTNER_OUTREACH_APPROVAL_AND_DRY_RUN_OK")

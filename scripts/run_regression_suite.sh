@@ -91,6 +91,7 @@ TESTS=(
   scripts/email_request_received_smoke.py
   scripts/email_duplicate_guard_smoke.py
   scripts/email_status_events_smoke.py
+  scripts/partner_outreach_config_smoke.py
   scripts/partner_outreach_policy_smoke.py
   scripts/partner_outreach_dispatch_smoke.py
   scripts/partner_outreach_migration_smoke.py

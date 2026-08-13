@@ -28,6 +28,7 @@ Area and one public role mailbox per company domain.
 - Only public role mailboxes on the company's own website domain are accepted.
   Named-person mailboxes and consumer mailbox providers are rejected.
 - Every source URL and source-check timestamp are stored.
+- Contact-source checks older than 90 days block delivery.
 - One initial message per company. The MVP has no automatic follow-up.
 - Every draft must be approved by a named reviewer.
 - The dispatcher requires a current DGC legal-entity opposition-list snapshot.
@@ -134,9 +135,11 @@ explicit `--send` argument:
 PYTHONPATH=. ./.venv/bin/python -m scripts.dispatch_partner_outreach --send
 ```
 
-For the pilot, invoke it every 20 minutes with a systemd timer. Run five
-approved companies first, inspect delivery and replies for three business days,
-then decide whether to expand to 20.
+For the pilot, install `deploy/systemd/cargopt_partner_outreach.service` and
+`deploy/systemd/cargopt_partner_outreach.timer`. The timer checks every 20
+minutes on Lisbon business days, while all database and feature-flag guards
+remain active. Run five approved companies first, inspect delivery and replies
+for three business days, then decide whether to expand to 20.
 
 ## Pilot success criteria
 

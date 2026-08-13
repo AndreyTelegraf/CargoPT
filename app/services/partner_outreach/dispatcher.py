@@ -51,6 +51,7 @@ class PartnerOutreachDispatcher:
         daily_limit: int,
         min_interval_minutes: int,
         compliance_max_age_days: int,
+        source_max_age_days: int,
         max_attempts: int,
         retry_base_seconds: int,
     ) -> None:
@@ -63,6 +64,7 @@ class PartnerOutreachDispatcher:
         self.daily_limit = daily_limit
         self.min_interval = timedelta(minutes=min_interval_minutes)
         self.compliance_max_age = timedelta(days=compliance_max_age_days)
+        self.source_max_age = timedelta(days=source_max_age_days)
         self.max_attempts = max_attempts
         self.retry_base_seconds = retry_base_seconds
 
@@ -93,8 +95,10 @@ class PartnerOutreachDispatcher:
             return 0, "no approved message is due"
         if dry_run:
             return 0, f"dry run: message {due_ids[0]} is eligible"
-        processed = await self._dispatch_one(due_ids[0], timestamp)
-        return (1, "sent") if processed else (0, "message was not claimable")
+        outcome = await self._dispatch_one(due_ids[0], timestamp)
+        if outcome is None:
+            return 0, "message was not claimable"
+        return (1 if outcome == "sent" else 0), outcome
 
     async def _preflight(
         self,
@@ -125,7 +129,11 @@ class PartnerOutreachDispatcher:
                 return "minimum interval since previous outreach not reached"
         return None
 
-    async def _dispatch_one(self, message_id: int, now: datetime) -> bool:
+    async def _dispatch_one(
+        self,
+        message_id: int,
+        now: datetime,
+    ) -> str | None:
         async with self.session_maker() as session:
             repository = PartnerOutreachRepository(session)
             claimed = await repository.claim_message(
@@ -135,10 +143,10 @@ class PartnerOutreachDispatcher:
             )
             if claimed is None:
                 await session.rollback()
-                return False
+                return None
             message, prospect = claimed
 
-            block_reason = await self._block_reason(repository, prospect)
+            block_reason = await self._block_reason(repository, prospect, now)
             if block_reason:
                 message.status = OutreachMessageStatus.BLOCKED.value
                 message.last_error = block_reason
@@ -158,7 +166,7 @@ class PartnerOutreachDispatcher:
                         "reason": block_reason,
                     },
                 )
-                return True
+                return f"blocked: {block_reason}"
 
             snapshot = {
                 "message_id": message.id,
@@ -184,8 +192,10 @@ class PartnerOutreachDispatcher:
             result = await self.transport.send(email)
         except PermanentEmailTransportError:
             await self._record_failure(snapshot, now=now, permanent=True)
+            return "failed: permanent email transport failure"
         except TemporaryEmailTransportError:
             await self._record_failure(snapshot, now=now, permanent=False)
+            return "retry: temporary email transport failure"
         except Exception:
             logger.exception(
                 "partner outreach transport raised unexpected error",
@@ -197,6 +207,7 @@ class PartnerOutreachDispatcher:
                 },
             )
             await self._record_failure(snapshot, now=now, permanent=False)
+            return "retry: unexpected email transport failure"
         else:
             async with self.session_maker() as session:
                 repository = PartnerOutreachRepository(session)
@@ -221,13 +232,16 @@ class PartnerOutreachDispatcher:
                     ),
                 },
             )
-        return True
+            return "sent"
 
-    async def _block_reason(self, repository, prospect) -> str | None:
+    async def _block_reason(self, repository, prospect, now) -> str | None:
         if prospect.do_not_contact:
             return prospect.do_not_contact_reason or "prospect is suppressed"
         if prospect.contact_kind != "role":
             return "contact is not a role-based company mailbox"
+        source_checked_at = _as_utc(prospect.source_checked_at)
+        if now - source_checked_at > self.source_max_age:
+            return "public contact source is stale"
         try:
             email, domain = validate_prospect_contact(
                 email=prospect.contact_email,

@@ -1,0 +1,12 @@
+[Unit]
+Description=Check approved CargoPT partner outreach every 20 minutes
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 09..17:00/20:00 Europe/Lisbon
+AccuracySec=30s
+RandomizedDelaySec=60
+Persistent=true
+Unit=cargopt_partner_outreach.service
+
+[Install]
+WantedBy=timers.target

@@ -142,6 +142,8 @@ def validate_prospect_contact(
     website = require_public_http_url(website_url, field_name="website_url")
     require_public_http_url(source_url, field_name="source_url")
     domain = normalize_domain(website)
+    if normalize_domain(source_url) != domain:
+        raise ValueError("source URL must be on the company website domain")
     if email_domain(normalized_email) != domain:
         raise ValueError("contact email domain must match the company website")
     return normalized_email, domain

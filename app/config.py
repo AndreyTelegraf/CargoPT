@@ -56,6 +56,11 @@ class Settings(BaseSettings):
         gt=0,
         le=62,
     )
+    partner_outreach_source_max_age_days: int = Field(
+        default=90,
+        gt=0,
+        le=365,
+    )
     partner_outreach_sender_signature: str = "Equipa CargoPT"
 
     model_config = SettingsConfigDict(
@@ -90,6 +95,8 @@ class Settings(BaseSettings):
                 self.email_smtp_password.get_secret_value()
             ),
         }
+        if self.partner_outreach_send_enabled:
+            required["EMAIL_REPLY_TO"] = self.email_reply_to
         missing = [name for name, value in required.items() if not value.strip()]
         if missing:
             raise ValueError(
