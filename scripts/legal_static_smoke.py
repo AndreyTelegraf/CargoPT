@@ -22,6 +22,29 @@ for relative in legal_pages:
     assert "legal-content" in text
     assert "hello@cargopt.pt" in text
 
+operator_pages = [
+    "privacy/index.html", "terms/index.html",
+    "en/privacy/index.html", "en/terms/index.html",
+    "ru/privacy/index.html", "ru/terms/index.html",
+]
+
+for relative in operator_pages:
+    text = (STATIC / relative).read_text(encoding="utf-8")
+    assert "Andrey Shaykevich" in text
+    assert "241510023" in text
+    assert "Praceta Bartolomeu Dias 90" in text
+    assert "2890-138" in text
+    assert "Alcochete" in text
+
+for stale_copy in (
+    "formalização da atividade",
+    "formalisation of the activity",
+    "оформления деятельности",
+):
+    for relative in operator_pages:
+        text = (STATIC / relative).read_text(encoding="utf-8")
+        assert stale_copy not in text
+
 for relative in ("index.html", "en/index.html", "ru/index.html"):
     text = (STATIC / relative).read_text(encoding="utf-8")
     form = re.search(r'<form id="requestForm".*?</form>', text, re.S).group(0)
