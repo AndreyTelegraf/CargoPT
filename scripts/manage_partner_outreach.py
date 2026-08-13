@@ -57,6 +57,7 @@ async def create_drafts(prospect_ids: list[int]) -> None:
             PartnerOutreachRepository(session),
             public_base_url=settings.email_public_base_url,
             sender_signature=settings.partner_outreach_sender_signature,
+            legal_identity=settings.partner_outreach_legal_identity,
         )
         for prospect_id in prospect_ids:
             message = await service.create_draft(prospect_id=prospect_id)
@@ -72,6 +73,7 @@ async def approve_messages(message_ids: list[int], actor: str) -> None:
             PartnerOutreachRepository(session),
             public_base_url=settings.email_public_base_url,
             sender_signature=settings.partner_outreach_sender_signature,
+            legal_identity=settings.partner_outreach_legal_identity,
         )
         for message_id in message_ids:
             message = await service.approve_draft(

@@ -62,6 +62,7 @@ class Settings(BaseSettings):
         le=365,
     )
     partner_outreach_sender_signature: str = "Equipa CargoPT"
+    partner_outreach_legal_identity: str = ""
 
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -97,6 +98,9 @@ class Settings(BaseSettings):
         }
         if self.partner_outreach_send_enabled:
             required["EMAIL_REPLY_TO"] = self.email_reply_to
+            required["PARTNER_OUTREACH_LEGAL_IDENTITY"] = (
+                self.partner_outreach_legal_identity
+            )
         missing = [name for name, value in required.items() if not value.strip()]
         if missing:
             raise ValueError(

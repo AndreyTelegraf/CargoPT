@@ -33,6 +33,7 @@ for locale in ("pt", "en", "ru"):
         prospect_id=7,
         public_base_url="https://cargopt.pt",
         sender_signature="Equipa CargoPT",
+        legal_identity="CargoPT Test Lda",
     )
     assert rendered.subject
     assert "utm_source=partner_outreach" in rendered.text_body

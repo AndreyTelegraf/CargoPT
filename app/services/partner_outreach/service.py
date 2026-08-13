@@ -17,10 +17,12 @@ class PartnerOutreachService:
         *,
         public_base_url: str,
         sender_signature: str,
+        legal_identity: str,
     ) -> None:
         self.repository = repository
         self.public_base_url = public_base_url
         self.sender_signature = sender_signature
+        self.legal_identity = legal_identity
 
     async def create_draft(
         self,
@@ -51,6 +53,7 @@ class PartnerOutreachService:
             prospect_id=prospect.id,
             public_base_url=self.public_base_url,
             sender_signature=self.sender_signature,
+            legal_identity=self.legal_identity,
         )
         timestamp = now or datetime.now(UTC)
         message = PartnerOutreachMessage(

@@ -38,6 +38,9 @@ Area and one public role mailbox per company domain.
 - The message identifies CargoPT, states that it is a commercial partnership
   proposal, explains the source of the address, and offers a free reply-based
   opt-out.
+- Live mode requires a working `EMAIL_REPLY_TO` mailbox and the full sender
+  identity in `PARTNER_OUTREACH_LEGAL_IDENTITY`; both appear in the message or
+  its reply path.
 - No tracking pixel is included. Links contain only campaign and prospect IDs.
 
 These are technical controls, not a substitute for legal review. Before live

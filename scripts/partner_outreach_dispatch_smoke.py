@@ -72,6 +72,7 @@ async def seed(sessions):
             PartnerOutreachRepository(session),
             public_base_url="https://cargopt.pt",
             sender_signature="Equipa CargoPT",
+            legal_identity="CargoPT Test Lda",
         )
         draft = await service.create_draft(prospect_id=prospect.id, now=NOW)
         approved = await service.approve_draft(
@@ -166,6 +167,7 @@ async def main() -> None:
             PartnerOutreachRepository(session),
             public_base_url="https://cargopt.pt",
             sender_signature="Equipa CargoPT",
+            legal_identity="CargoPT Test Lda",
         )
         blocked_draft = await service.create_draft(
             prospect_id=blocked_prospect.id,

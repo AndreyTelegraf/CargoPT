@@ -131,6 +131,7 @@ def render_partner_outreach(
     prospect_id: int,
     public_base_url: str,
     sender_signature: str,
+    legal_identity: str,
 ) -> RenderedPartnerOutreach:
     normalized_locale = normalize_locale(locale)
     copy = _COPY[normalized_locale]
@@ -140,6 +141,9 @@ def render_partner_outreach(
     company = company_name.strip()
     if not company:
         raise ValueError("company_name is required")
+    sender_legal_identity = legal_identity.strip()
+    if not sender_legal_identity:
+        raise ValueError("partner outreach legal identity is required")
     partner_url = build_partner_url(
         locale=normalized_locale,
         prospect_id=prospect_id,
@@ -149,7 +153,8 @@ def render_partner_outreach(
     text_body = (
         f"{copy['intro']}\n\n{body}\n\n"
         f"{copy['link_label']}: {partner_url}\n\n"
-        f"{sender_signature}\nCargoPT\n\n---\n{copy['disclosure']}"
+        f"{sender_signature}\n{sender_legal_identity}\n\n---\n"
+        f"{copy['disclosure']}"
     )
     paragraphs = "".join(
         f"<p>{escape(paragraph)}</p>" for paragraph in body.split("\n\n")
@@ -159,7 +164,8 @@ def render_partner_outreach(
         f"<p>{escape(copy['intro'])}</p>{paragraphs}"
         f'<p><a href="{escape(partner_url, quote=True)}">'
         f"{escape(copy['link_label'])}</a></p>"
-        f"<p>{escape(sender_signature)}<br>CargoPT</p>"
+        f"<p>{escape(sender_signature)}<br>"
+        f"{escape(sender_legal_identity)}</p>"
         f"<hr><p><small>{escape(copy['disclosure'])}</small></p>"
         "</body></html>"
     )

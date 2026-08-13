@@ -31,13 +31,24 @@ email = {
     "partner_outreach_send_enabled": True,
 }
 try:
-    Settings(**email)
+    Settings(**email, partner_outreach_legal_identity="CargoPT Test Lda")
 except ValidationError as exc:
     assert "EMAIL_REPLY_TO" in str(exc)
 else:
     raise AssertionError("outreach sending was accepted without reply-to")
 
-valid = Settings(**email, email_reply_to="hello@cargopt.pt")
+try:
+    Settings(**email, email_reply_to="hello@cargopt.pt")
+except ValidationError as exc:
+    assert "PARTNER_OUTREACH_LEGAL_IDENTITY" in str(exc)
+else:
+    raise AssertionError("outreach sending was accepted without legal identity")
+
+valid = Settings(
+    **email,
+    email_reply_to="hello@cargopt.pt",
+    partner_outreach_legal_identity="CargoPT Test Lda",
+)
 assert valid.partner_outreach_send_enabled is True
 
 print("PARTNER_OUTREACH_CONFIG_GUARDS_OK")
