@@ -10,6 +10,10 @@ from app.models.job_email_notification import JobEmailNotification
 from app.models.meta_operations import MetaEventAction
 from app.models.meta_operations import MetaInboundEvent
 from app.models.meta_operations import MetaSourceGroup
+from app.models.partner_outreach import PartnerOutreachComplianceSnapshot
+from app.models.partner_outreach import PartnerOutreachMessage
+from app.models.partner_outreach import PartnerOutreachSuppression
+from app.models.partner_outreach import PartnerProspect
 
 __all__ = [
     "AdminInviteToken",
@@ -24,4 +28,8 @@ __all__ = [
     "MetaEventAction",
     "MetaInboundEvent",
     "MetaSourceGroup",
+    "PartnerOutreachComplianceSnapshot",
+    "PartnerOutreachMessage",
+    "PartnerOutreachSuppression",
+    "PartnerProspect",
 ]

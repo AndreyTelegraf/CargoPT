@@ -43,6 +43,21 @@ class Settings(BaseSettings):
     meta_operations_telegram_chat_ids: str = ""
     meta_operations_alert_threshold: float = Field(default=0.6, ge=0, le=1)
 
+    partner_outreach_enabled: bool = False
+    partner_outreach_send_enabled: bool = False
+    partner_outreach_daily_limit: int = Field(default=5, gt=0, le=25)
+    partner_outreach_min_interval_minutes: int = Field(
+        default=20,
+        ge=5,
+        le=1440,
+    )
+    partner_outreach_compliance_max_age_days: int = Field(
+        default=35,
+        gt=0,
+        le=62,
+    )
+    partner_outreach_sender_signature: str = "Equipa CargoPT"
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
@@ -58,6 +73,10 @@ class Settings(BaseSettings):
             )
 
         if not self.email_enabled:
+            if self.partner_outreach_send_enabled:
+                raise ValueError(
+                    "PARTNER_OUTREACH_SEND_ENABLED requires EMAIL_ENABLED"
+                )
             return self
 
         if self.email_transport != "smtp":
@@ -76,6 +95,12 @@ class Settings(BaseSettings):
             raise ValueError(
                 "email is enabled but required settings are missing: "
                 + ", ".join(missing)
+            )
+
+        if self.partner_outreach_send_enabled and not self.partner_outreach_enabled:
+            raise ValueError(
+                "PARTNER_OUTREACH_SEND_ENABLED requires "
+                "PARTNER_OUTREACH_ENABLED"
             )
 
         return self
