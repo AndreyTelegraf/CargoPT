@@ -20,6 +20,7 @@ TESTS=(
   scripts/backup_sqlite_smoke.py
   scripts/rate_limit_smoke.py
   scripts/web_request_contact_rate_limit_smoke.py
+  scripts/location_search_api_smoke.py
   scripts/stale_draft_archive_smoke.py
   scripts/requested_date_validation_smoke.py
   scripts/job_requested_datetime_handler_smoke.py

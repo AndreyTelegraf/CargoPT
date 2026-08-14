@@ -16,6 +16,8 @@ app.add_middleware(
     max_requests=settings.web_request_rate_limit_count,
     window_seconds=settings.web_request_rate_limit_window_seconds,
     max_body_bytes=settings.web_request_max_body_bytes,
+    location_search_max_requests=settings.location_search_rate_limit_count,
+    location_search_window_seconds=settings.location_search_rate_limit_window_seconds,
 )
 app.include_router(web_requests_router, prefix="/api/v1")
 app.include_router(meta_operations_router)

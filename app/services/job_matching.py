@@ -219,38 +219,47 @@ class JobMatchingService:
         if loaded_addresses is None:
             loaded_addresses = getattr(job, "__dict__", {}).get("addresses") or []
 
-        for address in loaded_addresses:
-            regions.update(
-                _regions_from_coordinates(
-                    address.latitude,
-                    address.longitude,
-                )
-            )
-
-        if regions:
-            reason = MatchingReason.REGION_FROM_COORDINATES
-
-        if loaded_addresses and not regions:
-            for address in loaded_addresses:
-                regions.update(await _regions_from_geocoded_address(address))
-
-            if regions:
-                reason = MatchingReason.REGION_FROM_GEOCODING
-
-        if loaded_addresses and not regions:
-            for address in loaded_addresses:
-                regions.update(_regions_from_text(address.raw_text))
-                regions.update(_regions_from_text(address.normalized_address))
-
-            if regions:
-                reason = MatchingReason.REGION_FROM_TEXT_FALLBACK
-
-        if loaded_addresses and not regions:
+        if not loaded_addresses:
             return MatchingResult(
                 vehicles=[],
-                reason=MatchingReason.REGION_NOT_DETERMINED,
+                reason=MatchingReason.NO_ADDRESSES,
                 regions=[],
             )
+
+        for address in loaded_addresses:
+            address_regions = _regions_from_coordinates(
+                address.latitude,
+                address.longitude,
+            )
+            address_reason = MatchingReason.REGION_FROM_COORDINATES
+
+            if not address_regions:
+                address_regions = await _regions_from_geocoded_address(address)
+                address_reason = MatchingReason.REGION_FROM_GEOCODING
+
+            if not address_regions:
+                address_regions.update(_regions_from_text(address.raw_text))
+                address_regions.update(
+                    _regions_from_text(address.normalized_address)
+                )
+                address_reason = MatchingReason.REGION_FROM_TEXT_FALLBACK
+
+            if not address_regions:
+                return MatchingResult(
+                    vehicles=[],
+                    reason=MatchingReason.REGION_NOT_DETERMINED,
+                    regions=sorted(regions),
+                )
+
+            regions.update(address_regions)
+            if reason == MatchingReason.NO_ADDRESSES or (
+                reason == MatchingReason.REGION_FROM_COORDINATES
+                and address_reason != MatchingReason.REGION_FROM_COORDINATES
+            ) or (
+                reason == MatchingReason.REGION_FROM_GEOCODING
+                and address_reason == MatchingReason.REGION_FROM_TEXT_FALLBACK
+            ):
+                reason = address_reason
 
         vehicles = await self.carrier_search.find_matching_vehicles(
             min_payload_kg=job.estimated_payload_kg,

@@ -55,6 +55,7 @@ TESTS=(
   scripts/backup_sqlite_smoke.py
   scripts/rate_limit_smoke.py
   scripts/web_request_contact_rate_limit_smoke.py
+  scripts/location_search_api_smoke.py
   scripts/landing_custom_validation_smoke.py
   scripts/landing_tracking_workspace_dependency_smoke.py
   scripts/job_tracking_page_static_smoke.py

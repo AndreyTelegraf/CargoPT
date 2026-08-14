@@ -15,13 +15,26 @@ from app.services.web_intake import WebIntakeRequest
 class WebRequestAddressPayload(BaseModel):
     kind: Literal["pickup", "dropoff"]
     raw_text: str = Field(min_length=1, max_length=500)
+    normalized_address: str = Field(min_length=1, max_length=500)
+    latitude: float = Field(ge=-90, le=90)
+    longitude: float = Field(ge=-180, le=180)
+    location_confirmed: bool
     floor: int | None = Field(default=None, ge=-1, le=24)
     has_elevator: bool | None = None
+
+    @model_validator(mode="after")
+    def validate_location_selection(self) -> "WebRequestAddressPayload":
+        if not self.location_confirmed:
+            raise ValueError("address location must be selected and confirmed")
+        return self
 
     def to_service_address(self) -> WebIntakeAddress:
         return WebIntakeAddress(
             kind=self.kind,
             raw_text=self.raw_text,
+            normalized_address=self.normalized_address,
+            latitude=self.latitude,
+            longitude=self.longitude,
             floor=self.floor,
             has_elevator=self.has_elevator,
         )
@@ -114,6 +127,13 @@ class WebRequestResponse(BaseModel):
     tracking_url: str
     offers_count: int
     sent_count: int
+
+
+class LocationSuggestionResponse(BaseModel):
+    display_name: str
+    latitude: float
+    longitude: float
+    map_url: str
 
 
 class TrackingOfferResponse(BaseModel):

@@ -39,7 +39,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"CargoPT — moving and transport services in Portugal","serviceType":"Moving and transport request service","areaServed":{"@type":"Country","name":"Portugal"},"provider":{"@id":"https://cargopt.pt/#organization"},"url":"https://cargopt.pt/en/","description":"Submit one moving or transport request in Portugal and receive several offers from carriers."}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does transport cost?","acceptedAnswer":{"@type":"Answer","text":"The price depends on the distance, cargo volume, floors, elevator access, the chosen date and whether movers are needed. Each carrier sends their own offer, so you can compare prices and conditions before deciding."}},{"@type":"Question","name":"Do I pay to submit a request?","acceptedAnswer":{"@type":"Answer","text":"No. The service is free for anyone looking for transport. You can describe the move, receive offers and compare options without paying for the request."}},{"@type":"Question","name":"Can I move one item only?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can request transport for furniture, appliances, a piano, boxes or other individual items. Just specify what needs to be moved, the locations, access conditions and preferred date."}},{"@type":"Question","name":"Can I move between cities?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can receive offers for local transport and moves between cities in Portugal, including Lisbon, Porto, Cascais, Sintra, Oeiras and other locations."}}]}</script>
   <link rel="stylesheet" href="/assets/css/design-system-designer-review-v1.css">
-  <link rel="stylesheet" href="/assets/css/components.css?v=reduced-motion-v2">
+  <link rel="stylesheet" href="/assets/css/components.css?v=location-selector-v1">
   <link rel="stylesheet" href="/assets/css/landing-designer-review-v1.css">
 </head>
 <body data-locale="en">
@@ -124,12 +124,34 @@
         <fieldset class="form-step is-active" data-step="1">
           <legend>Get offers</legend>
           <p class="form-intro">Start with three simple questions.</p>
-          <label><span class="field-label">From</span>
-            <input name="pickup" autocomplete="street-address" required placeholder="Example: Lisbon">
-          </label>
-          <label><span class="field-label">To</span>
-            <input name="dropoff" autocomplete="street-address" required placeholder="Example: Cascais">
-          </label>
+          <div class="location-field" data-location-field>
+            <label for="pickupLocation"><span class="field-label">From</span>
+              <input id="pickupLocation" name="pickup" autocomplete="off" required placeholder="Example: Carvoeiro, Lagoa or 8400-508" aria-controls="pickupSuggestions" aria-expanded="false">
+            </label>
+            <small class="form-note">Enter the locality and municipality or postal code. Click “Find place”, then select and confirm the correct point.</small>
+            <button class="button button-secondary location-search-button" type="button" data-location-search>Find place</button>
+            <div id="pickupSuggestions" class="location-suggestions" role="listbox" hidden></div>
+            <div class="location-confirmation" data-location-confirmation hidden>
+              <p><strong>Selected place</strong><span data-location-label></span></p>
+              <a data-location-map target="_blank" rel="noopener noreferrer">Check on map</a>
+              <label class="location-confirm-check"><input type="checkbox" data-location-confirm> I confirm this is the correct pickup location.</label>
+            </div>
+            <p class="location-attribution">Search data: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a></p>
+          </div>
+          <div class="location-field" data-location-field>
+            <label for="dropoffLocation"><span class="field-label">To</span>
+              <input id="dropoffLocation" name="dropoff" autocomplete="off" required placeholder="Example: Alvor, Portimão or 8500-001" aria-controls="dropoffSuggestions" aria-expanded="false">
+            </label>
+            <small class="form-note">Enter the locality and municipality or postal code. Click “Find place”, then select and confirm the correct point.</small>
+            <button class="button button-secondary location-search-button" type="button" data-location-search>Find place</button>
+            <div id="dropoffSuggestions" class="location-suggestions" role="listbox" hidden></div>
+            <div class="location-confirmation" data-location-confirmation hidden>
+              <p><strong>Selected place</strong><span data-location-label></span></p>
+              <a data-location-map target="_blank" rel="noopener noreferrer">Check on map</a>
+              <label class="location-confirm-check"><input type="checkbox" data-location-confirm> I confirm this is the correct delivery location.</label>
+            </div>
+            <p class="location-attribution">Search data: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a></p>
+          </div>
           <label><span class="field-label">What are you moving?</span>
             <textarea name="items" required placeholder="Example: sofa, 20 boxes, washing machine"></textarea>
           </label>
@@ -256,6 +278,6 @@
       <a href="mailto:hello@cargopt.pt">Contact</a>
     </nav>
   </footer>
-  <script src="/assets/js/landing.js?v=requested-date-guard-v1" defer></script>
+  <script src="/assets/js/landing.js?v=location-selector-v1" defer></script>
 </body>
 </html>

@@ -5,11 +5,13 @@ from datetime import datetime
 from fastapi import APIRouter
 from fastapi import Depends
 from fastapi import HTTPException
+from fastapi import Query
 from fastapi.responses import FileResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.web_request_schemas import WebRequestPayload
 from app.api.web_request_schemas import WebRequestResponse
+from app.api.web_request_schemas import LocationSuggestionResponse
 from app.api.web_request_schemas import TrackingOfferSelectResponse
 from app.api.web_request_schemas import TrackingOfferResponse
 from app.api.web_request_schemas import TrackingJobResponse
@@ -46,10 +48,37 @@ from app.services.request_intake import RequestIntakeItem
 from app.services.request_intake import RequestIntakeService
 from app.services.request_intake import WebRequestRateLimitError
 from app.services.short_lead_time_warning import has_short_lead_time
+from app.services.location_normalization import search_location_suggestions
 from app.services.tracking_url import build_tracking_path
 
 
 router = APIRouter()
+
+
+@router.get(
+    "/locations/search",
+    response_model=list[LocationSuggestionResponse],
+)
+async def search_locations(
+    q: str = Query(min_length=3, max_length=120),
+    locale: str = Query(default="pt", pattern="^(pt|en|ru)$"),
+    limit: int = Query(default=5, ge=1, le=5),
+) -> list[LocationSuggestionResponse]:
+    suggestions = await search_location_suggestions(
+        q,
+        locale=locale,
+        limit=limit,
+        provider_url=settings.location_search_provider_url,
+    )
+    return [
+        LocationSuggestionResponse(
+            display_name=item.display_name,
+            latitude=item.latitude,
+            longitude=item.longitude,
+            map_url=item.map_url,
+        )
+        for item in suggestions
+    ]
 
 
 async def get_session() -> AsyncIterator[AsyncSession]:
@@ -155,6 +184,9 @@ async def submit_web_request(
                     RequestIntakeAddress(
                         kind=address.kind,
                         raw_text=address.raw_text,
+                        normalized_address=address.normalized_address,
+                        latitude=address.latitude,
+                        longitude=address.longitude,
                         floor=address.floor,
                         has_elevator=address.has_elevator,
                     )

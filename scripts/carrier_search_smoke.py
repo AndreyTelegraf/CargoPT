@@ -101,6 +101,25 @@ async def exercise_search() -> None:
             )
         )
 
+        lisboa_only = await repo.create_carrier(
+            CarrierCompany(
+                company_name="Lisboa Only Carrier",
+                contact_name=None,
+                phone=None,
+                telegram_user_id=1004,
+                status=CarrierStatus.ACTIVE,
+                paid_until=now + timedelta(days=30),
+                assembly_required=False,
+                packing_required=False,
+                operating_regions="Lisboa",
+                profile_completed_at=now,
+                current_profile_step=None,
+                internal_note=None,
+                created_at=now,
+                updated_at=now,
+            )
+        )
+
         await repo.create_vehicle(
             CarrierVehicle(
                 carrier_id=active.id,
@@ -160,6 +179,26 @@ async def exercise_search() -> None:
             )
         )
 
+        await repo.create_vehicle(
+            CarrierVehicle(
+                carrier_id=lisboa_only.id,
+                vehicle_type="small_van",
+                payload_kg=500,
+                volume_m3=5.0,
+                has_tail_lift=False,
+                has_crane=False,
+                has_mobile_lift=False,
+                mobile_lift_max_floor=None,
+                mobile_lift_max_weight_kg=None,
+                crane_max_weight_kg=None,
+                crane_reach_meters=None,
+                max_loaders=1,
+                is_active=True,
+                created_at=now,
+                updated_at=now,
+            )
+        )
+
         await session.commit()
 
         search = CarrierSearchService(repo)
@@ -178,6 +217,16 @@ async def exercise_search() -> None:
 
         if matches[0].carrier_id != active.id:
             raise SystemExit("matched wrong carrier")
+
+        route_matches = await search.find_matching_vehicles(
+            regions=["Lisboa", "Porto"],
+        )
+        route_carrier_ids = {vehicle.carrier_id for vehicle in route_matches}
+        if route_carrier_ids != {active.id}:
+            raise SystemExit(
+                "route-wide regions were not required: "
+                f"{sorted(route_carrier_ids)}"
+            )
 
     await engine.dispose()
 

@@ -3,7 +3,14 @@ import asyncio
 from app.api.rate_limit import WebRequestRateLimitMiddleware
 
 
-async def call_app(middleware, *, path, body=b"{}", client="203.0.113.1"):
+async def call_app(
+    middleware,
+    *,
+    path,
+    body=b"{}",
+    client="203.0.113.1",
+    method="POST",
+):
     messages = [{"type": "http.request", "body": body, "more_body": False}]
     sent = []
 
@@ -16,7 +23,7 @@ async def call_app(middleware, *, path, body=b"{}", client="203.0.113.1"):
     await middleware(
         {
             "type": "http",
-            "method": "POST",
+            "method": method,
             "path": path,
             "client": (client, 12345),
             "headers": [],
@@ -39,6 +46,8 @@ async def main():
         max_requests=2,
         window_seconds=3600,
         max_body_bytes=8,
+        location_search_max_requests=2,
+        location_search_window_seconds=3600,
     )
     first = await call_app(middleware, path="/api/v1/requests")
     second = await call_app(middleware, path="/api/v1/requests")
@@ -61,6 +70,28 @@ async def main():
         client="203.0.113.1",
     )
     assert unrelated[0]["status"] == 201
+
+    first_search = await call_app(
+        middleware,
+        path="/api/v1/locations/search",
+        client="203.0.113.3",
+        method="GET",
+    )
+    second_search = await call_app(
+        middleware,
+        path="/api/v1/locations/search",
+        client="203.0.113.3",
+        method="GET",
+    )
+    limited_search = await call_app(
+        middleware,
+        path="/api/v1/locations/search",
+        client="203.0.113.3",
+        method="GET",
+    )
+    assert first_search[0]["status"] == 201
+    assert second_search[0]["status"] == 201
+    assert limited_search[0]["status"] == 429
     print("RATE_LIMIT_SMOKE_OK")
 
 

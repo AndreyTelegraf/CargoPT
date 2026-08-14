@@ -18,11 +18,12 @@ def _format_elevator(value) -> str:
 
 def _format_address(label: str, address) -> str:
     raw_text = address.raw_text if address else None
+    normalized_address = getattr(address, "normalized_address", None) if address else None
     map_url = address.map_url if address else None
     floor = address.floor if address else None
     has_elevator = address.has_elevator if address else None
 
-    value = _safe(raw_text or "не указан")
+    value = _safe(normalized_address or raw_text or "не указан")
     safe_label = _safe(label)
     details = f"\nЭтаж: {_safe(floor if floor is not None else 'не указан')}\nЛифт: {_format_elevator(has_elevator)}"
 

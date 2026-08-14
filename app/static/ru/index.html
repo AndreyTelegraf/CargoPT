@@ -39,7 +39,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"CargoPT — перевозки и переезды по Португалии","serviceType":"Moving and transport request service","areaServed":{"@type":"Country","name":"Portugal"},"provider":{"@id":"https://cargopt.pt/#organization"},"url":"https://cargopt.pt/ru/","description":"Одна заявка на перевозку или переезд по Португалии — несколько предложений от перевозчиков."}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Сколько стоит перевозка?","acceptedAnswer":{"@type":"Answer","text":"Цена зависит от расстояния, объёма груза, этажей, наличия лифта, выбранной даты и необходимости грузчиков. Каждый перевозчик присылает собственное предложение, поэтому перед выбором можно сравнить цены и условия."}},{"@type":"Question","name":"Нужно ли платить за заявку?","acceptedAnswer":{"@type":"Answer","text":"Нет. Сервис бесплатен для тех, кто ищет перевозчика. Можно описать переезд, получить предложения и сравнить варианты без оплаты заявки."}},{"@type":"Question","name":"Можно ли заказать перевозку одной вещи?","acceptedAnswer":{"@type":"Answer","text":"Да. Можно заказать перевозку мебели, бытовой техники, пианино, коробок или других отдельных предметов. Достаточно указать, что нужно перевезти, адреса, условия доступа и желаемую дату."}},{"@type":"Question","name":"Можно ли перевозить между городами?","acceptedAnswer":{"@type":"Answer","text":"Да. Можно получать предложения как для местных перевозок, так и для переездов между городами Португалии, включая Лиссабон, Порту, Кашкайш, Синтру, Оэйраш и другие населённые пункты."}}]}</script>
   <link rel="stylesheet" href="/assets/css/design-system-designer-review-v1.css">
-  <link rel="stylesheet" href="/assets/css/components.css?v=reduced-motion-v2">
+  <link rel="stylesheet" href="/assets/css/components.css?v=location-selector-v1">
   <link rel="stylesheet" href="/assets/css/landing-designer-review-v1.css">
 </head>
 <body data-locale="ru">
@@ -124,12 +124,34 @@
         <fieldset class="form-step is-active" data-step="1">
           <legend>Получить предложения</legend>
           <p class="form-intro">Начните с трёх простых вопросов.</p>
-          <label><span class="field-label">Откуда</span>
-            <input name="pickup" autocomplete="street-address" required placeholder="Например: Lisboa">
-          </label>
-          <label><span class="field-label">Куда</span>
-            <input name="dropoff" autocomplete="street-address" required placeholder="Например: Cascais">
-          </label>
+          <div class="location-field" data-location-field>
+            <label for="pickupLocation"><span class="field-label">Откуда</span>
+              <input id="pickupLocation" name="pickup" autocomplete="off" required placeholder="Например: Carvoeiro, Lagoa или 8400-508" aria-controls="pickupSuggestions" aria-expanded="false">
+            </label>
+            <small class="form-note">Укажите населённый пункт и муниципалитет или почтовый индекс. Нажмите «Найти место», затем выберите и подтвердите правильную точку.</small>
+            <button class="button button-secondary location-search-button" type="button" data-location-search>Найти место</button>
+            <div id="pickupSuggestions" class="location-suggestions" role="listbox" hidden></div>
+            <div class="location-confirmation" data-location-confirmation hidden>
+              <p><strong>Выбранное место</strong><span data-location-label></span></p>
+              <a data-location-map target="_blank" rel="noopener noreferrer">Проверить на карте</a>
+              <label class="location-confirm-check"><input type="checkbox" data-location-confirm> Подтверждаю, что это правильное место погрузки.</label>
+            </div>
+            <p class="location-attribution">Поисковые данные: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a></p>
+          </div>
+          <div class="location-field" data-location-field>
+            <label for="dropoffLocation"><span class="field-label">Куда</span>
+              <input id="dropoffLocation" name="dropoff" autocomplete="off" required placeholder="Например: Alvor, Portimão или 8500-001" aria-controls="dropoffSuggestions" aria-expanded="false">
+            </label>
+            <small class="form-note">Укажите населённый пункт и муниципалитет или почтовый индекс. Нажмите «Найти место», затем выберите и подтвердите правильную точку.</small>
+            <button class="button button-secondary location-search-button" type="button" data-location-search>Найти место</button>
+            <div id="dropoffSuggestions" class="location-suggestions" role="listbox" hidden></div>
+            <div class="location-confirmation" data-location-confirmation hidden>
+              <p><strong>Выбранное место</strong><span data-location-label></span></p>
+              <a data-location-map target="_blank" rel="noopener noreferrer">Проверить на карте</a>
+              <label class="location-confirm-check"><input type="checkbox" data-location-confirm> Подтверждаю, что это правильное место доставки.</label>
+            </div>
+            <p class="location-attribution">Поисковые данные: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a></p>
+          </div>
           <label><span class="field-label">Что перевозим</span>
             <textarea name="items" required placeholder="Например: диван, 20 коробок, стиральная машина"></textarea>
           </label>
@@ -256,6 +278,6 @@
       <a href="mailto:hello@cargopt.pt">Контакты</a>
     </nav>
   </footer>
-  <script src="/assets/js/landing.js?v=requested-date-guard-v1" defer></script>
+  <script src="/assets/js/landing.js?v=location-selector-v1" defer></script>
 </body>
 </html>

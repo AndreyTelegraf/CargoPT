@@ -44,7 +44,7 @@
     {"@type":"Question","name":"É possível fazer transporte entre cidades?","acceptedAnswer":{"@type":"Answer","text":"Sim. Pode receber propostas para transportes locais e também para mudanças entre cidades em Portugal, como Lisboa, Porto, Cascais, Sintra, Oeiras ou outras localidades."}}
   ]}</script>
   <link rel="stylesheet" href="/assets/css/design-system-designer-review-v1.css">
-  <link rel="stylesheet" href="/assets/css/components.css?v=reduced-motion-v2">
+  <link rel="stylesheet" href="/assets/css/components.css?v=location-selector-v1">
   <link rel="stylesheet" href="/assets/css/landing-designer-review-v1.css">
 </head>
 <body data-locale="pt">
@@ -132,12 +132,34 @@
         <fieldset class="form-step is-active" data-step="1">
           <legend>Receber propostas</legend>
           <p class="form-intro">Comece com três perguntas simples.</p>
-          <label><span class="field-label">De onde</span>
-            <input name="pickup" autocomplete="street-address" required placeholder="Exemplo: Lisboa">
-          </label>
-          <label><span class="field-label">Para onde</span>
-            <input name="dropoff" autocomplete="street-address" required placeholder="Exemplo: Cascais">
-          </label>
+          <div class="location-field" data-location-field>
+            <label for="pickupLocation"><span class="field-label">De onde</span>
+              <input id="pickupLocation" name="pickup" autocomplete="off" required placeholder="Exemplo: Carvoeiro, Lagoa ou 8400-508" aria-controls="pickupSuggestions" aria-expanded="false">
+            </label>
+            <small class="form-note">Indique a localidade e o município ou o código postal. Clique em «Procurar local», escolha e confirme o ponto correto.</small>
+            <button class="button button-secondary location-search-button" type="button" data-location-search>Procurar local</button>
+            <div id="pickupSuggestions" class="location-suggestions" role="listbox" hidden></div>
+            <div class="location-confirmation" data-location-confirmation hidden>
+              <p><strong>Local selecionado</strong><span data-location-label></span></p>
+              <a data-location-map target="_blank" rel="noopener noreferrer">Verificar no mapa</a>
+              <label class="location-confirm-check"><input type="checkbox" data-location-confirm> Confirmo que este é o local de recolha correto.</label>
+            </div>
+            <p class="location-attribution">Dados de pesquisa: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a></p>
+          </div>
+          <div class="location-field" data-location-field>
+            <label for="dropoffLocation"><span class="field-label">Para onde</span>
+              <input id="dropoffLocation" name="dropoff" autocomplete="off" required placeholder="Exemplo: Alvor, Portimão ou 8500-001" aria-controls="dropoffSuggestions" aria-expanded="false">
+            </label>
+            <small class="form-note">Indique a localidade e o município ou o código postal. Clique em «Procurar local», escolha e confirme o ponto correto.</small>
+            <button class="button button-secondary location-search-button" type="button" data-location-search>Procurar local</button>
+            <div id="dropoffSuggestions" class="location-suggestions" role="listbox" hidden></div>
+            <div class="location-confirmation" data-location-confirmation hidden>
+              <p><strong>Local selecionado</strong><span data-location-label></span></p>
+              <a data-location-map target="_blank" rel="noopener noreferrer">Verificar no mapa</a>
+              <label class="location-confirm-check"><input type="checkbox" data-location-confirm> Confirmo que este é o local de entrega correto.</label>
+            </div>
+            <p class="location-attribution">Dados de pesquisa: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a></p>
+          </div>
           <label><span class="field-label">O que vai transportar?</span>
             <textarea name="items" required placeholder="Exemplo: sofá, 20 caixas, máquina de lavar"></textarea>
           </label>
@@ -362,6 +384,6 @@
       <a href="mailto:hello@cargopt.pt">Contacto</a>
     </nav>
   </footer>
-  <script src="/assets/js/landing.js?v=requested-date-guard-v1" defer></script>
+  <script src="/assets/js/landing.js?v=location-selector-v1" defer></script>
 </body>
 </html>

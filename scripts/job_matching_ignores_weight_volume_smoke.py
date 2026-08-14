@@ -5,7 +5,8 @@ source = Path(
 ).read_text(encoding="utf-8")
 
 assert "regions=sorted(regions) or None" in source
-assert "if loaded_addresses and not regions:" in source
+assert "for address in loaded_addresses:" in source
+assert "if not address_regions:" in source
 assert "MatchingReason.REGION_NOT_DETERMINED" in source
 
 expected_constraints = (

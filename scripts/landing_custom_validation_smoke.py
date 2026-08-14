@@ -75,10 +75,20 @@ for relative in (
         in html
     )
     assert (
-        "/assets/js/landing.js?v=requested-date-guard-v1"
+        "/assets/js/landing.js?v=location-selector-v1"
         in html
     )
+    assert "/assets/css/components.css?v=location-selector-v1" in html
+    assert html.count('data-location-field') == 2
+    assert html.count('data-location-search') == 2
+    assert html.count('data-location-confirmation') == 2
+    assert html.count('data-location-confirm>') == 2
+    assert html.count('openstreetmap.org/copyright') == 2
+    assert 'aria-autocomplete="list"' not in html
     assert 'id="requestForm"' in html
     assert "novalidate" in html
+
+assert "LOCATION_SEARCH_DEBOUNCE_MS" not in js
+assert 'searchButton.addEventListener("click"' in js
 
 print("LANDING_CUSTOM_VALIDATION_SMOKE_OK")

@@ -17,7 +17,7 @@ TRACK_PAGES = (
 TRACKING_REF = "/assets/js/tracking-workspace.js"
 LANDING_REF = (
     "/assets/js/landing.js"
-    "?v=requested-date-guard-v1"
+    "?v=location-selector-v1"
 )
 
 for path in LANDINGS:

@@ -36,7 +36,12 @@ const MESSAGES = {
     itemsLabel: "Itens",
     commentLabel: "Comentário",
     openRequestsShort: "Pedidos",
-    openRequestsLong: "Meus pedidos"
+    openRequestsLong: "Meus pedidos",
+    locationLoading: "A procurar locais em Portugal...",
+    locationNoResults: "Nenhum local encontrado. Acrescente o município ou o código postal.",
+    locationSearchFailure: "Não foi possível procurar locais agora. Tente novamente.",
+    locationSelectRequired: "Escolha um local específico da lista.",
+    locationConfirmRequired: "Confirme que o ponto selecionado está correto."
   },
   en: {
     required: "Fill in the required fields to continue.",
@@ -64,7 +69,12 @@ const MESSAGES = {
     itemsLabel: "Items",
     commentLabel: "Comment",
     openRequestsShort: "Requests",
-    openRequestsLong: "My requests"
+    openRequestsLong: "My requests",
+    locationLoading: "Searching for places in Portugal...",
+    locationNoResults: "No place found. Add the municipality or postal code.",
+    locationSearchFailure: "Places could not be searched right now. Try again.",
+    locationSelectRequired: "Select a specific place from the list.",
+    locationConfirmRequired: "Confirm that the selected point is correct."
   },
   ru: {
     required: "Заполните обязательные поля, чтобы продолжить.",
@@ -92,7 +102,12 @@ const MESSAGES = {
     itemsLabel: "Груз",
     commentLabel: "Комментарий",
     openRequestsShort: "Заявки",
-    openRequestsLong: "Мои заявки"
+    openRequestsLong: "Мои заявки",
+    locationLoading: "Ищем места в Португалии...",
+    locationNoResults: "Место не найдено. Добавьте муниципалитет или почтовый индекс.",
+    locationSearchFailure: "Сейчас не удалось найти места. Попробуйте ещё раз.",
+    locationSelectRequired: "Выберите конкретное место из списка.",
+    locationConfirmRequired: "Подтвердите, что выбранная точка правильная."
   }
 };
 
@@ -102,6 +117,7 @@ const localizedHomePath = {
   en: "/en/",
   ru: "/ru/",
 }[localeKey] || "/";
+const locationFieldStates = new Map();
 
 function setMessage(text, type) {
   formMessage.textContent = text || "";
@@ -297,6 +313,176 @@ function clearEditedFieldValidity(event) {
   clearFieldValidity(field);
 }
 
+function setLocationSuggestionsExpanded(state, expanded) {
+  state.suggestions.hidden = !expanded;
+  state.input.setAttribute("aria-expanded", String(expanded));
+}
+
+function clearLocationSelection(state) {
+  state.selection = null;
+  state.confirm.checked = false;
+  state.confirmation.hidden = true;
+  state.selectedLabel.textContent = "";
+  state.mapLink.removeAttribute("href");
+}
+
+function renderLocationStatus(state, message) {
+  state.suggestions.replaceChildren();
+  const status = document.createElement("p");
+  status.className = "location-suggestions-status";
+  status.textContent = message;
+  state.suggestions.append(status);
+  setLocationSuggestionsExpanded(state, true);
+}
+
+function selectLocationSuggestion(state, suggestion, rawText) {
+  state.selection = {
+    rawText,
+    displayName: suggestion.display_name,
+    latitude: suggestion.latitude,
+    longitude: suggestion.longitude,
+    mapUrl: suggestion.map_url
+  };
+  state.input.value = suggestion.display_name;
+  state.selectedLabel.textContent = suggestion.display_name;
+  state.mapLink.href = suggestion.map_url;
+  state.confirm.checked = false;
+  state.confirmation.hidden = false;
+  setLocationSuggestionsExpanded(state, false);
+  clearFieldValidity(state.input);
+  state.confirm.focus({preventScroll: true});
+}
+
+function renderLocationSuggestions(state, suggestions, rawText) {
+  state.suggestions.replaceChildren();
+
+  if (!suggestions.length) {
+    renderLocationStatus(state, messages.locationNoResults);
+    return;
+  }
+
+  suggestions.forEach((suggestion) => {
+    const option = document.createElement("button");
+    option.type = "button";
+    option.className = "location-suggestion";
+    option.setAttribute("role", "option");
+    option.textContent = suggestion.display_name;
+    option.addEventListener("mousedown", (event) => event.preventDefault());
+    option.addEventListener("click", () => {
+      selectLocationSuggestion(state, suggestion, rawText);
+    });
+    state.suggestions.append(option);
+  });
+
+  setLocationSuggestionsExpanded(state, true);
+}
+
+async function searchLocations(state, rawText) {
+  if (state.controller) {
+    state.controller.abort();
+  }
+
+  const controller = new AbortController();
+  state.controller = controller;
+  state.searchButton.disabled = true;
+  renderLocationStatus(state, messages.locationLoading);
+
+  try {
+    const params = new URLSearchParams({
+      q: rawText,
+      locale: localeKey,
+      limit: "5"
+    });
+    const response = await fetch(`/api/v1/locations/search?${params}`, {
+      signal: controller.signal,
+      headers: {"Accept": "application/json"}
+    });
+
+    if (!response.ok) {
+      throw new Error(`location search failed: ${response.status}`);
+    }
+
+    const suggestions = await response.json();
+    if (state.input.value.trim() !== rawText) return;
+    renderLocationSuggestions(state, suggestions, rawText);
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "AbortError") return;
+    renderLocationStatus(state, messages.locationSearchFailure);
+  } finally {
+    if (state.controller === controller) {
+      state.controller = null;
+    }
+    state.searchButton.disabled = false;
+  }
+}
+
+function initializeLocationFields() {
+  document.querySelectorAll("[data-location-field]").forEach((container) => {
+    const input = container.querySelector('input[name="pickup"], input[name="dropoff"]');
+    const suggestions = container.querySelector(".location-suggestions");
+    const confirmation = container.querySelector("[data-location-confirmation]");
+    const selectedLabel = container.querySelector("[data-location-label]");
+    const mapLink = container.querySelector("[data-location-map]");
+    const confirm = container.querySelector("[data-location-confirm]");
+    const searchButton = container.querySelector("[data-location-search]");
+
+    if (!input || !suggestions || !confirmation || !selectedLabel || !mapLink || !confirm || !searchButton) {
+      return;
+    }
+
+    const state = {
+      input,
+      suggestions,
+      confirmation,
+      selectedLabel,
+      mapLink,
+      confirm,
+      searchButton,
+      selection: null,
+      controller: null
+    };
+    locationFieldStates.set(input, state);
+
+    input.addEventListener("input", () => {
+      if (state.controller) {
+        state.controller.abort();
+        state.controller = null;
+        state.searchButton.disabled = false;
+      }
+      clearLocationSelection(state);
+      state.suggestions.replaceChildren();
+      setLocationSuggestionsExpanded(state, false);
+    });
+
+    searchButton.addEventListener("click", () => {
+      const rawText = input.value.trim();
+      clearFieldValidity(input);
+      clearLocationSelection(state);
+
+      if (rawText.length < 3) {
+        markFieldInvalid(input, messages.locationSelectRequired, true);
+        return;
+      }
+
+      searchLocations(state, rawText);
+    });
+
+    confirm.addEventListener("change", () => {
+      clearFieldValidity(input);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    locationFieldStates.forEach((state) => {
+      if (!state.input.closest("[data-location-field]").contains(event.target)) {
+        setLocationSuggestionsExpanded(state, false);
+      }
+    });
+  });
+}
+
+initializeLocationFields();
+
 form.addEventListener("input", clearEditedFieldValidity);
 form.addEventListener("change", clearEditedFieldValidity);
 
@@ -402,6 +588,25 @@ function validateField(field, focusField = false) {
     markFieldInvalid(
       field,
       messages.required,
+      focusField
+    );
+    return false;
+  }
+
+  const locationState = locationFieldStates.get(field);
+  if (locationState && value && !locationState.selection) {
+    markFieldInvalid(
+      field,
+      messages.locationSelectRequired,
+      focusField
+    );
+    return false;
+  }
+
+  if (locationState && value && !locationState.confirm.checked) {
+    markFieldInvalid(
+      field,
+      messages.locationConfirmRequired,
       focusField
     );
     return false;
@@ -535,6 +740,22 @@ function normalizeRequestedDate(value) {
 function buildPayload() {
   const data = getFormData();
   const requestedDate = normalizeRequestedDate(data.requested_date);
+  const pickupLocation = locationFieldStates.get(form.elements.pickup);
+  const dropoffLocation = locationFieldStates.get(form.elements.dropoff);
+
+  function buildAddress(kind, state, floor, hasElevator) {
+    const selection = state && state.selection;
+    return {
+      kind,
+      raw_text: selection ? selection.rawText : "",
+      normalized_address: selection ? selection.displayName : "",
+      latitude: selection ? selection.latitude : null,
+      longitude: selection ? selection.longitude : null,
+      location_confirmed: Boolean(selection && state.confirm.checked),
+      floor,
+      has_elevator: hasElevator
+    };
+  }
 
   return {
     source_locale: localeKey,
@@ -550,18 +771,18 @@ function buildPayload() {
     landing_version: "landing_static_v2",
     requested_date: requestedDate,
     addresses: [
-      {
-        kind: "pickup",
-        raw_text: data.pickup,
-        floor: parseOptionalInt(data.pickup_floor),
-        has_elevator: parseOptionalBool(data.pickup_elevator)
-      },
-      {
-        kind: "dropoff",
-        raw_text: data.dropoff,
-        floor: parseOptionalInt(data.dropoff_floor),
-        has_elevator: parseOptionalBool(data.dropoff_elevator)
-      }
+      buildAddress(
+        "pickup",
+        pickupLocation,
+        parseOptionalInt(data.pickup_floor),
+        parseOptionalBool(data.pickup_elevator)
+      ),
+      buildAddress(
+        "dropoff",
+        dropoffLocation,
+        parseOptionalInt(data.dropoff_floor),
+        parseOptionalBool(data.dropoff_elevator)
+      )
     ],
     items: [
       {

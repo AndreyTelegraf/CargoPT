@@ -1,12 +1,85 @@
 from __future__ import annotations
 
+import asyncio
 import re
+from dataclasses import dataclass
+from time import monotonic
 from urllib.parse import parse_qs
 from urllib.parse import quote_plus
 from urllib.parse import unquote
 from urllib.parse import urlparse
 
 import httpx
+
+
+NOMINATIM_SEARCH_URL = "https://nominatim.openstreetmap.org/search"
+NOMINATIM_MIN_INTERVAL_SECONDS = 1.05
+NOMINATIM_CACHE_TTL_SECONDS = 86400
+NOMINATIM_USER_AGENT = (
+    "CargoPT/1.0 (+https://cargopt.pt; contact: hello@cargopt.pt)"
+)
+
+_nominatim_lock = asyncio.Lock()
+_nominatim_last_request_at = 0.0
+_nominatim_cache: dict[tuple[str, tuple[tuple[str, str], ...]], tuple[float, list]] = {}
+
+LOCATION_SEARCH_LANGUAGES = {
+    "pt": "pt-PT,pt;q=0.9",
+    "en": "en",
+    "ru": "ru",
+}
+
+
+@dataclass(frozen=True)
+class LocationSuggestion:
+    display_name: str
+    latitude: float
+    longitude: float
+    map_url: str
+
+
+async def _nominatim_search(
+    *,
+    provider_url: str,
+    params: dict[str, str],
+) -> list:
+    global _nominatim_last_request_at
+
+    cache_key = (provider_url, tuple(sorted(params.items())))
+    now = monotonic()
+    cached = _nominatim_cache.get(cache_key)
+    if cached is not None and cached[0] > now:
+        return cached[1]
+
+    async with _nominatim_lock:
+        now = monotonic()
+        cached = _nominatim_cache.get(cache_key)
+        if cached is not None and cached[0] > now:
+            return cached[1]
+
+        wait_seconds = NOMINATIM_MIN_INTERVAL_SECONDS - (
+            now - _nominatim_last_request_at
+        )
+        if wait_seconds > 0:
+            await asyncio.sleep(wait_seconds)
+
+        async with httpx.AsyncClient(
+            timeout=httpx.Timeout(5.0),
+            headers={"User-Agent": NOMINATIM_USER_AGENT},
+        ) as client:
+            response = await client.get(provider_url, params=params)
+            _nominatim_last_request_at = monotonic()
+            response.raise_for_status()
+            data = response.json()
+
+        if not isinstance(data, list):
+            raise ValueError("unexpected Nominatim response")
+
+        _nominatim_cache[cache_key] = (
+            monotonic() + NOMINATIM_CACHE_TTL_SECONDS,
+            data,
+        )
+        return data
 
 
 MAPS_URL_RE = re.compile(
@@ -217,38 +290,93 @@ async def geocode_text_address(address: str) -> tuple[float | None, float | None
         return None, None
 
     try:
-        async with httpx.AsyncClient(
-            timeout=httpx.Timeout(5.0),
-            headers={"User-Agent": "CargoPT/1.0 location resolver"},
-        ) as client:
-            for query in queries:
-                response = await client.get(
-                    "https://nominatim.openstreetmap.org/search",
-                    params={
-                        "q": query,
-                        "format": "jsonv2",
-                        "limit": "1",
-                        "countrycodes": "pt",
-                    },
+        for query in queries:
+            data = await _nominatim_search(
+                provider_url=NOMINATIM_SEARCH_URL,
+                params={
+                    "q": query,
+                    "format": "jsonv2",
+                    "limit": "1",
+                    "countrycodes": "pt",
+                },
+            )
+
+            if not data:
+                continue
+
+            try:
+                return _valid_coordinates(
+                    float(data[0]["lat"]),
+                    float(data[0]["lon"]),
                 )
-                response.raise_for_status()
-                data = response.json()
-
-                if not data:
-                    continue
-
-                try:
-                    return _valid_coordinates(
-                        float(data[0]["lat"]),
-                        float(data[0]["lon"]),
-                    )
-                except (KeyError, TypeError, ValueError):
-                    continue
+            except (KeyError, TypeError, ValueError):
+                continue
 
     except (httpx.HTTPError, ValueError):
         return None, None
 
     return None, None
+
+
+async def search_location_suggestions(
+    query: str,
+    *,
+    locale: str = "pt",
+    limit: int = 5,
+    provider_url: str = NOMINATIM_SEARCH_URL,
+) -> list[LocationSuggestion]:
+    clean = " ".join(query.strip().split())
+    if len(clean) < 3:
+        return []
+
+    safe_limit = min(max(limit, 1), 5)
+    language = LOCATION_SEARCH_LANGUAGES.get(locale, LOCATION_SEARCH_LANGUAGES["pt"])
+
+    try:
+        data = await _nominatim_search(
+            provider_url=provider_url,
+            params={
+                "q": clean,
+                "format": "jsonv2",
+                "limit": str(safe_limit),
+                "countrycodes": "pt",
+                "addressdetails": "1",
+                "accept-language": language,
+            },
+        )
+    except (httpx.HTTPError, ValueError):
+        return []
+
+    suggestions = []
+    seen = set()
+
+    for item in data if isinstance(data, list) else []:
+        try:
+            display_name = " ".join(str(item["display_name"]).strip().split())
+            latitude = float(item["lat"])
+            longitude = float(item["lon"])
+        except (KeyError, TypeError, ValueError):
+            continue
+
+        valid_latitude, valid_longitude = _valid_coordinates(latitude, longitude)
+        if valid_latitude is None or valid_longitude is None or not display_name:
+            continue
+
+        key = (display_name.casefold(), round(latitude, 6), round(longitude, 6))
+        if key in seen:
+            continue
+        seen.add(key)
+
+        suggestions.append(
+            LocationSuggestion(
+                display_name=display_name,
+                latitude=latitude,
+                longitude=longitude,
+                map_url=build_google_maps_coordinate_url(latitude, longitude),
+            )
+        )
+
+    return suggestions
 
 
 async def geocode_normalized_location(

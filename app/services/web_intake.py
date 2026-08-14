@@ -7,6 +7,9 @@ class WebIntakeAddress:
     raw_text: str
     floor: int | None = None
     has_elevator: bool | None = None
+    normalized_address: str | None = None
+    latitude: float | None = None
+    longitude: float | None = None
 
 @dataclass(frozen=True)
 class WebIntakeItem:

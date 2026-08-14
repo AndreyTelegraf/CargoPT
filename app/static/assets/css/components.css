@@ -724,6 +724,118 @@ details p {
   font-weight: var(--font-weight-title);
 }
 
+.location-field {
+  position: relative;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.location-field > label {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.location-suggestions {
+  overflow: hidden;
+  border: var(--surface-border);
+  border-radius: var(--radius-md);
+  background: var(--surface-panel-bg);
+  box-shadow: var(--surface-shadow-card);
+}
+
+.location-suggestion {
+  display: block;
+  width: 100%;
+  padding: var(--space-3);
+  border: 0;
+  border-bottom: var(--surface-border);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
+
+.location-suggestion:last-child {
+  border-bottom: 0;
+}
+
+.location-suggestion:hover,
+.location-suggestion:focus-visible {
+  background: var(--surface-hover-bg);
+  outline: none;
+}
+
+.location-suggestions-status {
+  margin: 0;
+  padding: var(--space-3);
+  color: var(--muted);
+  font-size: var(--font-size-form-note);
+}
+
+.request-card .location-search-button {
+  min-height: var(--button-height);
+  font-size: var(--font-size-action-small);
+}
+
+.location-confirmation {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--primary-border);
+  border-radius: var(--radius-md);
+  background: var(--primary-fill);
+}
+
+.location-confirmation[hidden],
+.location-suggestions[hidden] {
+  display: none;
+}
+
+.location-confirmation p {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+}
+
+.location-confirmation a {
+  width: fit-content;
+  color: var(--primary);
+  font-weight: var(--font-weight-strong);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.location-confirm-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  color: var(--text);
+  font-size: var(--font-size-form-note);
+  cursor: pointer;
+}
+
+.request-card .location-confirm-check input {
+  flex: 0 0 auto;
+  width: 18px;
+  min-height: 18px;
+  margin: 2px 0 0;
+  accent-color: var(--brand-blue);
+}
+
+.location-attribution {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--font-size-form-note);
+}
+
+.location-attribution a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 
 /* Shared form base */
 .request-form {

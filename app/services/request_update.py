@@ -8,6 +8,7 @@ from app.models.job import JobMedia
 from app.domain.requested_date import validate_requested_date_not_in_past
 from app.repositories.job import JobRepository
 from app.services.location_normalization import build_google_maps_coordinate_url
+from app.services.location_normalization import extract_postal_code
 from app.services.location_normalization import normalize_text_location_resolved
 
 
@@ -21,15 +22,20 @@ class RequestUpdateService:
         job_id: int,
         kind: str,
         raw_text: str,
+        normalized_address: str | None = None,
         latitude: float | None = None,
         longitude: float | None = None,
     ) -> JobAddress:
         if latitude is not None and longitude is not None:
+            clean_raw_text = raw_text.strip() or f"{latitude}, {longitude}"
+            clean_normalized_address = (
+                (normalized_address or "").strip() or clean_raw_text
+            )
             normalized_location = {
-                "raw_text": raw_text.strip() or f"{latitude}, {longitude}",
+                "raw_text": clean_raw_text,
                 "original_google_maps_url": None,
-                "normalized_address": raw_text.strip() or f"{latitude}, {longitude}",
-                "postal_code": None,
+                "normalized_address": clean_normalized_address,
+                "postal_code": extract_postal_code(clean_normalized_address),
                 "latitude": latitude,
                 "longitude": longitude,
                 "map_url": build_google_maps_coordinate_url(latitude, longitude),

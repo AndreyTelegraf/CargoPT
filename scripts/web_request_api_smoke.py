@@ -82,8 +82,26 @@ def main() -> None:
         "landing_version": "v1",
         "requested_date": (datetime.now(UTC) + timedelta(days=30)).isoformat(),
         "addresses": [
-            {"kind": "pickup", "raw_text": "Lisboa", "floor": 2, "has_elevator": True},
-            {"kind": "dropoff", "raw_text": "Porto", "floor": 0, "has_elevator": False},
+            {
+                "kind": "pickup",
+                "raw_text": "Lisboa",
+                "normalized_address": "Lisboa, Portugal",
+                "latitude": 38.7077507,
+                "longitude": -9.1365919,
+                "location_confirmed": True,
+                "floor": 2,
+                "has_elevator": True,
+            },
+            {
+                "kind": "dropoff",
+                "raw_text": "Porto",
+                "normalized_address": "Porto, Portugal",
+                "latitude": 41.1494512,
+                "longitude": -8.6107884,
+                "location_confirmed": True,
+                "floor": 0,
+                "has_elevator": False,
+            },
         ],
         "items": [{"description": "10 boxes and washing machine", "quantity": 10}],
         "needs_assembly": False,
@@ -109,6 +127,21 @@ def main() -> None:
             raise SystemExit(
                 "past date was not rejected: "
                 f"{past_response.status_code} {past_response.text}"
+            )
+
+        unconfirmed_payload = dict(payload)
+        unconfirmed_payload["addresses"] = [
+            dict(address) for address in payload["addresses"]
+        ]
+        unconfirmed_payload["addresses"][0]["location_confirmed"] = False
+        unconfirmed_response = client.post(
+            "/api/v1/requests",
+            json=unconfirmed_payload,
+        )
+        if unconfirmed_response.status_code != 422:
+            raise SystemExit(
+                "unconfirmed address was not rejected: "
+                f"{unconfirmed_response.status_code} {unconfirmed_response.text}"
             )
 
         response = client.post("/api/v1/requests", json=payload)

@@ -49,7 +49,8 @@ for relative in ("index.html", "en/index.html", "ru/index.html"):
     text = (STATIC / relative).read_text(encoding="utf-8")
     form = re.search(r'<form id="requestForm".*?</form>', text, re.S).group(0)
     assert form.count('class="privacy-notice"') == 1
-    assert 'type="checkbox"' not in form
+    assert form.count('type="checkbox"') == 2
+    assert form.count('data-location-confirm>') == 2
 
 for relative in ("transportadores/index.html", "en/carriers/index.html", "ru/carriers/index.html"):
     text = (STATIC / relative).read_text(encoding="utf-8")

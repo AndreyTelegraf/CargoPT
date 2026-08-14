@@ -549,13 +549,13 @@ class CarrierRepository:
             stmt = stmt.where(CarrierCompany.packing_required.is_(True))
 
         if regions and "all_portugal" not in regions:
-            region_conditions = [
-                CarrierCompany.operating_regions == "all_portugal",
-            ]
             for region in regions:
-                region_conditions.append(CarrierCompany.operating_regions.like(f"%{region}%"))
-            from sqlalchemy import or_
-            stmt = stmt.where(or_(*region_conditions))
+                stmt = stmt.where(
+                    or_(
+                        CarrierCompany.operating_regions == "all_portugal",
+                        CarrierCompany.operating_regions.like(f"%{region}%"),
+                    )
+                )
 
         if needs_tail_lift:
             stmt = stmt.where(CarrierVehicle.has_tail_lift.is_(True))
