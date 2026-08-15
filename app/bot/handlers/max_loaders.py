@@ -3,6 +3,8 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
 from app.bot.handlers.vehicle_type import vehicle_type_keyboard
+from app.bot.carrier_locale import get_carrier_locale
+from app.bot.carrier_locale import text
 from app.bot.states.carrier_onboarding import CarrierOnboardingStates
 from app.services.input_normalization import parse_first_int
 
@@ -49,12 +51,15 @@ async def max_loaders(
     try:
         loaders = parse_first_int(message.text)
     except Exception:
+        await message.answer(text(await get_carrier_locale(state), "number_invalid"))
         return
 
     if loaders <= 0:
+        await message.answer(text(await get_carrier_locale(state), "number_invalid"))
         return
 
     data = await state.get_data()
+    locale = await get_carrier_locale(state)
 
     vehicle_count = int(data.get("vehicle_count") or 1)
     current_index = int(data.get("current_vehicle_index") or 1)
@@ -74,10 +79,8 @@ async def max_loaders(
         await state.set_state(CarrierOnboardingStates.vehicle_type)
 
         await message.answer(
-            f"Автомобиль {current_index} сохранён.\n\n"
-            f"Шаг 7 из 10. Автомобиль {next_index} из {vehicle_count}.\n\n"
-            "Выберите тип автомобиля.",
-            reply_markup=vehicle_type_keyboard(),
+            text(locale, "vehicle_saved", current=current_index, next=next_index, total=vehicle_count),
+            reply_markup=vehicle_type_keyboard(locale),
         )
         return
 
@@ -89,6 +92,5 @@ async def max_loaders(
     await state.set_state(CarrierOnboardingStates.company_phone)
 
     await message.answer(
-        "Шаг 9 из 10. Контакты.\n\n"
-        "Какой номер телефона для связи с вашей компанией?"
+        text(locale, "phone_prompt")
     )

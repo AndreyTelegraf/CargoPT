@@ -13,6 +13,9 @@ from aiogram.types import ReplyKeyboardRemove
 from sqlalchemy import select
 
 from app.domain.admin_access import ADMIN_TELEGRAM_USER_IDS
+from app.bot.carrier_locale import get_carrier_locale
+from app.bot.carrier_locale import normalize_carrier_locale
+from app.bot.carrier_locale import text
 from app.bot.states.carrier_onboarding import CarrierOnboardingStates
 from app.db.session import async_session_maker
 from app.domain.carrier_status import CarrierStatus
@@ -99,13 +102,14 @@ def build_admin_moderation_text(*, carrier, vehicles, data: dict, telegram_user)
 
 @router.message(
     CarrierOnboardingStates.moderation_review,
-    F.text == "Отправить на модерацию",
+    F.text.in_([text(locale, "submit_moderation") for locale in ("pt", "en", "ru")]),
 )
 async def submit_carrier_to_moderation(
     message: Message,
     state: FSMContext,
 ) -> None:
     data = await state.get_data()
+    locale = await get_carrier_locale(state)
     carrier_id = data["carrier_id"]
 
     async with async_session_maker() as session:
@@ -114,7 +118,7 @@ async def submit_carrier_to_moderation(
 
         if carrier is None:
             await message.answer(
-                "Анкета не найдена. Обратитесь к администратору CargoPT.",
+                text(locale, "submission_missing"),
                 reply_markup=ReplyKeyboardRemove(),
             )
             await state.clear()
@@ -140,8 +144,7 @@ async def submit_carrier_to_moderation(
     await state.clear()
 
     await message.answer(
-        "Анкета отправлена на модерацию.\n\n"
-        f"После проверки вы получите уведомление. По вопросам: @{DEFAULT_ADMIN_USERNAME}",
+        text(locale, "submission_sent", admin_username=DEFAULT_ADMIN_USERNAME),
         reply_markup=ReplyKeyboardRemove(),
     )
 
@@ -232,20 +235,11 @@ async def redispatch_open_jobs_to_new_carrier(
     return created_total, sent_total
 
 
-def build_carrier_decision_notification(*, approved: bool) -> str:
-    if approved:
-        return (
-            "Ваша анкета CargoPT одобрена.\n\n"
-            "Теперь вы участвуете в распределении заказов.\n\n"
-            "Когда появится подходящий заказ, бот пришлёт вам предложение "
-            "с кнопками «Принять» и «Отказаться».\n\n"
-            f"По вопросам: @{DEFAULT_ADMIN_USERNAME}"
-        )
-
-    return (
-        "Ваша анкета CargoPT не была одобрена.\n\n"
-        "Для уточнения деталей свяжитесь с администратором:\n"
-        f"@{DEFAULT_ADMIN_USERNAME}"
+def build_carrier_decision_notification(*, approved: bool, locale: str = "ru") -> str:
+    return text(
+        locale,
+        "approved" if approved else "rejected",
+        admin_username=DEFAULT_ADMIN_USERNAME,
     )
 
 
@@ -333,7 +327,10 @@ async def carrier_moderation_action(callback: CallbackQuery) -> None:
     if carrier.telegram_user_id is not None:
         await callback.bot.send_message(
             chat_id=carrier.telegram_user_id,
-            text=build_carrier_decision_notification(approved=approved),
+            text=build_carrier_decision_notification(
+                approved=approved,
+                locale=normalize_carrier_locale(carrier.preferred_locale),
+            ),
         )
 
     original_text = callback.message.html_text if callback.message else ""

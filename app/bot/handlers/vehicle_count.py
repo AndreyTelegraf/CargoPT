@@ -4,6 +4,8 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
 from app.bot.handlers.vehicle_type import vehicle_type_keyboard
+from app.bot.carrier_locale import get_carrier_locale
+from app.bot.carrier_locale import text
 from app.bot.states.carrier_onboarding import CarrierOnboardingStates
 
 router = Router()
@@ -15,6 +17,7 @@ async def vehicle_count(
     state: FSMContext,
 ) -> None:
     count = int(message.text)
+    locale = await get_carrier_locale(state)
 
     await state.update_data(
         vehicle_count=count,
@@ -36,9 +39,13 @@ async def vehicle_count(
     await state.set_state(CarrierOnboardingStates.vehicle_type)
 
     await message.answer(
-        f"Шаг 7 из 10. Автомобиль 1 из {count}.\n\n"
-        "Выберите тип автомобиля.",
-        reply_markup=vehicle_type_keyboard(),
+        text(locale, "vehicle_type_step", count=count),
+        reply_markup=vehicle_type_keyboard(locale),
     )
+
+
+@router.message(CarrierOnboardingStates.vehicle_count)
+async def vehicle_count_invalid(message: Message, state: FSMContext) -> None:
+    await message.answer(text(await get_carrier_locale(state), "number_invalid"))
 
 print("VEHICLE_COUNT_HANDLER_LOADED")

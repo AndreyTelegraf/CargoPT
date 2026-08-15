@@ -3,6 +3,8 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
 from app.bot.states.carrier_onboarding import CarrierOnboardingStates
+from app.bot.carrier_locale import get_carrier_locale
+from app.bot.carrier_locale import text
 from app.services.input_normalization import parse_first_int
 
 router = Router()
@@ -17,9 +19,11 @@ async def mobile_lift_weight(
     try:
         weight = parse_first_int(message.text)
     except Exception:
+        await message.answer(text(await get_carrier_locale(state), "number_invalid"))
         return
 
     if weight <= 0:
+        await message.answer(text(await get_carrier_locale(state), "number_invalid"))
         return
 
     await state.update_data(
@@ -29,6 +33,5 @@ async def mobile_lift_weight(
     await state.set_state(CarrierOnboardingStates.max_loaders)
 
     await message.answer(
-        "Шаг 8 из 10. Команда.\n\n"
-        "Сколько грузчиков одновременно вы можете предоставить на один заказ?"
+        text(await get_carrier_locale(state), "loaders_prompt")
     )

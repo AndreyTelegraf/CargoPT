@@ -1,3 +1,4 @@
+from aiogram import F
 from aiogram import Router
 from aiogram.fsm.context import FSMContext
 from aiogram.types import KeyboardButton
@@ -5,6 +6,8 @@ from aiogram.types import Message
 from aiogram.types import ReplyKeyboardMarkup
 
 from app.bot.handlers.regions import regions_keyboard
+from app.bot.carrier_locale import get_carrier_locale
+from app.bot.carrier_locale import text
 from app.bot.states.carrier_onboarding import CarrierOnboardingStates
 
 from app.db.session import async_session_maker
@@ -14,19 +17,23 @@ from app.services.carrier_vehicle import CarrierVehicleService
 router = Router()
 
 
-def submit_moderation_keyboard() -> ReplyKeyboardMarkup:
+def submit_moderation_keyboard(locale: str = "ru") -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text="Отправить на модерацию")],
-            [KeyboardButton(text="Заполнить заново")],
+            [KeyboardButton(text=text(locale, "submit_moderation"))],
+            [KeyboardButton(text=text(locale, "restart"))],
         ],
         resize_keyboard=True,
         one_time_keyboard=True,
     )
 
 
-def _format_bool(value: bool | None) -> str:
-    return "Да" if value else "Нет"
+def _format_bool(value: bool | None, locale: str) -> str:
+    return text(locale, "yes" if value else "no")
+
+
+def _display(value, missing: str):
+    return missing if value is None or value == "" else value
 
 
 def _get_vehicles_data(data: dict) -> list[dict]:
@@ -52,44 +59,47 @@ def _get_vehicles_data(data: dict) -> list[dict]:
     ]
 
 
-def _format_vehicle_preview(vehicle: dict, index: int) -> str:
+def _format_vehicle_preview(vehicle: dict, index: int, locale: str) -> str:
+    missing = text(locale, "not_provided")
     return (
-        f"Автомобиль {index}\n"
-        f"Тип: {vehicle.get('vehicle_type', 'не указано')}\n"
-        f"Грузоподъёмность: {vehicle.get('payload_kg', 'не указано')} кг\n"
-        f"Объём: {vehicle.get('volume_m3', 'не указано')} м³\n"
-        f"Гидроборт: {_format_bool(vehicle.get('has_tail_lift'))}\n"
-        f"Кран: {_format_bool(vehicle.get('has_crane'))}\n"
-        f"Мобильный лифт: {_format_bool(vehicle.get('has_mobile_lift'))}\n"
-        f"Макс. этаж мобильного лифта: {vehicle.get('mobile_lift_max_floor', 'не указано')}\n"
-        f"Макс. вес мобильного лифта: {vehicle.get('mobile_lift_max_weight_kg', 'не указано')} кг\n"
-        f"Макс. вес крана: {vehicle.get('crane_max_weight_kg', 'не указано')} кг\n"
-        f"Вылет стрелы крана: {vehicle.get('crane_max_reach_m', 'не указано')} м\n"
-        f"Макс. грузчиков для автомобиля: {vehicle.get('max_loaders', 'не указано')}"
+        f"{text(locale, 'vehicle', index=index)}\n"
+        f"{text(locale, 'type')}: {_display(vehicle.get('vehicle_type'), missing)}\n"
+        f"{text(locale, 'payload')}: {_display(vehicle.get('payload_kg'), missing)} kg\n"
+        f"{text(locale, 'volume')}: {_display(vehicle.get('volume_m3'), missing)} m³\n"
+        f"{text(locale, 'tail_lift')}: {_format_bool(vehicle.get('has_tail_lift'), locale)}\n"
+        f"{text(locale, 'crane')}: {_format_bool(vehicle.get('has_crane'), locale)}\n"
+        f"{text(locale, 'mobile_lift')}: {_format_bool(vehicle.get('has_mobile_lift'), locale)}\n"
+        f"{text(locale, 'mobile_lift_floor')}: {_display(vehicle.get('mobile_lift_max_floor'), missing)}\n"
+        f"{text(locale, 'mobile_lift_weight')}: {_display(vehicle.get('mobile_lift_max_weight_kg'), missing)} kg\n"
+        f"{text(locale, 'crane_weight')}: {_display(vehicle.get('crane_max_weight_kg'), missing)} kg\n"
+        f"{text(locale, 'crane_reach')}: {_display(vehicle.get('crane_max_reach_m'), missing)} m\n"
+        f"{text(locale, 'max_loaders')}: {_display(vehicle.get('max_loaders'), missing)}"
     )
 
 
 def build_carrier_preview_text(data: dict) -> str:
+    locale = data.get("carrier_locale") or "ru"
+    missing = text(locale, "not_provided")
     vehicles_text = "\n\n".join(
-        _format_vehicle_preview(vehicle, index)
+        _format_vehicle_preview(vehicle, index, locale)
         for index, vehicle in enumerate(_get_vehicles_data(data), start=1)
     )
 
     return (
-        "Проверьте анкету перевозчика перед отправкой на модерацию.\n\n"
-        f"Компания: {data.get('company_name', 'не указано')}\n"
-        f"Название в карточке: {data.get('public_name', 'не указано')}\n"
-        f"В перевозках с: {data.get('experience_since_year', 'не указано')} года\n"
-        f"Логотип: {'загружен' if data.get('logo_file_name') else 'не загружен'}\n"
-        f"Публикация: {'разрешена' if data.get('publication_consent') else 'не подтверждена'}\n"
-        f"Контакт: {data.get('contact_name') or 'не указан'}\n\n"
-        f"Сборка/разборка мебели: {_format_bool(data.get('assembly_required'))}\n"
-        f"Упаковка груза: {_format_bool(data.get('packing_required'))}\n"
-        f"Регионы работы: {data.get('operating_regions', 'не указано')}\n\n"
+        f"{text(locale, 'review_title')}\n\n"
+        f"{text(locale, 'company')}: {data.get('company_name') or missing}\n"
+        f"{text(locale, 'public_name')}: {data.get('public_name') or missing}\n"
+        f"{text(locale, 'experience_since')}: {data.get('experience_since_year') or missing}\n"
+        f"{text(locale, 'logo')}: {text(locale, 'uploaded' if data.get('logo_file_name') else 'not_uploaded')}\n"
+        f"{text(locale, 'publication')}: {text(locale, 'publication_allowed' if data.get('publication_consent') else 'publication_unconfirmed')}\n"
+        f"{text(locale, 'contact')}: {data.get('contact_name') or missing}\n\n"
+        f"{text(locale, 'assembly')}: {_format_bool(data.get('assembly_required'), locale)}\n"
+        f"{text(locale, 'packing')}: {_format_bool(data.get('packing_required'), locale)}\n"
+        f"{text(locale, 'regions')}: {data.get('operating_regions') or missing}\n\n"
         f"{vehicles_text}\n\n"
-        f"Телефон: {data.get('company_phone', 'не указано')}\n"
-        f"Email: {data.get('company_email', 'не указано')}\n\n"
-        "Если всё верно, нажмите «Отправить на модерацию»."
+        f"{text(locale, 'phone')}: {data.get('company_phone') or missing}\n"
+        f"{text(locale, 'email')}: {data.get('company_email') or missing}\n\n"
+        f"{text(locale, 'submit_hint')}"
     )
 
 
@@ -99,10 +109,10 @@ async def company_email(
     state: FSMContext,
 ) -> None:
 
-    email = message.text.strip()
+    email = (message.text or "").strip()
 
     if "@" not in email or "." not in email:
-        await message.answer("Укажите корректный email компании.")
+        await message.answer(text(await get_carrier_locale(state), "email_invalid"))
         return
 
     await state.update_data(
@@ -146,22 +156,25 @@ async def company_email(
 
     await message.answer(
         build_carrier_preview_text(data),
-        reply_markup=submit_moderation_keyboard(),
+        reply_markup=submit_moderation_keyboard(await get_carrier_locale(state)),
     )
 
 
 @router.message(
     CarrierOnboardingStates.moderation_review,
-    lambda message: message.text == "Заполнить заново",
+    F.text.in_([text(locale, "restart") for locale in ("pt", "en", "ru")]),
 )
 async def restart_carrier_onboarding(
     message: Message,
     state: FSMContext,
 ) -> None:
     data = await state.get_data()
+    locale = await get_carrier_locale(state)
+    if message.text != text(locale, "restart"):
+        return
 
     carrier_id = data["carrier_id"]
-    company_name = data.get("company_name", "не указано")
+    company_name = data.get("company_name") or text(locale, "not_provided")
     contact_name = data.get("contact_name")
 
     await state.set_data({
@@ -172,6 +185,7 @@ async def restart_carrier_onboarding(
         "experience_since_year": data.get("experience_since_year"),
         "logo_file_name": data.get("logo_file_name"),
         "publication_consent": data.get("publication_consent"),
+        "carrier_locale": locale,
     })
 
     await state.update_data(selected_regions=[])
@@ -179,10 +193,11 @@ async def restart_carrier_onboarding(
     await state.set_state(CarrierOnboardingStates.operating_regions)
 
     await message.answer(
-        f"Компания:\n{company_name}\n\n"
-        "Заполним анкету заново.\n\n"
-        "Шаг 5 из 10. Регионы работы.\n\n"
-        "В каких регионах Португалии вы работаете?\n\n"
-        "Можно выбрать несколько регионов. Когда закончите, нажмите «Готово».",
-        reply_markup=regions_keyboard(),
+        text(
+            locale,
+            "restart_intro",
+            company_name=company_name,
+            regions_prompt=text(locale, "regions_step_prompt"),
+        ),
+        reply_markup=regions_keyboard(locale=locale),
     )

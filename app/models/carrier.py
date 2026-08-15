@@ -36,6 +36,7 @@ class CarrierCompany(Base):
         unique=True,
     )
     telegram_username: Mapped[str | None] = mapped_column(String)
+    preferred_locale: Mapped[str | None] = mapped_column(String(8))
 
     status: Mapped[str] = mapped_column(String, nullable=False)
 

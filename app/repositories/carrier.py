@@ -97,6 +97,7 @@ class CarrierRepository:
 
         carrier.telegram_user_id = None
         carrier.telegram_username = None
+        carrier.preferred_locale = None
         carrier.status = CarrierStatus.INVITED
         carrier.paid_until = None
         carrier.assembly_required = False
@@ -202,6 +203,21 @@ class CarrierRepository:
         carrier.telegram_username = username
         await self.session.flush()
 
+        return carrier
+
+    async def update_preferred_locale(
+        self,
+        carrier_id: int,
+        preferred_locale: str,
+    ) -> CarrierCompany:
+        carrier = await self.get_carrier_by_id(carrier_id)
+        if carrier is None:
+            raise ValueError("carrier not found")
+        if preferred_locale not in {"pt", "en", "ru"}:
+            raise ValueError("unsupported carrier locale")
+        carrier.preferred_locale = preferred_locale
+        carrier.updated_at = datetime.now(UTC)
+        await self.session.flush()
         return carrier
 
     async def bind_carrier_telegram_identity(

@@ -1,10 +1,16 @@
+from aiogram import F
 from aiogram import Router
 from aiogram.filters import CommandStart
 from aiogram.types import Message
-from aiogram.types import KeyboardButton
-from aiogram.types import ReplyKeyboardMarkup
 from aiogram.fsm.context import FSMContext
 
+from app.bot.carrier_locale import get_carrier_locale
+from app.bot.carrier_locale import language_keyboard
+from app.bot.carrier_locale import locale_from_language_button
+from app.bot.carrier_locale import normalize_carrier_locale
+from app.bot.carrier_locale import single_button_keyboard
+from app.bot.carrier_locale import text
+from app.bot.carrier_locale import yes_no_keyboard
 from app.db.session import async_session_maker
 from app.repositories.carrier import CarrierRepository
 from app.services.carrier_onboarding import CarrierOnboardingService
@@ -15,19 +21,69 @@ from app.bot.handlers.carrier_public_profile import start_public_profile_flow
 router = Router()
 
 
-def carrier_welcome_keyboard() -> ReplyKeyboardMarkup:
-    return ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text="Начать")]],
-        resize_keyboard=True,
-        one_time_keyboard=True,
+def carrier_welcome_keyboard(locale: str = "ru"):
+    return single_button_keyboard(locale, "start")
+
+
+def carrier_yes_no_keyboard(locale: str = "ru"):
+    return yes_no_keyboard(locale)
+
+
+async def prompt_carrier_language(
+    message: Message,
+    state: FSMContext,
+    carrier,
+    *,
+    next_action: str,
+    update_only: bool = False,
+) -> None:
+    await state.clear()
+    await state.update_data(
+        carrier_id=carrier.id,
+        company_name=carrier.company_name,
+        contact_name=carrier.contact_name,
+        carrier_locale_next=next_action,
+        profile_update_only=update_only,
+    )
+    await state.set_state(CarrierOnboardingStates.language)
+    await message.answer(
+        "Escolha o idioma / Choose your language / Выберите язык",
+        reply_markup=language_keyboard(),
     )
 
 
-def carrier_yes_no_keyboard() -> ReplyKeyboardMarkup:
-    return ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text="Да"), KeyboardButton(text="Нет")]],
-        resize_keyboard=True,
-        one_time_keyboard=True,
+@router.message(CarrierOnboardingStates.language, F.text)
+async def carrier_language(message: Message, state: FSMContext) -> None:
+    locale = locale_from_language_button(message.text)
+    if locale is None:
+        await message.answer(
+            "Escolha o idioma / Choose your language / Выберите язык",
+            reply_markup=language_keyboard(),
+        )
+        return
+
+    data = await state.get_data()
+    carrier_id = int(data["carrier_id"])
+    async with async_session_maker() as session:
+        repository = CarrierRepository(session)
+        carrier = await repository.update_preferred_locale(carrier_id, locale)
+        await session.commit()
+
+    await state.update_data(carrier_locale=locale)
+    if data.get("carrier_locale_next") == "welcome":
+        await state.set_state(CarrierOnboardingStates.welcome)
+        await message.answer(
+            text(locale, "welcome", company_name=carrier.company_name),
+            reply_markup=carrier_welcome_keyboard(locale),
+        )
+        return
+
+    await start_public_profile_flow(
+        message,
+        state,
+        carrier,
+        update_only=bool(data.get("profile_update_only")),
+        preferred_locale=locale,
     )
 
 
@@ -36,8 +92,9 @@ async def invite_start(message: Message, state: FSMContext) -> None:
     payload = (message.text or "").split(maxsplit=1)
 
     if len(payload) != 2:
+        locale = normalize_carrier_locale(message.from_user.language_code)
         await message.answer(
-            "У вас нет приглашения. Обратитесь к администратору CargoPT."
+            text(locale, "no_invitation")
         )
         return
 
@@ -66,7 +123,8 @@ async def invite_start(message: Message, state: FSMContext) -> None:
                         telegram_username=message.from_user.username,
                     )
             if existing_carrier is None or existing_carrier.status == CarrierStatus.REJECTED:
-                await message.answer("Профиль перевозчика не найден.")
+                locale = normalize_carrier_locale(message.from_user.language_code)
+                await message.answer(text(locale, "profile_not_found"))
                 return
             if message.from_user.username:
                 await repository.update_carrier_telegram_username(
@@ -98,8 +156,11 @@ async def invite_start(message: Message, state: FSMContext) -> None:
             await session.commit()
             await state.clear()
             await message.answer(
-                "Вы уже зарегистрированы как перевозчик CargoPT. "
-                "Если нужно изменить анкету или пройти её заново, свяжитесь с администратором."
+                text(
+                    existing_carrier.preferred_locale
+                    or normalize_carrier_locale(message.from_user.language_code),
+                    "already_registered",
+                )
             )
             return
 
@@ -119,49 +180,37 @@ async def invite_start(message: Message, state: FSMContext) -> None:
 
         except Exception:
             await session.rollback()
+            locale = normalize_carrier_locale(message.from_user.language_code)
             await message.answer(
-                "Приглашение недействительно или уже использовано."
+                text(locale, "invalid_invitation")
             )
             return
 
-    await state.update_data(
-        carrier_id=invite.carrier_id,
-        company_name=carrier.company_name,
-        contact_name=carrier.contact_name,
-    )
-
-    await state.set_state(
-        CarrierOnboardingStates.welcome
-    )
-
-    await message.answer(
-        "Добро пожаловать в CargoPT.\n\n"
-        "Вы были приглашены как перевозчик.\n\n"
-        f"Компания:\n{carrier.company_name}\n\n"
-        "Сейчас нужно заполнить анкету перевозчика.\n\n"
-        "Что потребуется:\n"
-        "- название для публичной карточки\n"
-        "- год начала работы и логотип\n"
-        "- регионы работы\n"
-        "- автомобили и их характеристики\n"
-        "- услуги сборки и упаковки\n"
-        "- контактные данные\n\n"
-        "Анкета состоит из 10 шагов и обычно занимает 4–5 минут.\n\n"
-        "Нажмите «Начать».",
-        reply_markup=carrier_welcome_keyboard(),
+    await prompt_carrier_language(
+        message,
+        state,
+        carrier,
+        next_action="welcome",
     )
 
 
-@router.message(CarrierOnboardingStates.welcome, lambda message: message.text == "Начать")
+@router.message(CarrierOnboardingStates.welcome, F.text)
 async def carrier_welcome_start(message: Message, state: FSMContext) -> None:
     data = await state.get_data()
+    locale = await get_carrier_locale(state)
+    if message.text != text(locale, "start"):
+        await message.answer(
+            text(locale, "welcome", company_name=data.get("company_name", "")),
+            reply_markup=carrier_welcome_keyboard(locale),
+        )
+        return
     carrier_id = data["carrier_id"]
 
     async with async_session_maker() as session:
         carrier = await CarrierRepository(session).get_carrier_by_id(carrier_id)
 
     if carrier is None:
-        await message.answer("Анкета перевозчика не найдена.")
+        await message.answer(text(locale, "questionnaire_not_found"))
         return
 
     await start_public_profile_flow(
@@ -169,4 +218,5 @@ async def carrier_welcome_start(message: Message, state: FSMContext) -> None:
         state,
         carrier,
         update_only=False,
+        preferred_locale=locale,
     )

@@ -10,38 +10,23 @@ from app.domain.carrier_status import CarrierStatus
 from app.repositories.carrier import CarrierRepository
 from app.bot.handlers.carrier_public_profile import start_public_profile_flow
 from app.services.carrier_public_profile import missing_public_profile_fields
+from app.bot.carrier_locale import normalize_carrier_locale
+from app.bot.carrier_locale import text
 
 router = Router()
 
 
-def build_existing_carrier_start_text(carrier) -> str:
+def build_existing_carrier_start_text(carrier, locale: str = "ru") -> str:
     if carrier.status == CarrierStatus.PENDING_MODERATION:
-        return (
-            "Вы уже зарегистрированы как перевозчик CargoPT.\n\n"
-            "Ваша анкета отправлена на проверку.\n\n"
-            "Когда она будет обработана, администратор свяжется с вами."
-        )
+        return text(locale, "status_pending")
 
     if carrier.status == CarrierStatus.ACTIVE:
-        return (
-            "Вы зарегистрированы как активный перевозчик CargoPT.\n\n"
-            "Как это работает:\n"
-            "- когда появится подходящий заказ, бот пришлёт вам предложение;\n"
-            "- в предложении будут кнопки «Принять» и «Отказаться»;\n"
-            "- после принятия заказа клиент должен подтвердить назначение.\n\n"
-            "Сейчас ничего заполнять не нужно. Ожидайте новых заказов."
-        )
+        return text(locale, "status_active")
 
     if carrier.status == CarrierStatus.PROFILE_COMPLETED:
-        return (
-            "Ваша анкета перевозчика уже заполнена.\n\n"
-            "Если нужно что-то изменить, свяжитесь с администратором CargoPT."
-        )
+        return text(locale, "status_completed")
 
-    return (
-        "Вы уже привязаны к CargoPT как перевозчик.\n\n"
-        "Если нужно создать клиентскую заявку на перевозку, используйте команду /new_job."
-    )
+    return text(locale, "status_bound")
 
 
 @router.message(CommandStart())
@@ -75,7 +60,10 @@ async def start_handler(message: Message, state: FSMContext) -> None:
             )
             return
         await state.clear()
-        await message.answer(build_existing_carrier_start_text(carrier))
+        locale = normalize_carrier_locale(
+            carrier.preferred_locale or message.from_user.language_code
+        )
+        await message.answer(build_existing_carrier_start_text(carrier, locale))
         return
 
     await start_job_request(message, state)

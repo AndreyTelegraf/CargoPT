@@ -13,6 +13,10 @@ from aiogram.types import ReplyKeyboardMarkup
 from aiogram.types import ReplyKeyboardRemove
 
 from app.bot.handlers.regions import regions_keyboard
+from app.bot.carrier_locale import get_carrier_locale
+from app.bot.carrier_locale import normalize_carrier_locale
+from app.bot.carrier_locale import single_button_keyboard
+from app.bot.carrier_locale import text
 from app.bot.states.carrier_onboarding import CarrierOnboardingStates
 from app.db.session import async_session_maker
 from app.domain.carrier_status import CarrierStatus
@@ -25,23 +29,20 @@ from app.services.carrier_public_profile import missing_public_profile_fields
 router = Router()
 
 
-def publication_consent_keyboard() -> ReplyKeyboardMarkup:
-    return ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text="Разрешаю публикацию")]],
-        resize_keyboard=True,
-        one_time_keyboard=True,
-    )
+def publication_consent_keyboard(locale: str = "ru") -> ReplyKeyboardMarkup:
+    return single_button_keyboard(locale, "allow_publication")
 
 
 async def _prompt_next_missing_field(message: Message, state: FSMContext, carrier) -> None:
     missing = missing_public_profile_fields(carrier)
-    update_only = bool((await state.get_data()).get("profile_update_only"))
+    data = await state.get_data()
+    update_only = bool(data.get("profile_update_only"))
+    locale = normalize_carrier_locale(data.get("carrier_locale"))
 
     if "public_name" in missing:
         await state.set_state(CarrierOnboardingStates.public_name)
         await message.answer(
-            "Укажите полное название компании или публичное имя — точно так, "
-            "как его должны видеть клиенты CargoPT.",
+            text(locale, "public_name_prompt"),
             reply_markup=ReplyKeyboardRemove(),
         )
         return
@@ -49,8 +50,7 @@ async def _prompt_next_missing_field(message: Message, state: FSMContext, carrie
     if "experience_since_year" in missing:
         await state.set_state(CarrierOnboardingStates.experience_since_year)
         await message.answer(
-            "С какого года вы занимаетесь грузовыми перевозками?\n\n"
-            "Отправьте год четырьмя цифрами, например: 2018.",
+            text(locale, "experience_prompt"),
             reply_markup=ReplyKeyboardRemove(),
         )
         return
@@ -58,9 +58,7 @@ async def _prompt_next_missing_field(message: Message, state: FSMContext, carrie
     if "logo" in missing:
         await state.set_state(CarrierOnboardingStates.logo)
         await message.answer(
-            "Пришлите логотип компании или рабочее фото.\n\n"
-            "Лучше использовать квадратное изображение. Отправьте его как фото "
-            "или как файл JPG, PNG либо WEBP.",
+            text(locale, "logo_prompt"),
             reply_markup=ReplyKeyboardRemove(),
         )
         return
@@ -68,9 +66,8 @@ async def _prompt_next_missing_field(message: Message, state: FSMContext, carrie
     if "publication_consent" in missing:
         await state.set_state(CarrierOnboardingStates.publication_consent)
         await message.answer(
-            "Разрешаете CargoPT показывать название, изображение, стаж и регионы "
-            "работы в вашей публичной карточке перевозчика?",
-            reply_markup=publication_consent_keyboard(),
+            text(locale, "consent_prompt"),
+            reply_markup=publication_consent_keyboard(locale),
         )
         return
 
@@ -78,16 +75,15 @@ async def _prompt_next_missing_field(message: Message, state: FSMContext, carrie
         await state.update_data(selected_regions=[])
         await state.set_state(CarrierOnboardingStates.operating_regions)
         await message.answer(
-            "Выберите регионы работы и нажмите «Готово».",
-            reply_markup=regions_keyboard(),
+            text(locale, "regions_short_prompt"),
+            reply_markup=regions_keyboard(locale=locale),
         )
         return
 
     if update_only:
         await state.clear()
         await message.answer(
-            "Профиль дополнен. Новые сведения будут использоваться в карточке "
-            "перевозчика CargoPT.",
+            text(locale, "profile_updated"),
             reply_markup=ReplyKeyboardRemove(),
         )
         return
@@ -95,10 +91,8 @@ async def _prompt_next_missing_field(message: Message, state: FSMContext, carrie
     await state.update_data(selected_regions=[])
     await state.set_state(CarrierOnboardingStates.operating_regions)
     await message.answer(
-        "Шаг 5 из 10. Регионы работы.\n\n"
-        "В каких регионах Португалии вы работаете?\n\n"
-        "Можно выбрать несколько регионов. Когда закончите, нажмите «Готово».",
-        reply_markup=regions_keyboard(),
+        text(locale, "regions_step_prompt"),
+        reply_markup=regions_keyboard(locale=locale),
     )
 
 
@@ -108,7 +102,22 @@ async def start_public_profile_flow(
     carrier,
     *,
     update_only: bool,
+    preferred_locale: str | None = None,
 ) -> None:
+    existing_data = await state.get_data()
+    locale = preferred_locale or existing_data.get("carrier_locale") or carrier.preferred_locale
+    if locale is None:
+        from app.bot.handlers.invite import prompt_carrier_language
+
+        await prompt_carrier_language(
+            message,
+            state,
+            carrier,
+            next_action="profile",
+            update_only=update_only,
+        )
+        return
+    locale = normalize_carrier_locale(locale)
     await state.clear()
     await state.update_data(
         carrier_id=carrier.id,
@@ -119,6 +128,7 @@ async def start_public_profile_flow(
         experience_since_year=carrier.experience_since_year,
         logo_file_name=carrier.logo_file_name,
         publication_consent=carrier.publication_consent_at is not None,
+        carrier_locale=locale,
     )
     await _prompt_next_missing_field(message, state, carrier)
 
@@ -129,7 +139,8 @@ async def carrier_profile_command(message: Message, state: FSMContext) -> None:
         repository = CarrierRepository(session)
         carrier = await repository.get_carrier_by_telegram_user_id(message.from_user.id)
         if carrier is None or carrier.status == CarrierStatus.REJECTED:
-            await message.answer("Профиль перевозчика не найден.")
+            locale = normalize_carrier_locale(message.from_user.language_code)
+            await message.answer(text(locale, "profile_not_found"))
             return
         if message.from_user.username:
             await repository.update_carrier_telegram_username(
@@ -141,11 +152,32 @@ async def carrier_profile_command(message: Message, state: FSMContext) -> None:
     await start_public_profile_flow(message, state, carrier, update_only=True)
 
 
+@router.message(Command("language"))
+async def carrier_language_command(message: Message, state: FSMContext) -> None:
+    async with async_session_maker() as session:
+        carrier = await CarrierRepository(session).get_carrier_by_telegram_user_id(
+            message.from_user.id
+        )
+    if carrier is None or carrier.status == CarrierStatus.REJECTED:
+        locale = normalize_carrier_locale(message.from_user.language_code)
+        await message.answer(text(locale, "profile_not_found"))
+        return
+    from app.bot.handlers.invite import prompt_carrier_language
+
+    await prompt_carrier_language(
+        message,
+        state,
+        carrier,
+        next_action="profile",
+        update_only=True,
+    )
+
+
 @router.message(CarrierOnboardingStates.public_name, F.text)
 async def public_name(message: Message, state: FSMContext) -> None:
     value = (message.text or "").strip()
     if len(value) < 2 or len(value) > 100:
-        await message.answer("Название должно содержать от 2 до 100 символов.")
+        await message.answer(text(await get_carrier_locale(state), "public_name_invalid"))
         return
     data = await state.get_data()
     async with async_session_maker() as session:
@@ -162,7 +194,7 @@ async def experience_since_year(message: Message, state: FSMContext) -> None:
     current_year = datetime.now(UTC).year
     if not raw.isdigit() or not 1950 <= int(raw) <= current_year:
         await message.answer(
-            f"Отправьте год четырьмя цифрами — от 1950 до {current_year}."
+            text(await get_carrier_locale(state), "experience_invalid", current_year=current_year)
         )
         return
     data = await state.get_data()
@@ -199,11 +231,11 @@ def _image_source(message: Message):
 async def carrier_logo(message: Message, state: FSMContext) -> None:
     source = _image_source(message)
     if source is None:
-        await message.answer("Пришлите изображение в формате JPG, PNG или WEBP.")
+        await message.answer(text(await get_carrier_locale(state), "logo_invalid"))
         return
     telegram_file, extension = source
     if telegram_file.file_size and telegram_file.file_size > 10 * 1024 * 1024:
-        await message.answer("Изображение должно быть не больше 10 МБ.")
+        await message.answer(text(await get_carrier_locale(state), "logo_too_large"))
         return
 
     data = await state.get_data()
@@ -221,7 +253,7 @@ async def carrier_logo(message: Message, state: FSMContext) -> None:
     except Exception:
         temporary_path.unlink(missing_ok=True)
         await message.answer(
-            "Не удалось сохранить изображение. Попробуйте отправить его ещё раз."
+            text(await get_carrier_locale(state), "logo_save_error")
         )
         return
 
@@ -244,9 +276,16 @@ async def carrier_logo(message: Message, state: FSMContext) -> None:
 
 @router.message(
     CarrierOnboardingStates.publication_consent,
-    F.text == "Разрешаю публикацию",
+    F.text,
 )
 async def publication_consent(message: Message, state: FSMContext) -> None:
+    locale = await get_carrier_locale(state)
+    if message.text != text(locale, "allow_publication"):
+        await message.answer(
+            text(locale, "consent_invalid"),
+            reply_markup=publication_consent_keyboard(locale),
+        )
+        return
     data = await state.get_data()
     async with async_session_maker() as session:
         service = CarrierOnboardingService(CarrierRepository(session))
@@ -254,12 +293,3 @@ async def publication_consent(message: Message, state: FSMContext) -> None:
         await session.commit()
     await state.update_data(publication_consent=True)
     await _prompt_next_missing_field(message, state, carrier)
-
-
-@router.message(CarrierOnboardingStates.publication_consent)
-async def publication_consent_invalid(message: Message) -> None:
-    await message.answer(
-        "Для продолжения нажмите «Разрешаю публикацию». Если вы не хотите "
-        "публиковать данные, свяжитесь с администратором CargoPT.",
-        reply_markup=publication_consent_keyboard(),
-    )

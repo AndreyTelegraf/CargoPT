@@ -10,6 +10,7 @@ os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///data/cargopt_dev.db"
 
 from app.bot.states.carrier_onboarding import CarrierOnboardingStates
 
+assert CarrierOnboardingStates.language
 assert CarrierOnboardingStates.assembly_required
 assert CarrierOnboardingStates.packing_required
 assert CarrierOnboardingStates.operating_regions

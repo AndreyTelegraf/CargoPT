@@ -3,6 +3,8 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
 from app.bot.states.carrier_onboarding import CarrierOnboardingStates
+from app.bot.carrier_locale import get_carrier_locale
+from app.bot.carrier_locale import text
 
 router = Router()
 
@@ -13,9 +15,10 @@ async def company_phone(
     state: FSMContext,
 ) -> None:
 
-    phone = message.text.strip()
+    phone = (message.text or "").strip()
 
     if len(phone) < 6:
+        await message.answer(text(await get_carrier_locale(state), "phone_prompt"))
         return
 
     await state.update_data(
@@ -25,5 +28,5 @@ async def company_phone(
     await state.set_state(CarrierOnboardingStates.company_email)
 
     await message.answer(
-        "Укажите контактный email компании."
+        text(await get_carrier_locale(state), "email_prompt")
     )

@@ -3,19 +3,26 @@ from aiogram import F
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
-from app.bot.handlers.invite import carrier_yes_no_keyboard
+from app.bot.carrier_locale import get_carrier_locale
+from app.bot.carrier_locale import parse_yes_no
+from app.bot.carrier_locale import text
+from app.bot.carrier_locale import yes_no_keyboard
 from app.bot.states.carrier_onboarding import CarrierOnboardingStates
 
 router = Router()
 
 
-@router.message(CarrierOnboardingStates.has_crane, F.text.in_(["Да", "Нет"]))
+@router.message(CarrierOnboardingStates.has_crane, F.text)
 async def crane(
     message: Message,
     state: FSMContext,
 ) -> None:
 
-    has_crane = message.text == "Да"
+    locale = await get_carrier_locale(state)
+    has_crane = parse_yes_no(message.text, locale)
+    if has_crane is None:
+        await message.answer(text(locale, "yes_no_invalid"), reply_markup=yes_no_keyboard(locale))
+        return
 
     await state.update_data(
         has_crane=has_crane
@@ -24,7 +31,7 @@ async def crane(
     if has_crane:
         await state.set_state(CarrierOnboardingStates.crane_max_weight_kg)
         await message.answer(
-            "Какой максимальный вес может поднять кран в кг?"
+            text(locale, "crane_weight_prompt")
         )
         return
 
@@ -36,6 +43,6 @@ async def crane(
     await state.set_state(CarrierOnboardingStates.has_mobile_lift)
 
     await message.answer(
-        "Есть ли мобильный лифт для подачи через окна?",
-        reply_markup=carrier_yes_no_keyboard(),
+        text(locale, "mobile_lift_prompt"),
+        reply_markup=yes_no_keyboard(locale),
     )

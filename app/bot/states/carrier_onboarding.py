@@ -3,6 +3,7 @@ from aiogram.fsm.state import StatesGroup
 
 
 class CarrierOnboardingStates(StatesGroup):
+    language = State()
     welcome = State()
     public_name = State()
     experience_since_year = State()

@@ -2,7 +2,9 @@ from aiogram import Router
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
-from app.bot.handlers.invite import carrier_yes_no_keyboard
+from app.bot.carrier_locale import get_carrier_locale
+from app.bot.carrier_locale import text
+from app.bot.carrier_locale import yes_no_keyboard
 from app.db.session import async_session_maker
 from app.domain.carrier_profile_step import CarrierProfileStep
 from app.repositories.carrier import CarrierRepository
@@ -22,9 +24,11 @@ async def volume_m3(
     try:
         volume = parse_first_float(message.text)
     except Exception:
+        await message.answer(text(await get_carrier_locale(state), "number_invalid"))
         return
 
     if volume <= 0:
+        await message.answer(text(await get_carrier_locale(state), "number_invalid"))
         return
 
     await state.update_data(
@@ -32,12 +36,13 @@ async def volume_m3(
     )
 
     data = await state.get_data()
+    locale = await get_carrier_locale(state)
 
     if "assembly_required" in data and "packing_required" in data:
         await state.set_state(CarrierOnboardingStates.has_tail_lift)
         await message.answer(
-            "Есть ли гидроборт?",
-            reply_markup=carrier_yes_no_keyboard(),
+            text(locale, "tail_lift_prompt"),
+            reply_markup=yes_no_keyboard(locale),
         )
         return
 
@@ -55,6 +60,6 @@ async def volume_m3(
     await state.set_state(CarrierOnboardingStates.assembly_required)
 
     await message.answer(
-        "Предоставляете ли вы услуги сборки и разборки мебели?",
-        reply_markup=carrier_yes_no_keyboard(),
+        text(locale, "assembly_prompt"),
+        reply_markup=yes_no_keyboard(locale),
     )
