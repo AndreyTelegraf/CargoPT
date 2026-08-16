@@ -68,6 +68,7 @@ def main() -> None:
     assert len(body) == 2
     assert body[0]["display_name"] == "Carvoeiro, Lagoa, Faro, Portugal"
     assert body[0]["latitude"] == 37.0970567
+    assert body[0]["country_code"] == "pt"
     assert body[1]["latitude"] == 41.6509991
     assert short_query.status_code == 422
 

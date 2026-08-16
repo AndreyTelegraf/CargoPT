@@ -13,6 +13,9 @@ class RequestPopulationAddress:
     normalized_address: str | None = None
     latitude: float | None = None
     longitude: float | None = None
+    country_code: str | None = None
+    address_details: str | None = None
+    postal_code: str | None = None
 
 
 @dataclass(frozen=True)
@@ -42,6 +45,9 @@ class RequestPopulationService:
                 normalized_address=address_payload.normalized_address,
                 latitude=address_payload.latitude,
                 longitude=address_payload.longitude,
+                country_code=address_payload.country_code,
+                address_details=address_payload.address_details,
+                postal_code=address_payload.postal_code,
             )
             if address_payload.floor is not None or address_payload.has_elevator is not None:
                 await update_service.update_address_details(

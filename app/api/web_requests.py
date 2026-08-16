@@ -76,6 +76,9 @@ async def search_locations(
             latitude=item.latitude,
             longitude=item.longitude,
             map_url=item.map_url,
+            country_code=item.country_code,
+            postal_code=item.postal_code,
+            address_details_hint=item.address_details_hint,
         )
         for item in suggestions
     ]
@@ -187,6 +190,9 @@ async def submit_web_request(
                         normalized_address=address.normalized_address,
                         latitude=address.latitude,
                         longitude=address.longitude,
+                        country_code=address.country_code,
+                        address_details=address.address_details,
+                        postal_code=address.postal_code,
                         floor=address.floor,
                         has_elevator=address.has_elevator,
                     )

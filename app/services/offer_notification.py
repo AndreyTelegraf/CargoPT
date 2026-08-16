@@ -22,10 +22,15 @@ def _format_address(label: str, address) -> str:
     map_url = address.map_url if address else None
     floor = address.floor if address else None
     has_elevator = address.has_elevator if address else None
+    address_details = getattr(address, "address_details", None) if address else None
 
     value = _safe(normalized_address or raw_text or "не указан")
     safe_label = _safe(label)
     details = f"\nЭтаж: {_safe(floor if floor is not None else 'не указан')}\nЛифт: {_format_elevator(has_elevator)}"
+    if address_details:
+        details += f"\nКвартира / доступ: {_safe(address_details)}"
+    elif raw_text and normalized_address and raw_text.casefold() != normalized_address.casefold():
+        details += f"\nВведено клиентом: {_safe(raw_text)}"
 
     if map_url and map_url != raw_text:
         return f"<b>{safe_label}</b>\n{value}\nКарта: {_safe(map_url)}{details}"

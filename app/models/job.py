@@ -124,6 +124,7 @@ class JobAddress(Base):
         Index("ix_job_address_job_id", "job_id"),
         Index("ix_job_address_kind", "kind"),
         Index("ix_job_address_city", "city"),
+        Index("ix_job_address_country_code", "country_code"),
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -136,6 +137,8 @@ class JobAddress(Base):
     normalized_address: Mapped[str | None] = mapped_column(Text)
     city: Mapped[str | None] = mapped_column(String)
     postal_code: Mapped[str | None] = mapped_column(String)
+    country_code: Mapped[str | None] = mapped_column(String(2))
+    address_details: Mapped[str | None] = mapped_column(Text)
 
     floor: Mapped[int | None] = mapped_column(Integer)
     has_elevator: Mapped[bool | None] = mapped_column(Boolean)

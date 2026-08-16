@@ -148,9 +148,9 @@
           </div>
           <div class="location-field" data-location-field>
             <label for="dropoffLocation"><span class="field-label">Para onde</span>
-              <input id="dropoffLocation" name="dropoff" autocomplete="off" required placeholder="Exemplo: Alvor, Portimão ou 8500-001" aria-controls="dropoffSuggestions" aria-expanded="false">
+              <input id="dropoffLocation" name="dropoff" autocomplete="off" required placeholder="Exemplo: Warszawa, Leszno 32, Polónia" aria-controls="dropoffSuggestions" aria-expanded="false">
             </label>
-            <small class="form-note">Indique a localidade e o município ou o código postal. Clique em «Procurar local», escolha e confirme o ponto correto.</small>
+            <small class="form-note">Pode indicar uma morada em Portugal ou no estrangeiro. Clique em «Procurar local», escolha e confirme o ponto correto. Indique o apartamento separadamente nos detalhes.</small>
             <button class="button button-secondary location-search-button" type="button" data-location-search>Procurar local</button>
             <div id="dropoffSuggestions" class="location-suggestions" role="listbox" hidden></div>
             <div class="location-confirmation" data-location-confirmation hidden>
@@ -233,6 +233,10 @@
                     <option value="false">Não</option>
                   </select>
                 </label>
+                <label>
+                  <span class="field-label">Apartamento / fração / acesso <small class="field-optional">Opcional</small></span>
+                  <input name="pickup_address_details" maxlength="300" placeholder="Exemplo: apartamento 89, portão B">
+                </label>
               </div>
 
               <div class="form-access-card" role="group" aria-labelledby="dropoffAccessTitle">
@@ -248,6 +252,10 @@
                     <option value="true">Sim</option>
                     <option value="false">Não</option>
                   </select>
+                </label>
+                <label>
+                  <span class="field-label">Apartamento / fração / acesso <small class="field-optional">Opcional</small></span>
+                  <input name="dropoff_address_details" maxlength="300" placeholder="Exemplo: apartamento 89, portão B">
                 </label>
               </div>
             </div>
@@ -384,6 +392,6 @@
       <a href="mailto:hello@cargopt.pt">Contacto</a>
     </nav>
   </footer>
-  <script src="/assets/js/landing.js?v=location-selector-v1" defer></script>
+  <script src="/assets/js/landing.js?v=international-address-v1" defer></script>
 </body>
 </html>

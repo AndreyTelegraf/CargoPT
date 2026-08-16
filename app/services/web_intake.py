@@ -10,6 +10,9 @@ class WebIntakeAddress:
     normalized_address: str | None = None
     latitude: float | None = None
     longitude: float | None = None
+    country_code: str | None = None
+    address_details: str | None = None
+    postal_code: str | None = None
 
 @dataclass(frozen=True)
 class WebIntakeItem:

@@ -278,6 +278,10 @@ def _format_address_line(address) -> str:
         details.append(f"город: {_safe(address.city)}")
     if address.postal_code:
         details.append(f"индекс: {_safe(address.postal_code)}")
+    if getattr(address, "country_code", None):
+        details.append(f"страна: {_safe(address.country_code.upper())}")
+    if getattr(address, "address_details", None):
+        details.append(f"квартира / доступ: {_safe(address.address_details)}")
     if address.floor is not None:
         details.append(f"этаж: {_safe(address.floor)}")
     if address.has_elevator is not None:

@@ -36,6 +36,9 @@ class LocationSuggestion:
     latitude: float
     longitude: float
     map_url: str
+    country_code: str = "pt"
+    postal_code: str | None = None
+    address_details_hint: str | None = None
 
 
 async def _nominatim_search(
@@ -333,17 +336,39 @@ async def search_location_suggestions(
     language = LOCATION_SEARCH_LANGUAGES.get(locale, LOCATION_SEARCH_LANGUAGES["pt"])
 
     try:
-        data = await _nominatim_search(
-            provider_url=provider_url,
-            params={
-                "q": clean,
-                "format": "jsonv2",
-                "limit": str(safe_limit),
-                "countrycodes": "pt",
-                "addressdetails": "1",
-                "accept-language": language,
-            },
+        queries = [clean]
+        # Users often append an apartment after the street number, for example
+        # "Warszawa, Leszno 32, 89". Nominatim searches the building address;
+        # the apartment/access data is stored separately with the request.
+        unit_pattern = (
+            r"(?<=\d),\s*((?:(?:apt|apto|apartamento|lok|кв)\.?\s*)?"
+            r"[\w/-]{1,20})$"
         )
+        unit_match = re.search(unit_pattern, clean, flags=re.IGNORECASE)
+        address_details_hint = unit_match.group(1).strip() if unit_match else None
+        without_unit = re.sub(
+            unit_pattern,
+            "",
+            clean,
+            flags=re.IGNORECASE,
+        ).strip()
+        if without_unit and without_unit != clean:
+            queries.append(without_unit)
+
+        data = []
+        for search_query in queries:
+            data = await _nominatim_search(
+                provider_url=provider_url,
+                params={
+                    "q": search_query,
+                    "format": "jsonv2",
+                    "limit": str(safe_limit),
+                    "addressdetails": "1",
+                    "accept-language": language,
+                },
+            )
+            if data:
+                break
     except (httpx.HTTPError, ValueError):
         return []
 
@@ -355,11 +380,19 @@ async def search_location_suggestions(
             display_name = " ".join(str(item["display_name"]).strip().split())
             latitude = float(item["lat"])
             longitude = float(item["lon"])
+            address_details = item.get("address") or {}
+            country_code = str(address_details.get("country_code") or "").lower()
+            postal_code = address_details.get("postcode")
         except (KeyError, TypeError, ValueError):
             continue
 
         valid_latitude, valid_longitude = _valid_coordinates(latitude, longitude)
-        if valid_latitude is None or valid_longitude is None or not display_name:
+        if (
+            valid_latitude is None
+            or valid_longitude is None
+            or not display_name
+            or len(country_code) != 2
+        ):
             continue
 
         key = (display_name.casefold(), round(latitude, 6), round(longitude, 6))
@@ -373,6 +406,9 @@ async def search_location_suggestions(
                 latitude=latitude,
                 longitude=longitude,
                 map_url=build_google_maps_coordinate_url(latitude, longitude),
+                country_code=country_code,
+                postal_code=str(postal_code) if postal_code else None,
+                address_details_hint=address_details_hint,
             )
         )
 

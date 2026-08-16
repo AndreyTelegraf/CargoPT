@@ -27,6 +27,9 @@ class RequestIntakeAddress:
     normalized_address: str | None = None
     latitude: float | None = None
     longitude: float | None = None
+    country_code: str | None = None
+    address_details: str | None = None
+    postal_code: str | None = None
 
 
 @dataclass(frozen=True)
@@ -93,6 +96,9 @@ class RequestIntakeService:
                 cls._normalized_text(getattr(address, "normalized_address", None)),
                 getattr(address, "latitude", None),
                 getattr(address, "longitude", None),
+                getattr(address, "country_code", None),
+                cls._normalized_text(getattr(address, "address_details", None)),
+                getattr(address, "postal_code", None),
                 address.floor,
                 address.has_elevator,
             )
@@ -105,6 +111,9 @@ class RequestIntakeService:
                 cls._normalized_text(address.normalized_address),
                 address.latitude,
                 address.longitude,
+                address.country_code,
+                cls._normalized_text(address.address_details),
+                address.postal_code,
                 address.floor,
                 address.has_elevator,
             )
@@ -225,6 +234,9 @@ class RequestIntakeService:
                     normalized_address=address.normalized_address,
                     latitude=address.latitude,
                     longitude=address.longitude,
+                    country_code=address.country_code,
+                    address_details=address.address_details,
+                    postal_code=address.postal_code,
                     floor=address.floor,
                     has_elevator=address.has_elevator,
                 )

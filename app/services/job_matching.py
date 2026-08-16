@@ -226,7 +226,30 @@ class JobMatchingService:
                 regions=[],
             )
 
-        for address in loaded_addresses:
+        is_international = any(
+            (getattr(address, "country_code", None) or "").lower()
+            not in {"", "pt"}
+            for address in loaded_addresses
+        )
+        addresses_to_match = (
+            [
+                address
+                for address in loaded_addresses
+                if address.kind == "pickup"
+                and (getattr(address, "country_code", None) or "pt").lower() == "pt"
+            ]
+            if is_international
+            else loaded_addresses
+        )
+
+        if not addresses_to_match:
+            return MatchingResult(
+                vehicles=[],
+                reason=MatchingReason.REGION_NOT_DETERMINED,
+                regions=[],
+            )
+
+        for address in addresses_to_match:
             address_regions = _regions_from_coordinates(
                 address.latitude,
                 address.longitude,

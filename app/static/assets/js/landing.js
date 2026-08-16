@@ -37,8 +37,8 @@ const MESSAGES = {
     commentLabel: "Comentário",
     openRequestsShort: "Pedidos",
     openRequestsLong: "Meus pedidos",
-    locationLoading: "A procurar locais em Portugal...",
-    locationNoResults: "Nenhum local encontrado. Acrescente o município ou o código postal.",
+    locationLoading: "A procurar locais...",
+    locationNoResults: "Nenhum local encontrado. Acrescente a cidade, a rua e o país.",
     locationSearchFailure: "Não foi possível procurar locais agora. Tente novamente.",
     locationSelectRequired: "Escolha um local específico da lista.",
     locationConfirmRequired: "Confirme que o ponto selecionado está correto."
@@ -70,8 +70,8 @@ const MESSAGES = {
     commentLabel: "Comment",
     openRequestsShort: "Requests",
     openRequestsLong: "My requests",
-    locationLoading: "Searching for places in Portugal...",
-    locationNoResults: "No place found. Add the municipality or postal code.",
+    locationLoading: "Searching for places...",
+    locationNoResults: "No place found. Add the city, street and country.",
     locationSearchFailure: "Places could not be searched right now. Try again.",
     locationSelectRequired: "Select a specific place from the list.",
     locationConfirmRequired: "Confirm that the selected point is correct."
@@ -103,8 +103,8 @@ const MESSAGES = {
     commentLabel: "Комментарий",
     openRequestsShort: "Заявки",
     openRequestsLong: "Мои заявки",
-    locationLoading: "Ищем места в Португалии...",
-    locationNoResults: "Место не найдено. Добавьте муниципалитет или почтовый индекс.",
+    locationLoading: "Ищем места...",
+    locationNoResults: "Место не найдено. Добавьте город, улицу и страну.",
     locationSearchFailure: "Сейчас не удалось найти места. Попробуйте ещё раз.",
     locationSelectRequired: "Выберите конкретное место из списка.",
     locationConfirmRequired: "Подтвердите, что выбранная точка правильная."
@@ -341,9 +341,24 @@ function selectLocationSuggestion(state, suggestion, rawText) {
     displayName: suggestion.display_name,
     latitude: suggestion.latitude,
     longitude: suggestion.longitude,
-    mapUrl: suggestion.map_url
+    mapUrl: suggestion.map_url,
+    countryCode: suggestion.country_code,
+    postalCode: suggestion.postal_code,
+    addressDetailsHint: suggestion.address_details_hint
   };
   state.input.value = suggestion.display_name;
+  const detailsField = form.elements[
+    state.input.name === "pickup"
+      ? "pickup_address_details"
+      : "dropoff_address_details"
+  ];
+  if (
+    detailsField
+    && !detailsField.value.trim()
+    && suggestion.address_details_hint
+  ) {
+    detailsField.value = suggestion.address_details_hint;
+  }
   state.selectedLabel.textContent = suggestion.display_name;
   state.mapLink.href = suggestion.map_url;
   state.confirm.checked = false;
@@ -743,7 +758,7 @@ function buildPayload() {
   const pickupLocation = locationFieldStates.get(form.elements.pickup);
   const dropoffLocation = locationFieldStates.get(form.elements.dropoff);
 
-  function buildAddress(kind, state, floor, hasElevator) {
+  function buildAddress(kind, state, floor, hasElevator, addressDetails) {
     const selection = state && state.selection;
     return {
       kind,
@@ -752,6 +767,9 @@ function buildPayload() {
       latitude: selection ? selection.latitude : null,
       longitude: selection ? selection.longitude : null,
       location_confirmed: Boolean(selection && state.confirm.checked),
+      country_code: selection ? selection.countryCode : "",
+      address_details: addressDetails || null,
+      postal_code: selection ? selection.postalCode : null,
       floor,
       has_elevator: hasElevator
     };
@@ -775,13 +793,15 @@ function buildPayload() {
         "pickup",
         pickupLocation,
         parseOptionalInt(data.pickup_floor),
-        parseOptionalBool(data.pickup_elevator)
+        parseOptionalBool(data.pickup_elevator),
+        data.pickup_address_details
       ),
       buildAddress(
         "dropoff",
         dropoffLocation,
         parseOptionalInt(data.dropoff_floor),
-        parseOptionalBool(data.dropoff_elevator)
+        parseOptionalBool(data.dropoff_elevator),
+        data.dropoff_address_details
       )
     ],
     items: [

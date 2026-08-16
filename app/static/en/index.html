@@ -140,9 +140,9 @@
           </div>
           <div class="location-field" data-location-field>
             <label for="dropoffLocation"><span class="field-label">To</span>
-              <input id="dropoffLocation" name="dropoff" autocomplete="off" required placeholder="Example: Alvor, Portimão or 8500-001" aria-controls="dropoffSuggestions" aria-expanded="false">
+              <input id="dropoffLocation" name="dropoff" autocomplete="off" required placeholder="Example: Warszawa, Leszno 32, Poland" aria-controls="dropoffSuggestions" aria-expanded="false">
             </label>
-            <small class="form-note">Enter the locality and municipality or postal code. Click “Find place”, then select and confirm the correct point.</small>
+            <small class="form-note">You can enter an address in Portugal or abroad. Click “Find place”, then select and confirm the correct point. Add the apartment separately in the details.</small>
             <button class="button button-secondary location-search-button" type="button" data-location-search>Find place</button>
             <div id="dropoffSuggestions" class="location-suggestions" role="listbox" hidden></div>
             <div class="location-confirmation" data-location-confirmation hidden>
@@ -177,6 +177,10 @@
             <label><span class="field-label">Elevator at pickup</span><select name="pickup_elevator" required><option value="">Select</option><option value="true">Yes</option><option value="false">No</option></select></label>
             <label><span class="field-label">Drop-off floor</span><input name="dropoff_floor" type="number" min="-1" max="24" required></label>
             <label><span class="field-label">Elevator at drop-off</span><select name="dropoff_elevator" required><option value="">Select</option><option value="true">Yes</option><option value="false">No</option></select></label>
+          </div>
+          <div class="form-grid">
+            <label><span class="field-label">Pickup apartment / unit / access details</span><input name="pickup_address_details" maxlength="300" placeholder="Example: apartment 89, gate B"></label>
+            <label><span class="field-label">Delivery apartment / unit / access details</span><input name="dropoff_address_details" maxlength="300" placeholder="Example: apartment 89, gate B"></label>
           </div>
           <div class="form-grid">
             <label><span class="field-label">Need movers</span><select name="required_loaders"><option value="">Not sure / not important</option><option value="0">No</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
@@ -278,6 +282,6 @@
       <a href="mailto:hello@cargopt.pt">Contact</a>
     </nav>
   </footer>
-  <script src="/assets/js/landing.js?v=location-selector-v1" defer></script>
+  <script src="/assets/js/landing.js?v=international-address-v1" defer></script>
 </body>
 </html>

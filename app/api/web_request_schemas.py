@@ -19,6 +19,9 @@ class WebRequestAddressPayload(BaseModel):
     latitude: float = Field(ge=-90, le=90)
     longitude: float = Field(ge=-180, le=180)
     location_confirmed: bool
+    country_code: str = Field(default="pt", min_length=2, max_length=2, pattern=r"^[A-Za-z]{2}$")
+    address_details: str | None = Field(default=None, max_length=300)
+    postal_code: str | None = Field(default=None, max_length=32)
     floor: int | None = Field(default=None, ge=-1, le=24)
     has_elevator: bool | None = None
 
@@ -35,6 +38,9 @@ class WebRequestAddressPayload(BaseModel):
             normalized_address=self.normalized_address,
             latitude=self.latitude,
             longitude=self.longitude,
+            country_code=self.country_code.lower(),
+            address_details=self.address_details,
+            postal_code=self.postal_code,
             floor=self.floor,
             has_elevator=self.has_elevator,
         )
@@ -85,6 +91,16 @@ class WebRequestPayload(BaseModel):
         if "pickup" not in address_kinds or "dropoff" not in address_kinds:
             raise ValueError("pickup and dropoff addresses are required")
 
+        has_foreign_destination = any(
+            address.country_code.lower() != "pt" for address in self.addresses
+        )
+        has_portugal_pickup = any(
+            address.kind == "pickup" and address.country_code.lower() == "pt"
+            for address in self.addresses
+        )
+        if has_foreign_destination and not has_portugal_pickup:
+            raise ValueError("international routes must start in Portugal")
+
         try:
             validate_requested_date_not_in_past(self.requested_date)
         except RequestedDateInPastError as error:
@@ -134,6 +150,9 @@ class LocationSuggestionResponse(BaseModel):
     latitude: float
     longitude: float
     map_url: str
+    country_code: str
+    postal_code: str | None = None
+    address_details_hint: str | None = None
 
 
 class TrackingOfferResponse(BaseModel):

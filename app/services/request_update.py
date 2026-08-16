@@ -25,6 +25,9 @@ class RequestUpdateService:
         normalized_address: str | None = None,
         latitude: float | None = None,
         longitude: float | None = None,
+        country_code: str | None = None,
+        address_details: str | None = None,
+        postal_code: str | None = None,
     ) -> JobAddress:
         if latitude is not None and longitude is not None:
             clean_raw_text = raw_text.strip() or f"{latitude}, {longitude}"
@@ -50,7 +53,9 @@ class RequestUpdateService:
             original_google_maps_url=normalized_location["original_google_maps_url"],
             normalized_address=normalized_location["normalized_address"],
             city=None,
-            postal_code=normalized_location["postal_code"],
+            postal_code=(postal_code or "").strip() or normalized_location["postal_code"],
+            country_code=(country_code or "").strip().lower() or None,
+            address_details=(address_details or "").strip() or None,
             floor=None,
             has_elevator=None,
             latitude=normalized_location["latitude"],

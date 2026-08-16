@@ -140,9 +140,9 @@
           </div>
           <div class="location-field" data-location-field>
             <label for="dropoffLocation"><span class="field-label">Куда</span>
-              <input id="dropoffLocation" name="dropoff" autocomplete="off" required placeholder="Например: Alvor, Portimão или 8500-001" aria-controls="dropoffSuggestions" aria-expanded="false">
+              <input id="dropoffLocation" name="dropoff" autocomplete="off" required placeholder="Например: Warszawa, Leszno 32, Польша" aria-controls="dropoffSuggestions" aria-expanded="false">
             </label>
-            <small class="form-note">Укажите населённый пункт и муниципалитет или почтовый индекс. Нажмите «Найти место», затем выберите и подтвердите правильную точку.</small>
+            <small class="form-note">Можно указать адрес в Португалии или за рубежом. Нажмите «Найти место», затем выберите и подтвердите правильную точку. Квартиру укажите отдельно в деталях.</small>
             <button class="button button-secondary location-search-button" type="button" data-location-search>Найти место</button>
             <div id="dropoffSuggestions" class="location-suggestions" role="listbox" hidden></div>
             <div class="location-confirmation" data-location-confirmation hidden>
@@ -177,6 +177,10 @@
             <label><span class="field-label">Лифт на отправлении</span><select name="pickup_elevator" required><option value="">Выберите</option><option value="true">Да</option><option value="false">Нет</option></select></label>
             <label><span class="field-label">Этаж доставки</span><input name="dropoff_floor" type="number" min="-1" max="24" required></label>
             <label><span class="field-label">Лифт на доставке</span><select name="dropoff_elevator" required><option value="">Выберите</option><option value="true">Да</option><option value="false">Нет</option></select></label>
+          </div>
+          <div class="form-grid">
+            <label><span class="field-label">Квартира / офис / детали доступа при погрузке</span><input name="pickup_address_details" maxlength="300" placeholder="Например: квартира 89, ворота B"></label>
+            <label><span class="field-label">Квартира / офис / детали доступа при доставке</span><input name="dropoff_address_details" maxlength="300" placeholder="Например: квартира 89, ворота B"></label>
           </div>
           <div class="form-grid">
             <label><span class="field-label">Нужны грузчики</span><select name="required_loaders"><option value="">Не знаю / не важно</option><option value="0">Нет</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
@@ -278,6 +282,6 @@
       <a href="mailto:hello@cargopt.pt">Контакты</a>
     </nav>
   </footer>
-  <script src="/assets/js/landing.js?v=location-selector-v1" defer></script>
+  <script src="/assets/js/landing.js?v=international-address-v1" defer></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 PREVIOUS_REVISION = "20260813_1500_partner_outreach"
-CURRENT_REVISION = "20260815_1200_carrier_locale"
+CURRENT_REVISION = "20260816_1200_international"
 
 
 with tempfile.TemporaryDirectory(prefix="carrier-locale-migration-") as tmp:
@@ -30,6 +30,11 @@ with tempfile.TemporaryDirectory(prefix="carrier-locale-migration-") as tmp:
             for row in connection.execute("pragma table_info(carrier_company)")
         }
         assert "preferred_locale" in columns
+        address_columns = {
+            row[1]
+            for row in connection.execute("pragma table_info(job_address)")
+        }
+        assert {"country_code", "address_details"} <= address_columns
         revision = connection.execute(
             "select version_num from alembic_version"
         ).fetchone()[0]

@@ -5,7 +5,8 @@ source = Path(
 ).read_text(encoding="utf-8")
 
 assert "regions=sorted(regions) or None" in source
-assert "for address in loaded_addresses:" in source
+assert "for address in addresses_to_match:" in source
+assert "address.kind == \"pickup\"" in source
 assert "if not address_regions:" in source
 assert "MatchingReason.REGION_NOT_DETERMINED" in source
 
