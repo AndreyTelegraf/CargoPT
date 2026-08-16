@@ -20,6 +20,9 @@ assert parse_first_int("до 500kg") == 500
 assert parse_first_float("18 м3") == 18.0
 assert parse_first_float("18,5 м³") == 18.5
 assert parse_first_float("объем 12.7") == 12.7
+assert parse_first_float("0.25 м³") == 0.25
+assert parse_first_float("0,25 м³") == 0.25
+assert parse_first_float("0.0001 м³") == 0.0001
 
 for bad in ["", "кг", "примерно"]:
     try:

@@ -77,6 +77,9 @@ def main() -> None:
             ("/ru/", 'value="завтра"'),
             ("/ru/", 'value="в ближайшие дни"'),
             ("/ru/", 'value="любой день"'),
+            ("/", 'name="estimated_volume_m3" type="number" min="0" step="any"'),
+            ("/en/", 'name="estimated_volume_m3" type="number" min="0" step="any"'),
+            ("/ru/", 'name="estimated_volume_m3" type="number" min="0" step="any"'),
             (
                 "/",
                 "Indique o seu email para receber a ligação de acompanhamento, "
