@@ -254,6 +254,7 @@ def render_article_footer(
         render_cta(
             footer["cta"],
             "guide-article-footer-cta",
+            labels["home_href"],
         )
     )
 
@@ -414,12 +415,15 @@ def render_section(section: dict[str, Any]) -> str:
 def render_cta(
     cta: dict[str, str],
     class_name: str,
+    home_href: str,
 ) -> str:
+    href = localized_request_href(cta["href"], home_href)
+
     return (
         f'    <section class="section {class_name}">\n'
         f"      <h2>{escape_text(cta['heading'])}</h2>\n"
         f"      <p>{escape_text(cta['text'])}</p>\n"
-        f'      <a class="button" href="{escape_text(cta["href"])}">'
+        f'      <a class="button" href="{escape_text(href)}">'
         f"{escape_text(cta['label'])}</a>\n"
         "    </section>"
     )
@@ -458,11 +462,12 @@ def render_faq(
 def render_related_links(
     links: list[dict[str, str]],
     heading: str,
+    home_href: str,
     eyebrow: str = "Continuar",
 ) -> str:
     rendered_links = "\n".join(
         (
-            f'          <a href="{escape_text(link["href"])}">'
+            f'          <a href="{escape_text(localized_request_href(link["href"], home_href))}">'
             f"{escape_text(link['title'])}</a>"
         )
         for link in links
@@ -481,6 +486,12 @@ def render_related_links(
         "      </div>\n"
         "    </section>"
     )
+
+
+def localized_request_href(href: str, home_href: str) -> str:
+    if href == "/#request":
+        return home_href + "#request"
+    return href
 
 
 def build_structured_data(
@@ -771,7 +782,7 @@ def render_guide(
 
 {section_html}
 
-{render_cta(article["mid_cta"], "final-cta guide-mid-cta")}
+{render_cta(article["mid_cta"], "final-cta guide-mid-cta", labels["home_href"])}
 
 {render_faq(
     article["faq"],
@@ -782,10 +793,11 @@ def render_guide(
 {render_related_links(
     article["related_links"],
     article["related_links_heading"],
+    labels["home_href"],
     labels["continue"],
 )}
 
-{render_cta(article["final_cta"], "final-cta guide-final-cta")}
+{render_cta(article["final_cta"], "final-cta guide-final-cta", labels["home_href"])}
 
 {article_footer_html}
   </main>
@@ -855,6 +867,7 @@ def render_guide(
     final_cta_html = render_cta(
         article["final_cta"],
         "final-cta guide-final-cta",
+        labels["home_href"],
     )
     body_end = (
         rendered.index(final_cta_html, body_start)

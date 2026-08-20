@@ -43,9 +43,23 @@ def main() -> None:
                 f"expected_href={expected_href}"
             )
 
+        if locale in {"en", "ru"}:
+            if 'href="/#request"' in rendered:
+                raise AssertionError(
+                    "LOCALE_BODY_CTA_FELL_BACK_TO_PT:"
+                    f"{article_path.name}:locale={locale}"
+                )
+            if rendered.count(f'href="{expected_href}"') < 2:
+                raise AssertionError(
+                    "LOCALE_BODY_CTA_MISSING:"
+                    f"{article_path.name}:"
+                    f"expected_href={expected_href}"
+                )
+
         checked += 1
 
     print("RENDER_GUIDE_LOCALE_HEADER_CTA_SMOKE_OK")
+    print("RENDER_GUIDE_LOCALE_BODY_CTA_SMOKE_OK")
     print(f"CHECKED_ARTICLES={checked}")
 
 

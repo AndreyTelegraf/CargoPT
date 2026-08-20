@@ -31,7 +31,7 @@ def _parse_requested_datetime(
     current = current.astimezone(PORTUGAL_TIMEZONE)
 
     if value == "Сегодня":
-        return current.replace(hour=12, minute=0, second=0, microsecond=0).astimezone(UTC)
+        return _default_time_for_date(current, current).astimezone(UTC)
 
     if value == "Завтра":
         return (current + timedelta(days=1)).replace(
@@ -62,11 +62,30 @@ def _parse_requested_datetime(
             parsed = parsed.replace(year=current.year)
 
         if fmt in {"%d.%m.%Y", "%d.%m.%y", "%d.%m"}:
-            parsed = parsed.replace(hour=12, minute=0)
+            parsed = _default_time_for_date(
+                parsed.replace(tzinfo=PORTUGAL_TIMEZONE),
+                current,
+            ).replace(tzinfo=None)
 
         return parsed.replace(tzinfo=PORTUGAL_TIMEZONE).astimezone(UTC)
 
     return None
+
+
+def _default_time_for_date(
+    requested: datetime,
+    current: datetime,
+) -> datetime:
+    midday = requested.replace(hour=12, minute=0, second=0, microsecond=0)
+    if midday.date() != current.date() or midday > current:
+        return midday
+
+    next_hour = (current + timedelta(hours=1)).replace(
+        minute=0,
+        second=0,
+        microsecond=0,
+    )
+    return next_hour
 
 
 @router.message(JobRequestStates.requested_datetime)
@@ -91,8 +110,8 @@ async def job_requested_datetime(
 
     if is_requested_date_in_past(requested_date):
         await message.answer(
-            "Дата перевозки не может быть в прошлом. "
-            "Укажите сегодняшнюю или будущую дату.",
+            "Дата и время перевозки не могут быть в прошлом. "
+            "Укажите будущее время.",
             reply_markup=support_keyboard(),
         )
         return

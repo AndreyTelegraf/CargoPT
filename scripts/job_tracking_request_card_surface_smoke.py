@@ -37,7 +37,8 @@ def main() -> None:
     ]
 
     assert "job_id: entry.job_id ?? null" in normalize_body
-    assert "entry.tracking_url" in normalize_body
+    assert "`${trackBasePath}/${encodeURIComponent(entry.token)}`" in normalize_body
+    assert "entry.tracking_url" not in normalize_body
     assert "token: entry.token" in normalize_body
     assert "status_label" not in normalize_body
     assert "status_dot_state" not in normalize_body
@@ -50,6 +51,8 @@ def main() -> None:
     assert "activeTrackingEntry" not in track_js
     assert "loadSavedTrackingEntries(" not in track_js
     assert "status_label: messages.waitingOffers" not in landing_js
+    assert "tracking_url: localizedTrackingPath(entry.token)" in landing_js
+    assert "window.location.href = localizedTrackingPath(body.tracking_token)" in landing_js
 
     print("job_tracking_request_card_surface_ok")
 

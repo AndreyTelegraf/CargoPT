@@ -161,9 +161,7 @@ function normalizeTrackingLink(entry) {
 
   return {
     job_id: entry.job_id ?? null,
-    tracking_url:
-      entry.tracking_url
-      || `${trackBasePath}/${encodeURIComponent(entry.token)}`,
+    tracking_url: `${trackBasePath}/${encodeURIComponent(entry.token)}`,
     token: entry.token
   };
 }

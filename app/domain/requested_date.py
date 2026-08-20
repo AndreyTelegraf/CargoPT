@@ -27,7 +27,7 @@ def is_requested_date_in_past(
     current = now or datetime.now(PORTUGAL_TIMEZONE)
     current_local = _as_timezone(current, PORTUGAL_TIMEZONE)
     requested_local = _as_timezone(requested_date, PORTUGAL_TIMEZONE)
-    return requested_local.date() < current_local.date()
+    return requested_local < current_local
 
 
 def validate_requested_date_not_in_past(
@@ -37,5 +37,5 @@ def validate_requested_date_not_in_past(
 ) -> None:
     if is_requested_date_in_past(requested_date, now=now):
         raise RequestedDateInPastError(
-            "requested date must not be earlier than today in Portugal"
+            "requested date must not be earlier than the current time in Portugal"
         )

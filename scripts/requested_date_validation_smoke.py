@@ -20,8 +20,16 @@ def main() -> None:
         datetime(2026, 7, 31, 23, 59, tzinfo=portugal),
         now=now,
     )
-    assert not is_requested_date_in_past(
+    assert is_requested_date_in_past(
         datetime(2026, 8, 1, 0, 0, tzinfo=portugal),
+        now=now,
+    )
+    assert is_requested_date_in_past(
+        datetime(2026, 8, 1, 0, 29, tzinfo=portugal),
+        now=now,
+    )
+    assert not is_requested_date_in_past(
+        datetime(2026, 8, 1, 0, 30, tzinfo=portugal),
         now=now,
     )
     assert not is_requested_date_in_past(

@@ -77,7 +77,9 @@ TESTS=(
   scripts/legal_static_smoke.py
   scripts/legal_locale_parity_smoke.py
   scripts/locale_switcher_static_smoke.py
+  scripts/locale_transition_smoke.py
   scripts/guide_locale_contract_smoke.py
+  scripts/guide_locale_render_consistency_smoke.py
   scripts/guides_static_smoke.py
   scripts/guides_article_content_smoke.py
   scripts/guides_multilingual_registry_smoke.py

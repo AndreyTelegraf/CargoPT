@@ -7,6 +7,7 @@ from time import monotonic
 from urllib.parse import parse_qs
 from urllib.parse import quote_plus
 from urllib.parse import unquote
+from urllib.parse import unquote_plus
 from urllib.parse import urlparse
 
 import httpx
@@ -214,6 +215,21 @@ def extract_link_query_address(raw_text: str) -> str | None:
             if not value:
                 continue
 
+            latitude, longitude = extract_coordinates(value)
+            if latitude is None and longitude is None:
+                return value
+
+    path_parts = [part for part in parsed.path.split("/") if part]
+    try:
+        place_index = path_parts.index("place")
+    except ValueError:
+        place_index = -1
+
+    if place_index >= 0 and place_index + 1 < len(path_parts):
+        value = " ".join(
+            unquote_plus(path_parts[place_index + 1]).strip().split()
+        )
+        if value and value.casefold() != "data":
             latitude, longitude = extract_coordinates(value)
             if latitude is None and longitude is None:
                 return value

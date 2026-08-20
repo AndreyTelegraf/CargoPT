@@ -126,13 +126,22 @@ function setMessage(text, type) {
 }
 
 function normalizeTrackingLink(entry) {
-  if (!entry || !entry.token || !entry.tracking_url) return null;
+  if (!entry || !entry.token) return null;
 
   return {
     job_id: entry.job_id ?? null,
-    tracking_url: entry.tracking_url,
+    tracking_url: localizedTrackingPath(entry.token),
     token: entry.token
   };
+}
+
+function localizedTrackingPath(token) {
+  const basePath = {
+    en: "/en/track",
+    ru: "/ru/track"
+  }[localeKey] || "/track";
+
+  return `${basePath}/${encodeURIComponent(token)}`;
 }
 
 function getTrackingLinks() {
@@ -578,20 +587,7 @@ function isValidPhone(value) {
 function isRequestedDateInPast(value) {
   const normalized = normalizeRequestedDate(value);
   if (!normalized) return false;
-
-  const [year, month, day] = normalized
-    .slice(0, 10)
-    .split("-")
-    .map(Number);
-  const requestedDate = new Date(year, month - 1, day);
-  const now = new Date();
-  const today = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate()
-  );
-
-  return requestedDate < today;
+  return new Date(normalized) < new Date();
 }
 
 function validateField(field, focusField = false) {
@@ -707,11 +703,18 @@ function validateStep(step) {
   return true;
 }
 
-function formatDateForPayload(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+function requestedDateAtMidday(year, month, day) {
+  let requestedDate = new Date(year, month - 1, day, 12, 0, 0, 0);
+  const now = new Date();
+
+  if (
+    requestedDate <= now
+    && requestedDate.toDateString() === now.toDateString()
+  ) {
+    requestedDate = new Date(now.getTime() + 60 * 60 * 1000);
+  }
+
+  return requestedDate.toISOString();
 }
 
 function normalizeRequestedDate(value) {
@@ -722,17 +725,29 @@ function normalizeRequestedDate(value) {
   const targetDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
   if (["hoje", "today", "сегодня"].includes(rawValue)) {
-    return `${formatDateForPayload(targetDate)}T12:00:00+00:00`;
+    return requestedDateAtMidday(
+      targetDate.getFullYear(),
+      targetDate.getMonth() + 1,
+      targetDate.getDate()
+    );
   }
 
   if (["amanhã", "amanha", "tomorrow", "завтра"].includes(rawValue)) {
     targetDate.setDate(targetDate.getDate() + 1);
-    return `${formatDateForPayload(targetDate)}T12:00:00+00:00`;
+    return requestedDateAtMidday(
+      targetDate.getFullYear(),
+      targetDate.getMonth() + 1,
+      targetDate.getDate()
+    );
   }
 
   if (["próximos dias", "proximos dias", "next few days", "в ближайшие дни"].includes(rawValue)) {
     targetDate.setDate(targetDate.getDate() + 3);
-    return `${formatDateForPayload(targetDate)}T12:00:00+00:00`;
+    return requestedDateAtMidday(
+      targetDate.getFullYear(),
+      targetDate.getMonth() + 1,
+      targetDate.getDate()
+    );
   }
 
   if (["qualquer dia", "any day", "любой день"].includes(rawValue)) {
@@ -742,11 +757,12 @@ function normalizeRequestedDate(value) {
   const europeanDateMatch = rawValue.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
   if (europeanDateMatch) {
     const [, day, month, year] = europeanDateMatch;
-    return `${year}-${month}-${day}T12:00:00+00:00`;
+    return requestedDateAtMidday(Number(year), Number(month), Number(day));
   }
 
   if (/^\d{4}-\d{2}-\d{2}$/.test(rawValue)) {
-    return `${rawValue}T12:00:00+00:00`;
+    const [year, month, day] = rawValue.split("-").map(Number);
+    return requestedDateAtMidday(year, month, day);
   }
 
   return null;
@@ -889,7 +905,7 @@ async function submitRequest() {
         token: body.tracking_token
       };
       saveTrackingLink(trackingEntry);
-      window.location.href = body.tracking_url;
+      window.location.href = localizedTrackingPath(body.tracking_token);
     } else {
       setMessage(messages.success, "success");
     }

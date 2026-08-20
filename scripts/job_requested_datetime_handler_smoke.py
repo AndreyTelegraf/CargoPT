@@ -24,6 +24,7 @@ tomorrow = _parse_requested_datetime("Завтра", now=now)
 explicit_today = _parse_requested_datetime("01.08.2026 15:30", now=now)
 explicit_past = _parse_requested_datetime("31.07.2026 15:30", now=now)
 yearless_past = _parse_requested_datetime("31.07 10:00", now=now)
+earlier_today = _parse_requested_datetime("01.08.2026 09:00", now=now)
 
 assert today == datetime(2026, 8, 1, 11, 0, tzinfo=UTC)
 assert tomorrow == datetime(2026, 8, 2, 11, 0, tzinfo=UTC)
@@ -34,6 +35,14 @@ assert not is_requested_date_in_past(today, now=now)
 assert not is_requested_date_in_past(explicit_today, now=now)
 assert is_requested_date_in_past(explicit_past, now=now)
 assert is_requested_date_in_past(yearless_past, now=now)
+assert is_requested_date_in_past(earlier_today, now=now)
 assert _parse_requested_datetime("не дата", now=now) is None
+
+late_now = datetime(2026, 8, 1, 18, 58, tzinfo=ZoneInfo("Europe/Lisbon"))
+late_today = _parse_requested_datetime("Сегодня", now=late_now)
+late_date_only = _parse_requested_datetime("01.08.2026", now=late_now)
+assert late_today == datetime(2026, 8, 1, 18, 0, tzinfo=UTC)
+assert late_date_only == datetime(2026, 8, 1, 18, 0, tzinfo=UTC)
+assert not is_requested_date_in_past(late_today, now=late_now)
 
 print("JOB_REQUESTED_DATETIME_HANDLER_SMOKE_OK")
