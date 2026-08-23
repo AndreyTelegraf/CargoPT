@@ -90,14 +90,14 @@ async def exercise_job_matching() -> None:
             client_telegram_user_id=9001,
             status="ready_for_matching",
             requested_date=None,
-            needs_assembly=True,
-            needs_packing=True,
-            needs_tail_lift=True,
-            needs_crane=False,
-            needs_mobile_lift=False,
-            required_loaders=2,
-            estimated_payload_kg=1000,
-            estimated_volume_m3=12.0,
+            needs_assembly=False,
+            needs_packing=False,
+            needs_tail_lift=False,
+            needs_crane=True,
+            needs_mobile_lift=True,
+            required_loaders=999,
+            estimated_payload_kg=999999,
+            estimated_volume_m3=999999.0,
             comment=None,
             created_at=now,
             updated_at=now,
@@ -127,7 +127,10 @@ async def exercise_job_matching() -> None:
         matches = await matching.find_matching_vehicles_for_job(job)
 
         if len(matches) != 1:
-            raise SystemExit(f"expected 1 match, got {len(matches)}")
+            raise SystemExit(
+                "expected 1 region-only match despite impossible cargo "
+                f"constraints, got {len(matches)}"
+            )
 
         if matches[0].carrier_id != carrier.id:
             raise SystemExit("matched wrong carrier")

@@ -182,7 +182,7 @@ async def exercise_offer_distribution() -> None:
             raise SystemExit(f"expected 2 stored offers, got {len(stored)}")
 
         if len({offer.carrier_id for offer in stored}) != len(stored):
-            raise SystemExit("expected one offer per carrier for strict matches")
+            raise SystemExit("expected one offer per carrier for region matches")
 
         if loaded_offered_job.status != JobStatus.OFFERED:
             raise SystemExit(f"expected offered status, got {loaded_offered_job.status}")
@@ -216,16 +216,17 @@ async def exercise_offer_distribution() -> None:
 
         loaded_unmatched_job = await job_repo.get_job_by_id(unmatched_job.id)
 
-        if len(unmatched_offers) != 0:
+        if len(unmatched_offers) != 2:
             raise SystemExit(
-                "expected 0 offers for impossible strict constraints, "
+                "expected 2 region-only offers despite impossible "
+                "cargo constraints, "
                 f"got {len(unmatched_offers)}"
             )
 
-        if loaded_unmatched_job.status != JobStatus.NO_CARRIERS_FOUND:
+        if loaded_unmatched_job.status != JobStatus.OFFERED:
             raise SystemExit(
-                "expected no carriers found for impossible strict "
-                f"constraints, got {loaded_unmatched_job.status}"
+                "expected offered status for region-only matching, "
+                f"got {loaded_unmatched_job.status}"
             )
 
         unknown_region_job = await job_repo.create_job(

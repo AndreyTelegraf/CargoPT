@@ -10,7 +10,7 @@ assert "address.kind == \"pickup\"" in source
 assert "if not address_regions:" in source
 assert "MatchingReason.REGION_NOT_DETERMINED" in source
 
-expected_constraints = (
+request_constraints = (
     "min_payload_kg=job.estimated_payload_kg",
     "min_volume_m3=job.estimated_volume_m3",
     "min_loaders=job.required_loaders",
@@ -21,7 +21,7 @@ expected_constraints = (
     "needs_packing=job.needs_packing",
 )
 
-for constraint in expected_constraints:
-    assert source.count(constraint) == 1, constraint
+for constraint in request_constraints:
+    assert constraint not in source, constraint
 
-print("JOB_MATCHING_FORWARDS_CONSTRAINTS_SMOKE_OK")
+print("JOB_MATCHING_USES_REGIONS_ONLY_SMOKE_OK")
