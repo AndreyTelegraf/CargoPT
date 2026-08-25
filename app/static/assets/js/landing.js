@@ -898,6 +898,10 @@ async function submitRequest() {
 
     const body = await response.json();
 
+    if (window.CargoPTMeta) {
+      window.CargoPTMeta.trackLeadOnce(body.job_id);
+    }
+
     if (body.tracking_token && body.tracking_url) {
       const trackingEntry = {
         job_id: body.job_id,
