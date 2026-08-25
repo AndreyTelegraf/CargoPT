@@ -50,10 +50,10 @@ class Settings(BaseSettings):
 
     partner_outreach_enabled: bool = False
     partner_outreach_send_enabled: bool = False
-    partner_outreach_daily_limit: int = Field(default=5, gt=0, le=25)
+    partner_outreach_daily_limit: int = Field(default=50, gt=0, le=100)
     partner_outreach_min_interval_minutes: int = Field(
-        default=20,
-        ge=5,
+        default=1,
+        ge=1,
         le=1440,
     )
     partner_outreach_compliance_max_age_days: int = Field(

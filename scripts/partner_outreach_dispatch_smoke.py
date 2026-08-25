@@ -98,8 +98,8 @@ async def main() -> None:
         from_name="CargoPT",
         from_address="hello@cargopt.pt",
         reply_to="hello@cargopt.pt",
-        daily_limit=5,
-        min_interval_minutes=20,
+        daily_limit=50,
+        min_interval_minutes=1,
         compliance_max_age_days=35,
         source_max_age_days=90,
         max_attempts=3,
@@ -182,7 +182,7 @@ async def main() -> None:
         blocked_message_id = blocked_draft.id
         await session.commit()
 
-    later = NOW + timedelta(minutes=21)
+    later = NOW + timedelta(minutes=2)
     processed, reason = await dispatcher.dispatch_due(now=later, dry_run=False)
     assert processed == 0
     assert reason == "blocked: DGC opposition list"

@@ -34,7 +34,7 @@ Area and one public role mailbox per company domain.
 - The dispatcher requires a current DGC legal-entity opposition-list snapshot.
 - Internal opt-outs suppress both the mailbox and the company domain.
 - Sending is limited to Lisbon business days, 09:30-17:30, one message per
-  dispatcher run, at least 20 minutes apart, and five per day by default.
+  dispatcher run, at least one minute apart, and 50 per day by default.
 - The message identifies CargoPT, states that it is a commercial partnership
   proposal, explains the source of the address, and offers a free reply-based
   opt-out.
@@ -138,11 +138,11 @@ explicit `--send` argument:
 PYTHONPATH=. ./.venv/bin/python -m scripts.dispatch_partner_outreach --send
 ```
 
-For the pilot, install `deploy/systemd/cargopt_partner_outreach.service` and
-`deploy/systemd/cargopt_partner_outreach.timer`. The timer checks every 20
-minutes on Lisbon business days, while all database and feature-flag guards
-remain active. Run five approved companies first, inspect delivery and replies
-for three business days, then decide whether to expand to 20.
+Install `deploy/systemd/cargopt_partner_outreach.service` and
+`deploy/systemd/cargopt_partner_outreach.timer`. The timer checks every minute,
+while the dispatcher itself enforces Lisbon business days and the 09:30-17:30
+window. All database, approval, suppression, and feature-flag guards remain
+active. The default daily ceiling is 50 approved messages.
 
 ## Pilot success criteria
 

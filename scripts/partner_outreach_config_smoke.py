@@ -11,7 +11,8 @@ base = {
 disabled = Settings(**base)
 assert disabled.partner_outreach_enabled is False
 assert disabled.partner_outreach_send_enabled is False
-assert disabled.partner_outreach_daily_limit == 5
+assert disabled.partner_outreach_daily_limit == 50
+assert disabled.partner_outreach_min_interval_minutes == 1
 
 try:
     Settings(**base, partner_outreach_send_enabled=True)
