@@ -24,6 +24,8 @@ PRIVACY_PAGES = {
     "ru": STATIC / "ru/privacy/index.html",
 }
 
+CSP_SNIPPET = ROOT / "deploy/nginx/cargopt_meta_pixel_csp.conf"
+
 
 def require(source: str, expected: str, label: str) -> None:
     if expected not in source:
@@ -59,6 +61,17 @@ def main() -> None:
         raise SystemExit("consent js contains a consent-bypassing fallback")
     if consent.count('window.fbq("track", "Lead")') != 1:
         raise SystemExit("Lead must have one guarded dispatch point")
+
+    csp = CSP_SNIPPET.read_text(encoding="utf-8")
+    require(csp, "script-src 'self' 'unsafe-inline' https://connect.facebook.net", "Meta CSP")
+    require(csp, "img-src 'self' data: https://www.facebook.com", "Meta CSP")
+    require(
+        csp,
+        "connect-src 'self' https://connect.facebook.net https://www.facebook.com",
+        "Meta CSP",
+    )
+    if "script-src *" in csp or "connect-src *" in csp or "img-src *" in csp:
+        raise SystemExit("Meta CSP must not allow wildcard sources")
 
     landing_js = (STATIC / "assets/js/landing.js").read_text(encoding="utf-8")
     response_position = landing_js.index("const body = await response.json()")
