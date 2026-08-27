@@ -19,6 +19,7 @@
   max-width: 760px;
   margin-bottom: 24px;
   font-size: clamp(46px, 7vw, 78px);
+  letter-spacing: var(--letter-spacing-hero-title);
 }
 
 .partners-hero .hero-text {

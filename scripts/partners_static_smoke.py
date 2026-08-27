@@ -1,4 +1,5 @@
 import json
+import re
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
@@ -82,6 +83,8 @@ def check_page(locale: str, spec: dict[str, object]) -> None:
         raise AssertionError(f"{locale}: localized marker missing")
     if "partners@cargopt.pt" not in text:
         raise AssertionError(f"{locale}: partner contact missing")
+    if '/assets/css/partners.css?v=partners-v2' not in text:
+        raise AssertionError(f"{locale}: current partner stylesheet missing")
     if spec["home"] not in parser.links:
         raise AssertionError(f"{locale}: localized home link missing")
     if spec["partner_path"] not in parser.links:
@@ -126,11 +129,22 @@ def check_sitemap() -> None:
             raise AssertionError(f"sitemap entry mismatch: {value}")
 
 
+def check_heading_tracking() -> None:
+    text = (STATIC / "assets/css/partners.css").read_text(encoding="utf-8")
+    match = re.search(r"\.partners-hero h1\s*\{(?P<body>[^}]*)\}", text)
+    if match is None:
+        raise AssertionError("partner hero title rule missing")
+    expected = "letter-spacing: var(--letter-spacing-hero-title);"
+    if expected not in match.group("body"):
+        raise AssertionError("partner hero title uses legacy tight tracking")
+
+
 def main() -> None:
     for locale, spec in PAGES.items():
         check_page(locale, spec)
     check_home_links()
     check_sitemap()
+    check_heading_tracking()
     print("PARTNERS_STATIC_SMOKE_OK", len(PAGES))
 
 
