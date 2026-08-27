@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "mode": "applied",
+  "static_root": "/opt/bots/cargoPT_bot/app/static",
+  "static_files": [
+    "/opt/bots/cargoPT_bot/app/static/index.html",
+    "/opt/bots/cargoPT_bot/app/static/en/index.html",
+    "/opt/bots/cargoPT_bot/app/static/ru/index.html",
+    "/opt/bots/cargoPT_bot/app/static/parceiros/index.html",
+    "/opt/bots/cargoPT_bot/app/static/en/partners/index.html",
+    "/opt/bots/cargoPT_bot/app/static/ru/partners/index.html",
+    "/opt/bots/cargoPT_bot/app/static/assets/css/partners.css",
+    "/opt/bots/cargoPT_bot/app/static/sitemap.xml"
+  ]
+}
