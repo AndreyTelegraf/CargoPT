@@ -462,6 +462,11 @@ function clearEditedFieldValidity(event) {
   }
 
   clearFieldValidity(field);
+  if (["client_phone", "client_whatsapp", "customer_email"].includes(field.name)) {
+    for (const contactName of ["client_phone", "client_whatsapp", "customer_email"]) {
+      clearFieldValidity(form.elements[contactName]);
+    }
+  }
 }
 
 function setLocationSuggestionsExpanded(state, expanded) {
