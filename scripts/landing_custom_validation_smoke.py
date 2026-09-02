@@ -34,6 +34,8 @@ assert 'field.setAttribute("aria-describedby", messageId)' in js
 assert 'form.addEventListener("input", clearEditedFieldValidity)' in js
 assert 'form.addEventListener("change", clearEditedFieldValidity)' in js
 assert '["client_phone", "client_whatsapp", "customer_email"].includes(field.name)' in js
+assert 'params.get("referrer_host")' in js
+assert '"referrer_host",\n      "fbclid"' in js
 
 assert "let firstInvalidField = null;" in js
 assert "function validateField(field, focusField = false)" in js

@@ -211,7 +211,8 @@ function captureFirstTouchAttribution() {
     utm_medium: limitedAttributionValue(params.get("utm_medium"), 255),
     utm_campaign: limitedAttributionValue(params.get("utm_campaign"), 255),
     utm_content: limitedAttributionValue(params.get("utm_content"), 255),
-    referrer_host: currentReferrerHost(),
+    referrer_host: limitedAttributionValue(params.get("referrer_host"), 255)
+      || currentReferrerHost(),
     fbclid: limitedAttributionValue(params.get("fbclid"), 1024)
   };
 
@@ -223,7 +224,14 @@ const firstTouchAttribution = captureFirstTouchAttribution();
 function preserveAttributionOnLocaleLinks() {
   document.querySelectorAll(".locale-switcher a").forEach((link) => {
     const target = new URL(link.href, window.location.origin);
-    for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "fbclid"]) {
+    for (const key of [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "referrer_host",
+      "fbclid"
+    ]) {
       const value = firstTouchAttribution[key];
       if (value) target.searchParams.set(key, value);
     }
