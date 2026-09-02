@@ -73,6 +73,8 @@ async def exercise_web_intake() -> None:
             utm_medium="organic",
             utm_campaign="lisbon_launch",
             utm_content="hero_form",
+            referrer_host="t.me",
+            fbclid="test-click-id",
             landing_version="v1",
             requested_date=datetime.now(UTC) + timedelta(days=30),
             addresses=(
@@ -128,6 +130,10 @@ async def exercise_web_intake() -> None:
             raise SystemExit("utm campaign not stored")
         if loaded.utm_content != "hero_form":
             raise SystemExit("utm content not stored")
+        if loaded.referrer_host != "t.me":
+            raise SystemExit("referrer host not stored")
+        if loaded.fbclid != "test-click-id":
+            raise SystemExit("facebook click id not stored")
 
         addresses = await job_repository.list_addresses_by_job(loaded.id)
         if len(addresses) != 2:

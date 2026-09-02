@@ -35,6 +35,8 @@ class WebIntakeRequest:
     requested_date: datetime | None
     addresses: tuple[WebIntakeAddress, ...]
     items: tuple[WebIntakeItem, ...]
+    referrer_host: str | None = None
+    fbclid: str | None = None
     needs_assembly: bool = False
     needs_packing: bool = False
     needs_tail_lift: bool = False

@@ -16,6 +16,10 @@ app.add_middleware(
     max_requests=settings.web_request_rate_limit_count,
     window_seconds=settings.web_request_rate_limit_window_seconds,
     max_body_bytes=settings.web_request_max_body_bytes,
+    acquisition_event_max_requests=settings.acquisition_event_rate_limit_count,
+    acquisition_event_window_seconds=(
+        settings.acquisition_event_rate_limit_window_seconds
+    ),
     location_search_max_requests=settings.location_search_rate_limit_count,
     location_search_window_seconds=settings.location_search_rate_limit_window_seconds,
 )

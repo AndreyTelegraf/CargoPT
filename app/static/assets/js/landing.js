@@ -1,4 +1,6 @@
 const TRACKING_LINKS_KEY = "cargopt_tracking_links";
+const LANDING_VERSION = "landing_static_v3_acquisition";
+const ACQUISITION_EVENT_ENDPOINT = "/api/v1/acquisition-events";
 const pageLocale = document.body.dataset.locale || document.documentElement.lang || "ru";
 const form = document.querySelector("#requestForm");
 const hero = document.querySelector(".hero");
@@ -8,6 +10,7 @@ const progressFill = document.querySelector("#progressFill");
 const formMessage = document.querySelector("#formMessage");
 const progress = document.querySelector(".progress");
 let currentStep = 1;
+const sentAcquisitionEvents = new Set();
 
 const MESSAGES = {
   pt: {
@@ -16,6 +19,7 @@ const MESSAGES = {
     submitting: "A enviar o pedido...",
     success: "Pedido enviado. Vamos encaminhá-lo para transportadores.",
     validationFailure: "Alguns dados do pedido não são válidos. Verifique os campos e tente novamente.",
+    validationFieldFailure: "Verifique estes campos: {fields}.",
     requestedDatePast: "A data do transporte não pode estar no passado.",
     conflictFailure: "Este pedido já foi alterado ou enviado. Atualize a página antes de tentar novamente.",
     rateLimitFailure: "Foram enviados demasiados pedidos. Aguarde um pouco e tente novamente.",
@@ -49,6 +53,7 @@ const MESSAGES = {
     submitting: "Sending request...",
     success: "Request sent. We will forward it to carriers.",
     validationFailure: "Some request details are invalid. Check the fields and try again.",
+    validationFieldFailure: "Check these fields: {fields}.",
     requestedDatePast: "The moving date cannot be in the past.",
     conflictFailure: "This request has already been changed or submitted. Refresh the page before trying again.",
     rateLimitFailure: "Too many requests were submitted. Wait a moment and try again.",
@@ -82,6 +87,7 @@ const MESSAGES = {
     submitting: "Отправляем заявку...",
     success: "Заявка отправлена. Мы передадим её перевозчикам.",
     validationFailure: "Некоторые данные заявки заполнены неверно. Проверьте поля и отправьте ещё раз.",
+    validationFieldFailure: "Проверьте поля: {fields}.",
     requestedDatePast: "Дата перевозки не может быть в прошлом.",
     conflictFailure: "Эта заявка уже была изменена или отправлена. Обновите страницу перед повторной попыткой.",
     rateLimitFailure: "Отправлено слишком много заявок. Подождите немного и попробуйте снова.",
@@ -118,6 +124,142 @@ const localizedHomePath = {
   ru: "/ru/",
 }[localeKey] || "/";
 const locationFieldStates = new Map();
+
+const VALIDATION_FIELD_LABELS = {
+  pt: {
+    request: "dados do pedido",
+    pickup: "local de recolha",
+    dropoff: "local de entrega",
+    items: "bens a transportar",
+    customer_name: "nome",
+    requested_date: "data",
+    contact: "contacto",
+    client_phone: "telefone",
+    client_whatsapp: "WhatsApp",
+    customer_email: "email",
+    pickup_floor: "piso de recolha",
+    pickup_elevator: "elevador na recolha",
+    dropoff_floor: "piso de entrega",
+    dropoff_elevator: "elevador na entrega",
+    required_loaders: "ajudantes",
+    estimated_volume_m3: "volume",
+    comment: "comentário",
+    unknown: "dados do pedido"
+  },
+  en: {
+    request: "request details",
+    pickup: "pickup location",
+    dropoff: "delivery location",
+    items: "items being moved",
+    customer_name: "name",
+    requested_date: "moving date",
+    contact: "contact",
+    client_phone: "phone",
+    client_whatsapp: "WhatsApp",
+    customer_email: "email",
+    pickup_floor: "pickup floor",
+    pickup_elevator: "pickup elevator",
+    dropoff_floor: "delivery floor",
+    dropoff_elevator: "delivery elevator",
+    required_loaders: "movers",
+    estimated_volume_m3: "volume",
+    comment: "comment",
+    unknown: "request details"
+  },
+  ru: {
+    request: "данные заявки",
+    pickup: "место отправления",
+    dropoff: "место доставки",
+    items: "описание груза",
+    customer_name: "имя",
+    requested_date: "дата перевозки",
+    contact: "контакт",
+    client_phone: "телефон",
+    client_whatsapp: "WhatsApp",
+    customer_email: "email",
+    pickup_floor: "этаж отправления",
+    pickup_elevator: "лифт на отправлении",
+    dropoff_floor: "этаж доставки",
+    dropoff_elevator: "лифт на доставке",
+    required_loaders: "грузчики",
+    estimated_volume_m3: "объём",
+    comment: "комментарий",
+    unknown: "данные заявки"
+  }
+};
+const validationFieldLabels = VALIDATION_FIELD_LABELS[localeKey]
+  || VALIDATION_FIELD_LABELS.pt;
+
+function limitedAttributionValue(value, maxLength) {
+  return (value || "").trim().slice(0, maxLength) || null;
+}
+
+function currentReferrerHost() {
+  if (!document.referrer) return null;
+  try {
+    const host = new URL(document.referrer).hostname.toLowerCase();
+    return host.endsWith("cargopt.pt") ? null : limitedAttributionValue(host, 255);
+  } catch {
+    return null;
+  }
+}
+
+function captureFirstTouchAttribution() {
+  const params = new URLSearchParams(window.location.search);
+  const current = {
+    utm_source: limitedAttributionValue(params.get("utm_source"), 255),
+    utm_medium: limitedAttributionValue(params.get("utm_medium"), 255),
+    utm_campaign: limitedAttributionValue(params.get("utm_campaign"), 255),
+    utm_content: limitedAttributionValue(params.get("utm_content"), 255),
+    referrer_host: currentReferrerHost(),
+    fbclid: limitedAttributionValue(params.get("fbclid"), 1024)
+  };
+
+  return current;
+}
+
+const firstTouchAttribution = captureFirstTouchAttribution();
+
+function preserveAttributionOnLocaleLinks() {
+  document.querySelectorAll(".locale-switcher a").forEach((link) => {
+    const target = new URL(link.href, window.location.origin);
+    for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "fbclid"]) {
+      const value = firstTouchAttribution[key];
+      if (value) target.searchParams.set(key, value);
+    }
+    link.href = `${target.pathname}${target.search}${target.hash}`;
+  });
+}
+
+function acquisitionEventPayload(eventType, errorCategory = "") {
+  return {
+    event_type: eventType,
+    source_locale: localeKey,
+    utm_source: firstTouchAttribution.utm_source
+      || (firstTouchAttribution.fbclid ? "facebook" : null),
+    utm_medium: firstTouchAttribution.utm_medium,
+    utm_campaign: firstTouchAttribution.utm_campaign,
+    utm_content: firstTouchAttribution.utm_content,
+    referrer_host: firstTouchAttribution.referrer_host,
+    landing_version: LANDING_VERSION,
+    error_category: errorCategory
+  };
+}
+
+function recordAcquisitionEvent(eventType, errorCategory = "") {
+  const dedupeKey = `${eventType}:${errorCategory}`;
+  if (sentAcquisitionEvents.has(dedupeKey)) return;
+  sentAcquisitionEvents.add(dedupeKey);
+
+  fetch(ACQUISITION_EVENT_ENDPOINT, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(acquisitionEventPayload(eventType, errorCategory)),
+    keepalive: true
+  }).catch(() => {
+    // Analytics must never block or alter the request form.
+  });
+}
 
 function setMessage(text, type) {
   formMessage.textContent = text || "";
@@ -691,6 +833,21 @@ function validateStep(step) {
     }
   }
 
+  if (step === 2) {
+    const data = getFormData();
+    const hasContact = [
+      data.client_phone,
+      data.client_whatsapp,
+      data.customer_email
+    ].some((value) => (value || "").trim());
+
+    if (!hasContact) {
+      const contactField = form.elements.client_phone;
+      markFieldInvalid(contactField, messages.contact, false);
+      if (firstInvalidField === null) firstInvalidField = contactField;
+    }
+  }
+
   if (firstInvalidField) {
     firstInvalidField.focus({preventScroll: true});
     firstInvalidField.scrollIntoView({
@@ -798,11 +955,14 @@ function buildPayload() {
     preferred_contact: data.client_whatsapp ? "whatsapp" : data.client_phone ? "phone" : data.customer_email ? "email" : null,
     client_phone: data.client_phone || null,
     client_whatsapp: data.client_whatsapp || null,
-    utm_source: new URLSearchParams(window.location.search).get("utm_source"),
-    utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
-    utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
-    utm_content: new URLSearchParams(window.location.search).get("utm_content"),
-    landing_version: "landing_static_v2",
+    utm_source: firstTouchAttribution.utm_source
+      || (firstTouchAttribution.fbclid ? "facebook" : null),
+    utm_medium: firstTouchAttribution.utm_medium,
+    utm_campaign: firstTouchAttribution.utm_campaign,
+    utm_content: firstTouchAttribution.utm_content,
+    referrer_host: firstTouchAttribution.referrer_host,
+    fbclid: firstTouchAttribution.fbclid,
+    landing_version: LANDING_VERSION,
     requested_date: requestedDate,
     addresses: [
       buildAddress(
@@ -834,12 +994,72 @@ function buildPayload() {
 
 const SUBMIT_TIMEOUT_MS = 15000;
 
+const VALIDATION_CATEGORY_FIELDS = {
+  pickup: "pickup",
+  dropoff: "dropoff",
+  items: "items",
+  customer_name: "customer_name",
+  requested_date: "requested_date",
+  contact: "client_phone",
+  client_phone: "client_phone",
+  client_whatsapp: "client_whatsapp",
+  customer_email: "customer_email",
+  pickup_floor: "pickup_floor",
+  pickup_elevator: "pickup_elevator",
+  dropoff_floor: "dropoff_floor",
+  dropoff_elevator: "dropoff_elevator",
+  required_loaders: "required_loaders",
+  estimated_volume_m3: "estimated_volume_m3",
+  comment: "comment"
+};
+
+function validationCategory(detail) {
+  const location = Array.isArray(detail && detail.loc) ? detail.loc : [];
+  const field = location[1];
+
+  if (field === "addresses") {
+    const addressIndex = Number(location[2]);
+    const addressField = location[3];
+    const prefix = addressIndex === 0 ? "pickup" : "dropoff";
+    if (addressField === "floor") return `${prefix}_floor`;
+    if (addressField === "has_elevator") return `${prefix}_elevator`;
+    return prefix;
+  }
+
+  if (field === "items") return "items";
+  if (Object.prototype.hasOwnProperty.call(VALIDATION_CATEGORY_FIELDS, field)) return field;
+  return field ? "unknown" : "request";
+}
+
+function extractValidationCategories(body) {
+  if (!body || !Array.isArray(body.detail)) return ["request"];
+  const categories = body.detail.map(validationCategory);
+  return [...new Set(categories.length ? categories : ["request"])];
+}
+
+function markServerValidationFields(categories) {
+  let firstField = null;
+  categories.forEach((category) => {
+    const fieldName = VALIDATION_CATEGORY_FIELDS[category];
+    const field = fieldName ? form.elements[fieldName] : null;
+    if (!field) return;
+    markFieldInvalid(field, messages.validationFailure, false);
+    if (!firstField) firstField = field;
+  });
+
+  if (firstField) {
+    firstField.focus({preventScroll: true});
+    firstField.scrollIntoView({behavior: "smooth", block: "center"});
+  }
+}
+
 class RequestSubmissionError extends Error {
-  constructor(kind, status = null) {
+  constructor(kind, status = null, validationCategories = []) {
     super(kind);
     this.name = "RequestSubmissionError";
     this.kind = kind;
     this.status = status;
+    this.validationCategories = validationCategories;
   }
 }
 
@@ -853,6 +1073,14 @@ function classifySubmissionStatus(status) {
 
 function getSubmissionErrorMessage(error) {
   if (error instanceof RequestSubmissionError) {
+    if (error.kind === "validation" && error.validationCategories.length) {
+      const labels = error.validationCategories
+        .map((category) => validationFieldLabels[category] || validationFieldLabels.unknown);
+      return messages.validationFieldFailure.replace(
+        "{fields}",
+        [...new Set(labels)].join(", ")
+      );
+    }
     const messageKey = `${error.kind}Failure`;
     return messages[messageKey] || messages.unexpectedFailure;
   }
@@ -871,6 +1099,7 @@ function getSubmissionErrorMessage(error) {
 async function submitRequest() {
   if (!validateStep(2)) return;
 
+  recordAcquisitionEvent("submit_attempt");
   setMessage(messages.submitting, "");
   const submitButton = form.querySelector("button[type=\"submit\"]");
   const controller = new AbortController();
@@ -890,13 +1119,23 @@ async function submitRequest() {
     });
 
     if (!response.ok) {
+      let responseBody = null;
+      try {
+        responseBody = await response.json();
+      } catch {
+        responseBody = null;
+      }
       throw new RequestSubmissionError(
         classifySubmissionStatus(response.status),
-        response.status
+        response.status,
+        response.status === 422
+          ? extractValidationCategories(responseBody)
+          : []
       );
     }
 
     const body = await response.json();
+    recordAcquisitionEvent("submit_success");
 
     if (window.CargoPTMeta) {
       window.CargoPTMeta.trackLeadOnce(body.job_id);
@@ -919,6 +1158,24 @@ async function submitRequest() {
       setStep(1);
     }
   } catch (error) {
+    if (error instanceof RequestSubmissionError && error.kind === "validation") {
+      markServerValidationFields(error.validationCategories);
+      recordAcquisitionEvent(
+        "submit_error_validation",
+        error.validationCategories[0] || "request"
+      );
+    } else if (error instanceof RequestSubmissionError && error.kind === "rateLimit") {
+      recordAcquisitionEvent("submit_error_rate_limit");
+    } else if (error instanceof RequestSubmissionError && error.kind === "server") {
+      recordAcquisitionEvent("submit_error_server");
+    } else if (
+      error instanceof TypeError
+      || (error instanceof DOMException && error.name === "AbortError")
+    ) {
+      recordAcquisitionEvent("submit_error_network");
+    } else {
+      recordAcquisitionEvent("submit_error_unexpected");
+    }
     setMessage(getSubmissionErrorMessage(error), "error");
     console.error(error);
   } finally {
@@ -928,6 +1185,7 @@ async function submitRequest() {
 }
 
 form.addEventListener("input", (event) => {
+  recordAcquisitionEvent("form_start");
 
   const field = event.target.closest("[required]");
   if (field) {
@@ -936,6 +1194,7 @@ form.addEventListener("input", (event) => {
 });
 
 form.addEventListener("change", (event) => {
+  recordAcquisitionEvent("form_start");
 
   const field = event.target.closest("[required]");
   if (field) {
@@ -969,6 +1228,7 @@ form.addEventListener("click", (event) => {
   }
 
   if (next && validateStep(currentStep)) {
+    recordAcquisitionEvent("step1_complete");
     setStep(currentStep + 1);
   }
 
@@ -1114,6 +1374,8 @@ if (carousel) {
 }
 
 
+preserveAttributionOnLocaleLinks();
+recordAcquisitionEvent("landing_view");
 setStep(1);
 renderOpenPedidos();
 window.addEventListener("resize", renderOpenPedidos);

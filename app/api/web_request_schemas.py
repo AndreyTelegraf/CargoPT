@@ -68,6 +68,8 @@ class WebRequestPayload(BaseModel):
     utm_medium: str | None = Field(default=None, max_length=255)
     utm_campaign: str | None = Field(default=None, max_length=255)
     utm_content: str | None = Field(default=None, max_length=255)
+    referrer_host: str | None = Field(default=None, max_length=255)
+    fbclid: str | None = Field(default=None, max_length=1024)
     landing_version: str | None = Field(default=None, max_length=64)
     requested_date: datetime | None = None
     addresses: list[WebRequestAddressPayload] = Field(min_length=2)
@@ -120,6 +122,8 @@ class WebRequestPayload(BaseModel):
             utm_medium=self.utm_medium,
             utm_campaign=self.utm_campaign,
             utm_content=self.utm_content,
+            referrer_host=self.referrer_host,
+            fbclid=self.fbclid,
             landing_version=self.landing_version,
             requested_date=self.requested_date,
             addresses=tuple(address.to_service_address() for address in self.addresses),
@@ -134,6 +138,50 @@ class WebRequestPayload(BaseModel):
             estimated_volume_m3=self.estimated_volume_m3,
             comment=self.comment,
         )
+
+
+class AcquisitionEventPayload(BaseModel):
+    event_type: Literal[
+        "landing_view",
+        "form_start",
+        "step1_complete",
+        "submit_attempt",
+        "submit_success",
+        "submit_error_validation",
+        "submit_error_rate_limit",
+        "submit_error_server",
+        "submit_error_network",
+        "submit_error_unexpected",
+    ]
+    source_locale: Literal["ru", "en", "pt"]
+    utm_source: str | None = Field(default=None, max_length=255)
+    utm_medium: str | None = Field(default=None, max_length=255)
+    utm_campaign: str | None = Field(default=None, max_length=255)
+    utm_content: str | None = Field(default=None, max_length=255)
+    referrer_host: str | None = Field(default=None, max_length=255)
+    landing_version: str | None = Field(default=None, max_length=64)
+    error_category: Literal[
+        "",
+        "request",
+        "addresses",
+        "pickup",
+        "dropoff",
+        "items",
+        "customer_name",
+        "requested_date",
+        "contact",
+        "client_phone",
+        "client_whatsapp",
+        "customer_email",
+        "pickup_floor",
+        "pickup_elevator",
+        "dropoff_floor",
+        "dropoff_elevator",
+        "required_loaders",
+        "estimated_volume_m3",
+        "comment",
+        "unknown",
+    ] = ""
 
 
 class WebRequestResponse(BaseModel):

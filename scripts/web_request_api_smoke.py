@@ -79,6 +79,8 @@ def main() -> None:
         "utm_medium": "organic",
         "utm_campaign": "lisbon_launch",
         "utm_content": "hero_form",
+        "referrer_host": "t.me",
+        "fbclid": "test-click-id",
         "landing_version": "v1",
         "requested_date": (datetime.now(UTC) + timedelta(days=30)).isoformat(),
         "addresses": [

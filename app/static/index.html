@@ -162,7 +162,7 @@
             <p class="location-attribution">Dados de pesquisa: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a></p>
           </div>
           <label><span class="field-label">O que vai transportar?</span>
-            <textarea name="items" required placeholder="Exemplo: sofá, 20 caixas, máquina de lavar"></textarea>
+            <textarea name="items" required maxlength="1000" placeholder="Exemplo: sofá, 20 caixas, máquina de lavar"></textarea>
           </label>
           <div class="form-actions">
             <button class="button" type="button" data-next>Continuar</button>
@@ -180,8 +180,8 @@
 
             <div class="form-grid">
               <label>
-                <span class="field-label">Nome</span>
-                <input name="customer_name" autocomplete="name" required>
+                <span class="field-label">Nome <small class="field-optional">Opcional</small></span>
+                <input name="customer_name" autocomplete="name" maxlength="255">
               </label>
               <label>
                 <span class="field-label">Data da mudança</span>
@@ -198,17 +198,17 @@
             <div class="form-grid">
               <label>
                 <span class="field-label">Telefone</span>
-                <input name="client_phone" autocomplete="tel" placeholder="+351..." required>
+                <input name="client_phone" autocomplete="tel" maxlength="64" placeholder="+351...">
               </label>
               <label>
                 <span class="field-label">WhatsApp <small class="field-optional">Opcional</small></span>
-                <input name="client_whatsapp" autocomplete="tel" placeholder="+351...">
+                <input name="client_whatsapp" autocomplete="tel" maxlength="64" placeholder="+351...">
               </label>
             </div>
 
             <label>
               <span class="field-label">Email <small class="field-optional">Opcional</small></span>
-              <input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com">
+              <input name="customer_email" type="email" autocomplete="email" maxlength="255" placeholder="name@example.com">
               <small class="form-note">Indique o seu email para receber a ligação de acompanhamento, através da qual poderá acompanhar o estado do seu pedido.</small>
             </label>
           </div>
@@ -223,13 +223,13 @@
               <div class="form-access-card" role="group" aria-labelledby="pickupAccessTitle">
                 <h4 id="pickupAccessTitle" class="form-access-title">Recolha</h4>
                 <label>
-                  <span class="field-label">Andar</span>
-                  <input name="pickup_floor" type="number" min="-1" max="24" required>
+                  <span class="field-label">Andar <small class="field-optional">Opcional</small></span>
+                  <input name="pickup_floor" type="number" min="-1" max="24">
                 </label>
                 <label>
                   <span class="field-label">Existe elevador?</span>
-                  <select name="pickup_elevator" required>
-                    <option value="">Selecione</option>
+                  <select name="pickup_elevator">
+                    <option value="">Não sei</option>
                     <option value="true">Sim</option>
                     <option value="false">Não</option>
                   </select>
@@ -243,13 +243,13 @@
               <div class="form-access-card" role="group" aria-labelledby="dropoffAccessTitle">
                 <h4 id="dropoffAccessTitle" class="form-access-title">Entrega</h4>
                 <label>
-                  <span class="field-label">Andar</span>
-                  <input name="dropoff_floor" type="number" min="-1" max="24" required>
+                  <span class="field-label">Andar <small class="field-optional">Opcional</small></span>
+                  <input name="dropoff_floor" type="number" min="-1" max="24">
                 </label>
                 <label>
                   <span class="field-label">Existe elevador?</span>
-                  <select name="dropoff_elevator" required>
-                    <option value="">Selecione</option>
+                  <select name="dropoff_elevator">
+                    <option value="">Não sei</option>
                     <option value="true">Sim</option>
                     <option value="false">Não</option>
                   </select>
@@ -295,7 +295,7 @@
 
             <label>
               <span class="field-label">Comentário <small class="field-optional">Opcional</small></span>
-              <textarea name="comment" placeholder="Exemplo: objetos pesados, acesso estreito ou necessidade de desmontagem"></textarea>
+              <textarea name="comment" maxlength="2000" placeholder="Exemplo: objetos pesados, acesso estreito ou necessidade de desmontagem"></textarea>
             </label>
           </div>
           <p class="form-note">É necessário indicar pelo menos um contacto: telefone, WhatsApp ou email.</p>
@@ -396,6 +396,6 @@
     </nav>
   </footer>
   <script src="/assets/js/meta-consent.js?v=meta-pixel-v1" defer></script>
-  <script src="/assets/js/landing.js?v=international-address-v1-locale-transition-v1-meta-pixel-v1" defer></script>
+  <script src="/assets/js/landing.js?v=acquisition-funnel-v1" defer></script>
 </body>
 </html>

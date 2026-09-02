@@ -35,6 +35,7 @@ TESTS=(
   scripts/email_status_events_smoke.py
   scripts/web_request_duplicate_guard_smoke.py
   scripts/web_intake_service_smoke.py
+  scripts/acquisition_funnel_smoke.py
   scripts/job_tracking_workspace_v2_smoke.py
 )
 

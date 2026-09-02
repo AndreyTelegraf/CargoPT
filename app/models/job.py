@@ -1,6 +1,8 @@
+from datetime import date
 from datetime import datetime
 
 from sqlalchemy import Boolean
+from sqlalchemy import Date
 from sqlalchemy import DateTime
 from sqlalchemy import Float
 from sqlalchemy import ForeignKey
@@ -8,6 +10,7 @@ from sqlalchemy import Index
 from sqlalchemy import Integer
 from sqlalchemy import String
 from sqlalchemy import Text
+from sqlalchemy import UniqueConstraint
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
@@ -46,6 +49,8 @@ class Job(Base):
     utm_medium: Mapped[str | None] = mapped_column(String)
     utm_campaign: Mapped[str | None] = mapped_column(String)
     utm_content: Mapped[str | None] = mapped_column(String)
+    referrer_host: Mapped[str | None] = mapped_column(String(255))
+    fbclid: Mapped[str | None] = mapped_column(String(1024))
     landing_version: Mapped[str | None] = mapped_column(String)
 
     status: Mapped[str] = mapped_column(String, nullable=False)
@@ -93,6 +98,43 @@ class Job(Base):
     addresses = relationship("JobAddress", back_populates="job")
     items = relationship("JobItem", back_populates="job")
     media = relationship("JobMedia", back_populates="job")
+
+
+class AcquisitionEventDaily(Base):
+    __tablename__ = "acquisition_event_daily"
+
+    __table_args__ = (
+        UniqueConstraint(
+            "event_date",
+            "event_type",
+            "source_locale",
+            "utm_source",
+            "utm_medium",
+            "utm_campaign",
+            "utm_content",
+            "referrer_host",
+            "landing_version",
+            "error_category",
+            name="uq_acquisition_event_daily_dimensions",
+        ),
+        Index("ix_acquisition_event_daily_date", "event_date"),
+        Index("ix_acquisition_event_daily_type", "event_type"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    event_date: Mapped[date] = mapped_column(Date, nullable=False)
+    event_type: Mapped[str] = mapped_column(String(40), nullable=False)
+    source_locale: Mapped[str] = mapped_column(String(2), nullable=False, default="")
+    utm_source: Mapped[str] = mapped_column(String(255), nullable=False, default="")
+    utm_medium: Mapped[str] = mapped_column(String(255), nullable=False, default="")
+    utm_campaign: Mapped[str] = mapped_column(String(255), nullable=False, default="")
+    utm_content: Mapped[str] = mapped_column(String(255), nullable=False, default="")
+    referrer_host: Mapped[str] = mapped_column(String(255), nullable=False, default="")
+    landing_version: Mapped[str] = mapped_column(String(64), nullable=False, default="")
+    error_category: Mapped[str] = mapped_column(String(64), nullable=False, default="")
+    event_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
 
 
 class JobStatusEvent(Base):

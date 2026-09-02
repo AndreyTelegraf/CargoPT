@@ -46,6 +46,8 @@ async def main():
         max_requests=2,
         window_seconds=3600,
         max_body_bytes=8,
+        acquisition_event_max_requests=2,
+        acquisition_event_window_seconds=3600,
         location_search_max_requests=2,
         location_search_window_seconds=3600,
     )
@@ -55,6 +57,25 @@ async def main():
     assert first[0]["status"] == 201
     assert second[0]["status"] == 201
     assert limited[0]["status"] == 429
+
+    first_event = await call_app(
+        middleware,
+        path="/api/v1/acquisition-events",
+        client="203.0.113.4",
+    )
+    second_event = await call_app(
+        middleware,
+        path="/api/v1/acquisition-events",
+        client="203.0.113.4",
+    )
+    limited_event = await call_app(
+        middleware,
+        path="/api/v1/acquisition-events",
+        client="203.0.113.4",
+    )
+    assert first_event[0]["status"] == 201
+    assert second_event[0]["status"] == 201
+    assert limited_event[0]["status"] == 429
 
     oversized = await call_app(
         middleware,

@@ -154,7 +154,7 @@
             <p class="location-attribution">Поисковые данные: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a></p>
           </div>
           <label><span class="field-label">Что перевозим</span>
-            <textarea name="items" required placeholder="Например: диван, 20 коробок, стиральная машина"></textarea>
+            <textarea name="items" required maxlength="1000" placeholder="Например: диван, 20 коробок, стиральная машина"></textarea>
           </label>
           <div class="form-actions">
             <button class="button" type="button" data-next>Продолжить</button>
@@ -165,19 +165,19 @@
           <legend>Детали и контакты</legend>
           <p class="form-intro">Осталось добавить детали, чтобы перевозчики могли оценить заявку.</p>
           <div class="form-grid">
-            <label><span class="field-label">Имя</span><input name="customer_name" autocomplete="name" required></label>
+            <label><span class="field-label">Имя <small class="field-optional">Необязательно</small></span><input name="customer_name" autocomplete="name" maxlength="255"></label>
             <label><span class="field-label">Дата перевозки</span><input name="requested_date" type="text" required list="requestedDateOptions" placeholder="ДД/ММ/ГГГГ, сегодня, завтра"><datalist id="requestedDateOptions"><option value="сегодня"></option><option value="завтра"></option><option value="в ближайшие дни"></option><option value="любой день"></option></datalist></label>
           </div>
           <div class="form-grid">
-            <label><span class="field-label">Телефон</span><input name="client_phone" autocomplete="tel" placeholder="+351..." required></label>
-            <label><span class="field-label">WhatsApp</span><input name="client_whatsapp" autocomplete="tel" placeholder="+351..."></label>
+            <label><span class="field-label">Телефон</span><input name="client_phone" autocomplete="tel" maxlength="64" placeholder="+351..."></label>
+            <label><span class="field-label">WhatsApp</span><input name="client_whatsapp" autocomplete="tel" maxlength="64" placeholder="+351..."></label>
           </div>
-          <label><span class="field-label">Email</span><input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"><small class="form-note">Укажите email для получения трек-ссылки, по которой вы сможете следить за состоянием вашей заявки.</small></label>
+          <label><span class="field-label">Email</span><input name="customer_email" type="email" autocomplete="email" maxlength="255" placeholder="name@example.com"><small class="form-note">Укажите email для получения трек-ссылки, по которой вы сможете следить за состоянием вашей заявки.</small></label>
           <div class="form-grid">
-            <label><span class="field-label">Этаж отправления</span><input name="pickup_floor" type="number" min="-1" max="24" required></label>
-            <label><span class="field-label">Лифт на отправлении</span><select name="pickup_elevator" required><option value="">Выберите</option><option value="true">Да</option><option value="false">Нет</option></select></label>
-            <label><span class="field-label">Этаж доставки</span><input name="dropoff_floor" type="number" min="-1" max="24" required></label>
-            <label><span class="field-label">Лифт на доставке</span><select name="dropoff_elevator" required><option value="">Выберите</option><option value="true">Да</option><option value="false">Нет</option></select></label>
+            <label><span class="field-label">Этаж отправления <small class="field-optional">Необязательно</small></span><input name="pickup_floor" type="number" min="-1" max="24"></label>
+            <label><span class="field-label">Лифт на отправлении</span><select name="pickup_elevator"><option value="">Не знаю</option><option value="true">Да</option><option value="false">Нет</option></select></label>
+            <label><span class="field-label">Этаж доставки <small class="field-optional">Необязательно</small></span><input name="dropoff_floor" type="number" min="-1" max="24"></label>
+            <label><span class="field-label">Лифт на доставке</span><select name="dropoff_elevator"><option value="">Не знаю</option><option value="true">Да</option><option value="false">Нет</option></select></label>
           </div>
           <div class="form-grid">
             <label><span class="field-label">Квартира / офис / детали доступа при погрузке</span><input name="pickup_address_details" maxlength="300" placeholder="Например: квартира 89, ворота B"></label>
@@ -187,7 +187,7 @@
             <label><span class="field-label">Нужны грузчики</span><select name="required_loaders"><option value="">Не знаю / не важно</option><option value="0">Нет</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
             <label><span class="field-label">Примерный объём, м³</span><input name="estimated_volume_m3" type="number" min="0" step="any" inputmode="decimal" placeholder="0,25"></label>
           </div>
-          <label><span class="field-label">Комментарий</span><textarea name="comment" placeholder="Дополнительные детали"></textarea></label>
+          <label><span class="field-label">Комментарий</span><textarea name="comment" maxlength="2000" placeholder="Дополнительные детали"></textarea></label>
           <p class="form-note">Нужен хотя бы один контакт: телефон, WhatsApp или email.</p>
           <p class="privacy-notice">Отправляя заявку, вы уведомлены, что указанные данные будут использованы для её обработки и переданы подходящим перевозчикам. Подробнее — в <a href="/ru/privacy/">Политике конфиденциальности</a>.</p>
           <div class="form-actions">
@@ -286,6 +286,6 @@
     </nav>
   </footer>
   <script src="/assets/js/meta-consent.js?v=meta-pixel-v1" defer></script>
-  <script src="/assets/js/landing.js?v=international-address-v1-locale-transition-v1-meta-pixel-v1" defer></script>
+  <script src="/assets/js/landing.js?v=acquisition-funnel-v1" defer></script>
 </body>
 </html>

@@ -154,7 +154,7 @@
             <p class="location-attribution">Search data: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a></p>
           </div>
           <label><span class="field-label">What are you moving?</span>
-            <textarea name="items" required placeholder="Example: sofa, 20 boxes, washing machine"></textarea>
+            <textarea name="items" required maxlength="1000" placeholder="Example: sofa, 20 boxes, washing machine"></textarea>
           </label>
           <div class="form-actions">
             <button class="button" type="button" data-next>Continue</button>
@@ -165,19 +165,19 @@
           <legend>Details and contacts</legend>
           <p class="form-intro">Add the details carriers need to estimate the request.</p>
           <div class="form-grid">
-            <label><span class="field-label">Name</span><input name="customer_name" autocomplete="name" required></label>
+            <label><span class="field-label">Name <small class="field-optional">Optional</small></span><input name="customer_name" autocomplete="name" maxlength="255"></label>
             <label><span class="field-label">Moving date</span><input name="requested_date" type="text" required list="requestedDateOptions" placeholder="DD/MM/YYYY, today, tomorrow"><datalist id="requestedDateOptions"><option value="today"></option><option value="tomorrow"></option><option value="next few days"></option><option value="any day"></option></datalist></label>
           </div>
           <div class="form-grid">
-            <label><span class="field-label">Phone</span><input name="client_phone" autocomplete="tel" placeholder="+351..." required></label>
-            <label><span class="field-label">WhatsApp</span><input name="client_whatsapp" autocomplete="tel" placeholder="+351..."></label>
+            <label><span class="field-label">Phone</span><input name="client_phone" autocomplete="tel" maxlength="64" placeholder="+351..."></label>
+            <label><span class="field-label">WhatsApp</span><input name="client_whatsapp" autocomplete="tel" maxlength="64" placeholder="+351..."></label>
           </div>
-          <label><span class="field-label">Email</span><input name="customer_email" type="email" autocomplete="email" placeholder="name@example.com"><small class="form-note">Enter your email to receive a tracking link where you can follow the status of your request.</small></label>
+          <label><span class="field-label">Email</span><input name="customer_email" type="email" autocomplete="email" maxlength="255" placeholder="name@example.com"><small class="form-note">Enter your email to receive a tracking link where you can follow the status of your request.</small></label>
           <div class="form-grid">
-            <label><span class="field-label">Pickup floor</span><input name="pickup_floor" type="number" min="-1" max="24" required></label>
-            <label><span class="field-label">Elevator at pickup</span><select name="pickup_elevator" required><option value="">Select</option><option value="true">Yes</option><option value="false">No</option></select></label>
-            <label><span class="field-label">Drop-off floor</span><input name="dropoff_floor" type="number" min="-1" max="24" required></label>
-            <label><span class="field-label">Elevator at drop-off</span><select name="dropoff_elevator" required><option value="">Select</option><option value="true">Yes</option><option value="false">No</option></select></label>
+            <label><span class="field-label">Pickup floor <small class="field-optional">Optional</small></span><input name="pickup_floor" type="number" min="-1" max="24"></label>
+            <label><span class="field-label">Elevator at pickup</span><select name="pickup_elevator"><option value="">Not sure</option><option value="true">Yes</option><option value="false">No</option></select></label>
+            <label><span class="field-label">Drop-off floor <small class="field-optional">Optional</small></span><input name="dropoff_floor" type="number" min="-1" max="24"></label>
+            <label><span class="field-label">Elevator at drop-off</span><select name="dropoff_elevator"><option value="">Not sure</option><option value="true">Yes</option><option value="false">No</option></select></label>
           </div>
           <div class="form-grid">
             <label><span class="field-label">Pickup apartment / unit / access details</span><input name="pickup_address_details" maxlength="300" placeholder="Example: apartment 89, gate B"></label>
@@ -187,7 +187,7 @@
             <label><span class="field-label">Need movers</span><select name="required_loaders"><option value="">Not sure / not important</option><option value="0">No</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
             <label><span class="field-label">Approximate volume, m³</span><input name="estimated_volume_m3" type="number" min="0" step="any" inputmode="decimal" placeholder="0.25"></label>
           </div>
-          <label><span class="field-label">Comment</span><textarea name="comment" placeholder="Extra details"></textarea></label>
+          <label><span class="field-label">Comment</span><textarea name="comment" maxlength="2000" placeholder="Extra details"></textarea></label>
           <p class="form-note">At least one contact is required: phone, WhatsApp or email.</p>
           <p class="privacy-notice">By submitting this request, your data will be used to manage it and shared with suitable carriers. See our <a href="/en/privacy/">Privacy Policy</a>.</p>
           <div class="form-actions">
@@ -286,6 +286,6 @@
     </nav>
   </footer>
   <script src="/assets/js/meta-consent.js?v=meta-pixel-v1" defer></script>
-  <script src="/assets/js/landing.js?v=international-address-v1-locale-transition-v1-meta-pixel-v1" defer></script>
+  <script src="/assets/js/landing.js?v=acquisition-funnel-v1" defer></script>
 </body>
 </html>

@@ -18,6 +18,8 @@ class WebRequestRateLimitMiddleware:
         max_requests: int,
         window_seconds: int,
         max_body_bytes: int,
+        acquisition_event_max_requests: int = 240,
+        acquisition_event_window_seconds: int = 3600,
         location_search_max_requests: int = 120,
         location_search_window_seconds: int = 3600,
     ) -> None:
@@ -25,9 +27,12 @@ class WebRequestRateLimitMiddleware:
         self.max_requests = max_requests
         self.window_seconds = window_seconds
         self.max_body_bytes = max_body_bytes
+        self.acquisition_event_max_requests = acquisition_event_max_requests
+        self.acquisition_event_window_seconds = acquisition_event_window_seconds
         self.location_search_max_requests = location_search_max_requests
         self.location_search_window_seconds = location_search_window_seconds
         self._requests: dict[str, deque[float]] = defaultdict(deque)
+        self._acquisition_event_requests: dict[str, deque[float]] = defaultdict(deque)
         self._location_search_requests: dict[str, deque[float]] = defaultdict(deque)
         self._lock = asyncio.Lock()
 
@@ -81,22 +86,33 @@ class WebRequestRateLimitMiddleware:
             await self.app(scope, receive, send)
             return
 
-        if (
-            scope["type"] != "http"
-            or scope.get("method") != "POST"
-            or scope.get("path") != "/api/v1/requests"
-        ):
+        is_web_request = (
+            scope["type"] == "http"
+            and scope.get("method") == "POST"
+            and scope.get("path") == "/api/v1/requests"
+        )
+        is_acquisition_event = (
+            scope["type"] == "http"
+            and scope.get("method") == "POST"
+            and scope.get("path") == "/api/v1/acquisition-events"
+        )
+        if not is_web_request and not is_acquisition_event:
             await self.app(scope, receive, send)
             return
+
+        body_limit = self.max_body_bytes if is_web_request else min(
+            self.max_body_bytes,
+            8192,
+        )
 
         headers = {key.lower(): value for key, value in scope.get("headers", [])}
         raw_content_length = headers.get(b"content-length", b"0")
         try:
             content_length = int(raw_content_length)
         except ValueError:
-            content_length = self.max_body_bytes + 1
+            content_length = body_limit + 1
 
-        if content_length > self.max_body_bytes:
+        if content_length > body_limit:
             response = JSONResponse(
                 status_code=413,
                 content={"detail": "request body too large"},
@@ -114,7 +130,7 @@ class WebRequestRateLimitMiddleware:
                 break
             chunk = message.get("body", b"")
             received_bytes += len(chunk)
-            if received_bytes > self.max_body_bytes:
+            if received_bytes > body_limit:
                 response = JSONResponse(
                     status_code=413,
                     content={"detail": "request body too large"},
@@ -128,18 +144,39 @@ class WebRequestRateLimitMiddleware:
                 return received_messages.pop(0)
             return {"type": "http.request", "body": b"", "more_body": False}
 
+        history_by_key = (
+            self._requests
+            if is_web_request
+            else self._acquisition_event_requests
+        )
+        max_requests = (
+            self.max_requests
+            if is_web_request
+            else self.acquisition_event_max_requests
+        )
+        window_seconds = (
+            self.window_seconds
+            if is_web_request
+            else self.acquisition_event_window_seconds
+        )
         allowed = await self._is_allowed(
             self._client_key(scope),
             monotonic(),
-            history_by_key=self._requests,
-            max_requests=self.max_requests,
-            window_seconds=self.window_seconds,
+            history_by_key=history_by_key,
+            max_requests=max_requests,
+            window_seconds=window_seconds,
         )
         if not allowed:
             response = JSONResponse(
                 status_code=429,
-                content={"detail": "too many requests"},
-                headers={"Retry-After": str(self.window_seconds)},
+                content={
+                    "detail": (
+                        "too many requests"
+                        if is_web_request
+                        else "too many acquisition events"
+                    )
+                },
+                headers={"Retry-After": str(window_seconds)},
             )
             await response(scope, receive, send)
             return

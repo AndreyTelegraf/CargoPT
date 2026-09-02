@@ -28,6 +28,8 @@ class WebDraftInput:
     utm_content: str | None
     landing_version: str | None
     requested_date: datetime | None
+    referrer_host: str | None = None
+    fbclid: str | None = None
     needs_assembly: bool = False
     needs_packing: bool = False
     needs_tail_lift: bool = False
@@ -58,6 +60,8 @@ class RequestCreationService:
             utm_medium=None,
             utm_campaign=None,
             utm_content=None,
+            referrer_host=None,
+            fbclid=None,
             landing_version=None,
             status=JobStatus.DRAFT,
             draft_step="pickup_address",
@@ -99,6 +103,8 @@ class RequestCreationService:
             utm_medium=payload.utm_medium,
             utm_campaign=payload.utm_campaign,
             utm_content=payload.utm_content,
+            referrer_host=payload.referrer_host,
+            fbclid=payload.fbclid,
             landing_version=payload.landing_version,
             status=JobStatus.DRAFT,
             draft_step=None,

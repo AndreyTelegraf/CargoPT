@@ -6,9 +6,11 @@ from fastapi import APIRouter
 from fastapi import Depends
 from fastapi import HTTPException
 from fastapi import Query
+from fastapi import Response
 from fastapi.responses import FileResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.api.web_request_schemas import AcquisitionEventPayload
 from app.api.web_request_schemas import WebRequestPayload
 from app.api.web_request_schemas import WebRequestResponse
 from app.api.web_request_schemas import LocationSuggestionResponse
@@ -28,6 +30,7 @@ from app.repositories.job import JobRepository
 from app.repositories.job_email_notification import (
     JobEmailNotificationRepository,
 )
+from app.services.acquisition_funnel import record_acquisition_event
 from app.services.assignment_confirmation import build_assignment_status_from_action
 from app.services.assignment_confirmation import process_assignment_failure_redispatch
 from app.services.assignment_confirmation import record_assignment_confirmation
@@ -92,6 +95,15 @@ async def get_session() -> AsyncIterator[AsyncSession]:
         except Exception:
             await session.rollback()
             raise
+
+
+@router.post("/acquisition-events", status_code=204)
+async def acquisition_event(
+    payload: AcquisitionEventPayload,
+    session: AsyncSession = Depends(get_session),
+) -> Response:
+    await record_acquisition_event(session, payload)
+    return Response(status_code=204)
 
 
 @router.get(
@@ -181,6 +193,8 @@ async def submit_web_request(
                 utm_medium=service_request.utm_medium,
                 utm_campaign=service_request.utm_campaign,
                 utm_content=service_request.utm_content,
+                referrer_host=service_request.referrer_host,
+                fbclid=service_request.fbclid,
                 landing_version=service_request.landing_version,
                 requested_date=service_request.requested_date,
                 addresses=tuple(

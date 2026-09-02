@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     web_request_rate_limit_window_seconds: int = Field(default=3600, gt=0)
     web_request_max_body_bytes: int = Field(default=65536, gt=0)
     web_request_contact_daily_limit: int = Field(default=3, gt=0)
+    acquisition_event_rate_limit_count: int = Field(default=240, gt=0)
+    acquisition_event_rate_limit_window_seconds: int = Field(default=3600, gt=0)
     location_search_rate_limit_count: int = Field(default=120, gt=0)
     location_search_rate_limit_window_seconds: int = Field(default=3600, gt=0)
     location_search_provider_url: str = (

@@ -54,6 +54,8 @@ class RequestIntakeInput:
     requested_date: datetime | None
     addresses: tuple[RequestIntakeAddress, ...]
     items: tuple[RequestIntakeItem, ...]
+    referrer_host: str | None = None
+    fbclid: str | None = None
     needs_assembly: bool = False
     needs_packing: bool = False
     needs_tail_lift: bool = False
@@ -211,6 +213,8 @@ class RequestIntakeService:
                 utm_medium=request.utm_medium,
                 utm_campaign=request.utm_campaign,
                 utm_content=request.utm_content,
+                referrer_host=request.referrer_host,
+                fbclid=request.fbclid,
                 landing_version=request.landing_version,
                 requested_date=request.requested_date,
                 needs_assembly=request.needs_assembly,
