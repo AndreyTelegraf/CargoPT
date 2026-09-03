@@ -7,6 +7,7 @@ from datetime import UTC
 from datetime import datetime
 from datetime import timedelta
 from pathlib import Path
+from types import SimpleNamespace
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -134,6 +135,76 @@ async def exercise_job_matching() -> None:
 
         if matches[0].carrier_id != carrier.id:
             raise SystemExit("matched wrong carrier")
+
+        class CapturingCarrierSearch:
+            def __init__(self):
+                self.regions = None
+
+            async def find_matching_vehicles(self, **kwargs):
+                self.regions = kwargs["regions"]
+                return [SimpleNamespace(id=999)]
+
+        domestic_search = CapturingCarrierSearch()
+        domestic_matching = JobMatchingService(domestic_search)
+        domestic_result = await domestic_matching.find_matching_result_for_job(
+            job,
+            addresses=[
+                SimpleNamespace(
+                    kind="pickup",
+                    country_code="pt",
+                    latitude=40.1300245,
+                    longitude=-8.4791378,
+                    raw_text="Coimbra, Portugal",
+                    normalized_address="Coimbra, Portugal",
+                ),
+                SimpleNamespace(
+                    kind="dropoff",
+                    country_code="pt",
+                    latitude=41.1292264,
+                    longitude=-8.6057396,
+                    raw_text="Vila Nova de Gaia, Porto, Portugal",
+                    normalized_address="Vila Nova de Gaia, Porto, Portugal",
+                ),
+            ],
+        )
+        if domestic_result.regions != ["Centro", "Porto"]:
+            raise SystemExit(
+                "domestic intercity endpoints were not both classified: "
+                f"{domestic_result.regions}"
+            )
+        if domestic_search.regions != ["Centro", "Porto"]:
+            raise SystemExit("domestic intercity regions were not passed to search")
+
+        international_search = CapturingCarrierSearch()
+        international_matching = JobMatchingService(international_search)
+        international_result = await international_matching.find_matching_result_for_job(
+            job,
+            addresses=[
+                SimpleNamespace(
+                    kind="pickup",
+                    country_code="pt",
+                    latitude=38.72,
+                    longitude=-9.14,
+                    raw_text="Lisboa, Portugal",
+                    normalized_address="Lisboa, Portugal",
+                ),
+                SimpleNamespace(
+                    kind="dropoff",
+                    country_code="es",
+                    latitude=40.4168,
+                    longitude=-3.7038,
+                    raw_text="Madrid, España",
+                    normalized_address="Madrid, España",
+                ),
+            ],
+        )
+        if international_result.regions != ["Lisboa"]:
+            raise SystemExit(
+                "international matching did not stay pickup-only: "
+                f"{international_result.regions}"
+            )
+        if international_search.regions != ["Lisboa"]:
+            raise SystemExit("foreign dropoff leaked into carrier search")
 
     await engine.dispose()
 

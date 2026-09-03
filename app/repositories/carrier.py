@@ -565,13 +565,15 @@ class CarrierRepository:
             stmt = stmt.where(CarrierCompany.packing_required.is_(True))
 
         if regions and "all_portugal" not in regions:
-            for region in regions:
-                stmt = stmt.where(
-                    or_(
-                        CarrierCompany.operating_regions == "all_portugal",
-                        CarrierCompany.operating_regions.like(f"%{region}%"),
-                    )
+            stmt = stmt.where(
+                or_(
+                    CarrierCompany.operating_regions == "all_portugal",
+                    *(
+                        CarrierCompany.operating_regions.like(f"%{region}%")
+                        for region in regions
+                    ),
                 )
+            )
 
         if needs_tail_lift:
             stmt = stmt.where(CarrierVehicle.has_tail_lift.is_(True))

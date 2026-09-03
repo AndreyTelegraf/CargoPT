@@ -120,6 +120,44 @@ async def exercise_search() -> None:
             )
         )
 
+        porto_only = await repo.create_carrier(
+            CarrierCompany(
+                company_name="Porto Only Carrier",
+                contact_name=None,
+                phone=None,
+                telegram_user_id=1005,
+                status=CarrierStatus.ACTIVE,
+                paid_until=now + timedelta(days=30),
+                assembly_required=False,
+                packing_required=False,
+                operating_regions="Porto",
+                profile_completed_at=now,
+                current_profile_step=None,
+                internal_note=None,
+                created_at=now,
+                updated_at=now,
+            )
+        )
+
+        all_portugal = await repo.create_carrier(
+            CarrierCompany(
+                company_name="All Portugal Carrier",
+                contact_name=None,
+                phone=None,
+                telegram_user_id=1006,
+                status=CarrierStatus.ACTIVE,
+                paid_until=now + timedelta(days=30),
+                assembly_required=False,
+                packing_required=False,
+                operating_regions="all_portugal",
+                profile_completed_at=now,
+                current_profile_step=None,
+                internal_note=None,
+                created_at=now,
+                updated_at=now,
+            )
+        )
+
         await repo.create_vehicle(
             CarrierVehicle(
                 carrier_id=active.id,
@@ -134,6 +172,46 @@ async def exercise_search() -> None:
                 crane_max_weight_kg=None,
                 crane_reach_meters=None,
                 max_loaders=3,
+                is_active=True,
+                created_at=now,
+                updated_at=now,
+            )
+        )
+
+        await repo.create_vehicle(
+            CarrierVehicle(
+                carrier_id=porto_only.id,
+                vehicle_type="small_van",
+                payload_kg=500,
+                volume_m3=5.0,
+                has_tail_lift=False,
+                has_crane=False,
+                has_mobile_lift=False,
+                mobile_lift_max_floor=None,
+                mobile_lift_max_weight_kg=None,
+                crane_max_weight_kg=None,
+                crane_reach_meters=None,
+                max_loaders=1,
+                is_active=True,
+                created_at=now,
+                updated_at=now,
+            )
+        )
+
+        await repo.create_vehicle(
+            CarrierVehicle(
+                carrier_id=all_portugal.id,
+                vehicle_type="small_van",
+                payload_kg=500,
+                volume_m3=5.0,
+                has_tail_lift=False,
+                has_crane=False,
+                has_mobile_lift=False,
+                mobile_lift_max_floor=None,
+                mobile_lift_max_weight_kg=None,
+                crane_max_weight_kg=None,
+                crane_reach_meters=None,
+                max_loaders=1,
                 is_active=True,
                 created_at=now,
                 updated_at=now,
@@ -222,10 +300,26 @@ async def exercise_search() -> None:
             regions=["Lisboa", "Porto"],
         )
         route_carrier_ids = {vehicle.carrier_id for vehicle in route_matches}
-        if route_carrier_ids != {active.id}:
+        expected_route_carrier_ids = {
+            active.id,
+            lisboa_only.id,
+            porto_only.id,
+            all_portugal.id,
+        }
+        if route_carrier_ids != expected_route_carrier_ids:
             raise SystemExit(
-                "route-wide regions were not required: "
+                "intercity route regions did not use union matching: "
                 f"{sorted(route_carrier_ids)}"
+            )
+
+        lisboa_matches = await search.find_matching_vehicles(
+            regions=["Lisboa"],
+        )
+        lisboa_carrier_ids = {vehicle.carrier_id for vehicle in lisboa_matches}
+        if lisboa_carrier_ids != {active.id, lisboa_only.id, all_portugal.id}:
+            raise SystemExit(
+                "single-region matching changed unexpectedly: "
+                f"{sorted(lisboa_carrier_ids)}"
             )
 
     await engine.dispose()
