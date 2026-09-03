@@ -367,7 +367,7 @@ def _build_job_card_text(*, job, addresses, items, offers) -> str:
         f"Создана: {_format_dt(job.created_at)}\n"
         f"Обновлена: {_format_dt(job.updated_at)}\n\n"
         f"Авторассылка по сроку: "
-        f"{'заблокирована (< 72 ч)' if job.short_lead_time_filtered else 'разрешена'}\n\n"
+        f"{'заблокирована — менее 72 ч' if job.short_lead_time_filtered else 'разрешена'}\n\n"
         f"<b>Адреса</b>\n{address_text}\n\n"
         f"<b>Груз</b>\n{item_text}\n\n"
         f"<b>Параметры</b>\n"

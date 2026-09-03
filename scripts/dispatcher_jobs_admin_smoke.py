@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 from pathlib import Path
 from types import SimpleNamespace
@@ -152,6 +153,17 @@ assert "<b>Груз</b>" in card
 assert "Sofa and boxes" in card
 assert "declined — 1" in card
 assert "Последняя причина отказа: Не договорились по цене" in card
+
+job.short_lead_time_filtered = True
+filtered_card = _build_job_card_text(
+    job=job,
+    addresses=[address],
+    items=[item],
+    offers=[],
+)
+assert "Авторассылка по сроку: заблокирована — менее 72 ч" in filtered_card
+assert "< 72" not in filtered_card
+assert set(re.findall(r"<[^>]*>", filtered_card)) == {"<b>", "</b>"}
 
 router_source = Path("app/bot/routers.py").read_text(encoding="utf-8")
 assert "dispatcher_jobs_admin_router" in router_source
