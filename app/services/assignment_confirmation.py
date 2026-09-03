@@ -5,6 +5,7 @@ from app.domain.job_status import JobStatus
 from app.models.job import Job
 from app.repositories.carrier import CarrierRepository
 from app.services.job_lifecycle import InvalidJobStatusTransitionError
+from app.services.job_escalation import hold_short_lead_job_for_manual_review
 
 
 ASSIGNMENT_CONFIRMATION_CONFIRMED = "confirmed"
@@ -96,6 +97,17 @@ async def process_assignment_failure_redispatch(
     )
 
     if should_delete_carrier_offer:
+        if await hold_short_lead_job_for_manual_review(
+            bot=bot,
+            job=job,
+            job_repository=job_repository,
+        ):
+            return (
+                should_delete_carrier_offer,
+                carrier_message_chat_id,
+                carrier_message_id,
+            )
+
         distribution = build_assignment_offer_distribution(
             job_repository=job_repository,
             carrier_repository=carrier_repository,
@@ -247,6 +259,17 @@ def build_assignment_result_text(*, job_id: int, action: str, job_status: str) -
                 f"По заявке №{job_id} договориться с перевозчиком не удалось.\n\n"
                 "Заявка снова в поиске. "
                 "Мы отправляем её другим подходящим перевозчикам."
+            ),
+            state="searching",
+        )
+
+    if job_status == JobStatus.MANUAL_REVIEW_REQUIRED:
+        return format_telegram_status_block(
+            (
+                f"По заявке №{job_id} договориться с перевозчиком не удалось.\n\n"
+                "До перевозки осталось меньше трёх суток, поэтому "
+                "автоматическая рассылка остановлена. "
+                "Заявку проверит диспетчер CargoPT."
             ),
             state="searching",
         )

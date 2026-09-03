@@ -175,6 +175,13 @@ async def handle_assignment_confirmation(callback: CallbackQuery) -> None:
             carrier_repository=carrier_repository,
         )
 
+        if updated_job.status == JobStatus.MANUAL_REVIEW_REQUIRED:
+            result_text = build_assignment_result_text(
+                job_id=job_id,
+                action=action,
+                job_status=updated_job.status,
+            )
+
         await send_assignment_final_notifications(
             bot=callback.bot,
             job=updated_job,

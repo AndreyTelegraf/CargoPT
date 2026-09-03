@@ -9,7 +9,6 @@ from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
 from app.services.request_submission import ClientJobLimitError
 from app.services.request_submission import RequestSubmissionService
-from app.services.short_lead_time_warning import has_short_lead_time
 from app.services.short_lead_time_warning import short_lead_time_warning_text
 
 router = Router()
@@ -64,7 +63,15 @@ async def job_comment(
 
     await state.clear()
 
-    if sent_count > 0:
+    if result.job.short_lead_time_filtered:
+        await message.answer(
+            short_lead_time_warning_text(
+                message.from_user.language_code,
+                default_locale="ru",
+            ),
+            reply_markup=support_keyboard(),
+        )
+    elif sent_count > 0:
         await message.answer(
             "Заявка опубликована.\n\n"
             f"Мы отправили её подходящим перевозчикам: {sent_count}. "
@@ -76,14 +83,5 @@ async def job_comment(
             "Заявка опубликована.\n\n"
             "Сейчас в системе нет подходящих перевозчиков. "
             "Диспетчер CargoPT проверит заявку вручную.",
-            reply_markup=support_keyboard(),
-        )
-
-    if has_short_lead_time(result.job.requested_date):
-        await message.answer(
-            short_lead_time_warning_text(
-                message.from_user.language_code,
-                default_locale="ru",
-            ),
             reply_markup=support_keyboard(),
         )

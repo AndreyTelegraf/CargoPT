@@ -263,11 +263,11 @@ for locale, path in FILES.items():
         ),
         (
             "/assets/js/tracking-workspace.js"
-            "?v=short-lead-v1"
+            "?v=short-lead-filter-v1"
         ),
         (
             "/assets/js/track.js"
-            "?v=short-lead-v1"
+            "?v=short-lead-filter-v1"
         ),
     ):
         assert asset in source, (

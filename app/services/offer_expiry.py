@@ -7,6 +7,7 @@ from app.repositories.job import JobRepository
 from app.services.carrier_search import CarrierSearchService
 from app.services.job_matching import JobMatchingService
 from app.services.job_escalation import escalate_job_to_manual_review
+from app.services.job_escalation import hold_short_lead_job_for_manual_review
 from app.services.job_offer import JobOfferService
 from app.services.offer_distribution import OfferDistributionService
 from app.services.offer_notification import send_job_offers_to_carriers
@@ -65,6 +66,14 @@ async def process_expired_pending_offers(
         )
 
         if has_accepted_offer:
+            continue
+
+        if await hold_short_lead_job_for_manual_review(
+            bot=bot,
+            job=job,
+            job_repository=job_repository,
+            now=now,
+        ):
             continue
 
         distribution_result = await distribution.create_offer_distribution_for_job(

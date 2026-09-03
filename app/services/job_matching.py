@@ -189,6 +189,7 @@ async def _regions_from_geocoded_address(address) -> set[str]:
 
 class MatchingReason(StrEnum):
     MATCH_FOUND = "match_found"
+    SHORT_LEAD_TIME = "short_lead_time"
     NO_ADDRESSES = "no_addresses"
     REGION_FROM_COORDINATES = "region_from_coordinates"
     REGION_FROM_GEOCODING = "region_from_geocoding"

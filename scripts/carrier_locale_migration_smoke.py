@@ -7,7 +7,7 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 PREVIOUS_REVISION = "20260813_1500_partner_outreach"
-CURRENT_REVISION = "20260902_1800_acquisition_funnel"
+CURRENT_REVISION = "20260903_1200_short_lead_filter"
 
 
 with tempfile.TemporaryDirectory(prefix="carrier-locale-migration-") as tmp:

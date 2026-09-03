@@ -53,14 +53,23 @@ async def process_stale_assignment_confirmations(
         )
 
         if job.client_telegram_user_id is not None:
+            if updated_job.status == JobStatus.MANUAL_REVIEW_REQUIRED:
+                client_text = (
+                    f"По заявке №{job.id} подтверждение не было получено вовремя.\n\n"
+                    "До перевозки осталось меньше трёх суток, поэтому "
+                    "автоматическая рассылка остановлена. "
+                    "Заявку проверит диспетчер CargoPT."
+                )
+            else:
+                client_text = (
+                    f"По заявке №{job.id} подтверждение не было получено вовремя.\n\n"
+                    "Заявка снова в поиске. "
+                    "Мы отправляем её другим подходящим перевозчикам."
+                )
             await bot.send_message(
                 chat_id=job.client_telegram_user_id,
                 text=format_telegram_status_block(
-                    (
-                        f"По заявке №{job.id} подтверждение не было получено вовремя.\n\n"
-                        "Заявка снова в поиске. "
-                        "Мы отправляем её другим подходящим перевозчикам."
-                    ),
+                    client_text,
                     state="searching",
                 ),
             )

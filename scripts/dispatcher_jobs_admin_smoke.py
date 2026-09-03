@@ -2,6 +2,8 @@ import os
 import sys
 from pathlib import Path
 from types import SimpleNamespace
+from datetime import UTC
+from datetime import datetime
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -14,6 +16,7 @@ from app.bot.handlers.dispatcher_jobs_admin import _format_acquisition_rate
 from app.bot.handlers.dispatcher_jobs_admin import _format_acquisition_snapshot
 from app.bot.handlers.dispatcher_jobs_admin import _format_job_line
 from app.bot.handlers.dispatcher_jobs_admin import _format_status
+from app.bot.handlers.dispatcher_jobs_admin import _format_dt
 from app.bot.handlers.dispatcher_jobs_admin import _parse_jobs_report_period
 from app.bot.handlers.dispatcher_jobs_admin import dispatcher_jobs
 from app.bot.handlers.dispatcher_jobs_admin import dispatcher_jobs_acquisition
@@ -40,6 +43,7 @@ assert _parse_job_command_id('/job 26') == 26
 assert _parse_job_command_id('/job_26') == 26
 assert _parse_job_command_id('/job abc') is None
 assert _parse_job_command_id('/jobs') is None
+assert _format_dt(datetime(2026, 9, 2, 15, 17, tzinfo=UTC)) == "02.09.2026 16:17"
 keyboard = _job_admin_keyboard(SimpleNamespace(id=26, status="offered"))
 callbacks = [button.callback_data for row in keyboard.inline_keyboard for button in row]
 assert callbacks == ['job:26:retry', 'job:26:manual', 'job:26:close']
@@ -59,6 +63,7 @@ assert hasattr(JobRepository, "list_attention_jobs")
 job = SimpleNamespace(
     id=42,
     status="assigned",
+    short_lead_time_filtered=False,
     client_telegram_username="client_user",
     client_telegram_user_id=987654321,
     customer_name="Client Name",
@@ -136,6 +141,7 @@ card = _build_job_card_text(
     items=[item],
     offers=[offer],
 )
+assert "Авторассылка по сроку: разрешена" in card
 assert "<b>Заявка #42</b>" in card
 assert "перевозчик назначен (assigned)" in card
 assert "Telegram: @client_user" in card

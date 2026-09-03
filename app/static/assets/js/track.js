@@ -453,7 +453,10 @@ const MESSAGE_SETS = {
     equipmentLabel: "Equipamento",
     carrierContactLabel: "Contacto do transportador",
     carrierNoteLabel: "Nota do transportador",
-    shortLeadTimeWarning: "Faltam menos de três dias para o transporte. O tempo para encontrar um transportador pode não ser suficiente. Considere alterar a data do transporte ou esteja preparado para poucas respostas dos transportadores."
+    shortLeadTimeWarning: "Faltam menos de três dias para o transporte. Por isso, o pedido não foi enviado automaticamente aos transportadores e ficou guardado para análise manual pela CargoPT. Para iniciar a procura automática, altere a data para pelo menos três dias a partir de agora.",
+    shortLeadWaitingTitle: "Pedido em análise manual.",
+    shortLeadWaitingText: "A equipa da CargoPT irá verificar o pedido.",
+    shortLeadWaitingNote: "Não foram enviadas propostas automáticas aos transportadores."
   },
 
   en: {
@@ -527,7 +530,10 @@ const MESSAGE_SETS = {
     equipmentLabel: "Equipment",
     carrierContactLabel: "Carrier contact",
     carrierNoteLabel: "Carrier note",
-    shortLeadTimeWarning: "There are fewer than three days before the transport. There may not be enough time to find a carrier. Consider changing the transport date or be prepared for a low response from carriers."
+    shortLeadTimeWarning: "There are fewer than three days before the transport. The request was therefore not sent automatically to carriers and has been saved for manual review by CargoPT. To start the automatic search, change the date to at least three days from now.",
+    shortLeadWaitingTitle: "Request under manual review.",
+    shortLeadWaitingText: "The CargoPT team will review the request.",
+    shortLeadWaitingNote: "No automatic offers were sent to carriers."
   },
 
   ru: {
@@ -601,7 +607,10 @@ const MESSAGE_SETS = {
     equipmentLabel: "Оборудование",
     carrierContactLabel: "Контакт перевозчика",
     carrierNoteLabel: "Комментарий перевозчика",
-    shortLeadTimeWarning: "До перевозки осталось меньше трёх суток. Времени на поиск перевозчика может быть недостаточно. Рассмотрите возможность изменить дату перевозки или будьте готовы к низкому отклику со стороны перевозчиков."
+    shortLeadTimeWarning: "До перевозки осталось меньше трёх суток. Поэтому заявка не была автоматически разослана перевозчикам и сохранена для ручной проверки CargoPT. Чтобы запустить автоматический поиск, измените дату на срок не ранее чем через трое суток.",
+    shortLeadWaitingTitle: "Заявка на ручной проверке.",
+    shortLeadWaitingText: "Команда CargoPT проверит заявку.",
+    shortLeadWaitingNote: "Автоматические предложения перевозчикам не рассылались."
   }
 };
 

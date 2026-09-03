@@ -19,6 +19,7 @@ from app.domain.admin_access import (
 )
 from app.db.session import async_session_maker
 from app.domain.job_decline_reason import get_decline_reason_label
+from app.domain.requested_date import PORTUGAL_TIMEZONE
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
 from app.services.carrier_search import CarrierSearchService
@@ -71,7 +72,11 @@ def _safe(value) -> str:
 def _format_dt(value) -> str:
     if value is None:
         return "—"
-    return _safe(value.strftime("%d.%m.%Y %H:%M"))
+    if value.tzinfo is None:
+        value = value.replace(tzinfo=UTC)
+    return _safe(
+        value.astimezone(PORTUGAL_TIMEZONE).strftime("%d.%m.%Y %H:%M")
+    )
 
 
 STATUS_LABELS = {
@@ -361,6 +366,8 @@ def _build_job_card_text(*, job, addresses, items, offers) -> str:
         f"Желаемая: {_format_dt(job.requested_date)}\n"
         f"Создана: {_format_dt(job.created_at)}\n"
         f"Обновлена: {_format_dt(job.updated_at)}\n\n"
+        f"Авторассылка по сроку: "
+        f"{'заблокирована (< 72 ч)' if job.short_lead_time_filtered else 'разрешена'}\n\n"
         f"<b>Адреса</b>\n{address_text}\n\n"
         f"<b>Груз</b>\n{item_text}\n\n"
         f"<b>Параметры</b>\n"

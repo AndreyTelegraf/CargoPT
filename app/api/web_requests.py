@@ -50,7 +50,6 @@ from app.services.request_intake import RequestIntakeInput
 from app.services.request_intake import RequestIntakeItem
 from app.services.request_intake import RequestIntakeService
 from app.services.request_intake import WebRequestRateLimitError
-from app.services.short_lead_time_warning import has_short_lead_time
 from app.services.location_normalization import search_location_suggestions
 from app.services.tracking_url import build_tracking_path
 
@@ -287,7 +286,7 @@ async def get_tracking_job(
         job_id=job.id,
         status=str(job.status),
         cancelled_from_status=cancelled_from_status,
-        short_lead_time_warning=has_short_lead_time(job.requested_date),
+        short_lead_time_warning=bool(job.short_lead_time_filtered),
         tracking_token=job.tracking_token,
         route_summary=_format_tracking_route_summary(job),
         client_confirmation_status=job.client_confirmation_status,

@@ -55,6 +55,11 @@ class Job(Base):
 
     status: Mapped[str] = mapped_column(String, nullable=False)
     draft_step: Mapped[str | None] = mapped_column(String)
+    short_lead_time_filtered: Mapped[bool] = mapped_column(
+        Boolean,
+        nullable=False,
+        default=False,
+    )
 
     requested_date: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 

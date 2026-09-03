@@ -104,7 +104,7 @@ def main() -> None:
 
     for relative in (Path("track/index.html"), Path("en/track/index.html"), Path("ru/track/index.html")):
         source = (STATIC / relative).read_text(encoding="utf-8")
-        assert "/assets/js/track.js?v=short-lead-v1-locale-transition-v1" in source
+        assert "/assets/js/track.js?v=short-lead-filter-v1-locale-transition-v1" in source
 
     print("LOCALE_TRANSITION_STATIC_LINKS_OK", checked)
     print("LOCALE_TRANSITION_SAVED_REQUESTS_OK")

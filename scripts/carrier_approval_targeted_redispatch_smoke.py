@@ -122,7 +122,7 @@ async def main() -> None:
 
         future_job = make_job(
             job_id=1,
-            requested_date=now + timedelta(days=3),
+            requested_date=now + timedelta(days=4),
             now=now,
         )
         past_job = make_job(
@@ -137,7 +137,7 @@ async def main() -> None:
         )
         existing_offer_job = make_job(
             job_id=4,
-            requested_date=now + timedelta(days=4),
+            requested_date=now + timedelta(days=5),
             now=now,
         )
         session.add_all(

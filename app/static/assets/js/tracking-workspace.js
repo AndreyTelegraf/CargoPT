@@ -52,7 +52,10 @@
     equipmentLabel: "Equipamento",
     carrierContactLabel: "Contacto do transportador",
     carrierNoteLabel: "Nota do transportador",
-    shortLeadTimeWarning: "Faltam menos de três dias para o transporte. O tempo para encontrar um transportador pode não ser suficiente. Considere alterar a data do transporte ou esteja preparado para poucas respostas dos transportadores."
+    shortLeadTimeWarning: "Faltam menos de três dias para o transporte. Por isso, o pedido não foi enviado automaticamente aos transportadores e ficou guardado para análise manual pela CargoPT. Para iniciar a procura automática, altere a data para pelo menos três dias a partir de agora.",
+    shortLeadWaitingTitle: "Pedido em análise manual.",
+    shortLeadWaitingText: "A equipa da CargoPT irá verificar o pedido.",
+    shortLeadWaitingNote: "Não foram enviadas propostas automáticas aos transportadores."
   };
 
   function absoluteUrl(path) {
@@ -562,8 +565,16 @@
         renderOffers(entry, options, messages)
       );
     } else {
+      const waitingMessages = entry.tracking_snapshot?.short_lead_time_warning
+        ? {
+            ...messages,
+            waitingTitle: messages.shortLeadWaitingTitle,
+            waitingText: messages.shortLeadWaitingText,
+            waitingNote: messages.shortLeadWaitingNote
+          }
+        : messages;
       workspace.appendChild(
-        renderWaitingState(entry, messages)
+        renderWaitingState(entry, waitingMessages)
       );
     }
 

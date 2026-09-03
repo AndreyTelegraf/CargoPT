@@ -49,6 +49,8 @@ TESTS=(
   scripts/landing_static_smoke.py
   scripts/partners_static_smoke.py
   scripts/requested_date_validation_smoke.py
+  scripts/short_lead_time_warning_smoke.py
+  scripts/short_lead_filter_smoke.py
   scripts/job_requested_datetime_handler_smoke.py
   scripts/request_update_service_smoke.py
   scripts/request_draft_service_smoke.py

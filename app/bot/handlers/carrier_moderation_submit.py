@@ -1,6 +1,7 @@
 import html
 from datetime import UTC
 from datetime import datetime
+from datetime import timedelta
 
 from aiogram import F
 from aiogram import Router
@@ -179,7 +180,7 @@ async def redispatch_open_jobs_to_new_carrier(
             )
         )
         .where(Job.requested_date.is_not(None))
-        .where(Job.requested_date >= now)
+        .where(Job.requested_date >= now + timedelta(hours=72))
         .order_by(Job.requested_date.is_(None), Job.requested_date, Job.id)
     )
     result = await session.execute(stmt)

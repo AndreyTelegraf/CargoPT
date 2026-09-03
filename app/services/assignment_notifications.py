@@ -50,7 +50,11 @@ async def send_assignment_final_notifications(
     accepted_offer,
     carrier_repository: CarrierRepository,
 ) -> None:
-    if job.status not in {JobStatus.ASSIGNED, JobStatus.READY_FOR_MATCHING}:
+    if job.status not in {
+        JobStatus.ASSIGNED,
+        JobStatus.READY_FOR_MATCHING,
+        JobStatus.MANUAL_REVIEW_REQUIRED,
+    }:
         return
 
     carrier = None
@@ -74,12 +78,29 @@ async def send_assignment_final_notifications(
             ),
             state="success",
         )
-    else:
+    elif job.status == JobStatus.READY_FOR_MATCHING:
         client_text = format_telegram_status_block(
             (
                 f"По заявке №{job.id} договориться с перевозчиком не удалось.\n\n"
                 "Заявка снова в поиске. "
                 "Мы отправляем её другим подходящим перевозчикам."
+            ),
+            state="searching",
+        )
+        carrier_text = format_telegram_status_block(
+            (
+                f"По заявке №{job.id} договориться с клиентом не удалось.\n\n"
+                "Для вас эта заявка закрыта."
+            ),
+            state="failed",
+        )
+    else:
+        client_text = format_telegram_status_block(
+            (
+                f"По заявке №{job.id} договориться с перевозчиком не удалось.\n\n"
+                "До перевозки осталось меньше трёх суток, поэтому "
+                "автоматическая рассылка остановлена. "
+                "Заявку проверит диспетчер CargoPT."
             ),
             state="searching",
         )

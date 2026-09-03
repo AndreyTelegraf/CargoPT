@@ -8,6 +8,7 @@ from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
 from app.services.carrier_search import CarrierSearchService
 from app.services.job_escalation import escalate_job_to_manual_review
+from app.services.job_escalation import hold_short_lead_job_for_manual_review
 from app.services.job_matching import JobMatchingService
 from app.services.job_offer import JobOfferService
 from app.services.offer_distribution import OfferDistributionService
@@ -69,6 +70,17 @@ class RequestSubmissionService:
             status="ready_for_matching",
             updated_at=datetime.now(UTC),
         )
+
+        if await hold_short_lead_job_for_manual_review(
+            bot=self.bot,
+            job=job,
+            job_repository=self.job_repository,
+        ):
+            return RequestSubmissionResult(
+                job=job,
+                offers_count=0,
+                sent_count=0,
+            )
 
         distribution = OfferDistributionService(
             matching_service=JobMatchingService(

@@ -21,7 +21,7 @@ def main() -> None:
     assert 'aria-controls="trackPedidosList"' in html
 
     assert "/assets/css/track.css?v=short-lead-v1" in html
-    assert "/assets/js/track.js?v=short-lead-v1" in html
+    assert "/assets/js/track.js?v=short-lead-filter-v1" in html
 
     assert (
         'document.querySelector("#otherRequestsToggle")'
