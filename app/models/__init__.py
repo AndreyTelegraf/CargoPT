@@ -1,6 +1,7 @@
 from app.models.carrier import AdminInviteToken
 from app.models.carrier import CarrierCompany
 from app.models.carrier import CarrierVehicle
+from app.models.carrier_urgent_survey import CarrierUrgentSurvey
 from app.models.job import AcquisitionEventDaily
 from app.models.job import Job
 from app.models.job import JobAddress
@@ -21,6 +22,7 @@ __all__ = [
     "AdminInviteToken",
     "CarrierCompany",
     "CarrierVehicle",
+    "CarrierUrgentSurvey",
     "AcquisitionEventDaily",
     "Job",
     "JobAddress",
