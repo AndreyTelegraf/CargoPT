@@ -16,6 +16,14 @@ RESPONSE_CODES = (
 )
 
 
+REPORT_RESPONSE_LABELS_RU = {
+    "same_day": "может выехать в тот же день",
+    "next_day": "может выехать на следующий день",
+    "two_three_days": "нужно 2–3 дня",
+    "no_urgent": "не хочет получать срочные заявки",
+}
+
+
 SURVEY_TEXT = {
     "pt": (
         "Breve questionário da CargoPT\n\n"
@@ -90,6 +98,45 @@ def saved_text(locale: str | None, response_code: str) -> str:
     language = normalize_carrier_locale(locale)
     return SAVED_TEXT[language].format(
         answer=response_label(language, response_code)
+    )
+
+
+def build_urgent_survey_report_text(
+    *,
+    carrier_id: int,
+    carrier_label: str,
+    carrier_telegram_username: str | None,
+    locale: str,
+    response_code: str,
+    previous_response_code: str | None,
+) -> str:
+    if response_code not in RESPONSE_CODES:
+        raise ValueError("unsupported urgent survey response")
+    if (
+        previous_response_code is not None
+        and previous_response_code not in RESPONSE_CODES
+    ):
+        raise ValueError("unsupported previous urgent survey response")
+
+    username = (carrier_telegram_username or "").strip().lstrip("@")
+    telegram_line = f"@{username}" if username else "не указан"
+    if previous_response_code is None:
+        status_line = "Новый ответ"
+    else:
+        status_line = (
+            "Ответ изменён: "
+            f"{REPORT_RESPONSE_LABELS_RU[previous_response_code]} → "
+            f"{REPORT_RESPONSE_LABELS_RU[response_code]}"
+        )
+
+    return (
+        "📨 Ответ перевозчика по срочным выездам\n\n"
+        f"Компания: {carrier_label}\n"
+        f"Telegram: {telegram_line}\n"
+        f"ID перевозчика: {carrier_id}\n"
+        f"Язык опроса: {normalize_carrier_locale(locale).upper()}\n"
+        f"Ответ: {REPORT_RESPONSE_LABELS_RU[response_code]}\n"
+        f"Статус: {status_line}"
     )
 
 

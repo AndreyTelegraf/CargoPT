@@ -31,6 +31,7 @@ class Settings(BaseSettings):
     telegram_notification_retry_base_seconds: int = Field(default=60, gt=0)
     telegram_notification_stale_sending_seconds: int = Field(default=300, gt=0)
     telegram_notification_dispatch_limit: int = Field(default=50, gt=0, le=500)
+    carrier_urgent_survey_report_chat_id: int = Field(default=661667, gt=0)
 
     email_enabled: bool = False
     email_transport: str = "smtp"

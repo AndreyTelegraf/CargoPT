@@ -2,6 +2,7 @@ from app.models.carrier import AdminInviteToken
 from app.models.carrier import CarrierCompany
 from app.models.carrier import CarrierVehicle
 from app.models.carrier_urgent_survey import CarrierUrgentSurvey
+from app.models.carrier_urgent_survey import CarrierUrgentSurveyReportEvent
 from app.models.job import AcquisitionEventDaily
 from app.models.job import Job
 from app.models.job import JobAddress
@@ -23,6 +24,7 @@ __all__ = [
     "CarrierCompany",
     "CarrierVehicle",
     "CarrierUrgentSurvey",
+    "CarrierUrgentSurveyReportEvent",
     "AcquisitionEventDaily",
     "Job",
     "JobAddress",
