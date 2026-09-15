@@ -36,6 +36,7 @@ class OfferDistributionService:
         limit: int | None = None,
         expires_in_minutes: int = 60,
     ) -> OfferDistributionResult:
+        job.short_lead_time_filtered = False
         await self.job_repository.update_job_status(
             job_id=job.id,
             status=JobStatus.MATCHING,

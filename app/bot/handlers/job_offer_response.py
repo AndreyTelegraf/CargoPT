@@ -26,7 +26,6 @@ from app.services.carrier_search import CarrierSearchService
 from app.services.job_matching import JobMatchingService
 from app.services.offer_distribution import OfferDistributionService
 from app.services.job_escalation import escalate_job_to_manual_review
-from app.services.job_escalation import hold_short_lead_job_for_manual_review
 from app.services.offer_notification import send_job_offers_to_carriers
 from app.services.assignment_confirmation import format_telegram_status_block
 from app.services.assignment_notifications import send_assignment_confirmation_requests
@@ -1051,17 +1050,6 @@ async def handle_offer_decline_reason(callback: CallbackQuery) -> None:
             )
 
             if not has_open_offer:
-                if await hold_short_lead_job_for_manual_review(
-                    bot=callback.bot,
-                    job=job,
-                    job_repository=job_repository,
-                ):
-                    await session.commit()
-                    if callback.message:
-                        await _delete_message_safely(callback.message)
-                    await callback.answer(t(locale, "declined_done"))
-                    return
-
                 distribution = OfferDistributionService(
                     matching_service=JobMatchingService(
                         CarrierSearchService(carrier_repository)

@@ -10,10 +10,76 @@ from app.repositories.job import JobRepository
 from app.repositories.telegram_notification import TelegramNotificationRepository
 from app.services.request_submission import ClientJobLimitError
 from app.services.request_submission import RequestSubmissionService
+from app.services.short_lead_time_warning import has_short_lead_time
+from app.services.short_lead_time_warning import normalize_warning_locale
 from app.services.short_lead_time_warning import short_lead_time_warning_text
 from app.services.telegram_notifications import TelegramNotificationEnqueueService
 
 router = Router()
+
+
+_SUBMISSION_STATUS_COPY = {
+    "pt": {
+        "queued": (
+            "Pedido recebido.\n\nFoi colocado na fila para {count} transportadores "
+            "adequados. Receberá uma notificação quando chegar uma proposta."
+        ),
+        "sent": (
+            "Pedido publicado.\n\nFoi enviado a {count} transportadores adequados. "
+            "Receberá uma notificação quando chegar uma proposta."
+        ),
+        "no_carriers": (
+            "Pedido publicado.\n\nNeste momento, não encontrámos transportadores "
+            "adequados no sistema. A equipa CargoPT irá verificar o pedido manualmente."
+        ),
+    },
+    "en": {
+        "queued": (
+            "Request received.\n\nIt has been queued for {count} suitable carriers. "
+            "You will be notified when an offer arrives."
+        ),
+        "sent": (
+            "Request published.\n\nIt has been sent to {count} suitable carriers. "
+            "You will be notified when an offer arrives."
+        ),
+        "no_carriers": (
+            "Request published.\n\nWe could not find suitable carriers in the system "
+            "at the moment. The CargoPT team will review the request manually."
+        ),
+    },
+    "ru": {
+        "queued": (
+            "Заявка принята.\n\nОна поставлена в очередь для подходящих перевозчиков: "
+            "{count}. Вы получите уведомление, когда поступит предложение."
+        ),
+        "sent": (
+            "Заявка опубликована.\n\nМы отправили её подходящим перевозчикам: {count}. "
+            "Вы получите уведомление, когда поступит предложение."
+        ),
+        "no_carriers": (
+            "Заявка опубликована.\n\nСейчас в системе нет подходящих перевозчиков. "
+            "Команда CargoPT проверит заявку вручную."
+        ),
+    },
+}
+
+
+def _submission_status_text(
+    locale: str | None,
+    *,
+    queued_count: int,
+    sent_count: int,
+) -> str:
+    normalized_locale = normalize_warning_locale(
+        locale,
+        default_locale="ru",
+    )
+    copy = _SUBMISSION_STATUS_COPY[normalized_locale]
+    if queued_count > 0:
+        return copy["queued"].format(count=queued_count)
+    if sent_count > 0:
+        return copy["sent"].format(count=sent_count)
+    return copy["no_carriers"]
 
 
 @router.message(JobRequestStates.comment)
@@ -71,32 +137,22 @@ async def job_comment(
 
     await state.clear()
 
-    if result.job.short_lead_time_filtered:
-        await message.answer(
+    response_parts = []
+    if has_short_lead_time(result.job.requested_date):
+        response_parts.append(
             short_lead_time_warning_text(
                 message.from_user.language_code,
                 default_locale="ru",
-            ),
-            reply_markup=support_keyboard(),
+            )
         )
-    elif queued_count > 0:
-        await message.answer(
-            "Заявка принята.\n\n"
-            f"Она поставлена в очередь для подходящих перевозчиков: {queued_count}. "
-            "Как только кто-то примет заказ, вы получите уведомление.",
-            reply_markup=support_keyboard(),
+    response_parts.append(
+        _submission_status_text(
+            message.from_user.language_code,
+            queued_count=queued_count,
+            sent_count=sent_count,
         )
-    elif sent_count > 0:
-        await message.answer(
-            "Заявка опубликована.\n\n"
-            f"Мы отправили её подходящим перевозчикам: {sent_count}. "
-            "Как только кто-то примет заказ, вы получите уведомление.",
-            reply_markup=support_keyboard(),
-        )
-    else:
-        await message.answer(
-            "Заявка опубликована.\n\n"
-            "Сейчас в системе нет подходящих перевозчиков. "
-            "Диспетчер CargoPT проверит заявку вручную.",
-            reply_markup=support_keyboard(),
-        )
+    )
+    await message.answer(
+        "\n\n".join(response_parts),
+        reply_markup=support_keyboard(),
+    )

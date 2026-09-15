@@ -1,7 +1,6 @@
 from app.domain.admin_access import JOB_CONTROL_TELEGRAM_USER_IDS
 from app.domain.job_status import JobStatus
 from app.services.job_matching import MatchingReason
-from app.services.short_lead_time_warning import should_filter_short_lead_time
 
 
 def _format_matching_reason(
@@ -178,27 +177,3 @@ async def escalate_job_to_manual_review(
         matching_reason=matching_reason,
         matching_regions=matching_regions,
     )
-
-
-async def hold_short_lead_job_for_manual_review(
-    *,
-    bot,
-    job,
-    job_repository,
-    now=None,
-    commit_before_notification: bool = False,
-    notification_service=None,
-) -> bool:
-    if not should_filter_short_lead_time(job.requested_date, now=now):
-        return False
-
-    job.short_lead_time_filtered = True
-    await escalate_job_to_manual_review(
-        bot=bot,
-        job=job,
-        job_repository=job_repository,
-        matching_reason=MatchingReason.SHORT_LEAD_TIME,
-        commit_before_notification=commit_before_notification,
-        notification_service=notification_service,
-    )
-    return True

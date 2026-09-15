@@ -78,7 +78,7 @@ for relative in (
         in html
     )
     assert (
-        "/assets/js/landing.js?v=location-fallback-v1"
+        "/assets/js/landing.js?v=urgent-policy-v1"
         in html
     )
     assert "/assets/css/components.css?v=location-selector-v1" in html

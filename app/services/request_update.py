@@ -11,7 +11,6 @@ from app.repositories.job import JobRepository
 from app.services.location_normalization import build_google_maps_coordinate_url
 from app.services.location_normalization import extract_postal_code
 from app.services.location_normalization import normalize_text_location_resolved
-from app.services.short_lead_time_warning import should_filter_short_lead_time
 
 
 class ClientRequestedDateChangeError(ValueError):
@@ -250,10 +249,7 @@ class RequestUpdateService:
                 job_id=job_id,
                 expected_status=str(current_status),
                 requested_date=requested_date,
-                short_lead_time_filtered=should_filter_short_lead_time(
-                    requested_date,
-                    now=updated_at,
-                ),
+                short_lead_time_filtered=False,
                 updated_at=updated_at,
             )
         )

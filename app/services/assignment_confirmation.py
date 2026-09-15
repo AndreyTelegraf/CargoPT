@@ -6,7 +6,6 @@ from app.models.job import Job
 from app.repositories.carrier import CarrierRepository
 from app.bot.offer_locale import offer_text as t
 from app.services.job_lifecycle import InvalidJobStatusTransitionError
-from app.services.job_escalation import hold_short_lead_job_for_manual_review
 
 
 ASSIGNMENT_CONFIRMATION_CONFIRMED = "confirmed"
@@ -103,17 +102,6 @@ async def process_assignment_failure_redispatch(
     )
 
     if should_delete_carrier_offer:
-        if await hold_short_lead_job_for_manual_review(
-            bot=bot,
-            job=job,
-            job_repository=job_repository,
-        ):
-            return (
-                should_delete_carrier_offer,
-                carrier_message_chat_id,
-                carrier_message_id,
-            )
-
         distribution = build_assignment_offer_distribution(
             job_repository=job_repository,
             carrier_repository=carrier_repository,
