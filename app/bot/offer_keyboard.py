@@ -25,9 +25,82 @@ def build_offer_keyboard(
         ]
     )
 
-from aiogram.types import InlineKeyboardButton
-from aiogram.types import InlineKeyboardMarkup
 
+def _build_offer_terms_shortcut_keyboard(
+    *,
+    offer_id: int,
+    field: str,
+    button_text: str,
+    value: str,
+) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text=button_text,
+                    callback_data=f"offer_terms:{field}:{offer_id}:{value}",
+                )
+            ]
+        ]
+    )
+
+
+def build_offer_included_services_keyboard(
+    offer_id: int,
+    locale: str | None = None,
+) -> InlineKeyboardMarkup:
+    return _build_offer_terms_shortcut_keyboard(
+        offer_id=offer_id,
+        field="included",
+        button_text=t(locale, "included_services_as_requested"),
+        value="requested",
+    )
+
+
+def build_offer_surcharges_keyboard(
+    offer_id: int,
+    locale: str | None = None,
+) -> InlineKeyboardMarkup:
+    return _build_offer_terms_shortcut_keyboard(
+        offer_id=offer_id,
+        field="surcharges",
+        button_text=t(locale, "possible_surcharges_none"),
+        value="none",
+    )
+
+
+def build_offer_service_window_keyboard(
+    offer_id: int,
+    locale: str | None = None,
+) -> InlineKeyboardMarkup:
+    return _build_offer_terms_shortcut_keyboard(
+        offer_id=offer_id,
+        field="window",
+        button_text=t(locale, "service_window_as_requested"),
+        value="requested",
+    )
+
+
+def build_offer_estimate_status_keyboard(
+    offer_id: int,
+    locale: str | None = None,
+) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text=t(locale, "estimate_final_button"),
+                    callback_data=f"offer_terms:status:{offer_id}:final",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text=t(locale, "estimate_estimate_button"),
+                    callback_data=f"offer_terms:status:{offer_id}:estimate",
+                )
+            ],
+        ]
+    )
 
 def build_client_offer_selection_keyboard(
     offers,

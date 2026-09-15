@@ -13,6 +13,14 @@ os.environ["BOT_TOKEN"] = "123456:TESTTOKEN"
 os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///data/cargopt_dev.db"
 
 from app.bot.handlers.job_offer_response import _parse_offer_price_input
+from app.bot.handlers.job_offer_response import _parse_offer_price_only
+from app.bot.handlers.job_offer_response import _parse_estimate_status_input
+from app.bot.handlers.job_offer_response import _build_conversational_offer
+from app.bot.offer_keyboard import build_offer_estimate_status_keyboard
+from app.bot.offer_keyboard import build_offer_included_services_keyboard
+from app.bot.offer_keyboard import build_offer_service_window_keyboard
+from app.bot.offer_keyboard import build_offer_surcharges_keyboard
+from app.bot.offer_locale import offer_text
 from app.repositories.job import JobRepository
 
 
@@ -48,6 +56,90 @@ def verify_parser() -> None:
         raise AssertionError(f"invalid offer input accepted: {invalid!r}")
 
 
+def verify_conversational_input() -> None:
+    assert _parse_offer_price_only("120") == 12000
+    assert _parse_offer_price_only("120,50 €") == 12050
+    assert _parse_offer_price_only("€ 99.90") == 9990
+    assert _parse_offer_price_only("75 euros") == 7500
+    assert _parse_offer_price_only("80 евро") == 8000
+
+    for invalid in ("", "0", "price 120", "120.999", "-10"):
+        try:
+            _parse_offer_price_only(invalid)
+        except ValueError:
+            continue
+        raise AssertionError(f"invalid price-only input accepted: {invalid!r}")
+
+    parsed = _build_conversational_offer(
+        {
+            "offer_price_cents": 12050,
+            "offer_included_services": "Loading and unloading",
+            "offer_possible_surcharges": "none",
+            "offer_service_window": "As stated in the request",
+        },
+        estimate_status="final",
+    )
+    assert parsed.price_cents == 12050
+    assert parsed.included_services == "Loading and unloading"
+    assert parsed.possible_surcharges == "none"
+    assert parsed.service_window == "As stated in the request"
+    assert parsed.estimate_status == "final"
+    assert parsed.carrier_note is None
+
+    assert _parse_estimate_status_input("final") == ("final", None)
+    assert _parse_estimate_status_input(
+        "окончательная — позвонить за час"
+    ) == ("final", "позвонить за час")
+    assert _parse_estimate_status_input(
+        "estimativa: confirmar estacionamento"
+    ) == ("estimate", "confirmar estacionamento")
+    try:
+        _parse_estimate_status_input("finally")
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("status prefix without a separator was accepted")
+
+
+def verify_conversational_ui() -> None:
+    assert (
+        build_offer_included_services_keyboard(17, "ru")
+        .inline_keyboard[0][0]
+        .callback_data
+        == "offer_terms:included:17:requested"
+    )
+    assert (
+        build_offer_surcharges_keyboard(17, "pt")
+        .inline_keyboard[0][0]
+        .callback_data
+        == "offer_terms:surcharges:17:none"
+    )
+    assert (
+        build_offer_service_window_keyboard(17, "en")
+        .inline_keyboard[0][0]
+        .callback_data
+        == "offer_terms:window:17:requested"
+    )
+    status_keyboard = build_offer_estimate_status_keyboard(17, "ru")
+    assert [row[0].callback_data for row in status_keyboard.inline_keyboard] == [
+        "offer_terms:status:17:final",
+        "offer_terms:status:17:estimate",
+    ]
+
+    for locale, forbidden in (
+        ("pt", "5 linhas"),
+        ("en", "5 lines"),
+        ("ru", "5 строк"),
+    ):
+        prompt = offer_text(locale, "price_prompt")
+        assert forbidden not in prompt
+        assert "\n1." not in prompt
+        assert offer_text(locale, "included_services_prompt")
+        assert offer_text(locale, "possible_surcharges_prompt")
+        assert offer_text(locale, "service_window_prompt")
+        assert offer_text(locale, "estimate_status_prompt")
+
+
 async def verify_repository_storage() -> None:
     offer = SimpleNamespace()
     session = SimpleNamespace(flush=AsyncMock())
@@ -78,5 +170,7 @@ async def verify_repository_storage() -> None:
 
 
 verify_parser()
+verify_conversational_input()
+verify_conversational_ui()
 asyncio.run(verify_repository_storage())
 print("OFFER_TERMS_INPUT_SMOKE_OK")

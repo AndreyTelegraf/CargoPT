@@ -50,6 +50,10 @@ assert "Ваш отклик отправлен" in offer_text("ru", "response_se
 assert "_parse_offer_price_input" in source
 assert "update_offer_terms" in source
 assert "OfferResponseStates.price" in source
+assert "OfferResponseStates.included_services" in source
+assert "OfferResponseStates.possible_surcharges" in source
+assert "OfferResponseStates.service_window" in source
+assert "OfferResponseStates.estimate_status" in source
 assert "offer_price_offer_id" in source
 assert "offer_price_offer_id=offer_id" in source
 assert "offer_price_message_chat_id=callback.message.chat.id" in source
@@ -61,6 +65,14 @@ assert "message_id=offer_message_id" in source
 assert "reply_markup=None" in source
 assert "await state.clear()" in source
 assert "list_pending_offers_by_carrier" not in source
+assert "handle_offer_terms_shortcut" in source
+assert "build_offer_included_services_keyboard" in source
+assert "build_offer_surcharges_keyboard" in source
+assert "build_offer_service_window_keyboard" in source
+assert "build_offer_estimate_status_keyboard" in source
+assert "_parse_offer_price_only" in source
+assert "_build_conversational_offer" in source
+assert "offer_terms:" in source
 
 assert "await message.edit_reply_markup(reply_markup=None)" in handler_source
 assert "build_offer_decline_reason_keyboard" in handler_source

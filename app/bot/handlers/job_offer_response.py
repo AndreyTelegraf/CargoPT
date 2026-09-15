@@ -32,7 +32,11 @@ from app.services.assignment_confirmation import format_telegram_status_block
 from app.services.assignment_notifications import send_assignment_confirmation_requests
 from app.services.client_offer_presentation import ClientOfferPresentationService
 from app.bot.offer_keyboard import build_client_offer_selection_keyboard
+from app.bot.offer_keyboard import build_offer_estimate_status_keyboard
 from app.bot.offer_keyboard import build_offer_decline_reason_keyboard
+from app.bot.offer_keyboard import build_offer_included_services_keyboard
+from app.bot.offer_keyboard import build_offer_service_window_keyboard
+from app.bot.offer_keyboard import build_offer_surcharges_keyboard
 from app.bot.offer_keyboard import parse_client_offer_selection_callback
 from app.bot.assignment_confirmation_keyboard import build_client_reopen_assignment_keyboard
 from app.bot.carrier_locale import normalize_carrier_locale
@@ -42,6 +46,11 @@ from app.bot.states.offer_response import OfferResponseStates
 router = Router()
 
 _offer_price_input_re = re.compile(r"^\d+(?:[.,]\d{1,2})?$")
+_offer_price_only_re = re.compile(
+    r"^(?:€\s*)?(\d+(?:[.,]\d{1,2})?)\s*(?:€|eur(?:os?)?|euro|евро)?$",
+    re.IGNORECASE,
+)
+_offer_text_field_max_length = 500
 _estimate_status_aliases = {
     "final": "final",
     "definitivo": "final",
@@ -100,6 +109,92 @@ def _parse_offer_price_input(text: str) -> ParsedOfferInput:
         estimate_status=estimate_status,
         carrier_note=carrier_note,
     )
+
+
+def _parse_offer_price_only(text: str) -> int:
+    match = _offer_price_only_re.fullmatch(text.strip())
+    if match is None:
+        raise ValueError("invalid offer price")
+
+    price = Decimal(match.group(1).replace(",", "."))
+    if price <= 0:
+        raise ValueError("invalid offer price")
+
+    return int(price * 100)
+
+
+def _parse_required_offer_text(text: str, *, max_length: int) -> str:
+    value = text.strip()
+    if not value or len(value) > max_length:
+        raise ValueError("invalid offer term")
+    return value
+
+
+def _parse_estimate_status_input(text: str) -> tuple[str, str | None]:
+    value = text.strip()
+    folded = value.casefold()
+    for alias in sorted(_estimate_status_aliases, key=len, reverse=True):
+        if not folded.startswith(alias):
+            continue
+        if len(value) > len(alias) and value[len(alias)] not in " \t\n,;:-—–":
+            continue
+
+        carrier_note = value[len(alias):].lstrip(" \t\n,;:-—–") or None
+        if carrier_note and len(carrier_note) > _offer_text_field_max_length:
+            raise ValueError("carrier note is too long")
+        return _estimate_status_aliases[alias], carrier_note
+
+    raise ValueError("invalid estimate status")
+
+
+def _offer_locale_from_data(data: dict, fallback: str | None = None) -> str:
+    return normalize_carrier_locale(data.get("offer_price_locale") or fallback)
+
+
+def _offer_id_from_data(data: dict) -> int | None:
+    offer_id = data.get("offer_price_offer_id")
+    if offer_id is None:
+        return None
+    return int(offer_id)
+
+
+async def _set_offer_step(
+    *,
+    message: Message,
+    state: FSMContext,
+    offer_id: int,
+    locale: str,
+    next_state,
+    prompt_key: str,
+    reply_markup=None,
+) -> None:
+    await state.set_state(next_state)
+    prompt_message = await message.answer(
+        t(locale, prompt_key),
+        reply_markup=reply_markup,
+    )
+    await state.update_data(
+        offer_step_prompt_chat_id=prompt_message.chat.id if reply_markup else None,
+        offer_step_prompt_message_id=(
+            prompt_message.message_id if reply_markup else None
+        ),
+    )
+
+
+async def _clear_offer_step_keyboard(bot, data: dict) -> None:
+    chat_id = data.get("offer_step_prompt_chat_id")
+    message_id = data.get("offer_step_prompt_message_id")
+    if chat_id is None or message_id is None:
+        return
+
+    try:
+        await bot.edit_message_reply_markup(
+            chat_id=chat_id,
+            message_id=message_id,
+            reply_markup=None,
+        )
+    except TelegramBadRequest:
+        return
 
 
 async def _prompt_offer_price(
@@ -378,34 +473,23 @@ async def handle_offer_response(callback: CallbackQuery, state: FSMContext) -> N
 
     await callback.answer()
 
-@router.message(OfferResponseStates.price)
-async def handle_offer_price_input(message: Message, state: FSMContext) -> None:
+async def _submit_offer_response(
+    *,
+    message: Message,
+    state: FSMContext,
+    parsed_offer: ParsedOfferInput,
+    telegram_user_id: int,
+) -> bool:
     data = await state.get_data()
-    locale = normalize_carrier_locale(
-        data.get("offer_price_locale")
-        or (message.from_user.language_code if message.from_user else None)
-    )
-    offer_id = data.get("offer_price_offer_id")
+    locale = _offer_locale_from_data(data)
+    offer_id = _offer_id_from_data(data)
     offer_message_chat_id = data.get("offer_price_message_chat_id")
     offer_message_id = data.get("offer_price_message_id")
 
     if offer_id is None:
         await state.clear()
         await message.answer(t(locale, "request_unknown"))
-        return
-
-    payload = (message.text or "").strip()
-    try:
-        parsed_offer = _parse_offer_price_input(payload)
-    except ValueError:
-        await message.answer(t(locale, "offer_input_invalid"))
-        return
-
-    telegram_user_id = message.from_user.id if message.from_user else None
-    if telegram_user_id is None:
-        await state.clear()
-        await message.answer(t(locale, "carrier_unknown"))
-        return
+        return False
 
     job = None
     accepted_offer = None
@@ -428,13 +512,13 @@ async def handle_offer_price_input(message: Message, state: FSMContext) -> None:
             await session.rollback()
             await state.clear()
             await message.answer(t(locale, "offer_not_found"))
-            return
+            return False
 
         if offer.status != "pending":
             await session.rollback()
             await state.clear()
             await message.answer(t(locale, "offer_resolved"))
-            return
+            return False
 
         try:
             await job_repository.update_offer_terms(
@@ -452,12 +536,12 @@ async def handle_offer_price_input(message: Message, state: FSMContext) -> None:
             await session.rollback()
             await state.clear()
             await message.answer(t(locale, "offer_resolved"))
-            return
+            return False
         except JobAlreadyAssignedError:
             await session.rollback()
             await state.clear()
             await message.answer(t(locale, "request_closed"))
-            return
+            return False
 
         job = await job_repository.get_job_by_id(accepted_offer.job_id)
         accepted_offers = await job_repository.list_offers_by_job(accepted_offer.job_id)
@@ -510,6 +594,404 @@ async def handle_offer_price_input(message: Message, state: FSMContext) -> None:
             ),
             parse_mode="HTML",
         )
+
+    return True
+
+
+def _build_conversational_offer(
+    data: dict,
+    *,
+    estimate_status: str,
+    carrier_note: str | None = None,
+) -> ParsedOfferInput:
+    if estimate_status not in {"final", "estimate"}:
+        raise ValueError("invalid estimate status")
+
+    price_cents = int(data["offer_price_cents"])
+    included_services = _parse_required_offer_text(
+        str(data["offer_included_services"]),
+        max_length=_offer_text_field_max_length,
+    )
+    possible_surcharges = _parse_required_offer_text(
+        str(data["offer_possible_surcharges"]),
+        max_length=_offer_text_field_max_length,
+    )
+    service_window = _parse_required_offer_text(
+        str(data["offer_service_window"]),
+        max_length=255,
+    )
+
+    return ParsedOfferInput(
+        price_cents=price_cents,
+        included_services=included_services,
+        possible_surcharges=possible_surcharges,
+        service_window=service_window,
+        estimate_status=estimate_status,
+        carrier_note=carrier_note,
+    )
+
+
+async def _prompt_included_services(
+    message: Message,
+    state: FSMContext,
+    offer_id: int,
+    locale: str,
+) -> None:
+    await _set_offer_step(
+        message=message,
+        state=state,
+        offer_id=offer_id,
+        locale=locale,
+        next_state=OfferResponseStates.included_services,
+        prompt_key="included_services_prompt",
+        reply_markup=build_offer_included_services_keyboard(offer_id, locale),
+    )
+
+
+async def _prompt_possible_surcharges(
+    message: Message,
+    state: FSMContext,
+    offer_id: int,
+    locale: str,
+) -> None:
+    await _set_offer_step(
+        message=message,
+        state=state,
+        offer_id=offer_id,
+        locale=locale,
+        next_state=OfferResponseStates.possible_surcharges,
+        prompt_key="possible_surcharges_prompt",
+        reply_markup=build_offer_surcharges_keyboard(offer_id, locale),
+    )
+
+
+async def _prompt_service_window(
+    message: Message,
+    state: FSMContext,
+    offer_id: int,
+    locale: str,
+) -> None:
+    await _set_offer_step(
+        message=message,
+        state=state,
+        offer_id=offer_id,
+        locale=locale,
+        next_state=OfferResponseStates.service_window,
+        prompt_key="service_window_prompt",
+        reply_markup=build_offer_service_window_keyboard(offer_id, locale),
+    )
+
+
+async def _prompt_estimate_status(
+    message: Message,
+    state: FSMContext,
+    offer_id: int,
+    locale: str,
+) -> None:
+    await _set_offer_step(
+        message=message,
+        state=state,
+        offer_id=offer_id,
+        locale=locale,
+        next_state=OfferResponseStates.estimate_status,
+        prompt_key="estimate_status_prompt",
+        reply_markup=build_offer_estimate_status_keyboard(offer_id, locale),
+    )
+
+
+@router.message(OfferResponseStates.price)
+async def handle_offer_price_input(message: Message, state: FSMContext) -> None:
+    data = await state.get_data()
+    locale = _offer_locale_from_data(
+        data,
+        message.from_user.language_code if message.from_user else None,
+    )
+    offer_id = _offer_id_from_data(data)
+
+    if offer_id is None:
+        await state.clear()
+        await message.answer(t(locale, "request_unknown"))
+        return
+
+    payload = (message.text or "").strip()
+
+    try:
+        parsed_offer = _parse_offer_price_input(payload)
+    except ValueError:
+        parsed_offer = None
+
+    telegram_user_id = message.from_user.id if message.from_user else None
+    if telegram_user_id is None:
+        await state.clear()
+        await message.answer(t(locale, "carrier_unknown"))
+        return
+
+    if parsed_offer is not None:
+        await _submit_offer_response(
+            message=message,
+            state=state,
+            parsed_offer=parsed_offer,
+            telegram_user_id=telegram_user_id,
+        )
+        return
+
+    try:
+        price_cents = _parse_offer_price_only(payload)
+    except ValueError:
+        await message.answer(t(locale, "price_input_invalid"))
+        return
+
+    await state.update_data(offer_price_cents=price_cents)
+    await _prompt_included_services(message, state, offer_id, locale)
+
+
+@router.message(OfferResponseStates.included_services)
+async def handle_offer_included_services_input(
+    message: Message,
+    state: FSMContext,
+) -> None:
+    data = await state.get_data()
+    locale = _offer_locale_from_data(
+        data,
+        message.from_user.language_code if message.from_user else None,
+    )
+    offer_id = _offer_id_from_data(data)
+    if offer_id is None:
+        await state.clear()
+        await message.answer(t(locale, "request_unknown"))
+        return
+
+    try:
+        included_services = _parse_required_offer_text(
+            message.text or "",
+            max_length=_offer_text_field_max_length,
+        )
+    except ValueError:
+        await message.answer(t(locale, "offer_step_invalid"))
+        return
+
+    await _clear_offer_step_keyboard(message.bot, data)
+    await state.update_data(offer_included_services=included_services)
+    await _prompt_possible_surcharges(message, state, offer_id, locale)
+
+
+@router.message(OfferResponseStates.possible_surcharges)
+async def handle_offer_possible_surcharges_input(
+    message: Message,
+    state: FSMContext,
+) -> None:
+    data = await state.get_data()
+    locale = _offer_locale_from_data(
+        data,
+        message.from_user.language_code if message.from_user else None,
+    )
+    offer_id = _offer_id_from_data(data)
+    if offer_id is None:
+        await state.clear()
+        await message.answer(t(locale, "request_unknown"))
+        return
+
+    try:
+        possible_surcharges = _parse_required_offer_text(
+            message.text or "",
+            max_length=_offer_text_field_max_length,
+        )
+    except ValueError:
+        await message.answer(t(locale, "offer_step_invalid"))
+        return
+
+    await _clear_offer_step_keyboard(message.bot, data)
+    await state.update_data(offer_possible_surcharges=possible_surcharges)
+    await _prompt_service_window(message, state, offer_id, locale)
+
+
+@router.message(OfferResponseStates.service_window)
+async def handle_offer_service_window_input(
+    message: Message,
+    state: FSMContext,
+) -> None:
+    data = await state.get_data()
+    locale = _offer_locale_from_data(
+        data,
+        message.from_user.language_code if message.from_user else None,
+    )
+    offer_id = _offer_id_from_data(data)
+    if offer_id is None:
+        await state.clear()
+        await message.answer(t(locale, "request_unknown"))
+        return
+
+    try:
+        service_window = _parse_required_offer_text(
+            message.text or "",
+            max_length=255,
+        )
+    except ValueError:
+        await message.answer(t(locale, "offer_step_invalid"))
+        return
+
+    await _clear_offer_step_keyboard(message.bot, data)
+    await state.update_data(offer_service_window=service_window)
+    await _prompt_estimate_status(message, state, offer_id, locale)
+
+
+@router.message(OfferResponseStates.estimate_status)
+async def handle_offer_estimate_status_input(
+    message: Message,
+    state: FSMContext,
+) -> None:
+    data = await state.get_data()
+    locale = _offer_locale_from_data(
+        data,
+        message.from_user.language_code if message.from_user else None,
+    )
+    try:
+        estimate_status, carrier_note = _parse_estimate_status_input(
+            message.text or ""
+        )
+    except ValueError:
+        await message.answer(t(locale, "offer_step_invalid"))
+        return
+
+    telegram_user_id = message.from_user.id if message.from_user else None
+    if telegram_user_id is None:
+        await state.clear()
+        await message.answer(t(locale, "carrier_unknown"))
+        return
+
+    try:
+        parsed_offer = _build_conversational_offer(
+            data,
+            estimate_status=estimate_status,
+            carrier_note=carrier_note,
+        )
+    except (KeyError, TypeError, ValueError):
+        await state.clear()
+        await message.answer(t(locale, "request_unknown"))
+        return
+
+    await _clear_offer_step_keyboard(message.bot, data)
+    await _submit_offer_response(
+        message=message,
+        state=state,
+        parsed_offer=parsed_offer,
+        telegram_user_id=telegram_user_id,
+    )
+
+
+@router.callback_query(F.data.startswith("offer_terms:"))
+async def handle_offer_terms_shortcut(
+    callback: CallbackQuery,
+    state: FSMContext,
+) -> None:
+    data = await state.get_data()
+    locale = _offer_locale_from_data(data, callback.from_user.language_code)
+    parts = (callback.data or "").split(":")
+    if len(parts) != 4:
+        await callback.answer(t(locale, "invalid_button"), show_alert=True)
+        return
+
+    field, offer_id_text, value = parts[1:]
+    try:
+        offer_id = int(offer_id_text)
+    except ValueError:
+        await callback.answer(t(locale, "invalid_button"), show_alert=True)
+        return
+
+    expected_states = {
+        "included": OfferResponseStates.included_services.state,
+        "surcharges": OfferResponseStates.possible_surcharges.state,
+        "window": OfferResponseStates.service_window.state,
+        "status": OfferResponseStates.estimate_status.state,
+    }
+    current_state = await state.get_state()
+    if (
+        field not in expected_states
+        or current_state != expected_states[field]
+        or _offer_id_from_data(data) != offer_id
+        or callback.message is None
+    ):
+        await callback.answer(t(locale, "offer_step_expired"), show_alert=True)
+        return
+
+    allowed_values = {
+        "included": {"requested"},
+        "surcharges": {"none"},
+        "window": {"requested"},
+        "status": {"final", "estimate"},
+    }
+    if value not in allowed_values[field]:
+        await callback.answer(t(locale, "invalid_button"), show_alert=True)
+        return
+
+    try:
+        await callback.message.edit_reply_markup(reply_markup=None)
+    except TelegramBadRequest:
+        pass
+    await callback.answer()
+
+    if field == "included":
+        await state.update_data(
+            offer_included_services=t(
+                locale,
+                "included_services_as_requested_value",
+            )
+        )
+        await _prompt_possible_surcharges(
+            callback.message,
+            state,
+            offer_id,
+            locale,
+        )
+        return
+
+    if field == "surcharges":
+        await state.update_data(
+            offer_possible_surcharges=t(
+                locale,
+                "possible_surcharges_none_value",
+            )
+        )
+        await _prompt_service_window(
+            callback.message,
+            state,
+            offer_id,
+            locale,
+        )
+        return
+
+    if field == "window":
+        await state.update_data(
+            offer_service_window=t(
+                locale,
+                "service_window_as_requested_value",
+            )
+        )
+        await _prompt_estimate_status(
+            callback.message,
+            state,
+            offer_id,
+            locale,
+        )
+        return
+
+    refreshed_data = await state.get_data()
+    try:
+        parsed_offer = _build_conversational_offer(
+            refreshed_data,
+            estimate_status=value,
+        )
+    except (KeyError, TypeError, ValueError):
+        await state.clear()
+        await callback.message.answer(t(locale, "request_unknown"))
+        return
+
+    await _submit_offer_response(
+        message=callback.message,
+        state=state,
+        parsed_offer=parsed_offer,
+        telegram_user_id=callback.from_user.id,
+    )
 
 
 @router.callback_query(F.data.startswith("offer_decline_reason:"))

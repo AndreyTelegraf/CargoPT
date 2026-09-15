@@ -109,6 +109,9 @@ TESTS=(
   scripts/job_matching_ignores_weight_volume_smoke.py
   scripts/carrier_search_smoke.py
   scripts/job_offer_smoke.py
+  scripts/offer_terms_input_smoke.py
+  scripts/offer_conversation_fsm_smoke.py
+  scripts/job_offer_response_handler_smoke.py
   scripts/job_offer_acceptance_smoke.py
   scripts/job_offer_cleanup_smoke.py
   scripts/job_offer_decline_exhaustion_smoke.py
