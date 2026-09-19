@@ -5,17 +5,17 @@
   "cluster": "packing",
   "path": "/guias/embalamento/como-embalar-louca/",
   "title": "Como embalar loiça e copos para uma mudança",
-  "meta_title": "Como embalar loiça e copos para mudança — CargoPT",
-  "meta_description": "Proteja pratos, copos, taças e outras peças frágeis com caixas resistentes, separação individual e espaços preenchidos.",
+  "meta_title": "Como embalar louça e copos para uma mudança — CargoPT",
+  "meta_description": "Checklist para embalar pratos, copos e peças frágeis: materiais, separação, preenchimento, peso das caixas e identificação.",
   "primary_query": "como embalar loiça para mudança",
   "intent": [
     "informational"
   ],
   "article_section": "Embalamento",
   "eyebrow": "Embalagem de loiça",
-  "hero_description": "A loiça deve ser embalada por grupos pequenos, com proteção individual e sem espaço para se deslocar dentro da caixa.",
+  "hero_description": "Separe por tipo, envolva cada peça, elimine folgas e mantenha as caixas manuseáveis e claramente identificadas.",
   "date_published": "2026-07-12",
-  "date_modified": "2026-07-12",
+  "date_modified": "2026-09-19",
   "review_owner": "CargoPT",
   "direct_answer_heading": "Proteja cada peça e evite movimentos dentro da caixa",
   "key_points_heading": "Cuidados essenciais",
@@ -110,6 +110,21 @@
         "Orientação visível.",
         "Divisão de destino indicada."
       ]
+    },
+    {
+      "id": "entrega-caixas-frageis",
+      "heading": "Como entregar as caixas frágeis ao transportador",
+      "paragraphs": [
+        "Identifique a parte superior, o conteúdo e as caixas que não podem receber peso. Evite caixas demasiado pesadas, porque o fundo e a pega ficam mais sujeitos a falhas durante a movimentação.",
+        "No pedido, indique a quantidade de caixas frágeis, o peso aproximado e se existem peças de valor especial. Confirme como serão colocadas e fixadas no veículo."
+      ],
+      "checklist": [
+        "Caixas fechadas, identificadas e sem movimento interno.",
+        "Peso distribuído por várias caixas manuseáveis.",
+        "Parte superior e conteúdo marcados.",
+        "Peças excecionais descritas e fotografadas.",
+        "Posição e fixação no veículo confirmadas."
+      ]
     }
   ],
   "mid_cta": {
@@ -141,6 +156,11 @@
     }
   ],
   "related_links": [
+    {
+      "title": "Pedir embalagem, desmontagem e montagem",
+      "href": "/servico-embalamento-desmontagem-montagem/",
+      "type": "service"
+    },
     {
       "title": "How to pack dishes and glasses for a move — versão em inglês",
       "href": "/en/guides/how-to-pack-dishes-and-glasses/",

@@ -6,16 +6,16 @@
   "path": "/guias/embalamento/como-embalar-televisao/",
   "title": "Como embalar uma televisão para transporte",
   "meta_title": "Como embalar uma televisão para transporte — CargoPT",
-  "meta_description": "Saiba como desligar, proteger, embalar e transportar uma televisão na posição correta durante uma mudança.",
+  "meta_description": "Proteja e transporte uma televisão com caixa adequada, ecrã protegido, base separada, posição vertical e dados completos no pedido.",
   "primary_query": "como embalar televisão para transporte",
   "intent": [
     "informational"
   ],
   "article_section": "Embalamento",
   "eyebrow": "Proteção da televisão",
-  "hero_description": "O ecrã precisa de proteção contra pressão, impacto, humidade e contacto com outros objetos durante a mudança.",
+  "hero_description": "Use a caixa original ou uma solução ajustada, proteja o ecrã sem pressão e planeie transporte vertical e fixado.",
   "date_published": "2026-07-12",
-  "date_modified": "2026-07-12",
+  "date_modified": "2026-09-19",
   "review_owner": "CargoPT",
   "direct_answer_heading": "Proteja o ecrã sem aplicar pressão",
   "key_points_heading": "Cuidados essenciais",
@@ -109,6 +109,21 @@
         "Sem objetos pesados por cima.",
         "Proteção contra humidade."
       ]
+    },
+    {
+      "id": "dados-pedido-televisao",
+      "heading": "Que dados enviar para transportar uma televisão",
+      "paragraphs": [
+        "Indique diagonal, largura, altura, profundidade e se existe caixa original. Uma fotografia da televisão e da embalagem ajuda a avaliar espaço, proteção e fixação.",
+        "Se a televisão está presa à parede, esclareça se será retirada antes da recolha. A desmontagem do suporte e a instalação no destino não devem ser consideradas incluídas sem confirmação."
+      ],
+      "checklist": [
+        "Modelo, diagonal, dimensões e fotografias.",
+        "Caixa original ou material de proteção disponível.",
+        "Base, comando, cabos e suporte identificados separadamente.",
+        "Andares, elevador, escadas e distância até ao veículo.",
+        "Retirada e instalação de suporte confirmadas, se necessárias."
+      ]
     }
   ],
   "mid_cta": {
@@ -140,6 +155,11 @@
     }
   ],
   "related_links": [
+    {
+      "title": "Pedir embalagem, desmontagem e montagem",
+      "href": "/servico-embalamento-desmontagem-montagem/",
+      "type": "service"
+    },
     {
       "title": "How to pack a television for transport — versão em inglês",
       "href": "/en/guides/how-to-pack-a-tv/",

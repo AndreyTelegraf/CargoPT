@@ -6,7 +6,7 @@
   "path": "/guias/objetos/como-transportar-maquina-lavar/",
   "title": "Como transportar uma máquina de lavar",
   "meta_title": "Como transportar uma máquina de lavar — CargoPT",
-  "meta_description": "Saiba como desligar, drenar, proteger e transportar uma máquina de lavar sem danificar o equipamento ou os acessos.",
+  "meta_description": "Prepare uma máquina de lavar para transporte: desligar, drenar, fixar o tambor, medir acessos e informar peso, andares e ajudantes.",
   "primary_query": "como transportar máquina de lavar",
   "intent": [
     "informational",
@@ -14,9 +14,9 @@
   ],
   "article_section": "Móveis e objetos",
   "eyebrow": "Transporte de máquina de lavar",
-  "hero_description": "A máquina deve seguir vazia, drenada, protegida e com o tambor imobilizado de acordo com as instruções do fabricante.",
+  "hero_description": "Desligue e drene a máquina, siga o manual para fixar o tambor e descreva peso, medidas e acessos antes do transporte.",
   "date_published": "2026-07-12",
-  "date_modified": "2026-07-12",
+  "date_modified": "2026-09-19",
   "review_owner": "CargoPT",
   "direct_answer_heading": "Drene a água e proteja o tambor antes do transporte",
   "key_points_heading": "Passos essenciais",
@@ -103,6 +103,21 @@
         "No destino, retire os parafusos de transporte antes de utilizar a máquina. Guarde-os para uma mudança futura.",
         "Confirme o nivelamento, o estado das mangueiras e a ausência de fugas. A instalação elétrica e hidráulica deve respeitar o manual do fabricante."
       ]
+    },
+    {
+      "id": "dados-pedido-maquina-lavar",
+      "heading": "Que informação ajuda a avaliar o transporte?",
+      "paragraphs": [
+        "O tipo de máquina, as dimensões, o peso aproximado e os acessos determinam o número de pessoas e os meios de movimentação. Fotografias ajudam a distinguir uma carga simples de um percurso com risco adicional.",
+        "A ligação e a instalação técnica no destino não devem ser presumidas. Se precisar dessas tarefas, identifique-as separadamente e confirme se fazem parte da proposta."
+      ],
+      "checklist": [
+        "Modelo, medidas, peso aproximado e fotografias.",
+        "Estado das mangueiras, cabo e parafusos de transporte.",
+        "Andares, elevadores, escadas e portas nos dois locais.",
+        "Ajuda disponível para carga e descarga.",
+        "Necessidade de desligação ou instalação técnica, se aplicável."
+      ]
     }
   ],
   "mid_cta": {
@@ -134,6 +149,11 @@
     }
   ],
   "related_links": [
+    {
+      "title": "Pedir transporte de eletrodomésticos em Lisboa",
+      "href": "/transporte-eletrodomesticos-lisboa/",
+      "type": "service"
+    },
     {
       "title": "How to transport a washing machine — versão em inglês",
       "href": "/en/guides/how-to-transport-a-washing-machine/",

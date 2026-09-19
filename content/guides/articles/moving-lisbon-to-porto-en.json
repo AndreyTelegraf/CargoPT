@@ -4,9 +4,9 @@
   "locale": "en",
   "cluster": "cities",
   "path": "/en/guides/moving-lisbon-to-porto/",
-  "title": "Moving from Lisbon to Porto",
-  "meta_title": "Moving from Lisbon to Porto — CargoPT",
-  "meta_description": "Prepare a move between Lisbon and Porto: cargo, access, parking, helpers, protection and additional services.",
+  "title": "Moving between Lisbon and Porto",
+  "meta_title": "Moving Lisbon–Porto in either direction — CargoPT",
+  "meta_description": "Prepare a move between Lisbon and Porto in either direction with a clear inventory, access details, helpers, protection and services.",
   "primary_query": "moving from lisbon to porto",
   "intent": [
     "local",
@@ -15,9 +15,9 @@
   ],
   "article_section": "Moving services by city",
   "eyebrow": "Moving from Lisbon to Porto",
-  "hero_description": "A move between Lisbon and Porto must consider the specific collection and delivery conditions. A move between Lisbon and Porto requires coordinating two different urban access conditions, a long route and protecting the cargo during several hours of transport.",
+  "hero_description": "Prepare a Lisbon–Porto or Porto–Lisbon move with complete details about the load, access, date and tasks.",
   "date_published": "2026-07-24",
-  "date_modified": "2026-07-24",
+  "date_modified": "2026-09-19",
   "review_owner": "CargoPT",
   "direct_answer_heading": "What you should confirm before moving between Lisbon and Porto",
   "key_points_heading": "Essential information for the route",
@@ -150,6 +150,21 @@
       "paragraphs": [
         "At CargoPT, you can describe a move between Lisbon and Porto once, including the load, access and tasks.",
         "Carriers submit their own quotes and the customer can compare responses based on the same description."
+      ]
+    },
+    {
+      "id": "porto-lisbon",
+      "heading": "What changes for a Porto-to-Lisbon move?",
+      "paragraphs": [
+        "The essential details are the same in both directions: load, access, date, team and equipment. What changes are the actual conditions at pickup and delivery.",
+        "For Porto to Lisbon, describe the Porto pickup first and the Lisbon destination second. Do not reuse access assumptions from the reverse trip: floors, lifts, parking and walking distance must be checked at each address."
+      ],
+      "checklist": [
+        "Pickup address and access in Porto.",
+        "Delivery address and access in Lisbon.",
+        "Current inventory and photos.",
+        "Date, flexibility and any stops.",
+        "Helpers, protection and additional services."
       ]
     }
   ],

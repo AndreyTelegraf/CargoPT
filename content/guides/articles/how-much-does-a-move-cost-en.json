@@ -16,7 +16,7 @@
   "eyebrow": "Moving costs",
   "hero_description": "There is no single price for every move. The cost depends on the route, volume, access conditions, work required and services included.",
   "date_published": "2026-07-24",
-  "date_modified": "2026-07-24",
+  "date_modified": "2026-09-19",
   "review_owner": "CargoPT",
   "direct_answer_heading": "The price depends on the specific service",
   "key_points_heading": "What to know before requesting offers",
@@ -170,6 +170,36 @@
         "Whether movers are required.",
         "Whether dismantling, assembly or packing is required.",
         "Photographs of items and access conditions when useful."
+      ]
+    },
+    {
+      "id": "factors-comparable-description",
+      "heading": "Turn price factors into a comparable description",
+      "paragraphs": [
+        "Volume, weight, distance, access, helpers and additional services are useful only when stated as concrete details. Instead of writing only “house move”, list items, quantities, measurements, floors, lifts and tasks.",
+        "Share the same description and photos with every carrier. Price differences are then more likely to reflect the offered terms instead of different missing information."
+      ],
+      "items": [
+        {
+          "title": "Load",
+          "text": "List items, quantities, measurements and anything heavy or fragile."
+        },
+        {
+          "title": "Route",
+          "text": "State addresses, walking distance, floors, lifts and stairs."
+        },
+        {
+          "title": "Team",
+          "text": "Confirm who loads and unloads and how many helpers are required."
+        },
+        {
+          "title": "Services",
+          "text": "Separate packing, materials, disassembly, assembly and special equipment."
+        },
+        {
+          "title": "Date",
+          "text": "Record the time window, real flexibility and access limits."
+        }
       ]
     },
     {

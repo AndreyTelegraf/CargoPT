@@ -16,11 +16,11 @@
   "eyebrow": "Факторы цены",
   "hero_description": "Стоимость переезда зависит от объёма работ по перевозке вещей, условий в обоих помещениях и услуг, включённых в предложение.",
   "date_published": "2026-07-24",
-  "date_modified": "2026-07-24",
+  "date_modified": "2026-09-19",
   "review_owner": "CargoPT",
   "translation_group": "moving-price-factors",
   "alternates": {
-    "pt-PT": "/guias/precos/fatores-preco-mudanca/",
+    "pt-PT": "/guias/precos/quanto-custa-uma-mudanca/",
     "en": "/en/guides/moving-price-factors/",
     "ru": "/ru/guides/faktory-stoimosti-pereezda/"
   },
@@ -198,7 +198,7 @@
   "related_links": [
     {
       "title": "Что влияет на стоимость переезда? — версия на португальском",
-      "href": "/guias/precos/fatores-preco-mudanca/",
+      "href": "/guias/precos/quanto-custa-uma-mudanca/",
       "type": "guide"
     },
     {

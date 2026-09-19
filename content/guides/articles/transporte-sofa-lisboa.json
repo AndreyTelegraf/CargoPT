@@ -5,8 +5,8 @@
   "cluster": "objects",
   "path": "/transporte-sofa-lisboa/",
   "title": "Transporte de sofá em Lisboa",
-  "meta_title": "Transporte de sofá em Lisboa — CargoPT",
-  "meta_description": "Peça propostas para transporte de sofá em Lisboa: preparação, acessos, equipa e proteção.",
+  "meta_title": "Transporte de sofá em Lisboa: medidas e acessos — CargoPT",
+  "meta_description": "Peça propostas para transportar um sofá em Lisboa com medidas, fotografias, módulos, desmontagem, escadas, elevador e ajudantes.",
   "primary_query": "transporte sofá Lisboa",
   "intent": [
     "local",
@@ -15,9 +15,9 @@
   ],
   "article_section": "Móveis e objetos",
   "eyebrow": "Transporte de sofá em Lisboa",
-  "hero_description": "O transporte de sofá em Lisboa exige medidas completas, verificação do percurso, desmontagem quando aplicável, equipa suficiente, proteção do revestimento e imobilização segura no veículo.",
+  "hero_description": "Meça o sofá e todo o percurso, identifique peças desmontáveis e descreva a ajuda necessária. A disponibilidade e as propostas não são garantidas.",
   "date_published": "2026-07-14",
-  "date_modified": "2026-07-15",
+  "date_modified": "2026-09-19",
   "review_owner": "CargoPT",
   "direct_answer_heading": "Como pedir transporte de sofá em Lisboa",
   "key_points_heading": "Informação necessária para o serviço",
@@ -119,6 +119,21 @@
         "Compare equipa, equipamento, proteção, horário, valor e condições de responsabilidade.",
         "Compare propostas baseadas nas mesmas medidas, fotografias, acessos e tarefas. Verifique se incluem desmontagem, proteção, ajudantes, carga, descarga, montagem e colocação na divisão pretendida. Pergunte o que acontece se uma passagem for menor do que o indicado ou se for necessário alterar o percurso no dia."
       ]
+    },
+    {
+      "id": "pedido-local-sofa",
+      "heading": "O percurso que deve fotografar em Lisboa",
+      "paragraphs": [
+        "Fotografe a porta, o corredor, o elevador, os patamares e as curvas das escadas nas duas moradas. Indique também a distância entre a entrada e o local de estacionamento possível.",
+        "Se o sofá tem módulos, chaise longue, pés ou braços removíveis, mostre-os separadamente. Não presuma que a desmontagem e a montagem estão incluídas na proposta."
+      ],
+      "checklist": [
+        "Medidas totais e de cada módulo.",
+        "Portas, elevador, escadas, curvas e corredores.",
+        "Peças removíveis e necessidade de ferramentas.",
+        "Proteção pretendida para tecido, pele e cantos.",
+        "Ajudantes disponíveis na recolha e entrega."
+      ]
     }
   ],
   "mid_cta": {
@@ -150,6 +165,11 @@
     }
   ],
   "related_links": [
+    {
+      "title": "Como transportar um sofá",
+      "href": "/guias/objetos/como-transportar-sofa/",
+      "type": "guide"
+    },
     {
       "title": "Sofa transport in Lisbon — versão em inglês",
       "href": "/en/guides/sofa-transport-lisbon/",

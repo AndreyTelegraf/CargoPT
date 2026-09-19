@@ -5,8 +5,8 @@
   "cluster": "objects",
   "path": "/guias/objetos/como-transportar-sofa/",
   "title": "Como transportar um sofá",
-  "meta_title": "Como transportar um sofá sem o danificar — CargoPT",
-  "meta_description": "Saiba como medir, desmontar, proteger e transportar um sofá através de portas, elevadores e escadas.",
+  "meta_title": "Como transportar um sofá: medidas e acessos — CargoPT",
+  "meta_description": "Meça sofá, portas, escadas e elevador; verifique módulos e pés desmontáveis e prepare um pedido de transporte com fotografias.",
   "primary_query": "como transportar sofá",
   "intent": [
     "informational",
@@ -14,9 +14,9 @@
   ],
   "article_section": "Móveis e objetos",
   "eyebrow": "Transporte de sofá",
-  "hero_description": "Antes de mover um sofá, é necessário confirmar se passa por portas, corredores, elevadores e escadas nos dois imóveis.",
+  "hero_description": "Antes de transportar um sofá, compare as medidas com todo o percurso e identifique módulos, pés, acessos e ajuda necessária.",
   "date_published": "2026-07-12",
-  "date_modified": "2026-07-12",
+  "date_modified": "2026-09-19",
   "review_owner": "CargoPT",
   "direct_answer_heading": "Meça o sofá e o percurso antes de iniciar o transporte",
   "key_points_heading": "Passos essenciais",
@@ -104,6 +104,21 @@
         "O sofá deve seguir protegido e imobilizado, sem contacto com objetos cortantes, sujos ou húmidos.",
         "Evite apoiar volumes pesados sobre braços, encostos ou mecanismos. Fixe os módulos separadamente quando isso proporcionar maior estabilidade."
       ]
+    },
+    {
+      "id": "mapa-percurso-sofa",
+      "heading": "Crie um mapa simples do percurso do sofá",
+      "paragraphs": [
+        "Meça não apenas a porta principal, mas também elevador, patamares, curvas, corredores e portões. Uma única passagem estreita pode definir se o sofá sai inteiro ou precisa de desmontagem.",
+        "Fotografe as curvas críticas e indique a distância até ao veículo. Partilhe as mesmas imagens com todos os transportadores para comparar propostas sobre o mesmo trabalho."
+      ],
+      "checklist": [
+        "Largura, altura e profundidade do sofá.",
+        "Módulos, chaise longue, pés e braços removíveis.",
+        "Largura e altura de portas, elevador e corredores.",
+        "Escadas, patamares, curvas e distância ao veículo.",
+        "Proteção, desmontagem e número de ajudantes pretendidos."
+      ]
     }
   ],
   "mid_cta": {
@@ -136,6 +151,11 @@
   ],
   "related_links": [
     {
+      "title": "Pedir transporte de sofá em Lisboa",
+      "href": "/transporte-sofa-lisboa/",
+      "type": "service"
+    },
+    {
       "title": "How to transport a sofa — versão em inglês",
       "href": "/en/guides/how-to-transport-a-sofa/",
       "type": "guide"
@@ -144,11 +164,6 @@
       "title": "Как перевезти диван — versão em russo",
       "href": "/ru/guides/kak-perevezti-divan/",
       "type": "guide"
-    },
-    {
-      "title": "Transporte de sofá em Lisboa",
-      "href": "/transporte-sofa-lisboa/",
-      "type": "landing"
     },
     {
       "title": "Pedir propostas para uma mudança",

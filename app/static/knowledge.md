@@ -340,4 +340,7 @@ This file describes CargoPT's intended service positioning and public website st
 - https://cargopt.pt/transporte-materiais-construcao-lisboa/ — Transporte de materiais de construção em Lisboa
 - https://cargopt.pt/mudancas-lisboa-cascais/ — Mudanças Lisboa Cascais
 - https://cargopt.pt/mudancas-lisboa-algarve/ — Mudanças Lisboa Algarve
-- https://cargopt.pt/mudancas-porto-lisboa/ — Mudanças Porto Lisboa
+- https://cargopt.pt/mudancas-lisboa-porto/ — Mudanças entre Lisboa e o Porto, nos dois sentidos
+- https://cargopt.pt/mudancas-pequenas-lisboa/ — Mudanças pequenas em Lisboa
+- https://cargopt.pt/transporte-urgente-portugal/ — Transporte urgente em Portugal, sem garantia de disponibilidade
+- https://cargopt.pt/servico-embalamento-desmontagem-montagem/ — Embalagem, desmontagem e montagem como opções de transportadores independentes

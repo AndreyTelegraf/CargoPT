@@ -16,7 +16,7 @@
   "eyebrow": "Preços de mudanças",
   "hero_description": "Não existe um preço único para todas as mudanças. O valor depende da rota, do volume, dos acessos, do trabalho necessário e dos serviços incluídos.",
   "date_published": "2026-07-11",
-  "date_modified": "2026-07-11",
+  "date_modified": "2026-09-19",
   "review_owner": "CargoPT",
   "direct_answer_heading": "O preço depende do serviço concreto",
   "key_points_heading": "O que deve saber antes de pedir propostas",
@@ -170,6 +170,36 @@
         "Necessidade de ajudantes.",
         "Necessidade de desmontagem, montagem ou embalagem.",
         "Fotografias dos objetos e dos acessos quando forem úteis."
+      ]
+    },
+    {
+      "id": "fatores-descricao-comparavel",
+      "heading": "Como transformar os fatores de preço numa descrição comparável",
+      "paragraphs": [
+        "Volume, peso, distância, acessos, ajudantes e serviços adicionais só são úteis quando aparecem como dados concretos. Em vez de escrever apenas “mudança de casa”, indique objetos, quantidades, medidas, pisos, elevadores e tarefas.",
+        "Envie a mesma descrição e as mesmas fotografias a todos os transportadores. Assim, diferenças de preço refletem melhor as condições propostas e não omissões diferentes no pedido."
+      ],
+      "items": [
+        {
+          "title": "Carga",
+          "text": "Liste objetos, quantidades, dimensões e itens pesados ou frágeis."
+        },
+        {
+          "title": "Percurso",
+          "text": "Indique moradas, distância até ao veículo, andares, elevadores e escadas."
+        },
+        {
+          "title": "Equipa",
+          "text": "Confirme quem carrega e descarrega e quantos ajudantes são necessários."
+        },
+        {
+          "title": "Serviços",
+          "text": "Separe embalagem, materiais, desmontagem, montagem e equipamento especial."
+        },
+        {
+          "title": "Data",
+          "text": "Registe janela horária, flexibilidade real e limitações de acesso."
+        }
       ]
     },
     {

@@ -16,11 +16,11 @@
   "eyebrow": "Price factors",
   "hero_description": "The cost of a move depends on the work required to transport your belongings, conditions at both properties and the services included in the quote.",
   "date_published": "2026-07-24",
-  "date_modified": "2026-07-24",
+  "date_modified": "2026-09-19",
   "review_owner": "CargoPT",
   "translation_group": "moving-price-factors",
   "alternates": {
-    "pt-PT": "/guias/precos/fatores-preco-mudanca/",
+    "pt-PT": "/guias/precos/quanto-custa-uma-mudanca/",
     "en": "/en/guides/moving-price-factors/",
     "ru": "/ru/guides/faktory-stoimosti-pereezda/"
   },
@@ -198,7 +198,7 @@
   "related_links": [
     {
       "title": "What affects the cost of a move? — Portuguese version",
-      "href": "/guias/precos/fatores-preco-mudanca/",
+      "href": "/guias/precos/quanto-custa-uma-mudanca/",
       "type": "guide"
     },
     {

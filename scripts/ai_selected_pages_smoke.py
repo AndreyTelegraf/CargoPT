@@ -8,6 +8,15 @@ from xml.etree import ElementTree
 
 
 EXPECTED_DATE = "2026-09-05"
+UPDATED_DATE = "2026-09-19"
+UPDATED_PAGES = {
+    "index.html",
+    "en/index.html",
+    "ru/index.html",
+    "guias/objetos/como-transportar-frigorifico/index.html",
+    "transporte-eletrodomesticos-lisboa/index.html",
+}
+UPDATED_SOURCES = {"como-transportar-frigorifico.json"}
 PAGES = {
     "index.html": ("/", "Redação CargoPT"),
     "en/index.html": ("/en/", "CargoPT Editorial Team"),
@@ -108,13 +117,15 @@ def check_static(project_root: Path) -> None:
 
     for filename, reviewer in SOURCES.items():
         payload = json.loads((source_root / filename).read_text(encoding="utf-8"))
-        assert payload["date_modified"] == EXPECTED_DATE, filename
+        expected_date = UPDATED_DATE if filename in UPDATED_SOURCES else EXPECTED_DATE
+        assert payload["date_modified"] == expected_date, filename
         assert payload["review_owner"] == reviewer, filename
 
     for relative, (public_path, reviewer) in PAGES.items():
         page = (static_root / relative).read_text(encoding="utf-8")
         assert reviewer in page, relative
-        assert EXPECTED_DATE in page, relative
+        expected_date = UPDATED_DATE if relative in UPDATED_PAGES else EXPECTED_DATE
+        assert expected_date in page, relative
         assert "77" in page, relative
         assert not any(phrase in page for phrase in OLD_PROMISES), relative
         data = structured_data(page)
@@ -133,13 +144,14 @@ def check_static(project_root: Path) -> None:
         )
         for item in root.findall("s:url", namespace)
     }
-    for _, (public_path, _) in PAGES.items():
+    for relative, (public_path, _) in PAGES.items():
         url = "https://cargopt.pt" + public_path
-        assert dates.get(url) == EXPECTED_DATE, (url, dates.get(url))
+        expected_date = UPDATED_DATE if relative in UPDATED_PAGES else EXPECTED_DATE
+        assert dates.get(url) == expected_date, (url, dates.get(url))
 
 
 def check_public(base_url: str) -> None:
-    for _, (public_path, reviewer) in PAGES.items():
+    for relative, (public_path, reviewer) in PAGES.items():
         request = urllib.request.Request(
             base_url.rstrip("/") + public_path + "?ai_selected_pages_smoke=1",
             headers={"Cache-Control": "no-cache", "User-Agent": "CargoPT verification"},
@@ -148,7 +160,8 @@ def check_public(base_url: str) -> None:
             body = response.read().decode("utf-8")
             assert response.status == 200, public_path
             assert reviewer in body, public_path
-            assert EXPECTED_DATE in body, public_path
+            expected_date = UPDATED_DATE if relative in UPDATED_PAGES else EXPECTED_DATE
+            assert expected_date in body, public_path
             assert "77" in body, public_path
             check_faq_parity(body, structured_data(body), public_path)
 

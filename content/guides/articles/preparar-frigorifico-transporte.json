@@ -6,16 +6,16 @@
   "path": "/guias/objetos/preparar-frigorifico-transporte/",
   "title": "Como preparar um frigorífico para transporte",
   "meta_title": "Como preparar um frigorífico para transporte — CargoPT",
-  "meta_description": "Saiba como esvaziar, desligar, limpar, proteger e preparar um frigorífico antes do transporte.",
+  "meta_description": "Checklist para desligar, esvaziar, descongelar, secar e proteger um frigorífico antes do transporte, sem esquecer acessos e medidas.",
   "primary_query": "preparar frigorífico para transporte",
   "intent": [
     "informational"
   ],
   "article_section": "Móveis e objetos",
   "eyebrow": "Preparação do frigorífico",
-  "hero_description": "Uma preparação antecipada reduz o risco de água, odores, peças soltas e danos durante a movimentação do frigorífico.",
+  "hero_description": "Esvazie, descongele, seque e proteja o aparelho com antecedência, seguindo o manual do fabricante e confirmando os acessos.",
   "date_published": "2026-07-12",
-  "date_modified": "2026-07-12",
+  "date_modified": "2026-09-19",
   "review_owner": "CargoPT",
   "direct_answer_heading": "Prepare o frigorífico antes da chegada do transportador",
   "key_points_heading": "Passos essenciais",
@@ -109,6 +109,21 @@
         "Distância entre a entrada e o veículo.",
         "Necessidade de ajudantes ou equipamento adicional."
       ]
+    },
+    {
+      "id": "confirmacao-antes-recolha",
+      "heading": "O que confirmar antes da recolha",
+      "paragraphs": [
+        "Além de preparar o aparelho, confirme com o transportador a posição prevista, o número de ajudantes e o equipamento de movimentação. O método adequado depende do modelo e das instruções do fabricante.",
+        "Envie fotografias do frigorífico e das zonas estreitas. Informe também se portas, puxadores ou outros elementos podem precisar de remoção e quem ficará responsável por essa tarefa."
+      ],
+      "checklist": [
+        "Manual do fabricante consultado para transporte e reinício.",
+        "Interior vazio, descongelado e seco.",
+        "Prateleiras, gavetas, portas e cabo protegidos.",
+        "Medidas do aparelho e dos acessos verificadas.",
+        "Percurso, ajudantes e equipamento confirmados."
+      ]
     }
   ],
   "mid_cta": {
@@ -141,6 +156,11 @@
   ],
   "related_links": [
     {
+      "title": "Pedir transporte de frigorífico em Lisboa",
+      "href": "/transporte-frigorifico-lisboa/",
+      "type": "service"
+    },
+    {
       "title": "How to prepare a refrigerator for transport — versão em inglês",
       "href": "/en/guides/how-to-prepare-a-refrigerator-for-transport/",
       "type": "guide"
@@ -149,11 +169,6 @@
       "title": "Как подготовить холодильник к перевозке — versão em russo",
       "href": "/ru/guides/kak-podgotovit-holodilnik-k-perevozke/",
       "type": "guide"
-    },
-    {
-      "title": "Transporte de frigorífico em Lisboa",
-      "href": "/transporte-frigorifico-lisboa/",
-      "type": "landing"
     },
     {
       "title": "Pedir propostas para uma mudança",

@@ -5,8 +5,8 @@
   "cluster": "objects",
   "path": "/transporte-frigorifico-lisboa/",
   "title": "Transporte de frigorífico em Lisboa",
-  "meta_title": "Transporte de frigorífico em Lisboa — CargoPT",
-  "meta_description": "Peça propostas para transporte de frigorífico em Lisboa: preparação, acessos, equipa e proteção.",
+  "meta_title": "Transporte de frigorífico em Lisboa: pedir propostas — CargoPT",
+  "meta_description": "Peça propostas para transportar um frigorífico em Lisboa com medidas, fotografias, andares, elevadores, ajudantes e posição de transporte.",
   "primary_query": "transporte frigorífico Lisboa",
   "intent": [
     "local",
@@ -15,9 +15,9 @@
   ],
   "article_section": "Móveis e objetos",
   "eyebrow": "Transporte de frigorífico em Lisboa",
-  "hero_description": "O transporte de frigorífico em Lisboa exige preparação antecipada, medidas corretas, verificação dos acessos, equipa suficiente, proteção das superfícies e fixação estável no veículo.",
+  "hero_description": "Descreva o frigorífico, os acessos e a ajuda necessária para que transportadores independentes possam avaliar o mesmo serviço. A disponibilidade e as propostas não são garantidas.",
   "date_published": "2026-07-14",
-  "date_modified": "2026-07-15",
+  "date_modified": "2026-09-19",
   "review_owner": "CargoPT",
   "direct_answer_heading": "Como pedir transporte de frigorífico em Lisboa",
   "key_points_heading": "Informação necessária para o serviço",
@@ -119,6 +119,21 @@
         "Compare equipa, equipamento, proteção, horário, valor e condições de responsabilidade.",
         "Compare propostas que considerem o mesmo aparelho, os mesmos acessos e o mesmo estado de preparação. Verifique ajudantes, equipamento, carga, descarga, colocação, eventual desmontagem, horário e preço. Peça que fiquem registadas as condições aplicáveis se as medidas, os acessos ou as tarefas forem diferentes do descrito."
       ]
+    },
+    {
+      "id": "pedido-local-frigorifico",
+      "heading": "Dados que evitam dúvidas num transporte local",
+      "paragraphs": [
+        "Em Lisboa, o percurso dentro dos edifícios pode ser mais determinante do que a distância de estrada. Informe elevadores, escadas, corredores, portas e a distância real até ao lugar onde o veículo pode parar.",
+        "Indique ainda se o aparelho estará desligado, vazio, descongelado e seco. A posição e o tempo de espera antes de voltar a ligar devem seguir o manual do fabricante."
+      ],
+      "checklist": [
+        "Medidas, peso aproximado, modelo e fotografias.",
+        "Andares e elevadores nas duas moradas.",
+        "Escadas, portas estreitas e distância ao veículo.",
+        "Ajuda disponível e equipamento pretendido.",
+        "Data, horário e preparação já concluída."
+      ]
     }
   ],
   "mid_cta": {
@@ -151,6 +166,11 @@
   ],
   "related_links": [
     {
+      "title": "Como preparar um frigorífico para transporte",
+      "href": "/guias/objetos/preparar-frigorifico-transporte/",
+      "type": "guide"
+    },
+    {
       "title": "Refrigerator transport in Lisbon — versão em inglês",
       "href": "/en/guides/refrigerator-transport-lisbon/",
       "type": "guide"
@@ -158,11 +178,6 @@
     {
       "title": "Перевозка холодильника в Лиссабоне — versão em russo",
       "href": "/ru/guides/perevozka-holodilnika-lissabon/",
-      "type": "guide"
-    },
-    {
-      "title": "Como preparar um frigorífico para transporte",
-      "href": "/guias/objetos/preparar-frigorifico-transporte/",
       "type": "guide"
     },
     {

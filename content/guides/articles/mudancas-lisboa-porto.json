@@ -4,9 +4,9 @@
   "locale": "pt-PT",
   "cluster": "cities",
   "path": "/mudancas-lisboa-porto/",
-  "title": "Mudanças de Lisboa para o Porto",
-  "meta_title": "Mudanças entre Lisboa e o Porto: preparação e acessos — CargoPT",
-  "meta_description": "Prepare uma mudança entre Lisboa e o Porto: carga, acessos, estacionamento, ajudantes, proteção e serviços adicionais.",
+  "title": "Mudanças entre Lisboa e o Porto",
+  "meta_title": "Mudanças Lisboa–Porto nos dois sentidos — CargoPT",
+  "meta_description": "Prepare uma mudança entre Lisboa e o Porto, em qualquer direção: inventário, acessos, ajudantes, proteção e serviços a confirmar.",
   "primary_query": "mudanças Lisboa Porto",
   "intent": [
     "local",
@@ -15,9 +15,9 @@
   ],
   "article_section": "Mudanças por cidade",
   "eyebrow": "Mudanças Lisboa–Porto",
-  "hero_description": "Uma mudança entre Lisboa e o Porto deve considerar as condições concretas de recolha e entrega. Uma mudança entre Lisboa e o Porto exige coordenar dois acessos urbanos distintos, um percurso longo e a proteção da carga durante várias horas de transporte.",
+  "hero_description": "Prepare uma mudança Lisboa–Porto ou Porto–Lisboa com a mesma informação completa sobre carga, acessos, data e tarefas.",
   "date_published": "2026-07-14",
-  "date_modified": "2026-07-15",
+  "date_modified": "2026-09-19",
   "review_owner": "CargoPT",
   "direct_answer_heading": "O que deve confirmar antes de uma mudança entre Lisboa e o Porto",
   "key_points_heading": "Informação essencial para a rota",
@@ -142,6 +142,21 @@
         "O número de ajudantes está indicado.",
         "Os serviços adicionais estão discriminados.",
         "O valor e as condições estão registados por escrito."
+      ]
+    },
+    {
+      "id": "porto-lisboa",
+      "heading": "O que muda no sentido Porto–Lisboa?",
+      "paragraphs": [
+        "Os dados essenciais são os mesmos nos dois sentidos: carga, acessos, data, equipa e equipamento. O que muda são as condições concretas das moradas de recolha e entrega.",
+        "Para Porto–Lisboa, descreva primeiro o acesso no Porto e depois o destino em Lisboa. Não reutilize automaticamente informações da viagem inversa: andares, elevadores, estacionamento e distância ao veículo devem ser confirmados em cada local."
+      ],
+      "checklist": [
+        "Morada e acesso da recolha no Porto.",
+        "Morada e acesso da entrega em Lisboa.",
+        "Inventário e fotografias atuais.",
+        "Data, flexibilidade e eventuais paragens.",
+        "Ajudantes, proteção e serviços adicionais."
       ]
     },
     {

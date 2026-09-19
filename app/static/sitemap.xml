@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://cargopt.pt/</loc><lastmod>2026-09-05</lastmod></url>
-  <url><loc>https://cargopt.pt/en/</loc><lastmod>2026-09-05</lastmod></url>
-  <url><loc>https://cargopt.pt/ru/</loc><lastmod>2026-09-05</lastmod></url>
+  <url><loc>https://cargopt.pt/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/en/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/ru/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/aeo.md</loc><lastmod>2026-09-05</lastmod></url>
-  <url><loc>https://cargopt.pt/knowledge.md</loc><lastmod>2026-09-05</lastmod></url>
+  <url><loc>https://cargopt.pt/knowledge.md</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/llms.txt</loc><lastmod>2026-06-30</lastmod></url>
 <url><loc>https://cargopt.pt/ai.txt</loc><lastmod>2026-06-30</lastmod></url>
 <url><loc>https://cargopt.pt/humans.txt</loc><lastmod>2026-06-30</lastmod></url>
@@ -13,37 +13,36 @@
   <url><loc>https://cargopt.pt/mudancas-sintra/</loc><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://cargopt.pt/mudancas-porto/</loc><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://cargopt.pt/transporte-moveis-lisboa/</loc><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://cargopt.pt/transporte-sofa-lisboa/</loc><lastmod>2026-07-15</lastmod></url>
-  <url><loc>https://cargopt.pt/transporte-eletrodomesticos-lisboa/</loc><lastmod>2026-09-05</lastmod></url>
-  <url><loc>https://cargopt.pt/mudancas-lisboa-porto/</loc><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://cargopt.pt/transporte-sofa-lisboa/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/transporte-eletrodomesticos-lisboa/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/mudancas-lisboa-porto/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/mudancas-oeiras/</loc><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://cargopt.pt/mudancas-almada/</loc><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://cargopt.pt/mudancas-braga/</loc><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://cargopt.pt/mudancas-coimbra/</loc><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://cargopt.pt/mudancas-apartamento-lisboa/</loc><lastmod>2026-07-15</lastmod></url>
-  <url><loc>https://cargopt.pt/mudancas-escritorio-lisboa/</loc><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://cargopt.pt/mudancas-escritorio-lisboa/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/transportadora-lisboa/</loc><lastmod>2026-07-15</lastmod></url>
-  <url><loc>https://cargopt.pt/transportadora-porto/</loc><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://cargopt.pt/transportadora-porto/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/transporte-piano-lisboa/</loc><lastmod>2026-07-15</lastmod></url>
-  <url><loc>https://cargopt.pt/transporte-frigorifico-lisboa/</loc><lastmod>2026-07-15</lastmod></url>
+  <url><loc>https://cargopt.pt/transporte-frigorifico-lisboa/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/transporte-maquina-lavar-lisboa/</loc><lastmod>2026-07-15</lastmod></url>
   <url><loc>https://cargopt.pt/transporte-caixas-lisboa/</loc><lastmod>2026-07-15</lastmod></url>
-  <url><loc>https://cargopt.pt/transporte-cama-lisboa/</loc><lastmod>2026-06-30</lastmod></url>
+  <url><loc>https://cargopt.pt/transporte-cama-lisboa/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/transporte-armario-lisboa/</loc><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://cargopt.pt/transporte-materiais-construcao-lisboa/</loc><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://cargopt.pt/mudancas-lisboa-cascais/</loc><lastmod>2026-06-30</lastmod></url>
   <url><loc>https://cargopt.pt/mudancas-lisboa-algarve/</loc><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://cargopt.pt/mudancas-porto-lisboa/</loc><lastmod>2026-06-30</lastmod></url>
-  <url><loc>https://cargopt.pt/transportadores/</loc><lastmod>2026-07-03</lastmod></url>
-  <url><loc>https://cargopt.pt/en/carriers/</loc><lastmod>2026-07-03</lastmod></url>
-  <url><loc>https://cargopt.pt/ru/carriers/</loc><lastmod>2026-07-03</lastmod></url>
+  <url><loc>https://cargopt.pt/transportadores/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/en/carriers/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/ru/carriers/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/parceiros/</loc><lastmod>2026-08-27</lastmod></url>
   <url><loc>https://cargopt.pt/en/partners/</loc><lastmod>2026-08-27</lastmod></url>
   <url><loc>https://cargopt.pt/ru/partners/</loc><lastmod>2026-08-27</lastmod></url>
-  <url><loc>https://cargopt.pt/guias/</loc><lastmod>2026-07-11</lastmod></url>
+  <url><loc>https://cargopt.pt/guias/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/en/guides/</loc><lastmod>2026-07-24</lastmod></url>
   <url><loc>https://cargopt.pt/ru/guides/</loc><lastmod>2026-07-24</lastmod></url>
-  <url><loc>https://cargopt.pt/guias/precos/quanto-custa-uma-mudanca/</loc><lastmod>2026-07-11</lastmod></url>
+  <url><loc>https://cargopt.pt/guias/precos/quanto-custa-uma-mudanca/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/guias/precos/como-pedir-orcamento-mudanca/</loc><lastmod>2026-07-11</lastmod></url>
   <url><loc>https://cargopt.pt/guias/cidades/mudancas-amadora/</loc><lastmod>2026-07-12</lastmod></url>
   <url><loc>https://cargopt.pt/guias/cidades/mudancas-loures/</loc><lastmod>2026-07-12</lastmod></url>
@@ -59,7 +58,6 @@
   <url><loc>https://cargopt.pt/guias/cidades/mudancas-setubal/</loc><lastmod>2026-07-12</lastmod></url>
   <url><loc>https://cargopt.pt/guias/precos/quanto-custa-mudanca-lisboa/</loc><lastmod>2026-07-12</lastmod></url>
   <url><loc>https://cargopt.pt/guias/precos/quanto-custa-mudanca-porto/</loc><lastmod>2026-09-05</lastmod></url>
-  <url><loc>https://cargopt.pt/guias/precos/fatores-preco-mudanca/</loc><lastmod>2026-07-12</lastmod></url>
   <url><loc>https://cargopt.pt/guias/precos/como-reduzir-custo-mudanca/</loc><lastmod>2026-07-12</lastmod></url>
   <url><loc>https://cargopt.pt/guias/planeamento/como-preparar-uma-mudanca/</loc><lastmod>2026-07-12</lastmod></url>
   <url><loc>https://cargopt.pt/guias/planeamento/checklist-mudanca/</loc><lastmod>2026-07-12</lastmod></url>
@@ -67,15 +65,15 @@
   <url><loc>https://cargopt.pt/guias/planeamento/quando-e-mais-barato-mudar/</loc><lastmod>2026-07-12</lastmod></url>
   <url><loc>https://cargopt.pt/guias/planeamento/como-escolher-empresa-mudancas/</loc><lastmod>2026-07-12</lastmod></url>
   <url><loc>https://cargopt.pt/guias/planeamento/elevador-andares-mudanca/</loc><lastmod>2026-07-12</lastmod></url>
-  <url><loc>https://cargopt.pt/guias/objetos/como-transportar-frigorifico/</loc><lastmod>2026-09-05</lastmod></url>
-  <url><loc>https://cargopt.pt/guias/objetos/preparar-frigorifico-transporte/</loc><lastmod>2026-07-12</lastmod></url>
-  <url><loc>https://cargopt.pt/guias/objetos/como-transportar-maquina-lavar/</loc><lastmod>2026-07-12</lastmod></url>
-  <url><loc>https://cargopt.pt/guias/objetos/como-transportar-sofa/</loc><lastmod>2026-07-12</lastmod></url>
+  <url><loc>https://cargopt.pt/guias/objetos/como-transportar-frigorifico/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/guias/objetos/preparar-frigorifico-transporte/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/guias/objetos/como-transportar-maquina-lavar/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/guias/objetos/como-transportar-sofa/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/guias/objetos/como-transportar-piano/</loc><lastmod>2026-07-12</lastmod></url>
   <url><loc>https://cargopt.pt/guias/objetos/medir-moveis-antes-mudanca/</loc><lastmod>2026-07-12</lastmod></url>
   <url><loc>https://cargopt.pt/guias/embalamento/como-embalar-caixas/</loc><lastmod>2026-07-12</lastmod></url>
-  <url><loc>https://cargopt.pt/guias/embalamento/como-embalar-louca/</loc><lastmod>2026-07-12</lastmod></url>
-  <url><loc>https://cargopt.pt/guias/embalamento/como-embalar-televisao/</loc><lastmod>2026-07-12</lastmod></url>
+  <url><loc>https://cargopt.pt/guias/embalamento/como-embalar-louca/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/guias/embalamento/como-embalar-televisao/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/guias/embalamento/como-embalar-eletrodomesticos/</loc><lastmod>2026-07-12</lastmod></url>
   <url><loc>https://cargopt.pt/guias/seguranca/responsabilidade-danos-mudanca/</loc><lastmod>2026-07-12</lastmod></url>
   <url><loc>https://cargopt.pt/guias/seguranca/seguro-transporte-moveis/</loc><lastmod>2026-07-12</lastmod></url>
@@ -98,16 +96,16 @@
   <url><loc>https://cargopt.pt/ru/guides/perevozka-mebeli-lissabon/</loc><lastmod>2026-07-24</lastmod></url>
   <url><loc>https://cargopt.pt/en/guides/apartment-moving-lisbon/</loc><lastmod>2026-07-24</lastmod></url>
   <url><loc>https://cargopt.pt/ru/guides/pereezd-kvartiry-lissabon/</loc><lastmod>2026-07-24</lastmod></url>
-  <url><loc>https://cargopt.pt/en/guides/how-much-does-a-move-cost/</loc><lastmod>2026-07-24</lastmod></url>
-  <url><loc>https://cargopt.pt/ru/guides/skolko-stoit-pereezd/</loc><lastmod>2026-07-24</lastmod></url>
-  <url><loc>https://cargopt.pt/ru/guides/faktory-stoimosti-pereezda/</loc><lastmod>2026-07-24</lastmod></url>
+  <url><loc>https://cargopt.pt/en/guides/how-much-does-a-move-cost/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/ru/guides/skolko-stoit-pereezd/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/ru/guides/faktory-stoimosti-pereezda/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/en/guides/how-to-reduce-moving-cost/</loc><lastmod>2026-07-24</lastmod></url>
   <url><loc>https://cargopt.pt/en/guides/how-to-request-a-moving-quote/</loc><lastmod>2026-07-24</lastmod></url>
   <url><loc>https://cargopt.pt/ru/guides/kak-snizit-stoimost-pereezda/</loc><lastmod>2026-07-24</lastmod></url>
   <url><loc>https://cargopt.pt/ru/guides/kak-zaprosit-predlozhenie-na-pereezd/</loc><lastmod>2026-07-24</lastmod></url>
   <url><loc>https://cargopt.pt/en/guides/moving-cost-lisbon/</loc><lastmod>2026-07-24</lastmod></url>
   <url><loc>https://cargopt.pt/en/guides/moving-cost-porto/</loc><lastmod>2026-09-05</lastmod></url>
-  <url><loc>https://cargopt.pt/en/guides/moving-price-factors/</loc><lastmod>2026-07-24</lastmod></url>
+  <url><loc>https://cargopt.pt/en/guides/moving-price-factors/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/ru/guides/stoimost-pereezda-lissabon/</loc><lastmod>2026-07-24</lastmod></url>
   <url><loc>https://cargopt.pt/ru/guides/stoimost-pereezda-portu/</loc><lastmod>2026-09-05</lastmod></url>
   <url><loc>https://cargopt.pt/en/guides/complete-moving-checklist/</loc><lastmod>2026-07-24</lastmod></url>
@@ -200,8 +198,17 @@
   <url><loc>https://cargopt.pt/ru/guides/pereezd-lissabon-algarve/</loc><lastmod>2026-07-24</lastmod></url>
   <url><loc>https://cargopt.pt/en/guides/moving-lisbon-to-cascais/</loc><lastmod>2026-07-24</lastmod></url>
   <url><loc>https://cargopt.pt/ru/guides/pereezd-lissabon-kashkaysh/</loc><lastmod>2026-07-24</lastmod></url>
-  <url><loc>https://cargopt.pt/en/guides/moving-lisbon-to-porto/</loc><lastmod>2026-07-24</lastmod></url>
-  <url><loc>https://cargopt.pt/ru/guides/pereezd-lissabon-portu/</loc><lastmod>2026-07-24</lastmod></url>
+  <url><loc>https://cargopt.pt/en/guides/moving-lisbon-to-porto/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/ru/guides/pereezd-lissabon-portu/</loc><lastmod>2026-09-19</lastmod></url>
   <url><loc>https://cargopt.pt/en/guides/moving-company-lisbon/</loc><lastmod>2026-07-24</lastmod></url>
   <url><loc>https://cargopt.pt/ru/guides/transportnaya-kompaniya-lissabon/</loc><lastmod>2026-07-24</lastmod></url>
+  <url><loc>https://cargopt.pt/en/packing-disassembly-assembly/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/en/small-moves-lisbon/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/en/urgent-transport-portugal/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/mudancas-pequenas-lisboa/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/ru/nebolshoy-pereezd-lissabon/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/ru/srochnaya-perevozka-portugaliya/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/ru/upakovka-razborka-sborka/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/servico-embalamento-desmontagem-montagem/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://cargopt.pt/transporte-urgente-portugal/</loc><lastmod>2026-09-19</lastmod></url>
 </urlset>

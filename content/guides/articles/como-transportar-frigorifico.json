@@ -5,8 +5,8 @@
   "cluster": "objects",
   "path": "/guias/objetos/como-transportar-frigorifico/",
   "title": "Como transportar um frigorífico",
-  "meta_title": "Como transportar um frigorífico com segurança — CargoPT",
-  "meta_description": "Veja como preparar, proteger e transportar um frigorífico, incluindo acessos, posição e cuidados após a entrega.",
+  "meta_title": "Como transportar um frigorífico em segurança — CargoPT",
+  "meta_description": "Passos para transportar um frigorífico: preparação, posição vertical, medidas, acessos e dados necessários para pedir propostas comparáveis.",
   "primary_query": "como transportar frigorífico",
   "intent": [
     "informational",
@@ -14,9 +14,9 @@
   ],
   "article_section": "Móveis e objetos",
   "eyebrow": "Transporte de frigorífico",
-  "hero_description": "O transporte exige preparação, proteção adequada, controlo da inclinação e uma rota compatível com as dimensões do frigorífico.",
+  "hero_description": "Prepare o frigorífico, meça os acessos e descreva posição, dimensões e ajuda necessária antes de pedir transporte.",
   "date_published": "2026-07-12",
-  "date_modified": "2026-09-05",
+  "date_modified": "2026-09-19",
   "review_owner": "Redação CargoPT",
   "direct_answer_heading": "Transporte o frigorífico vazio, protegido e tão vertical quanto possível",
   "key_points_heading": "Cuidados principais",
@@ -119,6 +119,22 @@
         "Pisos, elevadores, escadas e estacionamento.",
         "Ajudantes e tarefas adicionais necessárias."
       ]
+    },
+    {
+      "id": "dados-pedido-frigorifico",
+      "heading": "Que dados deve enviar para transportar um frigorífico?",
+      "paragraphs": [
+        "Um pedido útil identifica o aparelho e o percurso real. Esta informação permite avaliar capacidade, ajudantes e equipamento sem assumir condições que só serão descobertas no local.",
+        "Na CargoPT, estes dados fazem parte da avaliação por transportadores independentes. Uma descrição completa não garante proposta, mas reduz perguntas e respostas baseadas em cargas diferentes."
+      ],
+      "checklist": [
+        "Altura, largura, profundidade e peso aproximado do frigorífico.",
+        "Modelo, número de portas e fotografias do aparelho.",
+        "Andares, elevadores, escadas, corredores e portas nos dois locais.",
+        "Distância entre a entrada e o lugar onde o veículo pode parar.",
+        "Ajuda disponível e necessidade de carrinho, plataforma ou mais pessoas.",
+        "Data, janela horária e tempo disponível para preparar o aparelho."
+      ]
     }
   ],
   "mid_cta": {
@@ -151,6 +167,11 @@
   ],
   "related_links": [
     {
+      "title": "Pedir transporte de frigorífico em Lisboa",
+      "href": "/transporte-frigorifico-lisboa/",
+      "type": "service"
+    },
+    {
       "title": "How to transport a refrigerator — versão em inglês",
       "href": "/en/guides/how-to-transport-a-refrigerator/",
       "type": "guide"
@@ -159,11 +180,6 @@
       "title": "Как перевезти холодильник — versão em russo",
       "href": "/ru/guides/kak-perevezti-holodilnik/",
       "type": "guide"
-    },
-    {
-      "title": "Transporte de frigorífico em Lisboa",
-      "href": "/transporte-frigorifico-lisboa/",
-      "type": "landing"
     },
     {
       "title": "Pedir propostas para uma mudança",
