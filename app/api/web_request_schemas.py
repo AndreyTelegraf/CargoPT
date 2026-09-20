@@ -205,15 +205,15 @@ class WebRequestPayload(BaseModel):
         if address_kinds.count("pickup") != 1 or address_kinds.count("dropoff") != 1:
             raise ValueError("exactly one pickup and one dropoff address are required")
 
-        has_foreign_destination = any(
+        has_foreign_address = any(
             address.country_code.lower() != "pt" for address in self.addresses
         )
-        has_portugal_pickup = any(
-            address.kind == "pickup" and address.country_code.lower() == "pt"
+        has_portugal_endpoint = any(
+            address.country_code.lower() == "pt"
             for address in self.addresses
         )
-        if has_foreign_destination and not has_portugal_pickup:
-            raise ValueError("international routes must start in Portugal")
+        if has_foreign_address and not has_portugal_endpoint:
+            raise ValueError("international routes must include Portugal")
 
         try:
             validate_requested_date_not_in_past(self.requested_date)

@@ -76,20 +76,29 @@ def check_api_contract() -> None:
     payload = WebRequestPayload.model_validate(base)
     assert payload.addresses[1].country_code == "pl"
 
-    invalid = dict(base)
-    invalid["addresses"] = [
+    inbound = dict(base)
+    inbound["addresses"] = [
         address("pickup", "pl", 52.23, 20.97, "Warszawa, Polska"),
         address("dropoff", "pt", 38.72, -9.14, "Lisboa, Portugal"),
     ]
+    payload = WebRequestPayload.model_validate(inbound)
+    assert payload.addresses[0].country_code == "pl"
+    assert payload.addresses[1].country_code == "pt"
+
+    foreign_to_foreign = dict(base)
+    foreign_to_foreign["addresses"] = [
+        address("pickup", "pl", 52.23, 20.97, "Warszawa, Polska"),
+        address("dropoff", "de", 48.76, 11.42, "Ingolstadt, Deutschland"),
+    ]
     try:
-        WebRequestPayload.model_validate(invalid)
+        WebRequestPayload.model_validate(foreign_to_foreign)
     except ValidationError as error:
-        assert "international routes must start in Portugal" in str(error)
+        assert "international routes must include Portugal" in str(error)
     else:
-        raise AssertionError("foreign pickup was accepted")
+        raise AssertionError("foreign-to-foreign route was accepted")
 
 
-async def check_pickup_region_matching() -> None:
+async def check_portugal_endpoint_region_matching() -> None:
     class FakeCarrierSearch:
         def __init__(self):
             self.regions = None
@@ -99,7 +108,6 @@ async def check_pickup_region_matching() -> None:
             return [SimpleNamespace(id=1)]
 
     search = FakeCarrierSearch()
-    service = JobMatchingService(search)
     job = SimpleNamespace(
         estimated_payload_kg=None,
         estimated_volume_m3=None,
@@ -110,7 +118,7 @@ async def check_pickup_region_matching() -> None:
         needs_assembly=False,
         needs_packing=False,
     )
-    addresses = [
+    outbound_addresses = [
         SimpleNamespace(
             kind="pickup",
             country_code="pt",
@@ -128,16 +136,46 @@ async def check_pickup_region_matching() -> None:
             normalized_address="Leszno 32, Warszawa, Polska",
         ),
     ]
-    result = await service.find_matching_result_for_job(job, addresses=addresses)
+    result = await JobMatchingService(search).find_matching_result_for_job(
+        job,
+        addresses=outbound_addresses,
+    )
     assert len(result.vehicles) == 1
     assert result.regions == ["Lisboa"]
     assert search.regions == ["Lisboa"]
+
+    inbound_search = FakeCarrierSearch()
+    inbound_addresses = [
+        SimpleNamespace(
+            kind="pickup",
+            country_code="de",
+            latitude=48.76,
+            longitude=11.42,
+            raw_text="Ingolstadt",
+            normalized_address="Ingolstadt, Deutschland",
+        ),
+        SimpleNamespace(
+            kind="dropoff",
+            country_code="pt",
+            latitude=40.15,
+            longitude=-8.86,
+            raw_text="Figueira da Foz",
+            normalized_address="Figueira da Foz, Portugal",
+        ),
+    ]
+    result = await JobMatchingService(inbound_search).find_matching_result_for_job(
+        job,
+        addresses=inbound_addresses,
+    )
+    assert len(result.vehicles) == 1
+    assert result.regions == ["Centro"]
+    assert inbound_search.regions == ["Centro"]
 
 
 async def main() -> None:
     await check_search_fallback()
     check_api_contract()
-    await check_pickup_region_matching()
+    await check_portugal_endpoint_region_matching()
     print("INTERNATIONAL_ADDRESS_SMOKE_OK")
 
 

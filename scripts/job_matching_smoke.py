@@ -217,11 +217,42 @@ async def exercise_job_matching() -> None:
         )
         if international_result.regions != ["Lisboa"]:
             raise SystemExit(
-                "international matching did not stay pickup-only: "
+                "outbound international matching did not use the Portuguese pickup: "
                 f"{international_result.regions}"
             )
         if international_search.kwargs["regions"] != ["Lisboa"]:
             raise SystemExit("foreign dropoff leaked into carrier search")
+
+        inbound_search = CapturingCarrierSearch()
+        inbound_matching = JobMatchingService(inbound_search)
+        inbound_result = await inbound_matching.find_matching_result_for_job(
+            job,
+            addresses=[
+                SimpleNamespace(
+                    kind="pickup",
+                    country_code="de",
+                    latitude=48.76,
+                    longitude=11.42,
+                    raw_text="Ingolstadt, Deutschland",
+                    normalized_address="Ingolstadt, Deutschland",
+                ),
+                SimpleNamespace(
+                    kind="dropoff",
+                    country_code="pt",
+                    latitude=40.15,
+                    longitude=-8.86,
+                    raw_text="Figueira da Foz, Portugal",
+                    normalized_address="Figueira da Foz, Portugal",
+                ),
+            ],
+        )
+        if inbound_result.regions != ["Centro"]:
+            raise SystemExit(
+                "inbound international matching did not use the Portuguese dropoff: "
+                f"{inbound_result.regions}"
+            )
+        if inbound_search.kwargs["regions"] != ["Centro"]:
+            raise SystemExit("foreign pickup leaked into carrier search")
 
     await engine.dispose()
 

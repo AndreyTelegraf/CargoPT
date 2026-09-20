@@ -236,8 +236,7 @@ class JobMatchingService:
             [
                 address
                 for address in loaded_addresses
-                if address.kind == "pickup"
-                and (getattr(address, "country_code", None) or "pt").lower() == "pt"
+                if (getattr(address, "country_code", None) or "pt").lower() == "pt"
             ]
             if is_international
             else loaded_addresses

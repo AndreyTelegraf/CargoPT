@@ -6,7 +6,8 @@ source = Path(
 
 assert "regions=sorted(regions) or None" in source
 assert "for address in addresses_to_match:" in source
-assert "address.kind == \"pickup\"" in source
+assert '(getattr(address, "country_code", None) or "pt").lower() == "pt"' in source
+assert 'address.kind == "pickup"' not in source
 assert "if not address_regions:" in source
 assert "MatchingReason.REGION_NOT_DETERMINED" in source
 
