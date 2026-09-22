@@ -128,6 +128,8 @@ TESTS=(
   scripts/carrier_onboarding_fsm_smoke.py
   scripts/carrier_locale_smoke.py
   scripts/carrier_locale_migration_smoke.py
+  scripts/carrier_matching_filter_migration_smoke.py
+  scripts/carrier_matching_filter_smoke.py
   scripts/carrier_urgent_survey_smoke.py
   scripts/carrier_start_resume_smoke.py
   scripts/carrier_reinvite_reuse_smoke.py

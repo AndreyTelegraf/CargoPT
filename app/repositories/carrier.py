@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.carrier import AdminInviteToken
 from app.models.carrier import CarrierCompany
+from app.models.carrier import CarrierMatchingFilter
 from app.models.carrier import CarrierVehicle
 from app.domain.carrier_status import CarrierStatus
 
@@ -537,17 +538,47 @@ class CarrierRepository:
         needs_assembly: bool = False,
         needs_packing: bool = False,
         regions: list[str] | None = None,
+        requested_volume_m3: float | None = None,
+        requested_loaders: int | None = None,
     ) -> list[CarrierVehicle]:
         now = datetime.now(UTC)
 
         stmt = (
             select(CarrierVehicle)
             .join(CarrierCompany)
+            .outerjoin(
+                CarrierMatchingFilter,
+                CarrierMatchingFilter.carrier_id == CarrierCompany.id,
+            )
             .where(CarrierVehicle.is_active.is_(True))
             .where(CarrierCompany.status == CarrierStatus.ACTIVE)
             .where(CarrierCompany.paid_until.is_not(None))
             .where(CarrierCompany.paid_until >= now)
         )
+
+        if requested_volume_m3 is None:
+            stmt = stmt.where(
+                or_(
+                    CarrierMatchingFilter.carrier_id.is_(None),
+                    CarrierMatchingFilter.require_known_volume.is_(False),
+                )
+            )
+        else:
+            stmt = stmt.where(
+                or_(
+                    CarrierMatchingFilter.max_job_volume_m3.is_(None),
+                    CarrierMatchingFilter.max_job_volume_m3
+                    >= requested_volume_m3,
+                )
+            )
+
+        if requested_loaders is not None and requested_loaders > 0:
+            stmt = stmt.where(
+                or_(
+                    CarrierMatchingFilter.carrier_id.is_(None),
+                    CarrierMatchingFilter.no_loaders_only.is_(False),
+                )
+            )
 
         if min_payload_kg is not None:
             stmt = stmt.where(CarrierVehicle.payload_kg >= min_payload_kg)

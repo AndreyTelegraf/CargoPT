@@ -294,6 +294,8 @@ class JobMatchingService:
             needs_assembly=job.needs_assembly,
             needs_packing=job.needs_packing,
             regions=sorted(regions) or None,
+            requested_volume_m3=job.estimated_volume_m3,
+            requested_loaders=job.required_loaders,
         )
 
         if not vehicles:

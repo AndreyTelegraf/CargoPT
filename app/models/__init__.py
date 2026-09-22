@@ -1,5 +1,6 @@
 from app.models.carrier import AdminInviteToken
 from app.models.carrier import CarrierCompany
+from app.models.carrier import CarrierMatchingFilter
 from app.models.carrier import CarrierVehicle
 from app.models.carrier_urgent_survey import CarrierUrgentSurvey
 from app.models.carrier_urgent_survey import CarrierUrgentSurveyReportEvent
@@ -22,6 +23,7 @@ from app.models.telegram_notification import TelegramNotificationOutbox
 __all__ = [
     "AdminInviteToken",
     "CarrierCompany",
+    "CarrierMatchingFilter",
     "CarrierVehicle",
     "CarrierUrgentSurvey",
     "CarrierUrgentSurveyReportEvent",

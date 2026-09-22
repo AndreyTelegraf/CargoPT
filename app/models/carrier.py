@@ -86,6 +86,36 @@ class CarrierCompany(Base):
     invite_tokens = relationship("AdminInviteToken", back_populates="carrier")
 
 
+class CarrierMatchingFilter(Base):
+    __tablename__ = "carrier_matching_filter"
+
+    carrier_id: Mapped[int] = mapped_column(
+        ForeignKey("carrier_company.id"),
+        primary_key=True,
+    )
+
+    max_job_volume_m3: Mapped[float | None] = mapped_column(Float)
+    require_known_volume: Mapped[bool] = mapped_column(
+        Boolean,
+        nullable=False,
+        default=False,
+    )
+    no_loaders_only: Mapped[bool] = mapped_column(
+        Boolean,
+        nullable=False,
+        default=False,
+    )
+
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+    )
+
+
 class CarrierVehicle(Base):
     __tablename__ = "carrier_vehicle"
 
