@@ -192,6 +192,7 @@ async def _nominatim_search(
     *,
     provider_url: str,
     params: dict[str, str],
+    wrap_object: bool = False,
 ) -> list:
     cache_key = (provider_url, tuple(sorted(params.items())))
     now = monotonic()
@@ -220,6 +221,8 @@ async def _nominatim_search(
         response.raise_for_status()
         data = response.json()
 
+    if wrap_object and isinstance(data, dict):
+        data = [data]
     if not isinstance(data, list):
         raise ValueError("unexpected Nominatim response")
 
@@ -725,3 +728,26 @@ async def normalize_text_location_resolved(raw_text: str) -> dict[str, str | flo
         normalized["map_url"] = build_google_maps_search_url(query_address)
 
     return await geocode_normalized_location(normalized)
+
+
+async def reverse_geocode_portugal_district(latitude: float, longitude: float) -> str | None:
+    """Resolve a mainland district without treating neighbouring Spain as Portugal."""
+    if _valid_coordinates(latitude, longitude) == (None, None):
+        return None
+    provider_url = _configured_nominatim_provider_url().rsplit("/", 1)[0] + "/reverse"
+    try:
+        data = await _nominatim_search(
+            provider_url=provider_url,
+            params={
+                "lat": str(latitude), "lon": str(longitude),
+                "format": "jsonv2", "zoom": "10", "addressdetails": "1",
+            },
+            wrap_object=True,
+        )
+        address = data[0].get("address", {}) if data else {}
+        if not isinstance(address, dict) or address.get("country_code") != "pt":
+            return None
+        district = address.get("ISO3166-2-lvl6")
+        return district if isinstance(district, str) else None
+    except (httpx.HTTPError, ValueError, TypeError, AttributeError):
+        return None

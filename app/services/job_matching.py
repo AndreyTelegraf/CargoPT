@@ -5,6 +5,7 @@ from app.models.carrier import CarrierVehicle
 from app.models.job import Job
 from app.services.carrier_search import CarrierSearchService
 from app.services.location_normalization import geocode_text_address
+from app.services.location_normalization import reverse_geocode_portugal_district
 
 
 REGION_KEYWORDS = {
@@ -125,6 +126,18 @@ REGION_BOUNDING_BOXES = [
 ]
 
 
+# Preserve the existing carrier categories; use administrative districts only
+# where the legacy coordinate boxes cannot classify a mainland location.
+DISTRICT_REGIONS = {
+    "PT-01": "Centro", "PT-02": "Alentejo", "PT-03": "Porto",
+    "PT-04": "Porto", "PT-05": "Centro", "PT-06": "Centro",
+    "PT-07": "Alentejo", "PT-08": "Algarve", "PT-09": "Centro",
+    "PT-10": "Centro", "PT-11": "Lisboa", "PT-12": "Alentejo",
+    "PT-13": "Porto", "PT-14": "Alentejo", "PT-15": "Lisboa",
+    "PT-16": "Porto", "PT-17": "Porto", "PT-18": "Centro",
+}
+
+
 def _regions_from_text(value: str | None) -> set[str]:
     if not value:
         return set()
@@ -180,6 +193,11 @@ async def _regions_from_geocoded_address(address) -> set[str]:
     for candidate in _address_text_candidates(address):
         latitude, longitude = await geocode_text_address(candidate)
         regions = _regions_from_coordinates(latitude, longitude)
+        if not regions and latitude is not None and longitude is not None:
+            district = await reverse_geocode_portugal_district(latitude, longitude)
+            region = DISTRICT_REGIONS.get(district)
+            if region:
+                regions = {region}
 
         if regions:
             return regions
@@ -255,6 +273,15 @@ class JobMatchingService:
                 address.longitude,
             )
             address_reason = MatchingReason.REGION_FROM_COORDINATES
+
+            if not address_regions and address.latitude is not None and address.longitude is not None:
+                district = await reverse_geocode_portugal_district(
+                    address.latitude, address.longitude,
+                )
+                region = DISTRICT_REGIONS.get(district)
+                if region:
+                    address_regions = {region}
+                    address_reason = MatchingReason.REGION_FROM_GEOCODING
 
             if not address_regions:
                 address_regions = await _regions_from_geocoded_address(address)
