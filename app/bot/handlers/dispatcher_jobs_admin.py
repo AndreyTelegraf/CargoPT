@@ -627,7 +627,12 @@ async def _build_manual_dispatch_keyboard(
                 prefix = "[вне фильтра] "
 
         vehicle_label = f" · {vehicle.vehicle_type}" if vehicle is not None else ""
-        label = f"{prefix}{carrier.company_name}{vehicle_label}"
+        regions = [item.strip() for item in (carrier.operating_regions or "").split(",") if item.strip()]
+        region_label = (
+            "Вся Португалия" if "all_portugal" in regions
+            else ", ".join(regions) or "не указаны"
+        )
+        label = f"{prefix}{carrier.company_name}{vehicle_label} · Регионы: {region_label}"
         callback_data = (
             f"job:{job.id}:send:{vehicle.id}"
             if sendable and vehicle is not None
@@ -646,7 +651,7 @@ async def _build_manual_dispatch_keyboard(
     rows = [
         [
             InlineKeyboardButton(
-                text=label[:64],
+                text=label,
                 callback_data=callback_data,
             )
         ]
@@ -695,14 +700,19 @@ def _manual_dispatch_page_text(
     total_pages: int,
     total_entries: int,
     carrier_query: str | None = None,
+    keyboard: InlineKeyboardMarkup | None = None,
 ) -> str:
     search_line = (
         f"Поиск: {carrier_query}\n" if (carrier_query or "").strip() else ""
     )
+    carrier_lines = ""
+    if keyboard is not None:
+        carrier_lines = "\n".join(row[0].text for row in keyboard.inline_keyboard[:-2]) + "\n\n"
     return (
         f"Перевозчики для ручной отправки заявки #{job_id}\n"
         f"Страница {page + 1}/{total_pages} · всего {total_entries}\n\n"
         f"{search_line}"
+        f"{carrier_lines}"
         "[вне фильтра] — можно отправить вручную; "
         "остальные статусы — информационные.\n\n"
         f"Поиск: /job_carriers {job_id} @username или название"
@@ -791,6 +801,7 @@ async def dispatcher_job_carrier_search(message: Message) -> None:
             total_pages=total_pages,
             total_entries=total_entries,
             carrier_query=carrier_query,
+            keyboard=keyboard,
         ),
         reply_markup=keyboard,
     )
@@ -1057,6 +1068,7 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
                 page=page,
                 total_pages=total_pages,
                 total_entries=total_entries,
+                keyboard=keyboard,
             )
             if extra:
                 await callback.message.edit_text(page_text, reply_markup=keyboard)

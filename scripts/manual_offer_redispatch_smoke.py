@@ -10,6 +10,7 @@ os.environ.setdefault("DATABASE_URL", "sqlite+aiosqlite:///data/cargopt_dev.db")
 from app.bot.handlers.dispatcher_jobs_admin import (  # noqa: E402
     MANUAL_DISPATCH_PAGE_SIZE,
     _build_manual_dispatch_keyboard,
+    _manual_dispatch_page_text,
 )
 from app.db.base import Base  # noqa: E402
 from app.models.carrier import CarrierCompany, CarrierVehicle  # noqa: E402
@@ -117,6 +118,12 @@ async def main() -> None:
             options = {}
             if carrier_id == 6:
                 options["regions"] = "Porto"
+            elif carrier_id == 11:
+                options["regions"] = "all_portugal"
+            elif carrier_id == 12:
+                options["regions"] = "Lisboa, Centro, Alentejo, Algarve"
+            elif carrier_id == 13:
+                options["regions"] = ""
             elif carrier_id == 7:
                 options["status"] = "invited"
             elif carrier_id == 9:
@@ -171,6 +178,16 @@ async def main() -> None:
             for row in keyboard.inline_keyboard[:-2]
         ]
         assert len(entry_buttons) == 13
+        labels = {button.text.split(" · ")[0]: button.text for button in entry_buttons}
+        assert "Регионы: Вся Португалия" in labels["@carrier11"]
+        assert "Регионы: Lisboa, Centro, Alentejo, Algarve" in labels["@carrier12"]
+        assert "Регионы: не указаны" in next(button.text for button in entry_buttons if "@carrier13" in button.text)
+        assert all("Регионы:" in button.text for button in entry_buttons)
+        for keyboard in (page_one, page_two):
+            page_text = _manual_dispatch_page_text(
+                job_id=138, page=0, total_pages=2, total_entries=13, keyboard=keyboard,
+            )
+            assert all(row[0].text in page_text for row in keyboard.inline_keyboard[:-2])
         buttons = {button.text: button.callback_data for button in entry_buttons}
         assert any("[вне фильтра] @carrier06" in text for text in buttons)
         assert any("[оффер ожидает] @carrier01" in text for text in buttons)
