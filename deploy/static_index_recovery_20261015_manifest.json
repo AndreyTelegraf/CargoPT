@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "mode": "applied",
+  "static_root": "/opt/bots/cargoPT_bot/app/static",
+  "static_files": [
+    "/opt/bots/cargoPT_bot/app/static/index.html",
+    "/opt/bots/cargoPT_bot/app/static/en/index.html",
+    "/opt/bots/cargoPT_bot/app/static/ru/index.html",
+    "/opt/bots/cargoPT_bot/app/static/en/guides/moving-price-factors/index.html",
+    "/opt/bots/cargoPT_bot/app/static/ru/guides/faktory-stoimosti-pereezda/index.html",
+    "/opt/bots/cargoPT_bot/app/static/mudancas-lisboa/index.html",
+    "/opt/bots/cargoPT_bot/app/static/sitemap.xml"
+  ]
+}

@@ -116,7 +116,7 @@ def main() -> None:
     sitemap = ElementTree.parse(STATIC / "sitemap.xml").getroot()
     ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     urls = [node.text for node in sitemap.findall("s:url/s:loc", ns)]
-    assert len(urls) == 211, len(urls)
+    assert len(urls) == 206, len(urls)
     assert len(urls) == len(set(urls))
     assert "https://cargopt.pt/mudancas-porto-lisboa/" not in urls
     assert "https://cargopt.pt/guias/precos/fatores-preco-mudanca/" not in urls
@@ -125,7 +125,10 @@ def main() -> None:
             assert f"https://cargopt.pt{path}" in urls, path
 
     nginx = (ROOT / "deploy/nginx/cargopt_seo_redirects.conf").read_text(encoding="utf-8")
-    assert nginx.count("return 301") == 4
+    assert nginx.count("return 301") == 6
+    for path in ("/servicos/transporte-frigorifico-lisboa", "/servicos/transporte-frigorifico-lisboa/"):
+        assert f"location = {path} {{" in nginx
+    assert "https://cargopt.pt/transporte-frigorifico-lisboa/$is_args$args" in nginx
     assert "mudancas-lisboa-porto" in nginx
     assert "quanto-custa-uma-mudanca" in nginx
 
