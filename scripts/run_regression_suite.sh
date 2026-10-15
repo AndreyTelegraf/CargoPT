@@ -107,6 +107,7 @@ TESTS=(
   scripts/web_intake_service_smoke.py
   scripts/job_matching_smoke.py
   scripts/job_matching_northern_coverage_smoke.py
+  scripts/job_matching_locality_fallback_smoke.py
   scripts/job_matching_ignores_weight_volume_smoke.py
   scripts/carrier_search_smoke.py
   scripts/job_offer_smoke.py

@@ -189,6 +189,25 @@ def _address_text_candidates(address) -> list[str]:
     return candidates
 
 
+def _address_locality_candidates(address) -> list[str]:
+    """Use explicit comma-separated locality names for region lookup only."""
+    candidates = []
+    for value in _address_text_candidates(address):
+        if "://" in value or "," not in value:
+            continue
+        locality = value.rsplit(",", 1)[-1].strip()
+        if (
+            sum(character.isalpha() for character in locality) < 3
+            or any(character.isdigit() for character in locality)
+            or locality.casefold() in {"portugal", "pt", "spain", "espanha", "es", "france", "frança", "fr"}
+            or locality.casefold().startswith(("rua ", "r. ", "avenida ", "av. ", "travessa ", "praceta ", "praça ", "largo ", "estrada ", "beco ", "alameda "))
+        ):
+            continue
+        if locality not in candidates:
+            candidates.append(locality)
+    return candidates
+
+
 async def _regions_from_geocoded_address(address) -> set[str]:
     for candidate in _address_text_candidates(address):
         latitude, longitude = await geocode_text_address(candidate)
@@ -199,6 +218,19 @@ async def _regions_from_geocoded_address(address) -> set[str]:
             if region:
                 regions = {region}
 
+        if regions:
+            return regions
+
+    # A geocoder may know the locality but not the exact street/building.
+    # Do not persist these coordinates as the customer's pickup/dropoff point.
+    for locality in _address_locality_candidates(address):
+        latitude, longitude = await geocode_text_address(locality)
+        regions = _regions_from_coordinates(latitude, longitude)
+        if not regions and latitude is not None and longitude is not None:
+            district = await reverse_geocode_portugal_district(latitude, longitude)
+            region = DISTRICT_REGIONS.get(district)
+            if region:
+                regions = {region}
         if regions:
             return regions
 
