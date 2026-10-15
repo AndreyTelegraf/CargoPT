@@ -162,7 +162,7 @@ def main() -> None:
             ("/assets/brand/og-image-v1.png", ""),
             ("/assets/brand/apple-touch-icon.png", ""),
             ("/robots.txt", "Sitemap: https://cargopt.pt/sitemap.xml"),
-            ("/sitemap.xml", "https://cargopt.pt/humans.txt"),
+            ("/sitemap.xml", "https://cargopt.pt/mudancas-lisboa/"),
             ("/llms.txt", "https://cargopt.pt/aeo.md"),
             ("/ai.txt", "CargoPT summary for AI assistants"),
             ("/aeo.md", "CargoPT positions itself as Portugal"),

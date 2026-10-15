@@ -156,7 +156,7 @@ for path in pages:
             hreflang_paths,
         )
 
-    assert len(links) in {1, 3}, (
+    assert len(links) in {1, 2, 3}, (
         relative,
         links,
     )
@@ -180,6 +180,8 @@ for path in pages:
             relative,
             links,
         )
+    elif len(links) == 2:
+        assert set(labels) == {"EN", "RU"}, (relative, links)
     else:
         assert labels == [
             expected_active_label[locale]
