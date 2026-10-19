@@ -33,6 +33,21 @@ if (context.hasShortLeadRequestedDate("2026-12-04", "11:59", fixedNow) !== true)
 if (context.hasShortLeadRequestedDate("2026-12-04", "12:00", fixedNow) !== false) {
   throw new Error(`exact 72-hour request misclassified in ${process.env.TZ}`);
 }
+// Non-quarter-hour minutes must keep their exact Portugal local time.
+for (const [date, time, expected, urgent] of [
+  ["2026-12-02", "10:10", "2026-12-02T10:10:00.000Z", true],
+  ["2026-12-10", "14:20", "2026-12-10T14:20:00.000Z", false],
+  ["2026-12-10", "09:07", "2026-12-10T09:07:00.000Z", false],
+  ["2027-07-10", "14:10", "2027-07-10T13:10:00.000Z", false]
+]) {
+  const instant = context.portugalLocalDateTimeToInstant(date, time);
+  if (!instant || instant.toISOString() !== expected) {
+    throw new Error(`Portugal local minute changed: ${date} ${time}`);
+  }
+  if (context.hasShortLeadRequestedDate(date, time, fixedNow) !== urgent) {
+    throw new Error(`Wrong lead-time notice: ${date} ${time}`);
+  }
+}
 console.log(`WEB_REQUEST_DATETIME_FRONTEND_OK ${process.env.TZ}`);
 '''
 
