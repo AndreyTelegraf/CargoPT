@@ -176,6 +176,38 @@ class TransactionalDelivery(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(len(list(await s.scalars(select(JobOffer)))), 1)
             self.assertEqual((await s.get(Job, 1)).status, "offered")
 
+    async def _future_admin_dispatch(self, action):
+        from app.bot.handlers import dispatcher_jobs_admin as handler
+        callback = SimpleNamespace(data=f"job:1:{action}", from_user=SimpleNamespace(id=336224597),
+            answer=AsyncMock(), bot=NoNetwork(), message=None)
+        with patch.object(handler, "async_session_maker", self.sessions):
+            await handler.dispatcher_job_admin_action(callback)
+            self.assertIn("очеред", callback.answer.await_args.args[0])
+            await handler.dispatcher_job_admin_action(callback)
+        async with self.sessions() as s:
+            self.assertEqual(len(list(await s.scalars(select(JobOffer)))), 2)
+            self.assertEqual(len(list(await s.scalars(select(TelegramNotificationOutbox)))), 1)
+            self.assertEqual((await s.get(Job, 1)).status, "offered")
+
+    async def test_future_admin_retry_queues_once(self):
+        await self._future_admin_dispatch("retry")
+
+    async def test_future_admin_single_send_queues_once(self):
+        await self._future_admin_dispatch("send:2")
+
+    async def test_future_decline_queues_next_round(self):
+        from app.bot.handlers import job_offer_response as handler
+        async with self.sessions() as s:
+            (await s.get(JobOffer, 1)).expires_at = self.now + timedelta(hours=1)
+            await s.commit()
+        callback = SimpleNamespace(data="offer_decline_reason:1:time_unavailable",
+            from_user=SimpleNamespace(id=1001, language_code="ru"), answer=AsyncMock(), bot=NoNetwork(), message=None)
+        with patch.object(handler, "async_session_maker", self.sessions):
+            await handler.handle_offer_decline_reason(callback)
+        async with self.sessions() as s:
+            self.assertEqual([o.status for o in await s.scalars(select(JobOffer).order_by(JobOffer.id))], ["declined", "pending"])
+            self.assertEqual(len(list(await s.scalars(select(TelegramNotificationOutbox)))), 1)
+
     async def test_past_date_decline_commits_without_redispatch(self):
         from app.bot.handlers import job_offer_response as handler
         async with self.sessions() as s:

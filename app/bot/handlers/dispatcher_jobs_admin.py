@@ -1183,7 +1183,7 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
 
         if sent_count == 0:
             await callback.answer(
-                f"Оффер создан, но отправка перевозчику #{vehicle.carrier_id} не подтвердилась.",
+                f"Оффер создан, но уведомление перевозчику #{vehicle.carrier_id} не поставлено в очередь.",
                 show_alert=True,
             )
             return
@@ -1195,7 +1195,7 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
 
         if callback.message:
             await callback.message.answer(
-                f"Заявка #{raw_job_id} вручную отправлена перевозчику:\n"
+                f"Уведомление о заявке #{raw_job_id} поставлено в очередь перевозчику:\n"
                 f"{carrier.company_name}\n"
                 f"Оффер #{offer.id}"
             )
