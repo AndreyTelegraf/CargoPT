@@ -13,3 +13,4 @@ class TelegramDeliveryStatus(StrEnum):
     RETRY = "retry"
     SENT = "sent"
     FAILED = "failed"
+    UNCERTAIN = "uncertain"

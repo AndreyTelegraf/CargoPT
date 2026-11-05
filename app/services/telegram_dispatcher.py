@@ -6,6 +6,8 @@ from datetime import timedelta
 
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.exceptions import TelegramForbiddenError
+from aiogram.exceptions import TelegramRetryAfter
+import traceback
 from aiogram.types import InlineKeyboardMarkup
 from aiogram.types import InputMediaPhoto
 from aiogram.types import InputMediaVideo
@@ -62,8 +64,14 @@ class TelegramNotificationDispatcher:
 
         processed = 0
         for notification_id in notification_ids:
-            if await self._dispatch_one(notification_id):
-                processed += 1
+            try:
+                if await self._dispatch_one(notification_id):
+                    processed += 1
+            except Exception as exc:
+                # Database failure after a successful send leaves SENDING. Recovery
+                # quarantines it; never send it again merely because marking failed.
+                logger.error("telegram_notification_persistence_error notification_id=%s error_type=%s stack=%s",
+                             notification_id, type(exc).__name__, self._safe_stack(exc))
         return processed
 
     async def _dispatch_one(self, notification_id: int) -> bool:
@@ -111,9 +119,9 @@ class TelegramNotificationDispatcher:
         except (TelegramForbiddenError, TelegramBadRequest) as exc:
             await self._record_failure(snapshot, exc=exc, permanent=True)
         except Exception as exc:
-            logger.exception(
-                "telegram_notification_delivery_error",
-                extra=self._log_context(snapshot),
+            logger.error(
+                "telegram_notification_delivery_error error_type=%s stack=%s",
+                type(exc).__name__, self._safe_stack(exc), extra=self._log_context(snapshot),
             )
             await self._record_failure(snapshot, exc=exc, permanent=False)
         else:
@@ -127,6 +135,7 @@ class TelegramNotificationDispatcher:
                     now=sent_at,
                     provider_chat_id=provider_chat_id,
                     provider_message_id=provider_message_id,
+                    expected_attempt=snapshot["attempt_count"],
                 )
                 if snapshot["offer_id"] is not None and message is not None:
                     await JobRepository(session).update_offer_carrier_message(
@@ -242,8 +251,11 @@ class TelegramNotificationDispatcher:
     ) -> None:
         failed_at = datetime.now(UTC)
         backoff = self.retry_base_seconds * (2 ** (snapshot["attempt_count"] - 1))
+        if isinstance(exc, TelegramRetryAfter):
+            backoff = max(backoff, exc.retry_after)
         next_attempt_at = failed_at + timedelta(seconds=backoff)
-        last_error = f"{type(exc).__name__}: {exc}"
+        # API exception strings can contain message bodies, file ids and chat ids.
+        last_error = type(exc).__name__
         async with self.session_maker() as session:
             repository = TelegramNotificationRepository(session)
             notification = await repository.mark_failed_attempt(
@@ -253,6 +265,7 @@ class TelegramNotificationDispatcher:
                 last_error=last_error,
                 permanent=permanent,
                 max_attempts=self.max_attempts,
+                expected_attempt=snapshot["attempt_count"],
             )
             await session.commit()
 
@@ -274,6 +287,11 @@ class TelegramNotificationDispatcher:
             "job_id": snapshot["job_id"],
             "offer_id": snapshot["offer_id"],
             "notification_type": snapshot["notification_type"],
-            "recipient_chat_id": snapshot["recipient_chat_id"],
+            "carrier_id": snapshot["payload"].get("carrier_id"),
             "attempt_count": snapshot["attempt_count"],
         }
+
+    @staticmethod
+    def _safe_stack(exc: Exception) -> str:
+        return " > ".join(f"{frame.filename}:{frame.lineno}:{frame.name}"
+                          for frame in traceback.extract_tb(exc.__traceback__))
