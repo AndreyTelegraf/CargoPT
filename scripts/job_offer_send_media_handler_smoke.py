@@ -12,13 +12,13 @@ from app.services.offer_notification import send_job_offers_to_carriers
 
 assert send_job_offers_to_carriers is not None
 
-source = Path("app/services/offer_notification.py").read_text(encoding="utf-8")
-assert "list_media_by_job" in source
-assert "send_photo" in source
-assert "send_video" in source
-assert "send_media_group" in source
-assert "caption=offer_text" in source
-assert 'parse_mode="HTML"' in source
-assert "Решение по заявке" in source
+from app.services.telegram_delivery_plan import build_delivery_plan
 
+for kind in ("photo", "video"):
+    plan = build_delivery_plan(dict(job_id=1, offer_id=1, notification_type="carrier_offer",
+        payload={"text": "<b>text</b>"}, media=[{"media_type": kind, "telegram_file_id": "file"}]))
+    assert plan[0]["method"] == f"send_{kind}"
+    assert plan[0]["kwargs"]["caption"] == "<b>text</b>"
+    assert plan[0]["kwargs"]["parse_mode"] == "HTML"
+    assert plan[0]["kwargs"]["reply_markup"]
 print("JOB_OFFER_SEND_MEDIA_HANDLER_SMOKE_OK")

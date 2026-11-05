@@ -1,16 +1,17 @@
+import os
 import sqlite3
 from pathlib import Path
 
 from app.models.job import Job
 
 
-DB_PATH = Path("data/cargopt_prod.db")
+DB_PATH = Path(os.environ.get("CARGOPT_AUDIT_DB_PATH", "data/cargopt_prod.db"))
 
 
 def main() -> None:
     assert hasattr(Job, "tracking_token")
 
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True)
     try:
         columns = {row[1] for row in conn.execute("PRAGMA table_info(job)").fetchall()}
         assert "tracking_token" in columns

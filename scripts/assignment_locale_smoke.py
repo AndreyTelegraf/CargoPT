@@ -4,6 +4,7 @@ import os
 import sys
 from pathlib import Path
 from types import SimpleNamespace
+from unittest.mock import patch, AsyncMock
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -25,6 +26,7 @@ class Bot:
 
 
 class Carriers:
+    session = object()
     async def get_carrier_by_id(self, carrier_id):
         return SimpleNamespace(
             id=carrier_id,
@@ -38,15 +40,18 @@ async def main() -> None:
     assert reasons.inline_keyboard[0][0].text == "Time unavailable"
 
     bot = Bot()
-    await send_assignment_final_notifications(
-        bot=bot,
-        job=SimpleNamespace(id=7, status="assigned", client_telegram_user_id=None),
-        accepted_offer=SimpleNamespace(carrier_id=3),
-        carrier_repository=Carriers(),
-    )
-    assert len(bot.messages) == 1
-    assert bot.messages[0]["text"].startswith("🟢 Estado\n")
-    assert "confirmado por ambas as partes" in bot.messages[0]["text"]
+    notifications = SimpleNamespace(enqueue_message=AsyncMock())
+    with patch("app.services.telegram_notifications.notification_service_for", return_value=notifications):
+        await send_assignment_final_notifications(
+            bot=bot,
+            job=SimpleNamespace(id=7, status="assigned", client_telegram_user_id=None),
+            accepted_offer=SimpleNamespace(id=9, carrier_id=3),
+            carrier_repository=Carriers(),
+        )
+    assert not bot.messages
+    payload = notifications.enqueue_message.await_args.kwargs
+    assert payload["text"].startswith("🟢 Estado\n")
+    assert "confirmado por ambas as partes" in payload["text"]
 
     handler_source = inspect.getsource(
         job_assignment_confirmation.handle_assignment_confirmation

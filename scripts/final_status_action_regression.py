@@ -1,4 +1,5 @@
 import asyncio
+import json
 import os
 import shutil
 import subprocess
@@ -37,6 +38,7 @@ from app.models.job import Job
 from app.models.job import JobAddress
 from app.models.job import JobOffer
 from app.models.job import JobStatusEvent
+from app.models.telegram_notification import TelegramNotificationOutbox
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
 from app.services.assignment_confirmation import (
@@ -564,12 +566,12 @@ async def scenario_failure_and_redispatch(
             f"duplicate redispatch carrier ids: {pending_carrier_ids}"
         )
 
-    if len(bot.sent_messages) != len(pending):
-        raise AssertionError(
-            f"redispatch notification count mismatch: "
-            f"messages={len(bot.sent_messages)} "
-            f"pending={len(pending)}"
-        )
+    queued = list(await session.scalars(select(TelegramNotificationOutbox).where(
+        TelegramNotificationOutbox.job_id == job.id,
+        TelegramNotificationOutbox.notification_type == "carrier_offer",
+    )))
+    if bot.sent_messages or len(queued) != len(pending):
+        raise AssertionError("redispatch must queue one notification per offer without Telegram calls")
 
 
 async def scenario_assignment_timeout(
@@ -676,10 +678,12 @@ async def scenario_assignment_timeout(
             f"{pending_carrier_ids}"
         )
 
-    messages_by_chat = {
-        item["chat_id"]: item["text"]
-        for item in bot.sent_messages
-    }
+    queued = list(await session.scalars(select(TelegramNotificationOutbox).where(
+        TelegramNotificationOutbox.job_id == job.id,
+        TelegramNotificationOutbox.notification_type == "lifecycle_message",
+    )))
+    assert not bot.sent_messages
+    messages_by_chat = {row.recipient_chat_id: json.loads(row.payload_json)["text"] for row in queued}
 
     client_text = messages_by_chat.get(job.client_telegram_user_id, "")
     carrier_text = messages_by_chat.get(

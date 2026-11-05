@@ -37,10 +37,11 @@ class ForbiddenDependency:
 
 
 async def main() -> None:
+    requested = (datetime.now(UTC) + timedelta(days=30)).replace(microsecond=0)
     existing_job = SimpleNamespace(
         id=103,
         source_locale="ru",
-        requested_date=datetime(2026, 10, 15, 14, 30),
+        requested_date=requested.replace(tzinfo=None),
         needs_assembly=False,
         needs_packing=False,
         needs_tail_lift=False,
@@ -100,14 +101,7 @@ async def main() -> None:
             utm_campaign=None,
             utm_content=None,
             landing_version=None,
-            requested_date=datetime(
-                2026,
-                10,
-                15,
-                16,
-                30,
-                tzinfo=timezone(timedelta(hours=2)),
-            ),
+            requested_date=requested.astimezone(timezone(timedelta(hours=2))),
             addresses=(
                 RequestIntakeAddress("pickup", " OVAR ", 1, False),
                 RequestIntakeAddress("dropoff", "Lisboa", 1, False),

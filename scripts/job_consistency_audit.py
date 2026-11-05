@@ -1,8 +1,9 @@
+import os
 import sqlite3
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DB_PATH = PROJECT_ROOT / "data" / "cargopt_prod.db"
+DB_PATH = Path(os.environ.get("CARGOPT_AUDIT_DB_PATH", str(PROJECT_ROOT / "data" / "cargopt_prod.db")))
 
 if not DB_PATH.exists():
     raise SystemExit(f"database not found: {DB_PATH}")
@@ -91,7 +92,7 @@ def append_issue(
     )
 
 
-with sqlite3.connect(DB_PATH) as conn:
+with sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True) as conn:
     conn.row_factory = sqlite3.Row
 
     rows = conn.execute(OFFER_COUNTS_QUERY).fetchall()

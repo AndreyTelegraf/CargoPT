@@ -158,7 +158,9 @@ def main() -> None:
     assert "_delete_message_by_id_safely" in assignment_source
     assert "bot.delete_message" in assignment_source
     assert "send_job_offers_to_carriers" in offer_response_source
-    assert "update_offer_carrier_message" in notification_source
+    dispatcher_source = Path("app/services/telegram_dispatcher.py").read_text(encoding="utf-8")
+    assert "update_offer_carrier_message" in dispatcher_source
+    assert "enqueue_carrier_offers" in notification_source
     assert "build_offer_text" in notification_source
 
     print("JOB_OFFER_CLEANUP_SMOKE_OK")

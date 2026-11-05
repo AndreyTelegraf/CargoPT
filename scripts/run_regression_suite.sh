@@ -39,6 +39,20 @@ TMP_ROOT="$(
 
 trap 'rm -rf "$TMP_ROOT"' EXIT
 
+# Schema/audit checks must never open the live production database.
+export BOT_TOKEN="123456:REGRESSION"
+export DATABASE_URL="sqlite+aiosqlite:///$TMP_ROOT/audit_fixture.db"
+export CARGOPT_AUDIT_DB_PATH="$TMP_ROOT/audit_fixture.db"
+"$ROOT/.venv/bin/python" - <<'PYTHON'
+import os
+import app.models
+from sqlalchemy import create_engine
+from app.db.base import Base
+engine = create_engine("sqlite:///" + os.environ["CARGOPT_AUDIT_DB_PATH"])
+Base.metadata.create_all(engine)
+engine.dispose()
+PYTHON
+
 TESTS=(
   scripts/bot_bootstrap_smoke.py
   scripts/dispatcher_access_role_smoke.py
@@ -124,6 +138,12 @@ TESTS=(
   scripts/job_assignment_confirmation_smoke.py
   scripts/job_completion_smoke.py
   scripts/job_lifecycle_notifications_smoke.py
+  scripts/distribution_date_regression.py
+  scripts/reliable_delivery_regression.py
+  scripts/outbox_reliability_regression.py
+  scripts/offer_distribution_smoke.py
+  scripts/offer_expiry_runtime_smoke.py
+  scripts/telegram_notification_dispatcher_smoke.py
   scripts/assignment_timeout_smoke.py
   scripts/final_status_action_regression.py
   scripts/carrier_onboarding_service_smoke.py

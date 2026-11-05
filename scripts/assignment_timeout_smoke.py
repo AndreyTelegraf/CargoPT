@@ -1,4 +1,6 @@
 import asyncio
+import json
+from sqlalchemy import select
 import os
 import shutil
 import subprocess
@@ -10,6 +12,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
+from app.models.telegram_notification import TelegramNotificationOutbox
 
 from sqlalchemy.ext.asyncio import async_sessionmaker
 from sqlalchemy.ext.asyncio import create_async_engine
@@ -167,18 +170,21 @@ async def exercise() -> None:
         if JobOfferStatus.CANCELLED not in statuses:
             raise SystemExit(f"cancelled offer missing: {statuses}")
 
-        if len(fake_bot.sent_messages) != 2:
-            raise SystemExit(f"expected 2 timeout notifications, got {len(fake_bot.sent_messages)}")
-
-        messages_by_chat = dict(fake_bot.sent_messages)
+        if fake_bot.sent_messages:
+            raise SystemExit("timeout sent Telegram before committing business state")
+        notifications = list(await session.scalars(select(TelegramNotificationOutbox)))
+        messages_by_chat = {row.recipient_chat_id: json.loads(row.payload_json)["text"]
+                            for row in notifications if row.notification_type == "lifecycle_message"}
+        if len(messages_by_chat) != 2:
+            raise SystemExit("expected two durable timeout notifications")
         client_text = messages_by_chat.get(9101)
         carrier_text = messages_by_chat.get(6101)
 
         expected_client_text = (
             "🟡 Статус\n"
             f"По заявке №{stale_job_id} подтверждение не было получено вовремя.\n\n"
-            "Заявка снова в поиске. "
-            "Мы отправляем её другим подходящим перевозчикам."
+            "Автоматический подбор остановлен. "
+            "Заявку проверит диспетчер CargoPT."
         )
         expected_carrier_text = (
             "🔴 Статус\n"

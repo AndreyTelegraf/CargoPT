@@ -177,6 +177,7 @@ async def exercise_stale_recovery_and_offer_reference() -> None:
         async with session_maker() as session:
             stale_job = make_job(now, 10)
             carrier_job = make_job(now, 11)
+            carrier_job.status = "offered"
             session.add_all((stale_job, carrier_job))
             await session.flush()
             offer = JobOffer(
@@ -225,13 +226,13 @@ async def exercise_stale_recovery_and_offer_reference() -> None:
             bot=bot,
             stale_sending_seconds=300,
         )
-        if await dispatcher.dispatch_due() != 2:
-            raise AssertionError("stale sending claim was not recovered")
+        if await dispatcher.dispatch_due() != 1:
+            raise AssertionError("ambiguous sending claim must not be replayed")
         recovered = await rows(session_maker)
-        if any(row.delivery_status != "sent" for row in recovered):
-            raise AssertionError("recovered notifications were not delivered")
-        if recovered[0].attempt_count != 2:
-            raise AssertionError("stale claim recovery did not preserve attempts")
+        if [row.delivery_status for row in recovered] != ["uncertain", "sent"]:
+            raise AssertionError("interrupted delivery was not quarantined")
+        if recovered[0].attempt_count != 1:
+            raise AssertionError("quarantine must not add a delivery attempt")
 
         async with session_maker() as session:
             stored_offer = await session.get(JobOffer, offer.id)
