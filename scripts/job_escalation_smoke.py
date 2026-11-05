@@ -34,8 +34,8 @@ assert "Заявка #43" in text
 assert "Клиент: @AnnaRyaskina" in text
 assert "Причина:" in text
 assert "Не удалось найти перевозчика." in text
-assert "Рассылка завершена." in text
-assert "3 перевозчиков получили заявку." in text
+assert "Создано предложений: 3." in text
+assert "получили заявку" not in text
 assert "1 отказались." in text
 assert "1 не ответили." in text
 assert "1 ожидают ответа." in text
@@ -55,7 +55,7 @@ expiry_source = Path("app/services/offer_expiry.py").read_text(encoding="utf-8")
 handler_source = Path("app/bot/handlers/job_offer_response.py").read_text(encoding="utf-8")
 
 assert "escalate_job_to_manual_review" in request_submission_source
-assert "if not offers:" in request_submission_source
+assert "if offers:" in request_submission_source
 assert "escalate_job_to_manual_review" in expiry_source
 assert "escalate_job_to_manual_review" in handler_source
 assert "notify_job_control_about_unassigned_job(" not in request_submission_source

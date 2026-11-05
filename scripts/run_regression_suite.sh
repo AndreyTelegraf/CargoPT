@@ -138,6 +138,8 @@ TESTS=(
   scripts/job_assignment_confirmation_smoke.py
   scripts/job_completion_smoke.py
   scripts/job_lifecycle_notifications_smoke.py
+  scripts/job_escalation_smoke.py
+  scripts/escalation_delivery_copy_regression.py
   scripts/distribution_date_regression.py
   scripts/reliable_delivery_regression.py
   scripts/outbox_reliability_regression.py
