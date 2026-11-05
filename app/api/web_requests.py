@@ -30,6 +30,7 @@ from app.api.web_request_schemas import TrackingRequestedDateChangeResponse
 from app.api.web_request_schemas import TrackingAssignmentActionResponse
 from app.api.web_request_schemas import TrackingCompletionActionResponse
 from app.services.assignment_notifications import send_assignment_confirmation_requests
+from app.services.telegram_notifications import notification_service_for
 from app.services.assignment_notifications import send_assignment_final_notifications
 from app.config import settings
 from app.db.session import async_session_maker
@@ -549,6 +550,8 @@ async def select_tracking_offer(
 
     await send_assignment_confirmation_requests(
         bot=bot,
+        notification_service=notification_service_for(job_repository, carrier_repository),
+        offer_id=selected_offer.id,
         job=updated_job,
         carrier_telegram_user_id=carrier_telegram_user_id,
         carrier_locale=(

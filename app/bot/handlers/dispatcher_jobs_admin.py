@@ -958,14 +958,14 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
             await session.commit()
 
         await callback.answer(
-            f"Заявка #{raw_job_id}: создано офферов — {len(offers)}, отправлено — {sent_count}.",
+            f"Заявка #{raw_job_id}: создано офферов — {len(offers)}, в очереди — {sent_count}.",
             show_alert=True,
         )
         if callback.message:
             await callback.message.answer(
-                f"Повторная рассылка заявки #{raw_job_id} выполнена.\n"
+                f"Повторная рассылка заявки #{raw_job_id} поставлена в очередь.\n"
                 f"Создано офферов: {len(offers)}\n"
-                f"Отправлено перевозчикам: {sent_count}"
+                f"Уведомлений в очереди: {sent_count}"
             )
         return
 
@@ -1189,7 +1189,7 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
             return
 
         await callback.answer(
-            f"Заявка #{raw_job_id} отправлена перевозчику {carrier.company_name}.",
+            f"Заявка #{raw_job_id}: уведомление перевозчику {carrier.company_name} в очереди.",
             show_alert=True,
         )
 

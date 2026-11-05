@@ -6,6 +6,7 @@ from datetime import timedelta
 
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.exceptions import TelegramForbiddenError
+from aiogram.types import InlineKeyboardMarkup
 from aiogram.types import InputMediaPhoto
 from aiogram.types import InputMediaVideo
 from sqlalchemy.ext.asyncio import async_sessionmaker
@@ -166,13 +167,15 @@ class TelegramNotificationDispatcher:
             return await self.bot.send_message(chat_id=recipient, text=text)
 
         if notification_type == TelegramNotificationType.LIFECYCLE_MESSAGE:
-            reply_markup = None
+            markup = snapshot["payload"].get("reply_markup")
+            reply_markup = InlineKeyboardMarkup.model_validate(markup) if markup else None
             if snapshot["payload"].get("completion_keyboard") is True:
                 reply_markup = build_completion_keyboard(snapshot["job_id"])
             return await self.bot.send_message(
                 chat_id=recipient,
                 text=text,
                 reply_markup=reply_markup,
+                parse_mode=snapshot["payload"].get("parse_mode"),
             )
 
         keyboard = build_offer_keyboard(snapshot["offer_id"])

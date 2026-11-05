@@ -3,7 +3,7 @@ from datetime import datetime
 from datetime import timedelta
 import logging
 
-from aiogram.exceptions import TelegramForbiddenError
+from app.services.telegram_notifications import notification_service_for
 
 from app.domain.job_status import JobStatus
 from app.repositories.carrier import CarrierRepository
@@ -32,6 +32,7 @@ async def process_stale_assignment_confirmations(
         limit=limit,
     )
 
+    notifications = notification_service_for(job_repository, carrier_repository)
     processed = 0
 
     for job in jobs:
@@ -61,8 +62,7 @@ async def process_stale_assignment_confirmations(
             if updated_job.status == JobStatus.MANUAL_REVIEW_REQUIRED:
                 client_text = (
                     f"По заявке №{job.id} подтверждение не было получено вовремя.\n\n"
-                    "До перевозки осталось меньше трёх суток, поэтому "
-                    "автоматическая рассылка остановлена. "
+                    "Автоматический подбор остановлен. "
                     "Заявку проверит диспетчер CargoPT."
                 )
             else:
@@ -71,33 +71,23 @@ async def process_stale_assignment_confirmations(
                     "Заявка снова в поиске. "
                     "Мы отправляем её другим подходящим перевозчикам."
                 )
-            try:
-                await bot.send_message(
-                    chat_id=job.client_telegram_user_id,
-                    text=format_telegram_status_block(
-                        client_text,
-                        state="searching",
-                    ),
-                )
-            except TelegramForbiddenError:
-                logger.warning("assignment_timeout Telegram blocked: job=%s recipient=client", job.id)
+            await notifications.enqueue_message(
+                job=job, recipient_chat_id=job.client_telegram_user_id,
+                event_key=f"assignment_timeout:{accepted_offer.id if accepted_offer else job.assigned_at}:client",
+                text=format_telegram_status_block(client_text, state="searching"),
+            )
 
         if accepted_offer is not None:
             carrier = await carrier_repository.get_carrier_by_id(accepted_offer.carrier_id)
             if carrier is not None and carrier.telegram_user_id is not None:
-                try:
-                    await bot.send_message(
-                        chat_id=carrier.telegram_user_id,
-                        text=format_telegram_status_block(
-                            (
-                                f"По заявке №{job.id} подтверждение не было получено вовремя.\n\n"
-                                "Для вас эта заявка закрыта."
-                            ),
-                            state="failed",
-                        ),
-                    )
-                except TelegramForbiddenError:
-                    logger.warning("assignment_timeout Telegram blocked: job=%s recipient=carrier", job.id)
+                await notifications.enqueue_message(
+                    job=job, recipient_chat_id=carrier.telegram_user_id,
+                    event_key=f"assignment_timeout:{accepted_offer.id}:carrier",
+                    text=format_telegram_status_block(
+                        f"По заявке №{job.id} подтверждение не было получено вовремя.\n\n"
+                        "Для вас эта заявка закрыта.", state="failed",
+                    ),
+                )
 
         processed += 1
 

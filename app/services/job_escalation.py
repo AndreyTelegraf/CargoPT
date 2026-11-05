@@ -151,6 +151,8 @@ async def escalate_job_to_manual_review(
             status=JobStatus.OFFERED,
             updated_at=job.updated_at,
         )
+        if commit_before_notification:
+            await job_repository.commit()
         return
 
     await job_repository.update_job_status(
@@ -158,6 +160,9 @@ async def escalate_job_to_manual_review(
         status=JobStatus.MANUAL_REVIEW_REQUIRED,
         updated_at=job.updated_at,
     )
+    if notification_service is None:
+        from app.services.telegram_notifications import notification_service_for
+        notification_service = notification_service_for(job_repository)
     if notification_service is not None:
         await notification_service.enqueue_manual_review(
             job=job,
@@ -169,13 +174,3 @@ async def escalate_job_to_manual_review(
         if commit_before_notification:
             await job_repository.commit()
         return
-
-    if commit_before_notification:
-        await job_repository.commit()
-    await notify_job_control_about_unassigned_job(
-        bot=bot,
-        job=job,
-        offers=offers,
-        matching_reason=matching_reason,
-        matching_regions=matching_regions,
-    )

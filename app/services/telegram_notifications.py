@@ -26,6 +26,28 @@ class TelegramNotificationEnqueueService:
         self.job_repository = job_repository
         self.carrier_repository = carrier_repository
 
+    async def enqueue_message(
+        self, *, job, recipient_chat_id, event_key: str, text: str,
+        reply_markup=None, parse_mode=None, offer_id=None,
+    ):
+        """Persist a business message in the caller's transaction, never send."""
+        if recipient_chat_id is None:
+            return None
+        now = datetime.now(UTC)
+        return await self.repository.enqueue(TelegramNotificationOutbox(
+            job_id=job.id, offer_id=None,
+            notification_type=TelegramNotificationType.LIFECYCLE_MESSAGE.value,
+            recipient_chat_id=recipient_chat_id,
+            dedupe_key=f"job:{job.id}:{event_key}:{recipient_chat_id}",
+            payload_json=json.dumps({
+                "text": text, "parse_mode": parse_mode,
+                "event_offer_id": offer_id,
+                "reply_markup": reply_markup.model_dump(mode="json") if reply_markup else None,
+            }, ensure_ascii=False, sort_keys=True),
+            delivery_status=TelegramDeliveryStatus.PENDING.value,
+            attempt_count=0, next_attempt_at=now, created_at=now, updated_at=now,
+        ))
+
     async def enqueue_carrier_offers(
         self,
         *,
@@ -70,6 +92,8 @@ class TelegramNotificationEnqueueService:
                     {
                         "text": offer_text,
                         "parse_mode": "HTML",
+                        "locale": carrier.preferred_locale,
+                        "carrier_id": offer.carrier_id,
                     },
                     ensure_ascii=False,
                     sort_keys=True,
@@ -217,3 +241,13 @@ class TelegramNotificationEnqueueService:
                 )
 
         return stored_notifications
+
+
+def notification_service_for(job_repository, carrier_repository=None):
+    """Share the business session; enqueue and status changes commit together."""
+    from app.repositories.carrier import CarrierRepository
+    return TelegramNotificationEnqueueService(
+        TelegramNotificationRepository(job_repository.session),
+        job_repository=job_repository,
+        carrier_repository=carrier_repository or CarrierRepository(job_repository.session),
+    )

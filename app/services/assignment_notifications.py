@@ -40,10 +40,13 @@ async def send_assignment_confirmation_requests(
     job,
     carrier_telegram_user_id: int | None,
     carrier_locale: str | None = None,
+    notification_service,
+    offer_id: int,
 ) -> None:
     if carrier_telegram_user_id is not None:
-        await bot.send_message(
-            chat_id=carrier_telegram_user_id,
+        await notification_service.enqueue_message(
+            job=job, recipient_chat_id=carrier_telegram_user_id,
+            event_key=f"assignment_request:{offer_id}",
             text=build_carrier_assignment_confirmation_text(
                 job,
                 locale=carrier_locale,
@@ -66,6 +69,7 @@ async def send_assignment_final_notifications(
     if job.status not in {
         JobStatus.ASSIGNED,
         JobStatus.READY_FOR_MATCHING,
+        JobStatus.OFFERED,
         JobStatus.MANUAL_REVIEW_REQUIRED,
     }:
         return
@@ -88,7 +92,7 @@ async def send_assignment_final_notifications(
             "",
             state="success",
         )
-    elif job.status == JobStatus.READY_FOR_MATCHING:
+    elif job.status in {JobStatus.READY_FOR_MATCHING, JobStatus.OFFERED}:
         client_text = format_telegram_status_block(
             (
                 f"По заявке №{job.id} договориться с перевозчиком не удалось.\n\n"
@@ -108,8 +112,7 @@ async def send_assignment_final_notifications(
         client_text = format_telegram_status_block(
             (
                 f"По заявке №{job.id} договориться с перевозчиком не удалось.\n\n"
-                "До перевозки осталось меньше трёх суток, поэтому "
-                "автоматическая рассылка остановлена. "
+                "Автоматический подбор остановлен. "
                 "Заявку проверит диспетчер CargoPT."
             ),
             state="searching",
@@ -122,9 +125,13 @@ async def send_assignment_final_notifications(
             state="failed",
         )
 
+    from app.repositories.job import JobRepository
+    from app.services.telegram_notifications import notification_service_for
+    notifications = notification_service_for(JobRepository(carrier_repository.session), carrier_repository)
+    event = f"assignment_final:{accepted_offer.id if accepted_offer else job.assigned_at}:{job.status}"
     if job.client_telegram_user_id is not None:
-        await bot.send_message(
-            chat_id=job.client_telegram_user_id,
+        await notifications.enqueue_message(
+            job=job, recipient_chat_id=job.client_telegram_user_id, event_key=event+":client",
             text=client_text,
             parse_mode="HTML",
         )
@@ -150,8 +157,8 @@ async def send_assignment_final_notifications(
                 state="failed",
                 locale=carrier_locale,
             )
-        await bot.send_message(
-            chat_id=carrier.telegram_user_id,
+        await notifications.enqueue_message(
+            job=job, recipient_chat_id=carrier.telegram_user_id, event_key=event+":carrier",
             text=carrier_text,
             parse_mode="HTML",
         )

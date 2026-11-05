@@ -27,6 +27,7 @@ from app.services.job_matching import JobMatchingService
 from app.services.offer_distribution import OfferDistributionService
 from app.services.job_escalation import escalate_job_to_manual_review
 from app.services.offer_notification import send_job_offers_to_carriers
+from app.services.telegram_notifications import notification_service_for
 from app.services.assignment_confirmation import format_telegram_status_block
 from app.services.assignment_notifications import send_assignment_confirmation_requests
 from app.services.client_offer_presentation import ClientOfferPresentationService
@@ -342,8 +343,9 @@ async def send_client_offer_selection_message(
     if not views:
         return False
 
-    await bot.send_message(
-        chat_id=job.client_telegram_user_id,
+    await notification_service_for(job_repository, carrier_repository).enqueue_message(
+        job=job, recipient_chat_id=job.client_telegram_user_id,
+        event_key="offer_selection:" + ":".join(str(view.offer_id) for view in views),
         text=build_client_offer_selection_text(job.id, views, job.source_locale),
         reply_markup=build_client_offer_selection_keyboard(views, job.source_locale),
         parse_mode="HTML",
@@ -1143,6 +1145,19 @@ async def handle_client_offer_selection(callback: CallbackQuery) -> None:
         if selected_carrier is not None:
             carrier_telegram_user_id = selected_carrier.telegram_user_id
 
+        await send_assignment_confirmation_requests(
+            bot=callback.bot,
+            notification_service=notification_service_for(job_repository, carrier_repository),
+            offer_id=selected_offer.id,
+            job=job,
+            carrier_telegram_user_id=carrier_telegram_user_id,
+            carrier_locale=(
+                selected_carrier.preferred_locale
+                if selected_carrier is not None
+                else None
+            ),
+        )
+
         await session.commit()
 
     for chat_id, message_id in unselected_offer_message_refs:
@@ -1159,15 +1174,6 @@ async def handle_client_offer_selection(callback: CallbackQuery) -> None:
             parse_mode="HTML",
         )
 
-    await send_assignment_confirmation_requests(
-        bot=callback.bot,
-        job=job,
-        carrier_telegram_user_id=carrier_telegram_user_id,
-        carrier_locale=(
-            selected_carrier.preferred_locale
-            if selected_carrier is not None
-            else None
-        ),
-    )
+
 
     await callback.answer()
