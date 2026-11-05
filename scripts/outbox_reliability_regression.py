@@ -169,6 +169,7 @@ class QueueReliability(TransactionalDelivery):
         async with self.sessions() as s:
             n = await s.get(TelegramNotificationOutbox, id)
             n.notification_type, n.offer_id = "carrier_offer", 1
+            (await s.get(JobOffer, 1)).expires_at = self.now + timedelta(hours=1)
             s.add(JobMedia(job_id=1, media_type="video", telegram_file_id="video-file", created_at=self.now))
             await s.commit()
         bot = FakeBot({2: TelegramNetworkError(method=SendMessage(chat_id=1,text="x"), message="network")})
@@ -181,6 +182,19 @@ class QueueReliability(TransactionalDelivery):
             offer = await s.get(JobOffer, 1)
             self.assertEqual(offer.carrier_message_id, 103)
         self.assertEqual((await self.row()).delivery_status, "sent")
+
+    async def test_delayed_offer_for_past_date_is_not_sent(self):
+        from app.models.job import Job
+        id = await self.notification()
+        async with self.sessions() as s:
+            n = await s.get(TelegramNotificationOutbox, id)
+            n.notification_type, n.offer_id = "carrier_offer", 1
+            (await s.get(Job, 1)).requested_date = self.now - timedelta(days=1)
+            await s.commit()
+        bot = FakeBot()
+        await TelegramNotificationDispatcher(session_maker=self.sessions, bot=bot).dispatch_due()
+        self.assertEqual(len(bot.calls), 0, "delayed queue sent an obsolete offer")
+        self.assertEqual((await self.row()).delivery_status, "failed")
 
     async def test_invalid_file_id_is_terminal(self):
         await self.notification()

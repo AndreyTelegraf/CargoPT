@@ -15,8 +15,7 @@ from aiogram.types import InputMediaPhoto
 from aiogram.types import InputMediaVideo
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
-from app.bot.offer_keyboard import build_offer_keyboard
-from app.bot.completion_keyboard import build_completion_keyboard
+from app.domain.requested_date import is_requested_date_in_past
 from app.domain.telegram_notification import TelegramDeliveryStatus
 from app.domain.telegram_notification import TelegramNotificationType
 from app.repositories.job import JobRepository
@@ -64,8 +63,7 @@ class TelegramNotificationDispatcher:
 
         if recovered:
             logger.warning(
-                "telegram_notification_stale_claims_recovered",
-                extra={"recovered_count": recovered},
+                "telegram_notification_uncertain count=%s", recovered,
             )
 
         processed = 0
@@ -98,6 +96,26 @@ class TelegramNotificationDispatcher:
                 notification.notification_type
                 == TelegramNotificationType.CARRIER_OFFER.value
             ):
+                jobs = JobRepository(session)
+                job = await jobs.get_job_by_id(notification.job_id)
+                offer = await jobs.get_offer_by_id(notification.offer_id)
+                expiry = offer.expires_at if offer is not None else None
+                if expiry is not None and expiry.tzinfo is None:
+                    expiry = expiry.replace(tzinfo=UTC)
+                if (job is None or offer is None or offer.status != "pending"
+                    or job.status != "offered"
+                    or is_requested_date_in_past(job.requested_date, now=attempted_at)
+                    or (expiry is not None and expiry <= attempted_at)):
+                    await repository.mark_failed_attempt(
+                        notification_id=notification.id, now=attempted_at,
+                        next_attempt_at=None, last_error="offer_no_longer_actionable",
+                        permanent=True, max_attempts=self.max_attempts,
+                        expected_attempt=notification.attempt_count,
+                    )
+                    await session.commit()
+                    logger.info("telegram_notification_obsolete notification_id=%s job_id=%s offer_id=%s",
+                                notification.id, notification.job_id, notification.offer_id)
+                    return True
                 media = [
                     {
                         "media_type": item.media_type,
@@ -128,8 +146,8 @@ class TelegramNotificationDispatcher:
             await self._record_failure(snapshot, exc=exc, permanent=True)
         except Exception as exc:
             logger.error(
-                "telegram_notification_delivery_error error_type=%s stack=%s",
-                type(exc).__name__, self._safe_stack(exc), extra=self._log_context(snapshot),
+                "telegram_notification_delivery_error context=%s error_type=%s stack=%s",
+                self._log_context(snapshot), type(exc).__name__, self._safe_stack(exc),
             )
             await self._record_failure(snapshot, exc=exc, permanent=False)
         else:
@@ -163,11 +181,7 @@ class TelegramNotificationDispatcher:
                     )
                 await session.commit()
             logger.info(
-                "telegram_notification_sent",
-                extra={
-                    **self._log_context(snapshot),
-                    "delivery_status": TelegramDeliveryStatus.SENT.value,
-                },
+                "telegram_notification_sent context=%s", self._log_context(snapshot),
             )
         return True
 
@@ -246,14 +260,8 @@ class TelegramNotificationDispatcher:
             await session.commit()
 
         logger.warning(
-            "telegram_notification_failed"
-            if notification.delivery_status == TelegramDeliveryStatus.FAILED.value
-            else "telegram_notification_retry",
-            extra={
-                **self._log_context(snapshot),
-                "delivery_status": notification.delivery_status,
-                "last_error_type": type(exc).__name__,
-            },
+            "telegram_notification_result context=%s status=%s error_type=%s",
+            self._log_context(snapshot), notification.delivery_status, type(exc).__name__,
         )
 
     @staticmethod
