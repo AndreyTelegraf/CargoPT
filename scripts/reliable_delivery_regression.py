@@ -7,6 +7,7 @@ import unittest
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from types import SimpleNamespace
+from unittest.mock import patch, AsyncMock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 os.environ["BOT_TOKEN"] = "123456:TESTTOKEN"
@@ -116,6 +117,73 @@ class TransactionalDelivery(unittest.IsolatedAsyncioTestCase):
             rows = list(await s.scalars(select(TelegramNotificationOutbox)))
             self.assertEqual(len(rows), 4)
             self.assertTrue(all(r.delivery_status == "pending" for r in rows))
+
+    async def test_past_date_expiry_and_assignment_timeout_do_not_create_offers(self):
+        for action in ("expiry", "timeout"):
+            async with self.sessions() as s:
+                job, offer = await s.get(Job, 1), await s.get(JobOffer, 1)
+                job.requested_date = self.now - timedelta(days=365)
+                job.status = "offered" if action == "expiry" else "assigned_pending_confirmation"
+                job.assigned_at = self.now - timedelta(hours=25)
+                offer.status = "pending" if action == "expiry" else "accepted"
+                await s.commit()
+            async with self.sessions() as s:
+                process = process_expired_pending_offers if action == "expiry" else process_stale_assignment_confirmations
+                await process(bot=NoNetwork(), session=s)
+                await s.commit()
+                self.assertEqual(len(list(await s.scalars(select(JobOffer)))), 1)
+                self.assertEqual((await s.get(Job, 1)).status, "manual_review_required")
+
+    async def test_past_date_submission_is_committed_for_manual_review(self):
+        from app.services.request_submission import RequestSubmissionService
+        from app.services.telegram_notifications import notification_service_for
+        async with self.sessions() as s:
+            job = await s.get(Job, 1)
+            job.requested_date = self.now - timedelta(days=1)
+            await s.commit()
+            jobs, carriers = JobRepository(s), CarrierRepository(s)
+            result = await RequestSubmissionService(job_repository=jobs, carrier_repository=carriers,
+                bot=NoNetwork(), telegram_notification_service=notification_service_for(jobs, carriers)
+            ).submit_existing_job(job_id=1, comment="expired submission")
+            self.assertEqual(result.offers_count, 0)
+        async with self.sessions() as s:
+            self.assertEqual((await s.get(Job, 1)).status, "manual_review_required")
+            self.assertEqual(len(list(await s.scalars(select(JobOffer)))), 1)
+
+    async def test_past_date_admin_retry_and_single_send_are_rejected(self):
+        from app.bot.handlers import dispatcher_jobs_admin as handler
+        async with self.sessions() as s:
+            job = await s.get(Job, 1)
+            job.requested_date = self.now - timedelta(days=1)
+            await s.commit()
+        for action in ("retry", "send:2"):
+            callback = SimpleNamespace(data=f"job:1:{action}", from_user=SimpleNamespace(id=336224597),
+                answer=AsyncMock(), bot=NoNetwork(), message=None)
+            with patch.object(handler, "async_session_maker", self.sessions):
+                await handler.dispatcher_job_admin_action(callback)
+            self.assertIn("Дата перевозки прошла", callback.answer.await_args.args[0])
+        async with self.sessions() as s:
+            self.assertEqual(len(list(await s.scalars(select(JobOffer)))), 1)
+            self.assertEqual((await s.get(Job, 1)).status, "offered")
+
+    async def test_past_date_decline_commits_without_redispatch(self):
+        from app.bot.handlers import job_offer_response as handler
+        async with self.sessions() as s:
+            job, offer = await s.get(Job, 1), await s.get(JobOffer, 1)
+            job.requested_date = self.now - timedelta(days=1)
+            offer.expires_at = self.now + timedelta(hours=1)
+            await s.commit()
+        from app.domain.job_decline_reason import DECLINE_REASONS
+        reason = DECLINE_REASONS[0].code
+        callback = SimpleNamespace(data=f"offer_decline_reason:1:{reason}", from_user=SimpleNamespace(id=1001, language_code="ru"),
+            answer=AsyncMock(), bot=NoNetwork(), message=None)
+        # Match the actual callback prefix accepted by the decline handler.
+        with patch.object(handler, "async_session_maker", self.sessions):
+            await handler.handle_offer_decline_reason(callback)
+        async with self.sessions() as s:
+            self.assertEqual((await s.get(JobOffer, 1)).status, "declined")
+            self.assertEqual(len(list(await s.scalars(select(JobOffer)))), 1)
+            self.assertEqual((await s.get(Job, 1)).status, "manual_review_required")
 
 
 if __name__ == "__main__":

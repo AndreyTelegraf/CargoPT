@@ -113,6 +113,84 @@ class QueueReliability(TransactionalDelivery):
             self.assertLessEqual(len(plain.encode("utf-16-le"))//2, 4096)
             self.assertEqual(text.count("<b>"), text.count("</b>"))
 
+    async def test_two_dispatchers_deliver_same_notification_once(self):
+        await self.notification()
+        bot = FakeBot()
+        workers = [TelegramNotificationDispatcher(session_maker=self.sessions, bot=bot) for _ in range(2)]
+        await asyncio.gather(*(worker.dispatch_due() for worker in workers))
+        self.assertEqual(len(bot.calls), 1)
+
+    async def test_temporary_failure_is_bounded(self):
+        await self.notification()
+        error = TelegramNetworkError(method=SendMessage(chat_id=1, text="x"), message="network")
+        bot = FakeBot({i: error for i in range(1, 10)})
+        worker = TelegramNotificationDispatcher(session_maker=self.sessions, bot=bot, max_attempts=3, retry_base_seconds=0)
+        for _ in range(5):
+            await worker.dispatch_due()
+        self.assertEqual((await self.row()).delivery_status, "failed")
+        self.assertEqual(len(bot.calls), 3)
+
+    async def test_checkpoint_failure_after_success_quarantines_without_replay(self):
+        await self.notification()
+        bot = FakeBot()
+        worker = TelegramNotificationDispatcher(session_maker=self.sessions, bot=bot, stale_sending_seconds=0)
+        original = TelegramNotificationRepository.checkpoint
+        async def checkpoint(repo, **kwargs):
+            if json.loads(kwargs["payload_json"])["_delivery"]["completed"]:
+                raise RuntimeError("write interrupted")
+            return await original(repo, **kwargs)
+        with patch.object(TelegramNotificationRepository, "checkpoint", checkpoint):
+            await worker.dispatch_due()
+        await worker.dispatch_due()
+        self.assertEqual(len(bot.calls), 1)
+        self.assertEqual((await self.row()).delivery_status, "uncertain")
+
+    async def test_media_limits_and_anchor_message(self):
+        from app.services.telegram_delivery_plan import build_delivery_plan, split_text
+        for kinds in ([], ["photo"], ["video"], ["photo", "video"], ["photo"]*11):
+            for text in ("<b>short &amp; 😀</b>", "<b>"+"😀 &amp; "*1200+"</b>"):
+                snapshot = dict(notification_type="carrier_offer", job_id=1, offer_id=1,
+                    payload={"text": text, "locale": "pt-BR"},
+                    media=[{"media_type": kind, "telegram_file_id": f"file-{i}"} for i, kind in enumerate(kinds)])
+                plan = build_delivery_plan(snapshot)
+                self.assertTrue(plan[-1]["kwargs"].get("reply_markup"))
+                media_count = sum(len(step["kwargs"]["media"]) if step["method"] == "send_media_group" else int(step["method"] in {"send_photo", "send_video"}) for step in plan)
+                self.assertEqual(media_count, len(kinds))
+                for step in plan:
+                    kwargs = step["kwargs"]
+                    if "caption" in kwargs:
+                        self.assertEqual(len(split_text(kwargs["caption"], parse_mode="HTML", limit=1024)), 1)
+                    if "text" in kwargs:
+                        self.assertEqual(len(split_text(kwargs["text"], parse_mode="HTML")), 1)
+
+    async def test_partial_video_then_text_retry_does_not_repeat_video(self):
+        from app.models.job import JobMedia, JobOffer
+        id = await self.notification(text="<b>"+"длинный текст "*200+"</b>")
+        async with self.sessions() as s:
+            n = await s.get(TelegramNotificationOutbox, id)
+            n.notification_type, n.offer_id = "carrier_offer", 1
+            s.add(JobMedia(job_id=1, media_type="video", telegram_file_id="video-file", created_at=self.now))
+            await s.commit()
+        bot = FakeBot({2: TelegramNetworkError(method=SendMessage(chat_id=1,text="x"), message="network")})
+        worker = TelegramNotificationDispatcher(session_maker=self.sessions, bot=bot, retry_base_seconds=0)
+        await worker.dispatch_due()
+        self.assertEqual((await self.row()).delivery_status, "retry")
+        await TelegramNotificationDispatcher(session_maker=self.sessions, bot=bot, retry_base_seconds=0).dispatch_due()
+        self.assertEqual([name for name, _ in bot.calls], ["send_video", "send_message", "send_message"])
+        async with self.sessions() as s:
+            offer = await s.get(JobOffer, 1)
+            self.assertEqual(offer.carrier_message_id, 103)
+        self.assertEqual((await self.row()).delivery_status, "sent")
+
+    async def test_invalid_file_id_is_terminal(self):
+        await self.notification()
+        bot = FakeBot({1: TelegramBadRequest(method=SendMessage(chat_id=1,text="x"), message="wrong file identifier")})
+        worker = TelegramNotificationDispatcher(session_maker=self.sessions, bot=bot)
+        await worker.dispatch_due()
+        await worker.dispatch_due()
+        self.assertEqual(len(bot.calls), 1)
+        self.assertEqual((await self.row()).delivery_status, "failed")
+
 
 if __name__ == "__main__":
     unittest.main()

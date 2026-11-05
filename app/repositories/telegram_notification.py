@@ -142,7 +142,7 @@ class TelegramNotificationRepository:
                 TelegramNotificationOutbox.id == notification_id,
                 TelegramNotificationOutbox.delivery_status == TelegramDeliveryStatus.SENDING.value,
                 TelegramNotificationOutbox.attempt_count == attempt_count,
-            ).values(payload_json=payload_json, updated_at=now)
+            ).values(payload_json=payload_json, updated_at=now, last_attempt_at=now)
         )
         if result.rowcount != 1:
             raise RuntimeError("notification sending ownership lost")

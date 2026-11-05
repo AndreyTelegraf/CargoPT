@@ -8,6 +8,8 @@ from aiogram.exceptions import TelegramBadRequest
 from aiogram.exceptions import TelegramForbiddenError
 from aiogram.exceptions import TelegramRetryAfter
 import traceback
+from types import SimpleNamespace
+from app.services.telegram_delivery_plan import build_delivery_plan
 from aiogram.types import InlineKeyboardMarkup
 from aiogram.types import InputMediaPhoto
 from aiogram.types import InputMediaVideo
@@ -22,6 +24,10 @@ from app.repositories.telegram_notification import TelegramNotificationRepositor
 
 
 logger = logging.getLogger(__name__)
+
+
+class DeliveryPersistenceError(RuntimeError):
+    """A send may have succeeded; automatic replay would be unsafe."""
 
 
 class TelegramNotificationDispatcher:
@@ -116,7 +122,9 @@ class TelegramNotificationDispatcher:
 
         try:
             message = await self._deliver(snapshot)
-        except (TelegramForbiddenError, TelegramBadRequest) as exc:
+        except DeliveryPersistenceError:
+            raise
+        except (TelegramForbiddenError, TelegramBadRequest, ValueError) as exc:
             await self._record_failure(snapshot, exc=exc, permanent=True)
         except Exception as exc:
             logger.error(
@@ -163,83 +171,51 @@ class TelegramNotificationDispatcher:
             )
         return True
 
+    async def _checkpoint(self, snapshot):
+        try:
+            async with self.session_maker() as session:
+                await TelegramNotificationRepository(session).checkpoint(
+                    notification_id=snapshot["id"], attempt_count=snapshot["attempt_count"],
+                    payload_json=json.dumps(snapshot["payload"], ensure_ascii=False, sort_keys=True),
+                    now=datetime.now(UTC),
+                )
+                await session.commit()
+        except Exception as exc:
+            raise DeliveryPersistenceError(type(exc).__name__) from None
+
     async def _deliver(self, snapshot: dict):
-        notification_type = TelegramNotificationType(
-            snapshot["notification_type"]
-        )
-        recipient = snapshot["recipient_chat_id"]
-        text = snapshot["payload"].get("text")
-        if not isinstance(text, str) or not text:
-            raise ValueError("Telegram notification payload text is missing")
-
-        if notification_type == TelegramNotificationType.MANUAL_REVIEW:
-            return await self.bot.send_message(chat_id=recipient, text=text)
-
-        if notification_type == TelegramNotificationType.LIFECYCLE_MESSAGE:
-            markup = snapshot["payload"].get("reply_markup")
-            reply_markup = InlineKeyboardMarkup.model_validate(markup) if markup else None
-            if snapshot["payload"].get("completion_keyboard") is True:
-                reply_markup = build_completion_keyboard(snapshot["job_id"])
-            return await self.bot.send_message(
-                chat_id=recipient,
-                text=text,
-                reply_markup=reply_markup,
-                parse_mode=snapshot["payload"].get("parse_mode"),
+        progress = snapshot["payload"].get("_delivery")
+        if progress is None:
+            progress = {"steps": build_delivery_plan(snapshot), "completed": 0}
+            snapshot["payload"]["_delivery"] = progress
+            await self._checkpoint(snapshot)
+        for index in range(progress["completed"], len(progress["steps"])):
+            step = progress["steps"][index]
+            kwargs = dict(step["kwargs"])
+            markup = kwargs.get("reply_markup")
+            if markup:
+                kwargs["reply_markup"] = InlineKeyboardMarkup.model_validate(markup)
+            if step["method"] == "send_media_group":
+                kwargs["media"] = [
+                    InputMediaPhoto(**item) if item["type"] == "photo" else InputMediaVideo(**item)
+                    for item in kwargs["media"]
+                ]
+            # Check ownership and renew the lease before each external operation.
+            await self._checkpoint(snapshot)
+            result = await getattr(self.bot, step["method"])(
+                chat_id=snapshot["recipient_chat_id"], **kwargs,
             )
-
-        keyboard = build_offer_keyboard(snapshot["offer_id"])
-        media = snapshot["media"]
-        if not media:
-            return await self.bot.send_message(
-                chat_id=recipient,
-                text=text,
-                reply_markup=keyboard,
-                parse_mode="HTML",
+            message = result[-1] if isinstance(result, list) else result
+            progress.update(
+                completed=index+1,
+                chat_id=getattr(getattr(message, "chat", None), "id", None),
+                message_id=getattr(message, "message_id", None),
             )
-        if len(media) == 1:
-            item = media[0]
-            if item["media_type"] == "photo":
-                return await self.bot.send_photo(
-                    chat_id=recipient,
-                    photo=item["telegram_file_id"],
-                    caption=text,
-                    reply_markup=keyboard,
-                    parse_mode="HTML",
-                )
-            if item["media_type"] == "video":
-                return await self.bot.send_video(
-                    chat_id=recipient,
-                    video=item["telegram_file_id"],
-                    caption=text,
-                    reply_markup=keyboard,
-                    parse_mode="HTML",
-                )
-
-        album = []
-        for index, item in enumerate(media[:10]):
-            caption = text if index == 0 else None
-            if item["media_type"] == "photo":
-                album.append(
-                    InputMediaPhoto(
-                        media=item["telegram_file_id"],
-                        caption=caption,
-                        parse_mode="HTML",
-                    )
-                )
-            elif item["media_type"] == "video":
-                album.append(
-                    InputMediaVideo(
-                        media=item["telegram_file_id"],
-                        caption=caption,
-                        parse_mode="HTML",
-                    )
-                )
-        if album:
-            await self.bot.send_media_group(chat_id=recipient, media=album)
-        return await self.bot.send_message(
-            chat_id=recipient,
-            text=f"Решение по заявке #{snapshot['job_id']}",
-            reply_markup=keyboard,
+            # A later text failure resumes after the saved media, never at step 0.
+            await self._checkpoint(snapshot)
+        return SimpleNamespace(
+            chat=SimpleNamespace(id=progress.get("chat_id")),
+            message_id=progress.get("message_id"),
         )
 
     async def _record_failure(
