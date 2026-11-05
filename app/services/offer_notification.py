@@ -1,6 +1,9 @@
 import html
+import logging
 from datetime import UTC
 from datetime import datetime
+
+from aiogram.exceptions import TelegramForbiddenError
 
 from app.bot.offer_locale import offer_text as t
 from app.repositories.carrier import CarrierRepository
@@ -98,92 +101,112 @@ async def send_job_offers_to_carriers(
     sent_count = 0
 
     for offer in offers:
-        carrier = await carrier_repository.get_carrier_by_vehicle_id(
-            offer.vehicle_id
-        )
-
-        if carrier is None or carrier.telegram_user_id is None:
-            continue
-
-        locale = carrier.preferred_locale
-        offer_text = build_offer_text(job, items, pickup, dropoff, locale=locale)
-        keyboard = build_offer_keyboard(offer.id, locale=locale)
-
-        sent_offer_message = None
-
-        if not media_items:
-            sent_offer_message = await bot.send_message(
-                chat_id=carrier.telegram_user_id,
-                text=offer_text,
-                reply_markup=keyboard,
-                parse_mode="HTML",
+        try:
+            carrier = await carrier_repository.get_carrier_by_vehicle_id(
+                offer.vehicle_id
             )
-        elif len(media_items) == 1:
-            media = media_items[0]
-            if media.media_type == "photo":
-                sent_offer_message = await bot.send_photo(
-                    chat_id=carrier.telegram_user_id,
-                    photo=media.telegram_file_id,
-                    caption=offer_text,
-                    reply_markup=keyboard,
-                    parse_mode="HTML",
-                )
-            elif media.media_type == "video":
-                sent_offer_message = await bot.send_video(
-                    chat_id=carrier.telegram_user_id,
-                    video=media.telegram_file_id,
-                    caption=offer_text,
-                    reply_markup=keyboard,
-                    parse_mode="HTML",
-                )
-            else:
+
+            if carrier is None or carrier.telegram_user_id is None:
+                continue
+
+            locale = carrier.preferred_locale
+            offer_text = build_offer_text(job, items, pickup, dropoff, locale=locale)
+            keyboard = build_offer_keyboard(offer.id, locale=locale)
+
+            sent_offer_message = None
+
+            if not media_items:
                 sent_offer_message = await bot.send_message(
                     chat_id=carrier.telegram_user_id,
                     text=offer_text,
                     reply_markup=keyboard,
                     parse_mode="HTML",
                 )
-        else:
-            album = []
-            for index, media in enumerate(media_items[:10]):
-                caption = offer_text if index == 0 else None
+            elif len(media_items) == 1:
+                media = media_items[0]
                 if media.media_type == "photo":
-                    album.append(
-                        InputMediaPhoto(
-                            media=media.telegram_file_id,
-                            caption=caption,
-                            parse_mode="HTML",
-                        )
+                    sent_offer_message = await bot.send_photo(
+                        chat_id=carrier.telegram_user_id,
+                        photo=media.telegram_file_id,
+                        caption=offer_text,
+                        reply_markup=keyboard,
+                        parse_mode="HTML",
                     )
                 elif media.media_type == "video":
-                    album.append(
-                        InputMediaVideo(
-                            media=media.telegram_file_id,
-                            caption=caption,
+                    if len(offer_text) > 1024:
+                        await bot.send_video(
+                            chat_id=carrier.telegram_user_id,
+                            video=media.telegram_file_id,
+                        )
+                        sent_offer_message = await bot.send_message(
+                            chat_id=carrier.telegram_user_id,
+                            text=offer_text,
+                            reply_markup=keyboard,
                             parse_mode="HTML",
                         )
+                    else:
+                        sent_offer_message = await bot.send_video(
+                            chat_id=carrier.telegram_user_id,
+                            video=media.telegram_file_id,
+                            caption=offer_text,
+                            reply_markup=keyboard,
+                            parse_mode="HTML",
+                        )
+                else:
+                    sent_offer_message = await bot.send_message(
+                        chat_id=carrier.telegram_user_id,
+                        text=offer_text,
+                        reply_markup=keyboard,
+                        parse_mode="HTML",
+                    )
+            else:
+                album = []
+                for index, media in enumerate(media_items[:10]):
+                    caption = offer_text if index == 0 else None
+                    if media.media_type == "photo":
+                        album.append(
+                            InputMediaPhoto(
+                                media=media.telegram_file_id,
+                                caption=caption,
+                                parse_mode="HTML",
+                            )
+                        )
+                    elif media.media_type == "video":
+                        album.append(
+                            InputMediaVideo(
+                                media=media.telegram_file_id,
+                                caption=caption,
+                                parse_mode="HTML",
+                            )
+                        )
+
+                if album:
+                    await bot.send_media_group(
+                        chat_id=carrier.telegram_user_id,
+                        media=album,
                     )
 
-            if album:
-                await bot.send_media_group(
+                sent_offer_message = await bot.send_message(
                     chat_id=carrier.telegram_user_id,
-                    media=album,
+                    text=t(locale, "decision", job_id=job.id),
+                    reply_markup=keyboard,
                 )
 
-            sent_offer_message = await bot.send_message(
-                chat_id=carrier.telegram_user_id,
-                text=t(locale, "decision", job_id=job.id),
-                reply_markup=keyboard,
-            )
+            if sent_offer_message is not None:
+                await job_repository.update_offer_carrier_message(
+                    offer_id=offer.id,
+                    chat_id=sent_offer_message.chat.id,
+                    message_id=sent_offer_message.message_id,
+                    updated_at=datetime.now(UTC),
+                )
 
-        if sent_offer_message is not None:
-            await job_repository.update_offer_carrier_message(
-                offer_id=offer.id,
-                chat_id=sent_offer_message.chat.id,
-                message_id=sent_offer_message.message_id,
-                updated_at=datetime.now(UTC),
-            )
+            sent_count += 1
 
-        sent_count += 1
+        except TelegramForbiddenError:
+            logging.getLogger(__name__).warning(
+                "Telegram blocked: job=%s offer=%s carrier=%s",
+                job.id, offer.id, offer.carrier_id,
+            )
+            continue
 
     return sent_count
