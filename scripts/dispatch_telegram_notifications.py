@@ -3,11 +3,13 @@ import asyncio
 from aiogram import Bot
 
 from app.config import settings
+from app.reliability_logging import configure_reliability_logging
 from app.db.session import async_session_maker
 from app.services.telegram_dispatcher import TelegramNotificationDispatcher
 
 
 async def run() -> None:
+    configure_reliability_logging()
     bot = Bot(token=settings.bot_token)
     try:
         dispatcher = TelegramNotificationDispatcher(

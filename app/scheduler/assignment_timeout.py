@@ -24,6 +24,7 @@ async def run_assignment_timeout_loop(
                     logger.info("assignment_timeout_job processed %s jobs", processed)
                 else:
                     await session.rollback()
+                logger.info("assignment_timeout_job cycle_complete processed=%s", processed)
         except Exception:
             logger.exception("assignment_timeout_job failed")
 

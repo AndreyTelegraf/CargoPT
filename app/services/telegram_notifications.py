@@ -111,9 +111,10 @@ class TelegramNotificationEnqueueService:
             )
             stored = await self.repository.enqueue(notification)
             stored_notifications.append(stored)
-            if stored is notification:
+            if stored is not None:
                 logger.info(
-                    "telegram_notification_enqueued",
+                    "telegram_notification_registered notification_id=%s job_id=%s offer_id=%s",
+                    stored.id, stored.job_id, stored.offer_id,
                     extra={
                         "job_id": job.id,
                         "offer_id": offer.id,
@@ -168,9 +169,10 @@ class TelegramNotificationEnqueueService:
             )
             stored = await self.repository.enqueue(notification)
             stored_notifications.append(stored)
-            if stored is notification:
+            if stored is not None:
                 logger.info(
-                    "telegram_notification_enqueued",
+                    "telegram_notification_registered notification_id=%s job_id=%s offer_id=%s",
+                    stored.id, stored.job_id, stored.offer_id,
                     extra={
                         "job_id": job.id,
                         "notification_type": notification.notification_type,
@@ -229,9 +231,10 @@ class TelegramNotificationEnqueueService:
             )
             stored = await self.repository.enqueue(notification)
             stored_notifications.append(stored)
-            if stored is notification:
+            if stored is not None:
                 logger.info(
-                    "telegram_notification_enqueued",
+                    "telegram_notification_registered notification_id=%s job_id=%s offer_id=%s",
+                    stored.id, stored.job_id, stored.offer_id,
                     extra={
                         "job_id": job.id,
                         "notification_type": notification.notification_type,

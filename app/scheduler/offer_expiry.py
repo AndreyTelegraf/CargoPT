@@ -24,6 +24,7 @@ async def run_offer_expiry_loop(
                     logger.info("offer_expiry_job processed %s offers", processed)
                 else:
                     await session.rollback()
+                logger.info("offer_expiry_job cycle_complete processed=%s", processed)
         except Exception:
             logger.exception("offer_expiry_job failed")
 

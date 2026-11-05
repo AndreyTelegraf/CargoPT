@@ -2,6 +2,7 @@ import asyncio
 from contextlib import suppress
 
 from app.bot.dispatcher import build_dispatcher
+from app.reliability_logging import configure_reliability_logging
 from app.scheduler.assignment_timeout import run_assignment_timeout_loop
 from app.scheduler.offer_expiry import run_offer_expiry_loop
 from app.scheduler.job_lifecycle import run_job_lifecycle_loop
@@ -41,6 +42,7 @@ async def run() -> None:
 
 
 def main() -> None:
+    configure_reliability_logging()
     asyncio.run(run())
 
 

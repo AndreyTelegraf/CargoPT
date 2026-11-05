@@ -349,7 +349,7 @@ async def carrier_moderation_action(callback: CallbackQuery) -> None:
 
     if approved and redispatch_created:
         await callback.answer(
-            f"Анкета одобрена. Новые офферы: {redispatch_created}, отправлено: {redispatch_sent}."
+            f"Анкета одобрена. Новые офферы: {redispatch_created}, в очереди: {redispatch_sent}."
         )
     else:
         await callback.answer(
