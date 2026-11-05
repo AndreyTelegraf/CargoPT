@@ -70,6 +70,16 @@ class TransactionalDelivery(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(len(rows), 1)
             self.assertEqual(rows[0].delivery_status, "pending")
 
+    async def test_enqueue_without_previous_write_obeys_outer_rollback(self):
+        async with self.sessions() as s:
+            jobs, carriers = JobRepository(s), CarrierRepository(s)
+            job, offer = await s.get(Job, 1), await s.get(JobOffer, 1)
+            await send_job_offers_to_carriers(bot=NoNetwork(), job=job, offers=[offer], job_repository=jobs, carrier_repository=carriers)
+            await s.rollback()
+        async with self.sessions() as s:
+            self.assertEqual(len(list(await s.scalars(select(TelegramNotificationOutbox)))), 0,
+                "SQLite SAVEPOINT released before a real outer BEGIN committed the notification")
+
     async def test_expiry_commits_and_repeated_cycle_creates_no_duplicates(self):
         async with self.sessions() as s:
             self.assertEqual(await process_expired_pending_offers(bot=NoNetwork(), session=s), 1)

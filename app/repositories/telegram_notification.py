@@ -5,6 +5,7 @@ from sqlalchemy import select
 from sqlalchemy import update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.dialects.sqlite import insert as sqlite_insert
 
 from app.domain.telegram_notification import TelegramDeliveryStatus
 from app.models.telegram_notification import TelegramNotificationOutbox
@@ -40,6 +41,24 @@ class TelegramNotificationRepository:
         self,
         notification: TelegramNotificationOutbox,
     ) -> TelegramNotificationOutbox:
+        if self.session.get_bind().dialect.name == "sqlite":
+            # A SAVEPOINT issued before a real SQLite BEGIN can commit on
+            # release even if the surrounding SQLAlchemy transaction rolls back.
+            # INSERT starts the outer write transaction and handles dedupe inside
+            # that transaction, without rolling back unrelated business changes.
+            values = {column.name: getattr(notification, column.name)
+                      for column in TelegramNotificationOutbox.__table__.columns
+                      if column.name != "id"}
+            result = await self.session.execute(
+                sqlite_insert(TelegramNotificationOutbox).values(**values)
+                .on_conflict_do_nothing(index_elements=["dedupe_key"])
+                .returning(TelegramNotificationOutbox)
+            )
+            stored = result.scalar_one_or_none()
+            if stored is not None:
+                return stored
+            return await self.get_by_dedupe_key(notification.dedupe_key)
+
         existing = await self.get_by_dedupe_key(notification.dedupe_key)
         if existing is not None:
             return existing
