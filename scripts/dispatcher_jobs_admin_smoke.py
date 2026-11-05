@@ -251,7 +251,7 @@ assert "у перевозчика уже есть активный оффер" i
 assert "Перевозчик сейчас не активен" in handler_source
 assert "У перевозчика нет действующей подписки" in handler_source
 assert "Автомобиль перевозчика не активен" in handler_source
-assert "вручную отправлена перевозчику" in handler_source
+assert "поставлено в очередь перевозчику" in handler_source
 assert 'status="cancelled"' in handler_source
 assert "now = datetime.now(UTC)" in handler_source
 assert "clear_assignment_confirmation_statuses(" in handler_source
