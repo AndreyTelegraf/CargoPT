@@ -91,10 +91,9 @@ def build_offer_escalation_text(
 
     distribution_summary = (
         "Автоматическая рассылка не запускалась."
-        if matching_reason == MatchingReason.SHORT_LEAD_TIME
+        if matching_reason in {MatchingReason.SHORT_LEAD_TIME, MatchingReason.REQUESTED_DATE_PASSED}
         else (
-            "Рассылка завершена.\n\n"
-            f"{len(offers)} перевозчиков получили заявку."
+            f"Создано предложений: {len(offers)}."
         )
     )
 
