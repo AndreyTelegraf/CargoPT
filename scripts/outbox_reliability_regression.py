@@ -91,6 +91,30 @@ class QueueReliability(TransactionalDelivery):
         self.assertEqual((await self.row(id)).delivery_status, "failed")
         self.assertEqual(len(bot.calls), 2)
 
+    async def test_all_recipients_including_client_blocked_preserve_business_state(self):
+        from app.services.telegram_notifications import notification_service_for
+        from app.repositories.job import JobRepository
+        from app.repositories.carrier import CarrierRepository
+        from app.models.job import Job
+        async with self.sessions() as s:
+            job = await s.get(Job, 1)
+            notifications = notification_service_for(JobRepository(s), CarrierRepository(s))
+            for recipient in (9001, 1001, 1002):
+                await notifications.enqueue_message(job=job, recipient_chat_id=recipient,
+                    event_key="all_blocked", text="test notification")
+            await s.commit()
+        forbidden = TelegramForbiddenError(method=SendMessage(chat_id=1,text="x"), message="blocked")
+        bot = FakeBot({i: forbidden for i in range(1, 5)})
+        worker = TelegramNotificationDispatcher(session_maker=self.sessions, bot=bot)
+        await worker.dispatch_due()
+        self.assertEqual(await worker.dispatch_due(), 0)
+        self.assertEqual(len(bot.calls), 3)
+        async with self.sessions() as s:
+            from sqlalchemy import select
+            rows = list(await s.scalars(select(TelegramNotificationOutbox)))
+            self.assertTrue(all(row.delivery_status == "failed" and row.attempt_count == 1 for row in rows))
+            self.assertEqual((await s.get(Job, 1)).status, "offered")
+
     async def test_rate_limit_respects_retry_after(self):
         id = await self.notification()
         bot = FakeBot({1: TelegramRetryAfter(method=SendMessage(chat_id=1,text="x"), message="limit", retry_after=120)})
