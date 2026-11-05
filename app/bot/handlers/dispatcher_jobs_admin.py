@@ -20,6 +20,7 @@ from app.domain.admin_access import (
 from app.db.session import async_session_maker
 from app.domain.job_decline_reason import get_decline_reason_label
 from app.domain.requested_date import PORTUGAL_TIMEZONE
+from app.domain.requested_date import is_requested_date_in_past
 from app.repositories.carrier import CarrierRepository
 from app.repositories.job import JobRepository
 from app.services.carrier_search import CarrierSearchService
@@ -914,6 +915,12 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
                 return
 
             previous_status = job.status
+            if is_requested_date_in_past(job.requested_date):
+                await callback.answer(
+                    "Дата перевозки прошла. Сначала уточните и обновите дату заявки.",
+                    show_alert=True,
+                )
+                return
             distribution = OfferDistributionService(
                 matching_service=JobMatchingService(
                     CarrierSearchService(carrier_repository)
@@ -1093,6 +1100,13 @@ async def dispatcher_job_admin_action(callback: CallbackQuery) -> None:
             if job is None:
                 await callback.answer(
                     f"Заявка #{raw_job_id} не найдена.",
+                    show_alert=True,
+                )
+                return
+
+            if is_requested_date_in_past(job.requested_date):
+                await callback.answer(
+                    "Дата перевозки прошла. Сначала уточните и обновите дату заявки.",
                     show_alert=True,
                 )
                 return

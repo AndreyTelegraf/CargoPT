@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 from app.domain.job_status import JobStatus
+from app.domain.requested_date import is_requested_date_in_past
 from app.models.job import Job
 from app.models.job import JobOffer
 from app.repositories.job import JobRepository
@@ -36,6 +37,22 @@ class OfferDistributionService:
         limit: int | None = None,
         expires_in_minutes: int = 60,
     ) -> OfferDistributionResult:
+        # Check before MATCHING, candidate lookup, or creating any offer. SQLite
+        # naive datetimes follow the shared UTC contract used by intake/forms.
+        if is_requested_date_in_past(getattr(job, "requested_date", None)):
+            existing = await self.job_repository.list_offers_by_job(job.id)
+            if not any(offer.status == "accepted" for offer in existing):
+                await self.job_repository.update_job_status(
+                    job_id=job.id,
+                    status=JobStatus.MANUAL_REVIEW_REQUIRED,
+                    updated_at=job.updated_at,
+                )
+            return OfferDistributionResult(
+                offers=[],
+                matching_reason=MatchingReason.REQUESTED_DATE_PASSED,
+                matching_regions=[],
+            )
+
         job.short_lead_time_filtered = False
         await self.job_repository.update_job_status(
             job_id=job.id,

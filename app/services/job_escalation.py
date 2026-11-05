@@ -7,6 +7,8 @@ def _format_matching_reason(
     reason: MatchingReason | None,
     regions: list[str] | None,
 ) -> str:
+    if reason == MatchingReason.REQUESTED_DATE_PASSED:
+        return "Желаемая дата перевозки прошла. Уточните актуальную дату у клиента перед повторной рассылкой."
     if reason == MatchingReason.SHORT_LEAD_TIME:
         return (
             "До желаемого времени перевозки меньше 72 часов. "
